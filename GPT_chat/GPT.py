@@ -3,6 +3,7 @@ import openai
 import re
 import subprocess
 import random
+import os
 from GPT_chat import convert
 from GPT_chat import spilit
 from GPT_chat import readexistans
@@ -10,7 +11,9 @@ from Config import config
 # from GPT_chat import Llama3chat
 from z3 import *
 
-openai.api_key = "******************************************************"
+OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
+
+openai.api_key = OPENAI_API_KEY
 
 maxkinduction=config.maxkinduction
 BMC = config.BMC
@@ -52,7 +55,7 @@ assert({result}); => "
             result=Llama3chat.getLlamaAnswer(prompt)
         else:
             gptAnswer = openai.ChatCompletion.create(
-                    model="gpt-4", 
+                    model="gpt-4o", 
                     messages=[{"role": "user", "content": prompt}]
                 )
             result = gptAnswer["choices"][0]["message"]["content"]
@@ -283,6 +286,12 @@ def translate_AnsSet_to_smtlib2(AnsSet):
 
 
 def get_answer(cProgram,promptType,previousAns,counterexample,AnsSet,existans,readexistanscount):
+    if LLM == "GPT4o":
+        gptAnswer = openai.ChatCompletion.create(
+                model="gpt-4o", 
+                messages=[{"role": "user", "content": get_prompt(cProgram,promptType,previousAns,counterexample)}]
+            )
+        result = gptAnswer["choices"][0]["message"]["content"]
     if LLM == "GPT4":
         gptAnswer = openai.ChatCompletion.create(
                 model="gpt-4", 

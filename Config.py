@@ -1,3 +1,7 @@
+import os
+
+LLM = os.getenv('LLM')
+
 class Config:
     SMT_CHECK_TIME = 50
 
@@ -12,7 +16,7 @@ class Config:
     PROMPT="full"
 
     # GPT4 GPT4Turbo GPT3.5Turbo Llama3 Man Exist
-    LLM="GPT3.5Turbo"
+    LLM=LLM
 
     timeout_seconds = 5
     
