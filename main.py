@@ -9,7 +9,11 @@ from Config import config
 from SMT_Solver.SMT_verifier import SMT_verifier
 
 
-openai.api_key="******************************************************"
+OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
+if not OPENAI_API_KEY:
+    raise ValueError("OPENAI_API_KEY is not set")
+
+openai.api_key = OPENAI_API_KEY
 
 def main(path2CFile, path2CFG, path2SMT,newfile):
     path = config.resultpath
