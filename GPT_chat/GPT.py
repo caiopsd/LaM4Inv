@@ -23,6 +23,12 @@ LLM=config.LLM
 timeout_seconds = config.timeout_seconds
 maxkstep = config.maxkstep
 
+def get_esbmc():
+    if os.name == 'nt':
+        return ".\\windows-release\\bin\\esbmc.exe"
+    if os.name == 'posix':
+        return "esbmc"
+
 def is_parentheses_balanced(s):
     stack = []
     
@@ -172,7 +178,10 @@ def extract_assert_statements(text):
 def esbmc_and(cProgram,subassertion):
     assertion='assert('+subassertion+');'
     esbmcProgram=cProgram.replace('unknown()','rand()%2==0')
-    file=open("./check/"+config.resultpath+".c","w")
+    check_dir_path = "./check/"
+    if not os.path.exists(check_dir_path):
+        os.makedirs(check_dir_path)
+    file=open(check_dir_path+config.resultpath+".c","w")
     leftcount=0
     rightcount=0
     judge=True
@@ -202,9 +211,9 @@ def esbmc_and(cProgram,subassertion):
         return False
     if Verification == "esbmc":
         if maxkinduction:
-            command = [".\\windows-release\\bin\\esbmc.exe", ".\\check\\"+config.resultpath+".c", "--floatbv", "--k-induction", "--max-k-step", str(maxkstep)]
+            command = [get_esbmc(), ".\\check\\"+config.resultpath+".c", "--floatbv", "--k-induction", "--max-k-step", str(maxkstep)]
         else:
-            command = [".\\windows-release\\bin\\esbmc.exe", ".\\check\\"+config.resultpath+".c", "--floatbv", "--k-induction"]
+            command = [get_esbmc(), ".\\check\\"+config.resultpath+".c", "--floatbv", "--k-induction"]
     else:
         if maxkinduction:
             command = [".\\cbmc\\bin\\cbmc.exe", ".\\check\\"+config.resultpath+".c", "--unwind", str(maxkstep)]
@@ -224,7 +233,10 @@ def esbmc_and(cProgram,subassertion):
 def esbmc_or(cProgram,subassertion):
     assertion='assert(!('+subassertion+'));'
     esbmcProgram=cProgram.replace('unknown()','rand()%2==0')
-    file=open("./check/"+config.resultpath+".c","w")
+    check_dir_path = "./check/"
+    if not os.path.exists(check_dir_path):
+        os.makedirs(check_dir_path)
+    file=open(check_dir_path+config.resultpath+".c","w")
     leftcount=0
     rightcount=0
     judge=True
@@ -246,9 +258,9 @@ def esbmc_or(cProgram,subassertion):
     file.close()
     if Verification == "esbmc":
         if maxkinduction:
-            command = [".\\windows-release\\bin\\esbmc.exe", ".\\check\\"+config.resultpath+".c", "--floatbv", "--k-induction", "--max-k-step", str(maxkstep)]
+            command = [get_esbmc(), ".\\check\\"+config.resultpath+".c", "--floatbv", "--k-induction", "--max-k-step", str(maxkstep)]
         else:
-            command = [".\\windows-release\\bin\\esbmc.exe", ".\\check\\"+config.resultpath+".c", "--floatbv", "--k-induction"]
+            command = [get_esbmc(), ".\\check\\"+config.resultpath+".c", "--floatbv", "--k-induction"]
     else:
         if maxkinduction:
             command = [".\\cbmc\\bin\\cbmc.exe", ".\\check\\"+config.resultpath+".c", "--unwind", str(maxkstep)]
