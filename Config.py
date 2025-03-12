@@ -1,6 +1,6 @@
 import os
 
-LLM = os.getenv('LLM')
+LLM = os.getenv('LLM', 'GPT4o')
 
 class Config:
     SMT_CHECK_TIME = 50
