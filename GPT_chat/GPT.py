@@ -13,7 +13,7 @@ from z3 import *
 
 OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
 if not OPENAI_API_KEY:
-    raise ValueError("API key for OpenAI GPT-3 is missing")
+    raise ValueError("OPENAI_API_KEY is not set")
 
 openai.api_key = OPENAI_API_KEY
 
