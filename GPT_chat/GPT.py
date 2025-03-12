@@ -23,11 +23,15 @@ LLM=config.LLM
 timeout_seconds = config.timeout_seconds
 maxkstep = config.maxkstep
 
-def get_esbmc():
+def get_esbmc_bin():
     if os.name == 'nt':
         return ".\\windows-release\\bin\\esbmc.exe"
     if os.name == 'posix':
         return "esbmc"
+    
+ESBMC_BIN_PATH = os.getenv('ESBMC_BIN_PATH')
+if not ESBMC_BIN_PATH:
+    ESBMC_BIN_PATH = get_esbmc_bin()
 
 def is_parentheses_balanced(s):
     stack = []
@@ -211,9 +215,9 @@ def esbmc_and(cProgram,subassertion):
         return False
     if Verification == "esbmc":
         if maxkinduction:
-            command = [get_esbmc(), ".\\check\\"+config.resultpath+".c", "--floatbv", "--k-induction", "--max-k-step", str(maxkstep)]
+            command = [ESBMC_BIN_PATH, ".\\check\\"+config.resultpath+".c", "--floatbv", "--k-induction", "--max-k-step", str(maxkstep)]
         else:
-            command = [get_esbmc(), ".\\check\\"+config.resultpath+".c", "--floatbv", "--k-induction"]
+            command = [ESBMC_BIN_PATH, ".\\check\\"+config.resultpath+".c", "--floatbv", "--k-induction"]
     else:
         if maxkinduction:
             command = [".\\cbmc\\bin\\cbmc.exe", ".\\check\\"+config.resultpath+".c", "--unwind", str(maxkstep)]
@@ -258,9 +262,9 @@ def esbmc_or(cProgram,subassertion):
     file.close()
     if Verification == "esbmc":
         if maxkinduction:
-            command = [get_esbmc(), ".\\check\\"+config.resultpath+".c", "--floatbv", "--k-induction", "--max-k-step", str(maxkstep)]
+            command = [ESBMC_BIN_PATH, ".\\check\\"+config.resultpath+".c", "--floatbv", "--k-induction", "--max-k-step", str(maxkstep)]
         else:
-            command = [get_esbmc(), ".\\check\\"+config.resultpath+".c", "--floatbv", "--k-induction"]
+            command = [ESBMC_BIN_PATH, ".\\check\\"+config.resultpath+".c", "--floatbv", "--k-induction"]
     else:
         if maxkinduction:
             command = [".\\cbmc\\bin\\cbmc.exe", ".\\check\\"+config.resultpath+".c", "--unwind", str(maxkstep)]
