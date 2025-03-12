@@ -1,6 +1,7 @@
 import os
 
 LLM = os.getenv('LLM', 'GPT4o')
+RESULT_PATH = os.getenv('RESULT_PATH', 'test')
 
 class Config:
     SMT_CHECK_TIME = 50
@@ -22,7 +23,7 @@ class Config:
     
     maxkstep = 10
 
-    resultpath="test"
+    resultpath=RESULT_PATH
 
     exsitresult="test"
 

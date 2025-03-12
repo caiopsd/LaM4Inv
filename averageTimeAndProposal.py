@@ -1,3 +1,5 @@
+from Config import config
+
 def read_last_line_of_each_file(file_paths):
     times = []  
     proposals = []
@@ -38,9 +40,8 @@ def read_last_line_of_each_file(file_paths):
     else:
         return None  
 
-
 if __name__ == "__main__":
-    all_path = [r"Result/GPT4TurboFull/"]
+    all_path = [r"Result/"+config.resultpath+"/"]
     all_s=[]
     all_t=[]
     all_p=[]
