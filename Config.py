@@ -1,30 +1,15 @@
-import os
+from dataclasses import dataclass
 
-LLM = os.getenv('LLM', 'GPT4o')
-RESULT_PATH = os.getenv('RESULT_PATH', 'test')
-
+@dataclass
 class Config:
-    SMT_CHECK_TIME = 50
+    benchmarks_graph_path: str
+    benchmarks_smt_path: str
+    benchmarks_c_path: str
+    smt_check_timeout: int
 
-    Limited_time = 600
-
-    maxkinduction=True
-
-    BMC = True
-
-    Verification="esbmc"
-
-    PROMPT="full"
-
-    # GPT4 GPT4Turbo GPT3.5Turbo Llama3 Man Exist
-    LLM=LLM
-
-    timeout_seconds = 5
-    
-    maxkstep = 10
-
-    resultpath=RESULT_PATH
-
-    exsitresult="test"
-
-config = Config()
+config = Config(
+    benchmarks_graph_path="benchmarks/linear/c_graph/",
+    benchmarks_smt_path="benchmarks/linear/c_smt2/",
+    benchmarks_c_path="benchmarks/linear/c/",
+    smt_check_timeout=50
+)
