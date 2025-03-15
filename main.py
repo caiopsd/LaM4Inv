@@ -48,8 +48,8 @@ def run_experiment(start: int, end: int):
     print(times)
 
 def main():
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--range", type=valid_range, default="228-229")
+    parser = argparse.ArgumentParser(description="Run benchmarks")
+    parser.add_argument("--range", type=valid_range, default="228-229", help="Range of benchmarks to run")
     args = parser.parse_args()
     range = [int(x) for x in args.range.split("-")]
 
