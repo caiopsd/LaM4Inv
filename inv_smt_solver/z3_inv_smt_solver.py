@@ -1,10 +1,12 @@
-from z3 import z3
 import logging
 import re
-from Utilities.TimeController import time_limit_calling
+import signal
+
+from z3 import z3
 
 from inv_smt_solver.inv_smt_solver import InvSMTSolver
 from inv_smt_solver.counter_example import CounterExample, CounterExampleKind
+from utils.run_with_timeout import run_with_timeout, TimeoutException
 
 class Z3InvSMTSolver(InvSMTSolver):
     def __init__(self, smt_file_path: str, timeout: int):
@@ -39,8 +41,11 @@ class Z3InvSMTSolver(InvSMTSolver):
             return None, False
         
         self.solver.add(decl)
-
-        res = time_limit_calling(self.solver.check, (), self.timeout)
+        try:
+            res = run_with_timeout(self.solver.check, timeout=self.timeout)
+        except TimeoutException:
+            return z3.unknown
+        
         return res  
 
     def _is_ignored_variable(self, variable: str) -> bool:
