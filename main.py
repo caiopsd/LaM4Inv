@@ -64,9 +64,13 @@ def main():
     args = parser.parse_args()
     benchmark_range = [int(x) for x in args.benchmark_range.split("-")]
 
+    OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+
     if 'gpt' in args.llm_model:
+        if OPENAI_API_KEY is None:
+            raise ValueError("OPENAI_API_KEY environment variable must be set")
         model = ChatGPTModel(args.llm_model)
-        llm = ChatGPT(model)
+        llm = ChatGPT(OPENAI_API_KEY, model)
     if 'llama' in args.llm_model:
         model = LlamaModel(args.llm_model)
         llm = Llama(model)
