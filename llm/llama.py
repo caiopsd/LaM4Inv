@@ -8,7 +8,7 @@ class LlamaModel(Enum):
     LLAMA_3_8B = 'meta-llama/Meta-Llama-3-8B'
 
 class Llama(LLM):
-    def __init__(self, model: LLamaModel, base_url: str = "http://localhost:8000"):
+    def __init__(self, model: LlamaModel, base_url: str = "http://localhost:8000"):
         self.model = model
         self.base_url = base_url
 

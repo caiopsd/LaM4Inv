@@ -6,11 +6,9 @@ from enum import Enum
 
 from inv_smt_solver.inv_smt_solver import InvSMTSolver, CounterExample
 from generator.generator import Generator
-from predicate_filtering.predicate_filtering import PredicateFiltering
 
 class Runner:
     _fail_history: list[tuple[str, CounterExample]] = []
-    _predicate_filtering_queue: queue.Queue = queue.Queue()
     _verify_queue: queue.Queue = queue.Queue()
     _generated_candidates: int = 0
 
@@ -18,7 +16,6 @@ class Runner:
         self, 
         inv_smt_solver: InvSMTSolver, 
         generator: Generator,
-        predicate_filtering: PredicateFiltering,
         code_file_path: str, 
         result_file_path: str,
         inference_timeout: int,
@@ -26,7 +23,6 @@ class Runner:
     ):
         self.inv_smt_solver = inv_smt_solver
         self.generator = generator
-        self.predicate_filtering = predicate_filtering
 
         self.inference_timeout = inference_timeout
         self.max_candidates = max_candidates
@@ -56,22 +52,12 @@ class Runner:
         if counter_example is None:
             return candidate, None
         self._fail_history.append((candidate, counter_example))
-        self._predicate_filtering_queue.put(candidate)
 
         return candidate, counter_example
 
     def _generate_candidates_from_feedback(self):
         new_candidates = self.generator.generate(self.code, self._fail_history)
         self._insert_candidates_to_verify(new_candidates)
-
-    def _filter_predicates(self) -> str:
-        if self._predicate_filtering_queue.empty():
-            return None
-        
-        candidate = self._predicate_filtering_queue.get()
-        filter = self.predicate_filtering.filter(candidate)
-        if len(filter) > 0:
-            return filter[0]
         
     def run(self) -> str:
         start_time = time.time()
@@ -79,17 +65,13 @@ class Runner:
         candidates = self.generator.generate(self.code)
         self._insert_candidates_to_verify(candidates)
 
-        while not self._verify_queue.empty() or not self._predicate_filtering_queue.empty():
+        while not self._verify_queue.empty():
             if time.time() - start_time >= self.inference_timeout:
                 raise TimeoutError("Inference timeout")
             
             candidate, counter_example = self._verify()
             if counter_example is None:
                 return candidate
-            
-            solution = self._filter_predicates()
-            if solution is not None:
-                return solution
 
             self._generate_candidates_from_feedback()
 
