@@ -10,6 +10,11 @@ class Solver(ABC):
     @abstractmethod
     def check(self, formula: str, timeout: int = None) -> SatStatus:
         pass
-
+    
+    @abstractmethod
     def model(self) -> str:
+        pass
+
+    @abstractmethod
+    def is_valid_expression(self, expression: str) -> bool:
         pass

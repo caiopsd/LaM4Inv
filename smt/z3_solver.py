@@ -1,6 +1,6 @@
 import z3
 
-from smt.smt import Solver, SatStatus
+from smt.solver import Solver, SatStatus
 from utils.run_with_timeout import run_with_timeout, TimeoutException
 
 class Z3Solver(Solver):
@@ -33,3 +33,10 @@ class Z3Solver(Solver):
 
     def model(self) -> str:
         return str(self.solver.model())
+    
+    def is_valid_expression(self, expression: str) -> bool:
+        try:
+            _ = z3.parse_smt2_string(expression)
+            return True
+        except:
+            return False

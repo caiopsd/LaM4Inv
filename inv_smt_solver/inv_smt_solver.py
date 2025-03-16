@@ -1,7 +1,7 @@
 import logging
 import re
 
-from smt.smt import Solver, SatStatus
+from smt.solver import Solver, SatStatus
 from inv_smt_solver.counter_example import CounterExample, CounterExampleKind
 
 class InvSMTSolver:
