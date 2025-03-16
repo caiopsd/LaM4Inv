@@ -5,6 +5,8 @@ name = "pypi"
 
 [packages]
 z3-solver = "*"
+openai = "*"
+requests = "*"
 
 [dev-packages]
 
