@@ -23,7 +23,9 @@ class InvSMTSolver:
         ]
 
     def _get_inv_condition(self, inv: str) -> str:
-        return inv[7:-1]
+        patter = re.compile(r'\(assert\s*(\(.*\))\)')
+        match = patter.match(inv)
+        return match.group(1)
 
     def _is_ignored_variable(self, variable: str) -> bool:
         pattern = re.compile(r'^(inv-f|post-f|pre-f|trans-f|div0|mod0|.*_.*)$')
