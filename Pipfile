@@ -8,6 +8,7 @@ z3-solver = "*"
 openai = "*"
 requests = "*"
 sympy = "*"
+dotenv = "*"
 
 [dev-packages]
 

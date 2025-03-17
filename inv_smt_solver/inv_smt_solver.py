@@ -7,7 +7,7 @@ from inv_smt_solver.counter_example import CounterExample, CounterExampleKind
 class InvSMTSolver:
     def __init__(self, solver: Solver, smt_file_path: str):
         self.solver = solver
-        self.tpl = self._init_tpl(smt_file_path)
+        self._init_tpl(smt_file_path)
         self.logger = logging.getLogger(__name__)
 
     def _init_tpl(self, smt_file_path: str) -> list[str]:
@@ -29,49 +29,50 @@ class InvSMTSolver:
         pattern = re.compile(r'^(inv-f|post-f|pre-f|trans-f|div0|mod0|.*_.*)$')
         return bool(pattern.match(variable))
 
-    def _get_precondition_counter_example(self, inv: str) -> tuple[CounterExample, bool]:
+    def _get_precondition_counter_example(self, inv: str) -> CounterExample:
         formula = self.tpl[0] + self._get_inv_condition(inv) + self.tpl[1]
         res = self.solver.check(formula)
-        ce = CounterExample()
         if res == SatStatus.SAT:
-            model = self.solver.model()
-            ce.assignment = {str(x): str(model[x]) for x in model if not self._is_ignored_variable(str(x))}
-            ce.kind = CounterExampleKind.POSITIVE
-            return ce, True
+            assignments = self.solver.get_assignments()
+            filtered_assignments = {
+                decl: assignments[decl]
+                for decl in assignments if not self._is_ignored_variable(decl)
+            }
+            return CounterExample(filtered_assignments, CounterExampleKind.POSITIVE)
         elif res == SatStatus.UNKNOWN:
-            raise TimeoutError("SMT check timed out while verifying precondition for invariant: %s" % inv)
+            raise TimeoutError(inv)
         
         assert res == SatStatus.UNSAT
         return None
             
-    def _get_transition_counter_example(self, inv: str) -> tuple[CounterExample, bool]:
+    def _get_transition_counter_example(self, inv: str) -> CounterExample:
         formula = self.tpl[0] + self._get_inv_condition(inv) + self.tpl[2]
         res = self.solver.check(formula)
-        ce = CounterExample()
         if res == SatStatus.SAT:
-            model = self.solver.model()
-            ce.assignment = (
-                {str(x).rstrip("!"): str(model[x]) for x in model if not self._is_ignored_variable(str(x)) and not str(x).endswith("!")},
-                {str(x).rstrip("!"): str(model[x]) for x in model if not self._is_ignored_variable(str(x)) and str(x).endswith("!")}
-            )
-            ce.kind = CounterExampleKind.INTERMEDIATE
+            assignments = self.solver.get_assignments()
+            filtered_assignments = {
+                decl: assignments[decl]
+                for decl in assignments if not self._is_ignored_variable(decl)
+            }
+            return CounterExample(filtered_assignments, CounterExampleKind.INTERMEDIATE)
         elif res == SatStatus.UNKNOWN:
-            raise TimeoutError("SMT check timed out while verifying precondition for invariant: %s" % inv)
+            raise TimeoutError(inv)
         
         assert res == SatStatus.UNSAT
         return None
 
-    def _get_postcondition_counter_example(self, inv: str) -> tuple[CounterExample, bool]:
+    def _get_postcondition_counter_example(self, inv: str) -> CounterExample:
         formula = self.tpl[0] + self._get_inv_condition(inv) + self.tpl[3]
         res = self.solver.check(formula)
-        ce = CounterExample()
         if res == SatStatus.SAT:
-            model = self.solver.model()
-            ce.assignment = {str(x): str(model[x]) for x in model if not self._is_ignored_variable(str(x))}
-            ce.kind = CounterExampleKind.NEGATIVE
-            return ce
+            assignments = self.solver.get_assignments()
+            filtered_assignments = {
+                x: assignments[x]
+                for x in assignments if not self._is_ignored_variable(x)
+            }
+            return CounterExample(filtered_assignments, CounterExampleKind.NEGATIVE)
         elif res == SatStatus.UNKNOWN:
-            raise TimeoutError("SMT check timed out while verifying precondition for invariant: %s" % inv)
+            raise TimeoutError(inv)
         
         assert res == SatStatus.UNSAT
         return None

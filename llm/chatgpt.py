@@ -9,6 +9,7 @@ class ChatGPTModel(Enum):
     GPT_4 = "gpt-4"
     GPT_4_TURBO = "gpt-4-turbo"
     GPT_4O = "gpt-4o"
+    GPT_4O_MINI = "gpt-4o-mini"
 
 class ChatGPT(LLM):
     def __init__(self, api_key: str, model: ChatGPTModel):

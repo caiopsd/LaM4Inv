@@ -12,9 +12,8 @@ class Solver(ABC):
         pass
     
     @abstractmethod
-    def model(self) -> str:
+    def get_assignments(self) -> dict[str,str]:
         pass
 
-    @abstractmethod
-    def is_valid_expression(self, expression: str) -> bool:
-        pass
+class InvalidFormulaError(Exception):
+    pass

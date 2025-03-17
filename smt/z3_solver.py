@@ -1,6 +1,7 @@
 import z3
+import re
 
-from smt.solver import Solver, SatStatus
+from smt.solver import Solver, SatStatus, InvalidFormulaError
 from utils.run_with_timeout import run_with_timeout, TimeoutException
 
 class Z3Solver(Solver):
@@ -14,9 +15,8 @@ class Z3Solver(Solver):
         self.solver.reset()
         try:
             decl = z3.parse_smt2_string(formula)
-        except:
-            self.logger.debug("Invalid SMTLIB2 formula: %s", formula)
-            return None, False
+        except z3.Z3Exception:
+            raise InvalidFormulaError(formula)
         
         self.solver.add(decl)
         try:
@@ -31,12 +31,11 @@ class Z3Solver(Solver):
         else:
             return SatStatus.UNKNOWN
 
-    def model(self) -> str:
-        return str(self.solver.model())
-    
-    def is_valid_expression(self, expression: str) -> bool:
-        try:
-            _ = z3.parse_smt2_string(expression)
-            return True
-        except:
-            return False
+    def get_assignments(self) -> dict[str,str]:
+        model = self.solver.model()
+        assignments = {}
+        for decl in model:
+            if decl.arity() > 0:
+                continue
+            assignments[str(decl)] = str(model[decl])
+        return assignments

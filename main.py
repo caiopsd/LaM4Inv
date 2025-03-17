@@ -2,6 +2,10 @@ import argparse
 import os
 import io
 
+from dotenv import load_dotenv
+
+load_dotenv()
+
 from runner import Runner
 from config import config
 from smt.z3_solver import Z3Solver

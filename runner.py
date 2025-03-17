@@ -2,13 +2,13 @@ import io
 import os
 import time
 import queue
-from enum import Enum
 
+from smt.solver import InvalidFormulaError
 from inv_smt_solver.inv_smt_solver import InvSMTSolver, CounterExample
 from generator.generator import Generator
 
 class Runner:
-    _fail_history: list[tuple[str, CounterExample]] = []
+    _fail_history: dict[str, CounterExample] = {}
     _verify_queue: queue.Queue = queue.Queue()
     _generated_candidates: int = 0
 
@@ -31,7 +31,7 @@ class Runner:
         with open(code_file_path, 'r') as f:
             self.code = f.read()
 
-    def _get_result_file(result_file_path: str) -> io.TextIOWrapper:
+    def _get_result_file(self, result_file_path: str) -> io.TextIOWrapper:
         os.makedirs(os.path.dirname(result_file_path), exist_ok=True)
         return open(result_file_path, "w")
     
@@ -40,8 +40,9 @@ class Runner:
             return
         
         for candidate in candidates:
-            self._verify_queue.put(candidate)
-            self._generated_candidates += 1
+            if candidate not in self._fail_history and candidate not in self._verify_queue.queue:
+                self._verify_queue.put(candidate)
+                self._generated_candidates += 1
 
     def _verify(self) -> tuple[str, CounterExample]:
         if self._verify_queue.empty():
@@ -51,7 +52,7 @@ class Runner:
         counter_example = self.inv_smt_solver.get_counter_example(candidate)
         if counter_example is None:
             return candidate, None
-        self._fail_history.append((candidate, counter_example))
+        self._fail_history[candidate] = counter_example
 
         return candidate, counter_example
 
@@ -69,9 +70,19 @@ class Runner:
             if time.time() - start_time >= self.inference_timeout:
                 raise TimeoutError("Inference timeout")
             
-            candidate, counter_example = self._verify()
-            if counter_example is None:
-                return candidate
+            try:
+                candidate, counter_example = self._verify()
+                if counter_example is None:
+                    return candidate
+            except InvalidFormulaError as e:
+                print(f'Invalid candidate: {e}')
+                continue
+            except TimeoutError as e:
+                print(f'Timeout while verifying candidate: {e}')
+                continue
+            
+            print(f'Verified candidate: {candidate}')
+            print(f'Found counter example:\n{counter_example}')
 
             self._generate_candidates_from_feedback()
 
