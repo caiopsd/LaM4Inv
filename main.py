@@ -58,8 +58,10 @@ def run_experiment(
 def main():
     parser = argparse.ArgumentParser(description="Run benchmarks")
 
-    model_choices = [model.value for model in list(ChatGPTModel)] + [model.value for model in list(LlamaModel)]
-    parser.add_argument("--llm-model", type=str, default="gpt-4o", help="LLM model to use", choices=model_choices)
+    chat_gpt_models = [model.value for model in list(ChatGPTModel)]
+    llama_models = [model.value for model in list(LlamaModel)]
+
+    parser.add_argument("--llm-model", type=str, default="gpt-4o", help="LLM model to use", choices=chat_gpt_models+llama_models)
     parser.add_argument("--benchmark-range", type=valid_range, default="228-229", help="Range of benchmarks to run")
     parser.add_argument("--smt-timeout", type=int, default=50, help="Timeout for SMT check")
     parser.add_argument("--inference-timeout", type=int, default=600, help="Timeout for LLM inference")
@@ -70,12 +72,12 @@ def main():
 
     OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 
-    if 'gpt' in args.llm_model:
+    if args.llm_model in chat_gpt_models:
         if OPENAI_API_KEY is None:
             raise ValueError("OPENAI_API_KEY environment variable must be set")
         model = ChatGPTModel(args.llm_model)
         llm = ChatGPT(OPENAI_API_KEY, model)
-    if 'llama' in args.llm_model:
+    if args.llm_model in llama_models:
         model = LlamaModel(args.llm_model)
         llm = Llama(model)
     z3_solver = Z3Solver(args.smt_timeout)
