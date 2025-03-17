@@ -32,18 +32,20 @@ Don't explain. Your answer should contain only  '(assert(...))' lines.
             elif counter_example.kind == CounterExampleKind.NEGATIVE:
                 history += f"'{candidate}' is too weak and breaks provability. With counter example given by z3: {counter_example}\n"
             elif counter_example.kind == CounterExampleKind.INTERMEDIATE:
-                history += f"'{candidate}' is breaks inductive. With counter example given by z3: {counter_example}\n"
+                history += f"'{candidate}' is breaks inductiveness. With counter example given by z3: {counter_example}\n"
         return history
     
     def _get_feedback_llm_prompt(self, code: str, fail_history: dict[str, CounterExample]) -> str:
         return f"""{code}
 Print loop invariants as valid SMT-LIB2 assertions that help prove the assertion.
-Discard the following loop invariants as they are not correct:
-{self._format_fail_history(fail_history)}
 
-The Reachability of the loop invariant means that the loop invariant I can be derived based on the pre-condition P, i.e. P ⇒ I. For this property, in order to get a correct answer, you may want to consider the initial situation where the program won't enter the loop.
-The Provability of the loop invariant means that after unsatisfying loop condition B, we can prove the post-condition Q, i.e. (I ∧ ¬ B) ⇒ Q. For this property, in order to get a correct answer, you may want to consider the special case of the program executing to the end of the loop. If some of the preconditions are also loop invariant, you need to add them to your answer as well.
-The Inductive of the loop invariant means that if the program state satisfies loop condition B, the new state obtained after the loop execution S still satisfies, i.e. {{I ∧ B}} S {{I}}.For this property, in order to get a correct answer, You may want to consider the special case of the program executing to the end of the loop.
+A correct loop invariant has the following properties:
+Reachability: means that the loop invariant I can be derived based on the pre-condition P, i.e. P ⇒ I. For this property, in order to get a correct answer, you may want to consider the initial situation where the program won't enter the loop.
+Provability: means that after unsatisfying loop condition B, we can prove the post-condition Q, i.e. (I ∧ ¬ B) ⇒ Q. For this property, in order to get a correct answer, you may want to consider the special case of the program executing to the end of the loop. If some of the preconditions are also loop invariant, you need to add them to your answer as well.
+Inductiveness: means that if the program state satisfies loop condition B, the new state obtained after the loop execution S still satisfies, i.e. {{I ∧ B}} S {{I}}.For this property, in order to get a correct answer, You may want to consider the special case of the program executing to the end of the loop.
+
+The following loop invariants are not correct as they break one of the properties above:
+{self._format_fail_history(fail_history)}
 
 Don't explain. Your answer should contain only '(assert(...))' lines.
 """

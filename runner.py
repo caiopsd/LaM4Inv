@@ -83,6 +83,7 @@ class Runner:
             
             print(f'Verified candidate: {candidate}')
             print(f'Found counter example:\n{counter_example}')
+            print(f'Counter example kind is {counter_example.kind.value}')
 
             self._generate_candidates_from_feedback()
 

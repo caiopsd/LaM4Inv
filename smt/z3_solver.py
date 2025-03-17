@@ -1,5 +1,4 @@
 import z3
-import re
 
 from smt.solver import Solver, SatStatus, InvalidFormulaError
 from utils.run_with_timeout import run_with_timeout, TimeoutException

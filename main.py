@@ -61,7 +61,7 @@ def main():
     chat_gpt_models = [model.value for model in list(ChatGPTModel)]
     llama_models = [model.value for model in list(LlamaModel)]
 
-    parser.add_argument("--llm-model", type=str, default="gpt-4o", help="LLM model to use", choices=chat_gpt_models+llama_models)
+    parser.add_argument("--llm-model", type=str, default=ChatGPTModel.GPT_4O_MINI.value, help="LLM model to use", choices=chat_gpt_models+llama_models)
     parser.add_argument("--benchmark-range", type=valid_range, default="228-229", help="Range of benchmarks to run")
     parser.add_argument("--smt-timeout", type=int, default=50, help="Timeout for SMT check")
     parser.add_argument("--inference-timeout", type=int, default=600, help="Timeout for LLM inference")
