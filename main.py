@@ -13,7 +13,8 @@ from inv_smt_solver.inv_smt_solver import InvSMTSolver
 from llm.chatgpt import ChatGPT, ChatGPTModel
 from llm.llama import Llama, LlamaModel
 from generator.generator import Generator
-
+from conde_handler.c import CCodeHandler
+from conde_handler.code_handler import CodeHandler
 def valid_range(value):
     try:
         start, end = value.split("-")
@@ -28,6 +29,11 @@ def valid_range(value):
 def get_result_file(results_path: str) -> io.TextIOWrapper:
     os.makedirs(results_path, exist_ok=True)
     return open(os.path.join(results_path, 'result.txt'), "a")
+
+def get_code_handler(code_file_path: str) -> CodeHandler:
+    with open(code_file_path, "r") as f:
+        code = f.read()
+    return CCodeHandler(code)
 
 def run_experiment(
         start: int, 
@@ -45,8 +51,10 @@ def run_experiment(
         code_file_path = os.path.join(config.benchmarks_code_path, f'{i}.c')
         sample_result_file_path = os.path.join(results_path, f'{i}.txt')
 
+        code = get_code_handler(code_file_path)
+
         z3_inv_smt_solver = InvSMTSolver(z3_solver, smt_file_path)
-        runner = Runner(z3_inv_smt_solver, generator, code_file_path, sample_result_file_path, inference_timeout=inference_timeout)
+        runner = Runner(z3_inv_smt_solver, generator, code, sample_result_file_path, inference_timeout=inference_timeout)
 
         solution = runner.run()
         print(f"Solution for benchmark {i}: {solution}")
@@ -62,7 +70,7 @@ def main():
     llama_models = [model.value for model in list(LlamaModel)]
 
     parser.add_argument("--llm-model", type=str, default=ChatGPTModel.GPT_4O_MINI.value, help="LLM model to use", choices=chat_gpt_models+llama_models)
-    parser.add_argument("--benchmark-range", type=valid_range, default="228-229", help="Range of benchmarks to run")
+    parser.add_argument("--benchmark-range", type=valid_range, default="1-2", help="Range of benchmarks to run")
     parser.add_argument("--smt-timeout", type=int, default=50, help="Timeout for SMT check")
     parser.add_argument("--inference-timeout", type=int, default=600, help="Timeout for LLM inference")
     parser.add_argument("--results-path", type=str, default="results/test", help="Output directory for results")

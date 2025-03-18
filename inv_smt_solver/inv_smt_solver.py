@@ -28,7 +28,7 @@ class InvSMTSolver:
         return match.group(1)
 
     def _is_ignored_variable(self, variable: str) -> bool:
-        pattern = re.compile(r'^(inv-f|post-f|pre-f|trans-f|div0|mod0|.*_.*)$')
+        pattern = re.compile(r'^(inv-f|post-f|pre-f|trans-f|div0|mod0|.*_.*|.*!)$')
         return bool(pattern.match(variable))
 
     def _get_precondition_counter_example(self, inv: str) -> CounterExample:

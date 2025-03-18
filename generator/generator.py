@@ -4,6 +4,7 @@ import re
 from llm.llm import LLM
 from smt.solver import Solver as SMTSolver
 from inv_smt_solver.counter_example import CounterExample, CounterExampleKind
+from conde_handler.code_handler import CodeHandler
 
 class GeneratorPhase(Enum):
     BASE = 1
@@ -16,12 +17,12 @@ class Generator:
         self.llm = llm
         self.smt_solver = smt_solver
 
-    def _get_base_llm_prompt(self, code: str) -> str:
-        return f"""{code}
-Print loop invariants as valid SMT-LIB2 assertions that help prove the assertion.
+    def _get_base_llm_prompt(self, code_handler: CodeHandler) -> str:
+        return f"""{code_handler.get_code()}
+Print loop invariants as valid {code_handler.get_language().value} assertions that help prove the assertion.
 In order to get a correct answer, You may want to consider both the situation of not entering the loop and the situation of jumping out of the loop.
 If some of the preconditions are also loop invariant, you need to add them to your answer as well.
-Don't explain. Your answer should contain only  '(assert(...))' lines.
+Use logical operators if necessary. Don't explain. Your answer should contain only '{code_handler.get_assert_format()}' lines.
 """
     
     def _format_fail_history(self, fail_history: dict[str, CounterExample]) -> str:
@@ -32,12 +33,12 @@ Don't explain. Your answer should contain only  '(assert(...))' lines.
             elif counter_example.kind == CounterExampleKind.NEGATIVE:
                 history += f"'{candidate}' is too weak and breaks provability. With counter example given by z3: {counter_example}\n"
             elif counter_example.kind == CounterExampleKind.INTERMEDIATE:
-                history += f"'{candidate}' is breaks inductiveness. With counter example given by z3: {counter_example}\n"
+                history += f"'{candidate}' break inductiveness. With counter example given by z3: {counter_example}\n"
         return history
     
-    def _get_feedback_llm_prompt(self, code: str, fail_history: dict[str, CounterExample]) -> str:
-        return f"""{code}
-Print loop invariants as valid SMT-LIB2 assertions that help prove the assertion.
+    def _get_feedback_llm_prompt(self, code_handler: CodeHandler, fail_history: dict[str, CounterExample]) -> str:
+        return f"""{code_handler.get_code()}
+Print loop invariants as valid {code_handler.get_language().value} assertions that help prove the assertion.
 
 A correct loop invariant has the following properties:
 Reachability: means that the loop invariant I can be derived based on the pre-condition P, i.e. P ⇒ I. For this property, in order to get a correct answer, you may want to consider the initial situation where the program won't enter the loop.
@@ -47,21 +48,21 @@ Inductiveness: means that if the program state satisfies loop condition B, the n
 The following loop invariants are not correct as they break one of the properties above:
 {self._format_fail_history(fail_history)}
 
-Don't explain. Your answer should contain only '(assert(...))' lines.
+Use logical operators if necessary. Don't explain. Your answer should contain only '{code_handler.get_assert_format()}' lines.
 """
         
-    def _parse_llm_output(self, output: str) -> list[str]:
+    def _parse_llm_output(self, output: str, code_handler: CodeHandler) -> list[str]:
         expressions = []
-        pattern = re.compile(r"\(assert\s*\(.*\)\)")
+        pattern = re.compile(code_handler.get_assert_pattern())
         matches = pattern.findall(output)
         for match in matches:
             expressions.append(match)
         return expressions
 
-    def generate(self, code: str, fail_history: dict[str, CounterExample] = None) -> list[str]:
-        prompt = self._get_base_llm_prompt(code)
+    def generate(self, code_handler: CodeHandler, fail_history: dict[str, CounterExample] = None) -> list[str]:
+        prompt = self._get_base_llm_prompt(code_handler)
         if fail_history is not None:
-            prompt = self._get_feedback_llm_prompt(code, fail_history)
+            prompt = self._get_feedback_llm_prompt(code_handler, fail_history)
         
         output = self.llm.prompt(prompt)
-        return self._parse_llm_output(output)
+        return self._parse_llm_output(output, code_handler)
