@@ -4,17 +4,23 @@ import io
 
 from dotenv import load_dotenv
 
-load_dotenv()
-
 from runner import Runner
 from config import config
 from smt.z3_solver import Z3Solver
 from inv_smt_solver.inv_smt_solver import InvSMTSolver
+from llm.llm import LLM
 from llm.chatgpt import ChatGPT, ChatGPTModel
 from llm.llama import Llama, LlamaModel
 from generator.generator import Generator
-from conde_handler.c import CCodeHandler
-from conde_handler.code_handler import CodeHandler
+from code_handler.c_code_handler import CCodeHandler
+from code_handler.code_handler import CodeHandler
+from formula_handler.c_formula_handler import CFormulaHandler
+from bmc.esbmc import ESBMC
+from bmc.bmc import BMC
+from predicate_filtering.predicate_filtering import PredicateFiltering
+
+load_dotenv()
+
 def valid_range(value):
     try:
         start, end = value.split("-")
@@ -38,10 +44,11 @@ def get_code_handler(code_file_path: str) -> CodeHandler:
 def run_experiment(
         start: int, 
         end: int, 
-        z3_solver: Z3Solver, 
-        generator: Generator,
         inference_timeout: int,
-        results_path: io.TextIOWrapper
+        results_path: io.TextIOWrapper,
+        z3_solver: Z3Solver, 
+        llm: LLM,
+        bmc: BMC
 ):
     result_file = get_result_file(results_path)
     times = []
@@ -51,10 +58,12 @@ def run_experiment(
         code_file_path = os.path.join(config.benchmarks_code_path, f'{i}.c')
         sample_result_file_path = os.path.join(results_path, f'{i}.txt')
 
-        code = get_code_handler(code_file_path)
-
+        code_handler = get_code_handler(code_file_path)
+        formula_handler = CFormulaHandler()
         z3_inv_smt_solver = InvSMTSolver(z3_solver, smt_file_path)
-        runner = Runner(z3_inv_smt_solver, generator, code, sample_result_file_path, inference_timeout=inference_timeout)
+        generator = Generator(llm, z3_solver, code_handler)
+        predicate_filtering = PredicateFiltering(code_handler, formula_handler, bmc)
+        runner = Runner(z3_inv_smt_solver, predicate_filtering, generator, formula_handler, sample_result_file_path, inference_timeout=inference_timeout)
 
         solution = runner.run()
         print(f"Solution for benchmark {i}: {solution}")
@@ -74,6 +83,8 @@ def main():
     parser.add_argument("--smt-timeout", type=int, default=50, help="Timeout for SMT check")
     parser.add_argument("--inference-timeout", type=int, default=600, help="Timeout for LLM inference")
     parser.add_argument("--results-path", type=str, default="results/test", help="Output directory for results")
+    parser.add_argument("--bmc-timeout", type=int, default=5, help="Timeout for BMC")
+    parser.add_argument("--bmc-max-steps", type=int, default=10, help="Maximum number of steps for BMC")
     
     args = parser.parse_args()
     benchmark_range = [int(x) for x in args.benchmark_range.split("-")]
@@ -89,8 +100,9 @@ def main():
         model = LlamaModel(args.llm_model)
         llm = Llama(model)
     z3_solver = Z3Solver(args.smt_timeout)
-    generator = Generator(llm, z3_solver)
-    run_experiment(benchmark_range[0], benchmark_range[1], z3_solver, generator, args.inference_timeout, args.results_path)
+    esbmc = ESBMC(config.esbmc_bin_path, args.bmc_timeout, args.bmc_max_steps)
+
+    run_experiment(benchmark_range[0], benchmark_range[1], args.inference_timeout, args.results_path,  z3_solver, llm, esbmc)
 
 if __name__ == "__main__":
     main()

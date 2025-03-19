@@ -1,7 +1,7 @@
 import z3
 
 from smt.solver import Solver, SatStatus, InvalidFormulaError
-from utils.run_with_timeout import run_with_timeout, TimeoutException
+from utils.utils import run_with_timeout
 
 class Z3Solver(Solver):
     def __init__(self, timeout: int):
@@ -20,7 +20,7 @@ class Z3Solver(Solver):
         self.solver.add(decl)
         try:
             res = run_with_timeout(self.solver.check, timeout=self.timeout)
-        except TimeoutException:
+        except TimeoutError:
             return SatStatus.UNKNOWN
         
         if res == z3.sat:

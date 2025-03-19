@@ -6,7 +6,8 @@ import queue
 from smt.solver import InvalidFormulaError
 from inv_smt_solver.inv_smt_solver import InvSMTSolver, CounterExample
 from generator.generator import Generator
-from conde_handler.code_handler import CodeHandler
+from formula_handler.formula_handler import FormulaHandler
+from predicate_filtering.predicate_filtering import PredicateFiltering
 
 class Runner:
     _fail_history: dict[str, CounterExample] = {}
@@ -16,15 +17,17 @@ class Runner:
     def __init__(
         self, 
         inv_smt_solver: InvSMTSolver, 
+        predicate_filtering: PredicateFiltering,
         generator: Generator,
-        code_handler: CodeHandler, 
+        formula_handler: FormulaHandler,
         result_file_path: str,
         inference_timeout: int,
         max_candidates: int = 50
     ):
         self.inv_smt_solver = inv_smt_solver
+        self.predicate_filtering = predicate_filtering
         self.generator = generator
-        self.code = code_handler
+        self.formula_handler = formula_handler
 
         self.inference_timeout = inference_timeout
         self.max_candidates = max_candidates
@@ -49,22 +52,31 @@ class Runner:
             return
         
         candidate = self._verify_queue.get()
-        smt_lib2_candidate = self.code.assert_to_smt_lib2(candidate)
+        candidate_formula = self.formula_handler.extract_formula(candidate)
+        smt_lib2_candidate = self.formula_handler.to_smt_lib2_assert(candidate_formula)
         counter_example = self.inv_smt_solver.get_counter_example(smt_lib2_candidate)
         if counter_example is None:
             return candidate, None
+        
+        filtered_predicates = self.predicate_filtering.filter(candidate_formula)
+        for predicate in filtered_predicates:
+            smt_lib2_candidate = self.formula_handler.to_smt_lib2_assert(predicate)
+            counter_example = self.inv_smt_solver.get_counter_example(smt_lib2_candidate)
+            if counter_example is None:
+                return candidate, None
+
         self._fail_history[candidate] = counter_example
 
         return candidate, counter_example
 
     def _generate_candidates_from_feedback(self):
-        new_candidates = self.generator.generate(self.code, self._fail_history)
+        new_candidates = self.generator.generate(self._fail_history)
         self._insert_candidates_to_verify(new_candidates)
         
     def run(self) -> str:
         start_time = time.time()
 
-        candidates = self.generator.generate(self.code)
+        candidates = self.generator.generate()
         self._insert_candidates_to_verify(candidates)
 
         while not self._verify_queue.empty():
