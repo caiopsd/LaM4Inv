@@ -21,8 +21,16 @@ class Generator:
     def _get_base_llm_prompt(self) -> str:
         return f"""{self.code_handler.get_code()}
 Print loop invariants as valid {self.code_handler.get_language().value} assertions that help prove the assertion.
+
+A correct loop invariant holds for all the following properties:
+    - Reachability: means that the loop invariant I can be derived based on the pre-condition P, i.e. P ⇒ I. For this property, in order to get a correct answer, you may want to consider the initial situation where the program won't enter the loop.
+    - Provability: means that after unsatisfying loop condition B, we can prove the post-condition Q, i.e. (I ∧ ¬ B) ⇒ Q. For this property, in order to get a correct answer, you may want to consider the special case of the program executing to the end of the loop. If some of the preconditions are also loop invariant, you need to add them to your answer as well.
+    - Inductiveness: means that if the program state satisfies loop condition B, the new state obtained after the loop execution S still satisfies, i.e. {{I ∧ B}} S {{I}}.For this property, in order to get a correct answer, You may want to consider the special case of the program executing to the end of the loop.
+
 In order to get a correct answer, You may want to consider both the situation of not entering the loop and the situation of jumping out of the loop.
+
 If some of the preconditions are also loop invariant, you need to add them to your answer as well.
+
 Don't explain. Your answer should contain only '{self.code_handler.get_assert_format()}' lines.
 """
     
@@ -30,26 +38,18 @@ Don't explain. Your answer should contain only '{self.code_handler.get_assert_fo
         history = ""
         for candidate, counter_example in fail_history.items():
             if counter_example.kind == CounterExampleKind.POSITIVE:
-                history += f"'{candidate}' is too strict and breaks reachability. With counter example given by z3: {counter_example}\n"
+                history += f'   - "{candidate}" is too strict and breaks reachability. With counter example given by z3: {counter_example}\n'
             elif counter_example.kind == CounterExampleKind.NEGATIVE:
-                history += f"'{candidate}' is too weak and breaks provability. With counter example given by z3: {counter_example}\n"
+                history += f'   - "{candidate}" is too weak and breaks provability. With counter example given by z3: {counter_example}\n'
             elif counter_example.kind == CounterExampleKind.INTERMEDIATE:
-                history += f"'{candidate}' break inductiveness. With counter example given by z3: {counter_example}\n"
+                history += f'   - "{candidate}" break inductiveness. With counter example given by z3: {counter_example}\n'
         return history
     
     def _get_feedback_llm_prompt(self, fail_history: dict[str, CounterExample]) -> str:
-        return f"""{self.code_handler.get_code()}
-Print loop invariants as valid {self.code_handler.get_language().value} assertions that help prove the assertion.
-
-A correct loop invariant has the following properties:
-Reachability: means that the loop invariant I can be derived based on the pre-condition P, i.e. P ⇒ I. For this property, in order to get a correct answer, you may want to consider the initial situation where the program won't enter the loop.
-Provability: means that after unsatisfying loop condition B, we can prove the post-condition Q, i.e. (I ∧ ¬ B) ⇒ Q. For this property, in order to get a correct answer, you may want to consider the special case of the program executing to the end of the loop. If some of the preconditions are also loop invariant, you need to add them to your answer as well.
-Inductiveness: means that if the program state satisfies loop condition B, the new state obtained after the loop execution S still satisfies, i.e. {{I ∧ B}} S {{I}}.For this property, in order to get a correct answer, You may want to consider the special case of the program executing to the end of the loop.
-
-The following loop invariants are not correct as they break one of the properties above:
+        return f"""Your previous answers where verified and are not correct as they break some properties of a correct loop invariant. Here is the fail history:
 {self._format_fail_history(fail_history)}
 
-Don't explain. Your answer should contain only '{self.code_handler.get_assert_format()}' lines.
+Please provide a new loop invariant.
 """
         
     def _parse_llm_output(self, output: str) -> list[str]:
@@ -65,5 +65,5 @@ Don't explain. Your answer should contain only '{self.code_handler.get_assert_fo
         if fail_history is not None:
             prompt = self._get_feedback_llm_prompt(fail_history)
         
-        output = self.llm.prompt(prompt)
+        output = self.llm.chat(prompt)
         return self._parse_llm_output(output)

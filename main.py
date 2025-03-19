@@ -9,8 +9,7 @@ from config import config
 from smt.z3_solver import Z3Solver
 from inv_smt_solver.inv_smt_solver import InvSMTSolver
 from llm.llm import LLM
-from llm.chatgpt import ChatGPT, ChatGPTModel
-from llm.llama import Llama, LlamaModel
+from llm.openai import OpenAI, ChatGPTModel, LlamaModel
 from generator.generator import Generator
 from code_handler.c_code_handler import CCodeHandler
 from code_handler.code_handler import CodeHandler
@@ -64,6 +63,8 @@ def run_experiment(
         predicate_filtering = PredicateFiltering(code_handler, formula_handler, bmc)
         runner = Runner(z3_inv_smt_solver, predicate_filtering, generator, formula_handler, sample_result_file_path, inference_timeout=inference_timeout)
 
+        llm.clear()
+
         solution = runner.run()
         print(f"Solution for benchmark {i}: {solution}")
 
@@ -75,7 +76,7 @@ def main():
     chat_gpt_models = [model.value for model in list(ChatGPTModel)]
     llama_models = [model.value for model in list(LlamaModel)]
 
-    parser.add_argument("--llm-model", type=str, default=ChatGPTModel.GPT_4O_MINI.value, help="LLM model to use", choices=chat_gpt_models+llama_models)
+    parser.add_argument("--llm-model", type=str, default=ChatGPTModel.GPT_4O.value, help="LLM model to use", choices=chat_gpt_models+llama_models)
     parser.add_argument("--benchmark-range", type=valid_range, default="228-229", help="Range of benchmarks to run")
     parser.add_argument("--smt-timeout", type=int, default=50, help="Timeout for SMT check")
     parser.add_argument("--inference-timeout", type=int, default=600, help="Timeout for LLM inference")
@@ -92,10 +93,10 @@ def main():
         if OPENAI_API_KEY is None:
             raise ValueError("OPENAI_API_KEY environment variable must be set")
         model = ChatGPTModel(args.llm_model)
-        llm = ChatGPT(OPENAI_API_KEY, model)
+        llm = OpenAI(model, OPENAI_API_KEY)
     if args.llm_model in llama_models:
         model = LlamaModel(args.llm_model)
-        llm = Llama(model)
+        llm = OpenAI(model)
     z3_solver = Z3Solver(args.smt_timeout)
     esbmc = ESBMC(config.esbmc_bin_path, args.bmc_timeout, args.bmc_max_steps)
 
