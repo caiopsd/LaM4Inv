@@ -39,6 +39,7 @@ class CFormulaHandler(FormulaHandler):
             ('-', '-'),
             ('*', '*'),
             ('/', '/'),
+            ('%', 'mod')
         ]
         
         if formula.startswith('!') and len(formula) > 1:

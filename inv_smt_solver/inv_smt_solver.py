@@ -80,6 +80,8 @@ class InvSMTSolver:
         return None
 
     def get_counter_example(self, inv: str) -> CounterExample:
+        print('Finding counter example for:', inv)
+
         precondition_ce = self._get_precondition_counter_example(inv)
         if precondition_ce:
             return precondition_ce
