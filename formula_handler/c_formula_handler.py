@@ -3,6 +3,23 @@ import re
 from formula_handler.formula_handler import FormulaHandler, FormulaForm
 
 class CFormulaHandler(FormulaHandler):
+    def __init__(self):
+        self.operators = [
+            ('||', 'or', 1),
+            ('&&', 'and', 2),
+            ('==', '=', 3),
+            ('!=', 'distinct', 3),
+            ('>=', '>=', 4),
+            ('<=', '<=', 4),
+            ('>', '>', 4),
+            ('<', '<', 4),
+            ('+', '+', 5),
+            ('-', '-', 5),
+            ('*', '*', 6),
+            ('/', '/', 6),
+            ('%', 'mod', 6)
+        ]
+
     def extract_formula(self, expression: str) -> str:
         match = re.search(r'assert\s*\((.*)\)', expression)
         if not match:
@@ -20,66 +37,60 @@ class CFormulaHandler(FormulaHandler):
         if form == FormulaForm.CNF:
             return ' && '.join(f'({formula})' for formula in formulas)
         
-    def to_smt_lib2_assert(self, formula: str) -> str:
-        smt_formula = self._to_smt_lib2_formula(formula)
+    def _is_balanced_parentheses(self, expr: str) -> bool:
+        balance = 0
+        for char in expr:
+            if char == '(':
+                balance += 1
+            elif char == ')':
+                balance -= 1
+                if balance < 0:
+                    return False
+        return balance == 0
         
+    def to_smt_lib2_assert(self, formula: str) -> str:
+        smt_formula = self._to_smt_lib2_formula(formula.strip())
         return f"(assert {smt_formula})"
     
     def _to_smt_lib2_formula(self, formula: str) -> str:
-        operators = [
-            ('||', 'or'),
-            ('&&', 'and'),
-            ('==', '='),
-            ('!=', 'distinct'),
-            ('>=', '>='),
-            ('<=', '<='),
-            ('>', '>'),
-            ('<', '<'),
-            ('+', '+'),
-            ('-', '-'),
-            ('*', '*'),
-            ('/', '/'),
-            ('%', 'mod')
-        ]
-        
-        if formula.startswith('!') and len(formula) > 1:
-            return f"(not {self._to_smt_lib2_formula(formula[1:])})"
-        
-        for c_op, smt_op in operators:
-            paren_level = 0
-            # Search for the operator
-            for i in range(len(formula) - len(c_op) + 1):
-                if formula[i] == '(':
-                    paren_level += 1
-                elif formula[i] == ')':
-                    paren_level -= 1
-                
-                # If we found the operator outside of parentheses
-                if paren_level == 0 and formula[i:i+len(c_op)] == c_op:
-                    # Recursively convert both sides
-                    left = formula[:i].strip()
-                    right = formula[i+len(c_op):].strip()
-                    
-                    left_smt = self._to_smt_lib2_formula(left)
-                    right_smt = self._to_smt_lib2_formula(right)
-                    
-                    return f"({smt_op} {left_smt} {right_smt})"
-        
-        # Handle parenthesized expressions
+        formula = formula.strip()
+
+        if formula.startswith('!'):
+            inner = self._to_smt_lib2_formula(formula[1:].strip())
+            return f"(not {inner})"
+
         if formula.startswith('(') and formula.endswith(')'):
-            paren_level = 0
-            for i in range(1, len(formula) - 1):
-                if formula[i] == '(':
-                    paren_level += 1
-                elif formula[i] == ')':
-                    paren_level -= 1
-                
-                if paren_level < 0:
-                    break
-            
-            if paren_level == 0:
+            if self._is_balanced_parentheses(formula[1:-1]):  
                 return self._to_smt_lib2_formula(formula[1:-1])
+
+        min_precedence = float('inf')
+        main_operator = None
+        main_op_index = -1
+        paren_level = 0
+
+        for i in range(len(formula)):
+            if formula[i] == '(':
+                paren_level += 1
+            elif formula[i] == ')':
+                paren_level -= 1
+
+            for c_op, smt_op, precedence in self.operators:
+                if paren_level == 0 and formula[i:i+len(c_op)] == c_op:
+                    if precedence < min_precedence:
+                        min_precedence = precedence
+                        main_operator = (c_op, smt_op)
+                        main_op_index = i
         
+        if main_operator:
+            c_op, smt_op = main_operator
+            left = formula[:main_op_index].strip()
+            right = formula[main_op_index + len(c_op):].strip()
+
+            left_smt = self._to_smt_lib2_formula(left)
+            right_smt = self._to_smt_lib2_formula(right)
+
+            return f"({smt_op} {left_smt} {right_smt})"
+
         return formula
     
     def get_form(self, formula: str) -> FormulaForm:
