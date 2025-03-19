@@ -55,6 +55,10 @@ class Runner:
     
     def _verify(self, candidates) -> str:
         for candidate in candidates:
+            if candidate in self._fail_history:
+                print(f'Candidate already in fail history: {candidate}')
+                continue
+
             print(f'Verifying candidate: {candidate}')
 
             formula = self.formula_handler.extract_formula(candidate)
