@@ -51,7 +51,6 @@ def run_experiment(
         bmc: BMC
 ):
     result_file = get_result_file(results_path)
-    times = []
     for i in range(start, end):
         graph_file_path = os.path.join(config.benchmarks_graph_path, f'{i}.c.json')
         smt_file_path = os.path.join(config.benchmarks_smt_path, f'{i}.c.smt')
@@ -70,8 +69,6 @@ def run_experiment(
 
     result_file.close()
 
-    print(times)
-
 def main():
     parser = argparse.ArgumentParser(description="Run benchmarks")
 
@@ -83,14 +80,14 @@ def main():
     parser.add_argument("--smt-timeout", type=int, default=50, help="Timeout for SMT check")
     parser.add_argument("--inference-timeout", type=int, default=600, help="Timeout for LLM inference")
     parser.add_argument("--results-path", type=str, default="results/test", help="Output directory for results")
-    parser.add_argument("--bmc-timeout", type=int, default=5, help="Timeout for BMC")
+    parser.add_argument("--bmc-timeout", type=float, default=5, help="Timeout for BMC")
     parser.add_argument("--bmc-max-steps", type=int, default=10, help="Maximum number of steps for BMC")
+    parser.add_argument("--log-level", type=str, default="INFO", choices=["INFO", "CRITICAL", "ERROR", "WARNING", "DEBUG"], help="Logging level")
     
     args = parser.parse_args()
     benchmark_range = [int(x) for x in args.benchmark_range.split("-")]
 
     OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
-
     if args.llm_model in chat_gpt_models:
         if OPENAI_API_KEY is None:
             raise ValueError("OPENAI_API_KEY environment variable must be set")

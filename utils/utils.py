@@ -12,7 +12,7 @@ def run_with_timeout(func, args=(), kwargs={}, timeout=5):
     signal.alarm(0)
     return result
 
-def run_command_with_timeout(self, command: str, timeout: float):
+def run_command_with_timeout(command: str, timeout: float):
     process = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
     try:
         stdout, stderr = process.communicate(timeout=timeout)

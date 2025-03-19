@@ -22,5 +22,9 @@ class CCodeHandler(CodeHandler):
     def add_invariant_assertions(self, formula: str):
         pattern = r'([ \t]*)(while\s*\(.*?\)\s*\{)((?:[^{}]*|\{[^{}]*\})*\})'
         assertion = f'assert({formula});'
-        
-        return re.sub(pattern, rf'\1{assertion}\n\1\2\n\1\1{assertion}\3\n\1{assertion}', self.code)
+        code = re.sub(pattern, rf'\1{assertion}\n\1\2\n\1\1{assertion}\3\n\1{assertion}', self.code)
+
+        if '#include <assert.h>' not in code:
+            code = '#include <assert.h>\n' + code
+
+        return code

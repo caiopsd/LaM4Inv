@@ -20,4 +20,14 @@ class ESBMC(BMC):
         cmd = [self.bin_path, tmp_file, '--floatbv', '--k-induction']
         if self.max_k_step:
             cmd.extend(['--max-k-step', str(self.max_k_step)])
-        run_command_with_timeout(cmd, self.timeout)
+        try:
+            _, stderr = run_command_with_timeout(cmd, self.timeout)
+            if 'VERIFICATION FAILED' in stderr:
+                return False
+            if 'VERIFICATION UNKNOWN' in stderr: 
+                return True
+            if 'VERIFICATION SUCCESSFUL' in stderr:
+                return True
+            raise Exception(stderr)
+        except TimeoutError:
+            return False
