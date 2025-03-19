@@ -23,7 +23,7 @@ class Generator:
 Print loop invariants as valid {self.code_handler.get_language().value} assertions that help prove the assertion.
 In order to get a correct answer, You may want to consider both the situation of not entering the loop and the situation of jumping out of the loop.
 If some of the preconditions are also loop invariant, you need to add them to your answer as well.
-Use logical operators if necessary. Don't explain. Your answer should contain only '{self.code_handler.get_assert_format()}' lines.
+Don't explain. Your answer should contain only '{self.code_handler.get_assert_format()}' lines. All operations must be encloded in parentheses. 
 """
     
     def _format_fail_history(self, fail_history: dict[str, CounterExample]) -> str:
@@ -49,7 +49,7 @@ Inductiveness: means that if the program state satisfies loop condition B, the n
 The following loop invariants are not correct as they break one of the properties above:
 {self._format_fail_history(fail_history)}
 
-Use logical operators if necessary. Don't explain. Your answer should contain only '{self.code_handler.get_assert_format()}' lines.
+Don't explain. Your answer should contain only '{self.code_handler.get_assert_format()}' lines. All operations must be encloded in parentheses. 
 """
         
     def _parse_llm_output(self, output: str) -> list[str]:

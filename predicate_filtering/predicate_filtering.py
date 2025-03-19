@@ -21,7 +21,7 @@ class PredicateFiltering:
             if self._verify(formula):
                 valid_predicates = [predicate for predicate in predicates if not self._verify(self.formula_handler.negate_formula(predicate))]
                 filtered_predicates.append(self.formula_handler.join_formulas(valid_predicates, FormulaForm.DNF))
-        if form == FormulaForm.CNF:
+        else:
             filtered_predicates.extend([predicate for predicate in predicates if self._verify(predicate)])
         
         return filtered_predicates

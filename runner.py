@@ -69,10 +69,10 @@ class Runner:
                 if solution is not None:
                     return solution
             except InvalidFormulaError as e:
-                print(f'Invalid candidate formula: {e}')
+                print(f'Invalid candidate syntax: {candidate}')
                 continue
             except TimeoutError as e:
-                print(f'Timeout while verifying candidate: {e}')
+                print(f'Timeout while verifying candidate: {candidate}')
                 continue
 
             print(f'Verification failed, adding to fail history')
