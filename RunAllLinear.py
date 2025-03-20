@@ -9,8 +9,8 @@ load_dotenv()
 # from GPT_chat import Llama3chat
 CUDA_VISIBLE_DEVICES="0"
 
-start = os.getenv('BENCHMARK_START', 228)
-end = os.getenv('BENCHMARK_END', 229)
+start = int(os.getenv('BENCHMARK_START', '228'))
+end = int(os.getenv('BENCHMARK_END', '229'))
 
 if __name__ == "__main__":
     path = config.resultpath
