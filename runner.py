@@ -18,7 +18,7 @@ class Runner:
         formula_handler: FormulaHandler,
         result_file_path: str,
         inference_timeout: int,
-        max_candidates: int = 50
+        max_verified_candidates: int = 50
     ):
         self.inv_smt_solver = inv_smt_solver
         self.predicate_filtering = predicate_filtering
@@ -26,12 +26,12 @@ class Runner:
         self.formula_handler = formula_handler
 
         self.inference_timeout = inference_timeout
-        self.max_candidates = max_candidates
+        self.max_verified_candidates = max_verified_candidates
 
         self.result_file = self._get_result_file(result_file_path)
 
         self._fail_history = {}
-        self._generated_candidates = 0
+        self._verified_candidates = 0
 
     def _get_result_file(self, result_file_path: str) -> io.TextIOWrapper:
         os.makedirs(os.path.dirname(result_file_path), exist_ok=True)
@@ -51,7 +51,6 @@ class Runner:
 
     def _generate_candidates_from_feedback(self) -> list[str]:
         new_candidates = self.generator.generate(self._fail_history)
-        self._generated_candidates += len(new_candidates)
         return new_candidates
     
     def _verify(self, candidates) -> str:
@@ -61,6 +60,8 @@ class Runner:
             if candidate in self._fail_history:
                 self._write_result(f'Candidate already in fail history: {candidate}')
                 continue
+
+            self._verified_candidates += 1
 
             formula = self.formula_handler.extract_formula(candidate)
             try:
@@ -91,13 +92,13 @@ class Runner:
         print(f'{formmated_time} {message}')
         self.result_file.write(f'{formmated_time} {message}\n')
 
-    def _write_solution(self, solution: str, time_spent: float, generated_candidates: int):
+    def _write_solution(self, solution: str, time_spent: float, verified_candidates: int):
         self._write_result(f'# Result')
         if solution is not None:
             self._write_result(f'Solution: {solution}')
         else:
             self._write_result(f'Solution: no solution found')
-        self._write_result(f'Generated candidates: {generated_candidates}')
+        self._write_result(f'Verified candidates: {verified_candidates}')
         self._write_result(f'Run time: {time_spent}')
 
     def close(self):
@@ -109,22 +110,21 @@ class Runner:
         self._write_result(f'# Run')
 
         candidates = self.generator.generate()
-        self._generated_candidates += len(candidates)
         solution = self._verify(candidates)
         if solution is not None:
-            self._write_solution(solution, (time.time() - start_time), self._generated_candidates)
-            return solution, (time.time() - start_time), self._generated_candidates
+            self._write_solution(solution, (time.time() - start_time), self._verified_candidates)
+            return solution, (time.time() - start_time), self._verified_candidates
 
-        while self._generated_candidates < self.max_candidates:
+        while self._verified_candidates < self.max_verified_candidates:
             if time.time() - start_time >= self.inference_timeout:
                 raise TimeoutError("Inference timeout")
             
             candidates = self._generate_candidates_from_feedback()
-            self._write_result(f'Generated {len(candidates)} candidates')
+            self._write_result(f'Verified {len(candidates)} candidates')
             solution = self._verify(candidates)
             if solution is not None:
-                self._write_solution(solution, (time.time() - start_time), self._generated_candidates)
-                return solution, (time.time() - start_time), self._generated_candidates
+                self._write_solution(solution, (time.time() - start_time), self._verified_candidates)
+                return solution, (time.time() - start_time), self._verified_candidates
 
-        self._write_solution(None, (time.time() - start_time), self._generated_candidates)
-        return None, (time.time() - start_time), self._generated_candidates
+        self._write_solution(None, (time.time() - start_time), self._verified_candidates)
+        return None, (time.time() - start_time), self._verified_candidates

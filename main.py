@@ -85,8 +85,8 @@ def write_result(result_path: str):
         f.write(f"Total benchmarks: {total_benchmarks}\n")
         f.write(f"Successful solutions: {successful_solutions}\n")
         f.write(f"Success rate: {success_rate:.2f}%\n")
-        f.write(f"Mean time: {mean_time:.2f} seconds\n")
-        f.write(f"Mean generated candidates: {mean_candidates:.2f}\n")
+        f.write(f"Average time: {mean_time:.2f} seconds\n")
+        f.write(f"Average verified candidates: {mean_candidates:.2f}\n")
                 
 def run_experiment(
         start: int, 
