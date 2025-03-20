@@ -91,7 +91,9 @@ def run_experiment(
     solutions = [result[1] for result in results if result[1] is not None]
 
     write_result(result_file, "# Summary")
+    write_result(result_file, f"Total benchmarks: {len(results)}")
     write_result(result_file, f"Solutions: {len(solutions)}")
+    write_result(result_file, f'Success rate: {len(solutions) / len(results) * 100}%')
     write_result(result_file, f"Mean run time: {mean_time}")
     write_result(result_file, f"Mean generated candidates: {mean_generated_candidates}")
     
