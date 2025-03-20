@@ -10,6 +10,9 @@ from GPT_chat import readexistans
 from Config import config
 # from GPT_chat import Llama3chat
 from z3 import *
+from dotenv import load_dotenv
+
+load_dotenv()
 
 OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
 if not OPENAI_API_KEY:
