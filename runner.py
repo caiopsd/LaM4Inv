@@ -94,13 +94,14 @@ class Runner:
     def close(self):
         self.result_file.close()
         
-    def run(self) -> tuple[str, float]:
+    def run(self) -> tuple[str, float, int]:
         start_time = time.time()
 
         candidates = self.generator.generate()
+        self._generated_candidates += len(candidates)
         solution = self._verify(candidates)
         if solution is not None:
-            return solution, (time.time() - start_time)
+            return solution, (time.time() - start_time), self._generated_candidates
 
         while self._generated_candidates < self.max_candidates:
             if time.time() - start_time >= self.inference_timeout:
@@ -111,6 +112,7 @@ class Runner:
             solution = self._verify(candidates)
             if solution is not None:
                 self._write_result(f'Found solution: {solution}')
-                return solution, (time.time() - start_time)
+                self._write_result(f'Generated {self._generated_candidates} candidates')
+                return solution, (time.time() - start_time), self._generated_candidates
 
-        return None, (time.time() - start_time)
+        return None, (time.time() - start_time), self._generated_candidates

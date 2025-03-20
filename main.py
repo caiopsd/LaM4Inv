@@ -54,15 +54,16 @@ def run_experiment(
         llm: LLM,
         bmc: BMC
 ):
-    run_times = []
+    results = []
     result_file = get_result_file(results_path)
+    write_result(result_file, "# Experiment")
     for i in range(start, end):
         graph_file_path = os.path.join(config.benchmarks_graph_path, f'{i}.c.json')
         smt_file_path = os.path.join(config.benchmarks_smt_path, f'{i}.c.smt')
         code_file_path = os.path.join(config.benchmarks_code_path, f'{i}.c')
         sample_result_file_path = os.path.join(results_path, f'{i}.txt')
 
-        write_result(result_file, f"# {i}")
+        write_result(result_file, f"## {i}")
 
         code_handler = get_code_handler(code_file_path)
         formula_handler = CFormulaHandler()
@@ -73,11 +74,11 @@ def run_experiment(
 
         llm.clear()
 
-        solution, run_time = runner.run()
-        run_times.append(run_time)
-
+        solution, run_time, generated_candidates = runner.run()
+        results.append((i, solution, run_time, generated_candidates))
 
         write_result(result_file, f"Run time: {run_time}")
+        write_result(result_file, f"Generated candidates: {generated_candidates}")
         if solution is not None:
             write_result(result_file, f"Solution: {solution}\n")
         else:
@@ -85,6 +86,15 @@ def run_experiment(
 
         runner.close()
 
+    mean_time = sum([result[2] for result in results]) / len(results) if results else 0
+    mean_generated_candidates = sum([result[3] for result in results]) / len(results) if results else 0
+    solutions = [result[1] for result in results if result[1] is not None]
+
+    write_result(result_file, "# Summary")
+    write_result(result_file, f"Solutions: {len(solutions)}")
+    write_result(result_file, f"Mean run time: {mean_time}")
+    write_result(result_file, f"Mean generated candidates: {mean_generated_candidates}")
+    
     result_file.close()
 
 def main():
