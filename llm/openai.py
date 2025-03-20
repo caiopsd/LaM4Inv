@@ -23,7 +23,7 @@ class OpenAI(LLM):
         self.client = self._get_openai_client(api_key, model, base_url)
         self.messages = []
         if developer_instructions:
-            self.messages = [{"role": "developer", "content": developer_instructions}]
+            self._add_developer_instructions(developer_instructions)
     
     def _get_openai_client(self, api_key: str, model: OpenAIModel, base_url: str) -> OpenAIClient:
         if isinstance(model, ChatGPTModel):
@@ -37,6 +37,9 @@ class OpenAI(LLM):
     
     def _get_messages(self) -> list:
         return self.messages
+    
+    def _add_developer_instructions(self, instructions: str):
+        self.messages.append({"role": "developer", "content": instructions})
     
     def _add_assistant_response(self, response: str):
         self.messages.append({"role": "assistant", "content": response})
