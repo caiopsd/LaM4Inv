@@ -38,18 +38,22 @@ Don't explain. Your answer should contain only '{self.code_handler.get_assert_fo
         history = ""
         for candidate, counter_example in fail_history.items():
             if counter_example.kind == CounterExampleKind.POSITIVE:
-                history += f'   - "{candidate}" is too strict and breaks reachability. With counter example given by z3: {counter_example}\n'
+                history += f'   - "{candidate}" is too strict and breaks reachability. With counter example given by the SMT solver: {counter_example}\n'
             elif counter_example.kind == CounterExampleKind.NEGATIVE:
-                history += f'   - "{candidate}" is too weak and breaks provability. With counter example given by z3: {counter_example}\n'
+                history += f'   - "{candidate}" is too weak and breaks provability. With counter example given by the SMT solver: {counter_example}\n'
             elif counter_example.kind == CounterExampleKind.INTERMEDIATE:
-                history += f'   - "{candidate}" break inductiveness. With counter example given by z3: {counter_example}\n'
+                history += f'   - "{candidate}" break inductiveness. With counter example given by the SMT solver: {counter_example}\n'
         return history
     
     def _get_feedback_llm_prompt(self, fail_history: dict[str, CounterExample]) -> str:
-        return f"""Your previous answers where verified and are not correct as they break some properties of a correct loop invariant. Here is the fail history:
-{self._format_fail_history(fail_history)}
+        return f"""Your previous answers where verified and are not correct as they break some properties of a correct loop invariant.
 
-IMPORTANT: Please provide a new loop invariant **NOT CONTAINED IN THE FAIL HISTORY PROVIDED ABOVE OR IN YOUR PREVIOUS ANSWERS**.
+ Please generate new loop invariants.
+
+**IMPORTANT:** Please generate a new loop invariant that is **NOT INCLUDED IN THE FOLLOWING FAILURE HISTORY OR IN ANY OF YOUR PREVIOUS RESPONSES.**
+
+# Failure History
+{self._format_fail_history(fail_history)}
 """
         
     def _parse_llm_output(self, output: str) -> list[str]:
