@@ -2,10 +2,11 @@ import io
 import os
 import time
 
-from smt.solver import InvalidFormulaError
+from smt.solver import InvalidFormulaError as SMTInvalidFormulaError
+from code_handler.formula_handler import InvalidFormulaError as CInvalidFormulaError
 from inv_smt_solver.inv_smt_solver import InvSMTSolver, CounterExample
 from generator.generator import Generator
-from formula_handler.formula_handler import FormulaHandler
+from code_handler.formula_handler import FormulaHandler
 from predicate_filtering.predicate_filtering import PredicateFiltering
 
 class Runner:
@@ -37,7 +38,7 @@ class Runner:
         return open(result_file_path, "w")
 
     def _smt_verify(self, formula: str) -> CounterExample:
-        smt_lib2_candidate = self.formula_handler.to_smt_lib2_assert(formula)
+        smt_lib2_candidate = self.formula_handler.to_smt_lib2(formula)
         counter_example = self.inv_smt_solver.get_counter_example(smt_lib2_candidate)
         if counter_example is not None:
             return counter_example
@@ -55,11 +56,11 @@ class Runner:
     
     def _verify(self, candidates) -> str:
         for candidate in candidates:
-            if candidate in self._fail_history:
-                print(f'\nCandidate already in fail history: {candidate}')
-                continue
+            self._write_result(f'Verifying candidate: {candidate}')
 
-            print(f'\nVerifying candidate: {candidate}')
+            if candidate in self._fail_history:
+                self._write_result(f'Candidate already in fail history: {candidate}')
+                continue
 
             formula = self.formula_handler.extract_formula(candidate)
             try:
@@ -67,37 +68,49 @@ class Runner:
                 if counter_example is None:
                     return candidate
                 
-                print(f'Counter example found: {counter_example}, trying predicate filtering')
-                
                 solution = self._bmc_verify(formula)
                 if solution is not None:
                     return solution
-            except InvalidFormulaError as e:
-                print(f'Invalid candidate syntax: {candidate}')
+                
+                self._write_result(f'Found counter example: {counter_example}')
+            except CInvalidFormulaError as e:
+                self._write_result(f'Invalid candidate syntax: {candidate}')
+                continue
+            except SMTInvalidFormulaError as e:
+                self._write_result(f'Invalid SMT formula for candidate: {candidate}')
                 continue
             except TimeoutError as e:
-                print(f'Timeout while verifying candidate: {candidate}')
+                self._write_result(f'Timeout while verifying candidate: {candidate}')
                 continue
-
-            print(f'Verification failed, adding to fail history')
             
+            self._write_result(f'Adding candidate to fail history: {candidate}')
             self._fail_history[candidate] = counter_example
+
+    def _write_result(self, message: str):
+        formmated_time = time.strftime("%H:%M:%S %d/%m/%Y", time.gmtime(time.time()))
+        print(f'{formmated_time} {message}')
+        self.result_file.write(f'{formmated_time} {message}\n')
+
+    def close(self):
+        self.result_file.close()
         
-    def run(self) -> str:
+    def run(self) -> tuple[str, float]:
         start_time = time.time()
 
         candidates = self.generator.generate()
         solution = self._verify(candidates)
         if solution is not None:
-            return solution
+            return solution, (time.time() - start_time)
 
         while self._generated_candidates < self.max_candidates:
             if time.time() - start_time >= self.inference_timeout:
                 raise TimeoutError("Inference timeout")
             
             candidates = self._generate_candidates_from_feedback()
+            self._write_result(f'Generated {len(candidates)} candidates')
             solution = self._verify(candidates)
             if solution is not None:
-                return solution
+                self._write_result(f'Found solution: {solution}')
+                return solution, (time.time() - start_time)
 
-        return None
+        return None, (time.time() - start_time)

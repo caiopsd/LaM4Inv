@@ -22,17 +22,12 @@ class InvSMTSolver:
             vc_sections[1] + vc_sections[4]
         ]
 
-    def _get_inv_condition(self, inv: str) -> str:
-        patter = re.compile(r'\(assert\s*(\(.*\))\)')
-        match = patter.match(inv)
-        return match.group(1)
-
     def _is_ignored_variable(self, variable: str) -> bool:
         pattern = re.compile(r'^(inv-f|post-f|pre-f|trans-f|div0|mod0|.*_.*|.*!)$')
         return bool(pattern.match(variable))
 
     def _get_precondition_counter_example(self, inv: str) -> CounterExample:
-        formula = self.tpl[0] + self._get_inv_condition(inv) + self.tpl[1]
+        formula = self.tpl[0] + inv + self.tpl[1]
         res = self.solver.check(formula)
         if res == SatStatus.SAT:
             assignments = self.solver.get_assignments()
@@ -48,7 +43,7 @@ class InvSMTSolver:
         return None
             
     def _get_transition_counter_example(self, inv: str) -> CounterExample:
-        formula = self.tpl[0] + self._get_inv_condition(inv) + self.tpl[2]
+        formula = self.tpl[0] + inv + self.tpl[2]
         res = self.solver.check(formula)
         if res == SatStatus.SAT:
             assignments = self.solver.get_assignments()
@@ -64,7 +59,7 @@ class InvSMTSolver:
         return None
 
     def _get_postcondition_counter_example(self, inv: str) -> CounterExample:
-        formula = self.tpl[0] + self._get_inv_condition(inv) + self.tpl[3]
+        formula = self.tpl[0] + inv + self.tpl[3]
         res = self.solver.check(formula)
         if res == SatStatus.SAT:
             assignments = self.solver.get_assignments()
@@ -80,8 +75,6 @@ class InvSMTSolver:
         return None
 
     def get_counter_example(self, inv: str) -> CounterExample:
-        print('Finding counter example for:', inv)
-
         precondition_ce = self._get_precondition_counter_example(inv)
         if precondition_ce:
             return precondition_ce

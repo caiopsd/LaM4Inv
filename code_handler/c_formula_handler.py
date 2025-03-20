@@ -1,6 +1,6 @@
 import re
 
-from formula_handler.formula_handler import FormulaHandler, FormulaForm
+from code_handler.formula_handler import FormulaHandler, FormulaForm, InvalidFormulaError
 
 class CFormulaHandler(FormulaHandler):
     def __init__(self):
@@ -23,7 +23,7 @@ class CFormulaHandler(FormulaHandler):
     def extract_formula(self, expression: str) -> str:
         match = re.search(r'assert\s*\((.*)\)', expression)
         if not match:
-            raise ValueError(f'C assertion "{expression}" does not match the expected format')
+            raise InvalidFormulaError(f'C assertion "{expression}" does not match the expected format')
         
         formula = match.group(1).strip()
         return formula
@@ -48,9 +48,9 @@ class CFormulaHandler(FormulaHandler):
                     return False
         return balance == 0
         
-    def to_smt_lib2_assert(self, formula: str) -> str:
+    def to_smt_lib2(self, formula: str) -> str:
         smt_formula = self._to_smt_lib2_formula(formula.strip())
-        return f"(assert {smt_formula})"
+        return smt_formula
     
     def _to_smt_lib2_formula(self, formula: str) -> str:
         formula = formula.strip()
@@ -94,12 +94,20 @@ class CFormulaHandler(FormulaHandler):
         return formula
     
     def get_form(self, formula: str) -> FormulaForm:
-        smtlib2_assertion = self.to_smt_lib2_assert(formula)
-        if smtlib2_assertion[9:12] == 'and':
-            return FormulaForm.CNF
-        if smtlib2_assertion[9:12] == 'or ':
+        smtlib2_formula = self.to_smt_lib2(formula)
+
+        and_index = smtlib2_formula.find('and')
+        or_index = smtlib2_formula.find('or')
+        if and_index == -1 and or_index == -1:
+            raise InvalidFormulaError(f'Invalid formula: {formula}')
+        if and_index == -1:
             return FormulaForm.DNF
-        
+        if or_index == -1:
+            return FormulaForm.CNF
+        if and_index < or_index:
+            return FormulaForm.CNF
+        return FormulaForm.DNF
+
     def extract_predicates(self, formula: str) -> list[str]:
         form = self.get_form(formula)
         operator = '||'

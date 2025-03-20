@@ -5,6 +5,9 @@ class FormulaForm(Enum):
     DNF = 1
     CNF = 2
 
+class InvalidFormulaError(Exception):
+    pass
+
 class FormulaHandler(ABC):
     @abstractmethod
     def extract_formula(self, expression: str) -> str:
@@ -19,7 +22,7 @@ class FormulaHandler(ABC):
         pass
 
     @abstractmethod
-    def to_smt_lib2_assert(self, formula: str) -> str:
+    def to_smt_lib2(self, formula: str) -> str:
         pass
 
     @abstractmethod

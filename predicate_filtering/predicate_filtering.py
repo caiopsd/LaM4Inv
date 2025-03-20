@@ -1,5 +1,5 @@
 from code_handler.code_handler import CodeHandler
-from formula_handler.formula_handler import FormulaForm, FormulaHandler
+from code_handler.formula_handler import FormulaForm, FormulaHandler
 from bmc.bmc import BMC
 
 class PredicateFiltering:

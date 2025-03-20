@@ -1,7 +1,7 @@
 import argparse
 import os
 import io
-
+import time
 from dotenv import load_dotenv
 
 from runner import Runner
@@ -13,7 +13,7 @@ from llm.openai import OpenAI, ChatGPTModel, LlamaModel
 from generator.generator import Generator
 from code_handler.c_code_handler import CCodeHandler
 from code_handler.code_handler import CodeHandler
-from formula_handler.c_formula_handler import CFormulaHandler
+from code_handler.c_formula_handler import CFormulaHandler
 from bmc.esbmc import ESBMC
 from bmc.bmc import BMC
 from predicate_filtering.predicate_filtering import PredicateFiltering
@@ -40,21 +40,29 @@ def get_code_handler(code_file_path: str) -> CodeHandler:
         code = f.read()
     return CCodeHandler(code)
 
+def write_result(result_file: io.TextIOWrapper, message: str):
+    formmated_time = time.strftime("%H:%M:%S %d/%m/%Y", time.gmtime(time.time()))
+    print(f'{formmated_time} {message}')
+    result_file.write(f'{formmated_time} {message}\n')
+
 def run_experiment(
         start: int, 
         end: int, 
         inference_timeout: int,
-        results_path: io.TextIOWrapper,
+        results_path: str,
         z3_solver: Z3Solver, 
         llm: LLM,
         bmc: BMC
 ):
+    run_times = []
     result_file = get_result_file(results_path)
     for i in range(start, end):
         graph_file_path = os.path.join(config.benchmarks_graph_path, f'{i}.c.json')
         smt_file_path = os.path.join(config.benchmarks_smt_path, f'{i}.c.smt')
         code_file_path = os.path.join(config.benchmarks_code_path, f'{i}.c')
         sample_result_file_path = os.path.join(results_path, f'{i}.txt')
+
+        write_result(result_file, f"# {i}")
 
         code_handler = get_code_handler(code_file_path)
         formula_handler = CFormulaHandler()
@@ -65,8 +73,17 @@ def run_experiment(
 
         llm.clear()
 
-        solution = runner.run()
-        print(f"Solution for benchmark {i}: {solution}")
+        solution, run_time = runner.run()
+        run_times.append(run_time)
+
+
+        write_result(result_file, f"Run time: {run_time}")
+        if solution is not None:
+            write_result(result_file, f"Solution: {solution}\n")
+        else:
+            write_result(result_file, "No solution found\n")
+
+        runner.close()
 
     result_file.close()
 
