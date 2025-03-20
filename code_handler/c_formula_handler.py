@@ -99,7 +99,7 @@ class CFormulaHandler(FormulaHandler):
         and_index = smtlib2_formula.find('and')
         or_index = smtlib2_formula.find('or')
         if and_index == -1 and or_index == -1:
-            raise InvalidFormulaError(f'Invalid formula: {formula}')
+            return None
         if and_index == -1:
             return FormulaForm.DNF
         if or_index == -1:
