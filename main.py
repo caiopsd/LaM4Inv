@@ -48,7 +48,7 @@ def write_result(result_path: str):
     solution_pattern = re.compile(r'Solution: (.+)')
     no_solution_pattern = re.compile(r'Solution: no solution found')
     run_time_pattern = re.compile(r'Run time: ([\d.]+)')
-    candidates_pattern = re.compile(r'Generated candidates: (\d+)')
+    candidates_pattern = re.compile(r'Verified candidates: (\d+)')
     
     # Process each result file
     for result_file in os.listdir(result_path):
