@@ -113,10 +113,8 @@ def run_experiment(
 
         llm.clear()
 
-        solution, run_time, generated_candidates = runner.run()
+        solution, run_time, generated_candidates = runner.run(i)
         results.append((i, solution, run_time, generated_candidates))
-
-        runner.close()
 
     write_result(results_path)
 

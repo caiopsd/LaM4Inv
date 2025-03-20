@@ -32,6 +32,7 @@ class Runner:
 
         self._fail_history = {}
         self._verified_candidates = 0
+        self._logs = []
 
     def _get_result_file(self, result_file_path: str) -> io.TextIOWrapper:
         os.makedirs(os.path.dirname(result_file_path), exist_ok=True)
@@ -55,10 +56,10 @@ class Runner:
     
     def _verify(self, candidates) -> str:
         for candidate in candidates:
-            self._write_result(f'Verifying candidate: {candidate}')
+            self._log(f'Verifying candidate: {candidate}')
 
             if candidate in self._fail_history:
-                self._write_result(f'Candidate already in fail history: {candidate}')
+                self._log(f'Candidate already in fail history: {candidate}')
                 continue
 
             self._verified_candidates += 1
@@ -73,58 +74,65 @@ class Runner:
                 if solution is not None:
                     return solution
                 
-                self._write_result(f'Found counter example: {counter_example}')
+                self._log(f'Found counter example: {counter_example}')
             except CInvalidFormulaError as e:
-                self._write_result(f'Invalid candidate syntax: {candidate}')
+                self._log(f'Invalid candidate syntax: {candidate}')
                 continue
             except SMTInvalidFormulaError as e:
-                self._write_result(f'Invalid SMT formula for candidate: {candidate}')
+                self._log(f'Invalid SMT formula for candidate: {candidate}')
                 continue
             except TimeoutError as e:
-                self._write_result(f'Timeout while verifying candidate: {candidate}')
+                self._log(f'Timeout while verifying candidate: {candidate}')
                 continue
             
-            self._write_result(f'Adding candidate to fail history: {candidate}')
+            self._log(f'Adding candidate to fail history: {candidate}')
             self._fail_history[candidate] = counter_example
 
-    def _write_result(self, message: str):
+    def _write_log(self):
         formmated_time = time.strftime("%H:%M:%S %d/%m/%Y", time.gmtime(time.time()))
-        print(f'{formmated_time} {message}')
-        self.result_file.write(f'{formmated_time} {message}\n')
+        for log in self._logs:
+            print(f'{formmated_time} {log}')
+            self.result_file.write(f'{formmated_time} {log}\n')
 
-    def _write_solution(self, solution: str, time_spent: float, verified_candidates: int):
-        self._write_result(f'# Result')
+    def _log_solution(self, solution: str, time_spent: float):
+        self._log('# Result')
         if solution is not None:
-            self._write_result(f'Solution: {solution}')
+            self._log(f'Solution: {solution}')
         else:
-            self._write_result(f'Solution: no solution found')
-        self._write_result(f'Verified candidates: {verified_candidates}')
-        self._write_result(f'Run time: {time_spent}')
+            self._log(f'Solution: no solution found')
+        self._log(f'Verified candidates: {self._verified_candidates}')
+        self._log(f'Run time: {time_spent}')
 
-    def close(self):
+    def _log(self, message: str):
+        self._logs.append(message)
+
+    def _close(self):
         self.result_file.close()
+
+    def _handle_solution(self, solution: str, end_time: float):
+        self._log_solution(solution, end_time)
+        self._write_log()
+        self._close()
+        return solution, end_time, self._verified_candidates
         
-    def run(self) -> tuple[str, float, int]:
+    def run(self, benchmark_id: str) -> tuple[str, float, int]:
         start_time = time.time()
 
-        self._write_result(f'# Run')
+        self._log(f'# Run Benchmark {benchmark_id}')
 
         candidates = self.generator.generate()
         solution = self._verify(candidates)
         if solution is not None:
-            self._write_solution(solution, (time.time() - start_time), self._verified_candidates)
-            return solution, (time.time() - start_time), self._verified_candidates
+            return self._handle_solution(solution, (time.time() - start_time))
 
         while self._verified_candidates < self.max_verified_candidates:
             if time.time() - start_time >= self.inference_timeout:
                 raise TimeoutError("Inference timeout")
             
             candidates = self._generate_candidates_from_feedback()
-            self._write_result(f'Verified {len(candidates)} candidates')
+            self._log(f'Verified {len(candidates)} candidates')
             solution = self._verify(candidates)
             if solution is not None:
-                self._write_solution(solution, (time.time() - start_time), self._verified_candidates)
-                return solution, (time.time() - start_time), self._verified_candidates
-
-        self._write_solution(None, (time.time() - start_time), self._verified_candidates)
-        return None, (time.time() - start_time), self._verified_candidates
+                return self._handle_solution(solution, (time.time() - start_time))
+        
+        return self._handle_solution(None, (time.time() - start_time))
