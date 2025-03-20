@@ -1,7 +1,6 @@
 import argparse
 import os
-import io
-import time
+import logging
 import re
 from dotenv import load_dotenv
 
@@ -132,8 +131,11 @@ def main():
     parser.add_argument("--bmc-timeout", type=float, default=5, help="Timeout for BMC")
     parser.add_argument("--bmc-max-steps", type=int, default=10, help="Maximum number of steps for BMC")
     parser.add_argument("--log-level", type=str, default="INFO", choices=["INFO", "CRITICAL", "ERROR", "WARNING", "DEBUG"], help="Logging level")
-    
+
     args = parser.parse_args()
+
+    logging.basicConfig(level=args.log_level)
+
     benchmark_range = [int(x) for x in args.benchmark_range.split("-")]
 
     OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
