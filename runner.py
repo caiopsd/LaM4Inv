@@ -91,16 +91,28 @@ class Runner:
         print(f'{formmated_time} {message}')
         self.result_file.write(f'{formmated_time} {message}\n')
 
+    def _write_solution(self, solution: str, time_spent: float, generated_candidates: int):
+        self._write_result(f'# Result')
+        if solution is not None:
+            self._write_result(f'Solution: {solution}')
+        else:
+            self._write_result(f'Solution: no solution found')
+        self._write_result(f'Generated candidates: {generated_candidates}')
+        self._write_result(f'Run time: {time_spent}')
+
     def close(self):
         self.result_file.close()
         
     def run(self) -> tuple[str, float, int]:
         start_time = time.time()
 
+        self._write_result(f'# Run')
+
         candidates = self.generator.generate()
         self._generated_candidates += len(candidates)
         solution = self._verify(candidates)
         if solution is not None:
+            self._write_solution(solution, (time.time() - start_time), self._generated_candidates)
             return solution, (time.time() - start_time), self._generated_candidates
 
         while self._generated_candidates < self.max_candidates:
@@ -111,8 +123,8 @@ class Runner:
             self._write_result(f'Generated {len(candidates)} candidates')
             solution = self._verify(candidates)
             if solution is not None:
-                self._write_result(f'Found solution: {solution}')
-                self._write_result(f'Generated {self._generated_candidates} candidates')
+                self._write_solution(solution, (time.time() - start_time), self._generated_candidates)
                 return solution, (time.time() - start_time), self._generated_candidates
 
+        self._write_solution(None, (time.time() - start_time), self._generated_candidates)
         return None, (time.time() - start_time), self._generated_candidates

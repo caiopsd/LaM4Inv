@@ -2,6 +2,7 @@ import argparse
 import os
 import io
 import time
+import re
 from dotenv import load_dotenv
 
 from runner import Runner
@@ -31,19 +32,67 @@ def valid_range(value):
     except ValueError:
         raise argparse.ArgumentTypeError("Range must be in the form of start-end")
 
-def get_result_file(results_path: str) -> io.TextIOWrapper:
-    os.makedirs(results_path, exist_ok=True)
-    return open(os.path.join(results_path, 'result.txt'), "a")
 
 def get_code_handler(code_file_path: str) -> CodeHandler:
     with open(code_file_path, "r") as f:
         code = f.read()
     return CCodeHandler(code)
 
-def write_result(result_file: io.TextIOWrapper, message: str):
-    formmated_time = time.strftime("%H:%M:%S %d/%m/%Y", time.gmtime(time.time()))
-    print(f'{formmated_time} {message}')
-    result_file.write(f'{formmated_time} {message}\n')
+def write_result(result_path: str):
+    total_benchmarks = 0
+    successful_solutions = 0
+    total_time = 0
+    total_candidates = 0
+    
+    # Regex patterns
+    solution_pattern = re.compile(r'Solution: (.+)')
+    no_solution_pattern = re.compile(r'Solutions: no solution found')
+    run_time_pattern = re.compile(r'Run time: ([\d.]+)')
+    candidates_pattern = re.compile(r'Generated candidates: (\d+)')
+    
+    # Process each result file
+    for result_file in os.listdir(result_path):
+        if not result_file.endswith('.txt') or result_file == 'result.txt':
+            continue
+            
+        total_benchmarks += 1
+        file_path = os.path.join(result_path, result_file)
+        
+        with open(file_path, "r") as f:
+            content = f.read()
+            
+            # Check if a solution was found
+            solution_match = solution_pattern.search(content)
+            no_solution_match = no_solution_pattern.search(content)
+            
+            if solution_match and not no_solution_match:
+                successful_solutions += 1
+                
+            # Extract runtime
+            run_time_match = run_time_pattern.search(content)
+            if run_time_match:
+                time_spent = float(run_time_match.group(1))
+                total_time += time_spent
+                
+            # Extract generated candidates
+            candidates_match = candidates_pattern.search(content)
+            if candidates_match:
+                candidates_generated = int(candidates_match.group(1))
+                total_candidates += candidates_generated
+    
+    # Calculate statistics
+    success_rate = (successful_solutions / total_benchmarks) * 100 if total_benchmarks > 0 else 0
+    mean_time = total_time / total_benchmarks if total_benchmarks > 0 else 0
+    mean_candidates = total_candidates / total_benchmarks if total_benchmarks > 0 else 0
+    
+    # Write summary to result.txt
+    with open(os.path.join(result_path, 'result.txt'), "w") as f:
+        f.write(f"Total benchmarks: {total_benchmarks}\n")
+        f.write(f"Successful solutions: {successful_solutions}\n")
+        f.write(f"Success rate: {success_rate:.2f}%\n")
+        f.write(f"Mean time: {mean_time:.2f} seconds\n")
+        f.write(f"Mean generated candidates: {mean_candidates:.2f}\n")
+                
 
 def run_experiment(
         start: int, 
@@ -55,15 +104,11 @@ def run_experiment(
         bmc: BMC
 ):
     results = []
-    result_file = get_result_file(results_path)
-    write_result(result_file, "# Experiment")
     for i in range(start, end):
         graph_file_path = os.path.join(config.benchmarks_graph_path, f'{i}.c.json')
         smt_file_path = os.path.join(config.benchmarks_smt_path, f'{i}.c.smt')
         code_file_path = os.path.join(config.benchmarks_code_path, f'{i}.c')
         sample_result_file_path = os.path.join(results_path, f'{i}.txt')
-
-        write_result(result_file, f"## {i}")
 
         code_handler = get_code_handler(code_file_path)
         formula_handler = CFormulaHandler()
@@ -77,27 +122,9 @@ def run_experiment(
         solution, run_time, generated_candidates = runner.run()
         results.append((i, solution, run_time, generated_candidates))
 
-        write_result(result_file, f"Run time: {run_time}")
-        write_result(result_file, f"Generated candidates: {generated_candidates}")
-        if solution is not None:
-            write_result(result_file, f"Solution: {solution}\n")
-        else:
-            write_result(result_file, "No solution found\n")
-
         runner.close()
 
-    mean_time = sum([result[2] for result in results]) / len(results) if results else 0
-    mean_generated_candidates = sum([result[3] for result in results]) / len(results) if results else 0
-    solutions = [result[1] for result in results if result[1] is not None]
-
-    write_result(result_file, "# Summary")
-    write_result(result_file, f"Total benchmarks: {len(results)}")
-    write_result(result_file, f"Solutions: {len(solutions)}")
-    write_result(result_file, f'Success rate: {len(solutions) / len(results) * 100}%')
-    write_result(result_file, f"Mean run time: {mean_time}")
-    write_result(result_file, f"Mean generated candidates: {mean_generated_candidates}")
-    
-    result_file.close()
+    write_result(results_path)
 
 def main():
     parser = argparse.ArgumentParser(description="Run benchmarks")
