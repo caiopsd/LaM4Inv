@@ -10,9 +10,6 @@ from code_handler.formula_handler import FormulaHandler
 from predicate_filtering.predicate_filtering import PredicateFiltering
 
 class Runner:
-    _fail_history: dict[str, CounterExample] = {}
-    _generated_candidates: int = 0
-
     def __init__(
         self, 
         inv_smt_solver: InvSMTSolver, 
@@ -32,6 +29,9 @@ class Runner:
         self.max_candidates = max_candidates
 
         self.result_file = self._get_result_file(result_file_path)
+
+        self._fail_history = {}
+        self._generated_candidates = 0
 
     def _get_result_file(self, result_file_path: str) -> io.TextIOWrapper:
         os.makedirs(os.path.dirname(result_file_path), exist_ok=True)
