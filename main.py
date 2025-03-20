@@ -1,213 +1,156 @@
 import argparse
-import time
 import os
-import openai
-import extract_preconditions
-from GPT_chat import GPT
-from GPT_chat import readexistans
-from Config import config
-from SMT_Solver.SMT_verifier import SMT_verifier
+import io
+import time
+import re
+from dotenv import load_dotenv
+
+from runner import Runner
+from config import config
+from smt.z3_solver import Z3Solver
+from inv_smt_solver.inv_smt_solver import InvSMTSolver
+from llm.llm import LLM
+from llm.openai import OpenAI, ChatGPTModel, LlamaModel
+from generator.generator import Generator
+from code_handler.c_code_handler import CCodeHandler
+from code_handler.code_handler import CodeHandler
+from code_handler.c_formula_handler import CFormulaHandler
+from bmc.esbmc import ESBMC
+from bmc.bmc import BMC
+from predicate_filtering.predicate_filtering import PredicateFiltering
+
+load_dotenv()
+
+def valid_range(value):
+    try:
+        start, end = value.split("-")
+        start = int(start)
+        end = int(end)
+        if start > end:
+            raise argparse.ArgumentTypeError("Start value must be less than end value")
+        return value
+    except ValueError:
+        raise argparse.ArgumentTypeError("Range must be in the form of start-end")
 
 
-OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
-if not OPENAI_API_KEY:
-    raise ValueError("OPENAI_API_KEY is not set")
+def get_code_handler(code_file_path: str) -> CodeHandler:
+    with open(code_file_path, "r") as f:
+        code = f.read()
+    return CCodeHandler(code)
 
-openai.api_key = OPENAI_API_KEY
-
-def main(path2CFile, path2CFG, path2SMT,newfile):
-    path = config.resultpath
-    if not os.path.isdir(r"Result/"+path+r"/"):
-        filepath = "Result/"
-        os.chdir(filepath)
-        new_folder = path
-        os.makedirs(new_folder)
-    start_time = time.time()
-    result_file_path = "Result/"+path+"/"+str(newfile)+".txt"
-    result_file = open(result_file_path, "w")
-    sMT_verifier = SMT_verifier()
-    solved = False
-    CE = {'p': [],
-          'n': [],
-          'i': []}
-    print("Begin_process:   ", path2CFile)
-    result_file.write("Begin_process:   "+str(path2CFile)+'\n')
-    Iteration = 0
-    counterNumber = 0
-    cFile=open(path2CFile)
-    cProgramLines=cFile.readlines()
-    cProgram=""
-    noPost=False
-    for line in cProgramLines:
-        if noPost and "assert" in line:
-            continue
-        if "while" in line:
-            cProgram=cProgram+"//Line A"+"\n"+line+"//Line A"+"\n"
-        else:
-            cProgram=cProgram+line
-    cFile.close()
-    print(cProgram)
-    gptAnswer=[]
-    PT=[]
-    AnsSet=[]
-    AnsSetChanged = False
-
-    readexistanscount = 0
-    existans = []
-    if config.LLM == "Exist":
-        existans = readexistans.readans("./Result/" + config.exsitresult + ".txt")
-        existans = existans[path2CFile]
+def write_result(result_path: str):
+    total_benchmarks = 0
+    successful_solutions = 0
+    total_time = 0
+    total_candidates = 0
     
-    preconditions = extract_preconditions.extract_preconditions(cProgram)
-    pt,gptans,AnsSet = GPT.add_precondition(cProgram, preconditions)
-
-    for i in range(5):
-        lengthAnsSetbefore=len(AnsSet)
-        pt,gptans,AnsSet = GPT.get_answer(cProgram,0,"","",AnsSet,existans,readexistanscount)
-        readexistanscount +=1 
-        lengthAnsSetafter=len(AnsSet)
-        AnsSetChanged=(lengthAnsSetafter!=lengthAnsSetbefore) or AnsSetChanged
-        for count in range(len(gptans)):
-            if gptans[count] not in gptAnswer:
-                PT.append(pt[count])
-                gptAnswer.append(gptans[count])
-    print("GPT Answer: ", gptAnswer)
-    result_file.write("GPT Answer: "+str(gptAnswer)+"\n")
-    print("AnsSet: ", AnsSet)
-    result_file.write("AnsSet: "+str(AnsSet)+'\n')
+    # Regex patterns
+    solution_pattern = re.compile(r'Solution: (.+)')
+    no_solution_pattern = re.compile(r'Solution: no solution found')
+    run_time_pattern = re.compile(r'Run time: ([\d.]+)')
+    candidates_pattern = re.compile(r'Generated candidates: (\d+)')
     
-    while Iteration <len(PT):
-        current_time = time.time()
-        if current_time - start_time >= config.Limited_time:
-            print("Loop invariant Inference is OOT")
-            result_file.write("Loop invariant Inference is OOT"+'\n')
-            return None,None,gptAnswer,None
-        Can_I=PT[Iteration]
-        try:
-            print("Candidate: ", gptAnswer[Iteration])
-            result_file.write("Candidate: "+str(gptAnswer[Iteration])+'\n')
-            print("SMTLIB2: ", Can_I)
-            result_file.write("SMTLIB2: "+str(Can_I)+'\n')
-            Can_I_smt = Can_I[7:-1]
-            print(Can_I_smt)
-            result_file.write(str(Can_I_smt)+'\n')
-            Counter_example, istrue = sMT_verifier.verify(Can_I, path2SMT)
-        except TimeoutError as OOT:  # Out Of Time
-            print("Checking timeout")
-            result_file.write("Checking timeout"+'\n')
-            Iteration += 1
-            Counter_example = None 
-            istrue = False
+    # Process each result file
+    for result_file in os.listdir(result_path):
+        if not result_file.endswith('.txt') or result_file == 'result.txt':
             continue
-        if Counter_example is None and istrue:  # Bingo
-            solved = True
-            print("The answer is :  ", str(gptAnswer[Iteration]))
-            result_file.write("The answer is :  "+str(gptAnswer[Iteration])+'\n')
-            current_time = time.time()
-            print("Time cost is :  ", str(current_time - start_time))
-            result_file.write("Time cost is :  "+str(current_time - start_time)+'\n')
-            print("The proposal times is :  ", str(counterNumber+1))
-            result_file.write("The proposal times is :  "+str(counterNumber+1)+'\n')
-            return current_time - start_time, gptAnswer[Iteration], gptAnswer, counterNumber+1
-        elif istrue:
-            if Counter_example.assignment not in CE[Counter_example.kind]:
-                CE[Counter_example.kind].append(Counter_example.assignment)
-            print(Counter_example.kind,Counter_example.assignment)
-            result_file.write(str(Counter_example.kind)+str(Counter_example.assignment)+'\n')
-            counterNumber += 1
-            print("Size of CE: ", counterNumber)
-            result_file.write("Size of CE: "+str(counterNumber)+'\n')
-            if Counter_example.kind=="n" and len(PT)<50:
-                for i in range(0,2):
-                    lengthAnsSetbefore=len(AnsSet)
-                    pt,gptans,AnsSet = GPT.get_answer(cProgram,2,gptAnswer[Iteration],str(Counter_example.assignment),AnsSet,existans,readexistanscount)
-                    readexistanscount +=1 
-                    lengthAnsSetafter=len(AnsSet)
-                    AnsSetChanged=(lengthAnsSetafter!=lengthAnsSetbefore) or AnsSetChanged
-                    for count in range(len(gptans)):
-                        if gptans[count] not in gptAnswer:
-                            PT.append(pt[count])
-                            gptAnswer.append(gptans[count])
-                    print("GPT Answer: ", gptAnswer)
-                    result_file.write("GPT Answer: "+str(gptAnswer)+"\n")
-                    print("AnsSet: ", AnsSet)
-                    result_file.write("AnsSet: "+str(AnsSet)+'\n')
-            elif Counter_example.kind=="p"and len(PT)<50:
-                for i in range(0,2):
-                    lengthAnsSetbefore=len(AnsSet)
-                    pt,gptans,AnsSet = GPT.get_answer(cProgram,1,gptAnswer[Iteration],str(Counter_example.assignment),AnsSet,existans,readexistanscount)
-                    readexistanscount +=1 
-                    lengthAnsSetafter=len(AnsSet)
-                    AnsSetChanged=(lengthAnsSetafter!=lengthAnsSetbefore) or AnsSetChanged
-                    for count in range(len(gptans)):
-                        if gptans[count] not in gptAnswer:
-                            PT.append(pt[count])
-                            gptAnswer.append(gptans[count])
-                    print("GPT Answer: ", gptAnswer)
-                    result_file.write("GPT Answer: "+str(gptAnswer)+"\n")
-                    print("AnsSet: ", AnsSet)
-                    result_file.write("AnsSet: "+str(AnsSet)+'\n')
-            elif Counter_example.kind=="i"and len(PT)<50:
-                for i in range(0,2):
-                    lengthAnsSetbefore=len(AnsSet)
-                    pt,gptans,AnsSet = GPT.get_answer(cProgram,3,gptAnswer[Iteration],str(Counter_example.assignment),AnsSet,existans,readexistanscount)
-                    readexistanscount +=1 
-                    lengthAnsSetafter=len(AnsSet)
-                    AnsSetChanged=(lengthAnsSetafter!=lengthAnsSetbefore) or AnsSetChanged
-                    for count in range(len(gptans)):
-                        if gptans[count] not in gptAnswer:
-                            PT.append(pt[count])
-                            gptAnswer.append(gptans[count])
-                    print("GPT Answer: ", gptAnswer)
-                    result_file.write("GPT Answer: "+str(gptAnswer)+"\n")
-                    print("AnsSet: ", AnsSet)
-                    result_file.write("AnsSet: "+str(AnsSet)+'\n')
+            
+        total_benchmarks += 1
+        file_path = os.path.join(result_path, result_file)
         
-        if AnsSetChanged:
-            Candidate, SMTLIB2=GPT.translate_AnsSet_to_smtlib2(AnsSet)
-            try:
-                print("=================Verifivation Begin=================")
-                result_file.write("=================Verifivation Begin=================\n")
-                print("CombineCandidate: ", Candidate)
-                result_file.write("CombineCandidate: "+str(Candidate)+'\n')
-                print("CombineSMTLIB2: ", SMTLIB2)
-                result_file.write("CombineSMTLIB2: "+str(SMTLIB2)+'\n')
-                Can_I_smt = SMTLIB2[7:-1]
-                print(Can_I_smt)
-                result_file.write(str(Can_I_smt)+'\n')
-                Counter_example, istrue = sMT_verifier.verify(SMTLIB2, path2SMT)
-            except TimeoutError as OOT:  # Out Of Time
-                print("Checking timeout")
-                result_file.write("Checking timeout"+'\n')
-            if Counter_example is None and istrue:  # Bingo
-                print("Correct loop invariant\n")
-                result_file.write("Correct loop invariant\n")
-                print("=================Verifivation Compelete=================\n")
-                result_file.write("=================Verifivation Compelete=================\n")
-                solved = True
-                print("The answer is :  ", str(Candidate))
-                result_file.write("The answer is :  "+str(Candidate)+'\n')
-                current_time = time.time()
-                print("Time cost is :  ", str(current_time - start_time))
-                result_file.write("Time cost is :  "+str(current_time - start_time)+'\n')
-                print("The proposal times is :  ", str(counterNumber+1))
-                result_file.write("The proposal times is :  "+str(counterNumber+1)+'\n')
-                return current_time - start_time, Candidate, gptAnswer, counterNumber+1
-            elif istrue:
-                if Counter_example.assignment not in CE[Counter_example.kind]:
-                    CE[Counter_example.kind].append(Counter_example.assignment)
-                print(Counter_example.kind,Counter_example.assignment)
-                result_file.write(str(Counter_example.kind)+str(Counter_example.assignment)+'\n')
-                counterNumber += 1
-                print("Size of CE: ", counterNumber)
-                result_file.write("Size of CE: "+str(counterNumber)+'\n')
-                print("=================Verifivation Compelete=================\n")
-                result_file.write("=================Verifivation Compelete=================\n")
-            AnsSetChanged=False
-        Iteration += 1
-        result_file.write('\n')
-        result_file.flush()
-    result_file.write("\n\n\n")
-    result_file.flush()
-    result_file.close()
-    return None,None,gptAnswer,None
+        with open(file_path, "r") as f:
+            content = f.read()
+            
+            solution_match = solution_pattern.search(content)
+            no_solution_match = no_solution_pattern.search(content)
+            
+            if solution_match and not no_solution_match:
+                successful_solutions += 1
+                
+            run_time_match = run_time_pattern.search(content)
+            if run_time_match:
+                time_spent = float(run_time_match.group(1))
+                total_time += time_spent
+                
+            candidates_match = candidates_pattern.search(content)
+            if candidates_match:
+                candidates_generated = int(candidates_match.group(1))
+                total_candidates += candidates_generated
+    
+    success_rate = (successful_solutions / total_benchmarks) * 100 if total_benchmarks > 0 else 0
+    mean_time = total_time / total_benchmarks if total_benchmarks > 0 else 0
+    mean_candidates = total_candidates / total_benchmarks if total_benchmarks > 0 else 0
+    
+    with open(os.path.join(result_path, 'result.txt'), "w") as f:
+        f.write(f"Total benchmarks: {total_benchmarks}\n")
+        f.write(f"Successful solutions: {successful_solutions}\n")
+        f.write(f"Success rate: {success_rate:.2f}%\n")
+        f.write(f"Mean time: {mean_time:.2f} seconds\n")
+        f.write(f"Mean generated candidates: {mean_candidates:.2f}\n")
+                
+def run_experiment(
+        start: int, 
+        end: int, 
+        inference_timeout: int,
+        results_path: str,
+        z3_solver: Z3Solver, 
+        llm: LLM,
+        bmc: BMC
+):
+    results = []
+    for i in range(start, end):
+        graph_file_path = os.path.join(config.benchmarks_graph_path, f'{i}.c.json')
+        smt_file_path = os.path.join(config.benchmarks_smt_path, f'{i}.c.smt')
+        code_file_path = os.path.join(config.benchmarks_code_path, f'{i}.c')
+        sample_result_file_path = os.path.join(results_path, f'{i}.txt')
+
+        code_handler = get_code_handler(code_file_path)
+        formula_handler = CFormulaHandler()
+        z3_inv_smt_solver = InvSMTSolver(z3_solver, smt_file_path)
+        generator = Generator(llm, z3_solver, code_handler)
+        predicate_filtering = PredicateFiltering(code_handler, formula_handler, bmc)
+        runner = Runner(z3_inv_smt_solver, predicate_filtering, generator, formula_handler, sample_result_file_path, inference_timeout=inference_timeout)
+
+        llm.clear()
+
+        solution, run_time, generated_candidates = runner.run()
+        results.append((i, solution, run_time, generated_candidates))
+
+        runner.close()
+
+    write_result(results_path)
+
+def main():
+    parser = argparse.ArgumentParser(description="Run benchmarks")
+
+    chat_gpt_models = [model.value for model in list(ChatGPTModel)]
+    llama_models = [model.value for model in list(LlamaModel)]
+
+    parser.add_argument("--llm-model", type=str, default=ChatGPTModel.GPT_4O.value, help="LLM model to use", choices=chat_gpt_models+llama_models)
+    parser.add_argument("--benchmark-range", type=valid_range, default="228-229", help="Range of benchmarks to run")
+    parser.add_argument("--smt-timeout", type=int, default=50, help="Timeout for SMT check")
+    parser.add_argument("--inference-timeout", type=int, default=600, help="Timeout for LLM inference")
+    parser.add_argument("--results-path", type=str, default="results/test", help="Output directory for results")
+    parser.add_argument("--bmc-timeout", type=float, default=5, help="Timeout for BMC")
+    parser.add_argument("--bmc-max-steps", type=int, default=10, help="Maximum number of steps for BMC")
+    parser.add_argument("--log-level", type=str, default="INFO", choices=["INFO", "CRITICAL", "ERROR", "WARNING", "DEBUG"], help="Logging level")
+    
+    args = parser.parse_args()
+    benchmark_range = [int(x) for x in args.benchmark_range.split("-")]
+
+    OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+    if args.llm_model in chat_gpt_models:
+        if OPENAI_API_KEY is None:
+            raise ValueError("OPENAI_API_KEY environment variable must be set")
+        model = ChatGPTModel(args.llm_model)
+        llm = OpenAI(model, OPENAI_API_KEY)
+    if args.llm_model in llama_models:
+        model = LlamaModel(args.llm_model)
+        llm = OpenAI(model)
+    z3_solver = Z3Solver(args.smt_timeout)
+    esbmc = ESBMC(config.esbmc_bin_path, args.bmc_timeout, args.bmc_max_steps)
+
+    run_experiment(benchmark_range[0], benchmark_range[1], args.inference_timeout, args.results_path,  z3_solver, llm, esbmc)
+
+if __name__ == "__main__":
+    main()
