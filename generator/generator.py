@@ -49,7 +49,7 @@ Don't explain. Your answer should contain only '{self.code_handler.get_assert_fo
         return f"""Your previous answers where verified and are not correct as they break some properties of a correct loop invariant. Here is the fail history:
 {self._format_fail_history(fail_history)}
 
-Please provide a new loop invariant.
+IMPORTANT: Please provide a new loop invariant **NOT CONTAINED IN THE FAIL HISTORY PROVIDED ABOVE OR IN YOUR PREVIOUS ANSWERS**.
 """
         
     def _parse_llm_output(self, output: str) -> list[str]:
