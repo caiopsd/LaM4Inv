@@ -46,7 +46,7 @@ def write_result(result_path: str):
     
     # Regex patterns
     solution_pattern = re.compile(r'Solution: (.+)')
-    no_solution_pattern = re.compile(r'Solutions: no solution found')
+    no_solution_pattern = re.compile(r'Solution: no solution found')
     run_time_pattern = re.compile(r'Run time: ([\d.]+)')
     candidates_pattern = re.compile(r'Generated candidates: (\d+)')
     
@@ -61,31 +61,26 @@ def write_result(result_path: str):
         with open(file_path, "r") as f:
             content = f.read()
             
-            # Check if a solution was found
             solution_match = solution_pattern.search(content)
             no_solution_match = no_solution_pattern.search(content)
             
             if solution_match and not no_solution_match:
                 successful_solutions += 1
                 
-            # Extract runtime
             run_time_match = run_time_pattern.search(content)
             if run_time_match:
                 time_spent = float(run_time_match.group(1))
                 total_time += time_spent
                 
-            # Extract generated candidates
             candidates_match = candidates_pattern.search(content)
             if candidates_match:
                 candidates_generated = int(candidates_match.group(1))
                 total_candidates += candidates_generated
     
-    # Calculate statistics
     success_rate = (successful_solutions / total_benchmarks) * 100 if total_benchmarks > 0 else 0
     mean_time = total_time / total_benchmarks if total_benchmarks > 0 else 0
     mean_candidates = total_candidates / total_benchmarks if total_benchmarks > 0 else 0
     
-    # Write summary to result.txt
     with open(os.path.join(result_path, 'result.txt'), "w") as f:
         f.write(f"Total benchmarks: {total_benchmarks}\n")
         f.write(f"Successful solutions: {successful_solutions}\n")
@@ -93,7 +88,6 @@ def write_result(result_path: str):
         f.write(f"Mean time: {mean_time:.2f} seconds\n")
         f.write(f"Mean generated candidates: {mean_candidates:.2f}\n")
                 
-
 def run_experiment(
         start: int, 
         end: int, 
