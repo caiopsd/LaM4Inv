@@ -15,16 +15,10 @@ class OpenAIModel(Enum):
 class OpenAI(LLM):
     def __init__(self, model: OpenAIModel, api_key: str = None, system_instructions: str = None, base_url: str = None):
         self.model = model
-        self.client = self._get_openai_client(api_key, model, base_url)
+        self.client = OpenAIClient(api_key=api_key, base_url=base_url)
         self.messages = []
         if system_instructions:
             self._add_system_instructions(system_instructions)
-    
-    def _get_openai_client(self, api_key: str, base_url: str) -> OpenAIClient:
-        return OpenAIClient(
-            api_key=api_key,
-            base_url=base_url
-        )
     
     def _get_messages(self) -> list:
         return self.messages
