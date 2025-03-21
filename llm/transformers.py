@@ -42,4 +42,4 @@ class Transformers(LLM):
 
         self._add_assistant_response(content)
 
-        return response
+        return content

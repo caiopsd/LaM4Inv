@@ -11,6 +11,7 @@ sympy = "*"
 dotenv = "*"
 transformers = "*"
 torch = "*"
+accelerate = "*"
 
 [dev-packages]
 
