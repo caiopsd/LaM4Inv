@@ -133,8 +133,8 @@ class Runner:
                 raise TimeoutError("Inference timeout")
             
             candidates = self._generate_candidates_from_feedback()
-            self._log(f'Verified {len(candidates)} candidates')
             solution = self._verify(candidates)
+            self._log(f'Verified {len(candidates)} candidates')
             if solution is not None:
                 return self._handle_solution(solution, (time.time() - start_time))
         
