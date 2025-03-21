@@ -1,15 +1,18 @@
 from enum import Enum
 
-import torch
-from transformers import pipeline
-
 from llm.llm import LLM
 
 class TransformersModel(Enum):
+    pass
+
+class LlamaModel(TransformersModel):
     LLAMA_3_8B = 'meta-llama/Meta-Llama-3-8B-Instruct'
 
 class Transformers(LLM):
-    def __init__(self, model: TransformersModel, system_instructions: str = None):
+    def __init__(self, model: LlamaModel, system_instructions: str = None):
+        import torch
+        from transformers import pipeline
+        
         self.model = model
         self._pipeline = pipeline("text-generation", model.value, torch_dtype=torch.bfloat16, device_map="auto")
         self.messages = []

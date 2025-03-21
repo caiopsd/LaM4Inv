@@ -4,7 +4,10 @@ from openai import OpenAI as OpenAIClient
 
 from llm.llm import LLM
 
-class OpenAIModel(Enum):
+class OpenAIModels(Enum):
+    pass
+
+class ChatGPTModels(OpenAIModels):
     GPT_3_5_TURBO = "gpt-3.5-turbo"
     GPT_4 = "gpt-4"
     GPT_4_TURBO = "gpt-4-turbo"
@@ -12,8 +15,11 @@ class OpenAIModel(Enum):
     GPT_4O_MINI = "gpt-4o-mini"
     GPT_O1_MINI = "o1-mini"
 
+class DeepseekModel(OpenAIModels):
+    DEEPSEEK_R1 = "deepseek-reasoner"
+
 class OpenAI(LLM):
-    def __init__(self, model: OpenAIModel, api_key: str = None, system_instructions: str = None, base_url: str = None):
+    def __init__(self, model: OpenAIModels, api_key: str = None, system_instructions: str = None, base_url: str = None):
         self.model = model
         self.client = OpenAIClient(api_key=api_key, base_url=base_url)
         self.messages = []

@@ -9,8 +9,8 @@ from config import config
 from smt.z3_solver import Z3Solver
 from inv_smt_solver.inv_smt_solver import InvSMTSolver
 from llm.llm import LLM
-from llm.openai import OpenAI, OpenAIModel
-from llm.transformers import TransformersModel, Transformers
+from llm.openai import OpenAI, ChatGPTModels, DeepseekModel
+from llm.transformers import LlamaModel, Transformers
 from generator.generator import Generator
 from code_handler.c_code_handler import CCodeHandler
 from code_handler.code_handler import CodeHandler
@@ -22,6 +22,7 @@ from predicate_filtering.predicate_filtering import PredicateFiltering
 load_dotenv()
 
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+DEEPSEEK_API_KEY = os.getenv("DEEPSEEK_API_KEY")
 
 def valid_range(value):
     try:
@@ -124,10 +125,12 @@ def run_experiment(
 def main():
     parser = argparse.ArgumentParser(description="Run benchmarks")
 
-    openai_models = [model.value for model in list(OpenAIModel)]
-    transformers_models = [model.value for model in list(TransformersModel)]
+    chatgpt_models = [model.value for model in list(ChatGPTModels)]
+    llama_models = [model.value for model in list(LlamaModel)]
+    deepseek_models = [model.value for model in list(DeepseekModel)]
+    all_models = chatgpt_models + llama_models + deepseek_models
 
-    parser.add_argument("--llm-model", type=str, default=OpenAIModel.GPT_4O.value, help="LLM model to use", choices=openai_models+transformers_models)
+    parser.add_argument("--llm-model", type=str, default=ChatGPTModels.GPT_4O.value, help="LLM model to use", choices=all_models)
     parser.add_argument("--benchmark-range", type=valid_range, default="228-229", help="Range of benchmarks to run")
     parser.add_argument("--smt-timeout", type=int, default=50, help="Timeout for SMT check")
     parser.add_argument("--inference-timeout", type=int, default=600, help="Timeout for LLM inference")
@@ -142,14 +145,19 @@ def main():
 
     benchmark_range = [int(x) for x in args.benchmark_range.split("-")]
 
-    if args.llm_model in openai_models:
+    if args.llm_model in chatgpt_models:
         if OPENAI_API_KEY is None:
             raise ValueError("OPENAI_API_KEY environment variable must be set")
-        model = OpenAIModel(args.llm_model)
+        model = ChatGPTModels(args.llm_model)
         llm = OpenAI(model, OPENAI_API_KEY)
-    if args.llm_model in transformers_models:
-        model = TransformersModel(args.llm_model)
+    if args.llm_model in llama_models:
+        model = LlamaModel(args.llm_model)
         llm = Transformers(model)
+    if args.llm_model in deepseek_models:
+        if DEEPSEEK_API_KEY is None:
+            raise ValueError("DEEPSEEK_API_KEY environment variable must be set")
+        model = DeepseekModel(args.llm_model)
+        llm = OpenAI(model, DEEPSEEK_API_KEY, base_url=config.deepseek_api_url)
         
     z3_solver = Z3Solver(args.smt_timeout)
     esbmc = ESBMC(config.esbmc_bin_path, args.bmc_timeout, args.bmc_max_steps)
