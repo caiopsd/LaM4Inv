@@ -20,13 +20,9 @@ class OpenAI(LLM):
             self._add_system_instructions(system_instructions)
     
     def _get_openai_client(self, api_key: str, base_url: str) -> OpenAIClient:
-        if base_url:
-            return OpenAIClient(
-                api_key="EMPTY",
-                base_url=base_url
-            )
         return OpenAIClient(
-            api_key=api_key
+            api_key=api_key,
+            base_url=base_url
         )
     
     def _get_messages(self) -> list:
