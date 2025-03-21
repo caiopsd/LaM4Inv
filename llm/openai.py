@@ -15,12 +15,12 @@ class ChatGPTModel(OpenAIModel):
     GPT_4O_MINI = "gpt-4o-mini"
 
 class OpenAI(LLM):
-    def __init__(self, model: OpenAIModel, api_key: str = None, developer_instructions: str = None, base_url: str = 'http://localhost:8000/v1'):
+    def __init__(self, model: OpenAIModel, api_key: str = None, system_instructions: str = None, base_url: str = 'http://localhost:8000/v1'):
         self.model = model
         self.client = self._get_openai_client(api_key, model, base_url)
         self.messages = []
-        if developer_instructions:
-            self._add_developer_instructions(developer_instructions)
+        if system_instructions:
+            self._add_system_instructions(system_instructions)
     
     def _get_openai_client(self, api_key: str, model: OpenAIModel, base_url: str) -> OpenAIClient:
         if isinstance(model, ChatGPTModel):
@@ -35,7 +35,7 @@ class OpenAI(LLM):
     def _get_messages(self) -> list:
         return self.messages
     
-    def _add_developer_instructions(self, instructions: str):
+    def _add_system_instructions(self, instructions: str):
         self.messages.append({"role": "developer", "content": instructions})
     
     def _add_assistant_response(self, response: str):
