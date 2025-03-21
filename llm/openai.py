@@ -41,6 +41,7 @@ class OpenAI(LLM):
         completions = self.client.chat.completions.create(
             model=self.model.value,
             messages=self._get_messages(),
+            presence_penalty=2.0,
         )
         
         response = completions.choices[0].message.content
