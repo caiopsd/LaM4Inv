@@ -7,7 +7,6 @@ from llm.llm import LLM
 
 class TransformersModel(Enum):
     LLAMA_3_8B = 'meta-llama/Meta-Llama-3-8B-Instruct'
-    DEEPSEEK_R1_DISTILL_LLAMA_8B = "deepseek-ai/DeepSeek-R1-Distill-Llama-8B"
 
 class Transformers(LLM):
     def __init__(self, model: TransformersModel, system_instructions: str = None):

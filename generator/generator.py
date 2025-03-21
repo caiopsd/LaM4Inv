@@ -18,7 +18,6 @@ class Generator:
         self.llm = llm
         self.smt_solver = smt_solver
         self.code_handler = code_handler
-        self._logger = logging.getLogger(__name__)
 
     def _get_base_llm_prompt(self) -> str:
         return f"""{self.code_handler.get_code()}
@@ -72,7 +71,5 @@ Don't explain. Your answer should contain only '{self.code_handler.get_assert_fo
             prompt = self._get_feedback_llm_prompt(fail_history)
         
         output = self.llm.chat(prompt)
-
-        self._logger.debug(f"LLM output: {output}")
 
         return self._parse_llm_output(output)
