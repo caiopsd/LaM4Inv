@@ -6,15 +6,13 @@ from transformers import pipeline
 from llm.llm import LLM
 
 class TransformersModel(Enum):
-    pass
-
-class LlamaModel(TransformersModel):
     LLAMA_3_8B = 'meta-llama/Meta-Llama-3-8B-Instruct'
+    DEEPSEEK_R1_DISTILL_LLAMA_8B = "deepseek-ai/DeepSeek-R1-Distill-Llama-8B"
 
 class Transformers(LLM):
     def __init__(self, model: TransformersModel, system_instructions: str = None):
         self.model = model
-        self._pipeline = pipeline("text-generation", "meta-llama/Meta-Llama-3-8B-Instruct", torch_dtype=torch.bfloat16, device_map="auto")
+        self._pipeline = pipeline("text-generation", model.value, torch_dtype=torch.bfloat16, device_map="auto")
         self.messages = []
         if system_instructions:
             self._add_system_instructions(system_instructions)

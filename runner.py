@@ -127,6 +127,7 @@ class Runner:
 
         while self._verified_candidates < self.max_verified_candidates:
             if time.time() - start_time >= self.inference_timeout:
+                self._handle_solution(None, (time.time() - start_time))
                 raise TimeoutError("Inference timeout")
             
             candidates = self._generate_candidates_from_feedback()

@@ -9,8 +9,8 @@ from config import config
 from smt.z3_solver import Z3Solver
 from inv_smt_solver.inv_smt_solver import InvSMTSolver
 from llm.llm import LLM
-from llm.openai import OpenAI, ChatGPTModel
-from llm.transformers import LlamaModel, Transformers
+from llm.openai import OpenAI, OpenAIModel
+from llm.transformers import TransformersModel, Transformers
 from generator.generator import Generator
 from code_handler.c_code_handler import CCodeHandler
 from code_handler.code_handler import CodeHandler
@@ -20,6 +20,8 @@ from bmc.bmc import BMC
 from predicate_filtering.predicate_filtering import PredicateFiltering
 
 load_dotenv()
+
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 
 def valid_range(value):
     try:
@@ -97,7 +99,6 @@ def run_experiment(
         llm: LLM,
         bmc: BMC
 ):
-    results = []
     for i in range(start, end):
         graph_file_path = os.path.join(config.benchmarks_graph_path, f'{i}.c.json')
         smt_file_path = os.path.join(config.benchmarks_smt_path, f'{i}.c.smt')
@@ -113,18 +114,20 @@ def run_experiment(
 
         llm.clear()
 
-        solution, run_time, generated_candidates = runner.run(i)
-        results.append((i, solution, run_time, generated_candidates))
+        try:
+            runner.run(i)
+        except TimeoutError:
+            continue
 
     write_result(results_path)
 
 def main():
     parser = argparse.ArgumentParser(description="Run benchmarks")
 
-    chat_gpt_models = [model.value for model in list(ChatGPTModel)]
-    llama_models = [model.value for model in list(LlamaModel)]
+    openai_models = [model.value for model in list(OpenAIModel)]
+    transformers_models = [model.value for model in list(TransformersModel)]
 
-    parser.add_argument("--llm-model", type=str, default=ChatGPTModel.GPT_4O.value, help="LLM model to use", choices=chat_gpt_models+llama_models)
+    parser.add_argument("--llm-model", type=str, default=OpenAIModel.GPT_4O.value, help="LLM model to use", choices=openai_models+transformers_models)
     parser.add_argument("--benchmark-range", type=valid_range, default="228-229", help="Range of benchmarks to run")
     parser.add_argument("--smt-timeout", type=int, default=50, help="Timeout for SMT check")
     parser.add_argument("--inference-timeout", type=int, default=600, help="Timeout for LLM inference")
@@ -139,15 +142,15 @@ def main():
 
     benchmark_range = [int(x) for x in args.benchmark_range.split("-")]
 
-    OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
-    if args.llm_model in chat_gpt_models:
+    if args.llm_model in openai_models:
         if OPENAI_API_KEY is None:
             raise ValueError("OPENAI_API_KEY environment variable must be set")
-        model = ChatGPTModel(args.llm_model)
+        model = OpenAIModel(args.llm_model)
         llm = OpenAI(model, OPENAI_API_KEY)
-    if args.llm_model in llama_models:
-        model = LlamaModel(args.llm_model)
+    if args.llm_model in transformers_models:
+        model = TransformersModel(args.llm_model)
         llm = Transformers(model)
+        
     z3_solver = Z3Solver(args.smt_timeout)
     esbmc = ESBMC(config.esbmc_bin_path, args.bmc_timeout, args.bmc_max_steps)
 
