@@ -1,6 +1,5 @@
 from enum import Enum
 
-import torch
 from transformers import pipeline
 
 from llm.llm import LLM
@@ -14,7 +13,7 @@ class LlamaModel(TransformersModel):
 class Transformers(LLM):
     def __init__(self, model: TransformersModel, developer_instructions: str = None):
         self.model = model
-        self._pipeline = pipeline(task="text-generation", model=model.value(), torch_dtype=torch.bfloat16, device_map="auto")
+        self._pipeline = pipeline(task="text-generation", model=model.value())
         self.messages = []
     
     def _get_messages(self) -> list:
