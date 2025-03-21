@@ -12,21 +12,21 @@ class OpenAIModel(Enum):
     GPT_4O_MINI = "gpt-4o-mini"
 
 class OpenAI(LLM):
-    def __init__(self, model: OpenAIModel, api_key: str = None, system_instructions: str = None, base_url: str = 'http://localhost:8000/v1'):
+    def __init__(self, model: OpenAIModel, api_key: str = None, system_instructions: str = None, base_url: str = None):
         self.model = model
         self.client = self._get_openai_client(api_key, model, base_url)
         self.messages = []
         if system_instructions:
             self._add_system_instructions(system_instructions)
     
-    def _get_openai_client(self, api_key: str, model: OpenAIModel, base_url: str) -> OpenAIClient:
-        if isinstance(model, ChatGPTModel):
+    def _get_openai_client(self, api_key: str, base_url: str) -> OpenAIClient:
+        if base_url:
             return OpenAIClient(
-                api_key=api_key,  
+                api_key="EMPTY",
+                base_url=base_url
             )
         return OpenAIClient(
-            api_key="EMPTY",
-            base_url=base_url
+            api_key=api_key
         )
     
     def _get_messages(self) -> list:
