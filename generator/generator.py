@@ -51,7 +51,7 @@ Don't explain. Your answer should contain only '{self.code_handler.get_assert_fo
 
  Please generate new loop invariants.
 
-**IMPORTANT:** Please generate a new loop invariant that is **NOT INCLUDED IN THE FOLLOWING FAILURE HISTORY OR IN ANY OF YOUR PREVIOUS RESPONSES.**
+**IMPORTANT:** Only genereate loop invariant that are **NOT INCLUDED IN THE FOLLOWING FAILURE HISTORY OR IN ANY OF YOUR PREVIOUS RESPONSES.**
 
 # Failure History
 {self._format_fail_history(fail_history)}
