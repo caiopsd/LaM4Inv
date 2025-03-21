@@ -13,7 +13,7 @@ class LlamaModel(TransformersModel):
 class Transformers(LLM):
     def __init__(self, model: TransformersModel, developer_instructions: str = None):
         self.model = model
-        self._pipeline = pipeline(task="text-generation", model=model.value())
+        self._pipeline = pipeline(task="text-generation", model=model.value)
         self.messages = []
     
     def _get_messages(self) -> list:
