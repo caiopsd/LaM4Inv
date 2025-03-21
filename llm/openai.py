@@ -10,6 +10,7 @@ class OpenAIModel(Enum):
     GPT_4_TURBO = "gpt-4-turbo"
     GPT_4O = "gpt-4o"
     GPT_4O_MINI = "gpt-4o-mini"
+    GPT_O1_MINI = "o1-mini"
 
 class OpenAI(LLM):
     def __init__(self, model: OpenAIModel, api_key: str = None, system_instructions: str = None, base_url: str = None):
