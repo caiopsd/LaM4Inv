@@ -9,7 +9,6 @@ openai = "*"
 requests = "*"
 sympy = "*"
 dotenv = "*"
-torch = "*"
 transformers = "*"
 
 [dev-packages]
