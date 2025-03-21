@@ -24,6 +24,11 @@ load_dotenv()
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 DEEPSEEK_API_KEY = os.getenv("DEEPSEEK_API_KEY")
 
+chatgpt_models = [model.value for model in list(ChatGPTModels)]
+llama_models = [model.value for model in list(LlamaModel)]
+deepseek_models = [model.value for model in list(DeepseekModel)]
+all_models = chatgpt_models + llama_models + deepseek_models
+
 def valid_range(value):
     try:
         start, end = value.split("-")
@@ -122,13 +127,20 @@ def run_experiment(
 
     write_result(results_path)
 
+def get_llm_model(model:str):
+    if model in chatgpt_models:
+        if OPENAI_API_KEY is None:
+            raise ValueError("OPENAI_API_KEY environment variable must be set")
+        return OpenAI(ChatGPTModels(model), OPENAI_API_KEY)
+    if model in llama_models:
+        return Transformers(LlamaModel(model))
+    if model in deepseek_models:
+        if DEEPSEEK_API_KEY is None:
+            raise ValueError("DEEPSEEK_API_KEY environment variable must be set")
+        return OpenAI(DeepseekModel(model), DEEPSEEK_API_KEY, base_url=config.deepseek_api_url)
+
 def main():
     parser = argparse.ArgumentParser(description="Run benchmarks")
-
-    chatgpt_models = [model.value for model in list(ChatGPTModels)]
-    llama_models = [model.value for model in list(LlamaModel)]
-    deepseek_models = [model.value for model in list(DeepseekModel)]
-    all_models = chatgpt_models + llama_models + deepseek_models
 
     parser.add_argument("--llm-model", type=str, default=ChatGPTModels.GPT_4O.value, help="LLM model to use", choices=all_models)
     parser.add_argument("--benchmark-range", type=valid_range, default="228-229", help="Range of benchmarks to run")
@@ -145,20 +157,7 @@ def main():
 
     benchmark_range = [int(x) for x in args.benchmark_range.split("-")]
 
-    if args.llm_model in chatgpt_models:
-        if OPENAI_API_KEY is None:
-            raise ValueError("OPENAI_API_KEY environment variable must be set")
-        model = ChatGPTModels(args.llm_model)
-        llm = OpenAI(model, OPENAI_API_KEY)
-    if args.llm_model in llama_models:
-        model = LlamaModel(args.llm_model)
-        llm = Transformers(model)
-    if args.llm_model in deepseek_models:
-        if DEEPSEEK_API_KEY is None:
-            raise ValueError("DEEPSEEK_API_KEY environment variable must be set")
-        model = DeepseekModel(args.llm_model)
-        llm = OpenAI(model, DEEPSEEK_API_KEY, base_url=config.deepseek_api_url)
-        
+    llm = get_llm_model(args.llm_model)  
     z3_solver = Z3Solver(args.smt_timeout)
     esbmc = ESBMC(config.esbmc_bin_path, args.bmc_timeout, args.bmc_max_steps)
 
