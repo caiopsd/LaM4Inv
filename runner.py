@@ -93,6 +93,7 @@ class Runner:
     def _write_log(self):
         formmated_time = time.strftime("%H:%M:%S %d/%m/%Y", time.gmtime(time.time()))
         for log in self._logs:
+            print(log)
             self.result_file.write(f'{formmated_time} {log}\n')
 
     def _log_solution(self, solution: str, time_spent: float):
@@ -105,7 +106,7 @@ class Runner:
         self._log(f'Run time: {time_spent}')
 
     def _log(self, message: str):
-        self._logger.debug(message)
+        self._logger.info(message)
         self._logs.append(message)
 
     def _close(self):
