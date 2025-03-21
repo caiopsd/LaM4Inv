@@ -6,7 +6,7 @@ from transformers import pipeline
 from llm.llm import LLM
 
 class TransformersModel(Enum):
-    LLAMA_3_1_8B = 'meta-llama/Llama-3.1-8B'
+    LLAMA_3_8B = 'meta-llama/Meta-Llama-3-8B-Instruct'
 
 class Transformers(LLM):
     def __init__(self, model: TransformersModel, system_instructions: str = None):
