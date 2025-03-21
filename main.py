@@ -9,7 +9,8 @@ from config import config
 from smt.z3_solver import Z3Solver
 from inv_smt_solver.inv_smt_solver import InvSMTSolver
 from llm.llm import LLM
-from llm.openai import OpenAI, ChatGPTModel, LlamaModel
+from llm.openai import OpenAI, ChatGPTModel
+from llm.transformers import LlamaModel, Transformers
 from generator.generator import Generator
 from code_handler.c_code_handler import CCodeHandler
 from code_handler.code_handler import CodeHandler
@@ -146,7 +147,7 @@ def main():
         llm = OpenAI(model, OPENAI_API_KEY)
     if args.llm_model in llama_models:
         model = LlamaModel(args.llm_model)
-        llm = OpenAI(model)
+        llm = Transformers(model)
     z3_solver = Z3Solver(args.smt_timeout)
     esbmc = ESBMC(config.esbmc_bin_path, args.bmc_timeout, args.bmc_max_steps)
 

@@ -14,9 +14,6 @@ class ChatGPTModel(OpenAIModel):
     GPT_4O = "gpt-4o"
     GPT_4O_MINI = "gpt-4o-mini"
 
-class LlamaModel(OpenAIModel):
-    LLAMA_3_8B = 'meta-llama/Meta-Llama-3-8B'
-
 class OpenAI(LLM):
     def __init__(self, model: OpenAIModel, api_key: str = None, developer_instructions: str = None, base_url: str = 'http://localhost:8000/v1'):
         self.model = model
