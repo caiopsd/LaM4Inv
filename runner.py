@@ -126,13 +126,15 @@ class Runner:
         return solution, end_time, self._verified_candidates
     
     def _next_pipeline_step(self, consumed: float) -> tuple[LLM, float]:
+        changed = False
         next_step = next((step for step in self.pipeline if step[1] >= consumed))
         if next_step != self._curr_pipeline_step:
             self._fail_history = {}
             self._fail_history_hit = 0
             self.generator.reset()
             self._curr_pipeline_step = next_step
-        return next_step
+            changed = True
+        return next_step, changed
     
     def run(self, benchmark_id: str) -> tuple[str, float, int]:
         start_time = time.time()
@@ -154,7 +156,9 @@ class Runner:
                 raise TimeoutError("Inference timeout")
             
             consumed_time_budget = time_spent / self.inference_timeout
-            llm, _ = self._next_pipeline_step(consumed_time_budget)
+            llm, changed = self._next_pipeline_step(consumed_time_budget)
+            if changed:
+                fails = []
 
             chat_options.presence_penalty = math.tanh(self._fail_history_hit * self.presence_penalty_scale)
             
