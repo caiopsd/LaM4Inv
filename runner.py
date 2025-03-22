@@ -55,12 +55,13 @@ class Runner:
                 return predicate
     
     def _verify(self, candidates: list[str]) -> tuple[str, list[str]]:
-        counter_examples = []
+        fails = []
         for candidate in candidates:
             self._log(f'Verifying candidate: {candidate}')
 
             if candidate in self._fail_history:
                 self._fail_history_hit += 1
+                fails.append((candidate, (self._fail_history[candidate])))
                 self._log(f'Candidate already in fail history: {candidate}')
                 continue
 
@@ -72,7 +73,7 @@ class Runner:
                 if counter_example is None:
                     return candidate, None
                 
-                counter_examples.append(counter_example)
+                fails.append((candidate, counter_example))
 
                 self._log(f'Found counter example ({counter_example}), trying predicate filtering')
                 solution = self._predicate_filtering(formula)
@@ -93,7 +94,7 @@ class Runner:
             self._log(f'Adding candidate to fail history: {candidate}')
             self._fail_history[candidate] = counter_example
         
-        return None, counter_examples
+        return None, fails
 
     def _write_log(self):
         formmated_time = time.strftime("%H:%M:%S %d/%m/%Y", time.gmtime(time.time()))
@@ -142,7 +143,7 @@ class Runner:
         chat_options = ChatOptions()
 
         candidates = self.generator.generate(llm=llm)
-        solution, counter_examples = self._verify(candidates)
+        solution, fails = self._verify(candidates)
         if solution is not None:
             return self._handle_solution(solution, (time.time() - start_time))
         
@@ -159,14 +160,14 @@ class Runner:
             
             self._log(f'Generating loop invariants candidates with model {llm} with presence penalty {chat_options.presence_penalty}')
 
-            candidates = self.generator.generate(last_fails=list(zip(candidates, counter_examples)), llm=llm, chat_options=chat_options)
+            candidates = self.generator.generate(feedback=fails, llm=llm, chat_options=chat_options)
 
             self._log(f'Generated {len(candidates)} candidates')
 
-            solution, counter_examples = self._verify(candidates)
+            solution, fails = self._verify(candidates)
             if solution is not None:
                 return self._handle_solution(solution, (time.time() - start_time))
-        
+            
     def reset(self):
         self._fail_history = {}
         self._fail_history_hit = 0

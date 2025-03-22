@@ -10,7 +10,7 @@ class Generator:
         self.code_handler = code_handler
         self._chat = Chat()
 
-    def _get_base_llm_prompt(self) -> str:
+    def _get_base_llm_message(self) -> str:
         return f"""{self.code_handler.get_code()}
 Print loop invariants as valid {self.code_handler.get_language().value} assertions that help prove the assertion.
 
@@ -26,7 +26,7 @@ If some of the preconditions are also loop invariant, you need to add them to yo
 Don't explain. Your answer should contain only '{self.code_handler.get_assert_format()}' lines.
 """
     
-    def _format_fails(self, fails: list[tuple[str, CounterExample]]) -> str:
+    def _format_feedback(self, fails: list[tuple[str, CounterExample]]) -> str:
         fails_prompt = ""
         for (candidate, counter_example) in fails:
             if counter_example.kind == CounterExampleKind.POSITIVE:
@@ -37,17 +37,17 @@ Don't explain. Your answer should contain only '{self.code_handler.get_assert_fo
                 fails_prompt += f'   - "{candidate}" break inductiveness. With counter example given by the SMT solver: {counter_example}\n'
         return fails_prompt
     
-    def _get_feedback_llm_prompt(self, last_fails: list[tuple[str, CounterExample]]) -> str:
+    def _get_feedback_llm_message(self, last_fails: list[tuple[str, CounterExample]]) -> str:
         return f"""Your previous proposals were verified and are not correct as they break some properties of a correct loop invariant.
 
  Please generate new loop invariants.
 
 **IMPORTANT:** Only genereate loop invariant that are **NOT INCLUDED IN THE FOLLOWING FAILURES LIST OR IN ANY OF YOUR PREVIOUS RESPONSES.**
 # Last Failures
-{self._format_fails(last_fails)}
+{self._format_feedback(last_fails)}
 """
         
-    def _parse_llm_output(self, output: str) -> list[str]:
+    def _parse_llm_response(self, output: str) -> list[str]:
         expressions = []
         pattern = re.compile(self.code_handler.get_assert_pattern())
         matches = pattern.findall(output)
@@ -55,17 +55,17 @@ Don't explain. Your answer should contain only '{self.code_handler.get_assert_fo
             expressions.append(match)
         return expressions
 
-    def generate(self, llm: LLM, last_fails: list[tuple[str, CounterExample]] = None, chat_options: ChatOptions = None) -> list[str]:
-        if last_fails:
-            prompt = self._get_feedback_llm_prompt(last_fails)
+    def generate(self, llm: LLM, feedback: list[tuple[str, CounterExample]] = None, chat_options: ChatOptions = None) -> list[str]:
+        if feedback:
+            message = self._get_feedback_llm_message(feedback)
         else:
-            prompt = self._get_base_llm_prompt()
-        self._chat.add_user_message(prompt)
+            message = self._get_base_llm_message()
+        self._chat.add_user_message(message)
 
-        output = llm.chat(self._chat, chat_options)
-        self._chat.add_assistant_response(output)
+        response = llm.chat(self._chat, chat_options)
+        self._chat.add_assistant_response(response)
 
-        return self._parse_llm_output(output)
+        return self._parse_llm_response(response)
 
     def reset(self):
         self._chat.reset()
