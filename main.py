@@ -158,7 +158,7 @@ def main():
     parser = argparse.ArgumentParser(description="Run benchmarks")
 
     parser.add_argument("--mode", type=str, default="run", choices=["run", "evaluate"], help="Mode of operation")
-    parser.add_argument("--pipeline", type=parse_pipeline, default=f'{ChatGPTModel.GPT_4O.value}, 0.2; {ChatGPTModel.GPT_4O_MINI.value}, 0.13; {DeepseekModel.DEEPSEEK_R1}, 0.67', help="Pipeline of LLM models with their thresholds, formatted as: model, threshold; model, threshold;... Example: gpt-4,0.5;deepseek,1")
+    parser.add_argument("--pipeline", type=parse_pipeline, default=f'{ChatGPTModel.GPT_4O.value}, 0.2; {ChatGPTModel.GPT_4O_MINI.value}, 0.33; {DeepseekModel.DEEPSEEK_R1}, 1', help="Pipeline of LLM models with their thresholds, formatted as: model, threshold; model, threshold;... Example: gpt-4,0.5;deepseek,1")
     parser.add_argument("--benchmark-range", type=parse_range, default="228-229", help="Range of benchmark indices in the format a-b. Represents the interval (a, b].")
     parser.add_argument("--inference-timeout", type=int, default=300, help="Timeout for the loop invariant inference")
     parser.add_argument("--results-path", type=str, default="results/test", help="Output directory for results")
