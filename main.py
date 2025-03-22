@@ -45,6 +45,7 @@ def write_result(result_path: str):
     run_time_pattern = re.compile(r'Run time: ([\d.]+)') 
     candidates_pattern = re.compile(r'Verified candidates: (\d+)')
     
+    fails = []
     for result_file in os.listdir(result_path):
         if not result_file.endswith('.txt') or result_file == 'result.txt':
             continue
@@ -57,6 +58,9 @@ def write_result(result_path: str):
             
             solution_match = solution_pattern.search(content)
             no_solution_match = no_solution_pattern.search(content)
+
+            if no_solution_match and not solution_match:
+                fails.append(result_file[:-4])
             
             if solution_match and not no_solution_match:
                 successful_solutions += 1
@@ -81,6 +85,8 @@ def write_result(result_path: str):
         f.write(f"Success rate: {success_rate:.2f}%\n")
         f.write(f"Average time: {mean_time:.2f} seconds\n")
         f.write(f"Average verified candidates: {mean_candidates:.2f}\n")
+        if fails:
+            f.write(f"Fails: {', '.join(fails)}\n")
                 
 def run_experiment(
         start: int, 
