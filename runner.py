@@ -48,7 +48,7 @@ class Runner:
         if counter_example is not None:
             return counter_example
 
-    def _bmc_verify(self, formula: str) -> str:
+    def _predicate_filtering(self, formula: str) -> str:
         filtered_predicates = self.predicate_filtering.filter(formula)
         for predicate in filtered_predicates:
             if self._smt_verify(predicate) is None:
@@ -74,11 +74,12 @@ class Runner:
                 
                 counter_examples.append(counter_example)
 
-                solution = self._bmc_verify(formula)
+                self._log(f'Found counter example ({counter_example}), trying predicate filtering')
+                solution = self._predicate_filtering(formula)
                 if solution is not None:
                     return solution, None
                 
-                self._log(f'Found counter example: {counter_example}')
+                self._log(f'Candidate failed verification')
             except CInvalidFormulaError as e:
                 self._log(f'Invalid candidate syntax: {candidate}')
                 continue
@@ -105,7 +106,7 @@ class Runner:
         if solution is not None:
             self._log(f'Solution: {solution}')
         else:
-            self._log(f'Solution: no solution found')
+            self._log(f'No solution found')
         self._log(f'Verified candidates: {self._verified_candidates}')
         self._log(f'Run time: {time_spent}')
 

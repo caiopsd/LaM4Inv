@@ -41,8 +41,8 @@ def write_result(result_path: str):
     total_candidates = 0
     
     solution_pattern = re.compile(r'Solution: (.+)')
-    no_solution_pattern = re.compile(r'Solution: no solution found')
-    run_time_pattern = re.compile(r'Run time: ([\d.]+)')
+    no_solution_pattern = re.compile(r'No solution found')
+    run_time_pattern = re.compile(r'Run time: ([\d.]+)') 
     candidates_pattern = re.compile(r'Verified candidates: (\d+)')
     
     for result_file in os.listdir(result_path):
@@ -131,6 +131,7 @@ def get_llm(model:str):
         if DEEPSEEK_API_KEY is None:
             raise ValueError("DEEPSEEK_API_KEY environment variable must be set")
         return OpenAI(DeepseekModel(model), DEEPSEEK_API_KEY, base_url=config.deepseek_api_url)
+    raise ValueError(f"Model {model} not found")
 
 def parse_range(value):
     try:
@@ -148,6 +149,8 @@ def parse_pipeline(input: str):
     for step in input.split(";"):
         model, threshold = step.split(",")
         model = model.strip()
+        if model not in all_models:
+            raise argparse.ArgumentTypeError(f"Model {model} not found")
         threshold = float(threshold.strip())
         if threshold > 1 or threshold < 0:
             raise argparse.ArgumentTypeError("The threshold value must be between 0 and 1")
@@ -158,7 +161,7 @@ def main():
     parser = argparse.ArgumentParser(description="Run benchmarks")
 
     parser.add_argument("--mode", type=str, default="run", choices=["run", "evaluate"], help="Mode of operation")
-    parser.add_argument("--pipeline", type=parse_pipeline, default=f'{ChatGPTModel.GPT_4O.value}, 0.2; {ChatGPTModel.GPT_4O_MINI.value}, 0.33; {DeepseekModel.DEEPSEEK_R1}, 1', help="Pipeline of LLM models with their thresholds, formatted as: model, threshold; model, threshold;... Example: gpt-4,0.5;deepseek,1")
+    parser.add_argument("--pipeline", type=parse_pipeline, default=f'{ChatGPTModel.GPT_4O.value}, 0.2; {ChatGPTModel.GPT_4O_MINI.value}, 0.33; {DeepseekModel.DEEPSEEK_R1.value}, 1', help="Pipeline of LLM models with their thresholds, formatted as: model, threshold; model, threshold;... Example: gpt-4,0.5;deepseek,1")
     parser.add_argument("--benchmark-range", type=parse_range, default="228-229", help="Range of benchmark indices in the format a-b. Represents the interval (a, b].")
     parser.add_argument("--inference-timeout", type=int, default=300, help="Timeout for the loop invariant inference")
     parser.add_argument("--results-path", type=str, default="results/test", help="Output directory for results")
