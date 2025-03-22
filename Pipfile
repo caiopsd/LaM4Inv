@@ -12,6 +12,7 @@ dotenv = "*"
 transformers = "*"
 torch = "*"
 accelerate = "*"
+pydantic = "*"
 
 [dev-packages]
 

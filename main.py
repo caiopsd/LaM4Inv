@@ -9,7 +9,7 @@ from config import config
 from smt.z3_solver import Z3Solver
 from inv_smt_solver.inv_smt_solver import InvSMTSolver
 from llm.llm import LLM
-from llm.openai import OpenAI, ChatGPTModels, DeepseekModel
+from llm.openai import OpenAI, ChatGPTModel, DeepseekModel
 from llm.transformers import LlamaModel, Transformers
 from generator.generator import Generator
 from code_handler.c_code_handler import CCodeHandler
@@ -24,22 +24,10 @@ load_dotenv()
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 DEEPSEEK_API_KEY = os.getenv("DEEPSEEK_API_KEY")
 
-chatgpt_models = [model.value for model in list(ChatGPTModels)]
+chatgpt_models = [model.value for model in list(ChatGPTModel)]
 llama_models = [model.value for model in list(LlamaModel)]
 deepseek_models = [model.value for model in list(DeepseekModel)]
 all_models = chatgpt_models + llama_models + deepseek_models
-
-def valid_range(value):
-    try:
-        start, end = value.split("-")
-        start = int(start)
-        end = int(end)
-        if start > end:
-            raise argparse.ArgumentTypeError("Start value must be less than end value")
-        return value
-    except ValueError:
-        raise argparse.ArgumentTypeError("Range must be in the form of start-end")
-
 
 def get_code_handler(code_file_path: str) -> CodeHandler:
     with open(code_file_path, "r") as f:
@@ -102,8 +90,7 @@ def run_experiment(
         inference_timeout: int,
         results_path: str,
         z3_solver: Z3Solver, 
-        base_llm: LLM,
-        failover_llm: LLM,
+        pipeline: list[tuple[LLM, float]],
         bmc: BMC
 ):
     for i in range(start, end):
@@ -121,14 +108,12 @@ def run_experiment(
             inv_smt_solver=z3_inv_smt_solver, 
             predicate_filtering=predicate_filtering, 
             generator=generator, 
-            base_llm=base_llm,
-            failover_llm=failover_llm,
+            pipeline=pipeline,
             formula_handler=formula_handler, 
             result_file_path=sample_result_file_path, 
             inference_timeout=inference_timeout,
             max_verified_candidates=50,
-            failover_activation_ratio=0.5,
-            presence_penalty_increase_rate=0.2
+            presence_penalty_scale=0.2
         )
 
         try:
@@ -138,11 +123,11 @@ def run_experiment(
 
     write_result(results_path)
 
-def get_llm_model(model:str):
+def get_llm(model:str):
     if model in chatgpt_models:
         if OPENAI_API_KEY is None:
             raise ValueError("OPENAI_API_KEY environment variable must be set")
-        return OpenAI(ChatGPTModels(model), OPENAI_API_KEY)
+        return OpenAI(ChatGPTModel(model), OPENAI_API_KEY)
     if model in llama_models:
         return Transformers(LlamaModel(model))
     if model in deepseek_models:
@@ -150,16 +135,37 @@ def get_llm_model(model:str):
             raise ValueError("DEEPSEEK_API_KEY environment variable must be set")
         return OpenAI(DeepseekModel(model), DEEPSEEK_API_KEY, base_url=config.deepseek_api_url)
 
+def parse_range(value):
+    try:
+        start, end = value.split("-")
+        start = int(start)
+        end = int(end)
+        if start > end:
+            raise argparse.ArgumentTypeError("Start value must be less than end value")
+        return (start, end)
+    except ValueError:
+        raise argparse.ArgumentTypeError("Range must be in the form of start-end")
+    
+def parse_pipeline(input: str):
+    pipeline = []
+    for step in input.split(";"):
+        model, threshold = step.split(",")
+        model = model.strip()
+        threshold = float(threshold.strip())
+        if threshold > 1 or threshold < 0:
+            raise argparse.ArgumentTypeError("The threshold value must be between 0 and 1")
+        pipeline.append((model, threshold))
+    return pipeline
+
 def main():
     parser = argparse.ArgumentParser(description="Run benchmarks")
 
-    parser.add_argument("--base-llm-model", type=str, default=ChatGPTModels.GPT_4O.value, help="LLM model to use", choices=all_models)
-    parser.add_argument("--failover-llm-model", type=str, default=DeepseekModel.DEEPSEEK_R1.value, help="LLM model to use when the base model fails to find a solution", choices=all_models)
-    parser.add_argument("--benchmark-range", type=valid_range, default="228-229", help="Range of benchmarks to run")
-    parser.add_argument("--smt-timeout", type=int, default=50, help="Timeout for SMT check")
-    parser.add_argument("--inference-timeout", type=int, default=600, help="Timeout for LLM inference")
+    parser.add_argument("--pipeline", type=parse_pipeline, default=f'{ChatGPTModel.GPT_4O.value}, 0;{DeepseekModel.DEEPSEEK_R1}, 0.5', help="Pipeline of LLM models with their activation thresholds, formatted as: model, threshold; model, threshold;... Example: gpt-4,0;deepseek,0.5")
+    parser.add_argument("--benchmark-range", type=parse_range, default="228-229", help="Range of benchmark indices in the format a-b. Represents the interval (a, b].")
+    parser.add_argument("--inference-timeout", type=int, default=600, help="Timeout for the loop invariant inference")
     parser.add_argument("--results-path", type=str, default="results/test", help="Output directory for results")
-    parser.add_argument("--bmc-timeout", type=float, default=5, help="Timeout for BMC")
+    parser.add_argument("--smt-timeout", type=int, default=50, help="Timeout for the SMT check")
+    parser.add_argument("--bmc-timeout", type=float, default=5, help="Timeout for predicate filtering")
     parser.add_argument("--bmc-max-steps", type=int, default=10, help="Maximum number of steps for BMC")
     parser.add_argument("--log-level", type=str, default="ERROR", choices=["INFO", "CRITICAL", "ERROR", "WARNING", "DEBUG"], help="Logging level")
 
@@ -167,14 +173,13 @@ def main():
 
     logging.basicConfig(level=args.log_level)
 
-    benchmark_range = [int(x) for x in args.benchmark_range.split("-")]
+    benchmark_range = args.benchmark_range
 
-    base_llm = get_llm_model(args.base_llm_model)
-    failover_llm = get_llm_model(args.failover_llm_model)
+    pipeline = [(get_llm(model), threshold) for model, threshold in args.pipeline]
     z3_solver = Z3Solver(args.smt_timeout)
     esbmc = ESBMC(config.esbmc_bin_path, args.bmc_timeout, args.bmc_max_steps)
 
-    run_experiment(benchmark_range[0], benchmark_range[1], args.inference_timeout, args.results_path,  z3_solver, base_llm, failover_llm, esbmc)
+    run_experiment(benchmark_range[0], benchmark_range[1], args.inference_timeout, args.results_path,  z3_solver, pipeline, esbmc)
 
 if __name__ == "__main__":
     main()
