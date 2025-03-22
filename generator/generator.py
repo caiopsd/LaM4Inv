@@ -1,23 +1,14 @@
 from enum import Enum
 import re
-import logging
 
-from llm.llm import LLM
-from smt.solver import Solver as SMTSolver
+from llm.llm import LLM, ChatOptions, Chat
 from inv_smt_solver.counter_example import CounterExample, CounterExampleKind
 from code_handler.code_handler import CodeHandler
 
-class GeneratorPhase(Enum):
-    BASE = 1
-    NOT_REACHABLE = 2
-    NOT_PROVABLE = 3
-    NOT_INDUCTIVE = 4
-
 class Generator:
-    def __init__(self, llm: LLM, smt_solver: SMTSolver, code_handler: CodeHandler):
-        self.llm = llm
-        self.smt_solver = smt_solver
+    def __init__(self, code_handler: CodeHandler):
         self.code_handler = code_handler
+        self._chat = Chat()
 
     def _get_base_llm_prompt(self) -> str:
         return f"""{self.code_handler.get_code()}
@@ -47,7 +38,7 @@ Don't explain. Your answer should contain only '{self.code_handler.get_assert_fo
         return history
     
     def _get_feedback_llm_prompt(self, fail_history: dict[str, CounterExample]) -> str:
-        return f"""Your previous answers where verified and are not correct as they break some properties of a correct loop invariant.
+        return f"""Previous answers were verified and are not correct as they break some properties of a correct loop invariant.
 
  Please generate new loop invariants.
 
@@ -65,11 +56,16 @@ Don't explain. Your answer should contain only '{self.code_handler.get_assert_fo
             expressions.append(match)
         return expressions
 
-    def generate(self, fail_history: dict[str, CounterExample] = None) -> list[str]:
+    def generate(self, llm: LLM, fail_history: dict[str, CounterExample] = None, chat_options: ChatOptions = None) -> list[str]:
         prompt = self._get_base_llm_prompt()
-        if fail_history is not None:
+        if fail_history:
             prompt = self._get_feedback_llm_prompt(fail_history)
-        
-        output = self.llm.chat(prompt)
+        self._chat.add_user_message(prompt)
+
+        output = llm.chat(self._chat, chat_options)
+        self._chat.add_assistant_response(output)
 
         return self._parse_llm_output(output)
+
+    def reset(self):
+        self._chat.reset()
