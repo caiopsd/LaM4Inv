@@ -4,6 +4,7 @@ from enum import Enum
 
 class ChatOptions(BaseModel):
     presence_penalty: float = None
+    temperature: float = None
 
 class ChatMessageRole(Enum):
     user = "user"

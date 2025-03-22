@@ -41,12 +41,20 @@ class OpenAI(LLM):
         if self.model.value in self.unsupported_params and 'presence_penalty' in self.unsupported_params[self.model.value]:
             return NOT_GIVEN
         return 2*options.presence_penalty
+    
+    def _get_temperature(self, options: ChatOptions) -> float:
+        if not options or options.temperature is None:
+            return NOT_GIVEN
+        if self.model.value in self.unsupported_params and 'temperature' in self.unsupported_params[self.model.value]:
+            return NOT_GIVEN
+        return 2*options.temperature
 
     def chat(self, chat: Chat, options: ChatOptions = None) -> str:
         completions = self.client.chat.completions.create(
             model=self.model.value,
             messages=self._get_messages(chat),
             presence_penalty=self._get_presence_penalty(options),
+            temperature=self._get_temperature(options),
         )
         response = completions.choices[0].message.content
         return response
