@@ -22,6 +22,9 @@ class OpenAI(LLM):
     def __init__(self, model: OpenAIModel, api_key: str = None, base_url: str = None):
         self.model = model
         self.client = OpenAIClient(api_key=api_key, base_url=base_url)
+        self.unsupported_params = {
+            ChatGPTModel.GPT_O1_MINI: ["presence_penalty"],
+        }
 
     def _get_messages(self, chat: Chat) -> list:
         return [
@@ -31,12 +34,19 @@ class OpenAI(LLM):
             }
             for message in chat.messages
         ]
+    
+    def _get_presence_penalty(self, options: ChatOptions) -> float:
+        if not options or options.presence_penalty is None:
+            return NOT_GIVEN
+        if self.model.value in self.unsupported_params and 'presence_penalty' in self.unsupported_params[self.model.value]:
+            return NOT_GIVEN
+        return 2*options.presence_penalty
 
     def chat(self, chat: Chat, options: ChatOptions = None) -> str:
         completions = self.client.chat.completions.create(
             model=self.model.value,
             messages=self._get_messages(chat),
-            presence_penalty=2*options.presence_penalty if options and options.presence_penalty else NOT_GIVEN,
+            presence_penalty=self._get_presence_penalty(options),
         )
         response = completions.choices[0].message.content
         return response
