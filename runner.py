@@ -134,7 +134,7 @@ class Runner:
             self.generator.reset()
             self._curr_pipeline_step = next_step
             changed = True
-        return next_step, changed
+        return next_step[0], changed
     
     def run(self, benchmark_id: str) -> tuple[str, float, int]:
         start_time = time.time()
