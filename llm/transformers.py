@@ -1,6 +1,6 @@
 from enum import Enum
 
-from llm.llm import LLM
+from llm.llm import LLM, ChatOptions
 
 class TransformersModel(Enum):
     pass
@@ -34,7 +34,7 @@ class Transformers(LLM):
     def clear(self):
         self.messages = []
 
-    def chat(self, message: str) -> str:
+    def chat(self, message: str, options: ChatOptions = None) -> str:
         self._add_user_message(message)
 
         response = self._pipeline(self.messages, max_new_tokens=512)

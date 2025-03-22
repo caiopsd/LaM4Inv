@@ -102,7 +102,8 @@ def run_experiment(
         inference_timeout: int,
         results_path: str,
         z3_solver: Z3Solver, 
-        llm: LLM,
+        base_llm: LLM,
+        failover_llm: LLM,
         bmc: BMC
 ):
     for i in range(start, end):
@@ -114,11 +115,21 @@ def run_experiment(
         code_handler = get_code_handler(code_file_path)
         formula_handler = CFormulaHandler()
         z3_inv_smt_solver = InvSMTSolver(z3_solver, smt_file_path)
-        generator = Generator(llm, z3_solver, code_handler)
+        generator = Generator(code_handler)
         predicate_filtering = PredicateFiltering(code_handler, formula_handler, bmc)
-        runner = Runner(z3_inv_smt_solver, predicate_filtering, generator, formula_handler, sample_result_file_path, inference_timeout=inference_timeout)
-
-        llm.clear()
+        runner = Runner(
+            inv_smt_solver=z3_inv_smt_solver, 
+            predicate_filtering=predicate_filtering, 
+            generator=generator, 
+            base_llm=base_llm,
+            failover_llm=failover_llm,
+            formula_handler=formula_handler, 
+            result_file_path=sample_result_file_path, 
+            inference_timeout=inference_timeout,
+            max_verified_candidates=50,
+            failover_activation_ratio=0.5,
+            presence_penalty_increase_rate=0.2
+        )
 
         try:
             runner.run(i)
@@ -142,7 +153,8 @@ def get_llm_model(model:str):
 def main():
     parser = argparse.ArgumentParser(description="Run benchmarks")
 
-    parser.add_argument("--llm-model", type=str, default=ChatGPTModels.GPT_4O.value, help="LLM model to use", choices=all_models)
+    parser.add_argument("--base-llm-model", type=str, default=ChatGPTModels.GPT_4O.value, help="LLM model to use", choices=all_models)
+    parser.add_argument("--failover-llm-model", type=str, default=DeepseekModel.DEEPSEEK_R1.value, help="LLM model to use when the base model fails to find a solution", choices=all_models)
     parser.add_argument("--benchmark-range", type=valid_range, default="228-229", help="Range of benchmarks to run")
     parser.add_argument("--smt-timeout", type=int, default=50, help="Timeout for SMT check")
     parser.add_argument("--inference-timeout", type=int, default=600, help="Timeout for LLM inference")
@@ -157,11 +169,12 @@ def main():
 
     benchmark_range = [int(x) for x in args.benchmark_range.split("-")]
 
-    llm = get_llm_model(args.llm_model)  
+    base_llm = get_llm_model(args.base_llm_model)
+    failover_llm = get_llm_model(args.failover_llm_model)
     z3_solver = Z3Solver(args.smt_timeout)
     esbmc = ESBMC(config.esbmc_bin_path, args.bmc_timeout, args.bmc_max_steps)
 
-    run_experiment(benchmark_range[0], benchmark_range[1], args.inference_timeout, args.results_path,  z3_solver, llm, esbmc)
+    run_experiment(benchmark_range[0], benchmark_range[1], args.inference_timeout, args.results_path,  z3_solver, base_llm, failover_llm, esbmc)
 
 if __name__ == "__main__":
     main()

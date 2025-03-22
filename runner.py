@@ -2,6 +2,7 @@ import io
 import os
 import time
 import logging
+import math
 
 from smt.solver import InvalidFormulaError as SMTInvalidFormulaError
 from code_handler.formula_handler import InvalidFormulaError as CInvalidFormulaError
@@ -9,6 +10,7 @@ from inv_smt_solver.inv_smt_solver import InvSMTSolver, CounterExample
 from generator.generator import Generator
 from code_handler.formula_handler import FormulaHandler
 from predicate_filtering.predicate_filtering import PredicateFiltering
+from llm.llm import LLM, ChatOptions
 
 class Runner:
     def __init__(
@@ -16,23 +18,33 @@ class Runner:
         inv_smt_solver: InvSMTSolver, 
         predicate_filtering: PredicateFiltering,
         generator: Generator,
+        base_llm: LLM,
+        failover_llm: LLM,
         formula_handler: FormulaHandler,
         result_file_path: str,
         inference_timeout: int,
-        max_verified_candidates: int = 50
+        max_verified_candidates: int,
+        failover_activation_ratio: float,
+        presence_penalty_increase_rate: float
     ):
         self.inv_smt_solver = inv_smt_solver
         self.predicate_filtering = predicate_filtering
         self.generator = generator
+        self.base_llm = base_llm
+        self.failover_llm = failover_llm
         self.formula_handler = formula_handler
 
         self.inference_timeout = inference_timeout
         self.max_verified_candidates = max_verified_candidates
-
-        self.result_file = self._get_result_file(result_file_path)
+        self.failover_activation_ratio = failover_activation_ratio
+        self.presence_penalty_increase_rate = presence_penalty_increase_rate
 
         self._fail_history = {}
+        self._fail_history_hit = 0
         self._verified_candidates = 0
+        
+        self.result_file = self._get_result_file(result_file_path)
+
         self._logs = []
         self._logger = logging.getLogger(__name__)
 
@@ -52,8 +64,8 @@ class Runner:
             if self._smt_verify(predicate) is None:
                 return predicate
 
-    def _generate_candidates_from_feedback(self) -> list[str]:
-        new_candidates = self.generator.generate(self._fail_history)
+    def _generate_candidates_from_feedback(self, llm: LLM) -> list[str]:
+        new_candidates = self.generator.generate(fail_history=self._fail_history, llm=llm)
         return new_candidates
     
     def _verify(self, candidates) -> str:
@@ -61,6 +73,7 @@ class Runner:
             self._log(f'Verifying candidate: {candidate}')
 
             if candidate in self._fail_history:
+                self._fail_history_hit += 1
                 self._log(f'Candidate already in fail history: {candidate}')
                 continue
 
@@ -123,17 +136,30 @@ class Runner:
 
         self._log(f'# Run Benchmark {benchmark_id}')
 
-        candidates = self.generator.generate()
+        llm = self.base_llm
+        chat_options = ChatOptions()
+
+        candidates = self.generator.generate(llm=llm, chat_options=chat_options)
         solution = self._verify(candidates)
         if solution is not None:
             return self._handle_solution(solution, (time.time() - start_time))
-
+        
         while self._verified_candidates < self.max_verified_candidates:
-            if time.time() - start_time >= self.inference_timeout:
-                self._handle_solution(None, (time.time() - start_time))
+            chat_options.presence_penalty = math.tanh(self._fail_history_hit * self.presence_penalty_increase_rate)
+            self._log(f'Presence penalty: {chat_options.presence_penalty}')
+
+            time_spent = time.time() - start_time
+            consumed_time_budget = time_spent / self.inference_timeout
+            consumed_verification_budget = self._verified_candidates / self.max_verified_candidates
+            if consumed_time_budget >= self.failover_activation_ratio or consumed_verification_budget >= self.failover_activation_ratio:
+                self._log('Activating failover LLM')
+                llm = self.failover_llm
+
+            if time_spent >= self.inference_timeout:
+                self._handle_solution(None, time_spent)
                 raise TimeoutError("Inference timeout")
             
-            candidates = self._generate_candidates_from_feedback()
+            candidates = self._generate_candidates_from_feedback(llm)
             solution = self._verify(candidates)
             self._log(f'Verified {len(candidates)} candidates')
             if solution is not None:

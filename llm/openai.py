@@ -1,8 +1,8 @@
 from enum import Enum
 
-from openai import OpenAI as OpenAIClient
+from openai import OpenAI as OpenAIClient, NOT_GIVEN
 
-from llm.llm import LLM
+from llm.llm import LLM, ChatOptions
 
 class OpenAIModels(Enum):
     pass
@@ -41,13 +41,13 @@ class OpenAI(LLM):
     def clear(self):
         self.messages = []
 
-    def chat(self, message: str) -> str:
+    def chat(self, message: str, options: ChatOptions = None) -> str:
         self._add_user_message(message)
 
         completions = self.client.chat.completions.create(
             model=self.model.value,
             messages=self._get_messages(),
-            presence_penalty=2.0,
+            presence_penalty=2*options.presence_penalty if options and options.presence_penalty else NOT_GIVEN,
         )
         
         response = completions.choices[0].message.content
