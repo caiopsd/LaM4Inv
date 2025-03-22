@@ -57,9 +57,10 @@ Don't explain. Your answer should contain only '{self.code_handler.get_assert_fo
         return expressions
 
     def generate(self, llm: LLM, fail_history: dict[str, CounterExample] = None, chat_options: ChatOptions = None) -> list[str]:
-        prompt = self._get_base_llm_prompt()
         if fail_history:
             prompt = self._get_feedback_llm_prompt(fail_history)
+        else:
+            prompt = self._get_base_llm_prompt()
         self._chat.add_user_message(prompt)
 
         output = llm.chat(self._chat, chat_options)
