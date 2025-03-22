@@ -125,16 +125,15 @@ class Runner:
         self._close()
         return solution, end_time, self._verified_candidates
     
-    def _next_pipeline_step(self, consumed: float) -> tuple[LLM, bool]:
-        changed = False
+    def _next_pipeline_step(self, consumed: float) -> tuple[LLM, float]:
         next_step = next((step for step in self.pipeline if step[1] >= consumed))
         if next_step != self._curr_pipeline_step:
             self._fail_history = {}
             self._fail_history_hit = 0
+            self.last_fails = []
             self.generator.reset()
             self._curr_pipeline_step = next_step
-            changed = True
-        return next_step[0], changed
+        return next_step
     
     def run(self, benchmark_id: str) -> tuple[str, float, int]:
         start_time = time.time()
@@ -145,7 +144,7 @@ class Runner:
         chat_options = ChatOptions()
 
         candidates = self.generator.generate(llm=llm)
-        solution, fails = self._verify(candidates)
+        solution, self.last_fails = self._verify(candidates)
         if solution is not None:
             return self._handle_solution(solution, (time.time() - start_time))
         
@@ -156,19 +155,17 @@ class Runner:
                 raise TimeoutError("Inference timeout")
             
             consumed_time_budget = time_spent / self.inference_timeout
-            llm, changed = self._next_pipeline_step(consumed_time_budget)
-            if changed:
-                fails = []
+            llm, _ = self._next_pipeline_step(consumed_time_budget)
 
             chat_options.presence_penalty = math.tanh(self._fail_history_hit * self.presence_penalty_scale)
             
             self._log(f'Generating loop invariants candidates with model {llm} with presence penalty {chat_options.presence_penalty}')
 
-            candidates = self.generator.generate(feedback=fails, llm=llm, chat_options=chat_options)
+            candidates = self.generator.generate(feedback=self.last_fails, llm=llm, chat_options=chat_options)
 
             self._log(f'Generated {len(candidates)} candidates')
 
-            solution, fails = self._verify(candidates)
+            solution, self.last_fails = self._verify(candidates)
             if solution is not None:
                 return self._handle_solution(solution, (time.time() - start_time))
             
@@ -176,6 +173,7 @@ class Runner:
         self._fail_history = {}
         self._fail_history_hit = 0
         self._verified_candidates = 0
+        self._last_fails = []
         self._logs = []
         self._curr_pipeline_step = None
         self.generator.reset()
