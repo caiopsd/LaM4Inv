@@ -112,7 +112,6 @@ def run_experiment(
             formula_handler=formula_handler, 
             result_file_path=sample_result_file_path, 
             inference_timeout=inference_timeout,
-            max_verified_candidates=50,
             presence_penalty_scale=0.2
         )
 
@@ -160,14 +159,14 @@ def parse_pipeline(input: str):
 def main():
     parser = argparse.ArgumentParser(description="Run benchmarks")
 
-    parser.add_argument("--pipeline", type=parse_pipeline, default=f'{ChatGPTModel.GPT_4O.value}, 0;{DeepseekModel.DEEPSEEK_R1}, 0.5', help="Pipeline of LLM models with their activation thresholds, formatted as: model, threshold; model, threshold;... Example: gpt-4,0;deepseek,0.5")
+    parser.add_argument("--pipeline", type=parse_pipeline, default=f'{ChatGPTModel.GPT_4O_MINI.value}, 0.1;{ChatGPTModel.GPT_4O.value}, 1', help="Pipeline of LLM models with their thresholds, formatted as: model, threshold; model, threshold;... Example: gpt-4,0.5;deepseek,1")
     parser.add_argument("--benchmark-range", type=parse_range, default="228-229", help="Range of benchmark indices in the format a-b. Represents the interval (a, b].")
-    parser.add_argument("--inference-timeout", type=int, default=600, help="Timeout for the loop invariant inference")
+    parser.add_argument("--inference-timeout", type=int, default=180, help="Timeout for the loop invariant inference")
     parser.add_argument("--results-path", type=str, default="results/test", help="Output directory for results")
     parser.add_argument("--smt-timeout", type=int, default=50, help="Timeout for the SMT check")
     parser.add_argument("--bmc-timeout", type=float, default=5, help="Timeout for predicate filtering")
     parser.add_argument("--bmc-max-steps", type=int, default=10, help="Maximum number of steps for BMC")
-    parser.add_argument("--log-level", type=str, default="ERROR", choices=["INFO", "CRITICAL", "ERROR", "WARNING", "DEBUG"], help="Logging level")
+    parser.add_argument("--log-level", type=str, default="INFO", choices=["INFO", "CRITICAL", "ERROR", "WARNING", "DEBUG"], help="Logging level")
 
     args = parser.parse_args()
 

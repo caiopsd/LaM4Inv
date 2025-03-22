@@ -22,17 +22,15 @@ class Runner:
         formula_handler: FormulaHandler,
         result_file_path: str,
         inference_timeout: int,
-        max_verified_candidates: int,
         presence_penalty_scale: float
     ):
         self.inv_smt_solver = inv_smt_solver
         self.predicate_filtering = predicate_filtering
         self.generator = generator
-        self.pipeline = pipeline
+        self.pipeline = sorted(pipeline, key=lambda x: x[1])
         self.formula_handler = formula_handler
 
         self.inference_timeout = inference_timeout
-        self.max_verified_candidates = max_verified_candidates
         self.presence_penalty_scale = presence_penalty_scale
         
         self._result_file = self._get_result_file(result_file_path)
@@ -55,10 +53,6 @@ class Runner:
         for predicate in filtered_predicates:
             if self._smt_verify(predicate) is None:
                 return predicate
-
-    def _generate_candidates_from_feedback(self, llm: LLM) -> list[str]:
-        new_candidates = self.generator.generate(fail_history=self._fail_history, llm=llm)
-        return new_candidates
     
     def _verify(self, candidates) -> str:
         for candidate in candidates:
@@ -120,11 +114,12 @@ class Runner:
     def _handle_solution(self, solution: str, end_time: float):
         self._log_solution(solution, end_time)
         self._write_log()
+        self.reset()
         self._close()
         return solution, end_time, self._verified_candidates
     
     def _next_pipeline_step(self, consumed: float) -> tuple[LLM, float]:
-        next_step = max((step for step in self.pipeline if step[1] <= consumed), key=lambda x: x[1])
+        next_step = next((step for step in self.pipeline if step[1] >= consumed))
         if next_step != self._curr_pipeline_step:
             self._fail_history = {}
             self._fail_history_hit = 0
@@ -140,38 +135,32 @@ class Runner:
         llm, _ = self._next_pipeline_step(0)
         chat_options = ChatOptions()
 
-        candidates = self.generator.generate(llm=llm, chat_options=chat_options)
+        candidates = self.generator.generate(llm=llm)
         solution = self._verify(candidates)
         if solution is not None:
             return self._handle_solution(solution, (time.time() - start_time))
         
-        while self._verified_candidates < self.max_verified_candidates:
+        while True:
             time_spent = time.time() - start_time
             if time_spent >= self.inference_timeout:
                 self._handle_solution(None, time_spent)
                 raise TimeoutError("Inference timeout")
             
             consumed_time_budget = time_spent / self.inference_timeout
-            consumed_verification_budget = self._verified_candidates / self.max_verified_candidates
-            llm, _ = self._next_pipeline_step(max(consumed_time_budget, consumed_verification_budget))
+            llm, _ = self._next_pipeline_step(consumed_time_budget)
 
             chat_options.presence_penalty = math.tanh(self._fail_history_hit * self.presence_penalty_scale)
-            self._log(f'Presence penalty: {chat_options.presence_penalty}')
             
-            self._log(f'Generating loop invariants candidates with model {llm}')
+            self._log(f'Generating loop invariants candidates with model {llm} with presence penalty {chat_options.presence_penalty}')
 
-            candidates = self._generate_candidates_from_feedback(llm)
+            candidates = self.generator.generate(fail_history=self._fail_history, llm=llm, chat_options=chat_options)
 
             self._log(f'Generated {len(candidates)} candidates')
 
             solution = self._verify(candidates)
             if solution is not None:
                 return self._handle_solution(solution, (time.time() - start_time))
-            
-        self.reset()
         
-        return self._handle_solution(None, (time.time() - start_time))
-
     def reset(self):
         self._fail_history = {}
         self._fail_history_hit = 0
