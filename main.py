@@ -165,7 +165,7 @@ def main():
     parser.add_argument("--inference-timeout", type=int, default=180, help="Timeout for the loop invariant inference")
     parser.add_argument("--results-path", type=str, default="results/test", help="Output directory for results")
     parser.add_argument("--smt-timeout", type=int, default=50, help="Timeout for the SMT check")
-    parser.add_argument("--bmc-timeout", type=float, default=5, help="Timeout for predicate filtering")
+    parser.add_argument("--bmc-timeout", type=float, default=5, help="Timeout for BMC")
     parser.add_argument("--bmc-max-steps", type=int, default=10, help="Maximum number of steps for BMC")
     parser.add_argument("--log-level", type=str, default="INFO", choices=["INFO", "CRITICAL", "ERROR", "WARNING", "DEBUG"], help="Logging level")
 
