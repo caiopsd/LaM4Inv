@@ -125,7 +125,7 @@ class Runner:
         self._close()
         return solution, end_time, self._verified_candidates
     
-    def _next_pipeline_step(self, consumed: float) -> tuple[LLM, float]:
+    def _next_pipeline_step(self, consumed: float) -> tuple[LLM, bool]:
         changed = False
         next_step = next((step for step in self.pipeline if step[1] >= consumed))
         if next_step != self._curr_pipeline_step:
