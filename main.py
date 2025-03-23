@@ -163,7 +163,7 @@ def main():
     parser = argparse.ArgumentParser(description="Run benchmarks")
 
     parser.add_argument("--mode", type=str, default="run", choices=["run", "evaluate"], help="Mode of operation. 'run' runs the benchmarks, 'evaluate' evaluates the existing results")
-    parser.add_argument("--pipeline", type=parse_pipeline, default=f'{ChatGPTModel.GPT_4O.value}, 90; {DeepseekModel.DEEPSEEK_R1.value}, 600', help="Pipeline of LLM models with their timeouts in seconds, formatted as: model, timeout; model, timeout;... Example: gpt-4,120;deepseek,300")
+    parser.add_argument("--pipeline", type=parse_pipeline, default=f'{ChatGPTModel.GPT_4O.value}, 90; {ChatGPTModel.GPT_4O_MINI.value}, 45; {DeepseekModel.DEEPSEEK_R1.value}, 600', help="Pipeline of LLM models with their timeouts in seconds, formatted as: model, timeout; model, timeout;... Example: gpt-4,120;deepseek,300")
     parser.add_argument("--benchmark-range", type=parse_range, default="228-229", help="Range of benchmark indices to run in the format a-b. Represents the interval (a, b].")
     parser.add_argument("--results-path", type=str, default="results/test", help="Output directory for results")
     parser.add_argument("--smt-timeout", type=int, default=50, help="Timeout for the SMT check")

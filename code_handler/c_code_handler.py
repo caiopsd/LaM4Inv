@@ -17,7 +17,7 @@ class CCodeHandler(CodeHandler):
         return 'assert(...);'
 
     def get_assert_pattern(self) -> str:
-        return r'assert\(.*\);'
+        return r'assert\s*\(.*?\);'
     
     def add_invariant_assertions(self, formula: str):
         pattern = r'([ \t]*)(while\s*\(.*?\)\s*\{)((?:[^{}]*|\{[^{}]*\})*\})'
