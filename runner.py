@@ -135,6 +135,9 @@ class Runner:
             self._curr_pipeline_step = next_step
         return next_step
     
+    def _get_presence_penalty(self) -> float:
+        return math.tanh(self._fail_history_hit * self.presence_penalty_scale)
+    
     def run(self, benchmark_id: str) -> tuple[str, float, int]:
         start_time = time.time()
 
@@ -157,7 +160,7 @@ class Runner:
             consumed_time_budget = time_spent / self.inference_timeout
             llm, _ = self._next_pipeline_step(consumed_time_budget)
 
-            chat_options.presence_penalty = math.tanh(self._fail_history_hit * self.presence_penalty_scale)
+            chat_options.presence_penalty = self._get_presence_penalty()
             
             self._log(f'Generating loop invariants candidates with model {llm} with presence penalty {chat_options.presence_penalty}')
 
