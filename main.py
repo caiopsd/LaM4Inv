@@ -89,14 +89,13 @@ def write_result(result_path: str):
             f.write(f"Fails: {', '.join(fails)}\n")
                 
 def run_experiment(
-        start: int, 
-        end: int, 
+        benchmarks: list[int],
         results_path: str,
         z3_solver: Z3Solver, 
         pipeline: list[tuple[LLM, float]],
         bmc: BMC
 ):
-    for i in range(start, end):
+    for i in benchmarks:
         graph_file_path = os.path.join(config.benchmarks_graph_path, f'{i}.c.json')
         smt_file_path = os.path.join(config.benchmarks_smt_path, f'{i}.c.smt')
         code_file_path = os.path.join(config.benchmarks_code_path, f'{i}.c')
@@ -137,16 +136,16 @@ def get_llm(model:str):
         return OpenAI(DeepseekModel(model), DEEPSEEK_API_KEY, base_url=config.deepseek_api_url)
     raise ValueError(f"Model {model} not found")
 
-def parse_range(value):
-    try:
-        start, end = value.split("-")
-        start = int(start)
-        end = int(end)
-        if start > end:
-            raise argparse.ArgumentTypeError("Start value must be less than end value")
-        return (start, end)
-    except ValueError:
-        raise argparse.ArgumentTypeError("Range must be in the form of start-end")
+def parse_range(value: str):
+    itens = value.split(",")
+    benchmarks = []
+    for item in itens:
+        if "-" in item:
+            start, end = item.split("-")
+            benchmarks.extend(range(int(start.strip()), int(end.strip()) + 1))
+        else:
+            benchmarks.append(int(item.strip()))
+    return benchmarks
     
 def parse_pipeline(input: str):
     pipeline = []
@@ -164,7 +163,7 @@ def main():
 
     parser.add_argument("--mode", type=str, default="run", choices=["run", "evaluate"], help="Mode of operation. 'run' runs the benchmarks, 'evaluate' evaluates the existing results")
     parser.add_argument("--pipeline", type=parse_pipeline, default=f'{ChatGPTModel.GPT_4O.value}, 90; {ChatGPTModel.GPT_4O_MINI.value}, 45; {DeepseekModel.DEEPSEEK_R1.value}, 600', help="Pipeline of LLM models with their timeouts in seconds, formatted as: model, timeout; model, timeout;... Example: gpt-4,120;deepseek,300")
-    parser.add_argument("--benchmark-range", type=parse_range, default="228-229", help="Range of benchmark indices to run in the format a-b. Represents the interval (a, b].")
+    parser.add_argument("--benchmarks", type=parse_range, default="1-316", help="Benchmarks to run. Specify a list of individual numbers and/or numeric ranges formatted as a-b. Examples: 1,2,3, 1,2,3-5, or 5-10.")
     parser.add_argument("--results-path", type=str, default="results/test", help="Output directory for results")
     parser.add_argument("--smt-timeout", type=int, default=50, help="Timeout for the SMT check")
     parser.add_argument("--bmc-timeout", type=float, default=5, help="Timeout for BMC")
@@ -179,13 +178,11 @@ def main():
 
     logging.basicConfig(level=args.log_level)
 
-    benchmark_range = args.benchmark_range
-
     pipeline = [(get_llm(model), threshold) for model, threshold in args.pipeline]
     z3_solver = Z3Solver(args.smt_timeout)
     esbmc = ESBMC(config.esbmc_bin_path, args.bmc_timeout, args.bmc_max_steps)
 
-    run_experiment(benchmark_range[0], benchmark_range[1], args.results_path,  z3_solver, pipeline, esbmc)
+    run_experiment(args.benchmarks, args.results_path,  z3_solver, pipeline, esbmc)
 
 if __name__ == "__main__":
     main()
