@@ -1,0 +1,16 @@
+15:45:33 23/03/2025 # Run Benchmark 120
+15:45:33 23/03/2025 Verifying candidate: assert(i >= 1 && i <= 9);
+15:45:33 23/03/2025 Found counter example (i = 9, sn = -1), trying predicate filtering
+15:45:33 23/03/2025 Candidate failed verification
+15:45:33 23/03/2025 Adding candidate to fail history: assert(i >= 1 && i <= 9);
+15:45:33 23/03/2025 Verifying candidate: assert(sn == i - 1);
+15:45:33 23/03/2025 Found counter example (i = 10, sn = 9), trying predicate filtering
+15:45:33 23/03/2025 Candidate failed verification
+15:45:33 23/03/2025 Adding candidate to fail history: assert(sn == i - 1);
+15:45:33 23/03/2025 Generating loop invariants candidates with model gpt-4o with presence penalty 0.0
+15:45:33 23/03/2025 Generated 1 candidates
+15:45:33 23/03/2025 Verifying candidate: assert(i >= 1 && i <= 9 && sn == i - 1 && sn >= 0);
+15:45:33 23/03/2025 # Result
+15:45:33 23/03/2025 Solution: assert(i >= 1 && i <= 9 && sn == i - 1 && sn >= 0);
+15:45:33 23/03/2025 Verified candidates: 3
+15:45:33 23/03/2025 Run time: 2.4584546089172363

@@ -1,0 +1,73 @@
+18:30:55 23/03/2025 # Run Benchmark 94
+18:30:55 23/03/2025 Verifying candidate: assert(k >= 0);
+18:30:55 23/03/2025 Found counter example (j = -1, i = 1, n = 0, k = 0), trying predicate filtering
+18:30:55 23/03/2025 Candidate failed verification
+18:30:55 23/03/2025 Adding candidate to fail history: assert(k >= 0);
+18:30:55 23/03/2025 Verifying candidate: assert(n >= 0);
+18:30:55 23/03/2025 Found counter example (j = -1, i = 1, n = 0, k = 0), trying predicate filtering
+18:30:55 23/03/2025 Candidate failed verification
+18:30:55 23/03/2025 Adding candidate to fail history: assert(n >= 0);
+18:30:55 23/03/2025 Verifying candidate: assert(j == i * (i + 1) / 2);
+18:30:55 23/03/2025 Found counter example (j = 0, i = 0, n = -1, k = -2), trying predicate filtering
+18:30:55 23/03/2025 Candidate failed verification
+18:30:55 23/03/2025 Adding candidate to fail history: assert(j == i * (i + 1) / 2);
+18:30:55 23/03/2025 Verifying candidate: assert(i <= n + 1);
+18:30:55 23/03/2025 Found counter example (j = -2, i = 0, n = -1, k = 0), trying predicate filtering
+18:30:55 23/03/2025 Candidate failed verification
+18:30:55 23/03/2025 Adding candidate to fail history: assert(i <= n + 1);
+18:30:55 23/03/2025 Generating loop invariants candidates with model deepseek-reasoner with presence penalty 0.0
+18:30:55 23/03/2025 Generated 4 candidates
+18:30:55 23/03/2025 Verifying candidate: assert(k >= 0);
+18:30:55 23/03/2025 Candidate already in fail history: assert(k >= 0);
+18:30:55 23/03/2025 Verifying candidate: assert(n >= 0);
+18:30:55 23/03/2025 Candidate already in fail history: assert(n >= 0);
+18:30:55 23/03/2025 Verifying candidate: assert(2 * j == i * (i + 1));
+18:30:55 23/03/2025 Found counter example (k = -8, n = -4, j = 3, i = -3), trying predicate filtering
+18:30:55 23/03/2025 Candidate failed verification
+18:30:55 23/03/2025 Adding candidate to fail history: assert(2 * j == i * (i + 1));
+18:30:55 23/03/2025 Verifying candidate: assert(i <= n + 1);
+18:30:55 23/03/2025 Candidate already in fail history: assert(i <= n + 1);
+18:30:55 23/03/2025 Generating loop invariants candidates with model deepseek-reasoner with presence penalty 0.5370495669980354
+18:30:55 23/03/2025 Generated 4 candidates
+18:30:55 23/03/2025 Verifying candidate: assert(2 * j == i * (i + 1) + k - k);
+18:30:55 23/03/2025 Found counter example (k = -12, n = -5, i = -4, j = 6), trying predicate filtering
+18:30:55 23/03/2025 Candidate failed verification
+18:30:55 23/03/2025 Adding candidate to fail history: assert(2 * j == i * (i + 1) + k - k);
+18:30:55 23/03/2025 Verifying candidate: assert(i >= 0);
+18:30:55 23/03/2025 Found counter example (j = -2, i = 0, n = -1, k = 0), trying predicate filtering
+18:30:55 23/03/2025 Candidate failed verification
+18:30:55 23/03/2025 Adding candidate to fail history: assert(i >= 0);
+18:30:55 23/03/2025 Verifying candidate: assert(j >= 0);
+18:30:55 23/03/2025 Found counter example (n = -2, k = 0, j = 0, i = -2), trying predicate filtering
+18:30:55 23/03/2025 Candidate failed verification
+18:30:55 23/03/2025 Adding candidate to fail history: assert(j >= 0);
+18:30:55 23/03/2025 Verifying candidate: assert(i <= n + 1);
+18:30:55 23/03/2025 Candidate already in fail history: assert(i <= n + 1);
+18:30:55 23/03/2025 Generating loop invariants candidates with model deepseek-reasoner with presence penalty 0.6640367702678491
+18:30:55 23/03/2025 Generated 4 candidates
+18:30:55 23/03/2025 Verifying candidate: assert(2 * j == i * (i + 1));
+18:30:55 23/03/2025 Candidate already in fail history: assert(2 * j == i * (i + 1));
+18:30:55 23/03/2025 Verifying candidate: assert(i >= 0);
+18:30:55 23/03/2025 Candidate already in fail history: assert(i >= 0);
+18:30:55 23/03/2025 Verifying candidate: assert(j >= i);
+18:30:55 23/03/2025 Found counter example (i = -2, j = -1, k = 0, n = -2), trying predicate filtering
+18:30:55 23/03/2025 Candidate failed verification
+18:30:55 23/03/2025 Adding candidate to fail history: assert(j >= i);
+18:30:55 23/03/2025 Verifying candidate: assert(k + j >= 0);
+18:30:55 23/03/2025 Found counter example (i = -2, k = 0, j = 0, n = -2), trying predicate filtering
+18:30:55 23/03/2025 Candidate failed verification
+18:30:55 23/03/2025 Adding candidate to fail history: assert(k + j >= 0);
+18:30:55 23/03/2025 Generating loop invariants candidates with model deepseek-reasoner with presence penalty 0.8336546070121553
+18:30:55 23/03/2025 Generated 4 candidates
+18:30:55 23/03/2025 Verifying candidate: assert(2 * j == i * (i + 1));
+18:30:55 23/03/2025 Candidate already in fail history: assert(2 * j == i * (i + 1));
+18:30:55 23/03/2025 Verifying candidate: assert(n >= 0);
+18:30:55 23/03/2025 Candidate already in fail history: assert(n >= 0);
+18:30:55 23/03/2025 Verifying candidate: assert(k >= 0);
+18:30:55 23/03/2025 Candidate already in fail history: assert(k >= 0);
+18:30:55 23/03/2025 Verifying candidate: assert(i <= n + 1);
+18:30:55 23/03/2025 Candidate already in fail history: assert(i <= n + 1);
+18:30:55 23/03/2025 # Result
+18:30:55 23/03/2025 No solution found
+18:30:55 23/03/2025 Verified candidates: 10
+18:30:55 23/03/2025 Run time: 674.8223176002502

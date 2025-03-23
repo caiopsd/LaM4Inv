@@ -1,0 +1,138 @@
+15:20:29 23/03/2025 # Run Benchmark 110
+15:20:29 23/03/2025 Verifying candidate: assert(sn == i - 1);
+15:20:29 23/03/2025 Found counter example (i = 0, sn = -1, n = -2), trying predicate filtering
+15:20:29 23/03/2025 Candidate failed verification
+15:20:29 23/03/2025 Adding candidate to fail history: assert(sn == i - 1);
+15:20:29 23/03/2025 Verifying candidate: assert(i >= 1);
+15:20:29 23/03/2025 Found counter example (i = 1, sn = 1, n = 0), trying predicate filtering
+15:20:29 23/03/2025 Candidate failed verification
+15:20:29 23/03/2025 Adding candidate to fail history: assert(i >= 1);
+15:20:29 23/03/2025 Verifying candidate: assert(n >= 1);
+15:20:29 23/03/2025 Found counter example (i = 2, sn = -1, n = 1), trying predicate filtering
+15:20:29 23/03/2025 Candidate failed verification
+15:20:29 23/03/2025 Adding candidate to fail history: assert(n >= 1);
+15:20:29 23/03/2025 Generating loop invariants candidates with model gpt-4o with presence penalty 0.0
+15:20:29 23/03/2025 Generated 2 candidates
+15:20:29 23/03/2025 Verifying candidate: assert(sn == i - 1 || n < 1);
+15:20:29 23/03/2025 Found counter example (i = 1, sn = -1, n = 0), trying predicate filtering
+15:20:29 23/03/2025 Candidate failed verification
+15:20:29 23/03/2025 Adding candidate to fail history: assert(sn == i - 1 || n < 1);
+15:20:29 23/03/2025 Verifying candidate: assert(i <= n + 1);
+15:20:29 23/03/2025 Found counter example (i = -1, sn = -1, n = -2), trying predicate filtering
+15:20:29 23/03/2025 Candidate failed verification
+15:20:29 23/03/2025 Adding candidate to fail history: assert(i <= n + 1);
+15:20:29 23/03/2025 Generating loop invariants candidates with model gpt-4o with presence penalty 0.0
+15:20:29 23/03/2025 Generated 2 candidates
+15:20:29 23/03/2025 Verifying candidate: assert(sn <= n);
+15:20:29 23/03/2025 Found counter example (i = 0, n = 0, sn = 0), trying predicate filtering
+15:20:29 23/03/2025 Candidate failed verification
+15:20:29 23/03/2025 Adding candidate to fail history: assert(sn <= n);
+15:20:29 23/03/2025 Verifying candidate: assert(i == sn + 1);
+15:20:29 23/03/2025 Found counter example (i = 0, sn = -1, n = -2), trying predicate filtering
+15:20:29 23/03/2025 Candidate failed verification
+15:20:29 23/03/2025 Adding candidate to fail history: assert(i == sn + 1);
+15:20:29 23/03/2025 Generating loop invariants candidates with model gpt-4o with presence penalty 0.0
+15:20:29 23/03/2025 Generated 2 candidates
+15:20:29 23/03/2025 Verifying candidate: assert(sn == i - 1 || sn == 0);
+15:20:29 23/03/2025 Found counter example (i = 2, sn = 0, n = 2), trying predicate filtering
+15:20:29 23/03/2025 Candidate failed verification
+15:20:29 23/03/2025 Adding candidate to fail history: assert(sn == i - 1 || sn == 0);
+15:20:29 23/03/2025 Verifying candidate: assert(i >= 1 || sn == 0);
+15:20:29 23/03/2025 Found counter example (sn = 0, i = -1, n = -1), trying predicate filtering
+15:20:29 23/03/2025 Candidate failed verification
+15:20:29 23/03/2025 Adding candidate to fail history: assert(i >= 1 || sn == 0);
+15:20:29 23/03/2025 Generating loop invariants candidates with model gpt-4o with presence penalty 0.0
+15:20:29 23/03/2025 Generated 2 candidates
+15:20:29 23/03/2025 Verifying candidate: assert(i >= 1);
+15:20:29 23/03/2025 Candidate already in fail history: assert(i >= 1);
+15:20:29 23/03/2025 Verifying candidate: assert(sn == i - 1 || i == 1);
+15:20:29 23/03/2025 Found counter example (n = 1, sn = -1, i = 1), trying predicate filtering
+15:20:29 23/03/2025 Candidate failed verification
+15:20:29 23/03/2025 Adding candidate to fail history: assert(sn == i - 1 || i == 1);
+15:20:29 23/03/2025 Generating loop invariants candidates with model gpt-4o with presence penalty 0.197375320224904
+15:20:29 23/03/2025 Generated 2 candidates
+15:20:29 23/03/2025 Verifying candidate: assert(i >= 1 && i <= n + 1);
+15:20:29 23/03/2025 Found counter example (i = 1, sn = -1, n = 0), trying predicate filtering
+15:20:29 23/03/2025 Candidate failed verification
+15:20:29 23/03/2025 Adding candidate to fail history: assert(i >= 1 && i <= n + 1);
+15:20:29 23/03/2025 Verifying candidate: assert(sn == i - 1 || i == 1 && sn == 0);
+15:20:29 23/03/2025 Found counter example (i = 0, sn = -1, n = -2), trying predicate filtering
+15:20:29 23/03/2025 Candidate failed verification
+15:20:29 23/03/2025 Adding candidate to fail history: assert(sn == i - 1 || i == 1 && sn == 0);
+15:20:29 23/03/2025 Generating loop invariants candidates with model gpt-4o with presence penalty 0.197375320224904
+15:20:29 23/03/2025 Generated 2 candidates
+15:20:29 23/03/2025 Verifying candidate: assert(sn == i - 1);
+15:20:29 23/03/2025 Candidate already in fail history: assert(sn == i - 1);
+15:20:29 23/03/2025 Verifying candidate: assert(i >= 1 && i <= n + 1);
+15:20:29 23/03/2025 Candidate already in fail history: assert(i >= 1 && i <= n + 1);
+15:20:29 23/03/2025 Generating loop invariants candidates with model gpt-4o with presence penalty 0.5370495669980354
+15:20:29 23/03/2025 Generated 2 candidates
+15:20:29 23/03/2025 Verifying candidate: assert(sn + n == i - 1);
+15:20:29 23/03/2025 Found counter example (i = 1, sn = 0, n = 1), trying predicate filtering
+15:20:29 23/03/2025 Candidate failed verification
+15:20:29 23/03/2025 Adding candidate to fail history: assert(sn + n == i - 1);
+15:20:29 23/03/2025 Verifying candidate: assert(n >= 1);
+15:20:29 23/03/2025 Candidate already in fail history: assert(n >= 1);
+15:20:29 23/03/2025 Generating loop invariants candidates with model gpt-4o with presence penalty 0.6640367702678491
+15:20:29 23/03/2025 Generated 2 candidates
+15:20:29 23/03/2025 Verifying candidate: assert(i >= 1);
+15:20:29 23/03/2025 Candidate already in fail history: assert(i >= 1);
+15:20:29 23/03/2025 Verifying candidate: assert(sn <= n && sn >= 0);
+15:20:29 23/03/2025 Found counter example (n = 0, sn = 0, i = 0), trying predicate filtering
+15:20:29 23/03/2025 Candidate failed verification
+15:20:29 23/03/2025 Adding candidate to fail history: assert(sn <= n && sn >= 0);
+15:20:29 23/03/2025 Generating loop invariants candidates with model gpt-4o with presence penalty 0.7615941559557649
+15:20:29 23/03/2025 Generated 2 candidates
+15:20:29 23/03/2025 Verifying candidate: assert(sn == n || i <= n);
+15:20:29 23/03/2025 Found counter example (n = 0, sn = 0, i = 0), trying predicate filtering
+15:20:29 23/03/2025 Candidate failed verification
+15:20:29 23/03/2025 Adding candidate to fail history: assert(sn == n || i <= n);
+15:20:29 23/03/2025 Verifying candidate: assert(i == sn + 1 || sn == 0);
+15:20:29 23/03/2025 Found counter example (sn = 0, i = 0, n = 0), trying predicate filtering
+15:20:29 23/03/2025 Candidate failed verification
+15:20:29 23/03/2025 Adding candidate to fail history: assert(i == sn + 1 || sn == 0);
+15:20:29 23/03/2025 Generating loop invariants candidates with model gpt-4o with presence penalty 0.7615941559557649
+15:20:29 23/03/2025 Generated 2 candidates
+15:20:29 23/03/2025 Verifying candidate: assert(i >= 1 && i <= n + 1);
+15:20:29 23/03/2025 Candidate already in fail history: assert(i >= 1 && i <= n + 1);
+15:20:29 23/03/2025 Verifying candidate: assert(sn == i - 1 || i > n);
+15:20:29 23/03/2025 Found counter example (i = 1, sn = -1, n = 0), trying predicate filtering
+15:20:29 23/03/2025 Candidate failed verification
+15:20:29 23/03/2025 Adding candidate to fail history: assert(sn == i - 1 || i > n);
+15:20:29 23/03/2025 Generating loop invariants candidates with model gpt-4o with presence penalty 0.8336546070121553
+15:20:29 23/03/2025 Generated 2 candidates
+15:20:29 23/03/2025 Verifying candidate: assert(sn == i - 1);
+15:20:29 23/03/2025 Candidate already in fail history: assert(sn == i - 1);
+15:20:29 23/03/2025 Verifying candidate: assert(i >= 1 || (i <= n + 1 && sn == 0));
+15:20:29 23/03/2025 Found counter example (n = 0, sn = 0, i = -1), trying predicate filtering
+15:20:29 23/03/2025 Candidate failed verification
+15:20:29 23/03/2025 Adding candidate to fail history: assert(i >= 1 || (i <= n + 1 && sn == 0));
+15:20:29 23/03/2025 Generating loop invariants candidates with model gpt-4o with presence penalty 0.8853516482022625
+15:20:29 23/03/2025 Generated 2 candidates
+15:20:29 23/03/2025 Verifying candidate: assert(i >= 1 && i <= n + 1);
+15:20:29 23/03/2025 Candidate already in fail history: assert(i >= 1 && i <= n + 1);
+15:20:29 23/03/2025 Verifying candidate: assert(sn == i - 1 || sn == 0 && i == 1);
+15:20:29 23/03/2025 Found counter example (i = 0, sn = -1, n = -2), trying predicate filtering
+15:20:29 23/03/2025 Candidate failed verification
+15:20:29 23/03/2025 Adding candidate to fail history: assert(sn == i - 1 || sn == 0 && i == 1);
+15:20:29 23/03/2025 Generating loop invariants candidates with model gpt-4o with presence penalty 0.9216685544064713
+15:20:29 23/03/2025 Generated 2 candidates
+15:20:29 23/03/2025 Verifying candidate: assert(sn == i - 1);
+15:20:29 23/03/2025 Candidate already in fail history: assert(sn == i - 1);
+15:20:29 23/03/2025 Verifying candidate: assert(i <= n + 1);
+15:20:29 23/03/2025 Candidate already in fail history: assert(i <= n + 1);
+15:20:29 23/03/2025 Generating loop invariants candidates with model gpt-4o with presence penalty 0.9640275800758169
+15:20:29 23/03/2025 Generated 2 candidates
+15:20:29 23/03/2025 Verifying candidate: assert(sn <= n);
+15:20:29 23/03/2025 Candidate already in fail history: assert(sn <= n);
+15:20:29 23/03/2025 Verifying candidate: assert(i >= 1 || sn == 0);
+15:20:29 23/03/2025 Candidate already in fail history: assert(i >= 1 || sn == 0);
+15:20:29 23/03/2025 Generating loop invariants candidates with model gpt-4o with presence penalty 0.9836748576936802
+15:20:29 23/03/2025 Generated 2 candidates
+15:20:29 23/03/2025 Verifying candidate: assert(i >= 1);
+15:20:29 23/03/2025 Candidate already in fail history: assert(i >= 1);
+15:20:29 23/03/2025 Verifying candidate: assert(sn == i - 1 && sn <= n);
+15:20:29 23/03/2025 # Result
+15:20:29 23/03/2025 Solution: assert(sn == i - 1 && sn <= n);
+15:20:29 23/03/2025 Verified candidates: 20
+15:20:29 23/03/2025 Run time: 23.690009832382202

@@ -1,0 +1,24 @@
+14:56:22 23/03/2025 # Run Benchmark 88
+14:56:22 23/03/2025 Verifying candidate: assert(y == x + 1);
+14:56:22 23/03/2025 Found counter example (tmp = 0, lock = 1, y = 0, x = -1), trying predicate filtering
+14:56:22 23/03/2025 Candidate failed verification
+14:56:22 23/03/2025 Adding candidate to fail history: assert(y == x + 1);
+14:56:22 23/03/2025 Verifying candidate: assert(lock == 0 || lock == 1);
+14:56:22 23/03/2025 Found counter example (lock = 0, y = 0, x = 0), trying predicate filtering
+14:56:22 23/03/2025 Invalid SMT formula for candidate: assert(lock == 0 || lock == 1);
+14:56:22 23/03/2025 Generating loop invariants candidates with model gpt-4o with presence penalty 0.0
+14:56:22 23/03/2025 Generated 2 candidates
+14:56:22 23/03/2025 Verifying candidate: assert(y >= x);
+14:56:22 23/03/2025 Found counter example (lock = 2, y = 0, x = 0), trying predicate filtering
+14:56:22 23/03/2025 Candidate failed verification
+14:56:22 23/03/2025 Adding candidate to fail history: assert(y >= x);
+14:56:22 23/03/2025 Verifying candidate: assert(lock == 0 || (lock == 1 && x == y));
+14:56:22 23/03/2025 Found counter example (lock = 0, y = 0, x = 0), trying predicate filtering
+14:56:22 23/03/2025 Invalid SMT formula for candidate: assert(lock == 0 || (lock == 1 && x == y));
+14:56:22 23/03/2025 Generating loop invariants candidates with model gpt-4o with presence penalty 0.0
+14:56:22 23/03/2025 Generated 1 candidates
+14:56:22 23/03/2025 Verifying candidate: assert((lock == 1 && x == y) || (lock == 0 && y > x));
+14:56:22 23/03/2025 # Result
+14:56:22 23/03/2025 Solution: assert((lock == 1 && x == y) || (lock == 0 && y > x));
+14:56:22 23/03/2025 Verified candidates: 5
+14:56:22 23/03/2025 Run time: 6.209535360336304

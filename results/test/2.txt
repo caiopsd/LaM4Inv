@@ -1,0 +1,10 @@
+19:05:33 22/03/2025 # Run Benchmark 2
+19:05:33 22/03/2025 Verifying candidate: assert(y <= 1000);
+19:05:33 22/03/2025 Found counter example (y = 1000, x = 999), trying predicate filtering
+19:05:33 22/03/2025 Candidate failed verification
+19:05:33 22/03/2025 Adding candidate to fail history: assert(y <= 1000);
+19:05:33 22/03/2025 Verifying candidate: assert(x == (y * (y - 1) / 2) + 1);
+19:05:33 22/03/2025 # Result
+19:05:33 22/03/2025 Solution: assert(x == (y * (y - 1) / 2) + 1);
+19:05:33 22/03/2025 Verified candidates: 2
+19:05:33 22/03/2025 Run time: 1.4224295616149902

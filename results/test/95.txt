@@ -1,0 +1,22 @@
+15:19:28 23/03/2025 # Run Benchmark 95
+15:19:28 23/03/2025 Verifying candidate: assert(y == 1);
+15:19:28 23/03/2025 Found counter example (i = 0, y = 1, x = -1, j = 1), trying predicate filtering
+15:19:28 23/03/2025 Candidate failed verification
+15:19:28 23/03/2025 Adding candidate to fail history: assert(y == 1);
+15:19:28 23/03/2025 Verifying candidate: assert(i == j);
+15:19:28 23/03/2025 Found counter example (y = 2, x = -2, j = -2, i = -2), trying predicate filtering
+15:19:28 23/03/2025 Candidate failed verification
+15:19:28 23/03/2025 Adding candidate to fail history: assert(i == j);
+15:19:28 23/03/2025 Generating loop invariants candidates with model gpt-4o with presence penalty 0.0
+15:19:28 23/03/2025 Generated 1 candidates
+15:19:28 23/03/2025 Verifying candidate: assert(i == j + y - 1);
+15:19:28 23/03/2025 Found counter example (y = -1, i = 0, x = 0, j = 2), trying predicate filtering
+15:19:28 23/03/2025 Candidate failed verification
+15:19:28 23/03/2025 Adding candidate to fail history: assert(i == j + y - 1);
+15:19:28 23/03/2025 Generating loop invariants candidates with model gpt-4o with presence penalty 0.0
+15:19:28 23/03/2025 Generated 2 candidates
+15:19:28 23/03/2025 Verifying candidate: assert(j == i * y);
+15:19:28 23/03/2025 # Result
+15:19:28 23/03/2025 Solution: assert(j == i * y);
+15:19:28 23/03/2025 Verified candidates: 4
+15:19:28 23/03/2025 Run time: 3.859222412109375

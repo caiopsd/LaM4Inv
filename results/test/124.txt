@@ -1,0 +1,6 @@
+15:54:01 23/03/2025 # Run Benchmark 124
+15:54:01 23/03/2025 Verifying candidate: assert(i == x + j - y);
+15:54:01 23/03/2025 # Result
+15:54:01 23/03/2025 Solution: assert(i == x + j - y);
+15:54:01 23/03/2025 Verified candidates: 1
+15:54:01 23/03/2025 Run time: 0.9175238609313965

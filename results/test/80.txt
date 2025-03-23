@@ -1,0 +1,14 @@
+14:42:16 23/03/2025 # Run Benchmark 80
+14:42:16 23/03/2025 Verifying candidate: assert(x >= 0);
+14:42:16 23/03/2025 Found counter example (y = 1, i = 0, x = 0), trying predicate filtering
+14:42:16 23/03/2025 Candidate failed verification
+14:42:16 23/03/2025 Adding candidate to fail history: assert(x >= 0);
+14:42:16 23/03/2025 Verifying candidate: assert(y >= 0);
+14:42:16 23/03/2025 Found counter example (y = 0, i = -1, x = -1), trying predicate filtering
+14:42:16 23/03/2025 Candidate failed verification
+14:42:16 23/03/2025 Adding candidate to fail history: assert(y >= 0);
+14:42:16 23/03/2025 Verifying candidate: assert(x >= y);
+14:42:16 23/03/2025 # Result
+14:42:16 23/03/2025 Solution: assert(x >= y);
+14:42:16 23/03/2025 Verified candidates: 3
+14:42:16 23/03/2025 Run time: 0.8683390617370605

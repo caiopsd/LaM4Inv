@@ -1,0 +1,6 @@
+Total benchmarks: 130
+Successful solutions: 126
+Success rate: 96.92%
+Average time: 94.04 seconds
+Average verified candidates: 11.65
+Fails: 94, 130, 67, 24

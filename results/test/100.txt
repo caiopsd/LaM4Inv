@@ -1,0 +1,90 @@
+15:19:42 23/03/2025 # Run Benchmark 100
+15:19:42 23/03/2025 Verifying candidate: assert(n >= 0);
+15:19:42 23/03/2025 Found counter example (y = 1, x = 0, n = 0), trying predicate filtering
+15:19:42 23/03/2025 Candidate failed verification
+15:19:42 23/03/2025 Adding candidate to fail history: assert(n >= 0);
+15:19:42 23/03/2025 Verifying candidate: assert(x + y == n);
+15:19:42 23/03/2025 Found counter example (y = 0, x = -1, n = -1), trying predicate filtering
+15:19:42 23/03/2025 Candidate failed verification
+15:19:42 23/03/2025 Adding candidate to fail history: assert(x + y == n);
+15:19:42 23/03/2025 Generating loop invariants candidates with model gpt-4o with presence penalty 0.0
+15:19:42 23/03/2025 Generated 2 candidates
+15:19:42 23/03/2025 Verifying candidate: assert(x >= 0);
+15:19:42 23/03/2025 Found counter example (y = 1, x = 0, n = 0), trying predicate filtering
+15:19:42 23/03/2025 Candidate failed verification
+15:19:42 23/03/2025 Adding candidate to fail history: assert(x >= 0);
+15:19:42 23/03/2025 Verifying candidate: assert(y <= n);
+15:19:42 23/03/2025 Found counter example (n = 0, x = 1, y = 0), trying predicate filtering
+15:19:42 23/03/2025 Candidate failed verification
+15:19:42 23/03/2025 Adding candidate to fail history: assert(y <= n);
+15:19:42 23/03/2025 Generating loop invariants candidates with model gpt-4o with presence penalty 0.0
+15:19:42 23/03/2025 Generated 2 candidates
+15:19:42 23/03/2025 Verifying candidate: assert(n == x + y);
+15:19:42 23/03/2025 Found counter example (y = 0, x = -1, n = -1), trying predicate filtering
+15:19:42 23/03/2025 Candidate failed verification
+15:19:42 23/03/2025 Adding candidate to fail history: assert(n == x + y);
+15:19:42 23/03/2025 Verifying candidate: assert(y >= 0);
+15:19:42 23/03/2025 Found counter example (y = 0, x = 0, n = 1), trying predicate filtering
+15:19:42 23/03/2025 Candidate failed verification
+15:19:42 23/03/2025 Adding candidate to fail history: assert(y >= 0);
+15:19:42 23/03/2025 Generating loop invariants candidates with model gpt-4o with presence penalty 0.0
+15:19:42 23/03/2025 Generated 2 candidates
+15:19:42 23/03/2025 Verifying candidate: assert(n - x == y);
+15:19:42 23/03/2025 Found counter example (y = 0, n = -1, x = -1), trying predicate filtering
+15:19:42 23/03/2025 Candidate failed verification
+15:19:42 23/03/2025 Adding candidate to fail history: assert(n - x == y);
+15:19:42 23/03/2025 Verifying candidate: assert(x >= 0 && y >= 0);
+15:19:42 23/03/2025 Found counter example (y = 0, x = 0, n = 1), trying predicate filtering
+15:19:42 23/03/2025 Candidate failed verification
+15:19:42 23/03/2025 Adding candidate to fail history: assert(x >= 0 && y >= 0);
+15:19:42 23/03/2025 Generating loop invariants candidates with model gpt-4o with presence penalty 0.0
+15:19:42 23/03/2025 Generated 2 candidates
+15:19:42 23/03/2025 Verifying candidate: assert(x == n - y);
+15:19:42 23/03/2025 Found counter example (y = 0, n = -1, x = -1), trying predicate filtering
+15:19:42 23/03/2025 Candidate failed verification
+15:19:42 23/03/2025 Adding candidate to fail history: assert(x == n - y);
+15:19:42 23/03/2025 Verifying candidate: assert(x >= 0 && n >= y);
+15:19:42 23/03/2025 Found counter example (n = -1, x = 1, y = -1), trying predicate filtering
+15:19:42 23/03/2025 Candidate failed verification
+15:19:42 23/03/2025 Adding candidate to fail history: assert(x >= 0 && n >= y);
+15:19:42 23/03/2025 Generating loop invariants candidates with model gpt-4o with presence penalty 0.0
+15:19:42 23/03/2025 Generated 2 candidates
+15:19:42 23/03/2025 Verifying candidate: assert(y == n - x);
+15:19:42 23/03/2025 Found counter example (y = 0, n = -1, x = -1), trying predicate filtering
+15:19:42 23/03/2025 Candidate failed verification
+15:19:42 23/03/2025 Adding candidate to fail history: assert(y == n - x);
+15:19:42 23/03/2025 Verifying candidate: assert(x >= 0 && y >= 0 && y <= n);
+15:19:42 23/03/2025 Found counter example (n = 0, x = 1, y = 0), trying predicate filtering
+15:19:42 23/03/2025 Candidate failed verification
+15:19:42 23/03/2025 Adding candidate to fail history: assert(x >= 0 && y >= 0 && y <= n);
+15:19:42 23/03/2025 Generating loop invariants candidates with model gpt-4o with presence penalty 0.0
+15:19:42 23/03/2025 Generated 2 candidates
+15:19:42 23/03/2025 Verifying candidate: assert(x + y == n);
+15:19:42 23/03/2025 Candidate already in fail history: assert(x + y == n);
+15:19:42 23/03/2025 Verifying candidate: assert(x >= 0 && y >= 0);
+15:19:42 23/03/2025 Candidate already in fail history: assert(x >= 0 && y >= 0);
+15:19:42 23/03/2025 Generating loop invariants candidates with model gpt-4o with presence penalty 0.3799489622552249
+15:19:42 23/03/2025 Generated 2 candidates
+15:19:42 23/03/2025 Verifying candidate: assert(y == n - x);
+15:19:42 23/03/2025 Candidate already in fail history: assert(y == n - x);
+15:19:42 23/03/2025 Verifying candidate: assert(x >= 0 && x <= n);
+15:19:42 23/03/2025 Found counter example (y = 1, x = 0, n = 0), trying predicate filtering
+15:19:42 23/03/2025 Candidate failed verification
+15:19:42 23/03/2025 Adding candidate to fail history: assert(x >= 0 && x <= n);
+15:19:42 23/03/2025 Generating loop invariants candidates with model gpt-4o with presence penalty 0.5370495669980354
+15:19:42 23/03/2025 Generated 2 candidates
+15:19:42 23/03/2025 Verifying candidate: assert(n == x + y);
+15:19:42 23/03/2025 Candidate already in fail history: assert(n == x + y);
+15:19:42 23/03/2025 Verifying candidate: assert(x >= 0 && y <= n);
+15:19:42 23/03/2025 Found counter example (n = 0, x = 1, y = 0), trying predicate filtering
+15:19:42 23/03/2025 Candidate failed verification
+15:19:42 23/03/2025 Adding candidate to fail history: assert(x >= 0 && y <= n);
+15:19:42 23/03/2025 Generating loop invariants candidates with model gpt-4o with presence penalty 0.6640367702678491
+15:19:42 23/03/2025 Generated 2 candidates
+15:19:42 23/03/2025 Verifying candidate: assert(x >= 0);
+15:19:42 23/03/2025 Candidate already in fail history: assert(x >= 0);
+15:19:42 23/03/2025 Verifying candidate: assert(n == y + x && y <= n);
+15:19:42 23/03/2025 # Result
+15:19:42 23/03/2025 Solution: assert(n == y + x && y <= n);
+15:19:42 23/03/2025 Verified candidates: 15
+15:19:42 23/03/2025 Run time: 10.754281044006348

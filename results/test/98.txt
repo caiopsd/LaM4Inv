@@ -1,0 +1,6 @@
+15:19:30 23/03/2025 # Run Benchmark 98
+15:19:30 23/03/2025 Verifying candidate: assert(j == i * y);
+15:19:30 23/03/2025 # Result
+15:19:30 23/03/2025 Solution: assert(j == i * y);
+15:19:30 23/03/2025 Verified candidates: 1
+15:19:30 23/03/2025 Run time: 0.721031665802002

@@ -1,0 +1,13 @@
+20:55:23 23/03/2025 # Run Benchmark 130
+20:55:23 23/03/2025 Verifying candidate: assert(x2 >= x1);
+20:55:23 23/03/2025 Found counter example (x2 = 1, d3 = -1, d1 = -1, x3 = 1, x1 = 1, d2 = 1), trying predicate filtering
+20:55:23 23/03/2025 Candidate failed verification
+20:55:23 23/03/2025 Adding candidate to fail history: assert(x2 >= x1);
+20:55:23 23/03/2025 Verifying candidate: assert(x3 >= x1);
+20:55:23 23/03/2025 Found counter example (x2 = 1, x3 = 1, d3 = 1, d1 = -1, x1 = 1, d2 = 1), trying predicate filtering
+20:55:23 23/03/2025 Candidate failed verification
+20:55:23 23/03/2025 Adding candidate to fail history: assert(x3 >= x1);
+20:55:23 23/03/2025 # Result
+20:55:23 23/03/2025 No solution found
+20:55:23 23/03/2025 Verified candidates: 2
+20:55:23 23/03/2025 Run time: 219.801598072052

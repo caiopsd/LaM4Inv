@@ -1,0 +1,16 @@
+16:43:10 23/03/2025 # Run Benchmark 54
+16:43:10 23/03/2025 Verifying candidate: assert(c <= n);
+16:43:10 23/03/2025 Found counter example (n = -1, tmp = 0, c = -1), trying predicate filtering
+16:43:10 23/03/2025 Candidate failed verification
+16:43:10 23/03/2025 Adding candidate to fail history: assert(c <= n);
+16:43:10 23/03/2025 Verifying candidate: assert(n > 0);
+16:43:10 23/03/2025 Found counter example (c = 2, n = 1), trying predicate filtering
+16:43:10 23/03/2025 Candidate failed verification
+16:43:10 23/03/2025 Adding candidate to fail history: assert(n > 0);
+16:43:10 23/03/2025 Generating loop invariants candidates with model deepseek-reasoner with presence penalty 0.0
+16:43:10 23/03/2025 Generated 1 candidates
+16:43:10 23/03/2025 Verifying candidate: assert(c <= n && n > 0);
+16:43:10 23/03/2025 # Result
+16:43:10 23/03/2025 Solution: assert(c <= n && n > 0);
+16:43:10 23/03/2025 Verified candidates: 3
+16:43:10 23/03/2025 Run time: 440.4536883831024

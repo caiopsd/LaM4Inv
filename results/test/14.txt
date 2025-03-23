@@ -1,0 +1,21 @@
+18:27:58 22/03/2025 # Run Benchmark 14
+18:27:58 22/03/2025 Verifying candidate: assert(x >= 0);
+18:27:58 22/03/2025 Found counter example: y = 0, x = 4
+18:27:58 22/03/2025 Adding candidate to fail history: assert(x >= 0);
+18:27:58 22/03/2025 Verifying candidate: assert(x <= 2 || (x % 2 == 0 && x <= 2 + 2 * unknown() - 2));
+18:27:58 22/03/2025 Invalid SMT formula for candidate: assert(x <= 2 || (x % 2 == 0 && x <= 2 + 2 * unknown() - 2));
+18:27:58 22/03/2025 Verifying candidate: assert(y >= 0);
+18:27:58 22/03/2025 Found counter example: y = 0, x = 4
+18:27:58 22/03/2025 Adding candidate to fail history: assert(y >= 0);
+18:27:58 22/03/2025 Verifying candidate: assert(y <= 2 || (y % 2 == 0 && y <= 2 + 2 * unknown() - 2));
+18:27:58 22/03/2025 Invalid SMT formula for candidate: assert(y <= 2 || (y % 2 == 0 && y <= 2 + 2 * unknown() - 2));
+18:27:58 22/03/2025 Verifying candidate: assert(x % 2 == y % 2);
+18:27:58 22/03/2025 Found counter example: y = 1, x = 0
+18:27:58 22/03/2025 Adding candidate to fail history: assert(x % 2 == y % 2);
+18:27:58 22/03/2025 Generating loop invariants candidates with model gpt-4o with presence penalty 0.0
+18:27:58 22/03/2025 Generated 1 candidates
+18:27:58 22/03/2025 Verifying candidate: assert(x <= y + 2);
+18:27:58 22/03/2025 # Result
+18:27:58 22/03/2025 Solution: assert(x <= y + 2);
+18:27:58 22/03/2025 Verified candidates: 6
+18:27:58 22/03/2025 Run time: 2.154973030090332
