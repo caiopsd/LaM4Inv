@@ -41,7 +41,6 @@ def write_result(result_path: str):
     total_candidates = 0
     
     solution_pattern = re.compile(r'Solution: (.+)')
-    no_solution_pattern = re.compile(r'No solution found')
     run_time_pattern = re.compile(r'Run time: ([\d.]+)') 
     candidates_pattern = re.compile(r'Verified candidates: (\d+)')
     
@@ -57,12 +56,11 @@ def write_result(result_path: str):
             content = f.read()
             
             solution_match = solution_pattern.search(content)
-            no_solution_match = no_solution_pattern.search(content)
 
-            if no_solution_match and not solution_match:
+            if not solution_match:
                 fails.append(result_file[:-4])
             
-            if solution_match and not no_solution_match:
+            if solution_match:
                 successful_solutions += 1
                 
             run_time_match = run_time_pattern.search(content)
