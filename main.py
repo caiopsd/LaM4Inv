@@ -91,7 +91,6 @@ def write_result(result_path: str):
 def run_experiment(
         start: int, 
         end: int, 
-        inference_timeout: int,
         results_path: str,
         z3_solver: Z3Solver, 
         pipeline: list[tuple[LLM, float]],
@@ -115,7 +114,6 @@ def run_experiment(
             pipeline=pipeline,
             formula_handler=formula_handler, 
             result_file_path=sample_result_file_path, 
-            inference_timeout=inference_timeout,
             presence_penalty_scale=0.2
         )
 
@@ -153,23 +151,20 @@ def parse_range(value):
 def parse_pipeline(input: str):
     pipeline = []
     for step in input.split(";"):
-        model, threshold = step.split(",")
+        model, timeout = step.split(",")
         model = model.strip()
         if model not in all_models:
             raise argparse.ArgumentTypeError(f"Model {model} not found")
-        threshold = float(threshold.strip())
-        if threshold > 1 or threshold < 0:
-            raise argparse.ArgumentTypeError("The threshold value must be between 0 and 1")
-        pipeline.append((model, threshold))
+        timeout = float(timeout.strip())
+        pipeline.append((model, timeout))
     return pipeline
 
 def main():
     parser = argparse.ArgumentParser(description="Run benchmarks")
 
-    parser.add_argument("--mode", type=str, default="run", choices=["run", "evaluate"], help="Mode of operation")
-    parser.add_argument("--pipeline", type=parse_pipeline, default=f'{ChatGPTModel.GPT_4O.value}, 0.2; {ChatGPTModel.GPT_4O_MINI.value}, 0.33; {DeepseekModel.DEEPSEEK_R1.value}, 1', help="Pipeline of LLM models with their thresholds, formatted as: model, threshold; model, threshold;... Example: gpt-4,0.5;deepseek,1")
-    parser.add_argument("--benchmark-range", type=parse_range, default="228-229", help="Range of benchmark indices in the format a-b. Represents the interval (a, b].")
-    parser.add_argument("--inference-timeout", type=int, default=300, help="Timeout for the loop invariant inference")
+    parser.add_argument("--mode", type=str, default="run", choices=["run", "evaluate"], help="Mode of operation. 'run' runs the benchmarks, 'evaluate' evaluates the existing results")
+    parser.add_argument("--pipeline", type=parse_pipeline, default=f'{ChatGPTModel.GPT_4O.value}, 90; {DeepseekModel.DEEPSEEK_R1.value}, 600', help="Pipeline of LLM models with their timeouts in seconds, formatted as: model, timeout; model, timeout;... Example: gpt-4,120;deepseek,300")
+    parser.add_argument("--benchmark-range", type=parse_range, default="228-229", help="Range of benchmark indices to run in the format a-b. Represents the interval (a, b].")
     parser.add_argument("--results-path", type=str, default="results/test", help="Output directory for results")
     parser.add_argument("--smt-timeout", type=int, default=50, help="Timeout for the SMT check")
     parser.add_argument("--bmc-timeout", type=float, default=5, help="Timeout for BMC")
@@ -190,7 +185,7 @@ def main():
     z3_solver = Z3Solver(args.smt_timeout)
     esbmc = ESBMC(config.esbmc_bin_path, args.bmc_timeout, args.bmc_max_steps)
 
-    run_experiment(benchmark_range[0], benchmark_range[1], args.inference_timeout, args.results_path,  z3_solver, pipeline, esbmc)
+    run_experiment(benchmark_range[0], benchmark_range[1], args.results_path,  z3_solver, pipeline, esbmc)
 
 if __name__ == "__main__":
     main()

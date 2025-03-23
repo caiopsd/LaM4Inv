@@ -21,16 +21,14 @@ class Runner:
         pipeline: list[tuple[LLM, float]],
         formula_handler: FormulaHandler,
         result_file_path: str,
-        inference_timeout: int,
         presence_penalty_scale: float
     ):
         self.inv_smt_solver = inv_smt_solver
         self.predicate_filtering = predicate_filtering
         self.generator = generator
-        self.pipeline = sorted(pipeline, key=lambda x: x[1])
+        self.pipeline = pipeline
         self.formula_handler = formula_handler
 
-        self.inference_timeout = inference_timeout
         self.presence_penalty_scale = presence_penalty_scale
         
         self._result_file = self._get_result_file(result_file_path)
@@ -125,15 +123,26 @@ class Runner:
         self._close()
         return solution, end_time, self._verified_candidates
     
-    def _next_pipeline_step(self, consumed: float) -> tuple[LLM, float]:
-        next_step = next((step for step in self.pipeline if step[1] >= consumed))
-        if next_step != self._curr_pipeline_step:
+    def _next_pipeline_step(self) -> tuple[LLM, float]:
+        if self._curr_pipeline_step_index is None:
+            self._curr_pipeline_step_time = time.time()
+            self._curr_pipeline_step_index = 0
+            return self.pipeline[0]
+
+        time_spent = time.time() - self._curr_pipeline_step_time
+        curr_step = self.pipeline[self._curr_pipeline_step_index]
+        if time_spent >= curr_step[1] and self._curr_pipeline_step_index == len(self.pipeline) - 1:
+            return (None, None)
+        if time_spent >= curr_step[1]:
             self._fail_history = {}
             self._fail_history_hit = 0
             self.last_fails = []
             self.generator.reset()
-            self._curr_pipeline_step = next_step
-        return next_step
+
+            self._curr_pipeline_step_index += 1
+            self._curr_pipeline_step_time = time.time()
+        
+        return self.pipeline[self._curr_pipeline_step_index]
     
     def _get_presence_penalty(self) -> float:
         return math.tanh(self._fail_history_hit * self.presence_penalty_scale)
@@ -143,7 +152,7 @@ class Runner:
 
         self._log(f'# Run Benchmark {benchmark_id}')
 
-        llm, _ = self._next_pipeline_step(0)
+        llm, _ = self._next_pipeline_step()
         chat_options = ChatOptions()
 
         candidates = self.generator.generate(llm=llm)
@@ -152,13 +161,10 @@ class Runner:
             return self._handle_solution(solution, (time.time() - start_time))
         
         while True:
-            time_spent = time.time() - start_time
-            if time_spent >= self.inference_timeout:
-                self._handle_solution(None, time_spent)
-                raise TimeoutError("Inference timeout")
-            
-            consumed_time_budget = time_spent / self.inference_timeout
-            llm, _ = self._next_pipeline_step(consumed_time_budget)
+            llm, _ = self._next_pipeline_step()
+            if llm is None:
+                self._handle_solution(None, (time.time() - start_time))
+                raise TimeoutError('Pipeline time exceeded')
 
             chat_options.presence_penalty = self._get_presence_penalty()
             
@@ -178,5 +184,6 @@ class Runner:
         self._verified_candidates = 0
         self._last_fails = []
         self._logs = []
-        self._curr_pipeline_step = None
+        self._curr_pipeline_step_index = None
+        self._curr_pipeline_step_time = None
         self.generator.reset()
