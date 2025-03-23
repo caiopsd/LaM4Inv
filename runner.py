@@ -76,6 +76,7 @@ class Runner:
                 self._log(f'Found counter example ({counter_example}), trying predicate filtering')
                 solution = self._predicate_filtering(formula)
                 if solution is not None:
+                    self._log(f'Predicate filtering found solution: {solution}')
                     return solution, None
                 
                 self._log(f'Candidate failed verification')
