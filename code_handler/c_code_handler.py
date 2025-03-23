@@ -20,11 +20,33 @@ class CCodeHandler(CodeHandler):
         return r'assert\s*\(.*?\);'
     
     def add_invariant_assertions(self, formula: str):
-        pattern = r'([ \t]*)(while\s*\(.*?\)\s*\{)((?:[^{}]*|\{[^{}]*\})*\})'
+        assume_pattern = re.compile(r'assume\s*\((.*?)\);')
         assertion = f'assert({formula});'
-        code = re.sub(pattern, rf'\1{assertion}\n\1\2\n\1\1{assertion}\3\n\1{assertion}', self.code)
+        code = ''
+        loop_scope_balance = None
+        for line in self.code.splitlines():
+            if 'while' in line:
+                loop_scope_balance = 1
+                code += f'   {assertion}\n{line}\n       {assertion}\n'
+                continue
 
+            if loop_scope_balance and '{' in line:
+                loop_scope_balance += 1
+            if loop_scope_balance and '}' in line:
+                loop_scope_balance -= 1
+
+            if loop_scope_balance == 0:
+                code += f'{line}\n  {assertion}\n'
+                loop_scope_balance = None
+                continue
+
+            code += f'{line}\n'
+            
         if '#include <assert.h>' not in code:
-            code = '#include <assert.h>\n' + code
+            code = f'#include <assert.h>\n{code}'
+
+        code = code.replace('unknown()','rand()%2==0')
+
+        code = assume_pattern.sub(r'if(!(\1)) return 0;', code)
 
         return code
