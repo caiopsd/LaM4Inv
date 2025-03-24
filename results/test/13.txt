@@ -1,0 +1,42 @@
+23:19:02 24/03/2025 # Run Benchmark 13
+23:19:02 24/03/2025 Executing predicate filtering for preconditions
+23:19:02 24/03/2025 Filtering predicates for candidate assert((x >= 0))
+23:19:02 24/03/2025 Addind predicate (x >= 0) to verify set
+23:19:02 24/03/2025 Filtering predicates for candidate assert((x <= 2))
+23:19:02 24/03/2025 Filtering predicates for candidate assert((y <= 2))
+23:19:02 24/03/2025 Filtering predicates for candidate assert((y >= 0))
+23:19:02 24/03/2025 Addind predicate (y >= 0) to verify set
+23:19:02 24/03/2025 Verifying formula: (and (>= x 0) (>= y 0))
+23:19:02 24/03/2025 For candidate: assert(((x >= 0)) && ((y >= 0)))
+23:19:02 24/03/2025 Generating loop invariants candidates with model gpt-4o and presence penalty 0.0
+23:19:02 24/03/2025 Generated 5 candidates
+23:19:02 24/03/2025 Verifying generated candidates
+23:19:02 24/03/2025 Verifying candidate: assert((x % 2) == 0);
+23:19:02 24/03/2025 Candidate failed verification
+23:19:02 24/03/2025 Adding candidate to fail history: assert((x % 2) == 0);
+23:19:02 24/03/2025 Verifying candidate: assert((y == x));
+23:19:02 24/03/2025 Candidate failed verification
+23:19:02 24/03/2025 Adding candidate to fail history: assert((y == x));
+23:19:02 24/03/2025 Verifying candidate: assert((y <= 2) || (x != 4));
+23:19:02 24/03/2025 Candidate failed verification
+23:19:02 24/03/2025 Adding candidate to fail history: assert((y <= 2) || (x != 4));
+23:19:02 24/03/2025 Verifying candidate: assert((x >= 0));
+23:19:02 24/03/2025 Candidate failed verification
+23:19:02 24/03/2025 Adding candidate to fail history: assert((x >= 0));
+23:19:02 24/03/2025 Verifying candidate: assert((x <= 2) || (y != 0));
+23:19:02 24/03/2025 Candidate failed verification
+23:19:02 24/03/2025 Adding candidate to fail history: assert((x <= 2) || (y != 0));
+23:19:02 24/03/2025 Executing predicate filtering
+23:19:02 24/03/2025 Filtering predicates for candidate assert((x % 2) == 0);
+23:19:02 24/03/2025 Filtering predicates for candidate assert((y == x));
+23:19:02 24/03/2025 Filtering predicates for candidate assert((y <= 2) || (x != 4));
+23:19:02 24/03/2025 Filtering predicates for candidate assert((x >= 0));
+23:19:02 24/03/2025 Filtering predicates for candidate assert((x <= 2) || (y != 0));
+23:19:02 24/03/2025 Addind predicate ((x <= 2)) || ((y != 0)) to verify set
+23:19:02 24/03/2025 Verifying formula: (and (and (>= x 0) (>= y 0)) (or (<= x 2) (distinct y 0)))
+23:19:02 24/03/2025 For candidate: assert(((x >= 0)) && ((y >= 0)) && (((x <= 2)) || ((y != 0))))
+23:19:02 24/03/2025 Predicate filtering found solution: assert(((x >= 0)) && ((y >= 0)) && (((x <= 2)) || ((y != 0))))
+23:19:02 24/03/2025 # Result
+23:19:02 24/03/2025 Solution: assert(((x >= 0)) && ((y >= 0)) && (((x <= 2)) || ((y != 0))))
+23:19:02 24/03/2025 Generate 5 counter examples, with 0 repeated fails
+23:19:02 24/03/2025 Run time: 3.727250099182129

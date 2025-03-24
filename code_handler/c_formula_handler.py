@@ -4,9 +4,6 @@ from pycparser import c_parser, c_ast
 
 from code_handler.formula_handler import FormulaHandler, FormulaForm, InvalidCodeFormulaError
 
-class InvalidFormulaError(Exception):
-    pass
-
 class SMTTranslatorVisitor(c_ast.NodeVisitor):
     def __init__(self):
         super().__init__()
@@ -21,7 +18,9 @@ class SMTTranslatorVisitor(c_ast.NodeVisitor):
         operand = self.visit(node.expr)
         if node.op == '!':
             return f"(not {operand})"
-        raise InvalidFormulaError(f"Unsupported unary operator: {node.op}")
+        if node.op == '-':
+            return f"(- {operand})"
+        raise InvalidCodeFormulaError(f"Unsupported unary operator: {node.op}")
 
     def visit_ID(self, node):
         return node.name
@@ -34,12 +33,12 @@ class SMTTranslatorVisitor(c_ast.NodeVisitor):
         if name == 'pow':
             args = node.args.exprs
             if len(args) != 2:
-                raise InvalidFormulaError("pow() expects exactly 2 arguments")
+                raise InvalidCodeFormulaError("pow() expects exactly 2 arguments")
             left = self.visit(args[0])
             right = self.visit(args[1])
             return f"(^ {left} {right})"
         else:
-            raise InvalidFormulaError(f"Unsupported function: {name}")
+            raise InvalidCodeFormulaError(f"Unsupported function: {name}")
 
     def map_operator(self, op):
         return {
@@ -56,7 +55,7 @@ class SMTTranslatorVisitor(c_ast.NodeVisitor):
             '*': '*',
             '/': '/',
             '%': 'mod'
-        }.get(op, None) or InvalidFormulaError(f"Unsupported binary operator: {op}")
+        }.get(op, None) or InvalidCodeFormulaError(f"Unsupported binary operator: {op}")
 
 class CSMTLIB2Translator:
     def __init__(self):
@@ -69,7 +68,7 @@ class CSMTLIB2Translator:
             visitor = SMTTranslatorVisitor()
             return visitor.visit(decl)
         except Exception as e:
-            raise InvalidFormulaError(str(e))
+            raise InvalidCodeFormulaError(str(e))
 
 class CFormulaHandler(FormulaHandler):
     def __init__(self):
@@ -109,7 +108,7 @@ class CFormulaHandler(FormulaHandler):
     def extract_formula(self, expression: str) -> str:
         match = re.search(r'assert\s*\((.*)\)', expression)
         if not match:
-            raise InvalidFormulaError(f'C assertion "{expression}" does not match the expected format')
+            raise InvalidCodeFormulaError(f'C assertion "{expression}" does not match the expected format')
         return match.group(1).strip()
 
     def negate_formula(self, formula: str) -> str:
