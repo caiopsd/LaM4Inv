@@ -38,11 +38,12 @@ def write_result(result_path: str):
     total_benchmarks = 0
     successful_solutions = 0
     total_time = 0
-    total_candidates = 0
+    total_counter_examples_generated = 0
+    total_repeated_fails = 0
     
     solution_pattern = re.compile(r'Solution: (.+)')
     run_time_pattern = re.compile(r'Run time: ([\d.]+)') 
-    candidates_pattern = re.compile(r'Verified candidates: (\d+)')
+    counter_examples_generated_pattern = re.compile(r'Generate (\d+) counter examples, with (\d+) repeated fails')
     
     fails = []
     for result_file in os.listdir(result_path):
@@ -68,21 +69,26 @@ def write_result(result_path: str):
                 time_spent = float(run_time_match.group(1))
                 total_time += time_spent
                 
-            candidates_match = candidates_pattern.search(content)
-            if candidates_match:
-                candidates_generated = int(candidates_match.group(1))
-                total_candidates += candidates_generated
+            mean_counter_examples_generated_match = counter_examples_generated_pattern.search(content)
+            if mean_counter_examples_generated_match:
+                counter_examples_generated = int(mean_counter_examples_generated_match.group(1))
+                repeated_fails = int(mean_counter_examples_generated_match.group(2))
+                total_repeated_fails += repeated_fails
+                total_counter_examples_generated += counter_examples_generated
     
     success_rate = (successful_solutions / total_benchmarks) * 100 if total_benchmarks > 0 else 0
     mean_time = total_time / total_benchmarks if total_benchmarks > 0 else 0
-    mean_candidates = total_candidates / total_benchmarks if total_benchmarks > 0 else 0
+    mean_counter_examples_generated = total_counter_examples_generated / total_benchmarks if total_benchmarks > 0 else 0
+    mean_repeated_fails = total_repeated_fails / total_benchmarks if total_benchmarks > 0 else 0
     
     with open(os.path.join(result_path, 'result.txt'), "w") as f:
         f.write(f"Total benchmarks: {total_benchmarks}\n")
         f.write(f"Successful solutions: {successful_solutions}\n")
         f.write(f"Success rate: {success_rate:.2f}%\n")
         f.write(f"Average time: {mean_time:.2f} seconds\n")
-        f.write(f"Average verified candidates: {mean_candidates:.2f}\n")
+        f.write(f"Average counter examples generated {mean_counter_examples_generated:.2f}\n")
+        f.write(f"Average repeated fails: {mean_repeated_fails:.2f}\n")
+
         if fails:
             f.write(f"Fails: {', '.join(fails)}\n")
                 

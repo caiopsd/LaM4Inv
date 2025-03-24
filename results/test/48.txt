@@ -1,6 +1,0 @@
-12:13:11 23/03/2025 # Run Benchmark 48
-12:13:11 23/03/2025 Verifying candidate: assert(n > 0);
-12:13:11 23/03/2025 # Result
-12:13:11 23/03/2025 Solution: assert(n > 0);
-12:13:11 23/03/2025 Verified candidates: 1
-12:13:11 23/03/2025 Run time: 0.8574280738830566

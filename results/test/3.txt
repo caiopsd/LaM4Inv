@@ -1,9 +1,0 @@
-18:26:45 22/03/2025 # Run Benchmark 3
-18:26:45 22/03/2025 Verifying candidate: assert(x >= 0 && x <= 5);
-18:26:45 22/03/2025 Found counter example: y = 0, z = -1, x = 5
-18:26:45 22/03/2025 Adding candidate to fail history: assert(x >= 0 && x <= 5);
-18:26:45 22/03/2025 Verifying candidate: assert(z >= y || x == 0);
-18:26:45 22/03/2025 # Result
-18:26:45 22/03/2025 Solution: assert(z >= y || x == 0);
-18:26:45 22/03/2025 Verified candidates: 2
-18:26:45 22/03/2025 Run time: 1.215146780014038

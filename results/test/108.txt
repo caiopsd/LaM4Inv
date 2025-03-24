@@ -1,6 +1,0 @@
-15:20:03 23/03/2025 # Run Benchmark 108
-15:20:03 23/03/2025 Verifying candidate: assert(a <= m);
-15:20:03 23/03/2025 # Result
-15:20:03 23/03/2025 Solution: assert(a <= m);
-15:20:03 23/03/2025 Verified candidates: 1
-15:20:03 23/03/2025 Run time: 0.673642635345459

@@ -1,6 +1,0 @@
-02:33:23 24/03/2025 # Run Benchmark 160
-02:33:23 24/03/2025 Verifying candidate: assert(x == i - (j - y));
-02:33:23 24/03/2025 # Result
-02:33:23 24/03/2025 Solution: assert(x == i - (j - y));
-02:33:23 24/03/2025 Verified candidates: 1
-02:33:23 24/03/2025 Run time: 1.7410686016082764

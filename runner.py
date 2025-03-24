@@ -22,7 +22,8 @@ class Runner:
         pipeline: list[tuple[LLM, float]],
         formula_handler: FormulaHandler,
         result_file_path: str,
-        presence_penalty_scale: float
+        presence_penalty_scale: float,
+        max_candidates = 50
     ):
         self.inv_smt_solver = inv_smt_solver
         self.predicate_filtering = predicate_filtering
@@ -31,6 +32,7 @@ class Runner:
         self.formula_handler = formula_handler
 
         self.presence_penalty_scale = presence_penalty_scale
+        self.max_candidates = max_candidates
         
         self._result_file = self._get_result_file(result_file_path)
         self._logger = logging.getLogger(__name__)
@@ -40,64 +42,6 @@ class Runner:
     def _get_result_file(self, result_file_path: str) -> io.TextIOWrapper:
         os.makedirs(os.path.dirname(result_file_path), exist_ok=True)
         return open(result_file_path, "w")
-
-    def _smt_verify(self, formula: str) -> CounterExample:
-        smt_lib2_candidate = self.formula_handler.to_smt_lib2(formula)
-        counter_example = self.inv_smt_solver.get_counter_example(smt_lib2_candidate)
-        if counter_example is not None:
-            return counter_example
-
-    def _predicate_filtering(self, formula: str) -> str:
-        filtered_predicates = self.predicate_filtering.filter(formula)
-        for predicate in filtered_predicates:
-            if self._smt_verify(predicate) is None:
-                return predicate
-    
-    def _verify(self, candidates: list[str]) -> tuple[str, list[str]]:
-        fails = []
-        for candidate in candidates:
-            self._log(f'Verifying candidate: {candidate}')
-
-            if candidate in self._fail_history:
-                self._fail_history_hit += 1
-                fails.append((candidate, (self._fail_history[candidate])))
-                self._log(f'Candidate already in fail history: {candidate}')
-                continue
-
-            self._verified_candidates += 1
-
-            formula = self.formula_handler.extract_formula(candidate)
-            try:
-                counter_example = self._smt_verify(formula)
-                if counter_example is None:
-                    return candidate, None
-                
-                fails.append((candidate, counter_example))
-
-                self._log(f'Found counter example ({counter_example}), trying predicate filtering')
-                solution = self._predicate_filtering(formula)
-                if solution is not None:
-                    self._log(f'Predicate filtering found solution: {solution}')
-                    return solution, None
-                
-                self._log(f'Candidate failed verification')
-            except CInvalidFormulaError as e:
-                self._log(f'Invalid candidate syntax: {candidate}')
-                continue
-            except SMTInvalidFormulaError as e:
-                self._log(f'Invalid SMT formula for candidate: {candidate}')
-                continue
-            except TimeoutError as e:
-                self._log(f'Timeout while verifying candidate: {candidate}')
-                continue
-            except InvalidCodeError as e:
-                self._log(f'Invalid code for candidate: {candidate}')
-                continue
-            
-            self._log(f'Adding candidate to fail history: {candidate}')
-            self._fail_history[candidate] = counter_example
-        
-        return None, fails
 
     def _write_log(self):
         formmated_time = time.strftime("%H:%M:%S %d/%m/%Y", time.gmtime(time.time()))
@@ -111,7 +55,8 @@ class Runner:
             self._log(f'Solution: {solution}')
         else:
             self._log(f'No solution found')
-        self._log(f'Verified candidates: {self._verified_candidates}')
+        
+        self._log(f'Generate {len(self._fail_history)} counter examples, with {self._fail_history_hit} repeated fails')
         self._log(f'Run time: {time_spent}')
 
     def _log(self, message: str):
@@ -126,7 +71,7 @@ class Runner:
         self._write_log()
         self.reset()
         self._close()
-        return solution, end_time, self._verified_candidates
+        return solution, end_time, len(self._fail_history)
     
     def _next_pipeline_step(self) -> tuple[LLM, float]:
         if self._curr_pipeline_step_index is None:
@@ -141,7 +86,7 @@ class Runner:
         if time_spent >= curr_step[1]:
             self._fail_history = {}
             self._fail_history_hit = 0
-            self.last_fails = []
+            self._last_fails = []
             self.generator.reset()
 
             self._curr_pipeline_step_index += 1
@@ -152,6 +97,51 @@ class Runner:
     def _get_presence_penalty(self) -> float:
         return math.tanh(self._fail_history_hit * self.presence_penalty_scale)
     
+    def _predicate_filtering(self, candidates: list[str]) -> str:
+        for candidate in candidates:
+            formula = self.formula_handler.extract_formula(candidate)
+            filtered_predicates = self.predicate_filtering.filter(formula)
+            verify = False
+            for predicate in filtered_predicates:
+                if predicate not in self._predicate_filtering_verify_set:
+                    verify = True
+                self._predicate_filtering_verify_set[predicate] = True
+            
+        if verify:
+            formula = ' && '.join([f'({predicate})' for predicate in self._predicate_filtering_verify_set.keys()])
+            smt_lib2_formula = self.formula_handler.to_smt_lib2(formula)
+
+            self._log(f'Verifying formula: {smt_lib2_formula}')
+            self._log(f'For candidate: assert({formula})')
+            counter_example = self.inv_smt_solver.get_counter_example(smt_lib2_formula)
+            if counter_example is None:
+                return f'assert({formula})'
+    
+    def _verify_candidates(self, candidates: list[str]) -> tuple[str, list[str]]:
+        fails = []
+        for candidate in candidates:
+            self._log(f'Verifying candidate: {candidate}')
+
+            if candidate in self._fail_history:
+                self._fail_history_hit += 1
+                fails.append((candidate, (self._fail_history[candidate])))
+                self._log(f'Candidate already in fail history: {candidate}')
+                continue
+
+            formula = self.formula_handler.extract_formula(candidate)
+            smt_lib2_formula = self.formula_handler.to_smt_lib2(formula)
+            counter_example = self.inv_smt_solver.get_counter_example(smt_lib2_formula)
+            if counter_example is None:
+                return candidate, fails
+            
+            self._log(f'Candidate failed verification')
+            fails.append((candidate, counter_example))
+            
+            self._log(f'Adding candidate to fail history: {candidate}')
+            self._fail_history[candidate] = counter_example
+        
+        return None, fails
+
     def run(self, benchmark_id: str) -> tuple[str, float, int]:
         start_time = time.time()
 
@@ -161,7 +151,7 @@ class Runner:
         chat_options = ChatOptions()
 
         candidates = self.generator.generate(llm=llm)
-        solution, self.last_fails = self._verify(candidates)
+        solution, self._last_fails = self._verify_candidates(candidates)
         if solution is not None:
             return self._handle_solution(solution, (time.time() - start_time))
         
@@ -173,20 +163,38 @@ class Runner:
 
             chat_options.presence_penalty = self._get_presence_penalty()
             
-            self._log(f'Generating loop invariants candidates with model {llm} with presence penalty {chat_options.presence_penalty}')
-
-            candidates = self.generator.generate(feedback=self.last_fails, llm=llm, chat_options=chat_options)
-
+            self._log(f'Generating loop invariants candidates with model {llm} and presence penalty {chat_options.presence_penalty}')
+            candidates = self.generator.generate(feedback=self._last_fails, llm=llm, chat_options=chat_options)
             self._log(f'Generated {len(candidates)} candidates')
+            
+            try:
+                self._log(f'Verifying generated candidates')
+                solution, self._last_fails = self._verify_candidates(candidates)
+                if solution is not None:
+                    return self._handle_solution(solution, (time.time() - start_time))
 
-            solution, self.last_fails = self._verify(candidates)
-            if solution is not None:
-                return self._handle_solution(solution, (time.time() - start_time))
+                self._log(f'Executing predicate filtering')
+                solution = self._predicate_filtering(candidates)
+                if solution is not None:
+                    self._log(f'Predicate filtering found solution: {solution}')
+                    return self._handle_solution(solution, (time.time() - start_time))
+            except CInvalidFormulaError as e:
+                self._log(f'Invalid candidate syntax')
+                continue
+            except SMTInvalidFormulaError as e:
+                self._log(f'Invalid SMT formula for candidate')
+                continue
+            except TimeoutError as e:
+                self._log(f'Timeout while verifying candidate')
+                continue
+            except InvalidCodeError as e:
+                self._log(f'Invalid code while verifying candidate')
+                continue
             
     def reset(self):
         self._fail_history = {}
         self._fail_history_hit = 0
-        self._verified_candidates = 0
+        self._predicate_filtering_verify_set = {}
         self._last_fails = []
         self._logs = []
         self._curr_pipeline_step_index = None
