@@ -1,0 +1,18 @@
+03:50:03 24/03/2025 # Run Benchmark 166
+03:50:03 24/03/2025 Verifying candidate: assert(m == 0);
+03:50:03 24/03/2025 Found counter example (j = -2, y = 0, k = 0, tmp = 0, i = -2, n = -1, x = 0, m = 0), trying predicate filtering
+03:50:03 24/03/2025 Candidate failed verification
+03:50:03 24/03/2025 Adding candidate to fail history: assert(m == 0);
+03:50:03 24/03/2025 Verifying candidate: assert(j >= 0);
+03:50:03 24/03/2025 Found counter example (j = 0, y = 0, i = 0, m = 0, x = 0, n = 0, k = 1), trying predicate filtering
+03:50:03 24/03/2025 Candidate failed verification
+03:50:03 24/03/2025 Adding candidate to fail history: assert(j >= 0);
+03:50:03 24/03/2025 Verifying candidate: assert(n >= 0);
+03:50:03 24/03/2025 Found counter example (n = -1, k = 0, y = 0, x = 0, j = 0, m = 0), trying predicate filtering
+03:50:03 24/03/2025 Candidate failed verification
+03:50:03 24/03/2025 Adding candidate to fail history: assert(n >= 0);
+03:50:03 24/03/2025 Verifying candidate: assert(x + y == k);
+03:50:03 24/03/2025 # Result
+03:50:03 24/03/2025 Solution: assert(x + y == k);
+03:50:03 24/03/2025 Verified candidates: 4
+03:50:03 24/03/2025 Run time: 6.266557455062866

@@ -1,0 +1,6 @@
+00:15:05 24/03/2025 # Run Benchmark 136
+00:15:05 24/03/2025 Verifying candidate: assert(v1 <= 5);
+00:15:05 24/03/2025 # Result
+00:15:05 24/03/2025 Solution: assert(v1 <= 5);
+00:15:05 24/03/2025 Verified candidates: 1
+00:15:05 24/03/2025 Run time: 1.3393702507019043

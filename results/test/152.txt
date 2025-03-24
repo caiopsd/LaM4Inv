@@ -1,0 +1,14 @@
+01:12:00 24/03/2025 # Run Benchmark 152
+01:12:00 24/03/2025 Verifying candidate: assert(turn >= 0 && turn <= 5);
+01:12:00 24/03/2025 Found counter example (j = 0, t = 0, pvlen = 0, i = 0, turn = 5, n = 0, k = -1), trying predicate filtering
+01:12:00 24/03/2025 Candidate failed verification
+01:12:00 24/03/2025 Adding candidate to fail history: assert(turn >= 0 && turn <= 5);
+01:12:00 24/03/2025 Verifying candidate: assert(i >= 0);
+01:12:00 24/03/2025 Found counter example (j = 0, t = 0, pvlen = 0, i = 0, turn = 5, n = 0, k = -1), trying predicate filtering
+01:12:00 24/03/2025 Candidate failed verification
+01:12:00 24/03/2025 Adding candidate to fail history: assert(i >= 0);
+01:12:00 24/03/2025 Verifying candidate: assert(k >= 0);
+01:12:00 24/03/2025 # Result
+01:12:00 24/03/2025 Solution: assert(k >= 0);
+01:12:00 24/03/2025 Verified candidates: 3
+01:12:00 24/03/2025 Run time: 7.158541202545166

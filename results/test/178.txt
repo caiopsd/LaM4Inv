@@ -1,0 +1,14 @@
+04:31:49 24/03/2025 # Run Benchmark 178
+04:31:49 24/03/2025 Verifying candidate: assert(n > 0);
+04:31:49 24/03/2025 Found counter example (x = 2, n = 1), trying predicate filtering
+04:31:49 24/03/2025 Candidate failed verification
+04:31:49 24/03/2025 Adding candidate to fail history: assert(n > 0);
+04:31:49 24/03/2025 Verifying candidate: assert(x >= 0);
+04:31:49 24/03/2025 Found counter example (x = 0, n = -1), trying predicate filtering
+04:31:49 24/03/2025 Candidate failed verification
+04:31:49 24/03/2025 Adding candidate to fail history: assert(x >= 0);
+04:31:49 24/03/2025 Verifying candidate: assert(x <= n);
+04:31:49 24/03/2025 # Result
+04:31:49 24/03/2025 Solution: assert(x <= n);
+04:31:49 24/03/2025 Verified candidates: 3
+04:31:49 24/03/2025 Run time: 2.9048664569854736

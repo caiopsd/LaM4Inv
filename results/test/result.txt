@@ -1,6 +1,6 @@
-Total benchmarks: 130
-Successful solutions: 126
-Success rate: 96.92%
-Average time: 94.04 seconds
-Average verified candidates: 11.65
-Fails: 94, 130, 67, 24
+Total benchmarks: 181
+Successful solutions: 167
+Success rate: 92.27%
+Average time: 145.72 seconds
+Average verified candidates: 22.47
+Fails: 176, 131, 164, 163, 94, 130, 67, 149, 157, 181, 24, 159, 165, 153
