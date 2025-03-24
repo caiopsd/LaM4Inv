@@ -158,15 +158,8 @@ class Runner:
         if solution is not None:
             self._log(f'Predicate filtering found solution: {solution}')
             return self._handle_solution(solution, (time.time() - start_time))
-
-        llm, _ = self._next_pipeline_step()
-        chat_options = ChatOptions()
-
-        candidates = self.generator.generate(llm=llm)
-        solution, self._last_fails = self._verify_candidates(candidates)
-        if solution is not None:
-            return self._handle_solution(solution, (time.time() - start_time))
         
+        chat_options = ChatOptions()
         while True:
             llm, _ = self._next_pipeline_step()
             if llm is None:
