@@ -4,12 +4,13 @@ import time
 import logging
 import math
 
-from smt.solver import InvalidFormulaError as SMTInvalidFormulaError
 from bmc.bmc import InvalidCodeError
-from code_handler.formula_handler import InvalidFormulaError as CInvalidFormulaError
-from inv_smt_solver.inv_smt_solver import InvSMTSolver, CounterExample
+from smt.solver import InvalidSMTLIB2FormulaError
+from code_handler.formula_handler import InvalidCodeFormulaError
+from inv_smt_solver.inv_smt_solver import InvSMTSolver
 from generator.generator import Generator
 from code_handler.formula_handler import FormulaHandler
+from code_handler.code_handler import CodeHandler
 from predicate_filtering.predicate_filtering import PredicateFiltering
 from llm.llm import LLM, ChatOptions
 
@@ -21,6 +22,7 @@ class Runner:
         generator: Generator,
         pipeline: list[tuple[LLM, float]],
         formula_handler: FormulaHandler,
+        code_handler: CodeHandler,
         result_file_path: str,
         presence_penalty_scale: float,
         max_candidates = 50
@@ -30,6 +32,7 @@ class Runner:
         self.generator = generator
         self.pipeline = pipeline
         self.formula_handler = formula_handler
+        self.code_handler = code_handler
 
         self.presence_penalty_scale = presence_penalty_scale
         self.max_candidates = max_candidates
@@ -98,13 +101,15 @@ class Runner:
         return math.tanh(self._fail_history_hit * self.presence_penalty_scale)
     
     def _predicate_filtering(self, candidates: list[str]) -> str:
+        verify = False
         for candidate in candidates:
+            self._log(f'Filtering predicates for candidate {candidate}')
             formula = self.formula_handler.extract_formula(candidate)
             filtered_predicates = self.predicate_filtering.filter(formula)
-            verify = False
             for predicate in filtered_predicates:
                 if predicate not in self._predicate_filtering_verify_set:
                     verify = True
+                    self._log(f'Addind predicate {predicate} to verify set')
                 self._predicate_filtering_verify_set[predicate] = True
             
         if verify:
@@ -147,6 +152,13 @@ class Runner:
 
         self._log(f'# Run Benchmark {benchmark_id}')
 
+        self._log(f'Executing predicate filtering for preconditions')
+        preconditions = self.code_handler.get_preconditions()
+        solution = self._predicate_filtering(preconditions)
+        if solution is not None:
+            self._log(f'Predicate filtering found solution: {solution}')
+            return self._handle_solution(solution, (time.time() - start_time))
+
         llm, _ = self._next_pipeline_step()
         chat_options = ChatOptions()
 
@@ -178,17 +190,17 @@ class Runner:
                 if solution is not None:
                     self._log(f'Predicate filtering found solution: {solution}')
                     return self._handle_solution(solution, (time.time() - start_time))
-            except CInvalidFormulaError as e:
+            except InvalidCodeFormulaError as e:
                 self._log(f'Invalid candidate syntax')
                 continue
-            except SMTInvalidFormulaError as e:
-                self._log(f'Invalid SMT formula for candidate')
+            except InvalidCodeError as e:
+                self._log(f'Invalid code while filtering predicates for candidate')
+                continue
+            except InvalidSMTLIB2FormulaError as e:
+                self._log(f'Invalid SMT-LIB2 formula for candidate')
                 continue
             except TimeoutError as e:
                 self._log(f'Timeout while verifying candidate')
-                continue
-            except InvalidCodeError as e:
-                self._log(f'Invalid code while verifying candidate')
                 continue
             
     def reset(self):

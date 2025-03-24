@@ -1,6 +1,6 @@
 import re
 
-from code_handler.formula_handler import FormulaHandler, FormulaForm, InvalidFormulaError
+from code_handler.formula_handler import FormulaHandler, FormulaForm, InvalidCodeFormulaError
 
 class CFormulaHandler(FormulaHandler):
     def __init__(self):
@@ -23,7 +23,7 @@ class CFormulaHandler(FormulaHandler):
     def extract_formula(self, expression: str) -> str:
         match = re.search(r'assert\s*\((.*)\)', expression)
         if not match:
-            raise InvalidFormulaError(f'C assertion "{expression}" does not match the expected format')
+            raise InvalidCodeFormulaError(f'C assertion "{expression}" does not match the expected format')
         
         formula = match.group(1).strip()
         return formula

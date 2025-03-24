@@ -15,5 +15,5 @@ class Solver(ABC):
     def get_assignments(self) -> dict[str,str]:
         pass
 
-class InvalidFormulaError(Exception):
+class InvalidSMTLIB2FormulaError(Exception):
     pass

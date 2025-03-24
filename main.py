@@ -115,7 +115,8 @@ def run_experiment(
             predicate_filtering=predicate_filtering, 
             generator=generator, 
             pipeline=pipeline,
-            formula_handler=formula_handler, 
+            formula_handler=formula_handler,
+            code_handler=code_handler, 
             result_file_path=sample_result_file_path, 
             presence_penalty_scale=0.2
         )

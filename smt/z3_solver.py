@@ -1,6 +1,6 @@
 import z3
 
-from smt.solver import Solver, SatStatus, InvalidFormulaError
+from smt.solver import Solver, SatStatus, InvalidSMTLIB2FormulaError
 from utils.utils import run_with_timeout
 
 class Z3Solver(Solver):
@@ -15,7 +15,7 @@ class Z3Solver(Solver):
         try:
             decl = z3.parse_smt2_string(formula)
         except z3.Z3Exception:
-            raise InvalidFormulaError(formula)
+            raise InvalidSMTLIB2FormulaError(formula)
         
         self.solver.add(decl)
         try:

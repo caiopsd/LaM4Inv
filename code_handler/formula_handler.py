@@ -5,7 +5,7 @@ class FormulaForm(Enum):
     DNF = 1
     CNF = 2
 
-class InvalidFormulaError(Exception):
+class InvalidCodeFormulaError(Exception):
     pass
 
 class FormulaHandler(ABC):

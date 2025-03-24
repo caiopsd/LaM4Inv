@@ -19,6 +19,24 @@ class CCodeHandler(CodeHandler):
     def get_assert_pattern(self) -> str:
         return r'assert\s*\(.*?\);'
     
+    def get_preconditions(self) -> list[str]:
+        pre_loop_code = self.code.split('while')[0]
+
+        assignments_pattern = re.compile(r'(\w+)\s*=\s*(\w+)')
+        assume_pattern = re.compile(r'assume\((.*?)\);')
+
+        assertions = []
+
+        assignments_matches = assignments_pattern.findall(pre_loop_code)
+        for match in assignments_matches:
+            assertions.append(f'assert({match[0]} == {match[1]})')
+
+        assume_matches = assume_pattern.findall(pre_loop_code)
+        for match in assume_matches:
+            assertions.append(f'assert({match})')
+
+        return assertions
+    
     def add_invariant_assertions(self, formula: str):
         assume_pattern = re.compile(r'assume\s*\((.*?)\);')
         assertion = f'assert({formula});'
@@ -44,6 +62,9 @@ class CCodeHandler(CodeHandler):
             
         if '#include <assert.h>' not in code:
             code = f'#include <assert.h>\n{code}'
+
+        if '#include <stdlib.h>' not in code:
+            code = f'#include <stdlib.h>\n{code}'
 
         code = code.replace('unknown()','rand()%2==0')
 

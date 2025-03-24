@@ -24,3 +24,7 @@ class CodeHandler(ABC):
     @abstractmethod
     def add_invariant_assertions(self, formula: str) -> str:
         pass
+
+    @abstractmethod
+    def get_preconditions(self) -> list[str]:
+        pass
