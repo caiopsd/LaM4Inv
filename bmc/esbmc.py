@@ -1,7 +1,7 @@
 import tempfile
 import os
 
-from bmc.bmc import BMC
+from bmc.bmc import BMC, InvalidCodeError
 from utils.utils import run_command_with_timeout
 
 class ESBMC(BMC):
@@ -28,6 +28,6 @@ class ESBMC(BMC):
                 return True
             if 'VERIFICATION SUCCESSFUL' in stderr:
                 return True
-            raise Exception(stderr)
+            raise InvalidCodeError(stderr)
         except TimeoutError:
             return False

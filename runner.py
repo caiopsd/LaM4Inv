@@ -5,6 +5,7 @@ import logging
 import math
 
 from smt.solver import InvalidFormulaError as SMTInvalidFormulaError
+from bmc.bmc import InvalidCodeError
 from code_handler.formula_handler import InvalidFormulaError as CInvalidFormulaError
 from inv_smt_solver.inv_smt_solver import InvSMTSolver, CounterExample
 from generator.generator import Generator
@@ -88,6 +89,9 @@ class Runner:
                 continue
             except TimeoutError as e:
                 self._log(f'Timeout while verifying candidate: {candidate}')
+                continue
+            except InvalidCodeError as e:
+                self._log(f'Invalid code for candidate: {candidate}')
                 continue
             
             self._log(f'Adding candidate to fail history: {candidate}')
