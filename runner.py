@@ -189,9 +189,6 @@ class Runner:
             except InvalidCodeError as e:
                 self._log(f'Invalid code while filtering predicates for candidate')
                 continue
-            except InvalidSMTLIB2FormulaError as e:
-                self._log(f'Invalid SMT-LIB2 formula for candidate')
-                continue
             except TimeoutError as e:
                 self._log(f'Timeout while verifying candidate')
                 continue
