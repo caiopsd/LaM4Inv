@@ -14,6 +14,7 @@ class ChatGPTModel(OpenAIModel):
     GPT_4O = "gpt-4o"
     GPT_4O_MINI = "gpt-4o-mini"
     O1_MINI = "o1-mini"
+    O3_MINI = "o3-mini"
 
 class DeepseekModel(OpenAIModel):
     DEEPSEEK_R1 = "deepseek-reasoner"
