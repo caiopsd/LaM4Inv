@@ -62,6 +62,7 @@ class CSMTLIB2Translator:
         self.parser = c_parser.CParser()
 
     def translate_expression(self, expression: str) -> str:
+        expression = self._rewrite_ternary(expression)
         try:
             ast = self.parser.parse(f"void f() {{ int __res = {expression}; }}")
             decl = ast.ext[0].body.block_items[0].init
@@ -69,6 +70,11 @@ class CSMTLIB2Translator:
             return visitor.visit(decl)
         except Exception as e:
             raise InvalidCodeFormulaError(str(e))
+        
+    def _rewrite_ternary(self, expr: str) -> str:
+        pattern = r'([^?]+)\s*\?\s*([^:]+)\s*:\s*([^)]+)'
+        repl = r'((\1) && (\2)) || (!(\1) && (\3))' # https://en.wikipedia.org/wiki/Conditioned_disjunction
+        return re.sub(pattern, repl, expr)
 
 class CFormulaHandler(FormulaHandler):
     def __init__(self):

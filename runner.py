@@ -87,11 +87,7 @@ class Runner:
         if time_spent >= curr_step[1] and self._curr_pipeline_step_index == len(self.pipeline) - 1:
             return (None, None)
         if time_spent >= curr_step[1]:
-            self._fail_history = {}
-            self._fail_history_hit = 0
-            self._last_fails = []
-            self.generator.reset()
-
+            self._reset_generator()
             self._curr_pipeline_step_index += 1
             self._curr_pipeline_step_time = time.time()
         
@@ -199,13 +195,17 @@ class Runner:
                 self._log(f'Timeout while verifying candidate')
                 self._logger.error(e)
                 continue
-            
-    def reset(self):
+
+    def _reset_generator(self):
+        self._log(f'Resetting generator')
         self._fail_history = {}
         self._fail_history_hit = 0
-        self._predicate_filtering_verify_set = {}
         self._last_fails = []
+        self.generator.reset()
+            
+    def reset(self):
+        self._predicate_filtering_verify_set = {}
         self._logs = []
         self._curr_pipeline_step_index = None
         self._curr_pipeline_step_time = None
-        self.generator.reset()
+        self._reset_generator()

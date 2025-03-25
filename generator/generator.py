@@ -10,6 +10,9 @@ class Generator:
         self.code_handler = code_handler
         self._chat = Chat()
 
+    def get_messages(self):
+        return self._chat.messages
+
     def _get_base_llm_message(self) -> str:
         return f"""{self.code_handler.get_code()}
 Print loop invariants as valid {self.code_handler.get_language().value} assertions that help prove the assertion.
