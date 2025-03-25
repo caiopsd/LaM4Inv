@@ -1,0 +1,86 @@
+20:17:01 25/03/2025 Resetting generator
+20:17:01 25/03/2025 # Run Benchmark 110
+20:17:01 25/03/2025 Executing predicate filtering for preconditions
+20:17:01 25/03/2025 Filtering predicates for candidate assert(sn == 0)
+20:17:01 25/03/2025 Filtering predicates for candidate assert(i == 1)
+20:17:01 25/03/2025 Filtering predicates for candidate assert(n >= 1)
+20:17:01 25/03/2025 Addind predicate n >= 1 to verify set
+20:17:01 25/03/2025 Predicate filtering verify set: ['n >= 1']
+20:17:01 25/03/2025 Verifying formula: (>= n 1)
+20:17:01 25/03/2025 For candidate: assert((n >= 1))
+20:17:01 25/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.0
+20:17:01 25/03/2025 Generated 4 candidates
+20:17:01 25/03/2025 Verifying generated candidates
+20:17:01 25/03/2025 Verifying candidate: assert(n >= 1);
+20:17:01 25/03/2025 Candidate failed verification
+20:17:01 25/03/2025 Adding candidate to fail history: assert(n >= 1);
+20:17:01 25/03/2025 Verifying candidate: assert(i >= 1);
+20:17:01 25/03/2025 Candidate failed verification
+20:17:01 25/03/2025 Adding candidate to fail history: assert(i >= 1);
+20:17:01 25/03/2025 Verifying candidate: assert(i <= n + 1);
+20:17:01 25/03/2025 Candidate failed verification
+20:17:01 25/03/2025 Adding candidate to fail history: assert(i <= n + 1);
+20:17:01 25/03/2025 Verifying candidate: assert(sn == i - 1);
+20:17:01 25/03/2025 Candidate failed verification
+20:17:01 25/03/2025 Adding candidate to fail history: assert(sn == i - 1);
+20:17:01 25/03/2025 Executing predicate filtering
+20:17:01 25/03/2025 Filtering predicates for candidate assert(n >= 1);
+20:17:01 25/03/2025 Filtering predicates for candidate assert(i >= 1);
+20:17:01 25/03/2025 Addind predicate i >= 1 to verify set
+20:17:01 25/03/2025 Filtering predicates for candidate assert(i <= n + 1);
+20:17:01 25/03/2025 Filtering predicates for candidate assert(sn == i - 1);
+20:17:01 25/03/2025 Addind predicate sn == i - 1 to verify set
+20:17:01 25/03/2025 Predicate filtering verify set: ['n >= 1', 'i >= 1', 'sn == i - 1']
+20:17:01 25/03/2025 Verifying formula: (and (and (>= n 1) (>= i 1)) (= sn (- i 1)))
+20:17:01 25/03/2025 For candidate: assert((n >= 1) && (i >= 1) && (sn == i - 1))
+20:17:01 25/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.0
+20:17:01 25/03/2025 Generated 4 candidates
+20:17:01 25/03/2025 Verifying generated candidates
+20:17:01 25/03/2025 Verifying candidate: assert(sn >= 0);
+20:17:01 25/03/2025 Candidate failed verification
+20:17:01 25/03/2025 Adding candidate to fail history: assert(sn >= 0);
+20:17:01 25/03/2025 Verifying candidate: assert(i > 0);
+20:17:01 25/03/2025 Candidate failed verification
+20:17:01 25/03/2025 Adding candidate to fail history: assert(i > 0);
+20:17:01 25/03/2025 Verifying candidate: assert(i <= n + 1);
+20:17:01 25/03/2025 Candidate already in fail history: assert(i <= n + 1);
+20:17:01 25/03/2025 Verifying candidate: assert(sn == i - 1 || sn == i);
+20:17:01 25/03/2025 Candidate failed verification
+20:17:01 25/03/2025 Adding candidate to fail history: assert(sn == i - 1 || sn == i);
+20:17:01 25/03/2025 Executing predicate filtering
+20:17:01 25/03/2025 Filtering predicates for candidate assert(sn >= 0);
+20:17:01 25/03/2025 Addind predicate sn >= 0 to verify set
+20:17:01 25/03/2025 Filtering predicates for candidate assert(i > 0);
+20:17:01 25/03/2025 Addind predicate i > 0 to verify set
+20:17:01 25/03/2025 Filtering predicates for candidate assert(i <= n + 1);
+20:17:01 25/03/2025 Filtering predicates for candidate assert(sn == i - 1 || sn == i);
+20:17:01 25/03/2025 Addind predicate (sn == i - 1) to verify set
+20:17:01 25/03/2025 Predicate filtering verify set: ['n >= 1', 'i >= 1', 'sn == i - 1', 'sn >= 0', 'i > 0', '(sn == i - 1)']
+20:17:01 25/03/2025 Verifying formula: (and (and (and (and (and (>= n 1) (>= i 1)) (= sn (- i 1))) (>= sn 0)) (> i 0)) (= sn (- i 1)))
+20:17:01 25/03/2025 For candidate: assert((n >= 1) && (i >= 1) && (sn == i - 1) && (sn >= 0) && (i > 0) && ((sn == i - 1)))
+20:17:01 25/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.197375320224904
+20:17:01 25/03/2025 Generated 4 candidates
+20:17:01 25/03/2025 Verifying generated candidates
+20:17:01 25/03/2025 Verifying candidate: assert(sn >= 0);
+20:17:01 25/03/2025 Candidate already in fail history: assert(sn >= 0);
+20:17:01 25/03/2025 Verifying candidate: assert(sn <= n);
+20:17:01 25/03/2025 Candidate failed verification
+20:17:01 25/03/2025 Adding candidate to fail history: assert(sn <= n);
+20:17:01 25/03/2025 Verifying candidate: assert(i >= 1);
+20:17:01 25/03/2025 Candidate already in fail history: assert(i >= 1);
+20:17:01 25/03/2025 Verifying candidate: assert(i <= n + 1);
+20:17:01 25/03/2025 Candidate already in fail history: assert(i <= n + 1);
+20:17:01 25/03/2025 Executing predicate filtering
+20:17:01 25/03/2025 Filtering predicates for candidate assert(sn >= 0);
+20:17:01 25/03/2025 Filtering predicates for candidate assert(sn <= n);
+20:17:01 25/03/2025 Addind predicate sn <= n to verify set
+20:17:01 25/03/2025 Filtering predicates for candidate assert(i >= 1);
+20:17:01 25/03/2025 Filtering predicates for candidate assert(i <= n + 1);
+20:17:01 25/03/2025 Predicate filtering verify set: ['n >= 1', 'i >= 1', 'sn == i - 1', 'sn >= 0', 'i > 0', '(sn == i - 1)', 'sn <= n']
+20:17:01 25/03/2025 Verifying formula: (and (and (and (and (and (and (>= n 1) (>= i 1)) (= sn (- i 1))) (>= sn 0)) (> i 0)) (= sn (- i 1))) (<= sn n))
+20:17:01 25/03/2025 For candidate: assert((n >= 1) && (i >= 1) && (sn == i - 1) && (sn >= 0) && (i > 0) && ((sn == i - 1)) && (sn <= n))
+20:17:01 25/03/2025 Predicate filtering found solution: assert((n >= 1) && (i >= 1) && (sn == i - 1) && (sn >= 0) && (i > 0) && ((sn == i - 1)) && (sn <= n))
+20:17:01 25/03/2025 # Result
+20:17:01 25/03/2025 Solution: assert((n >= 1) && (i >= 1) && (sn == i - 1) && (sn >= 0) && (i > 0) && ((sn == i - 1)) && (sn <= n))
+20:17:01 25/03/2025 Generate 8 counter examples, with 4 repeated fails
+20:17:01 25/03/2025 Run time: 12.772141933441162

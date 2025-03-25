@@ -1,0 +1,15 @@
+20:15:27 25/03/2025 Resetting generator
+20:15:27 25/03/2025 # Run Benchmark 98
+20:15:27 25/03/2025 Executing predicate filtering for preconditions
+20:15:27 25/03/2025 Filtering predicates for candidate assert(j == 0)
+20:15:27 25/03/2025 Filtering predicates for candidate assert(i == 0)
+20:15:27 25/03/2025 Filtering predicates for candidate assert(y == 2)
+20:15:27 25/03/2025 Addind predicate y == 2 to verify set
+20:15:27 25/03/2025 Predicate filtering verify set: ['y == 2']
+20:15:27 25/03/2025 Verifying formula: (= y 2)
+20:15:27 25/03/2025 For candidate: assert((y == 2))
+20:15:27 25/03/2025 Predicate filtering found solution: assert((y == 2))
+20:15:27 25/03/2025 # Result
+20:15:27 25/03/2025 Solution: assert((y == 2))
+20:15:27 25/03/2025 Generate 0 counter examples, with 0 repeated fails
+20:15:27 25/03/2025 Run time: 0.5559923648834229

@@ -1,0 +1,47 @@
+20:31:59 25/03/2025 Resetting generator
+20:31:59 25/03/2025 # Run Benchmark 145
+20:31:59 25/03/2025 Executing predicate filtering for preconditions
+20:31:59 25/03/2025 Filtering predicates for candidate assert(lo == 0)
+20:31:59 25/03/2025 Filtering predicates for candidate assert(hi == 2)
+20:31:59 25/03/2025 Filtering predicates for candidate assert(mid > 0)
+20:31:59 25/03/2025 Predicate filtering verify set: []
+20:31:59 25/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.0
+20:31:59 25/03/2025 Generated 6 candidates
+20:31:59 25/03/2025 Verifying generated candidates
+20:31:59 25/03/2025 Verifying candidate: assert(mid >= 0);
+20:31:59 25/03/2025 Candidate failed verification
+20:31:59 25/03/2025 Adding candidate to fail history: assert(mid >= 0);
+20:31:59 25/03/2025 Verifying candidate: assert(hi == 2 * mid + lo);
+20:31:59 25/03/2025 Candidate failed verification
+20:31:59 25/03/2025 Adding candidate to fail history: assert(hi == 2 * mid + lo);
+20:31:59 25/03/2025 Verifying candidate: assert(lo + mid == hi);
+20:31:59 25/03/2025 Candidate failed verification
+20:31:59 25/03/2025 Adding candidate to fail history: assert(lo + mid == hi);
+20:31:59 25/03/2025 Verifying candidate: assert(lo >= 0);
+20:31:59 25/03/2025 Candidate failed verification
+20:31:59 25/03/2025 Adding candidate to fail history: assert(lo >= 0);
+20:31:59 25/03/2025 Verifying candidate: assert(hi >= 0);
+20:31:59 25/03/2025 Candidate failed verification
+20:31:59 25/03/2025 Adding candidate to fail history: assert(hi >= 0);
+20:31:59 25/03/2025 Verifying candidate: assert(mid > 0 || lo == hi);
+20:31:59 25/03/2025 Candidate failed verification
+20:31:59 25/03/2025 Adding candidate to fail history: assert(mid > 0 || lo == hi);
+20:31:59 25/03/2025 Executing predicate filtering
+20:31:59 25/03/2025 Filtering predicates for candidate assert(mid >= 0);
+20:31:59 25/03/2025 Addind predicate mid >= 0 to verify set
+20:31:59 25/03/2025 Filtering predicates for candidate assert(hi == 2 * mid + lo);
+20:31:59 25/03/2025 Addind predicate hi == 2 * mid + lo to verify set
+20:31:59 25/03/2025 Filtering predicates for candidate assert(lo + mid == hi);
+20:31:59 25/03/2025 Filtering predicates for candidate assert(lo >= 0);
+20:31:59 25/03/2025 Addind predicate lo >= 0 to verify set
+20:31:59 25/03/2025 Filtering predicates for candidate assert(hi >= 0);
+20:31:59 25/03/2025 Filtering predicates for candidate assert(mid > 0 || lo == hi);
+20:31:59 25/03/2025 Addind predicate (mid > 0) || (lo == hi) to verify set
+20:31:59 25/03/2025 Predicate filtering verify set: ['mid >= 0', 'hi == 2 * mid + lo', 'lo >= 0', '(mid > 0) || (lo == hi)']
+20:31:59 25/03/2025 Verifying formula: (and (and (and (>= mid 0) (= hi (+ (* 2 mid) lo))) (>= lo 0)) (or (> mid 0) (= lo hi)))
+20:31:59 25/03/2025 For candidate: assert((mid >= 0) && (hi == 2 * mid + lo) && (lo >= 0) && ((mid > 0) || (lo == hi)))
+20:31:59 25/03/2025 Predicate filtering found solution: assert((mid >= 0) && (hi == 2 * mid + lo) && (lo >= 0) && ((mid > 0) || (lo == hi)))
+20:31:59 25/03/2025 # Result
+20:31:59 25/03/2025 Solution: assert((mid >= 0) && (hi == 2 * mid + lo) && (lo >= 0) && ((mid > 0) || (lo == hi)))
+20:31:59 25/03/2025 Generate 6 counter examples, with 0 repeated fails
+20:31:59 25/03/2025 Run time: 4.243409633636475

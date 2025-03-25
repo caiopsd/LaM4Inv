@@ -1,0 +1,83 @@
+20:18:30 25/03/2025 Resetting generator
+20:18:30 25/03/2025 # Run Benchmark 122
+20:18:30 25/03/2025 Executing predicate filtering for preconditions
+20:18:30 25/03/2025 Filtering predicates for candidate assert(sn == 0)
+20:18:30 25/03/2025 Filtering predicates for candidate assert(i == 1)
+20:18:30 25/03/2025 Filtering predicates for candidate assert(size >= 1)
+20:18:30 25/03/2025 Addind predicate size >= 1 to verify set
+20:18:30 25/03/2025 Predicate filtering verify set: ['size >= 1']
+20:18:30 25/03/2025 Verifying formula: (>= size 1)
+20:18:30 25/03/2025 For candidate: assert((size >= 1))
+20:18:30 25/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.0
+20:18:30 25/03/2025 Generated 3 candidates
+20:18:30 25/03/2025 Verifying generated candidates
+20:18:30 25/03/2025 Verifying candidate: assert(size >= 1);
+20:18:30 25/03/2025 Candidate failed verification
+20:18:30 25/03/2025 Adding candidate to fail history: assert(size >= 1);
+20:18:30 25/03/2025 Verifying candidate: assert(sn == 0 || sn == i - 1);
+20:18:30 25/03/2025 Candidate failed verification
+20:18:30 25/03/2025 Adding candidate to fail history: assert(sn == 0 || sn == i - 1);
+20:18:30 25/03/2025 Verifying candidate: assert(i >= 1 && i <= size + 1);
+20:18:30 25/03/2025 Candidate failed verification
+20:18:30 25/03/2025 Adding candidate to fail history: assert(i >= 1 && i <= size + 1);
+20:18:30 25/03/2025 Executing predicate filtering
+20:18:30 25/03/2025 Filtering predicates for candidate assert(size >= 1);
+20:18:30 25/03/2025 Filtering predicates for candidate assert(sn == 0 || sn == i - 1);
+20:18:30 25/03/2025 Addind predicate (sn == 0) || (sn == i - 1) to verify set
+20:18:30 25/03/2025 Filtering predicates for candidate assert(i >= 1 && i <= size + 1);
+20:18:30 25/03/2025 Addind predicate i >= 1 to verify set
+20:18:30 25/03/2025 Predicate filtering verify set: ['size >= 1', '(sn == 0) || (sn == i - 1)', 'i >= 1']
+20:18:30 25/03/2025 Verifying formula: (and (and (>= size 1) (or (= sn 0) (= sn (- i 1)))) (>= i 1))
+20:18:30 25/03/2025 For candidate: assert((size >= 1) && ((sn == 0) || (sn == i - 1)) && (i >= 1))
+20:18:30 25/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.0
+20:18:30 25/03/2025 Generated 4 candidates
+20:18:30 25/03/2025 Verifying generated candidates
+20:18:30 25/03/2025 Verifying candidate: assert(i >= 1);
+20:18:30 25/03/2025 Candidate failed verification
+20:18:30 25/03/2025 Adding candidate to fail history: assert(i >= 1);
+20:18:30 25/03/2025 Verifying candidate: assert(i <= size + 1);
+20:18:30 25/03/2025 Candidate failed verification
+20:18:30 25/03/2025 Adding candidate to fail history: assert(i <= size + 1);
+20:18:30 25/03/2025 Verifying candidate: assert(sn >= 0);
+20:18:30 25/03/2025 Candidate failed verification
+20:18:30 25/03/2025 Adding candidate to fail history: assert(sn >= 0);
+20:18:30 25/03/2025 Verifying candidate: assert(sn == i - 1);
+20:18:30 25/03/2025 Candidate failed verification
+20:18:30 25/03/2025 Adding candidate to fail history: assert(sn == i - 1);
+20:18:30 25/03/2025 Executing predicate filtering
+20:18:30 25/03/2025 Filtering predicates for candidate assert(i >= 1);
+20:18:30 25/03/2025 Filtering predicates for candidate assert(i <= size + 1);
+20:18:30 25/03/2025 Filtering predicates for candidate assert(sn >= 0);
+20:18:30 25/03/2025 Addind predicate sn >= 0 to verify set
+20:18:30 25/03/2025 Filtering predicates for candidate assert(sn == i - 1);
+20:18:30 25/03/2025 Addind predicate sn == i - 1 to verify set
+20:18:30 25/03/2025 Predicate filtering verify set: ['size >= 1', '(sn == 0) || (sn == i - 1)', 'i >= 1', 'sn >= 0', 'sn == i - 1']
+20:18:30 25/03/2025 Verifying formula: (and (and (and (and (>= size 1) (or (= sn 0) (= sn (- i 1)))) (>= i 1)) (>= sn 0)) (= sn (- i 1)))
+20:18:30 25/03/2025 For candidate: assert((size >= 1) && ((sn == 0) || (sn == i - 1)) && (i >= 1) && (sn >= 0) && (sn == i - 1))
+20:18:30 25/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.0
+20:18:30 25/03/2025 Generated 4 candidates
+20:18:30 25/03/2025 Verifying generated candidates
+20:18:30 25/03/2025 Verifying candidate: assert(i >= 1);
+20:18:30 25/03/2025 Candidate already in fail history: assert(i >= 1);
+20:18:30 25/03/2025 Verifying candidate: assert(i <= size);
+20:18:30 25/03/2025 Candidate failed verification
+20:18:30 25/03/2025 Adding candidate to fail history: assert(i <= size);
+20:18:30 25/03/2025 Verifying candidate: assert(sn >= 0);
+20:18:30 25/03/2025 Candidate already in fail history: assert(sn >= 0);
+20:18:30 25/03/2025 Verifying candidate: assert(sn <= size);
+20:18:30 25/03/2025 Candidate failed verification
+20:18:30 25/03/2025 Adding candidate to fail history: assert(sn <= size);
+20:18:30 25/03/2025 Executing predicate filtering
+20:18:30 25/03/2025 Filtering predicates for candidate assert(i >= 1);
+20:18:30 25/03/2025 Filtering predicates for candidate assert(i <= size);
+20:18:30 25/03/2025 Filtering predicates for candidate assert(sn >= 0);
+20:18:30 25/03/2025 Filtering predicates for candidate assert(sn <= size);
+20:18:30 25/03/2025 Addind predicate sn <= size to verify set
+20:18:30 25/03/2025 Predicate filtering verify set: ['size >= 1', '(sn == 0) || (sn == i - 1)', 'i >= 1', 'sn >= 0', 'sn == i - 1', 'sn <= size']
+20:18:30 25/03/2025 Verifying formula: (and (and (and (and (and (>= size 1) (or (= sn 0) (= sn (- i 1)))) (>= i 1)) (>= sn 0)) (= sn (- i 1))) (<= sn size))
+20:18:30 25/03/2025 For candidate: assert((size >= 1) && ((sn == 0) || (sn == i - 1)) && (i >= 1) && (sn >= 0) && (sn == i - 1) && (sn <= size))
+20:18:30 25/03/2025 Predicate filtering found solution: assert((size >= 1) && ((sn == 0) || (sn == i - 1)) && (i >= 1) && (sn >= 0) && (sn == i - 1) && (sn <= size))
+20:18:30 25/03/2025 # Result
+20:18:30 25/03/2025 Solution: assert((size >= 1) && ((sn == 0) || (sn == i - 1)) && (i >= 1) && (sn >= 0) && (sn == i - 1) && (sn <= size))
+20:18:30 25/03/2025 Generate 9 counter examples, with 2 repeated fails
+20:18:30 25/03/2025 Run time: 8.62666392326355

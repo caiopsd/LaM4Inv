@@ -1,0 +1,70 @@
+20:21:07 25/03/2025 Resetting generator
+20:21:07 25/03/2025 # Run Benchmark 126
+20:21:07 25/03/2025 Executing predicate filtering for preconditions
+20:21:07 25/03/2025 Filtering predicates for candidate assert(i == x)
+20:21:07 25/03/2025 Filtering predicates for candidate assert(j == y)
+20:21:07 25/03/2025 Predicate filtering verify set: []
+20:21:07 25/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.0
+20:21:07 25/03/2025 Generated 3 candidates
+20:21:07 25/03/2025 Verifying generated candidates
+20:21:07 25/03/2025 Verifying candidate: assert((i == x + (y - j)) || (x == 0));
+20:21:07 25/03/2025 Candidate failed verification
+20:21:07 25/03/2025 Adding candidate to fail history: assert((i == x + (y - j)) || (x == 0));
+20:21:07 25/03/2025 Verifying candidate: assert((j == y) || (x == 0));
+20:21:07 25/03/2025 Candidate failed verification
+20:21:07 25/03/2025 Adding candidate to fail history: assert((j == y) || (x == 0));
+20:21:07 25/03/2025 Verifying candidate: assert(i == x + j);
+20:21:07 25/03/2025 Candidate failed verification
+20:21:07 25/03/2025 Adding candidate to fail history: assert(i == x + j);
+20:21:07 25/03/2025 Executing predicate filtering
+20:21:07 25/03/2025 Filtering predicates for candidate assert((i == x + (y - j)) || (x == 0));
+20:21:07 25/03/2025 Filtering predicates for candidate assert((j == y) || (x == 0));
+20:21:07 25/03/2025 Filtering predicates for candidate assert(i == x + j);
+20:21:07 25/03/2025 Predicate filtering verify set: []
+20:21:07 25/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.0
+20:21:07 25/03/2025 Generated 3 candidates
+20:21:07 25/03/2025 Verifying generated candidates
+20:21:07 25/03/2025 Verifying candidate: assert(i == x + j);
+20:21:07 25/03/2025 Candidate already in fail history: assert(i == x + j);
+20:21:07 25/03/2025 Verifying candidate: assert(j == y + (x - i));
+20:21:07 25/03/2025 Candidate failed verification
+20:21:07 25/03/2025 Adding candidate to fail history: assert(j == y + (x - i));
+20:21:07 25/03/2025 Verifying candidate: assert((x >= 0) && (y >= j));
+20:21:07 25/03/2025 Candidate failed verification
+20:21:07 25/03/2025 Adding candidate to fail history: assert((x >= 0) && (y >= j));
+20:21:07 25/03/2025 Executing predicate filtering
+20:21:07 25/03/2025 Filtering predicates for candidate assert(i == x + j);
+20:21:07 25/03/2025 Filtering predicates for candidate assert(j == y + (x - i));
+20:21:07 25/03/2025 Filtering predicates for candidate assert((x >= 0) && (y >= j));
+20:21:07 25/03/2025 Predicate filtering verify set: []
+20:21:07 25/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.197375320224904
+20:21:07 25/03/2025 Generated 3 candidates
+20:21:07 25/03/2025 Verifying generated candidates
+20:21:07 25/03/2025 Verifying candidate: assert(i >= 0);
+20:21:07 25/03/2025 Candidate failed verification
+20:21:07 25/03/2025 Adding candidate to fail history: assert(i >= 0);
+20:21:07 25/03/2025 Verifying candidate: assert(j >= 0);
+20:21:07 25/03/2025 Candidate failed verification
+20:21:07 25/03/2025 Adding candidate to fail history: assert(j >= 0);
+20:21:07 25/03/2025 Verifying candidate: assert(y <= j + x);
+20:21:07 25/03/2025 Candidate failed verification
+20:21:07 25/03/2025 Adding candidate to fail history: assert(y <= j + x);
+20:21:07 25/03/2025 Executing predicate filtering
+20:21:07 25/03/2025 Filtering predicates for candidate assert(i >= 0);
+20:21:07 25/03/2025 Filtering predicates for candidate assert(j >= 0);
+20:21:07 25/03/2025 Filtering predicates for candidate assert(y <= j + x);
+20:21:07 25/03/2025 Predicate filtering verify set: []
+20:21:07 25/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.197375320224904
+20:21:07 25/03/2025 Generated 3 candidates
+20:21:07 25/03/2025 Verifying generated candidates
+20:21:07 25/03/2025 Verifying candidate: assert(i == x);
+20:21:07 25/03/2025 Candidate failed verification
+20:21:07 25/03/2025 Adding candidate to fail history: assert(i == x);
+20:21:07 25/03/2025 Verifying candidate: assert(j == y);
+20:21:07 25/03/2025 Candidate failed verification
+20:21:07 25/03/2025 Adding candidate to fail history: assert(j == y);
+20:21:07 25/03/2025 Verifying candidate: assert(i == j + (x - y));
+20:21:07 25/03/2025 # Result
+20:21:07 25/03/2025 Solution: assert(i == j + (x - y));
+20:21:07 25/03/2025 Generate 10 counter examples, with 1 repeated fails
+20:21:07 25/03/2025 Run time: 6.364116907119751

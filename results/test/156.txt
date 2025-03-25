@@ -1,0 +1,441 @@
+20:42:35 25/03/2025 Resetting generator
+20:42:35 25/03/2025 # Run Benchmark 156
+20:42:35 25/03/2025 Executing predicate filtering for preconditions
+20:42:35 25/03/2025 Filtering predicates for candidate assert(j == 2)
+20:42:35 25/03/2025 Filtering predicates for candidate assert(k == 0)
+20:42:35 25/03/2025 Predicate filtering verify set: []
+20:42:35 25/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.0
+20:42:35 25/03/2025 Generated 3 candidates
+20:42:35 25/03/2025 Verifying generated candidates
+20:42:35 25/03/2025 Verifying candidate: assert(j == k * 2 + 2 || (k == 0 && t == 0));
+20:42:35 25/03/2025 Candidate failed verification
+20:42:35 25/03/2025 Adding candidate to fail history: assert(j == k * 2 + 2 || (k == 0 && t == 0));
+20:42:35 25/03/2025 Verifying candidate: assert(j >= 2);
+20:42:35 25/03/2025 Candidate failed verification
+20:42:35 25/03/2025 Adding candidate to fail history: assert(j >= 2);
+20:42:35 25/03/2025 Verifying candidate: assert(k >= 0);
+20:42:35 25/03/2025 Candidate failed verification
+20:42:35 25/03/2025 Adding candidate to fail history: assert(k >= 0);
+20:42:35 25/03/2025 Executing predicate filtering
+20:42:35 25/03/2025 Filtering predicates for candidate assert(j == k * 2 + 2 || (k == 0 && t == 0));
+20:42:35 25/03/2025 Addind predicate (j == k * 2 + 2) || ((k == 0 && t == 0)) to verify set
+20:42:35 25/03/2025 Filtering predicates for candidate assert(j >= 2);
+20:42:35 25/03/2025 Addind predicate j >= 2 to verify set
+20:42:35 25/03/2025 Filtering predicates for candidate assert(k >= 0);
+20:42:35 25/03/2025 Addind predicate k >= 0 to verify set
+20:42:35 25/03/2025 Predicate filtering verify set: ['(j == k * 2 + 2) || ((k == 0 && t == 0))', 'j >= 2', 'k >= 0']
+20:42:35 25/03/2025 Verifying formula: (and (and (or (= j (+ (* k 2) 2)) (and (= k 0) (= t 0))) (>= j 2)) (>= k 0))
+20:42:35 25/03/2025 For candidate: assert(((j == k * 2 + 2) || ((k == 0 && t == 0))) && (j >= 2) && (k >= 0))
+20:42:35 25/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.0
+20:42:35 25/03/2025 Generated 3 candidates
+20:42:35 25/03/2025 Verifying generated candidates
+20:42:35 25/03/2025 Verifying candidate: assert(j == k * 2 + 2 + t * 2);
+20:42:35 25/03/2025 Candidate failed verification
+20:42:35 25/03/2025 Adding candidate to fail history: assert(j == k * 2 + 2 + t * 2);
+20:42:35 25/03/2025 Verifying candidate: assert(k >= 0);
+20:42:35 25/03/2025 Candidate already in fail history: assert(k >= 0);
+20:42:35 25/03/2025 Verifying candidate: assert(t == 0 || k > 0);
+20:42:35 25/03/2025 Candidate failed verification
+20:42:35 25/03/2025 Adding candidate to fail history: assert(t == 0 || k > 0);
+20:42:35 25/03/2025 Executing predicate filtering
+20:42:35 25/03/2025 Filtering predicates for candidate assert(j == k * 2 + 2 + t * 2);
+20:42:35 25/03/2025 Filtering predicates for candidate assert(k >= 0);
+20:42:35 25/03/2025 Filtering predicates for candidate assert(t == 0 || k > 0);
+20:42:35 25/03/2025 Predicate filtering verify set: ['(j == k * 2 + 2) || ((k == 0 && t == 0))', 'j >= 2', 'k >= 0']
+20:42:35 25/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.197375320224904
+20:42:35 25/03/2025 Generated 3 candidates
+20:42:35 25/03/2025 Verifying generated candidates
+20:42:35 25/03/2025 Verifying candidate: assert(j >= 2);
+20:42:35 25/03/2025 Candidate already in fail history: assert(j >= 2);
+20:42:35 25/03/2025 Verifying candidate: assert(k >= 0);
+20:42:35 25/03/2025 Candidate already in fail history: assert(k >= 0);
+20:42:35 25/03/2025 Verifying candidate: assert(t == 0 || t == 1);
+20:42:35 25/03/2025 Candidate failed verification
+20:42:35 25/03/2025 Adding candidate to fail history: assert(t == 0 || t == 1);
+20:42:35 25/03/2025 Executing predicate filtering
+20:42:35 25/03/2025 Filtering predicates for candidate assert(j >= 2);
+20:42:35 25/03/2025 Filtering predicates for candidate assert(k >= 0);
+20:42:35 25/03/2025 Filtering predicates for candidate assert(t == 0 || t == 1);
+20:42:35 25/03/2025 Predicate filtering verify set: ['(j == k * 2 + 2) || ((k == 0 && t == 0))', 'j >= 2', 'k >= 0']
+20:42:35 25/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.5370495669980354
+20:42:35 25/03/2025 Generated 3 candidates
+20:42:35 25/03/2025 Verifying generated candidates
+20:42:35 25/03/2025 Verifying candidate: assert(t == 0 || t == 1);
+20:42:35 25/03/2025 Candidate already in fail history: assert(t == 0 || t == 1);
+20:42:35 25/03/2025 Verifying candidate: assert(j >= 2 * k + 2);
+20:42:35 25/03/2025 Candidate failed verification
+20:42:35 25/03/2025 Adding candidate to fail history: assert(j >= 2 * k + 2);
+20:42:35 25/03/2025 Verifying candidate: assert(k >= 0);
+20:42:35 25/03/2025 Candidate already in fail history: assert(k >= 0);
+20:42:35 25/03/2025 Executing predicate filtering
+20:42:35 25/03/2025 Filtering predicates for candidate assert(t == 0 || t == 1);
+20:42:35 25/03/2025 Filtering predicates for candidate assert(j >= 2 * k + 2);
+20:42:35 25/03/2025 Addind predicate j >= 2 * k + 2 to verify set
+20:42:35 25/03/2025 Filtering predicates for candidate assert(k >= 0);
+20:42:35 25/03/2025 Predicate filtering verify set: ['(j == k * 2 + 2) || ((k == 0 && t == 0))', 'j >= 2', 'k >= 0', 'j >= 2 * k + 2']
+20:42:35 25/03/2025 Verifying formula: (and (and (and (or (= j (+ (* k 2) 2)) (and (= k 0) (= t 0))) (>= j 2)) (>= k 0)) (>= j (+ (* 2 k) 2)))
+20:42:35 25/03/2025 For candidate: assert(((j == k * 2 + 2) || ((k == 0 && t == 0))) && (j >= 2) && (k >= 0) && (j >= 2 * k + 2))
+20:42:35 25/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.7615941559557649
+20:42:35 25/03/2025 Generated 3 candidates
+20:42:35 25/03/2025 Verifying generated candidates
+20:42:35 25/03/2025 Verifying candidate: assert(j == 2 + k * 2 + t * 2);
+20:42:35 25/03/2025 Candidate failed verification
+20:42:35 25/03/2025 Adding candidate to fail history: assert(j == 2 + k * 2 + t * 2);
+20:42:35 25/03/2025 Verifying candidate: assert(k >= 0);
+20:42:35 25/03/2025 Candidate already in fail history: assert(k >= 0);
+20:42:35 25/03/2025 Verifying candidate: assert(t == 0 || t == 1);
+20:42:35 25/03/2025 Candidate already in fail history: assert(t == 0 || t == 1);
+20:42:35 25/03/2025 Executing predicate filtering
+20:42:35 25/03/2025 Filtering predicates for candidate assert(j == 2 + k * 2 + t * 2);
+20:42:35 25/03/2025 Filtering predicates for candidate assert(k >= 0);
+20:42:35 25/03/2025 Filtering predicates for candidate assert(t == 0 || t == 1);
+20:42:35 25/03/2025 Predicate filtering verify set: ['(j == k * 2 + 2) || ((k == 0 && t == 0))', 'j >= 2', 'k >= 0', 'j >= 2 * k + 2']
+20:42:35 25/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.8853516482022625
+20:42:35 25/03/2025 Generated 3 candidates
+20:42:35 25/03/2025 Verifying generated candidates
+20:42:35 25/03/2025 Verifying candidate: assert(j >= 2);
+20:42:35 25/03/2025 Candidate already in fail history: assert(j >= 2);
+20:42:35 25/03/2025 Verifying candidate: assert(k >= 0);
+20:42:35 25/03/2025 Candidate already in fail history: assert(k >= 0);
+20:42:35 25/03/2025 Verifying candidate: assert(t == 0 || t == 1 || t == -1);
+20:42:35 25/03/2025 Candidate failed verification
+20:42:35 25/03/2025 Adding candidate to fail history: assert(t == 0 || t == 1 || t == -1);
+20:42:35 25/03/2025 Executing predicate filtering
+20:42:35 25/03/2025 Filtering predicates for candidate assert(j >= 2);
+20:42:35 25/03/2025 Filtering predicates for candidate assert(k >= 0);
+20:42:35 25/03/2025 Filtering predicates for candidate assert(t == 0 || t == 1 || t == -1);
+20:42:35 25/03/2025 Predicate filtering verify set: ['(j == k * 2 + 2) || ((k == 0 && t == 0))', 'j >= 2', 'k >= 0', 'j >= 2 * k + 2']
+20:42:35 25/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9468060128462683
+20:42:35 25/03/2025 Generated 3 candidates
+20:42:35 25/03/2025 Verifying generated candidates
+20:42:35 25/03/2025 Verifying candidate: assert(j >= 2);
+20:42:35 25/03/2025 Candidate already in fail history: assert(j >= 2);
+20:42:35 25/03/2025 Verifying candidate: assert(k >= 0 || t != 0);
+20:42:35 25/03/2025 Candidate failed verification
+20:42:35 25/03/2025 Adding candidate to fail history: assert(k >= 0 || t != 0);
+20:42:35 25/03/2025 Verifying candidate: assert(t == 0 || t == 1);
+20:42:35 25/03/2025 Candidate already in fail history: assert(t == 0 || t == 1);
+20:42:35 25/03/2025 Executing predicate filtering
+20:42:35 25/03/2025 Filtering predicates for candidate assert(j >= 2);
+20:42:35 25/03/2025 Filtering predicates for candidate assert(k >= 0 || t != 0);
+20:42:35 25/03/2025 Addind predicate (k >= 0) || (t != 0) to verify set
+20:42:35 25/03/2025 Filtering predicates for candidate assert(t == 0 || t == 1);
+20:42:35 25/03/2025 Predicate filtering verify set: ['(j == k * 2 + 2) || ((k == 0 && t == 0))', 'j >= 2', 'k >= 0', 'j >= 2 * k + 2', '(k >= 0) || (t != 0)']
+20:42:35 25/03/2025 Verifying formula: (and (and (and (and (or (= j (+ (* k 2) 2)) (and (= k 0) (= t 0))) (>= j 2)) (>= k 0)) (>= j (+ (* 2 k) 2))) (or (>= k 0) (distinct t 0)))
+20:42:35 25/03/2025 For candidate: assert(((j == k * 2 + 2) || ((k == 0 && t == 0))) && (j >= 2) && (k >= 0) && (j >= 2 * k + 2) && ((k >= 0) || (t != 0)))
+20:42:35 25/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9757431300314515
+20:42:35 25/03/2025 Generated 3 candidates
+20:42:35 25/03/2025 Verifying generated candidates
+20:42:35 25/03/2025 Verifying candidate: assert(k >= 0);
+20:42:35 25/03/2025 Candidate already in fail history: assert(k >= 0);
+20:42:35 25/03/2025 Verifying candidate: assert(t >= 0);
+20:42:35 25/03/2025 Candidate failed verification
+20:42:35 25/03/2025 Adding candidate to fail history: assert(t >= 0);
+20:42:35 25/03/2025 Verifying candidate: assert(j == 2 + k * 2 + t * 2);
+20:42:35 25/03/2025 Candidate already in fail history: assert(j == 2 + k * 2 + t * 2);
+20:42:35 25/03/2025 Executing predicate filtering
+20:42:35 25/03/2025 Filtering predicates for candidate assert(k >= 0);
+20:42:35 25/03/2025 Filtering predicates for candidate assert(t >= 0);
+20:42:35 25/03/2025 Filtering predicates for candidate assert(j == 2 + k * 2 + t * 2);
+20:42:35 25/03/2025 Predicate filtering verify set: ['(j == k * 2 + 2) || ((k == 0 && t == 0))', 'j >= 2', 'k >= 0', 'j >= 2 * k + 2', '(k >= 0) || (t != 0)']
+20:42:35 25/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9890274022010992
+20:42:35 25/03/2025 Generated 3 candidates
+20:42:35 25/03/2025 Verifying generated candidates
+20:42:35 25/03/2025 Verifying candidate: assert(j >= 0);
+20:42:35 25/03/2025 Candidate failed verification
+20:42:35 25/03/2025 Adding candidate to fail history: assert(j >= 0);
+20:42:35 25/03/2025 Verifying candidate: assert(k == 0 || k > 0);
+20:42:35 25/03/2025 Candidate failed verification
+20:42:35 25/03/2025 Adding candidate to fail history: assert(k == 0 || k > 0);
+20:42:35 25/03/2025 Verifying candidate: assert(t == 0 || t == 1);
+20:42:35 25/03/2025 Candidate already in fail history: assert(t == 0 || t == 1);
+20:42:35 25/03/2025 Executing predicate filtering
+20:42:35 25/03/2025 Filtering predicates for candidate assert(j >= 0);
+20:42:35 25/03/2025 Addind predicate j >= 0 to verify set
+20:42:35 25/03/2025 Filtering predicates for candidate assert(k == 0 || k > 0);
+20:42:35 25/03/2025 Addind predicate (k == 0) || (k > 0) to verify set
+20:42:35 25/03/2025 Filtering predicates for candidate assert(t == 0 || t == 1);
+20:42:35 25/03/2025 Predicate filtering verify set: ['(j == k * 2 + 2) || ((k == 0 && t == 0))', 'j >= 2', 'k >= 0', 'j >= 2 * k + 2', '(k >= 0) || (t != 0)', 'j >= 0', '(k == 0) || (k > 0)']
+20:42:35 25/03/2025 Verifying formula: (and (and (and (and (and (and (or (= j (+ (* k 2) 2)) (and (= k 0) (= t 0))) (>= j 2)) (>= k 0)) (>= j (+ (* 2 k) 2))) (or (>= k 0) (distinct t 0))) (>= j 0)) (or (= k 0) (> k 0)))
+20:42:35 25/03/2025 For candidate: assert(((j == k * 2 + 2) || ((k == 0 && t == 0))) && (j >= 2) && (k >= 0) && (j >= 2 * k + 2) && ((k >= 0) || (t != 0)) && (j >= 0) && ((k == 0) || (k > 0)))
+20:42:35 25/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.992631520201128
+20:42:35 25/03/2025 Generated 3 candidates
+20:42:35 25/03/2025 Verifying generated candidates
+20:42:35 25/03/2025 Verifying candidate: assert(k >= 0);
+20:42:35 25/03/2025 Candidate already in fail history: assert(k >= 0);
+20:42:35 25/03/2025 Verifying candidate: assert(j == 2 + k * 2 + (t > 0 ? 2 : 0));
+20:42:35 25/03/2025 Invalid candidate syntax
+20:42:35 25/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9950547536867305
+20:42:35 25/03/2025 Generated 3 candidates
+20:42:35 25/03/2025 Verifying generated candidates
+20:42:35 25/03/2025 Verifying candidate: assert(k >= 0);
+20:42:35 25/03/2025 Candidate already in fail history: assert(k >= 0);
+20:42:35 25/03/2025 Verifying candidate: assert(j == 2 + 2 * k + (t > 0 ? t : 0));
+20:42:35 25/03/2025 Invalid candidate syntax
+20:42:35 25/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9966823978396512
+20:42:35 25/03/2025 Generated 3 candidates
+20:42:35 25/03/2025 Verifying generated candidates
+20:42:35 25/03/2025 Verifying candidate: assert(j >= 2);
+20:42:35 25/03/2025 Candidate already in fail history: assert(j >= 2);
+20:42:35 25/03/2025 Verifying candidate: assert(k == 0 || (k > 0 && t == 1));
+20:42:35 25/03/2025 Candidate failed verification
+20:42:35 25/03/2025 Adding candidate to fail history: assert(k == 0 || (k > 0 && t == 1));
+20:42:35 25/03/2025 Verifying candidate: assert(t == 0 || t == 1);
+20:42:35 25/03/2025 Candidate already in fail history: assert(t == 0 || t == 1);
+20:42:35 25/03/2025 Executing predicate filtering
+20:42:35 25/03/2025 Filtering predicates for candidate assert(j >= 2);
+20:42:35 25/03/2025 Filtering predicates for candidate assert(k == 0 || (k > 0 && t == 1));
+20:42:35 25/03/2025 Filtering predicates for candidate assert(t == 0 || t == 1);
+20:42:35 25/03/2025 Predicate filtering verify set: ['(j == k * 2 + 2) || ((k == 0 && t == 0))', 'j >= 2', 'k >= 0', 'j >= 2 * k + 2', '(k >= 0) || (t != 0)', 'j >= 0', '(k == 0) || (k > 0)']
+20:42:35 25/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9985079423323266
+20:42:35 25/03/2025 Generated 3 candidates
+20:42:35 25/03/2025 Verifying generated candidates
+20:42:35 25/03/2025 Verifying candidate: assert(j >= 2);
+20:42:35 25/03/2025 Candidate already in fail history: assert(j >= 2);
+20:42:35 25/03/2025 Verifying candidate: assert(k >= 0);
+20:42:35 25/03/2025 Candidate already in fail history: assert(k >= 0);
+20:42:35 25/03/2025 Verifying candidate: assert(t == 0 || k > 0);
+20:42:35 25/03/2025 Candidate already in fail history: assert(t == 0 || k > 0);
+20:42:35 25/03/2025 Executing predicate filtering
+20:42:35 25/03/2025 Filtering predicates for candidate assert(j >= 2);
+20:42:35 25/03/2025 Filtering predicates for candidate assert(k >= 0);
+20:42:35 25/03/2025 Filtering predicates for candidate assert(t == 0 || k > 0);
+20:42:35 25/03/2025 Predicate filtering verify set: ['(j == k * 2 + 2) || ((k == 0 && t == 0))', 'j >= 2', 'k >= 0', 'j >= 2 * k + 2', '(k >= 0) || (t != 0)', 'j >= 0', '(k == 0) || (k > 0)']
+20:42:35 25/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9995503664595334
+20:42:35 25/03/2025 Generated 3 candidates
+20:42:35 25/03/2025 Verifying generated candidates
+20:42:35 25/03/2025 Verifying candidate: assert(j >= 0);
+20:42:35 25/03/2025 Candidate already in fail history: assert(j >= 0);
+20:42:35 25/03/2025 Verifying candidate: assert(t == 0 || t == 1);
+20:42:35 25/03/2025 Candidate already in fail history: assert(t == 0 || t == 1);
+20:42:35 25/03/2025 Verifying candidate: assert(k == 0 || (t > 0));
+20:42:35 25/03/2025 Candidate failed verification
+20:42:35 25/03/2025 Adding candidate to fail history: assert(k == 0 || (t > 0));
+20:42:35 25/03/2025 Executing predicate filtering
+20:42:35 25/03/2025 Filtering predicates for candidate assert(j >= 0);
+20:42:35 25/03/2025 Filtering predicates for candidate assert(t == 0 || t == 1);
+20:42:35 25/03/2025 Filtering predicates for candidate assert(k == 0 || (t > 0));
+20:42:35 25/03/2025 Predicate filtering verify set: ['(j == k * 2 + 2) || ((k == 0 && t == 0))', 'j >= 2', 'k >= 0', 'j >= 2 * k + 2', '(k >= 0) || (t != 0)', 'j >= 0', '(k == 0) || (k > 0)']
+20:42:35 25/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9997979416121845
+20:42:35 25/03/2025 Generated 3 candidates
+20:42:35 25/03/2025 Verifying generated candidates
+20:42:35 25/03/2025 Verifying candidate: assert(j >= 2 + k * 2);
+20:42:35 25/03/2025 Candidate failed verification
+20:42:35 25/03/2025 Adding candidate to fail history: assert(j >= 2 + k * 2);
+20:42:35 25/03/2025 Verifying candidate: assert(k >= 0);
+20:42:35 25/03/2025 Candidate already in fail history: assert(k >= 0);
+20:42:35 25/03/2025 Verifying candidate: assert(t == 0 || t == 1);
+20:42:35 25/03/2025 Candidate already in fail history: assert(t == 0 || t == 1);
+20:42:35 25/03/2025 Executing predicate filtering
+20:42:35 25/03/2025 Filtering predicates for candidate assert(j >= 2 + k * 2);
+20:42:35 25/03/2025 Addind predicate j >= 2 + k * 2 to verify set
+20:42:35 25/03/2025 Filtering predicates for candidate assert(k >= 0);
+20:42:35 25/03/2025 Filtering predicates for candidate assert(t == 0 || t == 1);
+20:42:35 25/03/2025 Predicate filtering verify set: ['(j == k * 2 + 2) || ((k == 0 && t == 0))', 'j >= 2', 'k >= 0', 'j >= 2 * k + 2', '(k >= 0) || (t != 0)', 'j >= 0', '(k == 0) || (k > 0)', 'j >= 2 + k * 2']
+20:42:35 25/03/2025 Verifying formula: (and (and (and (and (and (and (and (or (= j (+ (* k 2) 2)) (and (= k 0) (= t 0))) (>= j 2)) (>= k 0)) (>= j (+ (* 2 k) 2))) (or (>= k 0) (distinct t 0))) (>= j 0)) (or (= k 0) (> k 0))) (>= j (+ 2 (* k 2))))
+20:42:35 25/03/2025 For candidate: assert(((j == k * 2 + 2) || ((k == 0 && t == 0))) && (j >= 2) && (k >= 0) && (j >= 2 * k + 2) && ((k >= 0) || (t != 0)) && (j >= 0) && ((k == 0) || (k > 0)) && (j >= 2 + k * 2))
+20:42:35 25/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9999092042625951
+20:42:35 25/03/2025 Generated 3 candidates
+20:42:35 25/03/2025 Verifying generated candidates
+20:42:35 25/03/2025 Verifying candidate: assert(j == k * 2 + t * 2 + 2);
+20:42:35 25/03/2025 Candidate failed verification
+20:42:35 25/03/2025 Adding candidate to fail history: assert(j == k * 2 + t * 2 + 2);
+20:42:35 25/03/2025 Verifying candidate: assert(k >= 0);
+20:42:35 25/03/2025 Candidate already in fail history: assert(k >= 0);
+20:42:35 25/03/2025 Verifying candidate: assert(t == 0 || (k > 0));
+20:42:35 25/03/2025 Candidate failed verification
+20:42:35 25/03/2025 Adding candidate to fail history: assert(t == 0 || (k > 0));
+20:42:35 25/03/2025 Executing predicate filtering
+20:42:35 25/03/2025 Filtering predicates for candidate assert(j == k * 2 + t * 2 + 2);
+20:42:35 25/03/2025 Filtering predicates for candidate assert(k >= 0);
+20:42:35 25/03/2025 Filtering predicates for candidate assert(t == 0 || (k > 0));
+20:42:35 25/03/2025 Predicate filtering verify set: ['(j == k * 2 + 2) || ((k == 0 && t == 0))', 'j >= 2', 'k >= 0', 'j >= 2 * k + 2', '(k >= 0) || (t != 0)', 'j >= 0', '(k == 0) || (k > 0)', 'j >= 2 + k * 2']
+20:42:35 25/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9999391368861988
+20:42:35 25/03/2025 Generated 3 candidates
+20:42:35 25/03/2025 Verifying generated candidates
+20:42:35 25/03/2025 Verifying candidate: assert(j >= 2);
+20:42:35 25/03/2025 Candidate already in fail history: assert(j >= 2);
+20:42:35 25/03/2025 Verifying candidate: assert(k >= 0 || t == 0);
+20:42:35 25/03/2025 Candidate failed verification
+20:42:35 25/03/2025 Adding candidate to fail history: assert(k >= 0 || t == 0);
+20:42:35 25/03/2025 Verifying candidate: assert(t == 0 || (k > 0 && j > 2));
+20:42:35 25/03/2025 Candidate failed verification
+20:42:35 25/03/2025 Adding candidate to fail history: assert(t == 0 || (k > 0 && j > 2));
+20:42:35 25/03/2025 Executing predicate filtering
+20:42:35 25/03/2025 Filtering predicates for candidate assert(j >= 2);
+20:42:35 25/03/2025 Filtering predicates for candidate assert(k >= 0 || t == 0);
+20:42:35 25/03/2025 Addind predicate (k >= 0) || (t == 0) to verify set
+20:42:35 25/03/2025 Filtering predicates for candidate assert(t == 0 || (k > 0 && j > 2));
+20:42:35 25/03/2025 Predicate filtering verify set: ['(j == k * 2 + 2) || ((k == 0 && t == 0))', 'j >= 2', 'k >= 0', 'j >= 2 * k + 2', '(k >= 0) || (t != 0)', 'j >= 0', '(k == 0) || (k > 0)', 'j >= 2 + k * 2', '(k >= 0) || (t == 0)']
+20:42:35 25/03/2025 Verifying formula: (and (and (and (and (and (and (and (and (or (= j (+ (* k 2) 2)) (and (= k 0) (= t 0))) (>= j 2)) (>= k 0)) (>= j (+ (* 2 k) 2))) (or (>= k 0) (distinct t 0))) (>= j 0)) (or (= k 0) (> k 0))) (>= j (+ 2 (* k 2)))) (or (>= k 0) (= t 0)))
+20:42:35 25/03/2025 For candidate: assert(((j == k * 2 + 2) || ((k == 0 && t == 0))) && (j >= 2) && (k >= 0) && (j >= 2 * k + 2) && ((k >= 0) || (t != 0)) && (j >= 0) && ((k == 0) || (k > 0)) && (j >= 2 + k * 2) && ((k >= 0) || (t == 0)))
+20:42:35 25/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9999592018254402
+20:42:35 25/03/2025 Generated 3 candidates
+20:42:35 25/03/2025 Verifying generated candidates
+20:42:35 25/03/2025 Verifying candidate: assert(j == 2 + k * 2 + (t > 0 ? 2 : 0));
+20:42:35 25/03/2025 Invalid candidate syntax
+20:42:35 25/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9999592018254402
+20:42:35 25/03/2025 Generated 3 candidates
+20:42:35 25/03/2025 Verifying generated candidates
+20:42:35 25/03/2025 Verifying candidate: assert(j >= 2 + k * 2);
+20:42:35 25/03/2025 Candidate already in fail history: assert(j >= 2 + k * 2);
+20:42:35 25/03/2025 Verifying candidate: assert(t == 0 || t == 1);
+20:42:35 25/03/2025 Candidate already in fail history: assert(t == 0 || t == 1);
+20:42:35 25/03/2025 Verifying candidate: assert(k >= 0 || (j > 2));
+20:42:35 25/03/2025 Candidate failed verification
+20:42:35 25/03/2025 Adding candidate to fail history: assert(k >= 0 || (j > 2));
+20:42:35 25/03/2025 Executing predicate filtering
+20:42:35 25/03/2025 Filtering predicates for candidate assert(j >= 2 + k * 2);
+20:42:35 25/03/2025 Filtering predicates for candidate assert(t == 0 || t == 1);
+20:42:35 25/03/2025 Filtering predicates for candidate assert(k >= 0 || (j > 2));
+20:42:35 25/03/2025 Addind predicate (k >= 0) || ((j > 2)) to verify set
+20:42:35 25/03/2025 Predicate filtering verify set: ['(j == k * 2 + 2) || ((k == 0 && t == 0))', 'j >= 2', 'k >= 0', 'j >= 2 * k + 2', '(k >= 0) || (t != 0)', 'j >= 0', '(k == 0) || (k > 0)', 'j >= 2 + k * 2', '(k >= 0) || (t == 0)', '(k >= 0) || ((j > 2))']
+20:42:35 25/03/2025 Verifying formula: (and (and (and (and (and (and (and (and (and (or (= j (+ (* k 2) 2)) (and (= k 0) (= t 0))) (>= j 2)) (>= k 0)) (>= j (+ (* 2 k) 2))) (or (>= k 0) (distinct t 0))) (>= j 0)) (or (= k 0) (> k 0))) (>= j (+ 2 (* k 2)))) (or (>= k 0) (= t 0))) (or (>= k 0) (> j 2)))
+20:42:35 25/03/2025 For candidate: assert(((j == k * 2 + 2) || ((k == 0 && t == 0))) && (j >= 2) && (k >= 0) && (j >= 2 * k + 2) && ((k >= 0) || (t != 0)) && (j >= 0) && ((k == 0) || (k > 0)) && (j >= 2 + k * 2) && ((k >= 0) || (t == 0)) && ((k >= 0) || ((j > 2))))
+20:42:35 25/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9999816679925603
+20:42:35 25/03/2025 Generated 3 candidates
+20:42:35 25/03/2025 Verifying generated candidates
+20:42:35 25/03/2025 Verifying candidate: assert(j >= 2);
+20:42:35 25/03/2025 Candidate already in fail history: assert(j >= 2);
+20:42:35 25/03/2025 Verifying candidate: assert(k >= 0);
+20:42:35 25/03/2025 Candidate already in fail history: assert(k >= 0);
+20:42:35 25/03/2025 Verifying candidate: assert(t == 0 || (t == 1 && k > 0));
+20:42:35 25/03/2025 Candidate failed verification
+20:42:35 25/03/2025 Adding candidate to fail history: assert(t == 0 || (t == 1 && k > 0));
+20:42:35 25/03/2025 Executing predicate filtering
+20:42:35 25/03/2025 Filtering predicates for candidate assert(j >= 2);
+20:42:35 25/03/2025 Filtering predicates for candidate assert(k >= 0);
+20:42:35 25/03/2025 Filtering predicates for candidate assert(t == 0 || (t == 1 && k > 0));
+20:42:35 25/03/2025 Predicate filtering verify set: ['(j == k * 2 + 2) || ((k == 0 && t == 0))', 'j >= 2', 'k >= 0', 'j >= 2 * k + 2', '(k >= 0) || (t != 0)', 'j >= 0', '(k == 0) || (k > 0)', 'j >= 2 + k * 2', '(k >= 0) || (t == 0)', '(k >= 0) || ((j > 2))']
+20:42:35 25/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9999917628565104
+20:42:35 25/03/2025 Generated 3 candidates
+20:42:35 25/03/2025 Verifying generated candidates
+20:42:35 25/03/2025 Verifying candidate: assert(j >= 2 * k + 2);
+20:42:35 25/03/2025 Candidate already in fail history: assert(j >= 2 * k + 2);
+20:42:35 25/03/2025 Verifying candidate: assert(k >= 0 || (t > 0));
+20:42:35 25/03/2025 Candidate failed verification
+20:42:35 25/03/2025 Adding candidate to fail history: assert(k >= 0 || (t > 0));
+20:42:35 25/03/2025 Verifying candidate: assert(t >= 0);
+20:42:35 25/03/2025 Candidate already in fail history: assert(t >= 0);
+20:42:35 25/03/2025 Executing predicate filtering
+20:42:35 25/03/2025 Filtering predicates for candidate assert(j >= 2 * k + 2);
+20:42:35 25/03/2025 Filtering predicates for candidate assert(k >= 0 || (t > 0));
+20:42:35 25/03/2025 Addind predicate (k >= 0) || ((t > 0)) to verify set
+20:42:35 25/03/2025 Filtering predicates for candidate assert(t >= 0);
+20:42:35 25/03/2025 Predicate filtering verify set: ['(j == k * 2 + 2) || ((k == 0 && t == 0))', 'j >= 2', 'k >= 0', 'j >= 2 * k + 2', '(k >= 0) || (t != 0)', 'j >= 0', '(k == 0) || (k > 0)', 'j >= 2 + k * 2', '(k >= 0) || (t == 0)', '(k >= 0) || ((j > 2))', '(k >= 0) || ((t > 0))']
+20:42:35 25/03/2025 Verifying formula: (and (and (and (and (and (and (and (and (and (and (or (= j (+ (* k 2) 2)) (and (= k 0) (= t 0))) (>= j 2)) (>= k 0)) (>= j (+ (* 2 k) 2))) (or (>= k 0) (distinct t 0))) (>= j 0)) (or (= k 0) (> k 0))) (>= j (+ 2 (* k 2)))) (or (>= k 0) (= t 0))) (or (>= k 0) (> j 2))) (or (>= k 0) (> t 0)))
+20:42:35 25/03/2025 For candidate: assert(((j == k * 2 + 2) || ((k == 0 && t == 0))) && (j >= 2) && (k >= 0) && (j >= 2 * k + 2) && ((k >= 0) || (t != 0)) && (j >= 0) && ((k == 0) || (k > 0)) && (j >= 2 + k * 2) && ((k >= 0) || (t == 0)) && ((k >= 0) || ((j > 2))) && ((k >= 0) || ((t > 0))))
+20:42:35 25/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9999962988044543
+20:42:35 25/03/2025 Generated 3 candidates
+20:42:35 25/03/2025 Verifying generated candidates
+20:42:35 25/03/2025 Verifying candidate: assert(j >= 2);
+20:42:35 25/03/2025 Candidate already in fail history: assert(j >= 2);
+20:42:35 25/03/2025 Verifying candidate: assert(t == 0 || t == 1);
+20:42:35 25/03/2025 Candidate already in fail history: assert(t == 0 || t == 1);
+20:42:35 25/03/2025 Verifying candidate: assert(k >= 0 && (k > 0 || t == 0));
+20:42:35 25/03/2025 Candidate failed verification
+20:42:35 25/03/2025 Adding candidate to fail history: assert(k >= 0 && (k > 0 || t == 0));
+20:42:35 25/03/2025 Executing predicate filtering
+20:42:35 25/03/2025 Filtering predicates for candidate assert(j >= 2);
+20:42:35 25/03/2025 Filtering predicates for candidate assert(t == 0 || t == 1);
+20:42:35 25/03/2025 Filtering predicates for candidate assert(k >= 0 && (k > 0 || t == 0));
+20:42:35 25/03/2025 Predicate filtering verify set: ['(j == k * 2 + 2) || ((k == 0 && t == 0))', 'j >= 2', 'k >= 0', 'j >= 2 * k + 2', '(k >= 0) || (t != 0)', 'j >= 0', '(k == 0) || (k > 0)', 'j >= 2 + k * 2', '(k >= 0) || (t == 0)', '(k >= 0) || ((j > 2))', '(k >= 0) || ((t > 0))']
+20:42:35 25/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9999983369439447
+20:42:35 25/03/2025 Generated 3 candidates
+20:42:35 25/03/2025 Verifying generated candidates
+20:42:35 25/03/2025 Verifying candidate: assert(j >= 0);
+20:42:35 25/03/2025 Candidate already in fail history: assert(j >= 0);
+20:42:35 25/03/2025 Verifying candidate: assert(t == 0 || k == 0);
+20:42:35 25/03/2025 Candidate failed verification
+20:42:35 25/03/2025 Adding candidate to fail history: assert(t == 0 || k == 0);
+20:42:35 25/03/2025 Verifying candidate: assert(k >= 0 || j <= 2);
+20:42:35 25/03/2025 Candidate failed verification
+20:42:35 25/03/2025 Adding candidate to fail history: assert(k >= 0 || j <= 2);
+20:42:35 25/03/2025 Executing predicate filtering
+20:42:35 25/03/2025 Filtering predicates for candidate assert(j >= 0);
+20:42:35 25/03/2025 Filtering predicates for candidate assert(t == 0 || k == 0);
+20:42:35 25/03/2025 Filtering predicates for candidate assert(k >= 0 || j <= 2);
+20:42:35 25/03/2025 Addind predicate (k >= 0) || (j <= 2) to verify set
+20:42:35 25/03/2025 Predicate filtering verify set: ['(j == k * 2 + 2) || ((k == 0 && t == 0))', 'j >= 2', 'k >= 0', 'j >= 2 * k + 2', '(k >= 0) || (t != 0)', 'j >= 0', '(k == 0) || (k > 0)', 'j >= 2 + k * 2', '(k >= 0) || (t == 0)', '(k >= 0) || ((j > 2))', '(k >= 0) || ((t > 0))', '(k >= 0) || (j <= 2)']
+20:42:35 25/03/2025 Verifying formula: (and (and (and (and (and (and (and (and (and (and (and (or (= j (+ (* k 2) 2)) (and (= k 0) (= t 0))) (>= j 2)) (>= k 0)) (>= j (+ (* 2 k) 2))) (or (>= k 0) (distinct t 0))) (>= j 0)) (or (= k 0) (> k 0))) (>= j (+ 2 (* k 2)))) (or (>= k 0) (= t 0))) (or (>= k 0) (> j 2))) (or (>= k 0) (> t 0))) (or (>= k 0) (<= j 2)))
+20:42:35 25/03/2025 For candidate: assert(((j == k * 2 + 2) || ((k == 0 && t == 0))) && (j >= 2) && (k >= 0) && (j >= 2 * k + 2) && ((k >= 0) || (t != 0)) && (j >= 0) && ((k == 0) || (k > 0)) && (j >= 2 + k * 2) && ((k >= 0) || (t == 0)) && ((k >= 0) || ((j > 2))) && ((k >= 0) || ((t > 0))) && ((k >= 0) || (j <= 2)))
+20:42:35 25/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9999988852198828
+20:42:35 25/03/2025 Generated 3 candidates
+20:42:35 25/03/2025 Verifying generated candidates
+20:42:35 25/03/2025 Verifying candidate: assert(j == k * 2 + 2 + (t > 0 ? 2 : 0));
+20:42:35 25/03/2025 Invalid candidate syntax
+20:42:35 25/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9999988852198828
+20:42:35 25/03/2025 Generated 3 candidates
+20:42:35 25/03/2025 Verifying generated candidates
+20:42:35 25/03/2025 Verifying candidate: assert(j >= 2);
+20:42:35 25/03/2025 Candidate already in fail history: assert(j >= 2);
+20:42:35 25/03/2025 Verifying candidate: assert(k >= 0 || t > 0);
+20:42:35 25/03/2025 Candidate failed verification
+20:42:35 25/03/2025 Adding candidate to fail history: assert(k >= 0 || t > 0);
+20:42:35 25/03/2025 Verifying candidate: assert(t == 0 || (t == 1 && k > 0));
+20:42:35 25/03/2025 Candidate already in fail history: assert(t == 0 || (t == 1 && k > 0));
+20:42:35 25/03/2025 Executing predicate filtering
+20:42:35 25/03/2025 Filtering predicates for candidate assert(j >= 2);
+20:42:35 25/03/2025 Filtering predicates for candidate assert(k >= 0 || t > 0);
+20:42:35 25/03/2025 Addind predicate (k >= 0) || (t > 0) to verify set
+20:42:35 25/03/2025 Filtering predicates for candidate assert(t == 0 || (t == 1 && k > 0));
+20:42:35 25/03/2025 Predicate filtering verify set: ['(j == k * 2 + 2) || ((k == 0 && t == 0))', 'j >= 2', 'k >= 0', 'j >= 2 * k + 2', '(k >= 0) || (t != 0)', 'j >= 0', '(k == 0) || (k > 0)', 'j >= 2 + k * 2', '(k >= 0) || (t == 0)', '(k >= 0) || ((j > 2))', '(k >= 0) || ((t > 0))', '(k >= 0) || (j <= 2)', '(k >= 0) || (t > 0)']
+20:42:35 25/03/2025 Verifying formula: (and (and (and (and (and (and (and (and (and (and (and (and (or (= j (+ (* k 2) 2)) (and (= k 0) (= t 0))) (>= j 2)) (>= k 0)) (>= j (+ (* 2 k) 2))) (or (>= k 0) (distinct t 0))) (>= j 0)) (or (= k 0) (> k 0))) (>= j (+ 2 (* k 2)))) (or (>= k 0) (= t 0))) (or (>= k 0) (> j 2))) (or (>= k 0) (> t 0))) (or (>= k 0) (<= j 2))) (or (>= k 0) (> t 0)))
+20:42:35 25/03/2025 For candidate: assert(((j == k * 2 + 2) || ((k == 0 && t == 0))) && (j >= 2) && (k >= 0) && (j >= 2 * k + 2) && ((k >= 0) || (t != 0)) && (j >= 0) && ((k == 0) || (k > 0)) && (j >= 2 + k * 2) && ((k >= 0) || (t == 0)) && ((k >= 0) || ((j > 2))) && ((k >= 0) || ((t > 0))) && ((k >= 0) || (j <= 2)) && ((k >= 0) || (t > 0)))
+20:42:35 25/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.999999499096851
+20:42:35 25/03/2025 Generated 3 candidates
+20:42:35 25/03/2025 Verifying generated candidates
+20:42:35 25/03/2025 Verifying candidate: assert(j == 2 + k * 2 + t * 2);
+20:42:35 25/03/2025 Candidate already in fail history: assert(j == 2 + k * 2 + t * 2);
+20:42:35 25/03/2025 Verifying candidate: assert(k >= 0);
+20:42:35 25/03/2025 Candidate already in fail history: assert(k >= 0);
+20:42:35 25/03/2025 Verifying candidate: assert(t >= 0);
+20:42:35 25/03/2025 Candidate already in fail history: assert(t >= 0);
+20:42:35 25/03/2025 Executing predicate filtering
+20:42:35 25/03/2025 Filtering predicates for candidate assert(j == 2 + k * 2 + t * 2);
+20:42:35 25/03/2025 Filtering predicates for candidate assert(k >= 0);
+20:42:35 25/03/2025 Filtering predicates for candidate assert(t >= 0);
+20:42:35 25/03/2025 Predicate filtering verify set: ['(j == k * 2 + 2) || ((k == 0 && t == 0))', 'j >= 2', 'k >= 0', 'j >= 2 * k + 2', '(k >= 0) || (t != 0)', 'j >= 0', '(k == 0) || (k > 0)', 'j >= 2 + k * 2', '(k >= 0) || (t == 0)', '(k >= 0) || ((j > 2))', '(k >= 0) || ((t > 0))', '(k >= 0) || (j <= 2)', '(k >= 0) || (t > 0)']
+20:42:35 25/03/2025 Resetting generator
+20:42:35 25/03/2025 Generating loop invariants candidates with model o1-mini and presence penalty 0.0
+20:42:35 25/03/2025 Generated 3 candidates
+20:42:35 25/03/2025 Verifying generated candidates
+20:42:35 25/03/2025 Verifying candidate: assert(j >= 2 + 2 * k);
+20:42:35 25/03/2025 Candidate failed verification
+20:42:35 25/03/2025 Adding candidate to fail history: assert(j >= 2 + 2 * k);
+20:42:35 25/03/2025 Verifying candidate: assert(k >= 0);
+20:42:35 25/03/2025 Candidate failed verification
+20:42:35 25/03/2025 Adding candidate to fail history: assert(k >= 0);
+20:42:35 25/03/2025 Verifying candidate: assert((j - 2 - 2 * k) % 4 == 0);
+20:42:35 25/03/2025 Candidate failed verification
+20:42:35 25/03/2025 Adding candidate to fail history: assert((j - 2 - 2 * k) % 4 == 0);
+20:42:35 25/03/2025 Executing predicate filtering
+20:42:35 25/03/2025 Filtering predicates for candidate assert(j >= 2 + 2 * k);
+20:42:35 25/03/2025 Addind predicate j >= 2 + 2 * k to verify set
+20:42:35 25/03/2025 Filtering predicates for candidate assert(k >= 0);
+20:42:35 25/03/2025 Filtering predicates for candidate assert((j - 2 - 2 * k) % 4 == 0);
+20:42:35 25/03/2025 Addind predicate (j - 2 - 2 * k) % 4 == 0 to verify set
+20:42:35 25/03/2025 Predicate filtering verify set: ['(j == k * 2 + 2) || ((k == 0 && t == 0))', 'j >= 2', 'k >= 0', 'j >= 2 * k + 2', '(k >= 0) || (t != 0)', 'j >= 0', '(k == 0) || (k > 0)', 'j >= 2 + k * 2', '(k >= 0) || (t == 0)', '(k >= 0) || ((j > 2))', '(k >= 0) || ((t > 0))', '(k >= 0) || (j <= 2)', '(k >= 0) || (t > 0)', 'j >= 2 + 2 * k', '(j - 2 - 2 * k) % 4 == 0']
+20:42:35 25/03/2025 Verifying formula: (and (and (and (and (and (and (and (and (and (and (and (and (and (and (or (= j (+ (* k 2) 2)) (and (= k 0) (= t 0))) (>= j 2)) (>= k 0)) (>= j (+ (* 2 k) 2))) (or (>= k 0) (distinct t 0))) (>= j 0)) (or (= k 0) (> k 0))) (>= j (+ 2 (* k 2)))) (or (>= k 0) (= t 0))) (or (>= k 0) (> j 2))) (or (>= k 0) (> t 0))) (or (>= k 0) (<= j 2))) (or (>= k 0) (> t 0))) (>= j (+ 2 (* 2 k)))) (= (mod (- (- j 2) (* 2 k)) 4) 0))
+20:42:35 25/03/2025 For candidate: assert(((j == k * 2 + 2) || ((k == 0 && t == 0))) && (j >= 2) && (k >= 0) && (j >= 2 * k + 2) && ((k >= 0) || (t != 0)) && (j >= 0) && ((k == 0) || (k > 0)) && (j >= 2 + k * 2) && ((k >= 0) || (t == 0)) && ((k >= 0) || ((j > 2))) && ((k >= 0) || ((t > 0))) && ((k >= 0) || (j <= 2)) && ((k >= 0) || (t > 0)) && (j >= 2 + 2 * k) && ((j - 2 - 2 * k) % 4 == 0))
+20:42:35 25/03/2025 Generating loop invariants candidates with model o1-mini and presence penalty 0.0
+20:42:35 25/03/2025 Generated 2 candidates
+20:42:35 25/03/2025 Verifying generated candidates
+20:42:35 25/03/2025 Verifying candidate: assert((j - 2 - 2 * k) % 4 == 0);
+20:42:35 25/03/2025 Candidate already in fail history: assert((j - 2 - 2 * k) % 4 == 0);
+20:42:35 25/03/2025 Verifying candidate: assert(k >= 0);
+20:42:35 25/03/2025 Candidate already in fail history: assert(k >= 0);
+20:42:35 25/03/2025 Executing predicate filtering
+20:42:35 25/03/2025 Filtering predicates for candidate assert((j - 2 - 2 * k) % 4 == 0);
+20:42:35 25/03/2025 Filtering predicates for candidate assert(k >= 0);
+20:42:35 25/03/2025 Predicate filtering verify set: ['(j == k * 2 + 2) || ((k == 0 && t == 0))', 'j >= 2', 'k >= 0', 'j >= 2 * k + 2', '(k >= 0) || (t != 0)', 'j >= 0', '(k == 0) || (k > 0)', 'j >= 2 + k * 2', '(k >= 0) || (t == 0)', '(k >= 0) || ((j > 2))', '(k >= 0) || ((t > 0))', '(k >= 0) || (j <= 2)', '(k >= 0) || (t > 0)', 'j >= 2 + 2 * k', '(j - 2 - 2 * k) % 4 == 0']
+20:42:35 25/03/2025 Generating loop invariants candidates with model o1-mini and presence penalty 0.3799489622552249
+20:42:35 25/03/2025 Generated 2 candidates
+20:42:35 25/03/2025 Verifying generated candidates
+20:42:35 25/03/2025 Verifying candidate: assert(j >= 2 + 2 * k);
+20:42:35 25/03/2025 Candidate already in fail history: assert(j >= 2 + 2 * k);
+20:42:35 25/03/2025 Verifying candidate: assert(t == 0 ? k == 0 : j == 2 + 2 * k);
+20:42:35 25/03/2025 # Result
+20:42:35 25/03/2025 Solution: assert(t == 0 ? k == 0 : j == 2 + 2 * k);
+20:42:35 25/03/2025 Generate 3 counter examples, with 3 repeated fails
+20:42:35 25/03/2025 Run time: 121.33643102645874

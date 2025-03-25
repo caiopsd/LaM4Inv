@@ -1,0 +1,59 @@
+20:18:21 25/03/2025 Resetting generator
+20:18:21 25/03/2025 # Run Benchmark 121
+20:18:21 25/03/2025 Executing predicate filtering for preconditions
+20:18:21 25/03/2025 Filtering predicates for candidate assert(sn == 0)
+20:18:21 25/03/2025 Filtering predicates for candidate assert(i == 1)
+20:18:21 25/03/2025 Predicate filtering verify set: []
+20:18:21 25/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.0
+20:18:21 25/03/2025 Generated 4 candidates
+20:18:21 25/03/2025 Verifying generated candidates
+20:18:21 25/03/2025 Verifying candidate: assert(sn == 0 || sn == i - 1);
+20:18:21 25/03/2025 Candidate failed verification
+20:18:21 25/03/2025 Adding candidate to fail history: assert(sn == 0 || sn == i - 1);
+20:18:21 25/03/2025 Verifying candidate: assert(i >= 1 && i <= 9);
+20:18:21 25/03/2025 Candidate failed verification
+20:18:21 25/03/2025 Adding candidate to fail history: assert(i >= 1 && i <= 9);
+20:18:21 25/03/2025 Verifying candidate: assert(sn >= 0 && sn <= 8);
+20:18:21 25/03/2025 Candidate failed verification
+20:18:21 25/03/2025 Adding candidate to fail history: assert(sn >= 0 && sn <= 8);
+20:18:21 25/03/2025 Verifying candidate: assert(i > 0);
+20:18:21 25/03/2025 Candidate failed verification
+20:18:21 25/03/2025 Adding candidate to fail history: assert(i > 0);
+20:18:21 25/03/2025 Executing predicate filtering
+20:18:21 25/03/2025 Filtering predicates for candidate assert(sn == 0 || sn == i - 1);
+20:18:21 25/03/2025 Addind predicate (sn == 0) || (sn == i - 1) to verify set
+20:18:21 25/03/2025 Filtering predicates for candidate assert(i >= 1 && i <= 9);
+20:18:21 25/03/2025 Addind predicate i >= 1 to verify set
+20:18:21 25/03/2025 Addind predicate i <= 9 to verify set
+20:18:21 25/03/2025 Filtering predicates for candidate assert(sn >= 0 && sn <= 8);
+20:18:21 25/03/2025 Addind predicate sn >= 0 to verify set
+20:18:21 25/03/2025 Addind predicate sn <= 8 to verify set
+20:18:21 25/03/2025 Filtering predicates for candidate assert(i > 0);
+20:18:21 25/03/2025 Addind predicate i > 0 to verify set
+20:18:21 25/03/2025 Predicate filtering verify set: ['(sn == 0) || (sn == i - 1)', 'i >= 1', 'i <= 9', 'sn >= 0', 'sn <= 8', 'i > 0']
+20:18:21 25/03/2025 Verifying formula: (and (and (and (and (and (or (= sn 0) (= sn (- i 1))) (>= i 1)) (<= i 9)) (>= sn 0)) (<= sn 8)) (> i 0))
+20:18:21 25/03/2025 For candidate: assert(((sn == 0) || (sn == i - 1)) && (i >= 1) && (i <= 9) && (sn >= 0) && (sn <= 8) && (i > 0))
+20:18:21 25/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.0
+20:18:21 25/03/2025 Generated 3 candidates
+20:18:21 25/03/2025 Verifying generated candidates
+20:18:21 25/03/2025 Verifying candidate: assert(sn >= 0);
+20:18:21 25/03/2025 Candidate failed verification
+20:18:21 25/03/2025 Adding candidate to fail history: assert(sn >= 0);
+20:18:21 25/03/2025 Verifying candidate: assert(i >= 1 && i <= 9);
+20:18:21 25/03/2025 Candidate already in fail history: assert(i >= 1 && i <= 9);
+20:18:21 25/03/2025 Verifying candidate: assert(i - sn == 1);
+20:18:21 25/03/2025 Candidate failed verification
+20:18:21 25/03/2025 Adding candidate to fail history: assert(i - sn == 1);
+20:18:21 25/03/2025 Executing predicate filtering
+20:18:21 25/03/2025 Filtering predicates for candidate assert(sn >= 0);
+20:18:21 25/03/2025 Filtering predicates for candidate assert(i >= 1 && i <= 9);
+20:18:21 25/03/2025 Filtering predicates for candidate assert(i - sn == 1);
+20:18:21 25/03/2025 Addind predicate i - sn == 1 to verify set
+20:18:21 25/03/2025 Predicate filtering verify set: ['(sn == 0) || (sn == i - 1)', 'i >= 1', 'i <= 9', 'sn >= 0', 'sn <= 8', 'i > 0', 'i - sn == 1']
+20:18:21 25/03/2025 Verifying formula: (and (and (and (and (and (and (or (= sn 0) (= sn (- i 1))) (>= i 1)) (<= i 9)) (>= sn 0)) (<= sn 8)) (> i 0)) (= (- i sn) 1))
+20:18:21 25/03/2025 For candidate: assert(((sn == 0) || (sn == i - 1)) && (i >= 1) && (i <= 9) && (sn >= 0) && (sn <= 8) && (i > 0) && (i - sn == 1))
+20:18:21 25/03/2025 Predicate filtering found solution: assert(((sn == 0) || (sn == i - 1)) && (i >= 1) && (i <= 9) && (sn >= 0) && (sn <= 8) && (i > 0) && (i - sn == 1))
+20:18:21 25/03/2025 # Result
+20:18:21 25/03/2025 Solution: assert(((sn == 0) || (sn == i - 1)) && (i >= 1) && (i <= 9) && (sn >= 0) && (sn <= 8) && (i > 0) && (i - sn == 1))
+20:18:21 25/03/2025 Generate 6 counter examples, with 1 repeated fails
+20:18:21 25/03/2025 Run time: 6.564664602279663

@@ -1,0 +1,23 @@
+20:31:54 25/03/2025 Resetting generator
+20:31:54 25/03/2025 # Run Benchmark 144
+20:31:54 25/03/2025 Executing predicate filtering for preconditions
+20:31:54 25/03/2025 Filtering predicates for candidate assert(x1 == 100)
+20:31:54 25/03/2025 Filtering predicates for candidate assert(x2 == 75)
+20:31:54 25/03/2025 Filtering predicates for candidate assert(t == 0)
+20:31:54 25/03/2025 Filtering predicates for candidate assert(v3 >= 0)
+20:31:54 25/03/2025 Addind predicate v3 >= 0 to verify set
+20:31:54 25/03/2025 Filtering predicates for candidate assert(v1 <= 5)
+20:31:54 25/03/2025 Addind predicate v1 <= 5 to verify set
+20:31:54 25/03/2025 Filtering predicates for candidate assert((v1 - v3) >= 0)
+20:31:54 25/03/2025 Addind predicate (v1 - v3) >= 0 to verify set
+20:31:54 25/03/2025 Filtering predicates for candidate assert(v2 * 2 - v1 - v3 == 0)
+20:31:54 25/03/2025 Filtering predicates for candidate assert(v2 + 5 >= 0)
+20:31:54 25/03/2025 Filtering predicates for candidate assert(v2 <= 5)
+20:31:54 25/03/2025 Predicate filtering verify set: ['v3 >= 0', 'v1 <= 5', '(v1 - v3) >= 0']
+20:31:54 25/03/2025 Verifying formula: (and (and (>= v3 0) (<= v1 5)) (>= (- v1 v3) 0))
+20:31:54 25/03/2025 For candidate: assert((v3 >= 0) && (v1 <= 5) && ((v1 - v3) >= 0))
+20:31:54 25/03/2025 Predicate filtering found solution: assert((v3 >= 0) && (v1 <= 5) && ((v1 - v3) >= 0))
+20:31:54 25/03/2025 # Result
+20:31:54 25/03/2025 Solution: assert((v3 >= 0) && (v1 <= 5) && ((v1 - v3) >= 0))
+20:31:54 25/03/2025 Generate 0 counter examples, with 0 repeated fails
+20:31:54 25/03/2025 Run time: 6.2662928104400635

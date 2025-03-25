@@ -1,0 +1,73 @@
+19:53:02 25/03/2025 Resetting generator
+19:53:02 25/03/2025 # Run Benchmark 93
+19:53:02 25/03/2025 Executing predicate filtering for preconditions
+19:53:02 25/03/2025 Filtering predicates for candidate assert(i == 0)
+19:53:02 25/03/2025 Filtering predicates for candidate assert(x == 0)
+19:53:02 25/03/2025 Filtering predicates for candidate assert(y == 0)
+19:53:02 25/03/2025 Filtering predicates for candidate assert((n >= 0))
+19:53:02 25/03/2025 Addind predicate (n >= 0) to verify set
+19:53:02 25/03/2025 Predicate filtering verify set: ['(n >= 0)']
+19:53:02 25/03/2025 Verifying formula: (>= n 0)
+19:53:02 25/03/2025 For candidate: assert(((n >= 0)))
+19:53:02 25/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.0
+19:53:02 25/03/2025 Generated 5 candidates
+19:53:02 25/03/2025 Verifying generated candidates
+19:53:02 25/03/2025 Verifying candidate: assert(n >= 0);
+19:53:02 25/03/2025 Candidate failed verification
+19:53:02 25/03/2025 Adding candidate to fail history: assert(n >= 0);
+19:53:02 25/03/2025 Verifying candidate: assert(i >= 0 && i <= n);
+19:53:02 25/03/2025 Candidate failed verification
+19:53:02 25/03/2025 Adding candidate to fail history: assert(i >= 0 && i <= n);
+19:53:02 25/03/2025 Verifying candidate: assert(x >= 0);
+19:53:02 25/03/2025 Candidate failed verification
+19:53:02 25/03/2025 Adding candidate to fail history: assert(x >= 0);
+19:53:02 25/03/2025 Verifying candidate: assert(y >= 0);
+19:53:02 25/03/2025 Candidate failed verification
+19:53:02 25/03/2025 Adding candidate to fail history: assert(y >= 0);
+19:53:02 25/03/2025 Verifying candidate: assert(x + y == (2 * i) + (y - x));
+19:53:02 25/03/2025 Candidate failed verification
+19:53:02 25/03/2025 Adding candidate to fail history: assert(x + y == (2 * i) + (y - x));
+19:53:02 25/03/2025 Executing predicate filtering
+19:53:02 25/03/2025 Filtering predicates for candidate assert(n >= 0);
+19:53:02 25/03/2025 Addind predicate n >= 0 to verify set
+19:53:02 25/03/2025 Filtering predicates for candidate assert(i >= 0 && i <= n);
+19:53:02 25/03/2025 Addind predicate i >= 0 to verify set
+19:53:02 25/03/2025 Addind predicate i <= n to verify set
+19:53:02 25/03/2025 Filtering predicates for candidate assert(x >= 0);
+19:53:02 25/03/2025 Addind predicate x >= 0 to verify set
+19:53:02 25/03/2025 Filtering predicates for candidate assert(y >= 0);
+19:53:02 25/03/2025 Addind predicate y >= 0 to verify set
+19:53:02 25/03/2025 Filtering predicates for candidate assert(x + y == (2 * i) + (y - x));
+19:53:02 25/03/2025 Predicate filtering verify set: ['(n >= 0)', 'n >= 0', 'i >= 0', 'i <= n', 'x >= 0', 'y >= 0']
+19:53:02 25/03/2025 Verifying formula: (and (and (and (and (and (>= n 0) (>= n 0)) (>= i 0)) (<= i n)) (>= x 0)) (>= y 0))
+19:53:02 25/03/2025 For candidate: assert(((n >= 0)) && (n >= 0) && (i >= 0) && (i <= n) && (x >= 0) && (y >= 0))
+19:53:02 25/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.0
+19:53:02 25/03/2025 Generated 4 candidates
+19:53:02 25/03/2025 Verifying generated candidates
+19:53:02 25/03/2025 Verifying candidate: assert(x + y == 2 * i + (n - i) + 2 * count_unknowns);
+19:53:02 25/03/2025 Invalid SMT-LIB-2 formula syntax
+19:53:02 25/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.0
+19:53:02 25/03/2025 Generated 3 candidates
+19:53:02 25/03/2025 Verifying generated candidates
+19:53:02 25/03/2025 Verifying candidate: assert(x + y == 3 * i);
+19:53:02 25/03/2025 Candidate failed verification
+19:53:02 25/03/2025 Adding candidate to fail history: assert(x + y == 3 * i);
+19:53:02 25/03/2025 Verifying candidate: assert(i >= 0);
+19:53:02 25/03/2025 Candidate failed verification
+19:53:02 25/03/2025 Adding candidate to fail history: assert(i >= 0);
+19:53:02 25/03/2025 Verifying candidate: assert(i <= n);
+19:53:02 25/03/2025 Candidate failed verification
+19:53:02 25/03/2025 Adding candidate to fail history: assert(i <= n);
+19:53:02 25/03/2025 Executing predicate filtering
+19:53:02 25/03/2025 Filtering predicates for candidate assert(x + y == 3 * i);
+19:53:02 25/03/2025 Addind predicate x + y == 3 * i to verify set
+19:53:02 25/03/2025 Filtering predicates for candidate assert(i >= 0);
+19:53:02 25/03/2025 Filtering predicates for candidate assert(i <= n);
+19:53:02 25/03/2025 Predicate filtering verify set: ['(n >= 0)', 'n >= 0', 'i >= 0', 'i <= n', 'x >= 0', 'y >= 0', 'x + y == 3 * i']
+19:53:02 25/03/2025 Verifying formula: (and (and (and (and (and (and (>= n 0) (>= n 0)) (>= i 0)) (<= i n)) (>= x 0)) (>= y 0)) (= (+ x y) (* 3 i)))
+19:53:02 25/03/2025 For candidate: assert(((n >= 0)) && (n >= 0) && (i >= 0) && (i <= n) && (x >= 0) && (y >= 0) && (x + y == 3 * i))
+19:53:02 25/03/2025 Predicate filtering found solution: assert(((n >= 0)) && (n >= 0) && (i >= 0) && (i <= n) && (x >= 0) && (y >= 0) && (x + y == 3 * i))
+19:53:02 25/03/2025 # Result
+19:53:02 25/03/2025 Solution: assert(((n >= 0)) && (n >= 0) && (i >= 0) && (i <= n) && (x >= 0) && (y >= 0) && (x + y == 3 * i))
+19:53:02 25/03/2025 Generate 8 counter examples, with 0 repeated fails
+19:53:02 25/03/2025 Run time: 20.982048988342285

@@ -1,0 +1,15 @@
+19:52:41 25/03/2025 Resetting generator
+19:52:41 25/03/2025 # Run Benchmark 92
+19:52:41 25/03/2025 Executing predicate filtering for preconditions
+19:52:41 25/03/2025 Filtering predicates for candidate assert(x == 0)
+19:52:41 25/03/2025 Addind predicate x == 0 to verify set
+19:52:41 25/03/2025 Filtering predicates for candidate assert(y == 0)
+19:52:41 25/03/2025 Addind predicate y == 0 to verify set
+19:52:41 25/03/2025 Predicate filtering verify set: ['x == 0', 'y == 0']
+19:52:41 25/03/2025 Verifying formula: (and (= x 0) (= y 0))
+19:52:41 25/03/2025 For candidate: assert((x == 0) && (y == 0))
+19:52:41 25/03/2025 Predicate filtering found solution: assert((x == 0) && (y == 0))
+19:52:41 25/03/2025 # Result
+19:52:41 25/03/2025 Solution: assert((x == 0) && (y == 0))
+19:52:41 25/03/2025 Generate 0 counter examples, with 0 repeated fails
+19:52:41 25/03/2025 Run time: 0.424945592880249

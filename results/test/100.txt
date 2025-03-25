@@ -1,0 +1,47 @@
+20:15:34 25/03/2025 Resetting generator
+20:15:34 25/03/2025 # Run Benchmark 100
+20:15:34 25/03/2025 Executing predicate filtering for preconditions
+20:15:34 25/03/2025 Filtering predicates for candidate assert(x == n)
+20:15:34 25/03/2025 Filtering predicates for candidate assert(y == 0)
+20:15:34 25/03/2025 Filtering predicates for candidate assert((n >= 0))
+20:15:34 25/03/2025 Addind predicate (n >= 0) to verify set
+20:15:34 25/03/2025 Predicate filtering verify set: ['(n >= 0)']
+20:15:34 25/03/2025 Verifying formula: (>= n 0)
+20:15:34 25/03/2025 For candidate: assert(((n >= 0)))
+20:15:34 25/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.0
+20:15:34 25/03/2025 Generated 5 candidates
+20:15:34 25/03/2025 Verifying generated candidates
+20:15:34 25/03/2025 Verifying candidate: assert(n >= 0);
+20:15:34 25/03/2025 Candidate failed verification
+20:15:34 25/03/2025 Adding candidate to fail history: assert(n >= 0);
+20:15:34 25/03/2025 Verifying candidate: assert(y >= 0);
+20:15:34 25/03/2025 Candidate failed verification
+20:15:34 25/03/2025 Adding candidate to fail history: assert(y >= 0);
+20:15:34 25/03/2025 Verifying candidate: assert(x >= 0);
+20:15:34 25/03/2025 Candidate failed verification
+20:15:34 25/03/2025 Adding candidate to fail history: assert(x >= 0);
+20:15:34 25/03/2025 Verifying candidate: assert(y + x == n);
+20:15:34 25/03/2025 Candidate failed verification
+20:15:34 25/03/2025 Adding candidate to fail history: assert(y + x == n);
+20:15:34 25/03/2025 Verifying candidate: assert(x >= 0 || y == n);
+20:15:34 25/03/2025 Candidate failed verification
+20:15:34 25/03/2025 Adding candidate to fail history: assert(x >= 0 || y == n);
+20:15:34 25/03/2025 Executing predicate filtering
+20:15:34 25/03/2025 Filtering predicates for candidate assert(n >= 0);
+20:15:34 25/03/2025 Addind predicate n >= 0 to verify set
+20:15:34 25/03/2025 Filtering predicates for candidate assert(y >= 0);
+20:15:34 25/03/2025 Addind predicate y >= 0 to verify set
+20:15:34 25/03/2025 Filtering predicates for candidate assert(x >= 0);
+20:15:34 25/03/2025 Addind predicate x >= 0 to verify set
+20:15:34 25/03/2025 Filtering predicates for candidate assert(y + x == n);
+20:15:34 25/03/2025 Addind predicate y + x == n to verify set
+20:15:34 25/03/2025 Filtering predicates for candidate assert(x >= 0 || y == n);
+20:15:34 25/03/2025 Addind predicate (x >= 0) || (y == n) to verify set
+20:15:34 25/03/2025 Predicate filtering verify set: ['(n >= 0)', 'n >= 0', 'y >= 0', 'x >= 0', 'y + x == n', '(x >= 0) || (y == n)']
+20:15:34 25/03/2025 Verifying formula: (and (and (and (and (and (>= n 0) (>= n 0)) (>= y 0)) (>= x 0)) (= (+ y x) n)) (or (>= x 0) (= y n)))
+20:15:34 25/03/2025 For candidate: assert(((n >= 0)) && (n >= 0) && (y >= 0) && (x >= 0) && (y + x == n) && ((x >= 0) || (y == n)))
+20:15:34 25/03/2025 Predicate filtering found solution: assert(((n >= 0)) && (n >= 0) && (y >= 0) && (x >= 0) && (y + x == n) && ((x >= 0) || (y == n)))
+20:15:34 25/03/2025 # Result
+20:15:34 25/03/2025 Solution: assert(((n >= 0)) && (n >= 0) && (y >= 0) && (x >= 0) && (y + x == n) && ((x >= 0) || (y == n)))
+20:15:34 25/03/2025 Generate 5 counter examples, with 0 repeated fails
+20:15:34 25/03/2025 Run time: 4.852002382278442

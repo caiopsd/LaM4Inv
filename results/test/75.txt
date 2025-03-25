@@ -1,0 +1,438 @@
+19:44:25 25/03/2025 Resetting generator
+19:44:25 25/03/2025 # Run Benchmark 75
+19:44:25 25/03/2025 Executing predicate filtering for preconditions
+19:44:25 25/03/2025 Filtering predicates for candidate assert(c == 0)
+19:44:25 25/03/2025 Filtering predicates for candidate assert((y >= 0))
+19:44:25 25/03/2025 Addind predicate (y >= 0) to verify set
+19:44:25 25/03/2025 Filtering predicates for candidate assert((y >= 127))
+19:44:25 25/03/2025 Filtering predicates for candidate assert((y <= 127))
+19:44:25 25/03/2025 Addind predicate (y <= 127) to verify set
+19:44:25 25/03/2025 Predicate filtering verify set: ['(y >= 0)', '(y <= 127)']
+19:44:25 25/03/2025 Verifying formula: (and (>= y 0) (<= y 127))
+19:44:25 25/03/2025 For candidate: assert(((y >= 0)) && ((y <= 127)))
+19:44:25 25/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.0
+19:44:25 25/03/2025 Generated 4 candidates
+19:44:25 25/03/2025 Verifying generated candidates
+19:44:25 25/03/2025 Verifying candidate: assert((c >= 0) && (c <= 36));
+19:44:25 25/03/2025 Candidate failed verification
+19:44:25 25/03/2025 Adding candidate to fail history: assert((c >= 0) && (c <= 36));
+19:44:25 25/03/2025 Verifying candidate: assert((y >= 0) && (y <= 127));
+19:44:25 25/03/2025 Candidate failed verification
+19:44:25 25/03/2025 Adding candidate to fail history: assert((y >= 0) && (y <= 127));
+19:44:25 25/03/2025 Verifying candidate: assert((z == (36 * y) + c));
+19:44:25 25/03/2025 Candidate failed verification
+19:44:25 25/03/2025 Adding candidate to fail history: assert((z == (36 * y) + c));
+19:44:25 25/03/2025 Verifying candidate: assert((c < 36) || (z < 4608));
+19:44:25 25/03/2025 Candidate failed verification
+19:44:25 25/03/2025 Adding candidate to fail history: assert((c < 36) || (z < 4608));
+19:44:25 25/03/2025 Executing predicate filtering
+19:44:25 25/03/2025 Filtering predicates for candidate assert((c >= 0) && (c <= 36));
+19:44:25 25/03/2025 Addind predicate (c >= 0) to verify set
+19:44:25 25/03/2025 Addind predicate (c <= 36) to verify set
+19:44:25 25/03/2025 Filtering predicates for candidate assert((y >= 0) && (y <= 127));
+19:44:25 25/03/2025 Filtering predicates for candidate assert((z == (36 * y) + c));
+19:44:25 25/03/2025 Addind predicate (z == (36 * y) + c) to verify set
+19:44:25 25/03/2025 Filtering predicates for candidate assert((c < 36) || (z < 4608));
+19:44:25 25/03/2025 Addind predicate ((c < 36)) || ((z < 4608)) to verify set
+19:44:25 25/03/2025 Predicate filtering verify set: ['(y >= 0)', '(y <= 127)', '(c >= 0)', '(c <= 36)', '(z == (36 * y) + c)', '((c < 36)) || ((z < 4608))']
+19:44:25 25/03/2025 Verifying formula: (and (and (and (and (and (>= y 0) (<= y 127)) (>= c 0)) (<= c 36)) (= z (+ (* 36 y) c))) (or (< c 36) (< z 4608)))
+19:44:25 25/03/2025 For candidate: assert(((y >= 0)) && ((y <= 127)) && ((c >= 0)) && ((c <= 36)) && ((z == (36 * y) + c)) && (((c < 36)) || ((z < 4608))))
+19:44:25 25/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.0
+19:44:25 25/03/2025 Generated 2 candidates
+19:44:25 25/03/2025 Verifying generated candidates
+19:44:25 25/03/2025 Verifying candidate: assert((c >= 0) && (c <= 36));
+19:44:25 25/03/2025 Candidate already in fail history: assert((c >= 0) && (c <= 36));
+19:44:25 25/03/2025 Verifying candidate: assert((z >= 36 * y) && (z < 36 * (y + 1)));
+19:44:25 25/03/2025 Candidate failed verification
+19:44:25 25/03/2025 Adding candidate to fail history: assert((z >= 36 * y) && (z < 36 * (y + 1)));
+19:44:25 25/03/2025 Executing predicate filtering
+19:44:25 25/03/2025 Filtering predicates for candidate assert((c >= 0) && (c <= 36));
+19:44:25 25/03/2025 Filtering predicates for candidate assert((z >= 36 * y) && (z < 36 * (y + 1)));
+19:44:25 25/03/2025 Addind predicate (z >= 36 * y) to verify set
+19:44:25 25/03/2025 Addind predicate (z < 36 * (y + 1)) to verify set
+19:44:25 25/03/2025 Predicate filtering verify set: ['(y >= 0)', '(y <= 127)', '(c >= 0)', '(c <= 36)', '(z == (36 * y) + c)', '((c < 36)) || ((z < 4608))', '(z >= 36 * y)', '(z < 36 * (y + 1))']
+19:44:25 25/03/2025 Verifying formula: (and (and (and (and (and (and (and (>= y 0) (<= y 127)) (>= c 0)) (<= c 36)) (= z (+ (* 36 y) c))) (or (< c 36) (< z 4608))) (>= z (* 36 y))) (< z (* 36 (+ y 1))))
+19:44:25 25/03/2025 For candidate: assert(((y >= 0)) && ((y <= 127)) && ((c >= 0)) && ((c <= 36)) && ((z == (36 * y) + c)) && (((c < 36)) || ((z < 4608))) && ((z >= 36 * y)) && ((z < 36 * (y + 1))))
+19:44:25 25/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.197375320224904
+19:44:25 25/03/2025 Generated 4 candidates
+19:44:25 25/03/2025 Verifying generated candidates
+19:44:25 25/03/2025 Verifying candidate: assert((c >= 0) && (c < 36));
+19:44:25 25/03/2025 Candidate failed verification
+19:44:25 25/03/2025 Adding candidate to fail history: assert((c >= 0) && (c < 36));
+19:44:25 25/03/2025 Verifying candidate: assert((z == (36 * y) + c));
+19:44:25 25/03/2025 Candidate already in fail history: assert((z == (36 * y) + c));
+19:44:25 25/03/2025 Verifying candidate: assert((y >= 0) && (y <= 127));
+19:44:25 25/03/2025 Candidate already in fail history: assert((y >= 0) && (y <= 127));
+19:44:25 25/03/2025 Verifying candidate: assert((z < 4608));
+19:44:25 25/03/2025 Candidate failed verification
+19:44:25 25/03/2025 Adding candidate to fail history: assert((z < 4608));
+19:44:25 25/03/2025 Executing predicate filtering
+19:44:25 25/03/2025 Filtering predicates for candidate assert((c >= 0) && (c < 36));
+19:44:25 25/03/2025 Addind predicate (c < 36) to verify set
+19:44:25 25/03/2025 Filtering predicates for candidate assert((z == (36 * y) + c));
+19:44:25 25/03/2025 Filtering predicates for candidate assert((y >= 0) && (y <= 127));
+19:44:25 25/03/2025 Filtering predicates for candidate assert((z < 4608));
+19:44:25 25/03/2025 Addind predicate (z < 4608) to verify set
+19:44:25 25/03/2025 Predicate filtering verify set: ['(y >= 0)', '(y <= 127)', '(c >= 0)', '(c <= 36)', '(z == (36 * y) + c)', '((c < 36)) || ((z < 4608))', '(z >= 36 * y)', '(z < 36 * (y + 1))', '(c < 36)', '(z < 4608)']
+19:44:25 25/03/2025 Verifying formula: (and (and (and (and (and (and (and (and (and (>= y 0) (<= y 127)) (>= c 0)) (<= c 36)) (= z (+ (* 36 y) c))) (or (< c 36) (< z 4608))) (>= z (* 36 y))) (< z (* 36 (+ y 1)))) (< c 36)) (< z 4608))
+19:44:25 25/03/2025 For candidate: assert(((y >= 0)) && ((y <= 127)) && ((c >= 0)) && ((c <= 36)) && ((z == (36 * y) + c)) && (((c < 36)) || ((z < 4608))) && ((z >= 36 * y)) && ((z < 36 * (y + 1))) && ((c < 36)) && ((z < 4608)))
+19:44:25 25/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.5370495669980354
+19:44:25 25/03/2025 Generated 2 candidates
+19:44:25 25/03/2025 Verifying generated candidates
+19:44:25 25/03/2025 Verifying candidate: assert((c >= 0) && (c <= 36));
+19:44:25 25/03/2025 Candidate already in fail history: assert((c >= 0) && (c <= 36));
+19:44:25 25/03/2025 Verifying candidate: assert((z >= 36 * y) && (z < 36 * (y + 1)));
+19:44:25 25/03/2025 Candidate already in fail history: assert((z >= 36 * y) && (z < 36 * (y + 1)));
+19:44:25 25/03/2025 Executing predicate filtering
+19:44:25 25/03/2025 Filtering predicates for candidate assert((c >= 0) && (c <= 36));
+19:44:25 25/03/2025 Filtering predicates for candidate assert((z >= 36 * y) && (z < 36 * (y + 1)));
+19:44:25 25/03/2025 Predicate filtering verify set: ['(y >= 0)', '(y <= 127)', '(c >= 0)', '(c <= 36)', '(z == (36 * y) + c)', '((c < 36)) || ((z < 4608))', '(z >= 36 * y)', '(z < 36 * (y + 1))', '(c < 36)', '(z < 4608)']
+19:44:25 25/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.7615941559557649
+19:44:25 25/03/2025 Generated 3 candidates
+19:44:25 25/03/2025 Verifying generated candidates
+19:44:25 25/03/2025 Verifying candidate: assert((c >= 0) && (c <= 36));
+19:44:25 25/03/2025 Candidate already in fail history: assert((c >= 0) && (c <= 36));
+19:44:25 25/03/2025 Verifying candidate: assert((z == (36 * y) + c));
+19:44:25 25/03/2025 Candidate already in fail history: assert((z == (36 * y) + c));
+19:44:25 25/03/2025 Verifying candidate: assert((y >= 0) && (y <= 127));
+19:44:25 25/03/2025 Candidate already in fail history: assert((y >= 0) && (y <= 127));
+19:44:25 25/03/2025 Executing predicate filtering
+19:44:25 25/03/2025 Filtering predicates for candidate assert((c >= 0) && (c <= 36));
+19:44:25 25/03/2025 Filtering predicates for candidate assert((z == (36 * y) + c));
+19:44:25 25/03/2025 Filtering predicates for candidate assert((y >= 0) && (y <= 127));
+19:44:25 25/03/2025 Predicate filtering verify set: ['(y >= 0)', '(y <= 127)', '(c >= 0)', '(c <= 36)', '(z == (36 * y) + c)', '((c < 36)) || ((z < 4608))', '(z >= 36 * y)', '(z < 36 * (y + 1))', '(c < 36)', '(z < 4608)']
+19:44:25 25/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9216685544064713
+19:44:25 25/03/2025 Generated 3 candidates
+19:44:25 25/03/2025 Verifying generated candidates
+19:44:25 25/03/2025 Verifying candidate: assert((c >= 0) && (c <= 36));
+19:44:25 25/03/2025 Candidate already in fail history: assert((c >= 0) && (c <= 36));
+19:44:25 25/03/2025 Verifying candidate: assert((z >= 36 * y));
+19:44:25 25/03/2025 Candidate failed verification
+19:44:25 25/03/2025 Adding candidate to fail history: assert((z >= 36 * y));
+19:44:25 25/03/2025 Verifying candidate: assert((z < 4608));
+19:44:25 25/03/2025 Candidate already in fail history: assert((z < 4608));
+19:44:25 25/03/2025 Executing predicate filtering
+19:44:25 25/03/2025 Filtering predicates for candidate assert((c >= 0) && (c <= 36));
+19:44:25 25/03/2025 Filtering predicates for candidate assert((z >= 36 * y));
+19:44:25 25/03/2025 Filtering predicates for candidate assert((z < 4608));
+19:44:25 25/03/2025 Predicate filtering verify set: ['(y >= 0)', '(y <= 127)', '(c >= 0)', '(c <= 36)', '(z == (36 * y) + c)', '((c < 36)) || ((z < 4608))', '(z >= 36 * y)', '(z < 36 * (y + 1))', '(c < 36)', '(z < 4608)']
+19:44:25 25/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9640275800758169
+19:44:25 25/03/2025 Generated 3 candidates
+19:44:25 25/03/2025 Verifying generated candidates
+19:44:25 25/03/2025 Verifying candidate: assert((c >= 0) && (c <= 36));
+19:44:25 25/03/2025 Candidate already in fail history: assert((c >= 0) && (c <= 36));
+19:44:25 25/03/2025 Verifying candidate: assert((z == (36 * y) + c - (c > 0 ? 1 : 0)));
+19:44:25 25/03/2025 Invalid candidate syntax
+19:44:25 25/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9757431300314515
+19:44:25 25/03/2025 Generated 2 candidates
+19:44:25 25/03/2025 Verifying generated candidates
+19:44:25 25/03/2025 Verifying candidate: assert((c >= 0) && (c <= 36));
+19:44:25 25/03/2025 Candidate already in fail history: assert((c >= 0) && (c <= 36));
+19:44:25 25/03/2025 Verifying candidate: assert((z >= 36 * y) && (z < 36 * (y + 1)));
+19:44:25 25/03/2025 Candidate already in fail history: assert((z >= 36 * y) && (z < 36 * (y + 1)));
+19:44:25 25/03/2025 Executing predicate filtering
+19:44:25 25/03/2025 Filtering predicates for candidate assert((c >= 0) && (c <= 36));
+19:44:25 25/03/2025 Filtering predicates for candidate assert((z >= 36 * y) && (z < 36 * (y + 1)));
+19:44:25 25/03/2025 Predicate filtering verify set: ['(y >= 0)', '(y <= 127)', '(c >= 0)', '(c <= 36)', '(z == (36 * y) + c)', '((c < 36)) || ((z < 4608))', '(z >= 36 * y)', '(z < 36 * (y + 1))', '(c < 36)', '(z < 4608)']
+19:44:25 25/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9890274022010992
+19:44:25 25/03/2025 Generated 4 candidates
+19:44:25 25/03/2025 Verifying generated candidates
+19:44:25 25/03/2025 Verifying candidate: assert(c >= 0);
+19:44:25 25/03/2025 Candidate failed verification
+19:44:25 25/03/2025 Adding candidate to fail history: assert(c >= 0);
+19:44:25 25/03/2025 Verifying candidate: assert(c <= 36);
+19:44:25 25/03/2025 Candidate failed verification
+19:44:25 25/03/2025 Adding candidate to fail history: assert(c <= 36);
+19:44:25 25/03/2025 Verifying candidate: assert(z >= 36 * y);
+19:44:25 25/03/2025 Candidate failed verification
+19:44:25 25/03/2025 Adding candidate to fail history: assert(z >= 36 * y);
+19:44:25 25/03/2025 Verifying candidate: assert(z < 36 * (y + 1));
+19:44:25 25/03/2025 Candidate failed verification
+19:44:25 25/03/2025 Adding candidate to fail history: assert(z < 36 * (y + 1));
+19:44:25 25/03/2025 Executing predicate filtering
+19:44:25 25/03/2025 Filtering predicates for candidate assert(c >= 0);
+19:44:25 25/03/2025 Addind predicate c >= 0 to verify set
+19:44:25 25/03/2025 Filtering predicates for candidate assert(c <= 36);
+19:44:25 25/03/2025 Addind predicate c <= 36 to verify set
+19:44:25 25/03/2025 Filtering predicates for candidate assert(z >= 36 * y);
+19:44:25 25/03/2025 Addind predicate z >= 36 * y to verify set
+19:44:25 25/03/2025 Filtering predicates for candidate assert(z < 36 * (y + 1));
+19:44:25 25/03/2025 Addind predicate z < 36 * (y + 1) to verify set
+19:44:25 25/03/2025 Predicate filtering verify set: ['(y >= 0)', '(y <= 127)', '(c >= 0)', '(c <= 36)', '(z == (36 * y) + c)', '((c < 36)) || ((z < 4608))', '(z >= 36 * y)', '(z < 36 * (y + 1))', '(c < 36)', '(z < 4608)', 'c >= 0', 'c <= 36', 'z >= 36 * y', 'z < 36 * (y + 1)']
+19:44:25 25/03/2025 Verifying formula: (and (and (and (and (and (and (and (and (and (and (and (and (and (>= y 0) (<= y 127)) (>= c 0)) (<= c 36)) (= z (+ (* 36 y) c))) (or (< c 36) (< z 4608))) (>= z (* 36 y))) (< z (* 36 (+ y 1)))) (< c 36)) (< z 4608)) (>= c 0)) (<= c 36)) (>= z (* 36 y))) (< z (* 36 (+ y 1))))
+19:44:25 25/03/2025 For candidate: assert(((y >= 0)) && ((y <= 127)) && ((c >= 0)) && ((c <= 36)) && ((z == (36 * y) + c)) && (((c < 36)) || ((z < 4608))) && ((z >= 36 * y)) && ((z < 36 * (y + 1))) && ((c < 36)) && ((z < 4608)) && (c >= 0) && (c <= 36) && (z >= 36 * y) && (z < 36 * (y + 1)))
+19:44:25 25/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9890274022010992
+19:44:25 25/03/2025 Generated 3 candidates
+19:44:25 25/03/2025 Verifying generated candidates
+19:44:25 25/03/2025 Verifying candidate: assert(c >= 0);
+19:44:25 25/03/2025 Candidate already in fail history: assert(c >= 0);
+19:44:25 25/03/2025 Verifying candidate: assert(c < 36);
+19:44:25 25/03/2025 Candidate failed verification
+19:44:25 25/03/2025 Adding candidate to fail history: assert(c < 36);
+19:44:25 25/03/2025 Verifying candidate: assert(z == (36 * y) + c);
+19:44:25 25/03/2025 Candidate failed verification
+19:44:25 25/03/2025 Adding candidate to fail history: assert(z == (36 * y) + c);
+19:44:25 25/03/2025 Executing predicate filtering
+19:44:25 25/03/2025 Filtering predicates for candidate assert(c >= 0);
+19:44:25 25/03/2025 Filtering predicates for candidate assert(c < 36);
+19:44:25 25/03/2025 Addind predicate c < 36 to verify set
+19:44:25 25/03/2025 Filtering predicates for candidate assert(z == (36 * y) + c);
+19:44:25 25/03/2025 Addind predicate z == (36 * y) + c to verify set
+19:44:25 25/03/2025 Predicate filtering verify set: ['(y >= 0)', '(y <= 127)', '(c >= 0)', '(c <= 36)', '(z == (36 * y) + c)', '((c < 36)) || ((z < 4608))', '(z >= 36 * y)', '(z < 36 * (y + 1))', '(c < 36)', '(z < 4608)', 'c >= 0', 'c <= 36', 'z >= 36 * y', 'z < 36 * (y + 1)', 'c < 36', 'z == (36 * y) + c']
+19:44:25 25/03/2025 Verifying formula: (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (>= y 0) (<= y 127)) (>= c 0)) (<= c 36)) (= z (+ (* 36 y) c))) (or (< c 36) (< z 4608))) (>= z (* 36 y))) (< z (* 36 (+ y 1)))) (< c 36)) (< z 4608)) (>= c 0)) (<= c 36)) (>= z (* 36 y))) (< z (* 36 (+ y 1)))) (< c 36)) (= z (+ (* 36 y) c)))
+19:44:25 25/03/2025 For candidate: assert(((y >= 0)) && ((y <= 127)) && ((c >= 0)) && ((c <= 36)) && ((z == (36 * y) + c)) && (((c < 36)) || ((z < 4608))) && ((z >= 36 * y)) && ((z < 36 * (y + 1))) && ((c < 36)) && ((z < 4608)) && (c >= 0) && (c <= 36) && (z >= 36 * y) && (z < 36 * (y + 1)) && (c < 36) && (z == (36 * y) + c))
+19:44:25 25/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.992631520201128
+19:44:25 25/03/2025 Generated 4 candidates
+19:44:25 25/03/2025 Verifying generated candidates
+19:44:25 25/03/2025 Verifying candidate: assert(c >= 0);
+19:44:25 25/03/2025 Candidate already in fail history: assert(c >= 0);
+19:44:25 25/03/2025 Verifying candidate: assert(c <= 36);
+19:44:25 25/03/2025 Candidate already in fail history: assert(c <= 36);
+19:44:25 25/03/2025 Verifying candidate: assert(z >= (36 * y));
+19:44:25 25/03/2025 Candidate failed verification
+19:44:25 25/03/2025 Adding candidate to fail history: assert(z >= (36 * y));
+19:44:25 25/03/2025 Verifying candidate: assert(z < (36 * y) + 36);
+19:44:25 25/03/2025 Candidate failed verification
+19:44:25 25/03/2025 Adding candidate to fail history: assert(z < (36 * y) + 36);
+19:44:25 25/03/2025 Executing predicate filtering
+19:44:25 25/03/2025 Filtering predicates for candidate assert(c >= 0);
+19:44:25 25/03/2025 Filtering predicates for candidate assert(c <= 36);
+19:44:25 25/03/2025 Filtering predicates for candidate assert(z >= (36 * y));
+19:44:25 25/03/2025 Addind predicate z >= (36 * y) to verify set
+19:44:25 25/03/2025 Filtering predicates for candidate assert(z < (36 * y) + 36);
+19:44:25 25/03/2025 Addind predicate z < (36 * y) + 36 to verify set
+19:44:25 25/03/2025 Predicate filtering verify set: ['(y >= 0)', '(y <= 127)', '(c >= 0)', '(c <= 36)', '(z == (36 * y) + c)', '((c < 36)) || ((z < 4608))', '(z >= 36 * y)', '(z < 36 * (y + 1))', '(c < 36)', '(z < 4608)', 'c >= 0', 'c <= 36', 'z >= 36 * y', 'z < 36 * (y + 1)', 'c < 36', 'z == (36 * y) + c', 'z >= (36 * y)', 'z < (36 * y) + 36']
+19:44:25 25/03/2025 Verifying formula: (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (>= y 0) (<= y 127)) (>= c 0)) (<= c 36)) (= z (+ (* 36 y) c))) (or (< c 36) (< z 4608))) (>= z (* 36 y))) (< z (* 36 (+ y 1)))) (< c 36)) (< z 4608)) (>= c 0)) (<= c 36)) (>= z (* 36 y))) (< z (* 36 (+ y 1)))) (< c 36)) (= z (+ (* 36 y) c))) (>= z (* 36 y))) (< z (+ (* 36 y) 36)))
+19:44:25 25/03/2025 For candidate: assert(((y >= 0)) && ((y <= 127)) && ((c >= 0)) && ((c <= 36)) && ((z == (36 * y) + c)) && (((c < 36)) || ((z < 4608))) && ((z >= 36 * y)) && ((z < 36 * (y + 1))) && ((c < 36)) && ((z < 4608)) && (c >= 0) && (c <= 36) && (z >= 36 * y) && (z < 36 * (y + 1)) && (c < 36) && (z == (36 * y) + c) && (z >= (36 * y)) && (z < (36 * y) + 36))
+19:44:25 25/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9966823978396512
+19:44:25 25/03/2025 Generated 4 candidates
+19:44:25 25/03/2025 Verifying generated candidates
+19:44:25 25/03/2025 Verifying candidate: assert(c >= 0);
+19:44:25 25/03/2025 Candidate already in fail history: assert(c >= 0);
+19:44:25 25/03/2025 Verifying candidate: assert(z == (36 * y + c));
+19:44:25 25/03/2025 Candidate failed verification
+19:44:25 25/03/2025 Adding candidate to fail history: assert(z == (36 * y + c));
+19:44:25 25/03/2025 Verifying candidate: assert(c <= 36);
+19:44:25 25/03/2025 Candidate already in fail history: assert(c <= 36);
+19:44:25 25/03/2025 Verifying candidate: assert(z < 4608);
+19:44:25 25/03/2025 Candidate failed verification
+19:44:25 25/03/2025 Adding candidate to fail history: assert(z < 4608);
+19:44:25 25/03/2025 Executing predicate filtering
+19:44:25 25/03/2025 Filtering predicates for candidate assert(c >= 0);
+19:44:25 25/03/2025 Filtering predicates for candidate assert(z == (36 * y + c));
+19:44:25 25/03/2025 Addind predicate z == (36 * y + c) to verify set
+19:44:25 25/03/2025 Filtering predicates for candidate assert(c <= 36);
+19:44:25 25/03/2025 Filtering predicates for candidate assert(z < 4608);
+19:44:25 25/03/2025 Addind predicate z < 4608 to verify set
+19:44:25 25/03/2025 Predicate filtering verify set: ['(y >= 0)', '(y <= 127)', '(c >= 0)', '(c <= 36)', '(z == (36 * y) + c)', '((c < 36)) || ((z < 4608))', '(z >= 36 * y)', '(z < 36 * (y + 1))', '(c < 36)', '(z < 4608)', 'c >= 0', 'c <= 36', 'z >= 36 * y', 'z < 36 * (y + 1)', 'c < 36', 'z == (36 * y) + c', 'z >= (36 * y)', 'z < (36 * y) + 36', 'z == (36 * y + c)', 'z < 4608']
+19:44:25 25/03/2025 Verifying formula: (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (>= y 0) (<= y 127)) (>= c 0)) (<= c 36)) (= z (+ (* 36 y) c))) (or (< c 36) (< z 4608))) (>= z (* 36 y))) (< z (* 36 (+ y 1)))) (< c 36)) (< z 4608)) (>= c 0)) (<= c 36)) (>= z (* 36 y))) (< z (* 36 (+ y 1)))) (< c 36)) (= z (+ (* 36 y) c))) (>= z (* 36 y))) (< z (+ (* 36 y) 36))) (= z (+ (* 36 y) c))) (< z 4608))
+19:44:25 25/03/2025 For candidate: assert(((y >= 0)) && ((y <= 127)) && ((c >= 0)) && ((c <= 36)) && ((z == (36 * y) + c)) && (((c < 36)) || ((z < 4608))) && ((z >= 36 * y)) && ((z < 36 * (y + 1))) && ((c < 36)) && ((z < 4608)) && (c >= 0) && (c <= 36) && (z >= 36 * y) && (z < 36 * (y + 1)) && (c < 36) && (z == (36 * y) + c) && (z >= (36 * y)) && (z < (36 * y) + 36) && (z == (36 * y + c)) && (z < 4608))
+19:44:25 25/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9985079423323266
+19:44:25 25/03/2025 Generated 3 candidates
+19:44:25 25/03/2025 Verifying generated candidates
+19:44:25 25/03/2025 Verifying candidate: assert(c >= 0);
+19:44:25 25/03/2025 Candidate already in fail history: assert(c >= 0);
+19:44:25 25/03/2025 Verifying candidate: assert(c < 36);
+19:44:25 25/03/2025 Candidate already in fail history: assert(c < 36);
+19:44:25 25/03/2025 Verifying candidate: assert(z == (36 * y + c));
+19:44:25 25/03/2025 Candidate already in fail history: assert(z == (36 * y + c));
+19:44:25 25/03/2025 Executing predicate filtering
+19:44:25 25/03/2025 Filtering predicates for candidate assert(c >= 0);
+19:44:25 25/03/2025 Filtering predicates for candidate assert(c < 36);
+19:44:25 25/03/2025 Filtering predicates for candidate assert(z == (36 * y + c));
+19:44:25 25/03/2025 Predicate filtering verify set: ['(y >= 0)', '(y <= 127)', '(c >= 0)', '(c <= 36)', '(z == (36 * y) + c)', '((c < 36)) || ((z < 4608))', '(z >= 36 * y)', '(z < 36 * (y + 1))', '(c < 36)', '(z < 4608)', 'c >= 0', 'c <= 36', 'z >= 36 * y', 'z < 36 * (y + 1)', 'c < 36', 'z == (36 * y) + c', 'z >= (36 * y)', 'z < (36 * y) + 36', 'z == (36 * y + c)', 'z < 4608']
+19:44:25 25/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9995503664595334
+19:44:25 25/03/2025 Generated 4 candidates
+19:44:25 25/03/2025 Verifying generated candidates
+19:44:25 25/03/2025 Verifying candidate: assert(c >= 0);
+19:44:25 25/03/2025 Candidate already in fail history: assert(c >= 0);
+19:44:25 25/03/2025 Verifying candidate: assert(c <= 36);
+19:44:25 25/03/2025 Candidate already in fail history: assert(c <= 36);
+19:44:25 25/03/2025 Verifying candidate: assert(z >= (36 * y));
+19:44:25 25/03/2025 Candidate already in fail history: assert(z >= (36 * y));
+19:44:25 25/03/2025 Verifying candidate: assert(z < (36 * y + 36));
+19:44:25 25/03/2025 Candidate failed verification
+19:44:25 25/03/2025 Adding candidate to fail history: assert(z < (36 * y + 36));
+19:44:25 25/03/2025 Executing predicate filtering
+19:44:25 25/03/2025 Filtering predicates for candidate assert(c >= 0);
+19:44:25 25/03/2025 Filtering predicates for candidate assert(c <= 36);
+19:44:25 25/03/2025 Filtering predicates for candidate assert(z >= (36 * y));
+19:44:25 25/03/2025 Filtering predicates for candidate assert(z < (36 * y + 36));
+19:44:25 25/03/2025 Addind predicate z < (36 * y + 36) to verify set
+19:44:25 25/03/2025 Predicate filtering verify set: ['(y >= 0)', '(y <= 127)', '(c >= 0)', '(c <= 36)', '(z == (36 * y) + c)', '((c < 36)) || ((z < 4608))', '(z >= 36 * y)', '(z < 36 * (y + 1))', '(c < 36)', '(z < 4608)', 'c >= 0', 'c <= 36', 'z >= 36 * y', 'z < 36 * (y + 1)', 'c < 36', 'z == (36 * y) + c', 'z >= (36 * y)', 'z < (36 * y) + 36', 'z == (36 * y + c)', 'z < 4608', 'z < (36 * y + 36)']
+19:44:25 25/03/2025 Verifying formula: (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (>= y 0) (<= y 127)) (>= c 0)) (<= c 36)) (= z (+ (* 36 y) c))) (or (< c 36) (< z 4608))) (>= z (* 36 y))) (< z (* 36 (+ y 1)))) (< c 36)) (< z 4608)) (>= c 0)) (<= c 36)) (>= z (* 36 y))) (< z (* 36 (+ y 1)))) (< c 36)) (= z (+ (* 36 y) c))) (>= z (* 36 y))) (< z (+ (* 36 y) 36))) (= z (+ (* 36 y) c))) (< z 4608)) (< z (+ (* 36 y) 36)))
+19:44:25 25/03/2025 For candidate: assert(((y >= 0)) && ((y <= 127)) && ((c >= 0)) && ((c <= 36)) && ((z == (36 * y) + c)) && (((c < 36)) || ((z < 4608))) && ((z >= 36 * y)) && ((z < 36 * (y + 1))) && ((c < 36)) && ((z < 4608)) && (c >= 0) && (c <= 36) && (z >= 36 * y) && (z < 36 * (y + 1)) && (c < 36) && (z == (36 * y) + c) && (z >= (36 * y)) && (z < (36 * y) + 36) && (z == (36 * y + c)) && (z < 4608) && (z < (36 * y + 36)))
+19:44:25 25/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9998645517007605
+19:44:25 25/03/2025 Generated 3 candidates
+19:44:25 25/03/2025 Verifying generated candidates
+19:44:25 25/03/2025 Verifying candidate: assert((c >= 0) && (c <= 36));
+19:44:25 25/03/2025 Candidate already in fail history: assert((c >= 0) && (c <= 36));
+19:44:25 25/03/2025 Verifying candidate: assert(z == (36 * y + c));
+19:44:25 25/03/2025 Candidate already in fail history: assert(z == (36 * y + c));
+19:44:25 25/03/2025 Verifying candidate: assert((z < 4608));
+19:44:25 25/03/2025 Candidate already in fail history: assert((z < 4608));
+19:44:25 25/03/2025 Executing predicate filtering
+19:44:25 25/03/2025 Filtering predicates for candidate assert((c >= 0) && (c <= 36));
+19:44:25 25/03/2025 Filtering predicates for candidate assert(z == (36 * y + c));
+19:44:25 25/03/2025 Filtering predicates for candidate assert((z < 4608));
+19:44:25 25/03/2025 Predicate filtering verify set: ['(y >= 0)', '(y <= 127)', '(c >= 0)', '(c <= 36)', '(z == (36 * y) + c)', '((c < 36)) || ((z < 4608))', '(z >= 36 * y)', '(z < 36 * (y + 1))', '(c < 36)', '(z < 4608)', 'c >= 0', 'c <= 36', 'z >= 36 * y', 'z < 36 * (y + 1)', 'c < 36', 'z == (36 * y) + c', 'z >= (36 * y)', 'z < (36 * y) + 36', 'z == (36 * y + c)', 'z < 4608', 'z < (36 * y + 36)']
+19:44:25 25/03/2025 Resetting generator
+19:44:25 25/03/2025 Generating loop invariants candidates with model o1-mini and presence penalty 0.0
+19:44:25 25/03/2025 Generated 5 candidates
+19:44:25 25/03/2025 Verifying generated candidates
+19:44:25 25/03/2025 Verifying candidate: assert(c >= 0);
+19:44:25 25/03/2025 Candidate failed verification
+19:44:25 25/03/2025 Adding candidate to fail history: assert(c >= 0);
+19:44:25 25/03/2025 Verifying candidate: assert(c <= 36);
+19:44:25 25/03/2025 Candidate failed verification
+19:44:25 25/03/2025 Adding candidate to fail history: assert(c <= 36);
+19:44:25 25/03/2025 Verifying candidate: assert(y >= 0);
+19:44:25 25/03/2025 Candidate failed verification
+19:44:25 25/03/2025 Adding candidate to fail history: assert(y >= 0);
+19:44:25 25/03/2025 Verifying candidate: assert(y <= 127);
+19:44:25 25/03/2025 Candidate failed verification
+19:44:25 25/03/2025 Adding candidate to fail history: assert(y <= 127);
+19:44:25 25/03/2025 Verifying candidate: assert(z == 36 * y + c);
+19:44:25 25/03/2025 Candidate failed verification
+19:44:25 25/03/2025 Adding candidate to fail history: assert(z == 36 * y + c);
+19:44:25 25/03/2025 Executing predicate filtering
+19:44:25 25/03/2025 Filtering predicates for candidate assert(c >= 0);
+19:44:25 25/03/2025 Filtering predicates for candidate assert(c <= 36);
+19:44:25 25/03/2025 Filtering predicates for candidate assert(y >= 0);
+19:44:25 25/03/2025 Addind predicate y >= 0 to verify set
+19:44:25 25/03/2025 Filtering predicates for candidate assert(y <= 127);
+19:44:25 25/03/2025 Addind predicate y <= 127 to verify set
+19:44:25 25/03/2025 Filtering predicates for candidate assert(z == 36 * y + c);
+19:44:25 25/03/2025 Addind predicate z == 36 * y + c to verify set
+19:44:25 25/03/2025 Predicate filtering verify set: ['(y >= 0)', '(y <= 127)', '(c >= 0)', '(c <= 36)', '(z == (36 * y) + c)', '((c < 36)) || ((z < 4608))', '(z >= 36 * y)', '(z < 36 * (y + 1))', '(c < 36)', '(z < 4608)', 'c >= 0', 'c <= 36', 'z >= 36 * y', 'z < 36 * (y + 1)', 'c < 36', 'z == (36 * y) + c', 'z >= (36 * y)', 'z < (36 * y) + 36', 'z == (36 * y + c)', 'z < 4608', 'z < (36 * y + 36)', 'y >= 0', 'y <= 127', 'z == 36 * y + c']
+19:44:25 25/03/2025 Verifying formula: (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (>= y 0) (<= y 127)) (>= c 0)) (<= c 36)) (= z (+ (* 36 y) c))) (or (< c 36) (< z 4608))) (>= z (* 36 y))) (< z (* 36 (+ y 1)))) (< c 36)) (< z 4608)) (>= c 0)) (<= c 36)) (>= z (* 36 y))) (< z (* 36 (+ y 1)))) (< c 36)) (= z (+ (* 36 y) c))) (>= z (* 36 y))) (< z (+ (* 36 y) 36))) (= z (+ (* 36 y) c))) (< z 4608)) (< z (+ (* 36 y) 36))) (>= y 0)) (<= y 127)) (= z (+ (* 36 y) c)))
+19:44:25 25/03/2025 For candidate: assert(((y >= 0)) && ((y <= 127)) && ((c >= 0)) && ((c <= 36)) && ((z == (36 * y) + c)) && (((c < 36)) || ((z < 4608))) && ((z >= 36 * y)) && ((z < 36 * (y + 1))) && ((c < 36)) && ((z < 4608)) && (c >= 0) && (c <= 36) && (z >= 36 * y) && (z < 36 * (y + 1)) && (c < 36) && (z == (36 * y) + c) && (z >= (36 * y)) && (z < (36 * y) + 36) && (z == (36 * y + c)) && (z < 4608) && (z < (36 * y + 36)) && (y >= 0) && (y <= 127) && (z == 36 * y + c))
+19:44:25 25/03/2025 Generating loop invariants candidates with model o1-mini and presence penalty 0.0
+19:44:25 25/03/2025 Generated 4 candidates
+19:44:25 25/03/2025 Verifying generated candidates
+19:44:25 25/03/2025 Verifying candidate: assert(c <= 36);
+19:44:25 25/03/2025 Candidate already in fail history: assert(c <= 36);
+19:44:25 25/03/2025 Verifying candidate: assert(y >= 0);
+19:44:25 25/03/2025 Candidate already in fail history: assert(y >= 0);
+19:44:25 25/03/2025 Verifying candidate: assert(y <= 127);
+19:44:25 25/03/2025 Candidate already in fail history: assert(y <= 127);
+19:44:25 25/03/2025 Verifying candidate: assert(z == 36 * y + c);
+19:44:25 25/03/2025 Candidate already in fail history: assert(z == 36 * y + c);
+19:44:25 25/03/2025 Executing predicate filtering
+19:44:25 25/03/2025 Filtering predicates for candidate assert(c <= 36);
+19:44:25 25/03/2025 Filtering predicates for candidate assert(y >= 0);
+19:44:25 25/03/2025 Filtering predicates for candidate assert(y <= 127);
+19:44:25 25/03/2025 Filtering predicates for candidate assert(z == 36 * y + c);
+19:44:25 25/03/2025 Predicate filtering verify set: ['(y >= 0)', '(y <= 127)', '(c >= 0)', '(c <= 36)', '(z == (36 * y) + c)', '((c < 36)) || ((z < 4608))', '(z >= 36 * y)', '(z < 36 * (y + 1))', '(c < 36)', '(z < 4608)', 'c >= 0', 'c <= 36', 'z >= 36 * y', 'z < 36 * (y + 1)', 'c < 36', 'z == (36 * y) + c', 'z >= (36 * y)', 'z < (36 * y) + 36', 'z == (36 * y + c)', 'z < 4608', 'z < (36 * y + 36)', 'y >= 0', 'y <= 127', 'z == 36 * y + c']
+19:44:25 25/03/2025 Generating loop invariants candidates with model o1-mini and presence penalty 0.6640367702678491
+19:44:25 25/03/2025 Generated 4 candidates
+19:44:25 25/03/2025 Verifying generated candidates
+19:44:25 25/03/2025 Verifying candidate: assert(y >= 0);
+19:44:25 25/03/2025 Candidate already in fail history: assert(y >= 0);
+19:44:25 25/03/2025 Verifying candidate: assert(y <= 127);
+19:44:25 25/03/2025 Candidate already in fail history: assert(y <= 127);
+19:44:25 25/03/2025 Verifying candidate: assert(z >= 36 * y);
+19:44:25 25/03/2025 Candidate failed verification
+19:44:25 25/03/2025 Adding candidate to fail history: assert(z >= 36 * y);
+19:44:25 25/03/2025 Verifying candidate: assert(z <= 36 * y + 36);
+19:44:25 25/03/2025 Candidate failed verification
+19:44:25 25/03/2025 Adding candidate to fail history: assert(z <= 36 * y + 36);
+19:44:25 25/03/2025 Executing predicate filtering
+19:44:25 25/03/2025 Filtering predicates for candidate assert(y >= 0);
+19:44:25 25/03/2025 Filtering predicates for candidate assert(y <= 127);
+19:44:25 25/03/2025 Filtering predicates for candidate assert(z >= 36 * y);
+19:44:25 25/03/2025 Filtering predicates for candidate assert(z <= 36 * y + 36);
+19:44:25 25/03/2025 Addind predicate z <= 36 * y + 36 to verify set
+19:44:25 25/03/2025 Predicate filtering verify set: ['(y >= 0)', '(y <= 127)', '(c >= 0)', '(c <= 36)', '(z == (36 * y) + c)', '((c < 36)) || ((z < 4608))', '(z >= 36 * y)', '(z < 36 * (y + 1))', '(c < 36)', '(z < 4608)', 'c >= 0', 'c <= 36', 'z >= 36 * y', 'z < 36 * (y + 1)', 'c < 36', 'z == (36 * y) + c', 'z >= (36 * y)', 'z < (36 * y) + 36', 'z == (36 * y + c)', 'z < 4608', 'z < (36 * y + 36)', 'y >= 0', 'y <= 127', 'z == 36 * y + c', 'z <= 36 * y + 36']
+19:44:25 25/03/2025 Verifying formula: (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (>= y 0) (<= y 127)) (>= c 0)) (<= c 36)) (= z (+ (* 36 y) c))) (or (< c 36) (< z 4608))) (>= z (* 36 y))) (< z (* 36 (+ y 1)))) (< c 36)) (< z 4608)) (>= c 0)) (<= c 36)) (>= z (* 36 y))) (< z (* 36 (+ y 1)))) (< c 36)) (= z (+ (* 36 y) c))) (>= z (* 36 y))) (< z (+ (* 36 y) 36))) (= z (+ (* 36 y) c))) (< z 4608)) (< z (+ (* 36 y) 36))) (>= y 0)) (<= y 127)) (= z (+ (* 36 y) c))) (<= z (+ (* 36 y) 36)))
+19:44:25 25/03/2025 For candidate: assert(((y >= 0)) && ((y <= 127)) && ((c >= 0)) && ((c <= 36)) && ((z == (36 * y) + c)) && (((c < 36)) || ((z < 4608))) && ((z >= 36 * y)) && ((z < 36 * (y + 1))) && ((c < 36)) && ((z < 4608)) && (c >= 0) && (c <= 36) && (z >= 36 * y) && (z < 36 * (y + 1)) && (c < 36) && (z == (36 * y) + c) && (z >= (36 * y)) && (z < (36 * y) + 36) && (z == (36 * y + c)) && (z < 4608) && (z < (36 * y + 36)) && (y >= 0) && (y <= 127) && (z == 36 * y + c) && (z <= 36 * y + 36))
+19:44:25 25/03/2025 Generating loop invariants candidates with model o1-mini and presence penalty 0.8336546070121553
+19:44:25 25/03/2025 Generated 1 candidates
+19:44:25 25/03/2025 Verifying generated candidates
+19:44:25 25/03/2025 Verifying candidate: assert(c + 36 * y <= 4608);
+19:44:25 25/03/2025 Candidate failed verification
+19:44:25 25/03/2025 Adding candidate to fail history: assert(c + 36 * y <= 4608);
+19:44:25 25/03/2025 Executing predicate filtering
+19:44:25 25/03/2025 Filtering predicates for candidate assert(c + 36 * y <= 4608);
+19:44:25 25/03/2025 Addind predicate c + 36 * y <= 4608 to verify set
+19:44:25 25/03/2025 Predicate filtering verify set: ['(y >= 0)', '(y <= 127)', '(c >= 0)', '(c <= 36)', '(z == (36 * y) + c)', '((c < 36)) || ((z < 4608))', '(z >= 36 * y)', '(z < 36 * (y + 1))', '(c < 36)', '(z < 4608)', 'c >= 0', 'c <= 36', 'z >= 36 * y', 'z < 36 * (y + 1)', 'c < 36', 'z == (36 * y) + c', 'z >= (36 * y)', 'z < (36 * y) + 36', 'z == (36 * y + c)', 'z < 4608', 'z < (36 * y + 36)', 'y >= 0', 'y <= 127', 'z == 36 * y + c', 'z <= 36 * y + 36', 'c + 36 * y <= 4608']
+19:44:25 25/03/2025 Verifying formula: (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (>= y 0) (<= y 127)) (>= c 0)) (<= c 36)) (= z (+ (* 36 y) c))) (or (< c 36) (< z 4608))) (>= z (* 36 y))) (< z (* 36 (+ y 1)))) (< c 36)) (< z 4608)) (>= c 0)) (<= c 36)) (>= z (* 36 y))) (< z (* 36 (+ y 1)))) (< c 36)) (= z (+ (* 36 y) c))) (>= z (* 36 y))) (< z (+ (* 36 y) 36))) (= z (+ (* 36 y) c))) (< z 4608)) (< z (+ (* 36 y) 36))) (>= y 0)) (<= y 127)) (= z (+ (* 36 y) c))) (<= z (+ (* 36 y) 36))) (<= (+ c (* 36 y)) 4608))
+19:44:25 25/03/2025 For candidate: assert(((y >= 0)) && ((y <= 127)) && ((c >= 0)) && ((c <= 36)) && ((z == (36 * y) + c)) && (((c < 36)) || ((z < 4608))) && ((z >= 36 * y)) && ((z < 36 * (y + 1))) && ((c < 36)) && ((z < 4608)) && (c >= 0) && (c <= 36) && (z >= 36 * y) && (z < 36 * (y + 1)) && (c < 36) && (z == (36 * y) + c) && (z >= (36 * y)) && (z < (36 * y) + 36) && (z == (36 * y + c)) && (z < 4608) && (z < (36 * y + 36)) && (y >= 0) && (y <= 127) && (z == 36 * y + c) && (z <= 36 * y + 36) && (c + 36 * y <= 4608))
+19:44:25 25/03/2025 Generating loop invariants candidates with model o1-mini and presence penalty 0.8336546070121553
+19:44:25 25/03/2025 Generated 5 candidates
+19:44:25 25/03/2025 Verifying generated candidates
+19:44:25 25/03/2025 Verifying candidate: assert(y >= 0);
+19:44:25 25/03/2025 Candidate already in fail history: assert(y >= 0);
+19:44:25 25/03/2025 Verifying candidate: assert(y <= 127);
+19:44:25 25/03/2025 Candidate already in fail history: assert(y <= 127);
+19:44:25 25/03/2025 Verifying candidate: assert(c >= 0);
+19:44:25 25/03/2025 Candidate already in fail history: assert(c >= 0);
+19:44:25 25/03/2025 Verifying candidate: assert(c <= 36);
+19:44:25 25/03/2025 Candidate already in fail history: assert(c <= 36);
+19:44:25 25/03/2025 Verifying candidate: assert(z == 36 * y + c);
+19:44:25 25/03/2025 Candidate already in fail history: assert(z == 36 * y + c);
+19:44:25 25/03/2025 Executing predicate filtering
+19:44:25 25/03/2025 Filtering predicates for candidate assert(y >= 0);
+19:44:25 25/03/2025 Filtering predicates for candidate assert(y <= 127);
+19:44:25 25/03/2025 Filtering predicates for candidate assert(c >= 0);
+19:44:25 25/03/2025 Filtering predicates for candidate assert(c <= 36);
+19:44:25 25/03/2025 Filtering predicates for candidate assert(z == 36 * y + c);
+19:44:25 25/03/2025 Predicate filtering verify set: ['(y >= 0)', '(y <= 127)', '(c >= 0)', '(c <= 36)', '(z == (36 * y) + c)', '((c < 36)) || ((z < 4608))', '(z >= 36 * y)', '(z < 36 * (y + 1))', '(c < 36)', '(z < 4608)', 'c >= 0', 'c <= 36', 'z >= 36 * y', 'z < 36 * (y + 1)', 'c < 36', 'z == (36 * y) + c', 'z >= (36 * y)', 'z < (36 * y) + 36', 'z == (36 * y + c)', 'z < 4608', 'z < (36 * y + 36)', 'y >= 0', 'y <= 127', 'z == 36 * y + c', 'z <= 36 * y + 36', 'c + 36 * y <= 4608']
+19:44:25 25/03/2025 Generating loop invariants candidates with model o1-mini and presence penalty 0.9757431300314515
+19:44:25 25/03/2025 Generated 1 candidates
+19:44:25 25/03/2025 Verifying generated candidates
+19:44:25 25/03/2025 Verifying candidate: assert(z == 36 * y + c);
+19:44:25 25/03/2025 Candidate already in fail history: assert(z == 36 * y + c);
+19:44:25 25/03/2025 Executing predicate filtering
+19:44:25 25/03/2025 Filtering predicates for candidate assert(z == 36 * y + c);
+19:44:25 25/03/2025 Predicate filtering verify set: ['(y >= 0)', '(y <= 127)', '(c >= 0)', '(c <= 36)', '(z == (36 * y) + c)', '((c < 36)) || ((z < 4608))', '(z >= 36 * y)', '(z < 36 * (y + 1))', '(c < 36)', '(z < 4608)', 'c >= 0', 'c <= 36', 'z >= 36 * y', 'z < 36 * (y + 1)', 'c < 36', 'z == (36 * y) + c', 'z >= (36 * y)', 'z < (36 * y) + 36', 'z == (36 * y + c)', 'z < 4608', 'z < (36 * y + 36)', 'y >= 0', 'y <= 127', 'z == 36 * y + c', 'z <= 36 * y + 36', 'c + 36 * y <= 4608']
+19:44:25 25/03/2025 Resetting generator
+19:44:25 25/03/2025 Generating loop invariants candidates with model deepseek-reasoner and presence penalty 0.0
+19:44:25 25/03/2025 Generated 4 candidates
+19:44:25 25/03/2025 Verifying generated candidates
+19:44:25 25/03/2025 Verifying candidate: assert(z == 36*y + c);
+19:44:25 25/03/2025 Candidate failed verification
+19:44:25 25/03/2025 Adding candidate to fail history: assert(z == 36*y + c);
+19:44:25 25/03/2025 Verifying candidate: assert(c <= 36);
+19:44:25 25/03/2025 Candidate failed verification
+19:44:25 25/03/2025 Adding candidate to fail history: assert(c <= 36);
+19:44:25 25/03/2025 Verifying candidate: assert(y >= 0);
+19:44:25 25/03/2025 Candidate failed verification
+19:44:25 25/03/2025 Adding candidate to fail history: assert(y >= 0);
+19:44:25 25/03/2025 Verifying candidate: assert(y <= 127);
+19:44:25 25/03/2025 Candidate failed verification
+19:44:25 25/03/2025 Adding candidate to fail history: assert(y <= 127);
+19:44:25 25/03/2025 Executing predicate filtering
+19:44:25 25/03/2025 Filtering predicates for candidate assert(z == 36*y + c);
+19:44:25 25/03/2025 Addind predicate z == 36*y + c to verify set
+19:44:25 25/03/2025 Filtering predicates for candidate assert(c <= 36);
+19:44:25 25/03/2025 Filtering predicates for candidate assert(y >= 0);
+19:44:25 25/03/2025 Filtering predicates for candidate assert(y <= 127);
+19:44:25 25/03/2025 Predicate filtering verify set: ['(y >= 0)', '(y <= 127)', '(c >= 0)', '(c <= 36)', '(z == (36 * y) + c)', '((c < 36)) || ((z < 4608))', '(z >= 36 * y)', '(z < 36 * (y + 1))', '(c < 36)', '(z < 4608)', 'c >= 0', 'c <= 36', 'z >= 36 * y', 'z < 36 * (y + 1)', 'c < 36', 'z == (36 * y) + c', 'z >= (36 * y)', 'z < (36 * y) + 36', 'z == (36 * y + c)', 'z < 4608', 'z < (36 * y + 36)', 'y >= 0', 'y <= 127', 'z == 36 * y + c', 'z <= 36 * y + 36', 'c + 36 * y <= 4608', 'z == 36*y + c']
+19:44:25 25/03/2025 Verifying formula: (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (>= y 0) (<= y 127)) (>= c 0)) (<= c 36)) (= z (+ (* 36 y) c))) (or (< c 36) (< z 4608))) (>= z (* 36 y))) (< z (* 36 (+ y 1)))) (< c 36)) (< z 4608)) (>= c 0)) (<= c 36)) (>= z (* 36 y))) (< z (* 36 (+ y 1)))) (< c 36)) (= z (+ (* 36 y) c))) (>= z (* 36 y))) (< z (+ (* 36 y) 36))) (= z (+ (* 36 y) c))) (< z 4608)) (< z (+ (* 36 y) 36))) (>= y 0)) (<= y 127)) (= z (+ (* 36 y) c))) (<= z (+ (* 36 y) 36))) (<= (+ c (* 36 y)) 4608)) (= z (+ (* 36 y) c)))
+19:44:25 25/03/2025 For candidate: assert(((y >= 0)) && ((y <= 127)) && ((c >= 0)) && ((c <= 36)) && ((z == (36 * y) + c)) && (((c < 36)) || ((z < 4608))) && ((z >= 36 * y)) && ((z < 36 * (y + 1))) && ((c < 36)) && ((z < 4608)) && (c >= 0) && (c <= 36) && (z >= 36 * y) && (z < 36 * (y + 1)) && (c < 36) && (z == (36 * y) + c) && (z >= (36 * y)) && (z < (36 * y) + 36) && (z == (36 * y + c)) && (z < 4608) && (z < (36 * y + 36)) && (y >= 0) && (y <= 127) && (z == 36 * y + c) && (z <= 36 * y + 36) && (c + 36 * y <= 4608) && (z == 36*y + c))
+19:44:25 25/03/2025 Generating loop invariants candidates with model deepseek-reasoner and presence penalty 0.0
+19:44:25 25/03/2025 Generated 4 candidates
+19:44:25 25/03/2025 Verifying generated candidates
+19:44:25 25/03/2025 Verifying candidate: assert(z == 36*y + c);
+19:44:25 25/03/2025 Candidate already in fail history: assert(z == 36*y + c);
+19:44:25 25/03/2025 Verifying candidate: assert(c <= 36);
+19:44:25 25/03/2025 Candidate already in fail history: assert(c <= 36);
+19:44:25 25/03/2025 Verifying candidate: assert(y >= 0);
+19:44:25 25/03/2025 Candidate already in fail history: assert(y >= 0);
+19:44:25 25/03/2025 Verifying candidate: assert(y <= 127);
+19:44:25 25/03/2025 Candidate already in fail history: assert(y <= 127);
+19:44:25 25/03/2025 Executing predicate filtering
+19:44:25 25/03/2025 Filtering predicates for candidate assert(z == 36*y + c);
+19:44:25 25/03/2025 Filtering predicates for candidate assert(c <= 36);
+19:44:25 25/03/2025 Filtering predicates for candidate assert(y >= 0);
+19:44:25 25/03/2025 Filtering predicates for candidate assert(y <= 127);
+19:44:25 25/03/2025 Predicate filtering verify set: ['(y >= 0)', '(y <= 127)', '(c >= 0)', '(c <= 36)', '(z == (36 * y) + c)', '((c < 36)) || ((z < 4608))', '(z >= 36 * y)', '(z < 36 * (y + 1))', '(c < 36)', '(z < 4608)', 'c >= 0', 'c <= 36', 'z >= 36 * y', 'z < 36 * (y + 1)', 'c < 36', 'z == (36 * y) + c', 'z >= (36 * y)', 'z < (36 * y) + 36', 'z == (36 * y + c)', 'z < 4608', 'z < (36 * y + 36)', 'y >= 0', 'y <= 127', 'z == 36 * y + c', 'z <= 36 * y + 36', 'c + 36 * y <= 4608', 'z == 36*y + c']
+19:44:25 25/03/2025 Generating loop invariants candidates with model deepseek-reasoner and presence penalty 0.6640367702678491
+19:44:25 25/03/2025 Generated 4 candidates
+19:44:25 25/03/2025 Verifying generated candidates
+19:44:25 25/03/2025 Verifying candidate: assert(z + 36 - c <= 4608);
+19:44:25 25/03/2025 # Result
+19:44:25 25/03/2025 Solution: assert(z + 36 - c <= 4608);
+19:44:25 25/03/2025 Generate 4 counter examples, with 4 repeated fails
+19:44:25 25/03/2025 Run time: 529.5710124969482
