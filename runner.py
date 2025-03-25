@@ -52,15 +52,19 @@ class Runner:
             print(log)
             self._result_file.write(f'{formmated_time} {log}\n')
 
-    def _log_solution(self, solution: str, time_spent: float):
+    def _log_solution(self, solution: str, llm: LLM, start_time: float, predicate_filtering: bool):
         self._log('# Result')
-        if solution is not None:
-            self._log(f'Solution: {solution}')
-        else:
+        if solution is None:
             self._log(f'No solution found')
+        if solution is not None and predicate_filtering:
+            self._log(f'Solution found by the predicate filtering mechanism using the {llm} model: {solution}')
+        if solution is not None and not predicate_filtering:
+            self._log(f'Solution found by the {llm} model: {solution}')
         
-        self._log(f'Generate {len(self._fail_history)} counter examples, with {self._fail_history_hit} repeated fails')
-        self._log(f'Run time: {time_spent}')
+        end_time = time.time()
+        self._log(f'{len(self._fail_history)} counter examples were generated for the model proposals, with {self._fail_history_hit} repeated fails')
+        self._log(f'The model runtime was {end_time - self._curr_pipeline_step_activation_time} seconds')
+        self._log(f'The total runtime was {end_time - start_time} seconds')
 
     def _log(self, message: str):
         self._logger.info(message)
@@ -69,27 +73,27 @@ class Runner:
     def _close(self):
         self._result_file.close()
 
-    def _handle_solution(self, solution: str, end_time: float):
-        self._log_solution(solution, end_time)
+    def _handle_solution(self, solution: str, llm: LLM, start_time: float, predicate_filtering:bool = False) -> str:
+        self._log_solution(solution, llm, start_time, predicate_filtering)
         self._write_log()
         self.reset()
         self._close()
-        return solution, end_time, len(self._fail_history)
+        return solution
     
     def _next_pipeline_step(self) -> tuple[LLM, float]:
         if self._curr_pipeline_step_index is None:
-            self._curr_pipeline_step_time = time.time()
+            self._curr_pipeline_step_activation_time = time.time()
             self._curr_pipeline_step_index = 0
             return self.pipeline[0]
 
-        time_spent = time.time() - self._curr_pipeline_step_time
+        time_spent = time.time() - self._curr_pipeline_step_activation_time
         curr_step = self.pipeline[self._curr_pipeline_step_index]
         if time_spent >= curr_step[1] and self._curr_pipeline_step_index == len(self.pipeline) - 1:
             return (None, None)
         if time_spent >= curr_step[1]:
             self._reset_generator()
             self._curr_pipeline_step_index += 1
-            self._curr_pipeline_step_time = time.time()
+            self._curr_pipeline_step_activation_time = time.time()
         
         return self.pipeline[self._curr_pipeline_step_index]
     
@@ -154,13 +158,13 @@ class Runner:
         solution = self._predicate_filtering(preconditions)
         if solution is not None:
             self._log(f'Predicate filtering found solution: {solution}')
-            return self._handle_solution(solution, (time.time() - start_time))
+            return self._handle_solution(solution, llm, start_time, predicate_filtering=True,)
         
         chat_options = ChatOptions()
         while True:
             llm, _ = self._next_pipeline_step()
             if llm is None:
-                self._handle_solution(None, (time.time() - start_time))
+                self._handle_solution(None, None, start_time)
                 raise TimeoutError('Pipeline time exceeded')
 
             chat_options.presence_penalty = self._get_presence_penalty()
@@ -173,7 +177,7 @@ class Runner:
                 self._log(f'Verifying generated candidates')
                 solution, self._last_fails = self._verify_candidates(candidates)
                 if solution is not None:
-                    return self._handle_solution(solution, (time.time() - start_time))
+                    return self._handle_solution(solution, llm, start_time)
                 
                 if self.max_chat_interactions > 0 and len(self.generator.get_messages()) >= self.max_chat_interactions:
                     self._reset_generator()
@@ -182,7 +186,7 @@ class Runner:
                 solution = self._predicate_filtering(candidates)
                 if solution is not None:
                     self._log(f'Predicate filtering found solution: {solution}')
-                    return self._handle_solution(solution, (time.time() - start_time))
+                    return self._handle_solution(solution, llm, start_time)
             except InvalidCodeFormulaError as e:
                 self._log(f'Invalid candidate syntax')
                 self._logger.error(e)
@@ -211,5 +215,5 @@ class Runner:
         self._predicate_filtering_verify_set = {}
         self._logs = []
         self._curr_pipeline_step_index = None
-        self._curr_pipeline_step_time = None
+        self._curr_pipeline_step_activation_time = None
         self._reset_generator()
