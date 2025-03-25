@@ -35,7 +35,7 @@ class InvSMTSolver:
                 decl: assignments[decl]
                 for decl in assignments if not self._is_ignored_variable(decl)
             }
-            return CounterExample(filtered_assignments, CounterExampleKind.POSITIVE)
+            return CounterExample(filtered_assignments, CounterExampleKind.NOT_REACHABLE)
         elif res == SatStatus.UNKNOWN:
             raise TimeoutError(inv)
         
@@ -51,7 +51,7 @@ class InvSMTSolver:
                 decl: assignments[decl]
                 for decl in assignments if not self._is_ignored_variable(decl)
             }
-            return CounterExample(filtered_assignments, CounterExampleKind.INTERMEDIATE)
+            return CounterExample(filtered_assignments, CounterExampleKind.NOT_INDUCTIVE)
         elif res == SatStatus.UNKNOWN:
             raise TimeoutError(inv)
         
@@ -67,7 +67,7 @@ class InvSMTSolver:
                 x: assignments[x]
                 for x in assignments if not self._is_ignored_variable(x)
             }
-            return CounterExample(filtered_assignments, CounterExampleKind.NEGATIVE)
+            return CounterExample(filtered_assignments, CounterExampleKind.NOT_PROVABLE)
         elif res == SatStatus.UNKNOWN:
             raise TimeoutError(inv)
         

@@ -185,12 +185,19 @@ class Runner:
                     return self._handle_solution(solution, (time.time() - start_time))
             except InvalidCodeFormulaError as e:
                 self._log(f'Invalid candidate syntax')
+                self._logger.error(e)
+                continue
+            except InvalidSMTLIB2FormulaError as e:
+                self._log(f'Invalid SMT-LIB-2 formula syntax')
+                self._logger.error(e)
                 continue
             except InvalidCodeError as e:
                 self._log(f'Invalid code while filtering predicates for candidate')
+                self._logger.error(e)
                 continue
             except TimeoutError as e:
                 self._log(f'Timeout while verifying candidate')
+                self._logger.error(e)
                 continue
             
     def reset(self):

@@ -1,9 +1,9 @@
 from enum import Enum
 
 class CounterExampleKind(Enum):
-    NEGATIVE = 0
-    POSITIVE = 1
-    INTERMEDIATE = 2
+    NOT_PROVABLE = 0
+    NOT_REACHABLE = 1
+    NOT_INDUCTIVE = 2
 
 class CounterExample:
     def __init__(self, assignment: dict[str,str], kind: CounterExampleKind):

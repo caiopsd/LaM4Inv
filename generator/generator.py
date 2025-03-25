@@ -14,37 +14,29 @@ class Generator:
         return f"""{self.code_handler.get_code()}
 Print loop invariants as valid {self.code_handler.get_language().value} assertions that help prove the assertion.
 
-A correct loop invariant holds for all the following properties:
-    - Reachability: means that the loop invariant I can be derived based on the pre-condition P, i.e. P ⇒ I. For this property, in order to get a correct answer, you may want to consider the initial situation where the program won't enter the loop.
-    - Provability: means that after unsatisfying loop condition B, we can prove the post-condition Q, i.e. (I ∧ ¬ B) ⇒ Q. For this property, in order to get a correct answer, you may want to consider the special case of the program executing to the end of the loop. If some of the preconditions are also loop invariant, you need to add them to your answer as well.
-    - Inductiveness: means that if the program state satisfies loop condition B, the new state obtained after the loop execution S still satisfies, i.e. {{I ∧ B}} S {{I}}.For this property, in order to get a correct answer, You may want to consider the special case of the program executing to the end of the loop.
-
 In order to get a correct answer, You may want to consider both the situation of not entering the loop and the situation of jumping out of the loop.
 
 If some of the preconditions are also loop invariant, you need to add them to your answer as well.
 
-Don't explain. Your answer should contain only '{self.code_handler.get_assert_format()}' lines.
+Use boolean operators if necessary. Don't explain. Your answer should contain only '{self.code_handler.get_assert_format()}' lines.
 """
     
     def _format_feedback(self, fails: list[tuple[str, CounterExample]]) -> str:
         fails_prompt = ""
         for (candidate, counter_example) in fails:
-            if counter_example.kind == CounterExampleKind.POSITIVE:
-                fails_prompt += f'   - "{candidate}" is too strict and breaks reachability. With counter example given by the SMT solver: {counter_example}\n'
-            elif counter_example.kind == CounterExampleKind.NEGATIVE:
-                fails_prompt += f'   - "{candidate}" is too weak and breaks provability. With counter example given by the SMT solver: {counter_example}\n'
-            elif counter_example.kind == CounterExampleKind.INTERMEDIATE:
-                fails_prompt += f'   - "{candidate}" break inductiveness. With counter example given by the SMT solver: {counter_example}\n'
+            if counter_example.kind == CounterExampleKind.NOT_REACHABLE:
+                fails_prompt += f'   - "{candidate}": The invariant I can\'t be can be derived based on the pre-condition P, i.e. P ⇒ I was not satisfied. For this property, in order to get a correct answer, you may want to consider the initial situation where the program won\'t enter the loop. The counter example is: {counter_example}\n'
+            elif counter_example.kind == CounterExampleKind.NOT_PROVABLE:
+                fails_prompt += f'   - "{candidate}": The invariant I is not provable. After unsatisfying loop condition B, the post-condition Q can\' be proven, i.e. (I ∧ ¬ B) ⇒ Q was not satisfied. For this property, in order to get a correct answer, you may want to consider the special case of the program executing to the end of the loop. The counter example is: {counter_example}\n'
+            elif counter_example.kind == CounterExampleKind.NOT_INDUCTIVE:
+                fails_prompt += f'   - "{candidate}": The invariant I is not inductivene, i.e., when the program state satisfies the loop condition B, the new state obtained after the loop execution S is not satisfied, i.e. {{I ∧ B}} S {{I}} was not satisfied. For this property, in order to get a correct answer, You may want to consider the special case of the program executing to the end of the loop. The counter example is: {counter_example}\n'
         return fails_prompt
     
     def _get_feedback_llm_message(self, last_fails: list[tuple[str, CounterExample]]) -> str:
-        return f"""Your previous proposals were verified and are not correct as they break some properties of a correct loop invariant.
-
- Please generate new loop invariants.
-
-**IMPORTANT:** Only genereate loop invariant that are **NOT INCLUDED IN THE FOLLOWING FAILURES LIST OR IN ANY OF YOUR PREVIOUS RESPONSES.**
-# Last Failures
+        return f"""Your previous proposals were verified and are not correct as they break some properties of a correct loop invariant:
 {self._format_feedback(last_fails)}
+
+**IMPORTANT:** Only genereate loop invariant that **has not failed before**!
 """
         
     def _parse_llm_response(self, output: str) -> list[str]:
