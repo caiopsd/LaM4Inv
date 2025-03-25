@@ -54,9 +54,8 @@ class CCodeHandler(CodeHandler):
                 loop_scope_balance -= 1
 
             if loop_scope_balance == 0:
-                code += f'{line}\n  {assertion}\n'
-                loop_scope_balance = None
-                continue
+                code += f'  }}\n  {assertion}\n}}'
+                break
 
             code += f'{line}\n'
             
