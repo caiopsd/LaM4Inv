@@ -13,7 +13,7 @@ class ChatGPTModel(OpenAIModel):
     GPT_4_TURBO = "gpt-4-turbo"
     GPT_4O = "gpt-4o"
     GPT_4O_MINI = "gpt-4o-mini"
-    GPT_O1_MINI = "o1-mini"
+    O1_MINI = "o1-mini"
 
 class DeepseekModel(OpenAIModel):
     DEEPSEEK_R1 = "deepseek-reasoner"
@@ -22,8 +22,8 @@ class OpenAI(LLM):
     def __init__(self, model: OpenAIModel, api_key: str = None, base_url: str = None):
         self.model = model
         self.client = OpenAIClient(api_key=api_key, base_url=base_url)
-        self.unsupported_params = {
-            ChatGPTModel.GPT_O1_MINI: ["presence_penalty"],
+        self._unsupported_params = {
+            ChatGPTModel.O1_MINI: ["presence_penalty"],
         }
 
     def _get_messages(self, chat: Chat) -> list:
@@ -38,14 +38,14 @@ class OpenAI(LLM):
     def _get_presence_penalty(self, options: ChatOptions) -> float:
         if not options or options.presence_penalty is None:
             return NOT_GIVEN
-        if self.model.value in self.unsupported_params and 'presence_penalty' in self.unsupported_params[self.model.value]:
+        if self.model in self._unsupported_params and 'presence_penalty' in self._unsupported_params[self.model]:
             return NOT_GIVEN
         return 2*options.presence_penalty
     
     def _get_temperature(self, options: ChatOptions) -> float:
         if not options or options.temperature is None:
             return NOT_GIVEN
-        if self.model.value in self.unsupported_params and 'temperature' in self.unsupported_params[self.model.value]:
+        if self.model in self._unsupported_params and 'temperature' in self._unsupported_params[self.model]:
             return NOT_GIVEN
         return 2*options.temperature
 

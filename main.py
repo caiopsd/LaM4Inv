@@ -97,7 +97,8 @@ def run_experiment(
         results_path: str,
         z3_solver: Z3Solver, 
         pipeline: list[tuple[LLM, float]],
-        bmc: BMC
+        bmc: BMC,
+        max_chat_interactions: int
 ):
     for i in benchmarks:
         graph_file_path = os.path.join(config.benchmarks_graph_path, f'{i}.c.json')
@@ -118,7 +119,8 @@ def run_experiment(
             formula_handler=formula_handler,
             code_handler=code_handler, 
             result_file_path=sample_result_file_path, 
-            presence_penalty_scale=0.2
+            presence_penalty_scale=0.2,
+            max_chat_interactions=max_chat_interactions
         )
 
         try:
@@ -167,13 +169,14 @@ def main():
     parser = argparse.ArgumentParser(description="Run benchmarks")
 
     parser.add_argument("--mode", type=str, default="run", choices=["run", "evaluate"], help="Mode of operation. 'run' runs the benchmarks, 'evaluate' evaluates the existing results")
-    parser.add_argument("--pipeline", type=parse_pipeline, default=f'{ChatGPTModel.GPT_4O_MINI.value}, 60; {ChatGPTModel.GPT_4O.value}, 90; {DeepseekModel.DEEPSEEK_R1.value}, 600', help="Pipeline of LLM models with their timeouts in seconds, formatted as: model, timeout; model, timeout;... Example: gpt-4,120;deepseek,300")
+    parser.add_argument("--pipeline", type=parse_pipeline, default=f'{ChatGPTModel.GPT_4O_MINI.value}, 40; {ChatGPTModel.O1_MINI.value}, 120; {DeepseekModel.DEEPSEEK_R1.value}, 600', help="Pipeline of LLM models with their timeouts in seconds, formatted as: model, timeout; model, timeout;... Example: gpt-4,120;deepseek,300")
     parser.add_argument("--benchmarks", type=parse_range, default="1-316", help="Benchmarks to run. Specify a list of individual numbers and/or numeric ranges formatted as a-b. Examples: 1,2,3, 1,2,3-5, or 5-10.")
     parser.add_argument("--results-path", type=str, default="results/test", help="Output directory for results")
     parser.add_argument("--smt-timeout", type=int, default=50, help="Timeout for the SMT check")
     parser.add_argument("--bmc-timeout", type=float, default=5, help="Timeout for BMC")
     parser.add_argument("--bmc-max-steps", type=int, default=10, help="Maximum number of steps for BMC")
     parser.add_argument("--log-level", type=str, default="INFO", choices=["INFO", "CRITICAL", "ERROR", "WARNING", "DEBUG"], help="Logging level")
+    parser.add_argument("--max-chat-interactions", type=int, default=-1, help="Max chat interactions with the LLM model")
 
     args = parser.parse_args()
 
@@ -187,7 +190,7 @@ def main():
     z3_solver = Z3Solver(args.smt_timeout)
     esbmc = ESBMC(config.esbmc_bin_path, args.bmc_timeout, args.bmc_max_steps)
 
-    run_experiment(args.benchmarks, args.results_path,  z3_solver, pipeline, esbmc)
+    run_experiment(args.benchmarks, args.results_path,  z3_solver, pipeline, esbmc, args.max_chat_interactions)
 
 if __name__ == "__main__":
     main()

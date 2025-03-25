@@ -25,7 +25,7 @@ class Runner:
         code_handler: CodeHandler,
         result_file_path: str,
         presence_penalty_scale: float,
-        max_candidates = 50
+        max_chat_interactions = 0
     ):
         self.inv_smt_solver = inv_smt_solver
         self.predicate_filtering = predicate_filtering
@@ -35,7 +35,7 @@ class Runner:
         self.code_handler = code_handler
 
         self.presence_penalty_scale = presence_penalty_scale
-        self.max_candidates = max_candidates
+        self.max_chat_interactions = max_chat_interactions
         
         self._result_file = self._get_result_file(result_file_path)
         self._logger = logging.getLogger(__name__)
@@ -107,7 +107,8 @@ class Runner:
                     verify = True
                     self._log(f'Addind predicate {predicate} to verify set')
                 self._predicate_filtering_verify_set[predicate] = True
-            
+        
+        self._log(f'Predicate filtering verify set: {list(self._predicate_filtering_verify_set.keys())}')    
         if verify:
             formula = ' && '.join([f'({predicate})' for predicate in self._predicate_filtering_verify_set.keys()])
             smt_lib2_formula = self.formula_handler.to_smt_lib2(formula)
@@ -173,6 +174,9 @@ class Runner:
                 solution, self._last_fails = self._verify_candidates(candidates)
                 if solution is not None:
                     return self._handle_solution(solution, (time.time() - start_time))
+                
+                if self.max_chat_interactions > 0 and len(self.generator.get_messages()) >= self.max_chat_interactions:
+                    self._reset_generator()
 
                 self._log(f'Executing predicate filtering')
                 solution = self._predicate_filtering(candidates)
