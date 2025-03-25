@@ -36,10 +36,10 @@ Use boolean operators if necessary. Don't explain. Your answer should contain on
         return fails_prompt
     
     def _get_feedback_llm_message(self, last_fails: list[tuple[str, CounterExample]]) -> str:
-        return f"""Your previous proposals were verified and are not correct as they break some properties of a correct loop invariant:
+        return f"""Your previous proposals were verified and have failed as they break some properties of a correct loop invariant:
 {self._format_feedback(last_fails)}
 
-**IMPORTANT:** Only genereate loop invariant that **has not failed before**!
+**IMPORTANT:** Only generate loop invariants that **have not failed before**!
 """
         
     def _parse_llm_response(self, output: str) -> list[str]:
