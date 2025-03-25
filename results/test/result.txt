@@ -1,0 +1,6 @@
+Total benchmarks: 62
+Successful solutions: 62
+Success rate: 100.00%
+Average time: 4.61 seconds
+Average counter examples generated 4.15
+Average repeated fails: 0.48

@@ -1,0 +1,107 @@
+23:30:10 24/03/2025 # Run Benchmark 23
+23:30:10 24/03/2025 Executing predicate filtering for preconditions
+23:30:10 24/03/2025 Filtering predicates for candidate assert(i == 1)
+23:30:10 24/03/2025 Filtering predicates for candidate assert(j == 20)
+23:30:10 24/03/2025 Generating loop invariants candidates with model gpt-4o and presence penalty 0.0
+23:30:10 24/03/2025 Generated 3 candidates
+23:30:10 24/03/2025 Verifying generated candidates
+23:30:10 24/03/2025 Verifying candidate: assert(i == 1 && j == 20);
+23:30:10 24/03/2025 Candidate failed verification
+23:30:10 24/03/2025 Adding candidate to fail history: assert(i == 1 && j == 20);
+23:30:10 24/03/2025 Verifying candidate: assert(i <= j + 2);
+23:30:10 24/03/2025 Candidate failed verification
+23:30:10 24/03/2025 Adding candidate to fail history: assert(i <= j + 2);
+23:30:10 24/03/2025 Verifying candidate: assert((j - i) % 3 == 1);
+23:30:10 24/03/2025 Candidate failed verification
+23:30:10 24/03/2025 Adding candidate to fail history: assert((j - i) % 3 == 1);
+23:30:10 24/03/2025 Executing predicate filtering
+23:30:10 24/03/2025 Filtering predicates for candidate assert(i == 1 && j == 20);
+23:30:10 24/03/2025 Filtering predicates for candidate assert(i <= j + 2);
+23:30:10 24/03/2025 Addind predicate i <= j + 2 to verify set
+23:30:10 24/03/2025 Filtering predicates for candidate assert((j - i) % 3 == 1);
+23:30:10 24/03/2025 Verifying formula: (<= i (+ j 2))
+23:30:10 24/03/2025 For candidate: assert((i <= j + 2))
+23:30:10 24/03/2025 Generating loop invariants candidates with model gpt-4o and presence penalty 0.0
+23:30:10 24/03/2025 Generated 3 candidates
+23:30:10 24/03/2025 Verifying generated candidates
+23:30:10 24/03/2025 Verifying candidate: assert(j <= 20);
+23:30:10 24/03/2025 Candidate failed verification
+23:30:10 24/03/2025 Adding candidate to fail history: assert(j <= 20);
+23:30:10 24/03/2025 Verifying candidate: assert(i % 2 == 1);
+23:30:10 24/03/2025 Candidate failed verification
+23:30:10 24/03/2025 Adding candidate to fail history: assert(i % 2 == 1);
+23:30:10 24/03/2025 Verifying candidate: assert(i + j == 21);
+23:30:10 24/03/2025 Candidate failed verification
+23:30:10 24/03/2025 Adding candidate to fail history: assert(i + j == 21);
+23:30:10 24/03/2025 Executing predicate filtering
+23:30:10 24/03/2025 Filtering predicates for candidate assert(j <= 20);
+23:30:10 24/03/2025 Addind predicate j <= 20 to verify set
+23:30:10 24/03/2025 Filtering predicates for candidate assert(i % 2 == 1);
+23:30:10 24/03/2025 Addind predicate i % 2 == 1 to verify set
+23:30:10 24/03/2025 Filtering predicates for candidate assert(i + j == 21);
+23:30:10 24/03/2025 Verifying formula: (and (and (<= i (+ j 2)) (<= j 20)) (= (mod i 2) 1))
+23:30:10 24/03/2025 For candidate: assert((i <= j + 2) && (j <= 20) && (i % 2 == 1))
+23:30:10 24/03/2025 Generating loop invariants candidates with model gpt-4o and presence penalty 0.0
+23:30:10 24/03/2025 Generated 3 candidates
+23:30:10 24/03/2025 Verifying generated candidates
+23:30:10 24/03/2025 Verifying candidate: assert(j >= 11);
+23:30:10 24/03/2025 Candidate failed verification
+23:30:10 24/03/2025 Adding candidate to fail history: assert(j >= 11);
+23:30:10 24/03/2025 Verifying candidate: assert(i + j >= 22);
+23:30:10 24/03/2025 Candidate failed verification
+23:30:10 24/03/2025 Adding candidate to fail history: assert(i + j >= 22);
+23:30:10 24/03/2025 Verifying candidate: assert((j - i) <= 18);
+23:30:10 24/03/2025 Candidate failed verification
+23:30:10 24/03/2025 Adding candidate to fail history: assert((j - i) <= 18);
+23:30:10 24/03/2025 Executing predicate filtering
+23:30:10 24/03/2025 Filtering predicates for candidate assert(j >= 11);
+23:30:10 24/03/2025 Addind predicate j >= 11 to verify set
+23:30:10 24/03/2025 Filtering predicates for candidate assert(i + j >= 22);
+23:30:10 24/03/2025 Filtering predicates for candidate assert((j - i) <= 18);
+23:30:10 24/03/2025 Verifying formula: (and (and (and (<= i (+ j 2)) (<= j 20)) (= (mod i 2) 1)) (>= j 11))
+23:30:10 24/03/2025 For candidate: assert((i <= j + 2) && (j <= 20) && (i % 2 == 1) && (j >= 11))
+23:30:10 24/03/2025 Generating loop invariants candidates with model gpt-4o and presence penalty 0.0
+23:30:10 24/03/2025 Generated 3 candidates
+23:30:10 24/03/2025 Verifying generated candidates
+23:30:10 24/03/2025 Verifying candidate: assert(i <= j + 19);
+23:30:10 24/03/2025 Candidate failed verification
+23:30:10 24/03/2025 Adding candidate to fail history: assert(i <= j + 19);
+23:30:10 24/03/2025 Verifying candidate: assert(j % 2 == 0);
+23:30:10 24/03/2025 Candidate failed verification
+23:30:10 24/03/2025 Adding candidate to fail history: assert(j % 2 == 0);
+23:30:10 24/03/2025 Verifying candidate: assert(j - i >= 7);
+23:30:10 24/03/2025 Candidate failed verification
+23:30:10 24/03/2025 Adding candidate to fail history: assert(j - i >= 7);
+23:30:10 24/03/2025 Executing predicate filtering
+23:30:10 24/03/2025 Filtering predicates for candidate assert(i <= j + 19);
+23:30:10 24/03/2025 Addind predicate i <= j + 19 to verify set
+23:30:10 24/03/2025 Filtering predicates for candidate assert(j % 2 == 0);
+23:30:10 24/03/2025 Filtering predicates for candidate assert(j - i >= 7);
+23:30:10 24/03/2025 Verifying formula: (and (and (and (and (<= i (+ j 2)) (<= j 20)) (= (mod i 2) 1)) (>= j 11)) (<= i (+ j 19)))
+23:30:10 24/03/2025 For candidate: assert((i <= j + 2) && (j <= 20) && (i % 2 == 1) && (j >= 11) && (i <= j + 19))
+23:30:10 24/03/2025 Generating loop invariants candidates with model gpt-4o and presence penalty 0.0
+23:30:10 24/03/2025 Generated 3 candidates
+23:30:10 24/03/2025 Verifying generated candidates
+23:30:10 24/03/2025 Verifying candidate: assert(j >= 8);
+23:30:10 24/03/2025 Candidate failed verification
+23:30:10 24/03/2025 Adding candidate to fail history: assert(j >= 8);
+23:30:10 24/03/2025 Verifying candidate: assert(i >= 1);
+23:30:10 24/03/2025 Candidate failed verification
+23:30:10 24/03/2025 Adding candidate to fail history: assert(i >= 1);
+23:30:10 24/03/2025 Verifying candidate: assert(i + 2 * j == 41);
+23:30:10 24/03/2025 Candidate failed verification
+23:30:10 24/03/2025 Adding candidate to fail history: assert(i + 2 * j == 41);
+23:30:10 24/03/2025 Executing predicate filtering
+23:30:10 24/03/2025 Filtering predicates for candidate assert(j >= 8);
+23:30:10 24/03/2025 Addind predicate j >= 8 to verify set
+23:30:10 24/03/2025 Filtering predicates for candidate assert(i >= 1);
+23:30:10 24/03/2025 Addind predicate i >= 1 to verify set
+23:30:10 24/03/2025 Filtering predicates for candidate assert(i + 2 * j == 41);
+23:30:10 24/03/2025 Addind predicate i + 2 * j == 41 to verify set
+23:30:10 24/03/2025 Verifying formula: (and (and (and (and (and (and (and (<= i (+ j 2)) (<= j 20)) (= (mod i 2) 1)) (>= j 11)) (<= i (+ j 19))) (>= j 8)) (>= i 1)) (= (+ i (* 2 j)) 41))
+23:30:10 24/03/2025 For candidate: assert((i <= j + 2) && (j <= 20) && (i % 2 == 1) && (j >= 11) && (i <= j + 19) && (j >= 8) && (i >= 1) && (i + 2 * j == 41))
+23:30:10 24/03/2025 Predicate filtering found solution: assert((i <= j + 2) && (j <= 20) && (i % 2 == 1) && (j >= 11) && (i <= j + 19) && (j >= 8) && (i >= 1) && (i + 2 * j == 41))
+23:30:10 24/03/2025 # Result
+23:30:10 24/03/2025 Solution: assert((i <= j + 2) && (j <= 20) && (i % 2 == 1) && (j >= 11) && (i <= j + 19) && (j >= 8) && (i >= 1) && (i + 2 * j == 41))
+23:30:10 24/03/2025 Generate 15 counter examples, with 0 repeated fails
+23:30:10 24/03/2025 Run time: 8.640771389007568

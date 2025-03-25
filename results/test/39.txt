@@ -1,0 +1,11 @@
+23:31:31 24/03/2025 # Run Benchmark 39
+23:31:31 24/03/2025 Executing predicate filtering for preconditions
+23:31:31 24/03/2025 Filtering predicates for candidate assert(c == 0)
+23:31:31 24/03/2025 Generating loop invariants candidates with model gpt-4o and presence penalty 0.0
+23:31:31 24/03/2025 Generated 3 candidates
+23:31:31 24/03/2025 Verifying generated candidates
+23:31:31 24/03/2025 Verifying candidate: assert(n > 0);
+23:31:31 24/03/2025 # Result
+23:31:31 24/03/2025 Solution: assert(n > 0);
+23:31:31 24/03/2025 Generate 0 counter examples, with 0 repeated fails
+23:31:31 24/03/2025 Run time: 0.9279193878173828
