@@ -73,7 +73,7 @@ class CSMTLIB2Translator:
             raise InvalidCodeFormulaError(str(e))
         
     def _rewrite_ternary(self, expr: str) -> str:
-        pattern = r'([^?]+)\s*\?\s*([^:]+)\s*:\s*([^)]+)'
+        pattern = r'([^?]+)\s*\?\s*([^:]+)\s*:\s*(.+)'
         repl = r'((\1) && (\2)) || (!(\1) && (\3))' # https://en.wikipedia.org/wiki/Conditioned_disjunction
         return re.sub(pattern, repl, expr)
 
