@@ -9,9 +9,9 @@ class SMTTranslatorVisitor(c_ast.NodeVisitor):
         super().__init__()
 
     def visit_BinaryOp(self, node):
+        op = self.map_operator(node.op)
         left = self.visit(node.left)
         right = self.visit(node.right)
-        op = self.map_operator(node.op)
         return f"({op} {left} {right})"
 
     def visit_UnaryOp(self, node):
