@@ -1,0 +1,37 @@
+03:56:49 26/03/2025 Resetting generator
+03:56:49 26/03/2025 # Run Benchmark 247
+03:56:49 26/03/2025 Executing predicate filtering for preconditions
+03:56:49 26/03/2025 Filtering predicates for candidate assert(j == 0)
+03:56:49 26/03/2025 Filtering predicates for candidate assert(nlen == idBitLength / 32)
+03:56:49 26/03/2025 Addind predicate nlen == idBitLength / 32 to verify set
+03:56:49 26/03/2025 Filtering predicates for candidate assert(idBitLength >= 0)
+03:56:49 26/03/2025 Addind predicate idBitLength >= 0 to verify set
+03:56:49 26/03/2025 Filtering predicates for candidate assert(material_length >= 0)
+03:56:49 26/03/2025 Addind predicate material_length >= 0 to verify set
+03:56:49 26/03/2025 Predicate filtering verify set: ['nlen == idBitLength / 32', 'idBitLength >= 0', 'material_length >= 0']
+03:56:49 26/03/2025 Verifying formula: (and (and (= nlen (/ idBitLength 32)) (>= idBitLength 0)) (>= material_length 0))
+03:56:49 26/03/2025 For candidate: assert((nlen == idBitLength / 32) && (idBitLength >= 0) && (material_length >= 0))
+03:56:49 26/03/2025 Generating loop invariants candidates with model gpt-4o and presence penalty 0.0
+03:56:49 26/03/2025 Generated 6 candidates
+03:56:49 26/03/2025 Verifying generated candidates
+03:56:49 26/03/2025 Verifying candidate: assert(nlen == idBitLength / 32);
+03:56:49 26/03/2025 Candidate failed verification
+03:56:49 26/03/2025 Adding candidate to fail history: assert(nlen == idBitLength / 32);
+03:56:49 26/03/2025 Verifying candidate: assert(idBitLength >= 0);
+03:56:49 26/03/2025 Candidate failed verification
+03:56:49 26/03/2025 Adding candidate to fail history: assert(idBitLength >= 0);
+03:56:49 26/03/2025 Verifying candidate: assert(material_length >= 0);
+03:56:49 26/03/2025 Candidate failed verification
+03:56:49 26/03/2025 Adding candidate to fail history: assert(material_length >= 0);
+03:56:49 26/03/2025 Verifying candidate: assert(j >= 0);
+03:56:49 26/03/2025 Candidate failed verification
+03:56:49 26/03/2025 Adding candidate to fail history: assert(j >= 0);
+03:56:49 26/03/2025 Verifying candidate: assert(j <= idBitLength / 8);
+03:56:49 26/03/2025 Candidate failed verification
+03:56:49 26/03/2025 Adding candidate to fail history: assert(j <= idBitLength / 8);
+03:56:49 26/03/2025 Verifying candidate: assert(j <= material_length);
+03:56:49 26/03/2025 # Result
+03:56:49 26/03/2025 Solution found by the gpt-4o model: assert(j <= material_length);
+03:56:49 26/03/2025 5 counter examples were generated for the model proposals, with 0 repeated fails
+03:56:49 26/03/2025 The model runtime was 1.0510218143463135 seconds
+03:56:49 26/03/2025 The total runtime was 1.7890479564666748 seconds

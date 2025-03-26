@@ -1,0 +1,356 @@
+03:06:26 26/03/2025 Resetting generator
+03:06:26 26/03/2025 # Run Benchmark 187
+03:06:26 26/03/2025 Executing predicate filtering for preconditions
+03:06:26 26/03/2025 Filtering predicates for candidate assert(x == 0)
+03:06:26 26/03/2025 Filtering predicates for candidate assert(y == 0)
+03:06:26 26/03/2025 Filtering predicates for candidate assert(z == 0)
+03:06:26 26/03/2025 Filtering predicates for candidate assert(w == 0)
+03:06:26 26/03/2025 Predicate filtering verify set: []
+03:06:26 26/03/2025 Generating loop invariants candidates with model gpt-4o and presence penalty 0.0
+03:06:26 26/03/2025 Generated 6 candidates
+03:06:26 26/03/2025 Verifying generated candidates
+03:06:26 26/03/2025 Verifying candidate: assert(x >= 0);
+03:06:26 26/03/2025 Candidate failed verification
+03:06:26 26/03/2025 Adding candidate to fail history: assert(x >= 0);
+03:06:26 26/03/2025 Verifying candidate: assert(y >= -200 - 100 * x);
+03:06:26 26/03/2025 Candidate failed verification
+03:06:26 26/03/2025 Adding candidate to fail history: assert(y >= -200 - 100 * x);
+03:06:26 26/03/2025 Verifying candidate: assert(z >= 0);
+03:06:26 26/03/2025 Candidate failed verification
+03:06:26 26/03/2025 Adding candidate to fail history: assert(z >= 0);
+03:06:26 26/03/2025 Verifying candidate: assert(z == 10 * w);
+03:06:26 26/03/2025 Candidate failed verification
+03:06:26 26/03/2025 Adding candidate to fail history: assert(z == 10 * w);
+03:06:26 26/03/2025 Verifying candidate: assert(w >= 0);
+03:06:26 26/03/2025 Candidate failed verification
+03:06:26 26/03/2025 Adding candidate to fail history: assert(w >= 0);
+03:06:26 26/03/2025 Verifying candidate: assert(x < 4 || y > 2 || !(x >= 4));
+03:06:26 26/03/2025 Candidate failed verification
+03:06:26 26/03/2025 Adding candidate to fail history: assert(x < 4 || y > 2 || !(x >= 4));
+03:06:26 26/03/2025 Executing predicate filtering
+03:06:26 26/03/2025 Filtering predicates for candidate assert(x >= 0);
+03:06:26 26/03/2025 Addind predicate x >= 0 to verify set
+03:06:26 26/03/2025 Filtering predicates for candidate assert(y >= -200 - 100 * x);
+03:06:26 26/03/2025 Addind predicate y >= -200 - 100 * x to verify set
+03:06:26 26/03/2025 Filtering predicates for candidate assert(z >= 0);
+03:06:26 26/03/2025 Addind predicate z >= 0 to verify set
+03:06:26 26/03/2025 Filtering predicates for candidate assert(z == 10 * w);
+03:06:26 26/03/2025 Addind predicate z == 10 * w to verify set
+03:06:26 26/03/2025 Filtering predicates for candidate assert(w >= 0);
+03:06:26 26/03/2025 Addind predicate w >= 0 to verify set
+03:06:26 26/03/2025 Filtering predicates for candidate assert(x < 4 || y > 2 || !(x >= 4));
+03:06:26 26/03/2025 Addind predicate (x < 4) || (y > 2) || (!(x >= 4)) to verify set
+03:06:26 26/03/2025 Predicate filtering verify set: ['x >= 0', 'y >= -200 - 100 * x', 'z >= 0', 'z == 10 * w', 'w >= 0', '(x < 4) || (y > 2) || (!(x >= 4))']
+03:06:26 26/03/2025 Verifying formula: (and (and (and (and (and (>= x 0) (>= y (- (- 200) (* 100 x)))) (>= z 0)) (= z (* 10 w))) (>= w 0)) (or (or (< x 4) (> y 2)) (not (>= x 4))))
+03:06:26 26/03/2025 For candidate: assert((x >= 0) && (y >= -200 - 100 * x) && (z >= 0) && (z == 10 * w) && (w >= 0) && ((x < 4) || (y > 2) || (!(x >= 4))))
+03:06:26 26/03/2025 Resetting generator
+03:06:26 26/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.0
+03:06:26 26/03/2025 Generated 6 candidates
+03:06:26 26/03/2025 Verifying generated candidates
+03:06:26 26/03/2025 Verifying candidate: assert(x >= 0);
+03:06:26 26/03/2025 Candidate failed verification
+03:06:26 26/03/2025 Adding candidate to fail history: assert(x >= 0);
+03:06:26 26/03/2025 Verifying candidate: assert(y >= 0);
+03:06:26 26/03/2025 Candidate failed verification
+03:06:26 26/03/2025 Adding candidate to fail history: assert(y >= 0);
+03:06:26 26/03/2025 Verifying candidate: assert(z >= 0);
+03:06:26 26/03/2025 Candidate failed verification
+03:06:26 26/03/2025 Adding candidate to fail history: assert(z >= 0);
+03:06:26 26/03/2025 Verifying candidate: assert(w >= 0);
+03:06:26 26/03/2025 Candidate failed verification
+03:06:26 26/03/2025 Adding candidate to fail history: assert(w >= 0);
+03:06:26 26/03/2025 Verifying candidate: assert(z == 10 * w);
+03:06:26 26/03/2025 Candidate failed verification
+03:06:26 26/03/2025 Adding candidate to fail history: assert(z == 10 * w);
+03:06:26 26/03/2025 Verifying candidate: assert((x < 4 && w > 0) || (x >= 4 && y > 2));
+03:06:26 26/03/2025 Candidate failed verification
+03:06:26 26/03/2025 Adding candidate to fail history: assert((x < 4 && w > 0) || (x >= 4 && y > 2));
+03:06:26 26/03/2025 Executing predicate filtering
+03:06:26 26/03/2025 Filtering predicates for candidate assert(x >= 0);
+03:06:26 26/03/2025 Filtering predicates for candidate assert(y >= 0);
+03:06:26 26/03/2025 Addind predicate y >= 0 to verify set
+03:06:26 26/03/2025 Filtering predicates for candidate assert(z >= 0);
+03:06:26 26/03/2025 Filtering predicates for candidate assert(w >= 0);
+03:06:26 26/03/2025 Filtering predicates for candidate assert(z == 10 * w);
+03:06:26 26/03/2025 Filtering predicates for candidate assert((x < 4 && w > 0) || (x >= 4 && y > 2));
+03:06:26 26/03/2025 Predicate filtering verify set: ['x >= 0', 'y >= -200 - 100 * x', 'z >= 0', 'z == 10 * w', 'w >= 0', '(x < 4) || (y > 2) || (!(x >= 4))', 'y >= 0']
+03:06:26 26/03/2025 Verifying formula: (and (and (and (and (and (and (>= x 0) (>= y (- (- 200) (* 100 x)))) (>= z 0)) (= z (* 10 w))) (>= w 0)) (or (or (< x 4) (> y 2)) (not (>= x 4)))) (>= y 0))
+03:06:26 26/03/2025 For candidate: assert((x >= 0) && (y >= -200 - 100 * x) && (z >= 0) && (z == 10 * w) && (w >= 0) && ((x < 4) || (y > 2) || (!(x >= 4))) && (y >= 0))
+03:06:26 26/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.0
+03:06:26 26/03/2025 Generated 5 candidates
+03:06:26 26/03/2025 Verifying generated candidates
+03:06:26 26/03/2025 Verifying candidate: assert(x >= 0);
+03:06:26 26/03/2025 Candidate already in fail history: assert(x >= 0);
+03:06:26 26/03/2025 Verifying candidate: assert(y >= 0 || (x < 4 && w == 0));
+03:06:26 26/03/2025 Candidate failed verification
+03:06:26 26/03/2025 Adding candidate to fail history: assert(y >= 0 || (x < 4 && w == 0));
+03:06:26 26/03/2025 Verifying candidate: assert(z >= 0);
+03:06:26 26/03/2025 Candidate already in fail history: assert(z >= 0);
+03:06:26 26/03/2025 Verifying candidate: assert(w >= 0);
+03:06:26 26/03/2025 Candidate already in fail history: assert(w >= 0);
+03:06:26 26/03/2025 Verifying candidate: assert((x < 4 && y <= 10 * w) || (x >= 4 && y >= 0));
+03:06:26 26/03/2025 Candidate failed verification
+03:06:26 26/03/2025 Adding candidate to fail history: assert((x < 4 && y <= 10 * w) || (x >= 4 && y >= 0));
+03:06:26 26/03/2025 Executing predicate filtering
+03:06:26 26/03/2025 Filtering predicates for candidate assert(x >= 0);
+03:06:26 26/03/2025 Filtering predicates for candidate assert(y >= 0 || (x < 4 && w == 0));
+03:06:26 26/03/2025 Addind predicate (y >= 0) || ((x < 4 && w == 0)) to verify set
+03:06:26 26/03/2025 Filtering predicates for candidate assert(z >= 0);
+03:06:26 26/03/2025 Filtering predicates for candidate assert(w >= 0);
+03:06:26 26/03/2025 Filtering predicates for candidate assert((x < 4 && y <= 10 * w) || (x >= 4 && y >= 0));
+03:06:26 26/03/2025 Predicate filtering verify set: ['x >= 0', 'y >= -200 - 100 * x', 'z >= 0', 'z == 10 * w', 'w >= 0', '(x < 4) || (y > 2) || (!(x >= 4))', 'y >= 0', '(y >= 0) || ((x < 4 && w == 0))']
+03:06:26 26/03/2025 Verifying formula: (and (and (and (and (and (and (and (>= x 0) (>= y (- (- 200) (* 100 x)))) (>= z 0)) (= z (* 10 w))) (>= w 0)) (or (or (< x 4) (> y 2)) (not (>= x 4)))) (>= y 0)) (or (>= y 0) (and (< x 4) (= w 0))))
+03:06:26 26/03/2025 For candidate: assert((x >= 0) && (y >= -200 - 100 * x) && (z >= 0) && (z == 10 * w) && (w >= 0) && ((x < 4) || (y > 2) || (!(x >= 4))) && (y >= 0) && ((y >= 0) || ((x < 4 && w == 0))))
+03:06:26 26/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.5370495669980354
+03:06:26 26/03/2025 Generated 4 candidates
+03:06:26 26/03/2025 Verifying generated candidates
+03:06:26 26/03/2025 Verifying candidate: assert(w == 0 || w > 0);
+03:06:26 26/03/2025 Candidate failed verification
+03:06:26 26/03/2025 Adding candidate to fail history: assert(w == 0 || w > 0);
+03:06:26 26/03/2025 Verifying candidate: assert((x < 4 && y >= 0) || x >= 4);
+03:06:26 26/03/2025 Candidate failed verification
+03:06:26 26/03/2025 Adding candidate to fail history: assert((x < 4 && y >= 0) || x >= 4);
+03:06:26 26/03/2025 Verifying candidate: assert(z == 10 * w + (w > 0 ? 10 : 0));
+03:06:26 26/03/2025 Invalid candidate syntax
+03:06:26 26/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.5370495669980354
+03:06:26 26/03/2025 Generated 4 candidates
+03:06:26 26/03/2025 Verifying generated candidates
+03:06:26 26/03/2025 Verifying candidate: assert(w >= 0);
+03:06:26 26/03/2025 Candidate already in fail history: assert(w >= 0);
+03:06:26 26/03/2025 Verifying candidate: assert(z >= 10 * w);
+03:06:26 26/03/2025 Candidate failed verification
+03:06:26 26/03/2025 Adding candidate to fail history: assert(z >= 10 * w);
+03:06:26 26/03/2025 Verifying candidate: assert((x < 4 && y >= 0) || (x >= 4));
+03:06:26 26/03/2025 Candidate failed verification
+03:06:26 26/03/2025 Adding candidate to fail history: assert((x < 4 && y >= 0) || (x >= 4));
+03:06:26 26/03/2025 Verifying candidate: assert(y <= 2 * w || (x >= 4));
+03:06:26 26/03/2025 Candidate failed verification
+03:06:26 26/03/2025 Adding candidate to fail history: assert(y <= 2 * w || (x >= 4));
+03:06:26 26/03/2025 Executing predicate filtering
+03:06:26 26/03/2025 Filtering predicates for candidate assert(w >= 0);
+03:06:26 26/03/2025 Filtering predicates for candidate assert(z >= 10 * w);
+03:06:26 26/03/2025 Addind predicate z >= 10 * w to verify set
+03:06:26 26/03/2025 Filtering predicates for candidate assert((x < 4 && y >= 0) || (x >= 4));
+03:06:26 26/03/2025 Addind predicate ((x < 4 && y >= 0)) || ((x >= 4)) to verify set
+03:06:26 26/03/2025 Filtering predicates for candidate assert(y <= 2 * w || (x >= 4));
+03:06:26 26/03/2025 Predicate filtering verify set: ['x >= 0', 'y >= -200 - 100 * x', 'z >= 0', 'z == 10 * w', 'w >= 0', '(x < 4) || (y > 2) || (!(x >= 4))', 'y >= 0', '(y >= 0) || ((x < 4 && w == 0))', 'z >= 10 * w', '((x < 4 && y >= 0)) || ((x >= 4))']
+03:06:26 26/03/2025 Verifying formula: (and (and (and (and (and (and (and (and (and (>= x 0) (>= y (- (- 200) (* 100 x)))) (>= z 0)) (= z (* 10 w))) (>= w 0)) (or (or (< x 4) (> y 2)) (not (>= x 4)))) (>= y 0)) (or (>= y 0) (and (< x 4) (= w 0)))) (>= z (* 10 w))) (or (and (< x 4) (>= y 0)) (>= x 4)))
+03:06:26 26/03/2025 For candidate: assert((x >= 0) && (y >= -200 - 100 * x) && (z >= 0) && (z == 10 * w) && (w >= 0) && ((x < 4) || (y > 2) || (!(x >= 4))) && (y >= 0) && ((y >= 0) || ((x < 4 && w == 0))) && (z >= 10 * w) && (((x < 4 && y >= 0)) || ((x >= 4))))
+03:06:26 26/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.6640367702678491
+03:06:26 26/03/2025 Generated 4 candidates
+03:06:26 26/03/2025 Verifying generated candidates
+03:06:26 26/03/2025 Verifying candidate: assert(w >= 0);
+03:06:26 26/03/2025 Candidate already in fail history: assert(w >= 0);
+03:06:26 26/03/2025 Verifying candidate: assert(y + 10 * w >= 0);
+03:06:26 26/03/2025 Candidate failed verification
+03:06:26 26/03/2025 Adding candidate to fail history: assert(y + 10 * w >= 0);
+03:06:26 26/03/2025 Verifying candidate: assert(z == 10 * (w - 1));
+03:06:26 26/03/2025 Candidate failed verification
+03:06:26 26/03/2025 Adding candidate to fail history: assert(z == 10 * (w - 1));
+03:06:26 26/03/2025 Verifying candidate: assert(x < 4 || (x >= 4 && y >= 0));
+03:06:26 26/03/2025 Candidate failed verification
+03:06:26 26/03/2025 Adding candidate to fail history: assert(x < 4 || (x >= 4 && y >= 0));
+03:06:26 26/03/2025 Executing predicate filtering
+03:06:26 26/03/2025 Filtering predicates for candidate assert(w >= 0);
+03:06:26 26/03/2025 Filtering predicates for candidate assert(y + 10 * w >= 0);
+03:06:26 26/03/2025 Addind predicate y + 10 * w >= 0 to verify set
+03:06:26 26/03/2025 Filtering predicates for candidate assert(z == 10 * (w - 1));
+03:06:26 26/03/2025 Filtering predicates for candidate assert(x < 4 || (x >= 4 && y >= 0));
+03:06:26 26/03/2025 Addind predicate (x < 4) || ((x >= 4 && y >= 0)) to verify set
+03:06:26 26/03/2025 Predicate filtering verify set: ['x >= 0', 'y >= -200 - 100 * x', 'z >= 0', 'z == 10 * w', 'w >= 0', '(x < 4) || (y > 2) || (!(x >= 4))', 'y >= 0', '(y >= 0) || ((x < 4 && w == 0))', 'z >= 10 * w', '((x < 4 && y >= 0)) || ((x >= 4))', 'y + 10 * w >= 0', '(x < 4) || ((x >= 4 && y >= 0))']
+03:06:26 26/03/2025 Verifying formula: (and (and (and (and (and (and (and (and (and (and (and (>= x 0) (>= y (- (- 200) (* 100 x)))) (>= z 0)) (= z (* 10 w))) (>= w 0)) (or (or (< x 4) (> y 2)) (not (>= x 4)))) (>= y 0)) (or (>= y 0) (and (< x 4) (= w 0)))) (>= z (* 10 w))) (or (and (< x 4) (>= y 0)) (>= x 4))) (>= (+ y (* 10 w)) 0)) (or (< x 4) (and (>= x 4) (>= y 0))))
+03:06:26 26/03/2025 For candidate: assert((x >= 0) && (y >= -200 - 100 * x) && (z >= 0) && (z == 10 * w) && (w >= 0) && ((x < 4) || (y > 2) || (!(x >= 4))) && (y >= 0) && ((y >= 0) || ((x < 4 && w == 0))) && (z >= 10 * w) && (((x < 4 && y >= 0)) || ((x >= 4))) && (y + 10 * w >= 0) && ((x < 4) || ((x >= 4 && y >= 0))))
+03:06:26 26/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.7615941559557649
+03:06:26 26/03/2025 Generated 4 candidates
+03:06:26 26/03/2025 Verifying generated candidates
+03:06:26 26/03/2025 Verifying candidate: assert(w >= 0);
+03:06:26 26/03/2025 Candidate already in fail history: assert(w >= 0);
+03:06:26 26/03/2025 Verifying candidate: assert(z >= 0);
+03:06:26 26/03/2025 Candidate already in fail history: assert(z >= 0);
+03:06:26 26/03/2025 Verifying candidate: assert(y >= -2 * w);
+03:06:26 26/03/2025 Candidate failed verification
+03:06:26 26/03/2025 Adding candidate to fail history: assert(y >= -2 * w);
+03:06:26 26/03/2025 Verifying candidate: assert((x < 4 && y >= 0) || (x >= 4));
+03:06:26 26/03/2025 Candidate already in fail history: assert((x < 4 && y >= 0) || (x >= 4));
+03:06:26 26/03/2025 Executing predicate filtering
+03:06:26 26/03/2025 Filtering predicates for candidate assert(w >= 0);
+03:06:26 26/03/2025 Filtering predicates for candidate assert(z >= 0);
+03:06:26 26/03/2025 Filtering predicates for candidate assert(y >= -2 * w);
+03:06:26 26/03/2025 Addind predicate y >= -2 * w to verify set
+03:06:26 26/03/2025 Filtering predicates for candidate assert((x < 4 && y >= 0) || (x >= 4));
+03:06:26 26/03/2025 Predicate filtering verify set: ['x >= 0', 'y >= -200 - 100 * x', 'z >= 0', 'z == 10 * w', 'w >= 0', '(x < 4) || (y > 2) || (!(x >= 4))', 'y >= 0', '(y >= 0) || ((x < 4 && w == 0))', 'z >= 10 * w', '((x < 4 && y >= 0)) || ((x >= 4))', 'y + 10 * w >= 0', '(x < 4) || ((x >= 4 && y >= 0))', 'y >= -2 * w']
+03:06:26 26/03/2025 Verifying formula: (and (and (and (and (and (and (and (and (and (and (and (and (>= x 0) (>= y (- (- 200) (* 100 x)))) (>= z 0)) (= z (* 10 w))) (>= w 0)) (or (or (< x 4) (> y 2)) (not (>= x 4)))) (>= y 0)) (or (>= y 0) (and (< x 4) (= w 0)))) (>= z (* 10 w))) (or (and (< x 4) (>= y 0)) (>= x 4))) (>= (+ y (* 10 w)) 0)) (or (< x 4) (and (>= x 4) (>= y 0)))) (>= y (* (- 2) w)))
+03:06:26 26/03/2025 For candidate: assert((x >= 0) && (y >= -200 - 100 * x) && (z >= 0) && (z == 10 * w) && (w >= 0) && ((x < 4) || (y > 2) || (!(x >= 4))) && (y >= 0) && ((y >= 0) || ((x < 4 && w == 0))) && (z >= 10 * w) && (((x < 4 && y >= 0)) || ((x >= 4))) && (y + 10 * w >= 0) && ((x < 4) || ((x >= 4 && y >= 0))) && (y >= -2 * w))
+03:06:26 26/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9216685544064713
+03:06:26 26/03/2025 Generated 4 candidates
+03:06:26 26/03/2025 Verifying generated candidates
+03:06:26 26/03/2025 Verifying candidate: assert(w >= 0);
+03:06:26 26/03/2025 Candidate already in fail history: assert(w >= 0);
+03:06:26 26/03/2025 Verifying candidate: assert(z >= 0);
+03:06:26 26/03/2025 Candidate already in fail history: assert(z >= 0);
+03:06:26 26/03/2025 Verifying candidate: assert(y + 2 * x >= 0);
+03:06:26 26/03/2025 Candidate failed verification
+03:06:26 26/03/2025 Adding candidate to fail history: assert(y + 2 * x >= 0);
+03:06:26 26/03/2025 Verifying candidate: assert((x < 4 && (y == 0 || y > -100)) || (x >= 4));
+03:06:26 26/03/2025 Candidate failed verification
+03:06:26 26/03/2025 Adding candidate to fail history: assert((x < 4 && (y == 0 || y > -100)) || (x >= 4));
+03:06:26 26/03/2025 Executing predicate filtering
+03:06:26 26/03/2025 Filtering predicates for candidate assert(w >= 0);
+03:06:26 26/03/2025 Filtering predicates for candidate assert(z >= 0);
+03:06:26 26/03/2025 Filtering predicates for candidate assert(y + 2 * x >= 0);
+03:06:26 26/03/2025 Addind predicate y + 2 * x >= 0 to verify set
+03:06:26 26/03/2025 Filtering predicates for candidate assert((x < 4 && (y == 0 || y > -100)) || (x >= 4));
+03:06:26 26/03/2025 Addind predicate ((x < 4 && (y == 0 || y > -100))) || ((x >= 4)) to verify set
+03:06:26 26/03/2025 Predicate filtering verify set: ['x >= 0', 'y >= -200 - 100 * x', 'z >= 0', 'z == 10 * w', 'w >= 0', '(x < 4) || (y > 2) || (!(x >= 4))', 'y >= 0', '(y >= 0) || ((x < 4 && w == 0))', 'z >= 10 * w', '((x < 4 && y >= 0)) || ((x >= 4))', 'y + 10 * w >= 0', '(x < 4) || ((x >= 4 && y >= 0))', 'y >= -2 * w', 'y + 2 * x >= 0', '((x < 4 && (y == 0 || y > -100))) || ((x >= 4))']
+03:06:26 26/03/2025 Verifying formula: (and (and (and (and (and (and (and (and (and (and (and (and (and (and (>= x 0) (>= y (- (- 200) (* 100 x)))) (>= z 0)) (= z (* 10 w))) (>= w 0)) (or (or (< x 4) (> y 2)) (not (>= x 4)))) (>= y 0)) (or (>= y 0) (and (< x 4) (= w 0)))) (>= z (* 10 w))) (or (and (< x 4) (>= y 0)) (>= x 4))) (>= (+ y (* 10 w)) 0)) (or (< x 4) (and (>= x 4) (>= y 0)))) (>= y (* (- 2) w))) (>= (+ y (* 2 x)) 0)) (or (and (< x 4) (or (= y 0) (> y (- 100)))) (>= x 4)))
+03:06:26 26/03/2025 For candidate: assert((x >= 0) && (y >= -200 - 100 * x) && (z >= 0) && (z == 10 * w) && (w >= 0) && ((x < 4) || (y > 2) || (!(x >= 4))) && (y >= 0) && ((y >= 0) || ((x < 4 && w == 0))) && (z >= 10 * w) && (((x < 4 && y >= 0)) || ((x >= 4))) && (y + 10 * w >= 0) && ((x < 4) || ((x >= 4 && y >= 0))) && (y >= -2 * w) && (y + 2 * x >= 0) && (((x < 4 && (y == 0 || y > -100))) || ((x >= 4))))
+03:06:26 26/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9640275800758169
+03:06:26 26/03/2025 Generated 4 candidates
+03:06:26 26/03/2025 Verifying generated candidates
+03:06:26 26/03/2025 Verifying candidate: assert(y >= -100);
+03:06:26 26/03/2025 Candidate failed verification
+03:06:26 26/03/2025 Adding candidate to fail history: assert(y >= -100);
+03:06:26 26/03/2025 Verifying candidate: assert(w == 0 || (w > 0 && y < 10 * w));
+03:06:26 26/03/2025 Candidate failed verification
+03:06:26 26/03/2025 Adding candidate to fail history: assert(w == 0 || (w > 0 && y < 10 * w));
+03:06:26 26/03/2025 Verifying candidate: assert(z >= 10 * (w - 1));
+03:06:26 26/03/2025 Candidate failed verification
+03:06:26 26/03/2025 Adding candidate to fail history: assert(z >= 10 * (w - 1));
+03:06:26 26/03/2025 Verifying candidate: assert(x <= 4 || (x > 4 && y >= 0));
+03:06:26 26/03/2025 Candidate failed verification
+03:06:26 26/03/2025 Adding candidate to fail history: assert(x <= 4 || (x > 4 && y >= 0));
+03:06:26 26/03/2025 Executing predicate filtering
+03:06:26 26/03/2025 Filtering predicates for candidate assert(y >= -100);
+03:06:26 26/03/2025 Addind predicate y >= -100 to verify set
+03:06:26 26/03/2025 Filtering predicates for candidate assert(w == 0 || (w > 0 && y < 10 * w));
+03:06:26 26/03/2025 Filtering predicates for candidate assert(z >= 10 * (w - 1));
+03:06:26 26/03/2025 Addind predicate z >= 10 * (w - 1) to verify set
+03:06:26 26/03/2025 Filtering predicates for candidate assert(x <= 4 || (x > 4 && y >= 0));
+03:06:26 26/03/2025 Addind predicate (x <= 4) || ((x > 4 && y >= 0)) to verify set
+03:06:26 26/03/2025 Predicate filtering verify set: ['x >= 0', 'y >= -200 - 100 * x', 'z >= 0', 'z == 10 * w', 'w >= 0', '(x < 4) || (y > 2) || (!(x >= 4))', 'y >= 0', '(y >= 0) || ((x < 4 && w == 0))', 'z >= 10 * w', '((x < 4 && y >= 0)) || ((x >= 4))', 'y + 10 * w >= 0', '(x < 4) || ((x >= 4 && y >= 0))', 'y >= -2 * w', 'y + 2 * x >= 0', '((x < 4 && (y == 0 || y > -100))) || ((x >= 4))', 'y >= -100', 'z >= 10 * (w - 1)', '(x <= 4) || ((x > 4 && y >= 0))']
+03:06:26 26/03/2025 Verifying formula: (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (>= x 0) (>= y (- (- 200) (* 100 x)))) (>= z 0)) (= z (* 10 w))) (>= w 0)) (or (or (< x 4) (> y 2)) (not (>= x 4)))) (>= y 0)) (or (>= y 0) (and (< x 4) (= w 0)))) (>= z (* 10 w))) (or (and (< x 4) (>= y 0)) (>= x 4))) (>= (+ y (* 10 w)) 0)) (or (< x 4) (and (>= x 4) (>= y 0)))) (>= y (* (- 2) w))) (>= (+ y (* 2 x)) 0)) (or (and (< x 4) (or (= y 0) (> y (- 100)))) (>= x 4))) (>= y (- 100))) (>= z (* 10 (- w 1)))) (or (<= x 4) (and (> x 4) (>= y 0))))
+03:06:26 26/03/2025 For candidate: assert((x >= 0) && (y >= -200 - 100 * x) && (z >= 0) && (z == 10 * w) && (w >= 0) && ((x < 4) || (y > 2) || (!(x >= 4))) && (y >= 0) && ((y >= 0) || ((x < 4 && w == 0))) && (z >= 10 * w) && (((x < 4 && y >= 0)) || ((x >= 4))) && (y + 10 * w >= 0) && ((x < 4) || ((x >= 4 && y >= 0))) && (y >= -2 * w) && (y + 2 * x >= 0) && (((x < 4 && (y == 0 || y > -100))) || ((x >= 4))) && (y >= -100) && (z >= 10 * (w - 1)) && ((x <= 4) || ((x > 4 && y >= 0))))
+03:06:26 26/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9640275800758169
+03:06:26 26/03/2025 Generated 4 candidates
+03:06:26 26/03/2025 Verifying generated candidates
+03:06:26 26/03/2025 Verifying candidate: assert(x >= 0);
+03:06:26 26/03/2025 Candidate already in fail history: assert(x >= 0);
+03:06:26 26/03/2025 Verifying candidate: assert(w >= 0);
+03:06:26 26/03/2025 Candidate already in fail history: assert(w >= 0);
+03:06:26 26/03/2025 Verifying candidate: assert((w == 0 && y == 0) || (w > 0));
+03:06:26 26/03/2025 Candidate failed verification
+03:06:26 26/03/2025 Adding candidate to fail history: assert((w == 0 && y == 0) || (w > 0));
+03:06:26 26/03/2025 Verifying candidate: assert(z <= 10 * w);
+03:06:26 26/03/2025 Candidate failed verification
+03:06:26 26/03/2025 Adding candidate to fail history: assert(z <= 10 * w);
+03:06:26 26/03/2025 Executing predicate filtering
+03:06:26 26/03/2025 Filtering predicates for candidate assert(x >= 0);
+03:06:26 26/03/2025 Filtering predicates for candidate assert(w >= 0);
+03:06:26 26/03/2025 Filtering predicates for candidate assert((w == 0 && y == 0) || (w > 0));
+03:06:26 26/03/2025 Addind predicate ((w == 0 && y == 0)) || ((w > 0)) to verify set
+03:06:26 26/03/2025 Filtering predicates for candidate assert(z <= 10 * w);
+03:06:26 26/03/2025 Addind predicate z <= 10 * w to verify set
+03:06:26 26/03/2025 Predicate filtering verify set: ['x >= 0', 'y >= -200 - 100 * x', 'z >= 0', 'z == 10 * w', 'w >= 0', '(x < 4) || (y > 2) || (!(x >= 4))', 'y >= 0', '(y >= 0) || ((x < 4 && w == 0))', 'z >= 10 * w', '((x < 4 && y >= 0)) || ((x >= 4))', 'y + 10 * w >= 0', '(x < 4) || ((x >= 4 && y >= 0))', 'y >= -2 * w', 'y + 2 * x >= 0', '((x < 4 && (y == 0 || y > -100))) || ((x >= 4))', 'y >= -100', 'z >= 10 * (w - 1)', '(x <= 4) || ((x > 4 && y >= 0))', '((w == 0 && y == 0)) || ((w > 0))', 'z <= 10 * w']
+03:06:26 26/03/2025 Verifying formula: (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (>= x 0) (>= y (- (- 200) (* 100 x)))) (>= z 0)) (= z (* 10 w))) (>= w 0)) (or (or (< x 4) (> y 2)) (not (>= x 4)))) (>= y 0)) (or (>= y 0) (and (< x 4) (= w 0)))) (>= z (* 10 w))) (or (and (< x 4) (>= y 0)) (>= x 4))) (>= (+ y (* 10 w)) 0)) (or (< x 4) (and (>= x 4) (>= y 0)))) (>= y (* (- 2) w))) (>= (+ y (* 2 x)) 0)) (or (and (< x 4) (or (= y 0) (> y (- 100)))) (>= x 4))) (>= y (- 100))) (>= z (* 10 (- w 1)))) (or (<= x 4) (and (> x 4) (>= y 0)))) (or (and (= w 0) (= y 0)) (> w 0))) (<= z (* 10 w)))
+03:06:26 26/03/2025 For candidate: assert((x >= 0) && (y >= -200 - 100 * x) && (z >= 0) && (z == 10 * w) && (w >= 0) && ((x < 4) || (y > 2) || (!(x >= 4))) && (y >= 0) && ((y >= 0) || ((x < 4 && w == 0))) && (z >= 10 * w) && (((x < 4 && y >= 0)) || ((x >= 4))) && (y + 10 * w >= 0) && ((x < 4) || ((x >= 4 && y >= 0))) && (y >= -2 * w) && (y + 2 * x >= 0) && (((x < 4 && (y == 0 || y > -100))) || ((x >= 4))) && (y >= -100) && (z >= 10 * (w - 1)) && ((x <= 4) || ((x > 4 && y >= 0))) && (((w == 0 && y == 0)) || ((w > 0))) && (z <= 10 * w))
+03:06:26 26/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9836748576936802
+03:06:26 26/03/2025 Generated 4 candidates
+03:06:26 26/03/2025 Verifying generated candidates
+03:06:26 26/03/2025 Verifying candidate: assert(y >= 0);
+03:06:26 26/03/2025 Candidate already in fail history: assert(y >= 0);
+03:06:26 26/03/2025 Verifying candidate: assert(z >= 10 * (w - 1));
+03:06:26 26/03/2025 Candidate already in fail history: assert(z >= 10 * (w - 1));
+03:06:26 26/03/2025 Verifying candidate: assert((y > 0 && x < 4) || (x >= 4));
+03:06:26 26/03/2025 Candidate failed verification
+03:06:26 26/03/2025 Adding candidate to fail history: assert((y > 0 && x < 4) || (x >= 4));
+03:06:26 26/03/2025 Verifying candidate: assert(w >= 0 || (y == 0 && w == 0));
+03:06:26 26/03/2025 Candidate failed verification
+03:06:26 26/03/2025 Adding candidate to fail history: assert(w >= 0 || (y == 0 && w == 0));
+03:06:26 26/03/2025 Executing predicate filtering
+03:06:26 26/03/2025 Filtering predicates for candidate assert(y >= 0);
+03:06:26 26/03/2025 Filtering predicates for candidate assert(z >= 10 * (w - 1));
+03:06:26 26/03/2025 Filtering predicates for candidate assert((y > 0 && x < 4) || (x >= 4));
+03:06:26 26/03/2025 Filtering predicates for candidate assert(w >= 0 || (y == 0 && w == 0));
+03:06:26 26/03/2025 Addind predicate (w >= 0) || ((y == 0 && w == 0)) to verify set
+03:06:26 26/03/2025 Predicate filtering verify set: ['x >= 0', 'y >= -200 - 100 * x', 'z >= 0', 'z == 10 * w', 'w >= 0', '(x < 4) || (y > 2) || (!(x >= 4))', 'y >= 0', '(y >= 0) || ((x < 4 && w == 0))', 'z >= 10 * w', '((x < 4 && y >= 0)) || ((x >= 4))', 'y + 10 * w >= 0', '(x < 4) || ((x >= 4 && y >= 0))', 'y >= -2 * w', 'y + 2 * x >= 0', '((x < 4 && (y == 0 || y > -100))) || ((x >= 4))', 'y >= -100', 'z >= 10 * (w - 1)', '(x <= 4) || ((x > 4 && y >= 0))', '((w == 0 && y == 0)) || ((w > 0))', 'z <= 10 * w', '(w >= 0) || ((y == 0 && w == 0))']
+03:06:26 26/03/2025 Verifying formula: (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (>= x 0) (>= y (- (- 200) (* 100 x)))) (>= z 0)) (= z (* 10 w))) (>= w 0)) (or (or (< x 4) (> y 2)) (not (>= x 4)))) (>= y 0)) (or (>= y 0) (and (< x 4) (= w 0)))) (>= z (* 10 w))) (or (and (< x 4) (>= y 0)) (>= x 4))) (>= (+ y (* 10 w)) 0)) (or (< x 4) (and (>= x 4) (>= y 0)))) (>= y (* (- 2) w))) (>= (+ y (* 2 x)) 0)) (or (and (< x 4) (or (= y 0) (> y (- 100)))) (>= x 4))) (>= y (- 100))) (>= z (* 10 (- w 1)))) (or (<= x 4) (and (> x 4) (>= y 0)))) (or (and (= w 0) (= y 0)) (> w 0))) (<= z (* 10 w))) (or (>= w 0) (and (= y 0) (= w 0))))
+03:06:26 26/03/2025 For candidate: assert((x >= 0) && (y >= -200 - 100 * x) && (z >= 0) && (z == 10 * w) && (w >= 0) && ((x < 4) || (y > 2) || (!(x >= 4))) && (y >= 0) && ((y >= 0) || ((x < 4 && w == 0))) && (z >= 10 * w) && (((x < 4 && y >= 0)) || ((x >= 4))) && (y + 10 * w >= 0) && ((x < 4) || ((x >= 4 && y >= 0))) && (y >= -2 * w) && (y + 2 * x >= 0) && (((x < 4 && (y == 0 || y > -100))) || ((x >= 4))) && (y >= -100) && (z >= 10 * (w - 1)) && ((x <= 4) || ((x > 4 && y >= 0))) && (((w == 0 && y == 0)) || ((w > 0))) && (z <= 10 * w) && ((w >= 0) || ((y == 0 && w == 0))))
+03:06:26 26/03/2025 Resetting generator
+03:06:26 26/03/2025 Generating loop invariants candidates with model o3-mini and presence penalty 0.0
+03:06:26 26/03/2025 Generated 3 candidates
+03:06:26 26/03/2025 Verifying generated candidates
+03:06:26 26/03/2025 Verifying candidate: assert(z == 10 * w);
+03:06:26 26/03/2025 Candidate failed verification
+03:06:26 26/03/2025 Adding candidate to fail history: assert(z == 10 * w);
+03:06:26 26/03/2025 Verifying candidate: assert(x >= 0 && w >= 0 && x <= w);
+03:06:26 26/03/2025 Candidate failed verification
+03:06:26 26/03/2025 Adding candidate to fail history: assert(x >= 0 && w >= 0 && x <= w);
+03:06:26 26/03/2025 Verifying candidate: assert((x < 4 && y > -(100 * (4 - x) - 2)) || (x >= 4 && y > 2));
+03:06:26 26/03/2025 Candidate failed verification
+03:06:26 26/03/2025 Adding candidate to fail history: assert((x < 4 && y > -(100 * (4 - x) - 2)) || (x >= 4 && y > 2));
+03:06:26 26/03/2025 Executing predicate filtering
+03:06:26 26/03/2025 Filtering predicates for candidate assert(z == 10 * w);
+03:06:26 26/03/2025 Filtering predicates for candidate assert(x >= 0 && w >= 0 && x <= w);
+03:06:26 26/03/2025 Addind predicate x <= w to verify set
+03:06:26 26/03/2025 Filtering predicates for candidate assert((x < 4 && y > -(100 * (4 - x) - 2)) || (x >= 4 && y > 2));
+03:06:26 26/03/2025 Addind predicate ((x < 4 && y > -(100 * (4 - x) - 2))) || ((x >= 4 && y > 2)) to verify set
+03:06:26 26/03/2025 Predicate filtering verify set: ['x >= 0', 'y >= -200 - 100 * x', 'z >= 0', 'z == 10 * w', 'w >= 0', '(x < 4) || (y > 2) || (!(x >= 4))', 'y >= 0', '(y >= 0) || ((x < 4 && w == 0))', 'z >= 10 * w', '((x < 4 && y >= 0)) || ((x >= 4))', 'y + 10 * w >= 0', '(x < 4) || ((x >= 4 && y >= 0))', 'y >= -2 * w', 'y + 2 * x >= 0', '((x < 4 && (y == 0 || y > -100))) || ((x >= 4))', 'y >= -100', 'z >= 10 * (w - 1)', '(x <= 4) || ((x > 4 && y >= 0))', '((w == 0 && y == 0)) || ((w > 0))', 'z <= 10 * w', '(w >= 0) || ((y == 0 && w == 0))', 'x <= w', '((x < 4 && y > -(100 * (4 - x) - 2))) || ((x >= 4 && y > 2))']
+03:06:26 26/03/2025 Verifying formula: (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (>= x 0) (>= y (- (- 200) (* 100 x)))) (>= z 0)) (= z (* 10 w))) (>= w 0)) (or (or (< x 4) (> y 2)) (not (>= x 4)))) (>= y 0)) (or (>= y 0) (and (< x 4) (= w 0)))) (>= z (* 10 w))) (or (and (< x 4) (>= y 0)) (>= x 4))) (>= (+ y (* 10 w)) 0)) (or (< x 4) (and (>= x 4) (>= y 0)))) (>= y (* (- 2) w))) (>= (+ y (* 2 x)) 0)) (or (and (< x 4) (or (= y 0) (> y (- 100)))) (>= x 4))) (>= y (- 100))) (>= z (* 10 (- w 1)))) (or (<= x 4) (and (> x 4) (>= y 0)))) (or (and (= w 0) (= y 0)) (> w 0))) (<= z (* 10 w))) (or (>= w 0) (and (= y 0) (= w 0)))) (<= x w)) (or (and (< x 4) (> y (- (- (* 100 (- 4 x)) 2)))) (and (>= x 4) (> y 2))))
+03:06:26 26/03/2025 For candidate: assert((x >= 0) && (y >= -200 - 100 * x) && (z >= 0) && (z == 10 * w) && (w >= 0) && ((x < 4) || (y > 2) || (!(x >= 4))) && (y >= 0) && ((y >= 0) || ((x < 4 && w == 0))) && (z >= 10 * w) && (((x < 4 && y >= 0)) || ((x >= 4))) && (y + 10 * w >= 0) && ((x < 4) || ((x >= 4 && y >= 0))) && (y >= -2 * w) && (y + 2 * x >= 0) && (((x < 4 && (y == 0 || y > -100))) || ((x >= 4))) && (y >= -100) && (z >= 10 * (w - 1)) && ((x <= 4) || ((x > 4 && y >= 0))) && (((w == 0 && y == 0)) || ((w > 0))) && (z <= 10 * w) && ((w >= 0) || ((y == 0 && w == 0))) && (x <= w) && (((x < 4 && y > -(100 * (4 - x) - 2))) || ((x >= 4 && y > 2))))
+03:06:26 26/03/2025 Generating loop invariants candidates with model o3-mini and presence penalty 0.0
+03:06:26 26/03/2025 Generated 3 candidates
+03:06:26 26/03/2025 Verifying generated candidates
+03:06:26 26/03/2025 Verifying candidate: assert(z == 10 * w);
+03:06:26 26/03/2025 Candidate already in fail history: assert(z == 10 * w);
+03:06:26 26/03/2025 Verifying candidate: assert(w >= x);
+03:06:26 26/03/2025 Candidate failed verification
+03:06:26 26/03/2025 Adding candidate to fail history: assert(w >= x);
+03:06:26 26/03/2025 Verifying candidate: assert((x < 4) || (y > 2));
+03:06:26 26/03/2025 Candidate failed verification
+03:06:26 26/03/2025 Adding candidate to fail history: assert((x < 4) || (y > 2));
+03:06:26 26/03/2025 Executing predicate filtering
+03:06:26 26/03/2025 Filtering predicates for candidate assert(z == 10 * w);
+03:06:26 26/03/2025 Filtering predicates for candidate assert(w >= x);
+03:06:26 26/03/2025 Addind predicate w >= x to verify set
+03:06:26 26/03/2025 Filtering predicates for candidate assert((x < 4) || (y > 2));
+03:06:26 26/03/2025 Addind predicate ((x < 4)) || ((y > 2)) to verify set
+03:06:26 26/03/2025 Predicate filtering verify set: ['x >= 0', 'y >= -200 - 100 * x', 'z >= 0', 'z == 10 * w', 'w >= 0', '(x < 4) || (y > 2) || (!(x >= 4))', 'y >= 0', '(y >= 0) || ((x < 4 && w == 0))', 'z >= 10 * w', '((x < 4 && y >= 0)) || ((x >= 4))', 'y + 10 * w >= 0', '(x < 4) || ((x >= 4 && y >= 0))', 'y >= -2 * w', 'y + 2 * x >= 0', '((x < 4 && (y == 0 || y > -100))) || ((x >= 4))', 'y >= -100', 'z >= 10 * (w - 1)', '(x <= 4) || ((x > 4 && y >= 0))', '((w == 0 && y == 0)) || ((w > 0))', 'z <= 10 * w', '(w >= 0) || ((y == 0 && w == 0))', 'x <= w', '((x < 4 && y > -(100 * (4 - x) - 2))) || ((x >= 4 && y > 2))', 'w >= x', '((x < 4)) || ((y > 2))']
+03:06:26 26/03/2025 Verifying formula: (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (>= x 0) (>= y (- (- 200) (* 100 x)))) (>= z 0)) (= z (* 10 w))) (>= w 0)) (or (or (< x 4) (> y 2)) (not (>= x 4)))) (>= y 0)) (or (>= y 0) (and (< x 4) (= w 0)))) (>= z (* 10 w))) (or (and (< x 4) (>= y 0)) (>= x 4))) (>= (+ y (* 10 w)) 0)) (or (< x 4) (and (>= x 4) (>= y 0)))) (>= y (* (- 2) w))) (>= (+ y (* 2 x)) 0)) (or (and (< x 4) (or (= y 0) (> y (- 100)))) (>= x 4))) (>= y (- 100))) (>= z (* 10 (- w 1)))) (or (<= x 4) (and (> x 4) (>= y 0)))) (or (and (= w 0) (= y 0)) (> w 0))) (<= z (* 10 w))) (or (>= w 0) (and (= y 0) (= w 0)))) (<= x w)) (or (and (< x 4) (> y (- (- (* 100 (- 4 x)) 2)))) (and (>= x 4) (> y 2)))) (>= w x)) (or (< x 4) (> y 2)))
+03:06:26 26/03/2025 For candidate: assert((x >= 0) && (y >= -200 - 100 * x) && (z >= 0) && (z == 10 * w) && (w >= 0) && ((x < 4) || (y > 2) || (!(x >= 4))) && (y >= 0) && ((y >= 0) || ((x < 4 && w == 0))) && (z >= 10 * w) && (((x < 4 && y >= 0)) || ((x >= 4))) && (y + 10 * w >= 0) && ((x < 4) || ((x >= 4 && y >= 0))) && (y >= -2 * w) && (y + 2 * x >= 0) && (((x < 4 && (y == 0 || y > -100))) || ((x >= 4))) && (y >= -100) && (z >= 10 * (w - 1)) && ((x <= 4) || ((x > 4 && y >= 0))) && (((w == 0 && y == 0)) || ((w > 0))) && (z <= 10 * w) && ((w >= 0) || ((y == 0 && w == 0))) && (x <= w) && (((x < 4 && y > -(100 * (4 - x) - 2))) || ((x >= 4 && y > 2))) && (w >= x) && (((x < 4)) || ((y > 2))))
+03:06:26 26/03/2025 Resetting generator
+03:06:26 26/03/2025 Generating loop invariants candidates with model deepseek-reasoner and presence penalty 0.0
+03:06:26 26/03/2025 Generated 2 candidates
+03:06:26 26/03/2025 Verifying generated candidates
+03:06:26 26/03/2025 Verifying candidate: assert(y >= 2 * x);
+03:06:26 26/03/2025 Candidate failed verification
+03:06:26 26/03/2025 Adding candidate to fail history: assert(y >= 2 * x);
+03:06:26 26/03/2025 Verifying candidate: assert(z == 10 * w);
+03:06:26 26/03/2025 Candidate failed verification
+03:06:26 26/03/2025 Adding candidate to fail history: assert(z == 10 * w);
+03:06:26 26/03/2025 Executing predicate filtering
+03:06:26 26/03/2025 Filtering predicates for candidate assert(y >= 2 * x);
+03:06:26 26/03/2025 Addind predicate y >= 2 * x to verify set
+03:06:26 26/03/2025 Filtering predicates for candidate assert(z == 10 * w);
+03:06:26 26/03/2025 Predicate filtering verify set: ['x >= 0', 'y >= -200 - 100 * x', 'z >= 0', 'z == 10 * w', 'w >= 0', '(x < 4) || (y > 2) || (!(x >= 4))', 'y >= 0', '(y >= 0) || ((x < 4 && w == 0))', 'z >= 10 * w', '((x < 4 && y >= 0)) || ((x >= 4))', 'y + 10 * w >= 0', '(x < 4) || ((x >= 4 && y >= 0))', 'y >= -2 * w', 'y + 2 * x >= 0', '((x < 4 && (y == 0 || y > -100))) || ((x >= 4))', 'y >= -100', 'z >= 10 * (w - 1)', '(x <= 4) || ((x > 4 && y >= 0))', '((w == 0 && y == 0)) || ((w > 0))', 'z <= 10 * w', '(w >= 0) || ((y == 0 && w == 0))', 'x <= w', '((x < 4 && y > -(100 * (4 - x) - 2))) || ((x >= 4 && y > 2))', 'w >= x', '((x < 4)) || ((y > 2))', 'y >= 2 * x']
+03:06:26 26/03/2025 Verifying formula: (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (>= x 0) (>= y (- (- 200) (* 100 x)))) (>= z 0)) (= z (* 10 w))) (>= w 0)) (or (or (< x 4) (> y 2)) (not (>= x 4)))) (>= y 0)) (or (>= y 0) (and (< x 4) (= w 0)))) (>= z (* 10 w))) (or (and (< x 4) (>= y 0)) (>= x 4))) (>= (+ y (* 10 w)) 0)) (or (< x 4) (and (>= x 4) (>= y 0)))) (>= y (* (- 2) w))) (>= (+ y (* 2 x)) 0)) (or (and (< x 4) (or (= y 0) (> y (- 100)))) (>= x 4))) (>= y (- 100))) (>= z (* 10 (- w 1)))) (or (<= x 4) (and (> x 4) (>= y 0)))) (or (and (= w 0) (= y 0)) (> w 0))) (<= z (* 10 w))) (or (>= w 0) (and (= y 0) (= w 0)))) (<= x w)) (or (and (< x 4) (> y (- (- (* 100 (- 4 x)) 2)))) (and (>= x 4) (> y 2)))) (>= w x)) (or (< x 4) (> y 2))) (>= y (* 2 x)))
+03:06:26 26/03/2025 For candidate: assert((x >= 0) && (y >= -200 - 100 * x) && (z >= 0) && (z == 10 * w) && (w >= 0) && ((x < 4) || (y > 2) || (!(x >= 4))) && (y >= 0) && ((y >= 0) || ((x < 4 && w == 0))) && (z >= 10 * w) && (((x < 4 && y >= 0)) || ((x >= 4))) && (y + 10 * w >= 0) && ((x < 4) || ((x >= 4 && y >= 0))) && (y >= -2 * w) && (y + 2 * x >= 0) && (((x < 4 && (y == 0 || y > -100))) || ((x >= 4))) && (y >= -100) && (z >= 10 * (w - 1)) && ((x <= 4) || ((x > 4 && y >= 0))) && (((w == 0 && y == 0)) || ((w > 0))) && (z <= 10 * w) && ((w >= 0) || ((y == 0 && w == 0))) && (x <= w) && (((x < 4 && y > -(100 * (4 - x) - 2))) || ((x >= 4 && y > 2))) && (w >= x) && (((x < 4)) || ((y > 2))) && (y >= 2 * x))
+03:06:26 26/03/2025 Generating loop invariants candidates with model deepseek-reasoner and presence penalty 0.0
+03:06:26 26/03/2025 Generated 2 candidates
+03:06:26 26/03/2025 Verifying generated candidates
+03:06:26 26/03/2025 Verifying candidate: assert(z == 10 * w);
+03:06:26 26/03/2025 Candidate already in fail history: assert(z == 10 * w);
+03:06:26 26/03/2025 Verifying candidate: assert((x < 4 && y >= 100 * x) || (x >= 4 && y >= 2 * x));
+03:06:26 26/03/2025 Candidate failed verification
+03:06:26 26/03/2025 Adding candidate to fail history: assert((x < 4 && y >= 100 * x) || (x >= 4 && y >= 2 * x));
+03:06:26 26/03/2025 Executing predicate filtering
+03:06:26 26/03/2025 Filtering predicates for candidate assert(z == 10 * w);
+03:06:26 26/03/2025 Filtering predicates for candidate assert((x < 4 && y >= 100 * x) || (x >= 4 && y >= 2 * x));
+03:06:26 26/03/2025 Addind predicate ((x < 4 && y >= 100 * x)) || ((x >= 4 && y >= 2 * x)) to verify set
+03:06:26 26/03/2025 Predicate filtering verify set: ['x >= 0', 'y >= -200 - 100 * x', 'z >= 0', 'z == 10 * w', 'w >= 0', '(x < 4) || (y > 2) || (!(x >= 4))', 'y >= 0', '(y >= 0) || ((x < 4 && w == 0))', 'z >= 10 * w', '((x < 4 && y >= 0)) || ((x >= 4))', 'y + 10 * w >= 0', '(x < 4) || ((x >= 4 && y >= 0))', 'y >= -2 * w', 'y + 2 * x >= 0', '((x < 4 && (y == 0 || y > -100))) || ((x >= 4))', 'y >= -100', 'z >= 10 * (w - 1)', '(x <= 4) || ((x > 4 && y >= 0))', '((w == 0 && y == 0)) || ((w > 0))', 'z <= 10 * w', '(w >= 0) || ((y == 0 && w == 0))', 'x <= w', '((x < 4 && y > -(100 * (4 - x) - 2))) || ((x >= 4 && y > 2))', 'w >= x', '((x < 4)) || ((y > 2))', 'y >= 2 * x', '((x < 4 && y >= 100 * x)) || ((x >= 4 && y >= 2 * x))']
+03:06:26 26/03/2025 Verifying formula: (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (>= x 0) (>= y (- (- 200) (* 100 x)))) (>= z 0)) (= z (* 10 w))) (>= w 0)) (or (or (< x 4) (> y 2)) (not (>= x 4)))) (>= y 0)) (or (>= y 0) (and (< x 4) (= w 0)))) (>= z (* 10 w))) (or (and (< x 4) (>= y 0)) (>= x 4))) (>= (+ y (* 10 w)) 0)) (or (< x 4) (and (>= x 4) (>= y 0)))) (>= y (* (- 2) w))) (>= (+ y (* 2 x)) 0)) (or (and (< x 4) (or (= y 0) (> y (- 100)))) (>= x 4))) (>= y (- 100))) (>= z (* 10 (- w 1)))) (or (<= x 4) (and (> x 4) (>= y 0)))) (or (and (= w 0) (= y 0)) (> w 0))) (<= z (* 10 w))) (or (>= w 0) (and (= y 0) (= w 0)))) (<= x w)) (or (and (< x 4) (> y (- (- (* 100 (- 4 x)) 2)))) (and (>= x 4) (> y 2)))) (>= w x)) (or (< x 4) (> y 2))) (>= y (* 2 x))) (or (and (< x 4) (>= y (* 100 x))) (and (>= x 4) (>= y (* 2 x)))))
+03:06:26 26/03/2025 For candidate: assert((x >= 0) && (y >= -200 - 100 * x) && (z >= 0) && (z == 10 * w) && (w >= 0) && ((x < 4) || (y > 2) || (!(x >= 4))) && (y >= 0) && ((y >= 0) || ((x < 4 && w == 0))) && (z >= 10 * w) && (((x < 4 && y >= 0)) || ((x >= 4))) && (y + 10 * w >= 0) && ((x < 4) || ((x >= 4 && y >= 0))) && (y >= -2 * w) && (y + 2 * x >= 0) && (((x < 4 && (y == 0 || y > -100))) || ((x >= 4))) && (y >= -100) && (z >= 10 * (w - 1)) && ((x <= 4) || ((x > 4 && y >= 0))) && (((w == 0 && y == 0)) || ((w > 0))) && (z <= 10 * w) && ((w >= 0) || ((y == 0 && w == 0))) && (x <= w) && (((x < 4 && y > -(100 * (4 - x) - 2))) || ((x >= 4 && y > 2))) && (w >= x) && (((x < 4)) || ((y > 2))) && (y >= 2 * x) && (((x < 4 && y >= 100 * x)) || ((x >= 4 && y >= 2 * x))))
+03:06:26 26/03/2025 # Result
+03:06:26 26/03/2025 No solution found
+03:06:26 26/03/2025 3 counter examples were generated for the model proposals, with 1 repeated fails
+03:06:26 26/03/2025 The model runtime was 1048.9507670402527 seconds
+03:06:26 26/03/2025 The total runtime was 1236.5160174369812 seconds

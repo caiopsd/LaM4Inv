@@ -1,0 +1,19 @@
+03:56:47 26/03/2025 Resetting generator
+03:56:47 26/03/2025 # Run Benchmark 246
+03:56:47 26/03/2025 Executing predicate filtering for preconditions
+03:56:47 26/03/2025 Filtering predicates for candidate assert(j == 0)
+03:56:47 26/03/2025 Filtering predicates for candidate assert(nlen == idBitLength / 32)
+03:56:47 26/03/2025 Addind predicate nlen == idBitLength / 32 to verify set
+03:56:47 26/03/2025 Filtering predicates for candidate assert(idBitLength >= 0)
+03:56:47 26/03/2025 Addind predicate idBitLength >= 0 to verify set
+03:56:47 26/03/2025 Filtering predicates for candidate assert(material_length >= 0)
+03:56:47 26/03/2025 Addind predicate material_length >= 0 to verify set
+03:56:47 26/03/2025 Predicate filtering verify set: ['nlen == idBitLength / 32', 'idBitLength >= 0', 'material_length >= 0']
+03:56:47 26/03/2025 Verifying formula: (and (and (= nlen (/ idBitLength 32)) (>= idBitLength 0)) (>= material_length 0))
+03:56:47 26/03/2025 For candidate: assert((nlen == idBitLength / 32) && (idBitLength >= 0) && (material_length >= 0))
+03:56:47 26/03/2025 Predicate filtering found solution: assert((nlen == idBitLength / 32) && (idBitLength >= 0) && (material_length >= 0))
+03:56:47 26/03/2025 # Result
+03:56:47 26/03/2025 Solution found by the predicate filtering mechanism using the None model: assert((nlen == idBitLength / 32) && (idBitLength >= 0) && (material_length >= 0))
+03:56:47 26/03/2025 0 counter examples were generated for the model proposals, with 0 repeated fails
+03:56:47 26/03/2025 The model runtime was 0.0 seconds
+03:56:47 26/03/2025 The total runtime was 0.7137711048126221 seconds

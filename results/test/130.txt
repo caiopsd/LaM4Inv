@@ -1,0 +1,71 @@
+02:04:46 26/03/2025 Resetting generator
+02:04:46 26/03/2025 # Run Benchmark 130
+02:04:46 26/03/2025 Executing predicate filtering for preconditions
+02:04:46 26/03/2025 Filtering predicates for candidate assert(d1 == 1)
+02:04:46 26/03/2025 Addind predicate d1 == 1 to verify set
+02:04:46 26/03/2025 Filtering predicates for candidate assert(d2 == 1)
+02:04:46 26/03/2025 Addind predicate d2 == 1 to verify set
+02:04:46 26/03/2025 Filtering predicates for candidate assert(d3 == 1)
+02:04:46 26/03/2025 Addind predicate d3 == 1 to verify set
+02:04:46 26/03/2025 Filtering predicates for candidate assert(x1 >= 1)
+02:04:46 26/03/2025 Filtering predicates for candidate assert(x2 >= x1)
+02:04:46 26/03/2025 Filtering predicates for candidate assert(x3 >= x1)
+02:04:46 26/03/2025 Predicate filtering verify set: ['d1 == 1', 'd2 == 1', 'd3 == 1']
+02:04:46 26/03/2025 Verifying formula: (and (and (= d1 1) (= d2 1)) (= d3 1))
+02:04:46 26/03/2025 For candidate: assert((d1 == 1) && (d2 == 1) && (d3 == 1))
+02:04:46 26/03/2025 Generating loop invariants candidates with model gpt-4o and presence penalty 0.0
+02:04:46 26/03/2025 Generated 3 candidates
+02:04:46 26/03/2025 Verifying generated candidates
+02:04:46 26/03/2025 Verifying candidate: assert(x1 >= 0);
+02:04:46 26/03/2025 Candidate failed verification
+02:04:46 26/03/2025 Adding candidate to fail history: assert(x1 >= 0);
+02:04:46 26/03/2025 Verifying candidate: assert(x2 >= x1);
+02:04:46 26/03/2025 Candidate failed verification
+02:04:46 26/03/2025 Adding candidate to fail history: assert(x2 >= x1);
+02:04:46 26/03/2025 Verifying candidate: assert(x3 >= x1);
+02:04:46 26/03/2025 Candidate failed verification
+02:04:46 26/03/2025 Adding candidate to fail history: assert(x3 >= x1);
+02:04:46 26/03/2025 Executing predicate filtering
+02:04:46 26/03/2025 Filtering predicates for candidate assert(x1 >= 0);
+02:04:46 26/03/2025 Addind predicate x1 >= 0 to verify set
+02:04:46 26/03/2025 Filtering predicates for candidate assert(x2 >= x1);
+02:04:46 26/03/2025 Filtering predicates for candidate assert(x3 >= x1);
+02:04:46 26/03/2025 Predicate filtering verify set: ['d1 == 1', 'd2 == 1', 'd3 == 1', 'x1 >= 0']
+02:04:46 26/03/2025 Verifying formula: (and (and (and (= d1 1) (= d2 1)) (= d3 1)) (>= x1 0))
+02:04:46 26/03/2025 For candidate: assert((d1 == 1) && (d2 == 1) && (d3 == 1) && (x1 >= 0))
+02:04:46 26/03/2025 Resetting generator
+02:04:46 26/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.0
+02:04:46 26/03/2025 Generated 5 candidates
+02:04:46 26/03/2025 Verifying generated candidates
+02:04:46 26/03/2025 Verifying candidate: assert(x1 >= 0);
+02:04:46 26/03/2025 Candidate failed verification
+02:04:46 26/03/2025 Adding candidate to fail history: assert(x1 >= 0);
+02:04:46 26/03/2025 Verifying candidate: assert(x2 >= 0);
+02:04:46 26/03/2025 Candidate failed verification
+02:04:46 26/03/2025 Adding candidate to fail history: assert(x2 >= 0);
+02:04:46 26/03/2025 Verifying candidate: assert(x3 >= 0);
+02:04:46 26/03/2025 Candidate failed verification
+02:04:46 26/03/2025 Adding candidate to fail history: assert(x3 >= 0);
+02:04:46 26/03/2025 Verifying candidate: assert(x2 >= x1);
+02:04:46 26/03/2025 Candidate failed verification
+02:04:46 26/03/2025 Adding candidate to fail history: assert(x2 >= x1);
+02:04:46 26/03/2025 Verifying candidate: assert(x3 >= x1);
+02:04:46 26/03/2025 Candidate failed verification
+02:04:46 26/03/2025 Adding candidate to fail history: assert(x3 >= x1);
+02:04:46 26/03/2025 Executing predicate filtering
+02:04:46 26/03/2025 Filtering predicates for candidate assert(x1 >= 0);
+02:04:46 26/03/2025 Filtering predicates for candidate assert(x2 >= 0);
+02:04:46 26/03/2025 Addind predicate x2 >= 0 to verify set
+02:04:46 26/03/2025 Filtering predicates for candidate assert(x3 >= 0);
+02:04:46 26/03/2025 Addind predicate x3 >= 0 to verify set
+02:04:46 26/03/2025 Filtering predicates for candidate assert(x2 >= x1);
+02:04:46 26/03/2025 Filtering predicates for candidate assert(x3 >= x1);
+02:04:46 26/03/2025 Predicate filtering verify set: ['d1 == 1', 'd2 == 1', 'd3 == 1', 'x1 >= 0', 'x2 >= 0', 'x3 >= 0']
+02:04:46 26/03/2025 Verifying formula: (and (and (and (and (and (= d1 1) (= d2 1)) (= d3 1)) (>= x1 0)) (>= x2 0)) (>= x3 0))
+02:04:46 26/03/2025 For candidate: assert((d1 == 1) && (d2 == 1) && (d3 == 1) && (x1 >= 0) && (x2 >= 0) && (x3 >= 0))
+02:04:46 26/03/2025 Predicate filtering found solution: assert((d1 == 1) && (d2 == 1) && (d3 == 1) && (x1 >= 0) && (x2 >= 0) && (x3 >= 0))
+02:04:46 26/03/2025 # Result
+02:04:46 26/03/2025 Solution found by the predicate filtering mechanism using the gpt-4o-mini model: assert((d1 == 1) && (d2 == 1) && (d3 == 1) && (x1 >= 0) && (x2 >= 0) && (x3 >= 0))
+02:04:46 26/03/2025 5 counter examples were generated for the model proposals, with 0 repeated fails
+02:04:46 26/03/2025 The model runtime was 12.514540910720825 seconds
+02:04:46 26/03/2025 The total runtime was 34.22206258773804 seconds

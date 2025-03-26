@@ -1,0 +1,20 @@
+03:32:23 26/03/2025 Resetting generator
+03:32:23 26/03/2025 # Run Benchmark 220
+03:32:23 26/03/2025 Executing predicate filtering for preconditions
+03:32:23 26/03/2025 Filtering predicates for candidate assert(x == w)
+03:32:23 26/03/2025 Addind predicate x == w to verify set
+03:32:23 26/03/2025 Filtering predicates for candidate assert(z == y)
+03:32:23 26/03/2025 Addind predicate z == y to verify set
+03:32:23 26/03/2025 Filtering predicates for candidate assert(x > 0)
+03:32:23 26/03/2025 Filtering predicates for candidate assert(y > 0)
+03:32:23 26/03/2025 Filtering predicates for candidate assert(z > 0)
+03:32:23 26/03/2025 Filtering predicates for candidate assert(w > 0)
+03:32:23 26/03/2025 Predicate filtering verify set: ['x == w', 'z == y']
+03:32:23 26/03/2025 Verifying formula: (and (= x w) (= z y))
+03:32:23 26/03/2025 For candidate: assert((x == w) && (z == y))
+03:32:23 26/03/2025 Predicate filtering found solution: assert((x == w) && (z == y))
+03:32:23 26/03/2025 # Result
+03:32:23 26/03/2025 Solution found by the predicate filtering mechanism using the None model: assert((x == w) && (z == y))
+03:32:23 26/03/2025 0 counter examples were generated for the model proposals, with 0 repeated fails
+03:32:23 26/03/2025 The model runtime was 0.0 seconds
+03:32:23 26/03/2025 The total runtime was 2.138402223587036 seconds

@@ -1,0 +1,56 @@
+03:28:34 26/03/2025 Resetting generator
+03:28:34 26/03/2025 # Run Benchmark 194
+03:28:34 26/03/2025 Executing predicate filtering for preconditions
+03:28:34 26/03/2025 Filtering predicates for candidate assert(x == i)
+03:28:34 26/03/2025 Filtering predicates for candidate assert(y == i)
+03:28:34 26/03/2025 Filtering predicates for candidate assert(z == 0)
+03:28:34 26/03/2025 Filtering predicates for candidate assert(i >= 0)
+03:28:34 26/03/2025 Addind predicate i >= 0 to verify set
+03:28:34 26/03/2025 Predicate filtering verify set: ['i >= 0']
+03:28:34 26/03/2025 Verifying formula: (>= i 0)
+03:28:34 26/03/2025 For candidate: assert((i >= 0))
+03:28:34 26/03/2025 Generating loop invariants candidates with model gpt-4o and presence penalty 0.0
+03:28:34 26/03/2025 Generated 3 candidates
+03:28:34 26/03/2025 Verifying generated candidates
+03:28:34 26/03/2025 Verifying candidate: assert(i >= 0);
+03:28:34 26/03/2025 Candidate failed verification
+03:28:34 26/03/2025 Adding candidate to fail history: assert(i >= 0);
+03:28:34 26/03/2025 Verifying candidate: assert(x + 2*z == i);
+03:28:34 26/03/2025 Candidate failed verification
+03:28:34 26/03/2025 Adding candidate to fail history: assert(x + 2*z == i);
+03:28:34 26/03/2025 Verifying candidate: assert(y == x - 2*z);
+03:28:34 26/03/2025 Candidate failed verification
+03:28:34 26/03/2025 Adding candidate to fail history: assert(y == x - 2*z);
+03:28:34 26/03/2025 Executing predicate filtering
+03:28:34 26/03/2025 Filtering predicates for candidate assert(i >= 0);
+03:28:34 26/03/2025 Filtering predicates for candidate assert(x + 2*z == i);
+03:28:34 26/03/2025 Filtering predicates for candidate assert(y == x - 2*z);
+03:28:34 26/03/2025 Predicate filtering verify set: ['i >= 0']
+03:28:34 26/03/2025 Resetting generator
+03:28:34 26/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.0
+03:28:34 26/03/2025 Generated 3 candidates
+03:28:34 26/03/2025 Verifying generated candidates
+03:28:34 26/03/2025 Verifying candidate: assert(i >= 0);
+03:28:34 26/03/2025 Candidate failed verification
+03:28:34 26/03/2025 Adding candidate to fail history: assert(i >= 0);
+03:28:34 26/03/2025 Verifying candidate: assert(y == i - 2 * (i - x));
+03:28:34 26/03/2025 Candidate failed verification
+03:28:34 26/03/2025 Adding candidate to fail history: assert(y == i - 2 * (i - x));
+03:28:34 26/03/2025 Verifying candidate: assert(z == i - x);
+03:28:34 26/03/2025 Candidate failed verification
+03:28:34 26/03/2025 Adding candidate to fail history: assert(z == i - x);
+03:28:34 26/03/2025 Executing predicate filtering
+03:28:34 26/03/2025 Filtering predicates for candidate assert(i >= 0);
+03:28:34 26/03/2025 Filtering predicates for candidate assert(y == i - 2 * (i - x));
+03:28:34 26/03/2025 Addind predicate y == i - 2 * (i - x) to verify set
+03:28:34 26/03/2025 Filtering predicates for candidate assert(z == i - x);
+03:28:34 26/03/2025 Addind predicate z == i - x to verify set
+03:28:34 26/03/2025 Predicate filtering verify set: ['i >= 0', 'y == i - 2 * (i - x)', 'z == i - x']
+03:28:34 26/03/2025 Verifying formula: (and (and (>= i 0) (= y (- i (* 2 (- i x))))) (= z (- i x)))
+03:28:34 26/03/2025 For candidate: assert((i >= 0) && (y == i - 2 * (i - x)) && (z == i - x))
+03:28:34 26/03/2025 Predicate filtering found solution: assert((i >= 0) && (y == i - 2 * (i - x)) && (z == i - x))
+03:28:34 26/03/2025 # Result
+03:28:34 26/03/2025 Solution found by the predicate filtering mechanism using the gpt-4o-mini model: assert((i >= 0) && (y == i - 2 * (i - x)) && (z == i - x))
+03:28:34 26/03/2025 3 counter examples were generated for the model proposals, with 0 repeated fails
+03:28:34 26/03/2025 The model runtime was 2.052067995071411 seconds
+03:28:34 26/03/2025 The total runtime was 4.0148491859436035 seconds

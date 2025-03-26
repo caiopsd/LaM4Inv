@@ -1,0 +1,44 @@
+03:32:01 26/03/2025 Resetting generator
+03:32:01 26/03/2025 # Run Benchmark 213
+03:32:01 26/03/2025 Executing predicate filtering for preconditions
+03:32:01 26/03/2025 Filtering predicates for candidate assert(unowned == 0)
+03:32:01 26/03/2025 Filtering predicates for candidate assert(nonexclusive == 0)
+03:32:01 26/03/2025 Filtering predicates for candidate assert(exclusive == 0)
+03:32:01 26/03/2025 Filtering predicates for candidate assert(invalid >= 1)
+03:32:01 26/03/2025 Predicate filtering verify set: []
+03:32:01 26/03/2025 Generating loop invariants candidates with model gpt-4o and presence penalty 0.0
+03:32:01 26/03/2025 Generated 5 candidates
+03:32:01 26/03/2025 Verifying generated candidates
+03:32:01 26/03/2025 Verifying candidate: assert(invalid >= 1);
+03:32:01 26/03/2025 Candidate failed verification
+03:32:01 26/03/2025 Adding candidate to fail history: assert(invalid >= 1);
+03:32:01 26/03/2025 Verifying candidate: assert(nonexclusive >= 0);
+03:32:01 26/03/2025 Candidate failed verification
+03:32:01 26/03/2025 Adding candidate to fail history: assert(nonexclusive >= 0);
+03:32:01 26/03/2025 Verifying candidate: assert(unowned >= 0);
+03:32:01 26/03/2025 Candidate failed verification
+03:32:01 26/03/2025 Adding candidate to fail history: assert(unowned >= 0);
+03:32:01 26/03/2025 Verifying candidate: assert(exclusive >= 0);
+03:32:01 26/03/2025 Candidate failed verification
+03:32:01 26/03/2025 Adding candidate to fail history: assert(exclusive >= 0);
+03:32:01 26/03/2025 Verifying candidate: assert(invalid + nonexclusive + unowned >= 1);
+03:32:01 26/03/2025 Candidate failed verification
+03:32:01 26/03/2025 Adding candidate to fail history: assert(invalid + nonexclusive + unowned >= 1);
+03:32:01 26/03/2025 Executing predicate filtering
+03:32:01 26/03/2025 Filtering predicates for candidate assert(invalid >= 1);
+03:32:01 26/03/2025 Filtering predicates for candidate assert(nonexclusive >= 0);
+03:32:01 26/03/2025 Addind predicate nonexclusive >= 0 to verify set
+03:32:01 26/03/2025 Filtering predicates for candidate assert(unowned >= 0);
+03:32:01 26/03/2025 Addind predicate unowned >= 0 to verify set
+03:32:01 26/03/2025 Filtering predicates for candidate assert(exclusive >= 0);
+03:32:01 26/03/2025 Addind predicate exclusive >= 0 to verify set
+03:32:01 26/03/2025 Filtering predicates for candidate assert(invalid + nonexclusive + unowned >= 1);
+03:32:01 26/03/2025 Predicate filtering verify set: ['nonexclusive >= 0', 'unowned >= 0', 'exclusive >= 0']
+03:32:01 26/03/2025 Verifying formula: (and (and (>= nonexclusive 0) (>= unowned 0)) (>= exclusive 0))
+03:32:01 26/03/2025 For candidate: assert((nonexclusive >= 0) && (unowned >= 0) && (exclusive >= 0))
+03:32:01 26/03/2025 Predicate filtering found solution: assert((nonexclusive >= 0) && (unowned >= 0) && (exclusive >= 0))
+03:32:01 26/03/2025 # Result
+03:32:01 26/03/2025 Solution found by the predicate filtering mechanism using the gpt-4o model: assert((nonexclusive >= 0) && (unowned >= 0) && (exclusive >= 0))
+03:32:01 26/03/2025 5 counter examples were generated for the model proposals, with 0 repeated fails
+03:32:01 26/03/2025 The model runtime was 4.772992134094238 seconds
+03:32:01 26/03/2025 The total runtime was 5.400497674942017 seconds

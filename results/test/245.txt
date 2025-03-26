@@ -1,0 +1,18 @@
+03:56:47 26/03/2025 Resetting generator
+03:56:47 26/03/2025 # Run Benchmark 245
+03:56:47 26/03/2025 Executing predicate filtering for preconditions
+03:56:47 26/03/2025 Filtering predicates for candidate assert(a == 0)
+03:56:47 26/03/2025 Filtering predicates for candidate assert(b == 0)
+03:56:47 26/03/2025 Filtering predicates for candidate assert(c == 200000)
+03:56:47 26/03/2025 Addind predicate c == 200000 to verify set
+03:56:47 26/03/2025 Filtering predicates for candidate assert((st == 0 && last < c) || (st == 1 && last >= c))
+03:56:47 26/03/2025 Addind predicate ((st == 0 && last < c)) || ((st == 1 && last >= c)) to verify set
+03:56:47 26/03/2025 Predicate filtering verify set: ['c == 200000', '((st == 0 && last < c)) || ((st == 1 && last >= c))']
+03:56:47 26/03/2025 Verifying formula: (and (= c 200000) (or (and (= st 0) (< last c)) (and (= st 1) (>= last c))))
+03:56:47 26/03/2025 For candidate: assert((c == 200000) && (((st == 0 && last < c)) || ((st == 1 && last >= c))))
+03:56:47 26/03/2025 Predicate filtering found solution: assert((c == 200000) && (((st == 0 && last < c)) || ((st == 1 && last >= c))))
+03:56:47 26/03/2025 # Result
+03:56:47 26/03/2025 Solution found by the predicate filtering mechanism using the None model: assert((c == 200000) && (((st == 0 && last < c)) || ((st == 1 && last >= c))))
+03:56:47 26/03/2025 0 counter examples were generated for the model proposals, with 0 repeated fails
+03:56:47 26/03/2025 The model runtime was 0.0 seconds
+03:56:47 26/03/2025 The total runtime was 1.9008607864379883 seconds

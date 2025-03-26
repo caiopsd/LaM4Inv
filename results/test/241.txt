@@ -1,0 +1,22 @@
+03:56:19 26/03/2025 Resetting generator
+03:56:19 26/03/2025 # Run Benchmark 241
+03:56:19 26/03/2025 Executing predicate filtering for preconditions
+03:56:19 26/03/2025 Filtering predicates for candidate assert(octant == 3)
+03:56:19 26/03/2025 Filtering predicates for candidate assert(oddExp == x)
+03:56:19 26/03/2025 Filtering predicates for candidate assert(evenExp == 1)
+03:56:19 26/03/2025 Filtering predicates for candidate assert(term == x)
+03:56:19 26/03/2025 Filtering predicates for candidate assert(count == 2)
+03:56:19 26/03/2025 Filtering predicates for candidate assert(multFactor == 0)
+03:56:19 26/03/2025 Filtering predicates for candidate assert(x > 0)
+03:56:19 26/03/2025 Addind predicate x > 0 to verify set
+03:56:19 26/03/2025 Filtering predicates for candidate assert(x < octant)
+03:56:19 26/03/2025 Addind predicate x < octant to verify set
+03:56:19 26/03/2025 Predicate filtering verify set: ['x > 0', 'x < octant']
+03:56:19 26/03/2025 Verifying formula: (and (> x 0) (< x octant))
+03:56:19 26/03/2025 For candidate: assert((x > 0) && (x < octant))
+03:56:19 26/03/2025 Predicate filtering found solution: assert((x > 0) && (x < octant))
+03:56:19 26/03/2025 # Result
+03:56:19 26/03/2025 Solution found by the predicate filtering mechanism using the None model: assert((x > 0) && (x < octant))
+03:56:19 26/03/2025 0 counter examples were generated for the model proposals, with 0 repeated fails
+03:56:19 26/03/2025 The model runtime was 0.0 seconds
+03:56:19 26/03/2025 The total runtime was 10.212436199188232 seconds

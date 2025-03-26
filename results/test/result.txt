@@ -1,33 +1,41 @@
-Total benchmarks: 58
-Solutions found: 58
-Solutions found by predicate filtering: 23
-Success rate: 100.00%
-Average runtime: 21.05 seconds
-
-Model: gpt-4o-mini
-Solutions found: 14
-Solutions found by model: 11
-Average runtime: 17.66 seconds
-Average counter examples: 5.43
-Average repeated fails: 1.43
-
-Model: o3-mini
-Solutions found: 12
-Solutions found by model: 9
-Average runtime: 27.84 seconds
-Average counter examples: 2.58
-Average repeated fails: 0.00
+Total benchmarks: 316
+Solutions found: 307
+Solutions found by predicate filtering: 130
+Success rate: 97.15%
+Average runtime: 53.11 seconds
+Fails: 254, 188, 187, 253, 240, 248, 263, 268, 165
 
 Model: gpt-4o
-Solutions found: 19
-Solutions found by model: 15
-Average runtime: 1.54 seconds
-Average counter examples: 0.95
+Solutions found: 125
+Solutions found by model: 96
+Average runtime: 1.59 seconds
+Average counter examples: 1.27
 Average repeated fails: 0.00
 
+Model: gpt-4o-mini
+Solutions found: 69
+Solutions found by model: 41
+Average runtime: 8.96 seconds
+Average counter examples: 5.29
+Average repeated fails: 1.86
+
+Model: o3-mini
+Solutions found: 52
+Solutions found by model: 37
+Average runtime: 44.41 seconds
+Average counter examples: 3.65
+Average repeated fails: 0.44
+
 Model: None
-Solutions found: 13
+Solutions found: 58
 Solutions found by model: 0
 Average runtime: 0.00 seconds
 Average counter examples: 0.00
 Average repeated fails: 0.00
+
+Model: deepseek-reasoner
+Solutions found: 3
+Solutions found by model: 3
+Average runtime: 447.86 seconds
+Average counter examples: 3.33
+Average repeated fails: 3.67

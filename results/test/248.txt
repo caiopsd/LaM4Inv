@@ -1,0 +1,550 @@
+04:11:34 26/03/2025 Resetting generator
+04:11:34 26/03/2025 # Run Benchmark 248
+04:11:34 26/03/2025 Executing predicate filtering for preconditions
+04:11:34 26/03/2025 Filtering predicates for candidate assert(j == 0)
+04:11:34 26/03/2025 Filtering predicates for candidate assert(nlen == idBitLength / 32)
+04:11:34 26/03/2025 Addind predicate nlen == idBitLength / 32 to verify set
+04:11:34 26/03/2025 Filtering predicates for candidate assert(idBitLength >= 0)
+04:11:34 26/03/2025 Addind predicate idBitLength >= 0 to verify set
+04:11:34 26/03/2025 Filtering predicates for candidate assert(material_length >= 0)
+04:11:34 26/03/2025 Addind predicate material_length >= 0 to verify set
+04:11:34 26/03/2025 Predicate filtering verify set: ['nlen == idBitLength / 32', 'idBitLength >= 0', 'material_length >= 0']
+04:11:34 26/03/2025 Verifying formula: (and (and (= nlen (/ idBitLength 32)) (>= idBitLength 0)) (>= material_length 0))
+04:11:34 26/03/2025 For candidate: assert((nlen == idBitLength / 32) && (idBitLength >= 0) && (material_length >= 0))
+04:11:34 26/03/2025 Generating loop invariants candidates with model gpt-4o and presence penalty 0.0
+04:11:34 26/03/2025 Generated 6 candidates
+04:11:34 26/03/2025 Verifying generated candidates
+04:11:34 26/03/2025 Verifying candidate: assert(nlen == idBitLength / 32);
+04:11:34 26/03/2025 Candidate failed verification
+04:11:34 26/03/2025 Adding candidate to fail history: assert(nlen == idBitLength / 32);
+04:11:34 26/03/2025 Verifying candidate: assert(idBitLength >= 0);
+04:11:34 26/03/2025 Candidate failed verification
+04:11:34 26/03/2025 Adding candidate to fail history: assert(idBitLength >= 0);
+04:11:34 26/03/2025 Verifying candidate: assert(material_length >= 0);
+04:11:34 26/03/2025 Candidate failed verification
+04:11:34 26/03/2025 Adding candidate to fail history: assert(material_length >= 0);
+04:11:34 26/03/2025 Verifying candidate: assert(j >= 0);
+04:11:34 26/03/2025 Candidate failed verification
+04:11:34 26/03/2025 Adding candidate to fail history: assert(j >= 0);
+04:11:34 26/03/2025 Verifying candidate: assert(j <= idBitLength / 8);
+04:11:34 26/03/2025 Candidate failed verification
+04:11:34 26/03/2025 Adding candidate to fail history: assert(j <= idBitLength / 8);
+04:11:34 26/03/2025 Verifying candidate: assert(j <= material_length);
+04:11:34 26/03/2025 Candidate failed verification
+04:11:34 26/03/2025 Adding candidate to fail history: assert(j <= material_length);
+04:11:34 26/03/2025 Executing predicate filtering
+04:11:34 26/03/2025 Filtering predicates for candidate assert(nlen == idBitLength / 32);
+04:11:34 26/03/2025 Filtering predicates for candidate assert(idBitLength >= 0);
+04:11:34 26/03/2025 Filtering predicates for candidate assert(material_length >= 0);
+04:11:34 26/03/2025 Filtering predicates for candidate assert(j >= 0);
+04:11:34 26/03/2025 Addind predicate j >= 0 to verify set
+04:11:34 26/03/2025 Filtering predicates for candidate assert(j <= idBitLength / 8);
+04:11:34 26/03/2025 Addind predicate j <= idBitLength / 8 to verify set
+04:11:34 26/03/2025 Filtering predicates for candidate assert(j <= material_length);
+04:11:34 26/03/2025 Addind predicate j <= material_length to verify set
+04:11:34 26/03/2025 Predicate filtering verify set: ['nlen == idBitLength / 32', 'idBitLength >= 0', 'material_length >= 0', 'j >= 0', 'j <= idBitLength / 8', 'j <= material_length']
+04:11:34 26/03/2025 Verifying formula: (and (and (and (and (and (= nlen (/ idBitLength 32)) (>= idBitLength 0)) (>= material_length 0)) (>= j 0)) (<= j (/ idBitLength 8))) (<= j material_length))
+04:11:34 26/03/2025 For candidate: assert((nlen == idBitLength / 32) && (idBitLength >= 0) && (material_length >= 0) && (j >= 0) && (j <= idBitLength / 8) && (j <= material_length))
+04:11:34 26/03/2025 Timeout while verifying candidate
+04:11:34 26/03/2025 Resetting generator
+04:11:34 26/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.0
+04:11:34 26/03/2025 Generated 6 candidates
+04:11:34 26/03/2025 Verifying generated candidates
+04:11:34 26/03/2025 Verifying candidate: assert(nlen == idBitLength / 32);
+04:11:34 26/03/2025 Candidate failed verification
+04:11:34 26/03/2025 Adding candidate to fail history: assert(nlen == idBitLength / 32);
+04:11:34 26/03/2025 Verifying candidate: assert(idBitLength >= 0);
+04:11:34 26/03/2025 Candidate failed verification
+04:11:34 26/03/2025 Adding candidate to fail history: assert(idBitLength >= 0);
+04:11:34 26/03/2025 Verifying candidate: assert(material_length >= 0);
+04:11:34 26/03/2025 Candidate failed verification
+04:11:34 26/03/2025 Adding candidate to fail history: assert(material_length >= 0);
+04:11:34 26/03/2025 Verifying candidate: assert(j >= 0);
+04:11:34 26/03/2025 Candidate failed verification
+04:11:34 26/03/2025 Adding candidate to fail history: assert(j >= 0);
+04:11:34 26/03/2025 Verifying candidate: assert(j <= idBitLength / 8);
+04:11:34 26/03/2025 Candidate failed verification
+04:11:34 26/03/2025 Adding candidate to fail history: assert(j <= idBitLength / 8);
+04:11:34 26/03/2025 Verifying candidate: assert(j <= material_length);
+04:11:34 26/03/2025 Candidate failed verification
+04:11:34 26/03/2025 Adding candidate to fail history: assert(j <= material_length);
+04:11:34 26/03/2025 Executing predicate filtering
+04:11:34 26/03/2025 Filtering predicates for candidate assert(nlen == idBitLength / 32);
+04:11:34 26/03/2025 Filtering predicates for candidate assert(idBitLength >= 0);
+04:11:34 26/03/2025 Filtering predicates for candidate assert(material_length >= 0);
+04:11:34 26/03/2025 Filtering predicates for candidate assert(j >= 0);
+04:11:34 26/03/2025 Filtering predicates for candidate assert(j <= idBitLength / 8);
+04:11:34 26/03/2025 Filtering predicates for candidate assert(j <= material_length);
+04:11:34 26/03/2025 Predicate filtering verify set: ['nlen == idBitLength / 32', 'idBitLength >= 0', 'material_length >= 0', 'j >= 0', 'j <= idBitLength / 8', 'j <= material_length']
+04:11:34 26/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.0
+04:11:34 26/03/2025 Generated 4 candidates
+04:11:34 26/03/2025 Verifying generated candidates
+04:11:34 26/03/2025 Verifying candidate: assert(j >= 0);
+04:11:34 26/03/2025 Candidate already in fail history: assert(j >= 0);
+04:11:34 26/03/2025 Verifying candidate: assert(j <= material_length);
+04:11:34 26/03/2025 Candidate already in fail history: assert(j <= material_length);
+04:11:34 26/03/2025 Verifying candidate: assert(j <= idBitLength / 8);
+04:11:34 26/03/2025 Candidate already in fail history: assert(j <= idBitLength / 8);
+04:11:34 26/03/2025 Verifying candidate: assert(j <= (idBitLength / 8) - (idBitLength % 8 != 0));
+04:11:34 26/03/2025 Candidate failed verification
+04:11:34 26/03/2025 Adding candidate to fail history: assert(j <= (idBitLength / 8) - (idBitLength % 8 != 0));
+04:11:34 26/03/2025 Executing predicate filtering
+04:11:34 26/03/2025 Filtering predicates for candidate assert(j >= 0);
+04:11:34 26/03/2025 Filtering predicates for candidate assert(j <= material_length);
+04:11:34 26/03/2025 Filtering predicates for candidate assert(j <= idBitLength / 8);
+04:11:34 26/03/2025 Filtering predicates for candidate assert(j <= (idBitLength / 8) - (idBitLength % 8 != 0));
+04:11:34 26/03/2025 Predicate filtering verify set: ['nlen == idBitLength / 32', 'idBitLength >= 0', 'material_length >= 0', 'j >= 0', 'j <= idBitLength / 8', 'j <= material_length']
+04:11:34 26/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.5370495669980354
+04:11:34 26/03/2025 Generated 3 candidates
+04:11:34 26/03/2025 Verifying generated candidates
+04:11:34 26/03/2025 Verifying candidate: assert(j >= 0);
+04:11:34 26/03/2025 Candidate already in fail history: assert(j >= 0);
+04:11:34 26/03/2025 Verifying candidate: assert(j <= idBitLength / 8 || j < material_length);
+04:11:34 26/03/2025 Candidate failed verification
+04:11:34 26/03/2025 Adding candidate to fail history: assert(j <= idBitLength / 8 || j < material_length);
+04:11:34 26/03/2025 Verifying candidate: assert(j < material_length || j < idBitLength / 8);
+04:11:34 26/03/2025 Candidate failed verification
+04:11:34 26/03/2025 Adding candidate to fail history: assert(j < material_length || j < idBitLength / 8);
+04:11:34 26/03/2025 Executing predicate filtering
+04:11:34 26/03/2025 Filtering predicates for candidate assert(j >= 0);
+04:11:34 26/03/2025 Filtering predicates for candidate assert(j <= idBitLength / 8 || j < material_length);
+04:11:34 26/03/2025 Addind predicate (j <= idBitLength / 8) || (j < material_length) to verify set
+04:11:34 26/03/2025 Filtering predicates for candidate assert(j < material_length || j < idBitLength / 8);
+04:11:34 26/03/2025 Predicate filtering verify set: ['nlen == idBitLength / 32', 'idBitLength >= 0', 'material_length >= 0', 'j >= 0', 'j <= idBitLength / 8', 'j <= material_length', '(j <= idBitLength / 8) || (j < material_length)']
+04:11:34 26/03/2025 Verifying formula: (and (and (and (and (and (and (= nlen (/ idBitLength 32)) (>= idBitLength 0)) (>= material_length 0)) (>= j 0)) (<= j (/ idBitLength 8))) (<= j material_length)) (or (<= j (/ idBitLength 8)) (< j material_length)))
+04:11:34 26/03/2025 For candidate: assert((nlen == idBitLength / 32) && (idBitLength >= 0) && (material_length >= 0) && (j >= 0) && (j <= idBitLength / 8) && (j <= material_length) && ((j <= idBitLength / 8) || (j < material_length)))
+04:11:34 26/03/2025 Timeout while verifying candidate
+04:11:34 26/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.6640367702678491
+04:11:34 26/03/2025 Generated 3 candidates
+04:11:34 26/03/2025 Verifying generated candidates
+04:11:34 26/03/2025 Verifying candidate: assert(j <= idBitLength / 8);
+04:11:34 26/03/2025 Candidate already in fail history: assert(j <= idBitLength / 8);
+04:11:34 26/03/2025 Verifying candidate: assert(j <= material_length);
+04:11:34 26/03/2025 Candidate already in fail history: assert(j <= material_length);
+04:11:34 26/03/2025 Verifying candidate: assert(j < idBitLength / 8 || j < material_length);
+04:11:34 26/03/2025 Candidate failed verification
+04:11:34 26/03/2025 Adding candidate to fail history: assert(j < idBitLength / 8 || j < material_length);
+04:11:34 26/03/2025 Executing predicate filtering
+04:11:34 26/03/2025 Filtering predicates for candidate assert(j <= idBitLength / 8);
+04:11:34 26/03/2025 Filtering predicates for candidate assert(j <= material_length);
+04:11:34 26/03/2025 Filtering predicates for candidate assert(j < idBitLength / 8 || j < material_length);
+04:11:34 26/03/2025 Predicate filtering verify set: ['nlen == idBitLength / 32', 'idBitLength >= 0', 'material_length >= 0', 'j >= 0', 'j <= idBitLength / 8', 'j <= material_length', '(j <= idBitLength / 8) || (j < material_length)']
+04:11:34 26/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.8336546070121553
+04:11:34 26/03/2025 Generated 2 candidates
+04:11:34 26/03/2025 Verifying generated candidates
+04:11:34 26/03/2025 Verifying candidate: assert(j <= (idBitLength / 8) + material_length);
+04:11:34 26/03/2025 Candidate failed verification
+04:11:34 26/03/2025 Adding candidate to fail history: assert(j <= (idBitLength / 8) + material_length);
+04:11:34 26/03/2025 Verifying candidate: assert(j < idBitLength / 8 || j < material_length);
+04:11:34 26/03/2025 Candidate already in fail history: assert(j < idBitLength / 8 || j < material_length);
+04:11:34 26/03/2025 Executing predicate filtering
+04:11:34 26/03/2025 Filtering predicates for candidate assert(j <= (idBitLength / 8) + material_length);
+04:11:34 26/03/2025 Filtering predicates for candidate assert(j < idBitLength / 8 || j < material_length);
+04:11:34 26/03/2025 Predicate filtering verify set: ['nlen == idBitLength / 32', 'idBitLength >= 0', 'material_length >= 0', 'j >= 0', 'j <= idBitLength / 8', 'j <= material_length', '(j <= idBitLength / 8) || (j < material_length)']
+04:11:34 26/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.8853516482022625
+04:11:34 26/03/2025 Generated 3 candidates
+04:11:34 26/03/2025 Verifying generated candidates
+04:11:34 26/03/2025 Verifying candidate: assert(j >= 0);
+04:11:34 26/03/2025 Candidate already in fail history: assert(j >= 0);
+04:11:34 26/03/2025 Verifying candidate: assert(j <= idBitLength / 8 + material_length);
+04:11:34 26/03/2025 Candidate failed verification
+04:11:34 26/03/2025 Adding candidate to fail history: assert(j <= idBitLength / 8 + material_length);
+04:11:34 26/03/2025 Verifying candidate: assert(j < (idBitLength / 8) + (material_length > 0));
+04:11:34 26/03/2025 Candidate failed verification
+04:11:34 26/03/2025 Adding candidate to fail history: assert(j < (idBitLength / 8) + (material_length > 0));
+04:11:34 26/03/2025 Executing predicate filtering
+04:11:34 26/03/2025 Filtering predicates for candidate assert(j >= 0);
+04:11:34 26/03/2025 Filtering predicates for candidate assert(j <= idBitLength / 8 + material_length);
+04:11:34 26/03/2025 Filtering predicates for candidate assert(j < (idBitLength / 8) + (material_length > 0));
+04:11:34 26/03/2025 Predicate filtering verify set: ['nlen == idBitLength / 32', 'idBitLength >= 0', 'material_length >= 0', 'j >= 0', 'j <= idBitLength / 8', 'j <= material_length', '(j <= idBitLength / 8) || (j < material_length)']
+04:11:34 26/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9216685544064713
+04:11:34 26/03/2025 Generated 2 candidates
+04:11:34 26/03/2025 Verifying generated candidates
+04:11:34 26/03/2025 Verifying candidate: assert(j <= material_length + (idBitLength / 8));
+04:11:34 26/03/2025 Candidate failed verification
+04:11:34 26/03/2025 Adding candidate to fail history: assert(j <= material_length + (idBitLength / 8));
+04:11:34 26/03/2025 Verifying candidate: assert(j < material_length + 1);
+04:11:34 26/03/2025 Candidate failed verification
+04:11:34 26/03/2025 Adding candidate to fail history: assert(j < material_length + 1);
+04:11:34 26/03/2025 Executing predicate filtering
+04:11:34 26/03/2025 Filtering predicates for candidate assert(j <= material_length + (idBitLength / 8));
+04:11:34 26/03/2025 Filtering predicates for candidate assert(j < material_length + 1);
+04:11:34 26/03/2025 Predicate filtering verify set: ['nlen == idBitLength / 32', 'idBitLength >= 0', 'material_length >= 0', 'j >= 0', 'j <= idBitLength / 8', 'j <= material_length', '(j <= idBitLength / 8) || (j < material_length)']
+04:11:34 26/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9216685544064713
+04:11:34 26/03/2025 Generated 2 candidates
+04:11:34 26/03/2025 Verifying generated candidates
+04:11:34 26/03/2025 Verifying candidate: assert(j <= material_length);
+04:11:34 26/03/2025 Candidate already in fail history: assert(j <= material_length);
+04:11:34 26/03/2025 Verifying candidate: assert(j <= idBitLength / 8);
+04:11:34 26/03/2025 Candidate already in fail history: assert(j <= idBitLength / 8);
+04:11:34 26/03/2025 Executing predicate filtering
+04:11:34 26/03/2025 Filtering predicates for candidate assert(j <= material_length);
+04:11:34 26/03/2025 Filtering predicates for candidate assert(j <= idBitLength / 8);
+04:11:34 26/03/2025 Predicate filtering verify set: ['nlen == idBitLength / 32', 'idBitLength >= 0', 'material_length >= 0', 'j >= 0', 'j <= idBitLength / 8', 'j <= material_length', '(j <= idBitLength / 8) || (j < material_length)']
+04:11:34 26/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9640275800758169
+04:11:34 26/03/2025 Generated 3 candidates
+04:11:34 26/03/2025 Verifying generated candidates
+04:11:34 26/03/2025 Verifying candidate: assert(j >= 0);
+04:11:34 26/03/2025 Candidate already in fail history: assert(j >= 0);
+04:11:34 26/03/2025 Verifying candidate: assert(j <= (idBitLength / 8) + material_length - 1);
+04:11:34 26/03/2025 Candidate failed verification
+04:11:34 26/03/2025 Adding candidate to fail history: assert(j <= (idBitLength / 8) + material_length - 1);
+04:11:34 26/03/2025 Verifying candidate: assert(j < material_length || j < idBitLength / 8);
+04:11:34 26/03/2025 Candidate already in fail history: assert(j < material_length || j < idBitLength / 8);
+04:11:34 26/03/2025 Executing predicate filtering
+04:11:34 26/03/2025 Filtering predicates for candidate assert(j >= 0);
+04:11:34 26/03/2025 Filtering predicates for candidate assert(j <= (idBitLength / 8) + material_length - 1);
+04:11:34 26/03/2025 Filtering predicates for candidate assert(j < material_length || j < idBitLength / 8);
+04:11:34 26/03/2025 Predicate filtering verify set: ['nlen == idBitLength / 32', 'idBitLength >= 0', 'material_length >= 0', 'j >= 0', 'j <= idBitLength / 8', 'j <= material_length', '(j <= idBitLength / 8) || (j < material_length)']
+04:11:34 26/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9836748576936802
+04:11:34 26/03/2025 Generated 2 candidates
+04:11:34 26/03/2025 Verifying generated candidates
+04:11:34 26/03/2025 Verifying candidate: assert(j < idBitLength / 8 + 1);
+04:11:34 26/03/2025 Candidate failed verification
+04:11:34 26/03/2025 Adding candidate to fail history: assert(j < idBitLength / 8 + 1);
+04:11:34 26/03/2025 Verifying candidate: assert(j < material_length + 1);
+04:11:34 26/03/2025 Candidate already in fail history: assert(j < material_length + 1);
+04:11:34 26/03/2025 Executing predicate filtering
+04:11:34 26/03/2025 Filtering predicates for candidate assert(j < idBitLength / 8 + 1);
+04:11:34 26/03/2025 Addind predicate j < idBitLength / 8 + 1 to verify set
+04:11:34 26/03/2025 Filtering predicates for candidate assert(j < material_length + 1);
+04:11:34 26/03/2025 Predicate filtering verify set: ['nlen == idBitLength / 32', 'idBitLength >= 0', 'material_length >= 0', 'j >= 0', 'j <= idBitLength / 8', 'j <= material_length', '(j <= idBitLength / 8) || (j < material_length)', 'j < idBitLength / 8 + 1']
+04:11:34 26/03/2025 Verifying formula: (and (and (and (and (and (and (and (= nlen (/ idBitLength 32)) (>= idBitLength 0)) (>= material_length 0)) (>= j 0)) (<= j (/ idBitLength 8))) (<= j material_length)) (or (<= j (/ idBitLength 8)) (< j material_length))) (< j (+ (/ idBitLength 8) 1)))
+04:11:34 26/03/2025 For candidate: assert((nlen == idBitLength / 32) && (idBitLength >= 0) && (material_length >= 0) && (j >= 0) && (j <= idBitLength / 8) && (j <= material_length) && ((j <= idBitLength / 8) || (j < material_length)) && (j < idBitLength / 8 + 1))
+04:11:34 26/03/2025 Timeout while verifying candidate
+04:11:34 26/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9890274022010992
+04:11:34 26/03/2025 Generated 3 candidates
+04:11:34 26/03/2025 Verifying generated candidates
+04:11:34 26/03/2025 Verifying candidate: assert(j >= 0);
+04:11:34 26/03/2025 Candidate already in fail history: assert(j >= 0);
+04:11:34 26/03/2025 Verifying candidate: assert(j <= idBitLength / 8);
+04:11:34 26/03/2025 Candidate already in fail history: assert(j <= idBitLength / 8);
+04:11:34 26/03/2025 Verifying candidate: assert(j <= material_length);
+04:11:34 26/03/2025 Candidate already in fail history: assert(j <= material_length);
+04:11:34 26/03/2025 Executing predicate filtering
+04:11:34 26/03/2025 Filtering predicates for candidate assert(j >= 0);
+04:11:34 26/03/2025 Filtering predicates for candidate assert(j <= idBitLength / 8);
+04:11:34 26/03/2025 Filtering predicates for candidate assert(j <= material_length);
+04:11:34 26/03/2025 Predicate filtering verify set: ['nlen == idBitLength / 32', 'idBitLength >= 0', 'material_length >= 0', 'j >= 0', 'j <= idBitLength / 8', 'j <= material_length', '(j <= idBitLength / 8) || (j < material_length)', 'j < idBitLength / 8 + 1']
+04:11:34 26/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9966823978396512
+04:11:34 26/03/2025 Generated 2 candidates
+04:11:34 26/03/2025 Verifying generated candidates
+04:11:34 26/03/2025 Verifying candidate: assert(j < idBitLength / 8 + 1);
+04:11:34 26/03/2025 Candidate already in fail history: assert(j < idBitLength / 8 + 1);
+04:11:34 26/03/2025 Verifying candidate: assert(j < material_length + 1);
+04:11:34 26/03/2025 Candidate already in fail history: assert(j < material_length + 1);
+04:11:34 26/03/2025 Executing predicate filtering
+04:11:34 26/03/2025 Filtering predicates for candidate assert(j < idBitLength / 8 + 1);
+04:11:34 26/03/2025 Filtering predicates for candidate assert(j < material_length + 1);
+04:11:34 26/03/2025 Predicate filtering verify set: ['nlen == idBitLength / 32', 'idBitLength >= 0', 'material_length >= 0', 'j >= 0', 'j <= idBitLength / 8', 'j <= material_length', '(j <= idBitLength / 8) || (j < material_length)', 'j < idBitLength / 8 + 1']
+04:11:34 26/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9985079423323266
+04:11:34 26/03/2025 Generated 2 candidates
+04:11:34 26/03/2025 Verifying generated candidates
+04:11:34 26/03/2025 Verifying candidate: assert(j < (idBitLength / 8) + material_length);
+04:11:34 26/03/2025 Candidate failed verification
+04:11:34 26/03/2025 Adding candidate to fail history: assert(j < (idBitLength / 8) + material_length);
+04:11:34 26/03/2025 Verifying candidate: assert((j <= idBitLength / 8) || (j <= material_length));
+04:11:34 26/03/2025 Candidate failed verification
+04:11:34 26/03/2025 Adding candidate to fail history: assert((j <= idBitLength / 8) || (j <= material_length));
+04:11:34 26/03/2025 Executing predicate filtering
+04:11:34 26/03/2025 Filtering predicates for candidate assert(j < (idBitLength / 8) + material_length);
+04:11:34 26/03/2025 Filtering predicates for candidate assert((j <= idBitLength / 8) || (j <= material_length));
+04:11:34 26/03/2025 Addind predicate ((j <= idBitLength / 8)) || ((j <= material_length)) to verify set
+04:11:34 26/03/2025 Predicate filtering verify set: ['nlen == idBitLength / 32', 'idBitLength >= 0', 'material_length >= 0', 'j >= 0', 'j <= idBitLength / 8', 'j <= material_length', '(j <= idBitLength / 8) || (j < material_length)', 'j < idBitLength / 8 + 1', '((j <= idBitLength / 8)) || ((j <= material_length))']
+04:11:34 26/03/2025 Verifying formula: (and (and (and (and (and (and (and (and (= nlen (/ idBitLength 32)) (>= idBitLength 0)) (>= material_length 0)) (>= j 0)) (<= j (/ idBitLength 8))) (<= j material_length)) (or (<= j (/ idBitLength 8)) (< j material_length))) (< j (+ (/ idBitLength 8) 1))) (or (<= j (/ idBitLength 8)) (<= j material_length)))
+04:11:34 26/03/2025 For candidate: assert((nlen == idBitLength / 32) && (idBitLength >= 0) && (material_length >= 0) && (j >= 0) && (j <= idBitLength / 8) && (j <= material_length) && ((j <= idBitLength / 8) || (j < material_length)) && (j < idBitLength / 8 + 1) && (((j <= idBitLength / 8)) || ((j <= material_length))))
+04:11:34 26/03/2025 Timeout while verifying candidate
+04:11:34 26/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9985079423323266
+04:11:34 26/03/2025 Generated 2 candidates
+04:11:34 26/03/2025 Verifying generated candidates
+04:11:34 26/03/2025 Verifying candidate: assert(j < idBitLength / 8 + material_length);
+04:11:34 26/03/2025 Candidate failed verification
+04:11:34 26/03/2025 Adding candidate to fail history: assert(j < idBitLength / 8 + material_length);
+04:11:34 26/03/2025 Verifying candidate: assert(j <= (idBitLength / 8) * 2);
+04:11:34 26/03/2025 Candidate failed verification
+04:11:34 26/03/2025 Adding candidate to fail history: assert(j <= (idBitLength / 8) * 2);
+04:11:34 26/03/2025 Executing predicate filtering
+04:11:34 26/03/2025 Filtering predicates for candidate assert(j < idBitLength / 8 + material_length);
+04:11:34 26/03/2025 Filtering predicates for candidate assert(j <= (idBitLength / 8) * 2);
+04:11:34 26/03/2025 Addind predicate j <= (idBitLength / 8) * 2 to verify set
+04:11:34 26/03/2025 Predicate filtering verify set: ['nlen == idBitLength / 32', 'idBitLength >= 0', 'material_length >= 0', 'j >= 0', 'j <= idBitLength / 8', 'j <= material_length', '(j <= idBitLength / 8) || (j < material_length)', 'j < idBitLength / 8 + 1', '((j <= idBitLength / 8)) || ((j <= material_length))', 'j <= (idBitLength / 8) * 2']
+04:11:34 26/03/2025 Verifying formula: (and (and (and (and (and (and (and (and (and (= nlen (/ idBitLength 32)) (>= idBitLength 0)) (>= material_length 0)) (>= j 0)) (<= j (/ idBitLength 8))) (<= j material_length)) (or (<= j (/ idBitLength 8)) (< j material_length))) (< j (+ (/ idBitLength 8) 1))) (or (<= j (/ idBitLength 8)) (<= j material_length))) (<= j (* (/ idBitLength 8) 2)))
+04:11:34 26/03/2025 For candidate: assert((nlen == idBitLength / 32) && (idBitLength >= 0) && (material_length >= 0) && (j >= 0) && (j <= idBitLength / 8) && (j <= material_length) && ((j <= idBitLength / 8) || (j < material_length)) && (j < idBitLength / 8 + 1) && (((j <= idBitLength / 8)) || ((j <= material_length))) && (j <= (idBitLength / 8) * 2))
+04:11:34 26/03/2025 Timeout while verifying candidate
+04:11:34 26/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9985079423323266
+04:11:34 26/03/2025 Generated 2 candidates
+04:11:34 26/03/2025 Verifying generated candidates
+04:11:34 26/03/2025 Verifying candidate: assert(j <= idBitLength / 8);
+04:11:34 26/03/2025 Candidate already in fail history: assert(j <= idBitLength / 8);
+04:11:34 26/03/2025 Verifying candidate: assert(j < material_length + (idBitLength % 8 != 0));
+04:11:34 26/03/2025 Candidate failed verification
+04:11:34 26/03/2025 Adding candidate to fail history: assert(j < material_length + (idBitLength % 8 != 0));
+04:11:34 26/03/2025 Executing predicate filtering
+04:11:34 26/03/2025 Filtering predicates for candidate assert(j <= idBitLength / 8);
+04:11:34 26/03/2025 Filtering predicates for candidate assert(j < material_length + (idBitLength % 8 != 0));
+04:11:34 26/03/2025 Predicate filtering verify set: ['nlen == idBitLength / 32', 'idBitLength >= 0', 'material_length >= 0', 'j >= 0', 'j <= idBitLength / 8', 'j <= material_length', '(j <= idBitLength / 8) || (j < material_length)', 'j < idBitLength / 8 + 1', '((j <= idBitLength / 8)) || ((j <= material_length))', 'j <= (idBitLength / 8) * 2']
+04:11:34 26/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9989995977858409
+04:11:34 26/03/2025 Generated 2 candidates
+04:11:34 26/03/2025 Verifying generated candidates
+04:11:34 26/03/2025 Verifying candidate: assert(j < material_length);
+04:11:34 26/03/2025 Candidate failed verification
+04:11:34 26/03/2025 Adding candidate to fail history: assert(j < material_length);
+04:11:34 26/03/2025 Verifying candidate: assert(j <= idBitLength / 8 + material_length);
+04:11:34 26/03/2025 Candidate already in fail history: assert(j <= idBitLength / 8 + material_length);
+04:11:34 26/03/2025 Executing predicate filtering
+04:11:34 26/03/2025 Filtering predicates for candidate assert(j < material_length);
+04:11:34 26/03/2025 Filtering predicates for candidate assert(j <= idBitLength / 8 + material_length);
+04:11:34 26/03/2025 Predicate filtering verify set: ['nlen == idBitLength / 32', 'idBitLength >= 0', 'material_length >= 0', 'j >= 0', 'j <= idBitLength / 8', 'j <= material_length', '(j <= idBitLength / 8) || (j < material_length)', 'j < idBitLength / 8 + 1', '((j <= idBitLength / 8)) || ((j <= material_length))', 'j <= (idBitLength / 8) * 2']
+04:11:34 26/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.999329299739067
+04:11:34 26/03/2025 Generated 2 candidates
+04:11:34 26/03/2025 Verifying generated candidates
+04:11:34 26/03/2025 Verifying candidate: assert(j >= 0);
+04:11:34 26/03/2025 Candidate already in fail history: assert(j >= 0);
+04:11:34 26/03/2025 Verifying candidate: assert(j <= idBitLength / 8 + material_length - (material_length > 0));
+04:11:34 26/03/2025 Candidate failed verification
+04:11:34 26/03/2025 Adding candidate to fail history: assert(j <= idBitLength / 8 + material_length - (material_length > 0));
+04:11:34 26/03/2025 Executing predicate filtering
+04:11:34 26/03/2025 Filtering predicates for candidate assert(j >= 0);
+04:11:34 26/03/2025 Filtering predicates for candidate assert(j <= idBitLength / 8 + material_length - (material_length > 0));
+04:11:34 26/03/2025 Predicate filtering verify set: ['nlen == idBitLength / 32', 'idBitLength >= 0', 'material_length >= 0', 'j >= 0', 'j <= idBitLength / 8', 'j <= material_length', '(j <= idBitLength / 8) || (j < material_length)', 'j < idBitLength / 8 + 1', '((j <= idBitLength / 8)) || ((j <= material_length))', 'j <= (idBitLength / 8) * 2']
+04:11:34 26/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9995503664595334
+04:11:34 26/03/2025 Generated 3 candidates
+04:11:34 26/03/2025 Verifying generated candidates
+04:11:34 26/03/2025 Verifying candidate: assert(j <= (idBitLength / 8));
+04:11:34 26/03/2025 Candidate failed verification
+04:11:34 26/03/2025 Adding candidate to fail history: assert(j <= (idBitLength / 8));
+04:11:34 26/03/2025 Verifying candidate: assert(j <= material_length);
+04:11:34 26/03/2025 Candidate already in fail history: assert(j <= material_length);
+04:11:34 26/03/2025 Verifying candidate: assert(j < idBitLength / 8 + material_length);
+04:11:34 26/03/2025 Candidate already in fail history: assert(j < idBitLength / 8 + material_length);
+04:11:34 26/03/2025 Executing predicate filtering
+04:11:34 26/03/2025 Filtering predicates for candidate assert(j <= (idBitLength / 8));
+04:11:34 26/03/2025 Addind predicate j <= (idBitLength / 8) to verify set
+04:11:34 26/03/2025 Filtering predicates for candidate assert(j <= material_length);
+04:11:34 26/03/2025 Filtering predicates for candidate assert(j < idBitLength / 8 + material_length);
+04:11:34 26/03/2025 Predicate filtering verify set: ['nlen == idBitLength / 32', 'idBitLength >= 0', 'material_length >= 0', 'j >= 0', 'j <= idBitLength / 8', 'j <= material_length', '(j <= idBitLength / 8) || (j < material_length)', 'j < idBitLength / 8 + 1', '((j <= idBitLength / 8)) || ((j <= material_length))', 'j <= (idBitLength / 8) * 2', 'j <= (idBitLength / 8)']
+04:11:34 26/03/2025 Verifying formula: (and (and (and (and (and (and (and (and (and (and (= nlen (/ idBitLength 32)) (>= idBitLength 0)) (>= material_length 0)) (>= j 0)) (<= j (/ idBitLength 8))) (<= j material_length)) (or (<= j (/ idBitLength 8)) (< j material_length))) (< j (+ (/ idBitLength 8) 1))) (or (<= j (/ idBitLength 8)) (<= j material_length))) (<= j (* (/ idBitLength 8) 2))) (<= j (/ idBitLength 8)))
+04:11:34 26/03/2025 For candidate: assert((nlen == idBitLength / 32) && (idBitLength >= 0) && (material_length >= 0) && (j >= 0) && (j <= idBitLength / 8) && (j <= material_length) && ((j <= idBitLength / 8) || (j < material_length)) && (j < idBitLength / 8 + 1) && (((j <= idBitLength / 8)) || ((j <= material_length))) && (j <= (idBitLength / 8) * 2) && (j <= (idBitLength / 8)))
+04:11:34 26/03/2025 Timeout while verifying candidate
+04:11:34 26/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9997979416121845
+04:11:34 26/03/2025 Generated 2 candidates
+04:11:34 26/03/2025 Verifying generated candidates
+04:11:34 26/03/2025 Verifying candidate: assert(j < idBitLength / 8 + 1);
+04:11:34 26/03/2025 Candidate already in fail history: assert(j < idBitLength / 8 + 1);
+04:11:34 26/03/2025 Verifying candidate: assert(j < material_length + 1);
+04:11:34 26/03/2025 Candidate already in fail history: assert(j < material_length + 1);
+04:11:34 26/03/2025 Executing predicate filtering
+04:11:34 26/03/2025 Filtering predicates for candidate assert(j < idBitLength / 8 + 1);
+04:11:34 26/03/2025 Filtering predicates for candidate assert(j < material_length + 1);
+04:11:34 26/03/2025 Predicate filtering verify set: ['nlen == idBitLength / 32', 'idBitLength >= 0', 'material_length >= 0', 'j >= 0', 'j <= idBitLength / 8', 'j <= material_length', '(j <= idBitLength / 8) || (j < material_length)', 'j < idBitLength / 8 + 1', '((j <= idBitLength / 8)) || ((j <= material_length))', 'j <= (idBitLength / 8) * 2', 'j <= (idBitLength / 8)']
+04:11:34 26/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9999092042625951
+04:11:34 26/03/2025 Generated 2 candidates
+04:11:34 26/03/2025 Verifying generated candidates
+04:11:34 26/03/2025 Verifying candidate: assert(j <= idBitLength / 8);
+04:11:34 26/03/2025 Candidate already in fail history: assert(j <= idBitLength / 8);
+04:11:34 26/03/2025 Verifying candidate: assert(j < material_length || j < idBitLength / 8);
+04:11:34 26/03/2025 Candidate already in fail history: assert(j < material_length || j < idBitLength / 8);
+04:11:34 26/03/2025 Executing predicate filtering
+04:11:34 26/03/2025 Filtering predicates for candidate assert(j <= idBitLength / 8);
+04:11:34 26/03/2025 Filtering predicates for candidate assert(j < material_length || j < idBitLength / 8);
+04:11:34 26/03/2025 Predicate filtering verify set: ['nlen == idBitLength / 32', 'idBitLength >= 0', 'material_length >= 0', 'j >= 0', 'j <= idBitLength / 8', 'j <= material_length', '(j <= idBitLength / 8) || (j < material_length)', 'j < idBitLength / 8 + 1', '((j <= idBitLength / 8)) || ((j <= material_length))', 'j <= (idBitLength / 8) * 2', 'j <= (idBitLength / 8)']
+04:11:34 26/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9999592018254402
+04:11:34 26/03/2025 Generated 2 candidates
+04:11:34 26/03/2025 Verifying generated candidates
+04:11:34 26/03/2025 Verifying candidate: assert(j < idBitLength / 8 + material_length);
+04:11:34 26/03/2025 Candidate already in fail history: assert(j < idBitLength / 8 + material_length);
+04:11:34 26/03/2025 Verifying candidate: assert(j <= (idBitLength / 8) * 2);
+04:11:34 26/03/2025 Candidate already in fail history: assert(j <= (idBitLength / 8) * 2);
+04:11:34 26/03/2025 Executing predicate filtering
+04:11:34 26/03/2025 Filtering predicates for candidate assert(j < idBitLength / 8 + material_length);
+04:11:34 26/03/2025 Filtering predicates for candidate assert(j <= (idBitLength / 8) * 2);
+04:11:34 26/03/2025 Predicate filtering verify set: ['nlen == idBitLength / 32', 'idBitLength >= 0', 'material_length >= 0', 'j >= 0', 'j <= idBitLength / 8', 'j <= material_length', '(j <= idBitLength / 8) || (j < material_length)', 'j < idBitLength / 8 + 1', '((j <= idBitLength / 8)) || ((j <= material_length))', 'j <= (idBitLength / 8) * 2', 'j <= (idBitLength / 8)']
+04:11:34 26/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9999816679925603
+04:11:34 26/03/2025 Generated 2 candidates
+04:11:34 26/03/2025 Verifying generated candidates
+04:11:34 26/03/2025 Verifying candidate: assert(j < idBitLength / 8 + material_length);
+04:11:34 26/03/2025 Candidate already in fail history: assert(j < idBitLength / 8 + material_length);
+04:11:34 26/03/2025 Verifying candidate: assert(j <= (material_length - 1) || j <= (idBitLength / 8));
+04:11:34 26/03/2025 Candidate failed verification
+04:11:34 26/03/2025 Adding candidate to fail history: assert(j <= (material_length - 1) || j <= (idBitLength / 8));
+04:11:34 26/03/2025 Executing predicate filtering
+04:11:34 26/03/2025 Filtering predicates for candidate assert(j < idBitLength / 8 + material_length);
+04:11:34 26/03/2025 Filtering predicates for candidate assert(j <= (material_length - 1) || j <= (idBitLength / 8));
+04:11:34 26/03/2025 Addind predicate (j <= (material_length - 1)) || (j <= (idBitLength / 8)) to verify set
+04:11:34 26/03/2025 Predicate filtering verify set: ['nlen == idBitLength / 32', 'idBitLength >= 0', 'material_length >= 0', 'j >= 0', 'j <= idBitLength / 8', 'j <= material_length', '(j <= idBitLength / 8) || (j < material_length)', 'j < idBitLength / 8 + 1', '((j <= idBitLength / 8)) || ((j <= material_length))', 'j <= (idBitLength / 8) * 2', 'j <= (idBitLength / 8)', '(j <= (material_length - 1)) || (j <= (idBitLength / 8))']
+04:11:34 26/03/2025 Verifying formula: (and (and (and (and (and (and (and (and (and (and (and (= nlen (/ idBitLength 32)) (>= idBitLength 0)) (>= material_length 0)) (>= j 0)) (<= j (/ idBitLength 8))) (<= j material_length)) (or (<= j (/ idBitLength 8)) (< j material_length))) (< j (+ (/ idBitLength 8) 1))) (or (<= j (/ idBitLength 8)) (<= j material_length))) (<= j (* (/ idBitLength 8) 2))) (<= j (/ idBitLength 8))) (or (<= j (- material_length 1)) (<= j (/ idBitLength 8))))
+04:11:34 26/03/2025 For candidate: assert((nlen == idBitLength / 32) && (idBitLength >= 0) && (material_length >= 0) && (j >= 0) && (j <= idBitLength / 8) && (j <= material_length) && ((j <= idBitLength / 8) || (j < material_length)) && (j < idBitLength / 8 + 1) && (((j <= idBitLength / 8)) || ((j <= material_length))) && (j <= (idBitLength / 8) * 2) && (j <= (idBitLength / 8)) && ((j <= (material_length - 1)) || (j <= (idBitLength / 8))))
+04:11:34 26/03/2025 Timeout while verifying candidate
+04:11:34 26/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9999877116507956
+04:11:34 26/03/2025 Generated 2 candidates
+04:11:34 26/03/2025 Verifying generated candidates
+04:11:34 26/03/2025 Verifying candidate: assert(j <= idBitLength / 8 + material_length);
+04:11:34 26/03/2025 Candidate already in fail history: assert(j <= idBitLength / 8 + material_length);
+04:11:34 26/03/2025 Verifying candidate: assert(j < material_length || j < (idBitLength / 8));
+04:11:34 26/03/2025 Candidate failed verification
+04:11:34 26/03/2025 Adding candidate to fail history: assert(j < material_length || j < (idBitLength / 8));
+04:11:34 26/03/2025 Executing predicate filtering
+04:11:34 26/03/2025 Filtering predicates for candidate assert(j <= idBitLength / 8 + material_length);
+04:11:34 26/03/2025 Filtering predicates for candidate assert(j < material_length || j < (idBitLength / 8));
+04:11:34 26/03/2025 Predicate filtering verify set: ['nlen == idBitLength / 32', 'idBitLength >= 0', 'material_length >= 0', 'j >= 0', 'j <= idBitLength / 8', 'j <= material_length', '(j <= idBitLength / 8) || (j < material_length)', 'j < idBitLength / 8 + 1', '((j <= idBitLength / 8)) || ((j <= material_length))', 'j <= (idBitLength / 8) * 2', 'j <= (idBitLength / 8)', '(j <= (material_length - 1)) || (j <= (idBitLength / 8))']
+04:11:34 26/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9999917628565104
+04:11:34 26/03/2025 Generated 2 candidates
+04:11:34 26/03/2025 Verifying generated candidates
+04:11:34 26/03/2025 Verifying candidate: assert(j < idBitLength / 8 + (material_length > 0));
+04:11:34 26/03/2025 Candidate failed verification
+04:11:34 26/03/2025 Adding candidate to fail history: assert(j < idBitLength / 8 + (material_length > 0));
+04:11:34 26/03/2025 Verifying candidate: assert(j <= material_length + (idBitLength >= 0);
+04:11:34 26/03/2025 Invalid candidate syntax
+04:11:34 26/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9999917628565104
+04:11:34 26/03/2025 Generated 2 candidates
+04:11:34 26/03/2025 Verifying generated candidates
+04:11:34 26/03/2025 Verifying candidate: assert(j >= 0);
+04:11:34 26/03/2025 Candidate already in fail history: assert(j >= 0);
+04:11:34 26/03/2025 Verifying candidate: assert(j < material_length + (idBitLength / 8));
+04:11:34 26/03/2025 Candidate failed verification
+04:11:34 26/03/2025 Adding candidate to fail history: assert(j < material_length + (idBitLength / 8));
+04:11:34 26/03/2025 Executing predicate filtering
+04:11:34 26/03/2025 Filtering predicates for candidate assert(j >= 0);
+04:11:34 26/03/2025 Filtering predicates for candidate assert(j < material_length + (idBitLength / 8));
+04:11:34 26/03/2025 Predicate filtering verify set: ['nlen == idBitLength / 32', 'idBitLength >= 0', 'material_length >= 0', 'j >= 0', 'j <= idBitLength / 8', 'j <= material_length', '(j <= idBitLength / 8) || (j < material_length)', 'j < idBitLength / 8 + 1', '((j <= idBitLength / 8)) || ((j <= material_length))', 'j <= (idBitLength / 8) * 2', 'j <= (idBitLength / 8)', '(j <= (material_length - 1)) || (j <= (idBitLength / 8))']
+04:11:34 26/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9999944784700996
+04:11:34 26/03/2025 Generated 2 candidates
+04:11:34 26/03/2025 Verifying generated candidates
+04:11:34 26/03/2025 Verifying candidate: assert(j <= (material_length - 1) || j < idBitLength / 8);
+04:11:34 26/03/2025 Candidate failed verification
+04:11:34 26/03/2025 Adding candidate to fail history: assert(j <= (material_length - 1) || j < idBitLength / 8);
+04:11:34 26/03/2025 Verifying candidate: assert(j < idBitLength / 8 + material_length);
+04:11:34 26/03/2025 Candidate already in fail history: assert(j < idBitLength / 8 + material_length);
+04:11:34 26/03/2025 Executing predicate filtering
+04:11:34 26/03/2025 Filtering predicates for candidate assert(j <= (material_length - 1) || j < idBitLength / 8);
+04:11:34 26/03/2025 Filtering predicates for candidate assert(j < idBitLength / 8 + material_length);
+04:11:34 26/03/2025 Predicate filtering verify set: ['nlen == idBitLength / 32', 'idBitLength >= 0', 'material_length >= 0', 'j >= 0', 'j <= idBitLength / 8', 'j <= material_length', '(j <= idBitLength / 8) || (j < material_length)', 'j < idBitLength / 8 + 1', '((j <= idBitLength / 8)) || ((j <= material_length))', 'j <= (idBitLength / 8) * 2', 'j <= (idBitLength / 8)', '(j <= (material_length - 1)) || (j <= (idBitLength / 8))']
+04:11:34 26/03/2025 Resetting generator
+04:11:34 26/03/2025 Generating loop invariants candidates with model o3-mini and presence penalty 0.0
+04:11:34 26/03/2025 Generated 6 candidates
+04:11:34 26/03/2025 Verifying generated candidates
+04:11:34 26/03/2025 Verifying candidate: assert(nlen == idBitLength / 32);
+04:11:34 26/03/2025 Candidate failed verification
+04:11:34 26/03/2025 Adding candidate to fail history: assert(nlen == idBitLength / 32);
+04:11:34 26/03/2025 Verifying candidate: assert(idBitLength >= 0);
+04:11:34 26/03/2025 Candidate failed verification
+04:11:34 26/03/2025 Adding candidate to fail history: assert(idBitLength >= 0);
+04:11:34 26/03/2025 Verifying candidate: assert(material_length >= 0);
+04:11:34 26/03/2025 Candidate failed verification
+04:11:34 26/03/2025 Adding candidate to fail history: assert(material_length >= 0);
+04:11:34 26/03/2025 Verifying candidate: assert(j <= idBitLength / 8);
+04:11:34 26/03/2025 Candidate failed verification
+04:11:34 26/03/2025 Adding candidate to fail history: assert(j <= idBitLength / 8);
+04:11:34 26/03/2025 Verifying candidate: assert(j <= material_length);
+04:11:34 26/03/2025 Candidate failed verification
+04:11:34 26/03/2025 Adding candidate to fail history: assert(j <= material_length);
+04:11:34 26/03/2025 Verifying candidate: assert(j / 4 <= idBitLength / 32);
+04:11:34 26/03/2025 Candidate failed verification
+04:11:34 26/03/2025 Adding candidate to fail history: assert(j / 4 <= idBitLength / 32);
+04:11:34 26/03/2025 Executing predicate filtering
+04:11:34 26/03/2025 Filtering predicates for candidate assert(nlen == idBitLength / 32);
+04:11:34 26/03/2025 Filtering predicates for candidate assert(idBitLength >= 0);
+04:11:34 26/03/2025 Filtering predicates for candidate assert(material_length >= 0);
+04:11:34 26/03/2025 Filtering predicates for candidate assert(j <= idBitLength / 8);
+04:11:34 26/03/2025 Filtering predicates for candidate assert(j <= material_length);
+04:11:34 26/03/2025 Filtering predicates for candidate assert(j / 4 <= idBitLength / 32);
+04:11:34 26/03/2025 Addind predicate j / 4 <= idBitLength / 32 to verify set
+04:11:34 26/03/2025 Predicate filtering verify set: ['nlen == idBitLength / 32', 'idBitLength >= 0', 'material_length >= 0', 'j >= 0', 'j <= idBitLength / 8', 'j <= material_length', '(j <= idBitLength / 8) || (j < material_length)', 'j < idBitLength / 8 + 1', '((j <= idBitLength / 8)) || ((j <= material_length))', 'j <= (idBitLength / 8) * 2', 'j <= (idBitLength / 8)', '(j <= (material_length - 1)) || (j <= (idBitLength / 8))', 'j / 4 <= idBitLength / 32']
+04:11:34 26/03/2025 Verifying formula: (and (and (and (and (and (and (and (and (and (and (and (and (= nlen (/ idBitLength 32)) (>= idBitLength 0)) (>= material_length 0)) (>= j 0)) (<= j (/ idBitLength 8))) (<= j material_length)) (or (<= j (/ idBitLength 8)) (< j material_length))) (< j (+ (/ idBitLength 8) 1))) (or (<= j (/ idBitLength 8)) (<= j material_length))) (<= j (* (/ idBitLength 8) 2))) (<= j (/ idBitLength 8))) (or (<= j (- material_length 1)) (<= j (/ idBitLength 8)))) (<= (/ j 4) (/ idBitLength 32)))
+04:11:34 26/03/2025 For candidate: assert((nlen == idBitLength / 32) && (idBitLength >= 0) && (material_length >= 0) && (j >= 0) && (j <= idBitLength / 8) && (j <= material_length) && ((j <= idBitLength / 8) || (j < material_length)) && (j < idBitLength / 8 + 1) && (((j <= idBitLength / 8)) || ((j <= material_length))) && (j <= (idBitLength / 8) * 2) && (j <= (idBitLength / 8)) && ((j <= (material_length - 1)) || (j <= (idBitLength / 8))) && (j / 4 <= idBitLength / 32))
+04:11:34 26/03/2025 Timeout while verifying candidate
+04:11:34 26/03/2025 Generating loop invariants candidates with model o3-mini and presence penalty 0.0
+04:11:34 26/03/2025 Generated 3 candidates
+04:11:34 26/03/2025 Verifying generated candidates
+04:11:34 26/03/2025 Verifying candidate: assert(j >= 0);
+04:11:34 26/03/2025 Candidate failed verification
+04:11:34 26/03/2025 Adding candidate to fail history: assert(j >= 0);
+04:11:34 26/03/2025 Verifying candidate: assert(j <= material_length);
+04:11:34 26/03/2025 Candidate already in fail history: assert(j <= material_length);
+04:11:34 26/03/2025 Verifying candidate: assert((j < (idBitLength/8)) || ((j/4) <= (idBitLength/32)));
+04:11:34 26/03/2025 Candidate failed verification
+04:11:34 26/03/2025 Adding candidate to fail history: assert((j < (idBitLength/8)) || ((j/4) <= (idBitLength/32)));
+04:11:34 26/03/2025 Executing predicate filtering
+04:11:34 26/03/2025 Filtering predicates for candidate assert(j >= 0);
+04:11:34 26/03/2025 Filtering predicates for candidate assert(j <= material_length);
+04:11:34 26/03/2025 Filtering predicates for candidate assert((j < (idBitLength/8)) || ((j/4) <= (idBitLength/32)));
+04:11:34 26/03/2025 Addind predicate ((j < (idBitLength/8))) || (((j/4) <= (idBitLength/32))) to verify set
+04:11:34 26/03/2025 Predicate filtering verify set: ['nlen == idBitLength / 32', 'idBitLength >= 0', 'material_length >= 0', 'j >= 0', 'j <= idBitLength / 8', 'j <= material_length', '(j <= idBitLength / 8) || (j < material_length)', 'j < idBitLength / 8 + 1', '((j <= idBitLength / 8)) || ((j <= material_length))', 'j <= (idBitLength / 8) * 2', 'j <= (idBitLength / 8)', '(j <= (material_length - 1)) || (j <= (idBitLength / 8))', 'j / 4 <= idBitLength / 32', '((j < (idBitLength/8))) || (((j/4) <= (idBitLength/32)))']
+04:11:34 26/03/2025 Verifying formula: (and (and (and (and (and (and (and (and (and (and (and (and (and (= nlen (/ idBitLength 32)) (>= idBitLength 0)) (>= material_length 0)) (>= j 0)) (<= j (/ idBitLength 8))) (<= j material_length)) (or (<= j (/ idBitLength 8)) (< j material_length))) (< j (+ (/ idBitLength 8) 1))) (or (<= j (/ idBitLength 8)) (<= j material_length))) (<= j (* (/ idBitLength 8) 2))) (<= j (/ idBitLength 8))) (or (<= j (- material_length 1)) (<= j (/ idBitLength 8)))) (<= (/ j 4) (/ idBitLength 32))) (or (< j (/ idBitLength 8)) (<= (/ j 4) (/ idBitLength 32))))
+04:11:34 26/03/2025 For candidate: assert((nlen == idBitLength / 32) && (idBitLength >= 0) && (material_length >= 0) && (j >= 0) && (j <= idBitLength / 8) && (j <= material_length) && ((j <= idBitLength / 8) || (j < material_length)) && (j < idBitLength / 8 + 1) && (((j <= idBitLength / 8)) || ((j <= material_length))) && (j <= (idBitLength / 8) * 2) && (j <= (idBitLength / 8)) && ((j <= (material_length - 1)) || (j <= (idBitLength / 8))) && (j / 4 <= idBitLength / 32) && (((j < (idBitLength/8))) || (((j/4) <= (idBitLength/32)))))
+04:11:34 26/03/2025 Timeout while verifying candidate
+04:11:34 26/03/2025 Generating loop invariants candidates with model o3-mini and presence penalty 0.197375320224904
+04:11:34 26/03/2025 Generated 5 candidates
+04:11:34 26/03/2025 Verifying generated candidates
+04:11:34 26/03/2025 Verifying candidate: assert(nlen == idBitLength/32);
+04:11:34 26/03/2025 Candidate failed verification
+04:11:34 26/03/2025 Adding candidate to fail history: assert(nlen == idBitLength/32);
+04:11:34 26/03/2025 Verifying candidate: assert(idBitLength >= 0);
+04:11:34 26/03/2025 Candidate already in fail history: assert(idBitLength >= 0);
+04:11:34 26/03/2025 Verifying candidate: assert(material_length >= 0);
+04:11:34 26/03/2025 Candidate already in fail history: assert(material_length >= 0);
+04:11:34 26/03/2025 Verifying candidate: assert(j <= (material_length <= idBitLength/8 ? material_length : idBitLength/8));
+04:11:34 26/03/2025 Invalid candidate syntax
+04:11:34 26/03/2025 Resetting generator
+04:11:34 26/03/2025 Generating loop invariants candidates with model deepseek-reasoner and presence penalty 0.0
+04:11:34 26/03/2025 Generated 5 candidates
+04:11:34 26/03/2025 Verifying generated candidates
+04:11:34 26/03/2025 Verifying candidate: assert(nlen == idBitLength / 32);
+04:11:34 26/03/2025 Candidate failed verification
+04:11:34 26/03/2025 Adding candidate to fail history: assert(nlen == idBitLength / 32);
+04:11:34 26/03/2025 Verifying candidate: assert(idBitLength >= 0);
+04:11:34 26/03/2025 Candidate failed verification
+04:11:34 26/03/2025 Adding candidate to fail history: assert(idBitLength >= 0);
+04:11:34 26/03/2025 Verifying candidate: assert(material_length >= 0);
+04:11:34 26/03/2025 Candidate failed verification
+04:11:34 26/03/2025 Adding candidate to fail history: assert(material_length >= 0);
+04:11:34 26/03/2025 Verifying candidate: assert(j <= idBitLength / 8);
+04:11:34 26/03/2025 Candidate failed verification
+04:11:34 26/03/2025 Adding candidate to fail history: assert(j <= idBitLength / 8);
+04:11:34 26/03/2025 Verifying candidate: assert(j <= material_length);
+04:11:34 26/03/2025 Candidate failed verification
+04:11:34 26/03/2025 Adding candidate to fail history: assert(j <= material_length);
+04:11:34 26/03/2025 Executing predicate filtering
+04:11:34 26/03/2025 Filtering predicates for candidate assert(nlen == idBitLength / 32);
+04:11:34 26/03/2025 Filtering predicates for candidate assert(idBitLength >= 0);
+04:11:34 26/03/2025 Filtering predicates for candidate assert(material_length >= 0);
+04:11:34 26/03/2025 Filtering predicates for candidate assert(j <= idBitLength / 8);
+04:11:34 26/03/2025 Filtering predicates for candidate assert(j <= material_length);
+04:11:34 26/03/2025 Predicate filtering verify set: ['nlen == idBitLength / 32', 'idBitLength >= 0', 'material_length >= 0', 'j >= 0', 'j <= idBitLength / 8', 'j <= material_length', '(j <= idBitLength / 8) || (j < material_length)', 'j < idBitLength / 8 + 1', '((j <= idBitLength / 8)) || ((j <= material_length))', 'j <= (idBitLength / 8) * 2', 'j <= (idBitLength / 8)', '(j <= (material_length - 1)) || (j <= (idBitLength / 8))', 'j / 4 <= idBitLength / 32', '((j < (idBitLength/8))) || (((j/4) <= (idBitLength/32)))']
+04:11:34 26/03/2025 Generating loop invariants candidates with model deepseek-reasoner and presence penalty 0.0
+04:11:34 26/03/2025 Generated 7 candidates
+04:11:34 26/03/2025 Verifying generated candidates
+04:11:34 26/03/2025 Verifying candidate: assert(nlen == idBitLength / 32);
+04:11:34 26/03/2025 Candidate already in fail history: assert(nlen == idBitLength / 32);
+04:11:34 26/03/2025 Verifying candidate: assert(idBitLength >= 0);
+04:11:34 26/03/2025 Candidate already in fail history: assert(idBitLength >= 0);
+04:11:34 26/03/2025 Verifying candidate: assert(material_length >= 0);
+04:11:34 26/03/2025 Candidate already in fail history: assert(material_length >= 0);
+04:11:34 26/03/2025 Verifying candidate: assert(j >= 0);
+04:11:34 26/03/2025 Candidate failed verification
+04:11:34 26/03/2025 Adding candidate to fail history: assert(j >= 0);
+04:11:34 26/03/2025 Verifying candidate: assert(j <= idBitLength / 8);
+04:11:34 26/03/2025 Candidate already in fail history: assert(j <= idBitLength / 8);
+04:11:34 26/03/2025 Verifying candidate: assert(j <= material_length);
+04:11:34 26/03/2025 Candidate already in fail history: assert(j <= material_length);
+04:11:34 26/03/2025 Verifying candidate: assert(j / 4 <= nlen);
+04:11:34 26/03/2025 Candidate failed verification
+04:11:34 26/03/2025 Adding candidate to fail history: assert(j / 4 <= nlen);
+04:11:34 26/03/2025 Executing predicate filtering
+04:11:34 26/03/2025 Filtering predicates for candidate assert(nlen == idBitLength / 32);
+04:11:34 26/03/2025 Filtering predicates for candidate assert(idBitLength >= 0);
+04:11:34 26/03/2025 Filtering predicates for candidate assert(material_length >= 0);
+04:11:34 26/03/2025 Filtering predicates for candidate assert(j >= 0);
+04:11:34 26/03/2025 Filtering predicates for candidate assert(j <= idBitLength / 8);
+04:11:34 26/03/2025 Filtering predicates for candidate assert(j <= material_length);
+04:11:34 26/03/2025 Filtering predicates for candidate assert(j / 4 <= nlen);
+04:11:34 26/03/2025 Addind predicate j / 4 <= nlen to verify set
+04:11:34 26/03/2025 Predicate filtering verify set: ['nlen == idBitLength / 32', 'idBitLength >= 0', 'material_length >= 0', 'j >= 0', 'j <= idBitLength / 8', 'j <= material_length', '(j <= idBitLength / 8) || (j < material_length)', 'j < idBitLength / 8 + 1', '((j <= idBitLength / 8)) || ((j <= material_length))', 'j <= (idBitLength / 8) * 2', 'j <= (idBitLength / 8)', '(j <= (material_length - 1)) || (j <= (idBitLength / 8))', 'j / 4 <= idBitLength / 32', '((j < (idBitLength/8))) || (((j/4) <= (idBitLength/32)))', 'j / 4 <= nlen']
+04:11:34 26/03/2025 Verifying formula: (and (and (and (and (and (and (and (and (and (and (and (and (and (and (= nlen (/ idBitLength 32)) (>= idBitLength 0)) (>= material_length 0)) (>= j 0)) (<= j (/ idBitLength 8))) (<= j material_length)) (or (<= j (/ idBitLength 8)) (< j material_length))) (< j (+ (/ idBitLength 8) 1))) (or (<= j (/ idBitLength 8)) (<= j material_length))) (<= j (* (/ idBitLength 8) 2))) (<= j (/ idBitLength 8))) (or (<= j (- material_length 1)) (<= j (/ idBitLength 8)))) (<= (/ j 4) (/ idBitLength 32))) (or (< j (/ idBitLength 8)) (<= (/ j 4) (/ idBitLength 32)))) (<= (/ j 4) nlen))
+04:11:34 26/03/2025 For candidate: assert((nlen == idBitLength / 32) && (idBitLength >= 0) && (material_length >= 0) && (j >= 0) && (j <= idBitLength / 8) && (j <= material_length) && ((j <= idBitLength / 8) || (j < material_length)) && (j < idBitLength / 8 + 1) && (((j <= idBitLength / 8)) || ((j <= material_length))) && (j <= (idBitLength / 8) * 2) && (j <= (idBitLength / 8)) && ((j <= (material_length - 1)) || (j <= (idBitLength / 8))) && (j / 4 <= idBitLength / 32) && (((j < (idBitLength/8))) || (((j/4) <= (idBitLength/32)))) && (j / 4 <= nlen))
+04:11:34 26/03/2025 Timeout while verifying candidate
+04:11:34 26/03/2025 # Result
+04:11:34 26/03/2025 No solution found
+04:11:34 26/03/2025 7 counter examples were generated for the model proposals, with 5 repeated fails
+04:11:34 26/03/2025 The model runtime was 654.5804717540741 seconds
+04:11:34 26/03/2025 The total runtime was 884.9477515220642 seconds

@@ -1,0 +1,17 @@
+02:02:31 26/03/2025 Resetting generator
+02:02:31 26/03/2025 # Run Benchmark 108
+02:02:31 26/03/2025 Executing predicate filtering for preconditions
+02:02:31 26/03/2025 Filtering predicates for candidate assert(j == 0)
+02:02:31 26/03/2025 Addind predicate j == 0 to verify set
+02:02:31 26/03/2025 Filtering predicates for candidate assert(k == 0)
+02:02:31 26/03/2025 Filtering predicates for candidate assert(a <= m)
+02:02:31 26/03/2025 Addind predicate a <= m to verify set
+02:02:31 26/03/2025 Predicate filtering verify set: ['j == 0', 'a <= m']
+02:02:31 26/03/2025 Verifying formula: (and (= j 0) (<= a m))
+02:02:31 26/03/2025 For candidate: assert((j == 0) && (a <= m))
+02:02:31 26/03/2025 Predicate filtering found solution: assert((j == 0) && (a <= m))
+02:02:31 26/03/2025 # Result
+02:02:31 26/03/2025 Solution found by the predicate filtering mechanism using the None model: assert((j == 0) && (a <= m))
+02:02:31 26/03/2025 0 counter examples were generated for the model proposals, with 0 repeated fails
+02:02:31 26/03/2025 The model runtime was 0.0 seconds
+02:02:31 26/03/2025 The total runtime was 0.8466994762420654 seconds

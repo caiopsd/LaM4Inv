@@ -1,0 +1,18 @@
+05:22:14 26/03/2025 Resetting generator
+05:22:14 26/03/2025 # Run Benchmark 286
+05:22:14 26/03/2025 Executing predicate filtering for preconditions
+05:22:14 26/03/2025 Filtering predicates for candidate assert(x == y)
+05:22:14 26/03/2025 Addind predicate x == y to verify set
+05:22:14 26/03/2025 Filtering predicates for candidate assert(x >= 0)
+05:22:14 26/03/2025 Addind predicate x >= 0 to verify set
+05:22:14 26/03/2025 Filtering predicates for candidate assert(x + y + z == 0)
+05:22:14 26/03/2025 Addind predicate x + y + z == 0 to verify set
+05:22:14 26/03/2025 Predicate filtering verify set: ['x == y', 'x >= 0', 'x + y + z == 0']
+05:22:14 26/03/2025 Verifying formula: (and (and (= x y) (>= x 0)) (= (+ (+ x y) z) 0))
+05:22:14 26/03/2025 For candidate: assert((x == y) && (x >= 0) && (x + y + z == 0))
+05:22:14 26/03/2025 Predicate filtering found solution: assert((x == y) && (x >= 0) && (x + y + z == 0))
+05:22:14 26/03/2025 # Result
+05:22:14 26/03/2025 Solution found by the predicate filtering mechanism using the None model: assert((x == y) && (x >= 0) && (x + y + z == 0))
+05:22:14 26/03/2025 0 counter examples were generated for the model proposals, with 0 repeated fails
+05:22:14 26/03/2025 The model runtime was 0.0 seconds
+05:22:14 26/03/2025 The total runtime was 1.1722972393035889 seconds

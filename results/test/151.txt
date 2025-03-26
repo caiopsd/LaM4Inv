@@ -1,0 +1,60 @@
+02:12:47 26/03/2025 Resetting generator
+02:12:47 26/03/2025 # Run Benchmark 151
+02:12:47 26/03/2025 Executing predicate filtering for preconditions
+02:12:47 26/03/2025 Filtering predicates for candidate assert(x == 0)
+02:12:47 26/03/2025 Filtering predicates for candidate assert(y == 0)
+02:12:47 26/03/2025 Predicate filtering verify set: []
+02:12:47 26/03/2025 Generating loop invariants candidates with model gpt-4o and presence penalty 0.0
+02:12:47 26/03/2025 Generated 3 candidates
+02:12:47 26/03/2025 Verifying generated candidates
+02:12:47 26/03/2025 Verifying candidate: assert(x >= 0);
+02:12:47 26/03/2025 Candidate failed verification
+02:12:47 26/03/2025 Adding candidate to fail history: assert(x >= 0);
+02:12:47 26/03/2025 Verifying candidate: assert(x <= 5);
+02:12:47 26/03/2025 Candidate failed verification
+02:12:47 26/03/2025 Adding candidate to fail history: assert(x <= 5);
+02:12:47 26/03/2025 Verifying candidate: assert(x < 4 || y > 2);
+02:12:47 26/03/2025 Candidate failed verification
+02:12:47 26/03/2025 Adding candidate to fail history: assert(x < 4 || y > 2);
+02:12:47 26/03/2025 Executing predicate filtering
+02:12:47 26/03/2025 Filtering predicates for candidate assert(x >= 0);
+02:12:47 26/03/2025 Addind predicate x >= 0 to verify set
+02:12:47 26/03/2025 Filtering predicates for candidate assert(x <= 5);
+02:12:47 26/03/2025 Filtering predicates for candidate assert(x < 4 || y > 2);
+02:12:47 26/03/2025 Addind predicate (x < 4) || (y > 2) to verify set
+02:12:47 26/03/2025 Predicate filtering verify set: ['x >= 0', '(x < 4) || (y > 2)']
+02:12:47 26/03/2025 Verifying formula: (and (>= x 0) (or (< x 4) (> y 2)))
+02:12:47 26/03/2025 For candidate: assert((x >= 0) && ((x < 4) || (y > 2)))
+02:12:47 26/03/2025 Resetting generator
+02:12:47 26/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.0
+02:12:47 26/03/2025 Generated 4 candidates
+02:12:47 26/03/2025 Verifying generated candidates
+02:12:47 26/03/2025 Verifying candidate: assert(x >= 0);
+02:12:47 26/03/2025 Candidate failed verification
+02:12:47 26/03/2025 Adding candidate to fail history: assert(x >= 0);
+02:12:47 26/03/2025 Verifying candidate: assert(y >= 0);
+02:12:47 26/03/2025 Candidate failed verification
+02:12:47 26/03/2025 Adding candidate to fail history: assert(y >= 0);
+02:12:47 26/03/2025 Verifying candidate: assert(x <= 4 || y > 2);
+02:12:47 26/03/2025 Candidate failed verification
+02:12:47 26/03/2025 Adding candidate to fail history: assert(x <= 4 || y > 2);
+02:12:47 26/03/2025 Verifying candidate: assert(x >= 4 || y >= 100 * x);
+02:12:47 26/03/2025 Candidate failed verification
+02:12:47 26/03/2025 Adding candidate to fail history: assert(x >= 4 || y >= 100 * x);
+02:12:47 26/03/2025 Executing predicate filtering
+02:12:47 26/03/2025 Filtering predicates for candidate assert(x >= 0);
+02:12:47 26/03/2025 Filtering predicates for candidate assert(y >= 0);
+02:12:47 26/03/2025 Addind predicate y >= 0 to verify set
+02:12:47 26/03/2025 Filtering predicates for candidate assert(x <= 4 || y > 2);
+02:12:47 26/03/2025 Addind predicate (x <= 4) || (y > 2) to verify set
+02:12:47 26/03/2025 Filtering predicates for candidate assert(x >= 4 || y >= 100 * x);
+02:12:47 26/03/2025 Addind predicate (x >= 4) || (y >= 100 * x) to verify set
+02:12:47 26/03/2025 Predicate filtering verify set: ['x >= 0', '(x < 4) || (y > 2)', 'y >= 0', '(x <= 4) || (y > 2)', '(x >= 4) || (y >= 100 * x)']
+02:12:47 26/03/2025 Verifying formula: (and (and (and (and (>= x 0) (or (< x 4) (> y 2))) (>= y 0)) (or (<= x 4) (> y 2))) (or (>= x 4) (>= y (* 100 x))))
+02:12:47 26/03/2025 For candidate: assert((x >= 0) && ((x < 4) || (y > 2)) && (y >= 0) && ((x <= 4) || (y > 2)) && ((x >= 4) || (y >= 100 * x)))
+02:12:47 26/03/2025 Predicate filtering found solution: assert((x >= 0) && ((x < 4) || (y > 2)) && (y >= 0) && ((x <= 4) || (y > 2)) && ((x >= 4) || (y >= 100 * x)))
+02:12:47 26/03/2025 # Result
+02:12:47 26/03/2025 Solution found by the predicate filtering mechanism using the gpt-4o-mini model: assert((x >= 0) && ((x < 4) || (y > 2)) && (y >= 0) && ((x <= 4) || (y > 2)) && ((x >= 4) || (y >= 100 * x)))
+02:12:47 26/03/2025 4 counter examples were generated for the model proposals, with 0 repeated fails
+02:12:47 26/03/2025 The model runtime was 4.145182847976685 seconds
+02:12:47 26/03/2025 The total runtime was 6.796821355819702 seconds

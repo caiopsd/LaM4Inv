@@ -1,0 +1,34 @@
+02:11:36 26/03/2025 Resetting generator
+02:11:36 26/03/2025 # Run Benchmark 148
+02:11:36 26/03/2025 Executing predicate filtering for preconditions
+02:11:36 26/03/2025 Filtering predicates for candidate assert(x == 1)
+02:11:36 26/03/2025 Filtering predicates for candidate assert(y == 1)
+02:11:36 26/03/2025 Predicate filtering verify set: []
+02:11:36 26/03/2025 Generating loop invariants candidates with model gpt-4o and presence penalty 0.0
+02:11:36 26/03/2025 Generated 3 candidates
+02:11:36 26/03/2025 Verifying generated candidates
+02:11:36 26/03/2025 Verifying candidate: assert(x >= 1);
+02:11:36 26/03/2025 Candidate failed verification
+02:11:36 26/03/2025 Adding candidate to fail history: assert(x >= 1);
+02:11:36 26/03/2025 Verifying candidate: assert(y >= 1);
+02:11:36 26/03/2025 Candidate failed verification
+02:11:36 26/03/2025 Adding candidate to fail history: assert(y >= 1);
+02:11:36 26/03/2025 Verifying candidate: assert(y >= x);
+02:11:36 26/03/2025 Candidate failed verification
+02:11:36 26/03/2025 Adding candidate to fail history: assert(y >= x);
+02:11:36 26/03/2025 Executing predicate filtering
+02:11:36 26/03/2025 Filtering predicates for candidate assert(x >= 1);
+02:11:36 26/03/2025 Addind predicate x >= 1 to verify set
+02:11:36 26/03/2025 Filtering predicates for candidate assert(y >= 1);
+02:11:36 26/03/2025 Addind predicate y >= 1 to verify set
+02:11:36 26/03/2025 Filtering predicates for candidate assert(y >= x);
+02:11:36 26/03/2025 Addind predicate y >= x to verify set
+02:11:36 26/03/2025 Predicate filtering verify set: ['x >= 1', 'y >= 1', 'y >= x']
+02:11:36 26/03/2025 Verifying formula: (and (and (>= x 1) (>= y 1)) (>= y x))
+02:11:36 26/03/2025 For candidate: assert((x >= 1) && (y >= 1) && (y >= x))
+02:11:36 26/03/2025 Predicate filtering found solution: assert((x >= 1) && (y >= 1) && (y >= x))
+02:11:36 26/03/2025 # Result
+02:11:36 26/03/2025 Solution found by the predicate filtering mechanism using the gpt-4o model: assert((x >= 1) && (y >= 1) && (y >= x))
+02:11:36 26/03/2025 3 counter examples were generated for the model proposals, with 0 repeated fails
+02:11:36 26/03/2025 The model runtime was 2.5185606479644775 seconds
+02:11:36 26/03/2025 The total runtime was 2.7950146198272705 seconds

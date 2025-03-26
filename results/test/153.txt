@@ -1,0 +1,347 @@
+02:14:26 26/03/2025 Resetting generator
+02:14:26 26/03/2025 # Run Benchmark 153
+02:14:26 26/03/2025 Executing predicate filtering for preconditions
+02:14:26 26/03/2025 Filtering predicates for candidate assert(w == 1)
+02:14:26 26/03/2025 Filtering predicates for candidate assert(z == 0)
+02:14:26 26/03/2025 Filtering predicates for candidate assert(x == 0)
+02:14:26 26/03/2025 Filtering predicates for candidate assert(y == 0)
+02:14:26 26/03/2025 Predicate filtering verify set: []
+02:14:26 26/03/2025 Generating loop invariants candidates with model gpt-4o and presence penalty 0.0
+02:14:26 26/03/2025 Generated 4 candidates
+02:14:26 26/03/2025 Verifying generated candidates
+02:14:26 26/03/2025 Verifying candidate: assert(w == 1 || w == 0);
+02:14:26 26/03/2025 Candidate failed verification
+02:14:26 26/03/2025 Adding candidate to fail history: assert(w == 1 || w == 0);
+02:14:26 26/03/2025 Verifying candidate: assert(z == 0 || z == 1);
+02:14:26 26/03/2025 Candidate failed verification
+02:14:26 26/03/2025 Adding candidate to fail history: assert(z == 0 || z == 1);
+02:14:26 26/03/2025 Verifying candidate: assert((w == 1 && z == 0) || (w != 1 && z == 1));
+02:14:26 26/03/2025 Candidate failed verification
+02:14:26 26/03/2025 Adding candidate to fail history: assert((w == 1 && z == 0) || (w != 1 && z == 1));
+02:14:26 26/03/2025 Verifying candidate: assert(x + w == y + z);
+02:14:26 26/03/2025 Candidate failed verification
+02:14:26 26/03/2025 Adding candidate to fail history: assert(x + w == y + z);
+02:14:26 26/03/2025 Executing predicate filtering
+02:14:26 26/03/2025 Filtering predicates for candidate assert(w == 1 || w == 0);
+02:14:26 26/03/2025 Addind predicate (w == 1) || (w == 0) to verify set
+02:14:26 26/03/2025 Filtering predicates for candidate assert(z == 0 || z == 1);
+02:14:26 26/03/2025 Addind predicate (z == 0) || (z == 1) to verify set
+02:14:26 26/03/2025 Filtering predicates for candidate assert((w == 1 && z == 0) || (w != 1 && z == 1));
+02:14:26 26/03/2025 Addind predicate ((w == 1 && z == 0)) || ((w != 1 && z == 1)) to verify set
+02:14:26 26/03/2025 Filtering predicates for candidate assert(x + w == y + z);
+02:14:26 26/03/2025 Predicate filtering verify set: ['(w == 1) || (w == 0)', '(z == 0) || (z == 1)', '((w == 1 && z == 0)) || ((w != 1 && z == 1))']
+02:14:26 26/03/2025 Verifying formula: (and (and (or (= w 1) (= w 0)) (or (= z 0) (= z 1))) (or (and (= w 1) (= z 0)) (and (distinct w 1) (= z 1))))
+02:14:26 26/03/2025 For candidate: assert(((w == 1) || (w == 0)) && ((z == 0) || (z == 1)) && (((w == 1 && z == 0)) || ((w != 1 && z == 1))))
+02:14:26 26/03/2025 Resetting generator
+02:14:26 26/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.0
+02:14:26 26/03/2025 Generated 5 candidates
+02:14:26 26/03/2025 Verifying generated candidates
+02:14:26 26/03/2025 Verifying candidate: assert(w == 1 || z == 0 || (x == y && z == 1));
+02:14:26 26/03/2025 Candidate failed verification
+02:14:26 26/03/2025 Adding candidate to fail history: assert(w == 1 || z == 0 || (x == y && z == 1));
+02:14:26 26/03/2025 Verifying candidate: assert(x >= 0);
+02:14:26 26/03/2025 Candidate failed verification
+02:14:26 26/03/2025 Adding candidate to fail history: assert(x >= 0);
+02:14:26 26/03/2025 Verifying candidate: assert(y >= 0);
+02:14:26 26/03/2025 Candidate failed verification
+02:14:26 26/03/2025 Adding candidate to fail history: assert(y >= 0);
+02:14:26 26/03/2025 Verifying candidate: assert(w == 1 || w == 0);
+02:14:26 26/03/2025 Candidate failed verification
+02:14:26 26/03/2025 Adding candidate to fail history: assert(w == 1 || w == 0);
+02:14:26 26/03/2025 Verifying candidate: assert(z == 0 || z == 1);
+02:14:26 26/03/2025 Candidate failed verification
+02:14:26 26/03/2025 Adding candidate to fail history: assert(z == 0 || z == 1);
+02:14:26 26/03/2025 Executing predicate filtering
+02:14:26 26/03/2025 Filtering predicates for candidate assert(w == 1 || z == 0 || (x == y && z == 1));
+02:14:26 26/03/2025 Addind predicate (w == 1) || (z == 0) || ((x == y && z == 1)) to verify set
+02:14:26 26/03/2025 Filtering predicates for candidate assert(x >= 0);
+02:14:26 26/03/2025 Addind predicate x >= 0 to verify set
+02:14:26 26/03/2025 Filtering predicates for candidate assert(y >= 0);
+02:14:26 26/03/2025 Addind predicate y >= 0 to verify set
+02:14:26 26/03/2025 Filtering predicates for candidate assert(w == 1 || w == 0);
+02:14:26 26/03/2025 Filtering predicates for candidate assert(z == 0 || z == 1);
+02:14:26 26/03/2025 Predicate filtering verify set: ['(w == 1) || (w == 0)', '(z == 0) || (z == 1)', '((w == 1 && z == 0)) || ((w != 1 && z == 1))', '(w == 1) || (z == 0) || ((x == y && z == 1))', 'x >= 0', 'y >= 0']
+02:14:26 26/03/2025 Verifying formula: (and (and (and (and (and (or (= w 1) (= w 0)) (or (= z 0) (= z 1))) (or (and (= w 1) (= z 0)) (and (distinct w 1) (= z 1)))) (or (or (= w 1) (= z 0)) (and (= x y) (= z 1)))) (>= x 0)) (>= y 0))
+02:14:26 26/03/2025 For candidate: assert(((w == 1) || (w == 0)) && ((z == 0) || (z == 1)) && (((w == 1 && z == 0)) || ((w != 1 && z == 1))) && ((w == 1) || (z == 0) || ((x == y && z == 1))) && (x >= 0) && (y >= 0))
+02:14:26 26/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.0
+02:14:26 26/03/2025 Generated 4 candidates
+02:14:26 26/03/2025 Verifying generated candidates
+02:14:26 26/03/2025 Verifying candidate: assert(x >= 0);
+02:14:26 26/03/2025 Candidate already in fail history: assert(x >= 0);
+02:14:26 26/03/2025 Verifying candidate: assert(y >= 0);
+02:14:26 26/03/2025 Candidate already in fail history: assert(y >= 0);
+02:14:26 26/03/2025 Verifying candidate: assert(z == 0 || z == 1);
+02:14:26 26/03/2025 Candidate already in fail history: assert(z == 0 || z == 1);
+02:14:26 26/03/2025 Verifying candidate: assert(z == 0 || (w == 1 && x > 0) || (w != 1 && x == y));
+02:14:26 26/03/2025 Candidate failed verification
+02:14:26 26/03/2025 Adding candidate to fail history: assert(z == 0 || (w == 1 && x > 0) || (w != 1 && x == y));
+02:14:26 26/03/2025 Executing predicate filtering
+02:14:26 26/03/2025 Filtering predicates for candidate assert(x >= 0);
+02:14:26 26/03/2025 Filtering predicates for candidate assert(y >= 0);
+02:14:26 26/03/2025 Filtering predicates for candidate assert(z == 0 || z == 1);
+02:14:26 26/03/2025 Filtering predicates for candidate assert(z == 0 || (w == 1 && x > 0) || (w != 1 && x == y));
+02:14:26 26/03/2025 Addind predicate (z == 0) || ((w != 1 && x == y)) to verify set
+02:14:26 26/03/2025 Predicate filtering verify set: ['(w == 1) || (w == 0)', '(z == 0) || (z == 1)', '((w == 1 && z == 0)) || ((w != 1 && z == 1))', '(w == 1) || (z == 0) || ((x == y && z == 1))', 'x >= 0', 'y >= 0', '(z == 0) || ((w != 1 && x == y))']
+02:14:26 26/03/2025 Verifying formula: (and (and (and (and (and (and (or (= w 1) (= w 0)) (or (= z 0) (= z 1))) (or (and (= w 1) (= z 0)) (and (distinct w 1) (= z 1)))) (or (or (= w 1) (= z 0)) (and (= x y) (= z 1)))) (>= x 0)) (>= y 0)) (or (= z 0) (and (distinct w 1) (= x y))))
+02:14:26 26/03/2025 For candidate: assert(((w == 1) || (w == 0)) && ((z == 0) || (z == 1)) && (((w == 1 && z == 0)) || ((w != 1 && z == 1))) && ((w == 1) || (z == 0) || ((x == y && z == 1))) && (x >= 0) && (y >= 0) && ((z == 0) || ((w != 1 && x == y))))
+02:14:26 26/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.5370495669980354
+02:14:26 26/03/2025 Generated 3 candidates
+02:14:26 26/03/2025 Verifying generated candidates
+02:14:26 26/03/2025 Verifying candidate: assert(z == 0 || z == 1);
+02:14:26 26/03/2025 Candidate already in fail history: assert(z == 0 || z == 1);
+02:14:26 26/03/2025 Verifying candidate: assert(w == 1 || w == 0);
+02:14:26 26/03/2025 Candidate already in fail history: assert(w == 1 || w == 0);
+02:14:26 26/03/2025 Verifying candidate: assert(x == y || (w == 1 && z == 0));
+02:14:26 26/03/2025 Candidate failed verification
+02:14:26 26/03/2025 Adding candidate to fail history: assert(x == y || (w == 1 && z == 0));
+02:14:26 26/03/2025 Executing predicate filtering
+02:14:26 26/03/2025 Filtering predicates for candidate assert(z == 0 || z == 1);
+02:14:26 26/03/2025 Filtering predicates for candidate assert(w == 1 || w == 0);
+02:14:26 26/03/2025 Filtering predicates for candidate assert(x == y || (w == 1 && z == 0));
+02:14:26 26/03/2025 Addind predicate (x == y) || ((w == 1 && z == 0)) to verify set
+02:14:26 26/03/2025 Predicate filtering verify set: ['(w == 1) || (w == 0)', '(z == 0) || (z == 1)', '((w == 1 && z == 0)) || ((w != 1 && z == 1))', '(w == 1) || (z == 0) || ((x == y && z == 1))', 'x >= 0', 'y >= 0', '(z == 0) || ((w != 1 && x == y))', '(x == y) || ((w == 1 && z == 0))']
+02:14:26 26/03/2025 Verifying formula: (and (and (and (and (and (and (and (or (= w 1) (= w 0)) (or (= z 0) (= z 1))) (or (and (= w 1) (= z 0)) (and (distinct w 1) (= z 1)))) (or (or (= w 1) (= z 0)) (and (= x y) (= z 1)))) (>= x 0)) (>= y 0)) (or (= z 0) (and (distinct w 1) (= x y)))) (or (= x y) (and (= w 1) (= z 0))))
+02:14:26 26/03/2025 For candidate: assert(((w == 1) || (w == 0)) && ((z == 0) || (z == 1)) && (((w == 1 && z == 0)) || ((w != 1 && z == 1))) && ((w == 1) || (z == 0) || ((x == y && z == 1))) && (x >= 0) && (y >= 0) && ((z == 0) || ((w != 1 && x == y))) && ((x == y) || ((w == 1 && z == 0))))
+02:14:26 26/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.7615941559557649
+02:14:26 26/03/2025 Generated 4 candidates
+02:14:26 26/03/2025 Verifying generated candidates
+02:14:26 26/03/2025 Verifying candidate: assert(w == 1 || z == 0);
+02:14:26 26/03/2025 Candidate failed verification
+02:14:26 26/03/2025 Adding candidate to fail history: assert(w == 1 || z == 0);
+02:14:26 26/03/2025 Verifying candidate: assert(z == 0 || (w != 1 && y > 0));
+02:14:26 26/03/2025 Candidate failed verification
+02:14:26 26/03/2025 Adding candidate to fail history: assert(z == 0 || (w != 1 && y > 0));
+02:14:26 26/03/2025 Verifying candidate: assert(x >= 0);
+02:14:26 26/03/2025 Candidate already in fail history: assert(x >= 0);
+02:14:26 26/03/2025 Verifying candidate: assert(y >= 0);
+02:14:26 26/03/2025 Candidate already in fail history: assert(y >= 0);
+02:14:26 26/03/2025 Executing predicate filtering
+02:14:26 26/03/2025 Filtering predicates for candidate assert(w == 1 || z == 0);
+02:14:26 26/03/2025 Filtering predicates for candidate assert(z == 0 || (w != 1 && y > 0));
+02:14:26 26/03/2025 Addind predicate (z == 0) || ((w != 1 && y > 0)) to verify set
+02:14:26 26/03/2025 Filtering predicates for candidate assert(x >= 0);
+02:14:26 26/03/2025 Filtering predicates for candidate assert(y >= 0);
+02:14:26 26/03/2025 Predicate filtering verify set: ['(w == 1) || (w == 0)', '(z == 0) || (z == 1)', '((w == 1 && z == 0)) || ((w != 1 && z == 1))', '(w == 1) || (z == 0) || ((x == y && z == 1))', 'x >= 0', 'y >= 0', '(z == 0) || ((w != 1 && x == y))', '(x == y) || ((w == 1 && z == 0))', '(z == 0) || ((w != 1 && y > 0))']
+02:14:26 26/03/2025 Verifying formula: (and (and (and (and (and (and (and (and (or (= w 1) (= w 0)) (or (= z 0) (= z 1))) (or (and (= w 1) (= z 0)) (and (distinct w 1) (= z 1)))) (or (or (= w 1) (= z 0)) (and (= x y) (= z 1)))) (>= x 0)) (>= y 0)) (or (= z 0) (and (distinct w 1) (= x y)))) (or (= x y) (and (= w 1) (= z 0)))) (or (= z 0) (and (distinct w 1) (> y 0))))
+02:14:26 26/03/2025 For candidate: assert(((w == 1) || (w == 0)) && ((z == 0) || (z == 1)) && (((w == 1 && z == 0)) || ((w != 1 && z == 1))) && ((w == 1) || (z == 0) || ((x == y && z == 1))) && (x >= 0) && (y >= 0) && ((z == 0) || ((w != 1 && x == y))) && ((x == y) || ((w == 1 && z == 0))) && ((z == 0) || ((w != 1 && y > 0))))
+02:14:26 26/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.8853516482022625
+02:14:26 26/03/2025 Generated 3 candidates
+02:14:26 26/03/2025 Verifying generated candidates
+02:14:26 26/03/2025 Verifying candidate: assert(z == 0 || (w == 1 && x > 0));
+02:14:26 26/03/2025 Candidate failed verification
+02:14:26 26/03/2025 Adding candidate to fail history: assert(z == 0 || (w == 1 && x > 0));
+02:14:26 26/03/2025 Verifying candidate: assert(w == 1 || w == 0);
+02:14:26 26/03/2025 Candidate already in fail history: assert(w == 1 || w == 0);
+02:14:26 26/03/2025 Verifying candidate: assert(z == 1 || (w == 1 && y > 0));
+02:14:26 26/03/2025 Candidate failed verification
+02:14:26 26/03/2025 Adding candidate to fail history: assert(z == 1 || (w == 1 && y > 0));
+02:14:26 26/03/2025 Executing predicate filtering
+02:14:26 26/03/2025 Filtering predicates for candidate assert(z == 0 || (w == 1 && x > 0));
+02:14:26 26/03/2025 Filtering predicates for candidate assert(w == 1 || w == 0);
+02:14:26 26/03/2025 Filtering predicates for candidate assert(z == 1 || (w == 1 && y > 0));
+02:14:26 26/03/2025 Predicate filtering verify set: ['(w == 1) || (w == 0)', '(z == 0) || (z == 1)', '((w == 1 && z == 0)) || ((w != 1 && z == 1))', '(w == 1) || (z == 0) || ((x == y && z == 1))', 'x >= 0', 'y >= 0', '(z == 0) || ((w != 1 && x == y))', '(x == y) || ((w == 1 && z == 0))', '(z == 0) || ((w != 1 && y > 0))']
+02:14:26 26/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9216685544064713
+02:14:26 26/03/2025 Generated 3 candidates
+02:14:26 26/03/2025 Verifying generated candidates
+02:14:26 26/03/2025 Verifying candidate: assert(w == 1 || z == 0);
+02:14:26 26/03/2025 Candidate already in fail history: assert(w == 1 || z == 0);
+02:14:26 26/03/2025 Verifying candidate: assert(z == 0 || (w == 1 && x > 0) || (w != 1 && y >= 0));
+02:14:26 26/03/2025 Candidate failed verification
+02:14:26 26/03/2025 Adding candidate to fail history: assert(z == 0 || (w == 1 && x > 0) || (w != 1 && y >= 0));
+02:14:26 26/03/2025 Verifying candidate: assert(y == 0 || (x >= 0));
+02:14:26 26/03/2025 Candidate failed verification
+02:14:26 26/03/2025 Adding candidate to fail history: assert(y == 0 || (x >= 0));
+02:14:26 26/03/2025 Executing predicate filtering
+02:14:26 26/03/2025 Filtering predicates for candidate assert(w == 1 || z == 0);
+02:14:26 26/03/2025 Filtering predicates for candidate assert(z == 0 || (w == 1 && x > 0) || (w != 1 && y >= 0));
+02:14:26 26/03/2025 Addind predicate (z == 0) || ((w != 1 && y >= 0)) to verify set
+02:14:26 26/03/2025 Filtering predicates for candidate assert(y == 0 || (x >= 0));
+02:14:26 26/03/2025 Addind predicate (y == 0) || ((x >= 0)) to verify set
+02:14:26 26/03/2025 Predicate filtering verify set: ['(w == 1) || (w == 0)', '(z == 0) || (z == 1)', '((w == 1 && z == 0)) || ((w != 1 && z == 1))', '(w == 1) || (z == 0) || ((x == y && z == 1))', 'x >= 0', 'y >= 0', '(z == 0) || ((w != 1 && x == y))', '(x == y) || ((w == 1 && z == 0))', '(z == 0) || ((w != 1 && y > 0))', '(z == 0) || ((w != 1 && y >= 0))', '(y == 0) || ((x >= 0))']
+02:14:26 26/03/2025 Verifying formula: (and (and (and (and (and (and (and (and (and (and (or (= w 1) (= w 0)) (or (= z 0) (= z 1))) (or (and (= w 1) (= z 0)) (and (distinct w 1) (= z 1)))) (or (or (= w 1) (= z 0)) (and (= x y) (= z 1)))) (>= x 0)) (>= y 0)) (or (= z 0) (and (distinct w 1) (= x y)))) (or (= x y) (and (= w 1) (= z 0)))) (or (= z 0) (and (distinct w 1) (> y 0)))) (or (= z 0) (and (distinct w 1) (>= y 0)))) (or (= y 0) (>= x 0)))
+02:14:26 26/03/2025 For candidate: assert(((w == 1) || (w == 0)) && ((z == 0) || (z == 1)) && (((w == 1 && z == 0)) || ((w != 1 && z == 1))) && ((w == 1) || (z == 0) || ((x == y && z == 1))) && (x >= 0) && (y >= 0) && ((z == 0) || ((w != 1 && x == y))) && ((x == y) || ((w == 1 && z == 0))) && ((z == 0) || ((w != 1 && y > 0))) && ((z == 0) || ((w != 1 && y >= 0))) && ((y == 0) || ((x >= 0))))
+02:14:26 26/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9468060128462683
+02:14:26 26/03/2025 Generated 3 candidates
+02:14:26 26/03/2025 Verifying generated candidates
+02:14:26 26/03/2025 Verifying candidate: assert(x >= 0 || (y == 0 && w == 1));
+02:14:26 26/03/2025 Candidate failed verification
+02:14:26 26/03/2025 Adding candidate to fail history: assert(x >= 0 || (y == 0 && w == 1));
+02:14:26 26/03/2025 Verifying candidate: assert(y == 0 || z != 0);
+02:14:26 26/03/2025 Candidate failed verification
+02:14:26 26/03/2025 Adding candidate to fail history: assert(y == 0 || z != 0);
+02:14:26 26/03/2025 Verifying candidate: assert(z == 0 || (x >= y));
+02:14:26 26/03/2025 Candidate failed verification
+02:14:26 26/03/2025 Adding candidate to fail history: assert(z == 0 || (x >= y));
+02:14:26 26/03/2025 Executing predicate filtering
+02:14:26 26/03/2025 Filtering predicates for candidate assert(x >= 0 || (y == 0 && w == 1));
+02:14:26 26/03/2025 Addind predicate (x >= 0) || ((y == 0 && w == 1)) to verify set
+02:14:26 26/03/2025 Filtering predicates for candidate assert(y == 0 || z != 0);
+02:14:26 26/03/2025 Addind predicate (y == 0) || (z != 0) to verify set
+02:14:26 26/03/2025 Filtering predicates for candidate assert(z == 0 || (x >= y));
+02:14:26 26/03/2025 Addind predicate (z == 0) || ((x >= y)) to verify set
+02:14:26 26/03/2025 Predicate filtering verify set: ['(w == 1) || (w == 0)', '(z == 0) || (z == 1)', '((w == 1 && z == 0)) || ((w != 1 && z == 1))', '(w == 1) || (z == 0) || ((x == y && z == 1))', 'x >= 0', 'y >= 0', '(z == 0) || ((w != 1 && x == y))', '(x == y) || ((w == 1 && z == 0))', '(z == 0) || ((w != 1 && y > 0))', '(z == 0) || ((w != 1 && y >= 0))', '(y == 0) || ((x >= 0))', '(x >= 0) || ((y == 0 && w == 1))', '(y == 0) || (z != 0)', '(z == 0) || ((x >= y))']
+02:14:26 26/03/2025 Verifying formula: (and (and (and (and (and (and (and (and (and (and (and (and (and (or (= w 1) (= w 0)) (or (= z 0) (= z 1))) (or (and (= w 1) (= z 0)) (and (distinct w 1) (= z 1)))) (or (or (= w 1) (= z 0)) (and (= x y) (= z 1)))) (>= x 0)) (>= y 0)) (or (= z 0) (and (distinct w 1) (= x y)))) (or (= x y) (and (= w 1) (= z 0)))) (or (= z 0) (and (distinct w 1) (> y 0)))) (or (= z 0) (and (distinct w 1) (>= y 0)))) (or (= y 0) (>= x 0))) (or (>= x 0) (and (= y 0) (= w 1)))) (or (= y 0) (distinct z 0))) (or (= z 0) (>= x y)))
+02:14:26 26/03/2025 For candidate: assert(((w == 1) || (w == 0)) && ((z == 0) || (z == 1)) && (((w == 1 && z == 0)) || ((w != 1 && z == 1))) && ((w == 1) || (z == 0) || ((x == y && z == 1))) && (x >= 0) && (y >= 0) && ((z == 0) || ((w != 1 && x == y))) && ((x == y) || ((w == 1 && z == 0))) && ((z == 0) || ((w != 1 && y > 0))) && ((z == 0) || ((w != 1 && y >= 0))) && ((y == 0) || ((x >= 0))) && ((x >= 0) || ((y == 0 && w == 1))) && ((y == 0) || (z != 0)) && ((z == 0) || ((x >= y))))
+02:14:26 26/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9468060128462683
+02:14:26 26/03/2025 Generated 4 candidates
+02:14:26 26/03/2025 Verifying generated candidates
+02:14:26 26/03/2025 Verifying candidate: assert(x >= 0);
+02:14:26 26/03/2025 Candidate already in fail history: assert(x >= 0);
+02:14:26 26/03/2025 Verifying candidate: assert(y >= 0);
+02:14:26 26/03/2025 Candidate already in fail history: assert(y >= 0);
+02:14:26 26/03/2025 Verifying candidate: assert(z == 0 || w == 1);
+02:14:26 26/03/2025 Candidate failed verification
+02:14:26 26/03/2025 Adding candidate to fail history: assert(z == 0 || w == 1);
+02:14:26 26/03/2025 Verifying candidate: assert(w == 0 || z == 1);
+02:14:26 26/03/2025 Candidate failed verification
+02:14:26 26/03/2025 Adding candidate to fail history: assert(w == 0 || z == 1);
+02:14:26 26/03/2025 Executing predicate filtering
+02:14:26 26/03/2025 Filtering predicates for candidate assert(x >= 0);
+02:14:26 26/03/2025 Filtering predicates for candidate assert(y >= 0);
+02:14:26 26/03/2025 Filtering predicates for candidate assert(z == 0 || w == 1);
+02:14:26 26/03/2025 Filtering predicates for candidate assert(w == 0 || z == 1);
+02:14:26 26/03/2025 Predicate filtering verify set: ['(w == 1) || (w == 0)', '(z == 0) || (z == 1)', '((w == 1 && z == 0)) || ((w != 1 && z == 1))', '(w == 1) || (z == 0) || ((x == y && z == 1))', 'x >= 0', 'y >= 0', '(z == 0) || ((w != 1 && x == y))', '(x == y) || ((w == 1 && z == 0))', '(z == 0) || ((w != 1 && y > 0))', '(z == 0) || ((w != 1 && y >= 0))', '(y == 0) || ((x >= 0))', '(x >= 0) || ((y == 0 && w == 1))', '(y == 0) || (z != 0)', '(z == 0) || ((x >= y))']
+02:14:26 26/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9757431300314515
+02:14:26 26/03/2025 Generated 3 candidates
+02:14:26 26/03/2025 Verifying generated candidates
+02:14:26 26/03/2025 Verifying candidate: assert(z == 0 || (w == 1 && x > 0));
+02:14:26 26/03/2025 Candidate already in fail history: assert(z == 0 || (w == 1 && x > 0));
+02:14:26 26/03/2025 Verifying candidate: assert(w == 1 || z == 0);
+02:14:26 26/03/2025 Candidate already in fail history: assert(w == 1 || z == 0);
+02:14:26 26/03/2025 Verifying candidate: assert(x + z >= y);
+02:14:26 26/03/2025 Candidate failed verification
+02:14:26 26/03/2025 Adding candidate to fail history: assert(x + z >= y);
+02:14:26 26/03/2025 Executing predicate filtering
+02:14:26 26/03/2025 Filtering predicates for candidate assert(z == 0 || (w == 1 && x > 0));
+02:14:26 26/03/2025 Filtering predicates for candidate assert(w == 1 || z == 0);
+02:14:26 26/03/2025 Filtering predicates for candidate assert(x + z >= y);
+02:14:26 26/03/2025 Addind predicate x + z >= y to verify set
+02:14:26 26/03/2025 Predicate filtering verify set: ['(w == 1) || (w == 0)', '(z == 0) || (z == 1)', '((w == 1 && z == 0)) || ((w != 1 && z == 1))', '(w == 1) || (z == 0) || ((x == y && z == 1))', 'x >= 0', 'y >= 0', '(z == 0) || ((w != 1 && x == y))', '(x == y) || ((w == 1 && z == 0))', '(z == 0) || ((w != 1 && y > 0))', '(z == 0) || ((w != 1 && y >= 0))', '(y == 0) || ((x >= 0))', '(x >= 0) || ((y == 0 && w == 1))', '(y == 0) || (z != 0)', '(z == 0) || ((x >= y))', 'x + z >= y']
+02:14:26 26/03/2025 Verifying formula: (and (and (and (and (and (and (and (and (and (and (and (and (and (and (or (= w 1) (= w 0)) (or (= z 0) (= z 1))) (or (and (= w 1) (= z 0)) (and (distinct w 1) (= z 1)))) (or (or (= w 1) (= z 0)) (and (= x y) (= z 1)))) (>= x 0)) (>= y 0)) (or (= z 0) (and (distinct w 1) (= x y)))) (or (= x y) (and (= w 1) (= z 0)))) (or (= z 0) (and (distinct w 1) (> y 0)))) (or (= z 0) (and (distinct w 1) (>= y 0)))) (or (= y 0) (>= x 0))) (or (>= x 0) (and (= y 0) (= w 1)))) (or (= y 0) (distinct z 0))) (or (= z 0) (>= x y))) (>= (+ x z) y))
+02:14:26 26/03/2025 For candidate: assert(((w == 1) || (w == 0)) && ((z == 0) || (z == 1)) && (((w == 1 && z == 0)) || ((w != 1 && z == 1))) && ((w == 1) || (z == 0) || ((x == y && z == 1))) && (x >= 0) && (y >= 0) && ((z == 0) || ((w != 1 && x == y))) && ((x == y) || ((w == 1 && z == 0))) && ((z == 0) || ((w != 1 && y > 0))) && ((z == 0) || ((w != 1 && y >= 0))) && ((y == 0) || ((x >= 0))) && ((x >= 0) || ((y == 0 && w == 1))) && ((y == 0) || (z != 0)) && ((z == 0) || ((x >= y))) && (x + z >= y))
+02:14:26 26/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9890274022010992
+02:14:26 26/03/2025 Generated 3 candidates
+02:14:26 26/03/2025 Verifying generated candidates
+02:14:26 26/03/2025 Verifying candidate: assert(z == 0 || z == 1);
+02:14:26 26/03/2025 Candidate already in fail history: assert(z == 0 || z == 1);
+02:14:26 26/03/2025 Verifying candidate: assert(w == 0 || w == 1);
+02:14:26 26/03/2025 Candidate failed verification
+02:14:26 26/03/2025 Adding candidate to fail history: assert(w == 0 || w == 1);
+02:14:26 26/03/2025 Verifying candidate: assert(x >= 0 && y >= 0);
+02:14:26 26/03/2025 Candidate failed verification
+02:14:26 26/03/2025 Adding candidate to fail history: assert(x >= 0 && y >= 0);
+02:14:26 26/03/2025 Executing predicate filtering
+02:14:26 26/03/2025 Filtering predicates for candidate assert(z == 0 || z == 1);
+02:14:26 26/03/2025 Filtering predicates for candidate assert(w == 0 || w == 1);
+02:14:26 26/03/2025 Addind predicate (w == 0) || (w == 1) to verify set
+02:14:26 26/03/2025 Filtering predicates for candidate assert(x >= 0 && y >= 0);
+02:14:26 26/03/2025 Predicate filtering verify set: ['(w == 1) || (w == 0)', '(z == 0) || (z == 1)', '((w == 1 && z == 0)) || ((w != 1 && z == 1))', '(w == 1) || (z == 0) || ((x == y && z == 1))', 'x >= 0', 'y >= 0', '(z == 0) || ((w != 1 && x == y))', '(x == y) || ((w == 1 && z == 0))', '(z == 0) || ((w != 1 && y > 0))', '(z == 0) || ((w != 1 && y >= 0))', '(y == 0) || ((x >= 0))', '(x >= 0) || ((y == 0 && w == 1))', '(y == 0) || (z != 0)', '(z == 0) || ((x >= y))', 'x + z >= y', '(w == 0) || (w == 1)']
+02:14:26 26/03/2025 Verifying formula: (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (or (= w 1) (= w 0)) (or (= z 0) (= z 1))) (or (and (= w 1) (= z 0)) (and (distinct w 1) (= z 1)))) (or (or (= w 1) (= z 0)) (and (= x y) (= z 1)))) (>= x 0)) (>= y 0)) (or (= z 0) (and (distinct w 1) (= x y)))) (or (= x y) (and (= w 1) (= z 0)))) (or (= z 0) (and (distinct w 1) (> y 0)))) (or (= z 0) (and (distinct w 1) (>= y 0)))) (or (= y 0) (>= x 0))) (or (>= x 0) (and (= y 0) (= w 1)))) (or (= y 0) (distinct z 0))) (or (= z 0) (>= x y))) (>= (+ x z) y)) (or (= w 0) (= w 1)))
+02:14:26 26/03/2025 For candidate: assert(((w == 1) || (w == 0)) && ((z == 0) || (z == 1)) && (((w == 1 && z == 0)) || ((w != 1 && z == 1))) && ((w == 1) || (z == 0) || ((x == y && z == 1))) && (x >= 0) && (y >= 0) && ((z == 0) || ((w != 1 && x == y))) && ((x == y) || ((w == 1 && z == 0))) && ((z == 0) || ((w != 1 && y > 0))) && ((z == 0) || ((w != 1 && y >= 0))) && ((y == 0) || ((x >= 0))) && ((x >= 0) || ((y == 0 && w == 1))) && ((y == 0) || (z != 0)) && ((z == 0) || ((x >= y))) && (x + z >= y) && ((w == 0) || (w == 1)))
+02:14:26 26/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.992631520201128
+02:14:26 26/03/2025 Generated 3 candidates
+02:14:26 26/03/2025 Verifying generated candidates
+02:14:26 26/03/2025 Verifying candidate: assert(w == 1 || z == 0);
+02:14:26 26/03/2025 Candidate already in fail history: assert(w == 1 || z == 0);
+02:14:26 26/03/2025 Verifying candidate: assert(z == 1 || (w != 1 && y > 0));
+02:14:26 26/03/2025 Candidate failed verification
+02:14:26 26/03/2025 Adding candidate to fail history: assert(z == 1 || (w != 1 && y > 0));
+02:14:26 26/03/2025 Verifying candidate: assert(y <= x + 1);
+02:14:26 26/03/2025 Candidate failed verification
+02:14:26 26/03/2025 Adding candidate to fail history: assert(y <= x + 1);
+02:14:26 26/03/2025 Executing predicate filtering
+02:14:26 26/03/2025 Filtering predicates for candidate assert(w == 1 || z == 0);
+02:14:26 26/03/2025 Filtering predicates for candidate assert(z == 1 || (w != 1 && y > 0));
+02:14:26 26/03/2025 Filtering predicates for candidate assert(y <= x + 1);
+02:14:26 26/03/2025 Addind predicate y <= x + 1 to verify set
+02:14:26 26/03/2025 Predicate filtering verify set: ['(w == 1) || (w == 0)', '(z == 0) || (z == 1)', '((w == 1 && z == 0)) || ((w != 1 && z == 1))', '(w == 1) || (z == 0) || ((x == y && z == 1))', 'x >= 0', 'y >= 0', '(z == 0) || ((w != 1 && x == y))', '(x == y) || ((w == 1 && z == 0))', '(z == 0) || ((w != 1 && y > 0))', '(z == 0) || ((w != 1 && y >= 0))', '(y == 0) || ((x >= 0))', '(x >= 0) || ((y == 0 && w == 1))', '(y == 0) || (z != 0)', '(z == 0) || ((x >= y))', 'x + z >= y', '(w == 0) || (w == 1)', 'y <= x + 1']
+02:14:26 26/03/2025 Verifying formula: (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (or (= w 1) (= w 0)) (or (= z 0) (= z 1))) (or (and (= w 1) (= z 0)) (and (distinct w 1) (= z 1)))) (or (or (= w 1) (= z 0)) (and (= x y) (= z 1)))) (>= x 0)) (>= y 0)) (or (= z 0) (and (distinct w 1) (= x y)))) (or (= x y) (and (= w 1) (= z 0)))) (or (= z 0) (and (distinct w 1) (> y 0)))) (or (= z 0) (and (distinct w 1) (>= y 0)))) (or (= y 0) (>= x 0))) (or (>= x 0) (and (= y 0) (= w 1)))) (or (= y 0) (distinct z 0))) (or (= z 0) (>= x y))) (>= (+ x z) y)) (or (= w 0) (= w 1))) (<= y (+ x 1)))
+02:14:26 26/03/2025 For candidate: assert(((w == 1) || (w == 0)) && ((z == 0) || (z == 1)) && (((w == 1 && z == 0)) || ((w != 1 && z == 1))) && ((w == 1) || (z == 0) || ((x == y && z == 1))) && (x >= 0) && (y >= 0) && ((z == 0) || ((w != 1 && x == y))) && ((x == y) || ((w == 1 && z == 0))) && ((z == 0) || ((w != 1 && y > 0))) && ((z == 0) || ((w != 1 && y >= 0))) && ((y == 0) || ((x >= 0))) && ((x >= 0) || ((y == 0 && w == 1))) && ((y == 0) || (z != 0)) && ((z == 0) || ((x >= y))) && (x + z >= y) && ((w == 0) || (w == 1)) && (y <= x + 1))
+02:14:26 26/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9950547536867305
+02:14:26 26/03/2025 Generated 3 candidates
+02:14:26 26/03/2025 Verifying generated candidates
+02:14:26 26/03/2025 Verifying candidate: assert(z == 0 || z == 1);
+02:14:26 26/03/2025 Candidate already in fail history: assert(z == 0 || z == 1);
+02:14:26 26/03/2025 Verifying candidate: assert(w == 0 || (y == 0));
+02:14:26 26/03/2025 Candidate failed verification
+02:14:26 26/03/2025 Adding candidate to fail history: assert(w == 0 || (y == 0));
+02:14:26 26/03/2025 Verifying candidate: assert(y >= x - 1);
+02:14:26 26/03/2025 Candidate failed verification
+02:14:26 26/03/2025 Adding candidate to fail history: assert(y >= x - 1);
+02:14:26 26/03/2025 Executing predicate filtering
+02:14:26 26/03/2025 Filtering predicates for candidate assert(z == 0 || z == 1);
+02:14:26 26/03/2025 Filtering predicates for candidate assert(w == 0 || (y == 0));
+02:14:26 26/03/2025 Addind predicate (w == 0) || ((y == 0)) to verify set
+02:14:26 26/03/2025 Filtering predicates for candidate assert(y >= x - 1);
+02:14:26 26/03/2025 Addind predicate y >= x - 1 to verify set
+02:14:26 26/03/2025 Predicate filtering verify set: ['(w == 1) || (w == 0)', '(z == 0) || (z == 1)', '((w == 1 && z == 0)) || ((w != 1 && z == 1))', '(w == 1) || (z == 0) || ((x == y && z == 1))', 'x >= 0', 'y >= 0', '(z == 0) || ((w != 1 && x == y))', '(x == y) || ((w == 1 && z == 0))', '(z == 0) || ((w != 1 && y > 0))', '(z == 0) || ((w != 1 && y >= 0))', '(y == 0) || ((x >= 0))', '(x >= 0) || ((y == 0 && w == 1))', '(y == 0) || (z != 0)', '(z == 0) || ((x >= y))', 'x + z >= y', '(w == 0) || (w == 1)', 'y <= x + 1', '(w == 0) || ((y == 0))', 'y >= x - 1']
+02:14:26 26/03/2025 Verifying formula: (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (or (= w 1) (= w 0)) (or (= z 0) (= z 1))) (or (and (= w 1) (= z 0)) (and (distinct w 1) (= z 1)))) (or (or (= w 1) (= z 0)) (and (= x y) (= z 1)))) (>= x 0)) (>= y 0)) (or (= z 0) (and (distinct w 1) (= x y)))) (or (= x y) (and (= w 1) (= z 0)))) (or (= z 0) (and (distinct w 1) (> y 0)))) (or (= z 0) (and (distinct w 1) (>= y 0)))) (or (= y 0) (>= x 0))) (or (>= x 0) (and (= y 0) (= w 1)))) (or (= y 0) (distinct z 0))) (or (= z 0) (>= x y))) (>= (+ x z) y)) (or (= w 0) (= w 1))) (<= y (+ x 1))) (or (= w 0) (= y 0))) (>= y (- x 1)))
+02:14:26 26/03/2025 For candidate: assert(((w == 1) || (w == 0)) && ((z == 0) || (z == 1)) && (((w == 1 && z == 0)) || ((w != 1 && z == 1))) && ((w == 1) || (z == 0) || ((x == y && z == 1))) && (x >= 0) && (y >= 0) && ((z == 0) || ((w != 1 && x == y))) && ((x == y) || ((w == 1 && z == 0))) && ((z == 0) || ((w != 1 && y > 0))) && ((z == 0) || ((w != 1 && y >= 0))) && ((y == 0) || ((x >= 0))) && ((x >= 0) || ((y == 0 && w == 1))) && ((y == 0) || (z != 0)) && ((z == 0) || ((x >= y))) && (x + z >= y) && ((w == 0) || (w == 1)) && (y <= x + 1) && ((w == 0) || ((y == 0))) && (y >= x - 1))
+02:14:26 26/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9966823978396512
+02:14:26 26/03/2025 Generated 3 candidates
+02:14:26 26/03/2025 Verifying generated candidates
+02:14:26 26/03/2025 Verifying candidate: assert(w == 1 || z == 0);
+02:14:26 26/03/2025 Candidate already in fail history: assert(w == 1 || z == 0);
+02:14:26 26/03/2025 Verifying candidate: assert(x + y >= 0);
+02:14:26 26/03/2025 Candidate failed verification
+02:14:26 26/03/2025 Adding candidate to fail history: assert(x + y >= 0);
+02:14:26 26/03/2025 Verifying candidate: assert(y <= x + 1);
+02:14:26 26/03/2025 Candidate already in fail history: assert(y <= x + 1);
+02:14:26 26/03/2025 Executing predicate filtering
+02:14:26 26/03/2025 Filtering predicates for candidate assert(w == 1 || z == 0);
+02:14:26 26/03/2025 Filtering predicates for candidate assert(x + y >= 0);
+02:14:26 26/03/2025 Addind predicate x + y >= 0 to verify set
+02:14:26 26/03/2025 Filtering predicates for candidate assert(y <= x + 1);
+02:14:26 26/03/2025 Predicate filtering verify set: ['(w == 1) || (w == 0)', '(z == 0) || (z == 1)', '((w == 1 && z == 0)) || ((w != 1 && z == 1))', '(w == 1) || (z == 0) || ((x == y && z == 1))', 'x >= 0', 'y >= 0', '(z == 0) || ((w != 1 && x == y))', '(x == y) || ((w == 1 && z == 0))', '(z == 0) || ((w != 1 && y > 0))', '(z == 0) || ((w != 1 && y >= 0))', '(y == 0) || ((x >= 0))', '(x >= 0) || ((y == 0 && w == 1))', '(y == 0) || (z != 0)', '(z == 0) || ((x >= y))', 'x + z >= y', '(w == 0) || (w == 1)', 'y <= x + 1', '(w == 0) || ((y == 0))', 'y >= x - 1', 'x + y >= 0']
+02:14:26 26/03/2025 Verifying formula: (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (or (= w 1) (= w 0)) (or (= z 0) (= z 1))) (or (and (= w 1) (= z 0)) (and (distinct w 1) (= z 1)))) (or (or (= w 1) (= z 0)) (and (= x y) (= z 1)))) (>= x 0)) (>= y 0)) (or (= z 0) (and (distinct w 1) (= x y)))) (or (= x y) (and (= w 1) (= z 0)))) (or (= z 0) (and (distinct w 1) (> y 0)))) (or (= z 0) (and (distinct w 1) (>= y 0)))) (or (= y 0) (>= x 0))) (or (>= x 0) (and (= y 0) (= w 1)))) (or (= y 0) (distinct z 0))) (or (= z 0) (>= x y))) (>= (+ x z) y)) (or (= w 0) (= w 1))) (<= y (+ x 1))) (or (= w 0) (= y 0))) (>= y (- x 1))) (>= (+ x y) 0))
+02:14:26 26/03/2025 For candidate: assert(((w == 1) || (w == 0)) && ((z == 0) || (z == 1)) && (((w == 1 && z == 0)) || ((w != 1 && z == 1))) && ((w == 1) || (z == 0) || ((x == y && z == 1))) && (x >= 0) && (y >= 0) && ((z == 0) || ((w != 1 && x == y))) && ((x == y) || ((w == 1 && z == 0))) && ((z == 0) || ((w != 1 && y > 0))) && ((z == 0) || ((w != 1 && y >= 0))) && ((y == 0) || ((x >= 0))) && ((x >= 0) || ((y == 0 && w == 1))) && ((y == 0) || (z != 0)) && ((z == 0) || ((x >= y))) && (x + z >= y) && ((w == 0) || (w == 1)) && (y <= x + 1) && ((w == 0) || ((y == 0))) && (y >= x - 1) && (x + y >= 0))
+02:14:26 26/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9985079423323266
+02:14:26 26/03/2025 Generated 3 candidates
+02:14:26 26/03/2025 Verifying generated candidates
+02:14:26 26/03/2025 Verifying candidate: assert(z == 0 || z == 1);
+02:14:26 26/03/2025 Candidate already in fail history: assert(z == 0 || z == 1);
+02:14:26 26/03/2025 Verifying candidate: assert(w == 1 || (x == y));
+02:14:26 26/03/2025 Candidate failed verification
+02:14:26 26/03/2025 Adding candidate to fail history: assert(w == 1 || (x == y));
+02:14:26 26/03/2025 Verifying candidate: assert(x >= 0 || (y == 0 && w == 1));
+02:14:26 26/03/2025 Candidate already in fail history: assert(x >= 0 || (y == 0 && w == 1));
+02:14:26 26/03/2025 Executing predicate filtering
+02:14:26 26/03/2025 Filtering predicates for candidate assert(z == 0 || z == 1);
+02:14:26 26/03/2025 Filtering predicates for candidate assert(w == 1 || (x == y));
+02:14:26 26/03/2025 Addind predicate (w == 1) || ((x == y)) to verify set
+02:14:26 26/03/2025 Filtering predicates for candidate assert(x >= 0 || (y == 0 && w == 1));
+02:14:26 26/03/2025 Predicate filtering verify set: ['(w == 1) || (w == 0)', '(z == 0) || (z == 1)', '((w == 1 && z == 0)) || ((w != 1 && z == 1))', '(w == 1) || (z == 0) || ((x == y && z == 1))', 'x >= 0', 'y >= 0', '(z == 0) || ((w != 1 && x == y))', '(x == y) || ((w == 1 && z == 0))', '(z == 0) || ((w != 1 && y > 0))', '(z == 0) || ((w != 1 && y >= 0))', '(y == 0) || ((x >= 0))', '(x >= 0) || ((y == 0 && w == 1))', '(y == 0) || (z != 0)', '(z == 0) || ((x >= y))', 'x + z >= y', '(w == 0) || (w == 1)', 'y <= x + 1', '(w == 0) || ((y == 0))', 'y >= x - 1', 'x + y >= 0', '(w == 1) || ((x == y))']
+02:14:26 26/03/2025 Verifying formula: (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (or (= w 1) (= w 0)) (or (= z 0) (= z 1))) (or (and (= w 1) (= z 0)) (and (distinct w 1) (= z 1)))) (or (or (= w 1) (= z 0)) (and (= x y) (= z 1)))) (>= x 0)) (>= y 0)) (or (= z 0) (and (distinct w 1) (= x y)))) (or (= x y) (and (= w 1) (= z 0)))) (or (= z 0) (and (distinct w 1) (> y 0)))) (or (= z 0) (and (distinct w 1) (>= y 0)))) (or (= y 0) (>= x 0))) (or (>= x 0) (and (= y 0) (= w 1)))) (or (= y 0) (distinct z 0))) (or (= z 0) (>= x y))) (>= (+ x z) y)) (or (= w 0) (= w 1))) (<= y (+ x 1))) (or (= w 0) (= y 0))) (>= y (- x 1))) (>= (+ x y) 0)) (or (= w 1) (= x y)))
+02:14:26 26/03/2025 For candidate: assert(((w == 1) || (w == 0)) && ((z == 0) || (z == 1)) && (((w == 1 && z == 0)) || ((w != 1 && z == 1))) && ((w == 1) || (z == 0) || ((x == y && z == 1))) && (x >= 0) && (y >= 0) && ((z == 0) || ((w != 1 && x == y))) && ((x == y) || ((w == 1 && z == 0))) && ((z == 0) || ((w != 1 && y > 0))) && ((z == 0) || ((w != 1 && y >= 0))) && ((y == 0) || ((x >= 0))) && ((x >= 0) || ((y == 0 && w == 1))) && ((y == 0) || (z != 0)) && ((z == 0) || ((x >= y))) && (x + z >= y) && ((w == 0) || (w == 1)) && (y <= x + 1) && ((w == 0) || ((y == 0))) && (y >= x - 1) && (x + y >= 0) && ((w == 1) || ((x == y))))
+02:14:26 26/03/2025 Resetting generator
+02:14:26 26/03/2025 Generating loop invariants candidates with model o3-mini and presence penalty 0.0
+02:14:26 26/03/2025 Generated 3 candidates
+02:14:26 26/03/2025 Verifying generated candidates
+02:14:26 26/03/2025 Verifying candidate: assert((z == 0) == (w == 1));
+02:14:26 26/03/2025 Candidate failed verification
+02:14:26 26/03/2025 Adding candidate to fail history: assert((z == 0) == (w == 1));
+02:14:26 26/03/2025 Verifying candidate: assert((w == 1) ? (x == y) : 1);
+02:14:26 26/03/2025 Invalid SMT-LIB-2 formula syntax
+02:14:26 26/03/2025 Generating loop invariants candidates with model o3-mini and presence penalty 0.0
+02:14:26 26/03/2025 Generated 2 candidates
+02:14:26 26/03/2025 Verifying generated candidates
+02:14:26 26/03/2025 Verifying candidate: assert(x == y);
+02:14:26 26/03/2025 Candidate failed verification
+02:14:26 26/03/2025 Adding candidate to fail history: assert(x == y);
+02:14:26 26/03/2025 Verifying candidate: assert(z == 1 || (w == 1 && z == 0));
+02:14:26 26/03/2025 Candidate failed verification
+02:14:26 26/03/2025 Adding candidate to fail history: assert(z == 1 || (w == 1 && z == 0));
+02:14:26 26/03/2025 Executing predicate filtering
+02:14:26 26/03/2025 Filtering predicates for candidate assert(x == y);
+02:14:26 26/03/2025 Addind predicate x == y to verify set
+02:14:26 26/03/2025 Filtering predicates for candidate assert(z == 1 || (w == 1 && z == 0));
+02:14:26 26/03/2025 Addind predicate (z == 1) || ((w == 1 && z == 0)) to verify set
+02:14:26 26/03/2025 Predicate filtering verify set: ['(w == 1) || (w == 0)', '(z == 0) || (z == 1)', '((w == 1 && z == 0)) || ((w != 1 && z == 1))', '(w == 1) || (z == 0) || ((x == y && z == 1))', 'x >= 0', 'y >= 0', '(z == 0) || ((w != 1 && x == y))', '(x == y) || ((w == 1 && z == 0))', '(z == 0) || ((w != 1 && y > 0))', '(z == 0) || ((w != 1 && y >= 0))', '(y == 0) || ((x >= 0))', '(x >= 0) || ((y == 0 && w == 1))', '(y == 0) || (z != 0)', '(z == 0) || ((x >= y))', 'x + z >= y', '(w == 0) || (w == 1)', 'y <= x + 1', '(w == 0) || ((y == 0))', 'y >= x - 1', 'x + y >= 0', '(w == 1) || ((x == y))', 'x == y', '(z == 1) || ((w == 1 && z == 0))']
+02:14:26 26/03/2025 Verifying formula: (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (or (= w 1) (= w 0)) (or (= z 0) (= z 1))) (or (and (= w 1) (= z 0)) (and (distinct w 1) (= z 1)))) (or (or (= w 1) (= z 0)) (and (= x y) (= z 1)))) (>= x 0)) (>= y 0)) (or (= z 0) (and (distinct w 1) (= x y)))) (or (= x y) (and (= w 1) (= z 0)))) (or (= z 0) (and (distinct w 1) (> y 0)))) (or (= z 0) (and (distinct w 1) (>= y 0)))) (or (= y 0) (>= x 0))) (or (>= x 0) (and (= y 0) (= w 1)))) (or (= y 0) (distinct z 0))) (or (= z 0) (>= x y))) (>= (+ x z) y)) (or (= w 0) (= w 1))) (<= y (+ x 1))) (or (= w 0) (= y 0))) (>= y (- x 1))) (>= (+ x y) 0)) (or (= w 1) (= x y))) (= x y)) (or (= z 1) (and (= w 1) (= z 0))))
+02:14:26 26/03/2025 For candidate: assert(((w == 1) || (w == 0)) && ((z == 0) || (z == 1)) && (((w == 1 && z == 0)) || ((w != 1 && z == 1))) && ((w == 1) || (z == 0) || ((x == y && z == 1))) && (x >= 0) && (y >= 0) && ((z == 0) || ((w != 1 && x == y))) && ((x == y) || ((w == 1 && z == 0))) && ((z == 0) || ((w != 1 && y > 0))) && ((z == 0) || ((w != 1 && y >= 0))) && ((y == 0) || ((x >= 0))) && ((x >= 0) || ((y == 0 && w == 1))) && ((y == 0) || (z != 0)) && ((z == 0) || ((x >= y))) && (x + z >= y) && ((w == 0) || (w == 1)) && (y <= x + 1) && ((w == 0) || ((y == 0))) && (y >= x - 1) && (x + y >= 0) && ((w == 1) || ((x == y))) && (x == y) && ((z == 1) || ((w == 1 && z == 0))))
+02:14:26 26/03/2025 Predicate filtering found solution: assert(((w == 1) || (w == 0)) && ((z == 0) || (z == 1)) && (((w == 1 && z == 0)) || ((w != 1 && z == 1))) && ((w == 1) || (z == 0) || ((x == y && z == 1))) && (x >= 0) && (y >= 0) && ((z == 0) || ((w != 1 && x == y))) && ((x == y) || ((w == 1 && z == 0))) && ((z == 0) || ((w != 1 && y > 0))) && ((z == 0) || ((w != 1 && y >= 0))) && ((y == 0) || ((x >= 0))) && ((x >= 0) || ((y == 0 && w == 1))) && ((y == 0) || (z != 0)) && ((z == 0) || ((x >= y))) && (x + z >= y) && ((w == 0) || (w == 1)) && (y <= x + 1) && ((w == 0) || ((y == 0))) && (y >= x - 1) && (x + y >= 0) && ((w == 1) || ((x == y))) && (x == y) && ((z == 1) || ((w == 1 && z == 0))))
+02:14:26 26/03/2025 # Result
+02:14:26 26/03/2025 Solution found by the predicate filtering mechanism using the o3-mini model: assert(((w == 1) || (w == 0)) && ((z == 0) || (z == 1)) && (((w == 1 && z == 0)) || ((w != 1 && z == 1))) && ((w == 1) || (z == 0) || ((x == y && z == 1))) && (x >= 0) && (y >= 0) && ((z == 0) || ((w != 1 && x == y))) && ((x == y) || ((w == 1 && z == 0))) && ((z == 0) || ((w != 1 && y > 0))) && ((z == 0) || ((w != 1 && y >= 0))) && ((y == 0) || ((x >= 0))) && ((x >= 0) || ((y == 0 && w == 1))) && ((y == 0) || (z != 0)) && ((z == 0) || ((x >= y))) && (x + z >= y) && ((w == 0) || (w == 1)) && (y <= x + 1) && ((w == 0) || ((y == 0))) && (y >= x - 1) && (x + y >= 0) && ((w == 1) || ((x == y))) && (x == y) && ((z == 1) || ((w == 1 && z == 0))))
+02:14:26 26/03/2025 3 counter examples were generated for the model proposals, with 0 repeated fails
+02:14:26 26/03/2025 The model runtime was 51.307738065719604 seconds
+02:14:26 26/03/2025 The total runtime was 97.6517448425293 seconds

@@ -1,0 +1,16 @@
+02:01:06 26/03/2025 Resetting generator
+02:01:06 26/03/2025 # Run Benchmark 98
+02:01:06 26/03/2025 Executing predicate filtering for preconditions
+02:01:06 26/03/2025 Filtering predicates for candidate assert(j == 0)
+02:01:06 26/03/2025 Filtering predicates for candidate assert(i == 0)
+02:01:06 26/03/2025 Filtering predicates for candidate assert(y == 2)
+02:01:06 26/03/2025 Addind predicate y == 2 to verify set
+02:01:06 26/03/2025 Predicate filtering verify set: ['y == 2']
+02:01:06 26/03/2025 Verifying formula: (= y 2)
+02:01:06 26/03/2025 For candidate: assert((y == 2))
+02:01:06 26/03/2025 Predicate filtering found solution: assert((y == 2))
+02:01:06 26/03/2025 # Result
+02:01:06 26/03/2025 Solution found by the predicate filtering mechanism using the None model: assert((y == 2))
+02:01:06 26/03/2025 0 counter examples were generated for the model proposals, with 0 repeated fails
+02:01:06 26/03/2025 The model runtime was 0.0 seconds
+02:01:06 26/03/2025 The total runtime was 0.4323849678039551 seconds

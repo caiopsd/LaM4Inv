@@ -1,0 +1,463 @@
+05:00:59 26/03/2025 Resetting generator
+05:00:59 26/03/2025 # Run Benchmark 263
+05:00:59 26/03/2025 Executing predicate filtering for preconditions
+05:00:59 26/03/2025 Filtering predicates for candidate assert(n == 0)
+05:00:59 26/03/2025 Filtering predicates for candidate assert(i == 0)
+05:00:59 26/03/2025 Filtering predicates for candidate assert(k >= 0)
+05:00:59 26/03/2025 Addind predicate k >= 0 to verify set
+05:00:59 26/03/2025 Filtering predicates for candidate assert(k <= 20000001)
+05:00:59 26/03/2025 Addind predicate k <= 20000001 to verify set
+05:00:59 26/03/2025 Predicate filtering verify set: ['k >= 0', 'k <= 20000001']
+05:00:59 26/03/2025 Verifying formula: (and (>= k 0) (<= k 20000001))
+05:00:59 26/03/2025 For candidate: assert((k >= 0) && (k <= 20000001))
+05:00:59 26/03/2025 Generating loop invariants candidates with model gpt-4o and presence penalty 0.0
+05:00:59 26/03/2025 Generated 5 candidates
+05:00:59 26/03/2025 Verifying generated candidates
+05:00:59 26/03/2025 Verifying candidate: assert(n == i / 2);
+05:00:59 26/03/2025 Candidate failed verification
+05:00:59 26/03/2025 Adding candidate to fail history: assert(n == i / 2);
+05:00:59 26/03/2025 Verifying candidate: assert(i <= 2 * k);
+05:00:59 26/03/2025 Candidate failed verification
+05:00:59 26/03/2025 Adding candidate to fail history: assert(i <= 2 * k);
+05:00:59 26/03/2025 Verifying candidate: assert(i % 2 == 0 || i % 2 == 1);
+05:00:59 26/03/2025 Candidate failed verification
+05:00:59 26/03/2025 Adding candidate to fail history: assert(i % 2 == 0 || i % 2 == 1);
+05:00:59 26/03/2025 Verifying candidate: assert(n <= k);
+05:00:59 26/03/2025 Candidate failed verification
+05:00:59 26/03/2025 Adding candidate to fail history: assert(n <= k);
+05:00:59 26/03/2025 Verifying candidate: assert(k >= 0);
+05:00:59 26/03/2025 Candidate failed verification
+05:00:59 26/03/2025 Adding candidate to fail history: assert(k >= 0);
+05:00:59 26/03/2025 Executing predicate filtering
+05:00:59 26/03/2025 Filtering predicates for candidate assert(n == i / 2);
+05:00:59 26/03/2025 Filtering predicates for candidate assert(i <= 2 * k);
+05:00:59 26/03/2025 Addind predicate i <= 2 * k to verify set
+05:00:59 26/03/2025 Filtering predicates for candidate assert(i % 2 == 0 || i % 2 == 1);
+05:00:59 26/03/2025 Addind predicate (i % 2 == 0) || (i % 2 == 1) to verify set
+05:00:59 26/03/2025 Filtering predicates for candidate assert(n <= k);
+05:00:59 26/03/2025 Addind predicate n <= k to verify set
+05:00:59 26/03/2025 Filtering predicates for candidate assert(k >= 0);
+05:00:59 26/03/2025 Predicate filtering verify set: ['k >= 0', 'k <= 20000001', 'i <= 2 * k', '(i % 2 == 0) || (i % 2 == 1)', 'n <= k']
+05:00:59 26/03/2025 Verifying formula: (and (and (and (and (>= k 0) (<= k 20000001)) (<= i (* 2 k))) (or (= (mod i 2) 0) (= (mod i 2) 1))) (<= n k))
+05:00:59 26/03/2025 For candidate: assert((k >= 0) && (k <= 20000001) && (i <= 2 * k) && ((i % 2 == 0) || (i % 2 == 1)) && (n <= k))
+05:00:59 26/03/2025 Resetting generator
+05:00:59 26/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.0
+05:00:59 26/03/2025 Generated 7 candidates
+05:00:59 26/03/2025 Verifying generated candidates
+05:00:59 26/03/2025 Verifying candidate: assert(k >= 0);
+05:00:59 26/03/2025 Candidate failed verification
+05:00:59 26/03/2025 Adding candidate to fail history: assert(k >= 0);
+05:00:59 26/03/2025 Verifying candidate: assert(k <= 20000001);
+05:00:59 26/03/2025 Candidate failed verification
+05:00:59 26/03/2025 Adding candidate to fail history: assert(k <= 20000001);
+05:00:59 26/03/2025 Verifying candidate: assert(i >= 0);
+05:00:59 26/03/2025 Candidate failed verification
+05:00:59 26/03/2025 Adding candidate to fail history: assert(i >= 0);
+05:00:59 26/03/2025 Verifying candidate: assert(i <= 2 * k);
+05:00:59 26/03/2025 Candidate failed verification
+05:00:59 26/03/2025 Adding candidate to fail history: assert(i <= 2 * k);
+05:00:59 26/03/2025 Verifying candidate: assert(n >= 0);
+05:00:59 26/03/2025 Candidate failed verification
+05:00:59 26/03/2025 Adding candidate to fail history: assert(n >= 0);
+05:00:59 26/03/2025 Verifying candidate: assert(n <= k);
+05:00:59 26/03/2025 Candidate failed verification
+05:00:59 26/03/2025 Adding candidate to fail history: assert(n <= k);
+05:00:59 26/03/2025 Verifying candidate: assert(n == i / 2);
+05:00:59 26/03/2025 Candidate failed verification
+05:00:59 26/03/2025 Adding candidate to fail history: assert(n == i / 2);
+05:00:59 26/03/2025 Executing predicate filtering
+05:00:59 26/03/2025 Filtering predicates for candidate assert(k >= 0);
+05:00:59 26/03/2025 Filtering predicates for candidate assert(k <= 20000001);
+05:00:59 26/03/2025 Filtering predicates for candidate assert(i >= 0);
+05:00:59 26/03/2025 Addind predicate i >= 0 to verify set
+05:00:59 26/03/2025 Filtering predicates for candidate assert(i <= 2 * k);
+05:00:59 26/03/2025 Filtering predicates for candidate assert(n >= 0);
+05:00:59 26/03/2025 Addind predicate n >= 0 to verify set
+05:00:59 26/03/2025 Filtering predicates for candidate assert(n <= k);
+05:00:59 26/03/2025 Filtering predicates for candidate assert(n == i / 2);
+05:00:59 26/03/2025 Predicate filtering verify set: ['k >= 0', 'k <= 20000001', 'i <= 2 * k', '(i % 2 == 0) || (i % 2 == 1)', 'n <= k', 'i >= 0', 'n >= 0']
+05:00:59 26/03/2025 Verifying formula: (and (and (and (and (and (and (>= k 0) (<= k 20000001)) (<= i (* 2 k))) (or (= (mod i 2) 0) (= (mod i 2) 1))) (<= n k)) (>= i 0)) (>= n 0))
+05:00:59 26/03/2025 For candidate: assert((k >= 0) && (k <= 20000001) && (i <= 2 * k) && ((i % 2 == 0) || (i % 2 == 1)) && (n <= k) && (i >= 0) && (n >= 0))
+05:00:59 26/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.0
+05:00:59 26/03/2025 Generated 6 candidates
+05:00:59 26/03/2025 Verifying generated candidates
+05:00:59 26/03/2025 Verifying candidate: assert(n == i / 2 || i % 2 == 1);
+05:00:59 26/03/2025 Candidate failed verification
+05:00:59 26/03/2025 Adding candidate to fail history: assert(n == i / 2 || i % 2 == 1);
+05:00:59 26/03/2025 Verifying candidate: assert(n >= 0);
+05:00:59 26/03/2025 Candidate already in fail history: assert(n >= 0);
+05:00:59 26/03/2025 Verifying candidate: assert(i >= 0);
+05:00:59 26/03/2025 Candidate already in fail history: assert(i >= 0);
+05:00:59 26/03/2025 Verifying candidate: assert(i <= 2 * k);
+05:00:59 26/03/2025 Candidate already in fail history: assert(i <= 2 * k);
+05:00:59 26/03/2025 Verifying candidate: assert(k >= 0);
+05:00:59 26/03/2025 Candidate already in fail history: assert(k >= 0);
+05:00:59 26/03/2025 Verifying candidate: assert(k <= 20000001);
+05:00:59 26/03/2025 Candidate already in fail history: assert(k <= 20000001);
+05:00:59 26/03/2025 Executing predicate filtering
+05:00:59 26/03/2025 Filtering predicates for candidate assert(n == i / 2 || i % 2 == 1);
+05:00:59 26/03/2025 Addind predicate (n == i / 2) || (i % 2 == 1) to verify set
+05:00:59 26/03/2025 Filtering predicates for candidate assert(n >= 0);
+05:00:59 26/03/2025 Filtering predicates for candidate assert(i >= 0);
+05:00:59 26/03/2025 Filtering predicates for candidate assert(i <= 2 * k);
+05:00:59 26/03/2025 Filtering predicates for candidate assert(k >= 0);
+05:00:59 26/03/2025 Filtering predicates for candidate assert(k <= 20000001);
+05:00:59 26/03/2025 Predicate filtering verify set: ['k >= 0', 'k <= 20000001', 'i <= 2 * k', '(i % 2 == 0) || (i % 2 == 1)', 'n <= k', 'i >= 0', 'n >= 0', '(n == i / 2) || (i % 2 == 1)']
+05:00:59 26/03/2025 Verifying formula: (and (and (and (and (and (and (and (>= k 0) (<= k 20000001)) (<= i (* 2 k))) (or (= (mod i 2) 0) (= (mod i 2) 1))) (<= n k)) (>= i 0)) (>= n 0)) (or (= n (/ i 2)) (= (mod i 2) 1)))
+05:00:59 26/03/2025 For candidate: assert((k >= 0) && (k <= 20000001) && (i <= 2 * k) && ((i % 2 == 0) || (i % 2 == 1)) && (n <= k) && (i >= 0) && (n >= 0) && ((n == i / 2) || (i % 2 == 1)))
+05:00:59 26/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.7615941559557649
+05:00:59 26/03/2025 Generated 4 candidates
+05:00:59 26/03/2025 Verifying generated candidates
+05:00:59 26/03/2025 Verifying candidate: assert(n <= k);
+05:00:59 26/03/2025 Candidate already in fail history: assert(n <= k);
+05:00:59 26/03/2025 Verifying candidate: assert(n == i / 2);
+05:00:59 26/03/2025 Candidate already in fail history: assert(n == i / 2);
+05:00:59 26/03/2025 Verifying candidate: assert(i >= 0);
+05:00:59 26/03/2025 Candidate already in fail history: assert(i >= 0);
+05:00:59 26/03/2025 Verifying candidate: assert(i <= 2 * k);
+05:00:59 26/03/2025 Candidate already in fail history: assert(i <= 2 * k);
+05:00:59 26/03/2025 Executing predicate filtering
+05:00:59 26/03/2025 Filtering predicates for candidate assert(n <= k);
+05:00:59 26/03/2025 Filtering predicates for candidate assert(n == i / 2);
+05:00:59 26/03/2025 Filtering predicates for candidate assert(i >= 0);
+05:00:59 26/03/2025 Filtering predicates for candidate assert(i <= 2 * k);
+05:00:59 26/03/2025 Predicate filtering verify set: ['k >= 0', 'k <= 20000001', 'i <= 2 * k', '(i % 2 == 0) || (i % 2 == 1)', 'n <= k', 'i >= 0', 'n >= 0', '(n == i / 2) || (i % 2 == 1)']
+05:00:59 26/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9468060128462683
+05:00:59 26/03/2025 Generated 3 candidates
+05:00:59 26/03/2025 Verifying generated candidates
+05:00:59 26/03/2025 Verifying candidate: assert(n >= 0);
+05:00:59 26/03/2025 Candidate already in fail history: assert(n >= 0);
+05:00:59 26/03/2025 Verifying candidate: assert(i <= 2 * k);
+05:00:59 26/03/2025 Candidate already in fail history: assert(i <= 2 * k);
+05:00:59 26/03/2025 Verifying candidate: assert(k >= 0);
+05:00:59 26/03/2025 Candidate already in fail history: assert(k >= 0);
+05:00:59 26/03/2025 Executing predicate filtering
+05:00:59 26/03/2025 Filtering predicates for candidate assert(n >= 0);
+05:00:59 26/03/2025 Filtering predicates for candidate assert(i <= 2 * k);
+05:00:59 26/03/2025 Filtering predicates for candidate assert(k >= 0);
+05:00:59 26/03/2025 Predicate filtering verify set: ['k >= 0', 'k <= 20000001', 'i <= 2 * k', '(i % 2 == 0) || (i % 2 == 1)', 'n <= k', 'i >= 0', 'n >= 0', '(n == i / 2) || (i % 2 == 1)']
+05:00:59 26/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9836748576936802
+05:00:59 26/03/2025 Generated 2 candidates
+05:00:59 26/03/2025 Verifying generated candidates
+05:00:59 26/03/2025 Verifying candidate: assert(n == i / 2);
+05:00:59 26/03/2025 Candidate already in fail history: assert(n == i / 2);
+05:00:59 26/03/2025 Verifying candidate: assert(n <= k);
+05:00:59 26/03/2025 Candidate already in fail history: assert(n <= k);
+05:00:59 26/03/2025 Executing predicate filtering
+05:00:59 26/03/2025 Filtering predicates for candidate assert(n == i / 2);
+05:00:59 26/03/2025 Filtering predicates for candidate assert(n <= k);
+05:00:59 26/03/2025 Predicate filtering verify set: ['k >= 0', 'k <= 20000001', 'i <= 2 * k', '(i % 2 == 0) || (i % 2 == 1)', 'n <= k', 'i >= 0', 'n >= 0', '(n == i / 2) || (i % 2 == 1)']
+05:00:59 26/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.992631520201128
+05:00:59 26/03/2025 Generated 3 candidates
+05:00:59 26/03/2025 Verifying generated candidates
+05:00:59 26/03/2025 Verifying candidate: assert(i >= 0);
+05:00:59 26/03/2025 Candidate already in fail history: assert(i >= 0);
+05:00:59 26/03/2025 Verifying candidate: assert(k >= 0);
+05:00:59 26/03/2025 Candidate already in fail history: assert(k >= 0);
+05:00:59 26/03/2025 Verifying candidate: assert(k <= 20000001);
+05:00:59 26/03/2025 Candidate already in fail history: assert(k <= 20000001);
+05:00:59 26/03/2025 Executing predicate filtering
+05:00:59 26/03/2025 Filtering predicates for candidate assert(i >= 0);
+05:00:59 26/03/2025 Filtering predicates for candidate assert(k >= 0);
+05:00:59 26/03/2025 Filtering predicates for candidate assert(k <= 20000001);
+05:00:59 26/03/2025 Predicate filtering verify set: ['k >= 0', 'k <= 20000001', 'i <= 2 * k', '(i % 2 == 0) || (i % 2 == 1)', 'n <= k', 'i >= 0', 'n >= 0', '(n == i / 2) || (i % 2 == 1)']
+05:00:59 26/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9977749279342794
+05:00:59 26/03/2025 Generated 2 candidates
+05:00:59 26/03/2025 Verifying generated candidates
+05:00:59 26/03/2025 Verifying candidate: assert(n >= 0);
+05:00:59 26/03/2025 Candidate already in fail history: assert(n >= 0);
+05:00:59 26/03/2025 Verifying candidate: assert(i <= 2 * k);
+05:00:59 26/03/2025 Candidate already in fail history: assert(i <= 2 * k);
+05:00:59 26/03/2025 Executing predicate filtering
+05:00:59 26/03/2025 Filtering predicates for candidate assert(n >= 0);
+05:00:59 26/03/2025 Filtering predicates for candidate assert(i <= 2 * k);
+05:00:59 26/03/2025 Predicate filtering verify set: ['k >= 0', 'k <= 20000001', 'i <= 2 * k', '(i % 2 == 0) || (i % 2 == 1)', 'n <= k', 'i >= 0', 'n >= 0', '(n == i / 2) || (i % 2 == 1)']
+05:00:59 26/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9989995977858409
+05:00:59 26/03/2025 Generated 2 candidates
+05:00:59 26/03/2025 Verifying generated candidates
+05:00:59 26/03/2025 Verifying candidate: assert(n == i / 2 || i % 2 == 1);
+05:00:59 26/03/2025 Candidate already in fail history: assert(n == i / 2 || i % 2 == 1);
+05:00:59 26/03/2025 Verifying candidate: assert(k >= 0);
+05:00:59 26/03/2025 Candidate already in fail history: assert(k >= 0);
+05:00:59 26/03/2025 Executing predicate filtering
+05:00:59 26/03/2025 Filtering predicates for candidate assert(n == i / 2 || i % 2 == 1);
+05:00:59 26/03/2025 Filtering predicates for candidate assert(k >= 0);
+05:00:59 26/03/2025 Predicate filtering verify set: ['k >= 0', 'k <= 20000001', 'i <= 2 * k', '(i % 2 == 0) || (i % 2 == 1)', 'n <= k', 'i >= 0', 'n >= 0', '(n == i / 2) || (i % 2 == 1)']
+05:00:59 26/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9995503664595334
+05:00:59 26/03/2025 Generated 2 candidates
+05:00:59 26/03/2025 Verifying generated candidates
+05:00:59 26/03/2025 Verifying candidate: assert(n <= k);
+05:00:59 26/03/2025 Candidate already in fail history: assert(n <= k);
+05:00:59 26/03/2025 Verifying candidate: assert(i <= 2 * k);
+05:00:59 26/03/2025 Candidate already in fail history: assert(i <= 2 * k);
+05:00:59 26/03/2025 Executing predicate filtering
+05:00:59 26/03/2025 Filtering predicates for candidate assert(n <= k);
+05:00:59 26/03/2025 Filtering predicates for candidate assert(i <= 2 * k);
+05:00:59 26/03/2025 Predicate filtering verify set: ['k >= 0', 'k <= 20000001', 'i <= 2 * k', '(i % 2 == 0) || (i % 2 == 1)', 'n <= k', 'i >= 0', 'n >= 0', '(n == i / 2) || (i % 2 == 1)']
+05:00:59 26/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9997979416121845
+05:00:59 26/03/2025 Generated 2 candidates
+05:00:59 26/03/2025 Verifying generated candidates
+05:00:59 26/03/2025 Verifying candidate: assert(k >= 0);
+05:00:59 26/03/2025 Candidate already in fail history: assert(k >= 0);
+05:00:59 26/03/2025 Verifying candidate: assert(k <= 20000001);
+05:00:59 26/03/2025 Candidate already in fail history: assert(k <= 20000001);
+05:00:59 26/03/2025 Executing predicate filtering
+05:00:59 26/03/2025 Filtering predicates for candidate assert(k >= 0);
+05:00:59 26/03/2025 Filtering predicates for candidate assert(k <= 20000001);
+05:00:59 26/03/2025 Predicate filtering verify set: ['k >= 0', 'k <= 20000001', 'i <= 2 * k', '(i % 2 == 0) || (i % 2 == 1)', 'n <= k', 'i >= 0', 'n >= 0', '(n == i / 2) || (i % 2 == 1)']
+05:00:59 26/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9999092042625951
+05:00:59 26/03/2025 Generated 2 candidates
+05:00:59 26/03/2025 Verifying generated candidates
+05:00:59 26/03/2025 Verifying candidate: assert(n == i / 2 || i % 2 == 1);
+05:00:59 26/03/2025 Candidate already in fail history: assert(n == i / 2 || i % 2 == 1);
+05:00:59 26/03/2025 Verifying candidate: assert(i >= 0);
+05:00:59 26/03/2025 Candidate already in fail history: assert(i >= 0);
+05:00:59 26/03/2025 Executing predicate filtering
+05:00:59 26/03/2025 Filtering predicates for candidate assert(n == i / 2 || i % 2 == 1);
+05:00:59 26/03/2025 Filtering predicates for candidate assert(i >= 0);
+05:00:59 26/03/2025 Predicate filtering verify set: ['k >= 0', 'k <= 20000001', 'i <= 2 * k', '(i % 2 == 0) || (i % 2 == 1)', 'n <= k', 'i >= 0', 'n >= 0', '(n == i / 2) || (i % 2 == 1)']
+05:00:59 26/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9999592018254402
+05:00:59 26/03/2025 Generated 2 candidates
+05:00:59 26/03/2025 Verifying generated candidates
+05:00:59 26/03/2025 Verifying candidate: assert(n >= 0);
+05:00:59 26/03/2025 Candidate already in fail history: assert(n >= 0);
+05:00:59 26/03/2025 Verifying candidate: assert(k >= 0);
+05:00:59 26/03/2025 Candidate already in fail history: assert(k >= 0);
+05:00:59 26/03/2025 Executing predicate filtering
+05:00:59 26/03/2025 Filtering predicates for candidate assert(n >= 0);
+05:00:59 26/03/2025 Filtering predicates for candidate assert(k >= 0);
+05:00:59 26/03/2025 Predicate filtering verify set: ['k >= 0', 'k <= 20000001', 'i <= 2 * k', '(i % 2 == 0) || (i % 2 == 1)', 'n <= k', 'i >= 0', 'n >= 0', '(n == i / 2) || (i % 2 == 1)']
+05:00:59 26/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9999816679925603
+05:00:59 26/03/2025 Generated 2 candidates
+05:00:59 26/03/2025 Verifying generated candidates
+05:00:59 26/03/2025 Verifying candidate: assert(n <= k);
+05:00:59 26/03/2025 Candidate already in fail history: assert(n <= k);
+05:00:59 26/03/2025 Verifying candidate: assert(i <= 2 * k + 1);
+05:00:59 26/03/2025 Candidate failed verification
+05:00:59 26/03/2025 Adding candidate to fail history: assert(i <= 2 * k + 1);
+05:00:59 26/03/2025 Executing predicate filtering
+05:00:59 26/03/2025 Filtering predicates for candidate assert(n <= k);
+05:00:59 26/03/2025 Filtering predicates for candidate assert(i <= 2 * k + 1);
+05:00:59 26/03/2025 Addind predicate i <= 2 * k + 1 to verify set
+05:00:59 26/03/2025 Predicate filtering verify set: ['k >= 0', 'k <= 20000001', 'i <= 2 * k', '(i % 2 == 0) || (i % 2 == 1)', 'n <= k', 'i >= 0', 'n >= 0', '(n == i / 2) || (i % 2 == 1)', 'i <= 2 * k + 1']
+05:00:59 26/03/2025 Verifying formula: (and (and (and (and (and (and (and (and (>= k 0) (<= k 20000001)) (<= i (* 2 k))) (or (= (mod i 2) 0) (= (mod i 2) 1))) (<= n k)) (>= i 0)) (>= n 0)) (or (= n (/ i 2)) (= (mod i 2) 1))) (<= i (+ (* 2 k) 1)))
+05:00:59 26/03/2025 For candidate: assert((k >= 0) && (k <= 20000001) && (i <= 2 * k) && ((i % 2 == 0) || (i % 2 == 1)) && (n <= k) && (i >= 0) && (n >= 0) && ((n == i / 2) || (i % 2 == 1)) && (i <= 2 * k + 1))
+05:00:59 26/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9999877116507956
+05:00:59 26/03/2025 Generated 2 candidates
+05:00:59 26/03/2025 Verifying generated candidates
+05:00:59 26/03/2025 Verifying candidate: assert(k <= 20000001);
+05:00:59 26/03/2025 Candidate already in fail history: assert(k <= 20000001);
+05:00:59 26/03/2025 Verifying candidate: assert(i >= 0);
+05:00:59 26/03/2025 Candidate already in fail history: assert(i >= 0);
+05:00:59 26/03/2025 Executing predicate filtering
+05:00:59 26/03/2025 Filtering predicates for candidate assert(k <= 20000001);
+05:00:59 26/03/2025 Filtering predicates for candidate assert(i >= 0);
+05:00:59 26/03/2025 Predicate filtering verify set: ['k >= 0', 'k <= 20000001', 'i <= 2 * k', '(i % 2 == 0) || (i % 2 == 1)', 'n <= k', 'i >= 0', 'n >= 0', '(n == i / 2) || (i % 2 == 1)', 'i <= 2 * k + 1']
+05:00:59 26/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9999944784700996
+05:00:59 26/03/2025 Generated 2 candidates
+05:00:59 26/03/2025 Verifying generated candidates
+05:00:59 26/03/2025 Verifying candidate: assert(n >= 0);
+05:00:59 26/03/2025 Candidate already in fail history: assert(n >= 0);
+05:00:59 26/03/2025 Verifying candidate: assert(n <= k + 1);
+05:00:59 26/03/2025 Candidate failed verification
+05:00:59 26/03/2025 Adding candidate to fail history: assert(n <= k + 1);
+05:00:59 26/03/2025 Executing predicate filtering
+05:00:59 26/03/2025 Filtering predicates for candidate assert(n >= 0);
+05:00:59 26/03/2025 Filtering predicates for candidate assert(n <= k + 1);
+05:00:59 26/03/2025 Addind predicate n <= k + 1 to verify set
+05:00:59 26/03/2025 Predicate filtering verify set: ['k >= 0', 'k <= 20000001', 'i <= 2 * k', '(i % 2 == 0) || (i % 2 == 1)', 'n <= k', 'i >= 0', 'n >= 0', '(n == i / 2) || (i % 2 == 1)', 'i <= 2 * k + 1', 'n <= k + 1']
+05:00:59 26/03/2025 Verifying formula: (and (and (and (and (and (and (and (and (and (>= k 0) (<= k 20000001)) (<= i (* 2 k))) (or (= (mod i 2) 0) (= (mod i 2) 1))) (<= n k)) (>= i 0)) (>= n 0)) (or (= n (/ i 2)) (= (mod i 2) 1))) (<= i (+ (* 2 k) 1))) (<= n (+ k 1)))
+05:00:59 26/03/2025 For candidate: assert((k >= 0) && (k <= 20000001) && (i <= 2 * k) && ((i % 2 == 0) || (i % 2 == 1)) && (n <= k) && (i >= 0) && (n >= 0) && ((n == i / 2) || (i % 2 == 1)) && (i <= 2 * k + 1) && (n <= k + 1))
+05:00:59 26/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9999962988044543
+05:00:59 26/03/2025 Generated 2 candidates
+05:00:59 26/03/2025 Verifying generated candidates
+05:00:59 26/03/2025 Verifying candidate: assert(k >= 0);
+05:00:59 26/03/2025 Candidate already in fail history: assert(k >= 0);
+05:00:59 26/03/2025 Verifying candidate: assert(i <= 2 * k);
+05:00:59 26/03/2025 Candidate already in fail history: assert(i <= 2 * k);
+05:00:59 26/03/2025 Executing predicate filtering
+05:00:59 26/03/2025 Filtering predicates for candidate assert(k >= 0);
+05:00:59 26/03/2025 Filtering predicates for candidate assert(i <= 2 * k);
+05:00:59 26/03/2025 Predicate filtering verify set: ['k >= 0', 'k <= 20000001', 'i <= 2 * k', '(i % 2 == 0) || (i % 2 == 1)', 'n <= k', 'i >= 0', 'n >= 0', '(n == i / 2) || (i % 2 == 1)', 'i <= 2 * k + 1', 'n <= k + 1']
+05:00:59 26/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9999983369439447
+05:00:59 26/03/2025 Generated 2 candidates
+05:00:59 26/03/2025 Verifying generated candidates
+05:00:59 26/03/2025 Verifying candidate: assert(n <= k);
+05:00:59 26/03/2025 Candidate already in fail history: assert(n <= k);
+05:00:59 26/03/2025 Verifying candidate: assert(i >= 0);
+05:00:59 26/03/2025 Candidate already in fail history: assert(i >= 0);
+05:00:59 26/03/2025 Executing predicate filtering
+05:00:59 26/03/2025 Filtering predicates for candidate assert(n <= k);
+05:00:59 26/03/2025 Filtering predicates for candidate assert(i >= 0);
+05:00:59 26/03/2025 Predicate filtering verify set: ['k >= 0', 'k <= 20000001', 'i <= 2 * k', '(i % 2 == 0) || (i % 2 == 1)', 'n <= k', 'i >= 0', 'n >= 0', '(n == i / 2) || (i % 2 == 1)', 'i <= 2 * k + 1', 'n <= k + 1']
+05:00:59 26/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9999992527404032
+05:00:59 26/03/2025 Generated 2 candidates
+05:00:59 26/03/2025 Verifying generated candidates
+05:00:59 26/03/2025 Verifying candidate: assert(k <= 20000001);
+05:00:59 26/03/2025 Candidate already in fail history: assert(k <= 20000001);
+05:00:59 26/03/2025 Verifying candidate: assert(n == i / 2 + (i % 2));
+05:00:59 26/03/2025 Candidate failed verification
+05:00:59 26/03/2025 Adding candidate to fail history: assert(n == i / 2 + (i % 2));
+05:00:59 26/03/2025 Executing predicate filtering
+05:00:59 26/03/2025 Filtering predicates for candidate assert(k <= 20000001);
+05:00:59 26/03/2025 Filtering predicates for candidate assert(n == i / 2 + (i % 2));
+05:00:59 26/03/2025 Addind predicate n == i / 2 + (i % 2) to verify set
+05:00:59 26/03/2025 Predicate filtering verify set: ['k >= 0', 'k <= 20000001', 'i <= 2 * k', '(i % 2 == 0) || (i % 2 == 1)', 'n <= k', 'i >= 0', 'n >= 0', '(n == i / 2) || (i % 2 == 1)', 'i <= 2 * k + 1', 'n <= k + 1', 'n == i / 2 + (i % 2)']
+05:00:59 26/03/2025 Verifying formula: (and (and (and (and (and (and (and (and (and (and (>= k 0) (<= k 20000001)) (<= i (* 2 k))) (or (= (mod i 2) 0) (= (mod i 2) 1))) (<= n k)) (>= i 0)) (>= n 0)) (or (= n (/ i 2)) (= (mod i 2) 1))) (<= i (+ (* 2 k) 1))) (<= n (+ k 1))) (= n (+ (/ i 2) (mod i 2))))
+05:00:59 26/03/2025 For candidate: assert((k >= 0) && (k <= 20000001) && (i <= 2 * k) && ((i % 2 == 0) || (i % 2 == 1)) && (n <= k) && (i >= 0) && (n >= 0) && ((n == i / 2) || (i % 2 == 1)) && (i <= 2 * k + 1) && (n <= k + 1) && (n == i / 2 + (i % 2)))
+05:00:59 26/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.999999499096851
+05:00:59 26/03/2025 Generated 2 candidates
+05:00:59 26/03/2025 Verifying generated candidates
+05:00:59 26/03/2025 Verifying candidate: assert(n >= 0);
+05:00:59 26/03/2025 Candidate already in fail history: assert(n >= 0);
+05:00:59 26/03/2025 Verifying candidate: assert(i <= 2 * k);
+05:00:59 26/03/2025 Candidate already in fail history: assert(i <= 2 * k);
+05:00:59 26/03/2025 Executing predicate filtering
+05:00:59 26/03/2025 Filtering predicates for candidate assert(n >= 0);
+05:00:59 26/03/2025 Filtering predicates for candidate assert(i <= 2 * k);
+05:00:59 26/03/2025 Predicate filtering verify set: ['k >= 0', 'k <= 20000001', 'i <= 2 * k', '(i % 2 == 0) || (i % 2 == 1)', 'n <= k', 'i >= 0', 'n >= 0', '(n == i / 2) || (i % 2 == 1)', 'i <= 2 * k + 1', 'n <= k + 1', 'n == i / 2 + (i % 2)']
+05:00:59 26/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9999997749296758
+05:00:59 26/03/2025 Generated 2 candidates
+05:00:59 26/03/2025 Verifying generated candidates
+05:00:59 26/03/2025 Verifying candidate: assert(k >= 0);
+05:00:59 26/03/2025 Candidate already in fail history: assert(k >= 0);
+05:00:59 26/03/2025 Verifying candidate: assert(i % 2 == n + (i / 2));
+05:00:59 26/03/2025 Candidate failed verification
+05:00:59 26/03/2025 Adding candidate to fail history: assert(i % 2 == n + (i / 2));
+05:00:59 26/03/2025 Executing predicate filtering
+05:00:59 26/03/2025 Filtering predicates for candidate assert(k >= 0);
+05:00:59 26/03/2025 Filtering predicates for candidate assert(i % 2 == n + (i / 2));
+05:00:59 26/03/2025 Predicate filtering verify set: ['k >= 0', 'k <= 20000001', 'i <= 2 * k', '(i % 2 == 0) || (i % 2 == 1)', 'n <= k', 'i >= 0', 'n >= 0', '(n == i / 2) || (i % 2 == 1)', 'i <= 2 * k + 1', 'n <= k + 1', 'n == i / 2 + (i % 2)']
+05:00:59 26/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9999998491308444
+05:00:59 26/03/2025 Generated 2 candidates
+05:00:59 26/03/2025 Verifying generated candidates
+05:00:59 26/03/2025 Verifying candidate: assert(i >= 0);
+05:00:59 26/03/2025 Candidate already in fail history: assert(i >= 0);
+05:00:59 26/03/2025 Verifying candidate: assert(n <= k);
+05:00:59 26/03/2025 Candidate already in fail history: assert(n <= k);
+05:00:59 26/03/2025 Executing predicate filtering
+05:00:59 26/03/2025 Filtering predicates for candidate assert(i >= 0);
+05:00:59 26/03/2025 Filtering predicates for candidate assert(n <= k);
+05:00:59 26/03/2025 Predicate filtering verify set: ['k >= 0', 'k <= 20000001', 'i <= 2 * k', '(i % 2 == 0) || (i % 2 == 1)', 'n <= k', 'i >= 0', 'n >= 0', '(n == i / 2) || (i % 2 == 1)', 'i <= 2 * k + 1', 'n <= k + 1', 'n == i / 2 + (i % 2)']
+05:00:59 26/03/2025 Resetting generator
+05:00:59 26/03/2025 Generating loop invariants candidates with model o3-mini and presence penalty 0.0
+05:00:59 26/03/2025 Generated 4 candidates
+05:00:59 26/03/2025 Verifying generated candidates
+05:00:59 26/03/2025 Verifying candidate: assert(k >= 0);
+05:00:59 26/03/2025 Candidate failed verification
+05:00:59 26/03/2025 Adding candidate to fail history: assert(k >= 0);
+05:00:59 26/03/2025 Verifying candidate: assert(k <= 20000001);
+05:00:59 26/03/2025 Candidate failed verification
+05:00:59 26/03/2025 Adding candidate to fail history: assert(k <= 20000001);
+05:00:59 26/03/2025 Verifying candidate: assert(i >= 0 && i <= 2 * k);
+05:00:59 26/03/2025 Candidate failed verification
+05:00:59 26/03/2025 Adding candidate to fail history: assert(i >= 0 && i <= 2 * k);
+05:00:59 26/03/2025 Verifying candidate: assert((i % 2 == 0 && n == i / 2) || (i % 2 == 1 && n == (i + 1) / 2));
+05:00:59 26/03/2025 Candidate failed verification
+05:00:59 26/03/2025 Adding candidate to fail history: assert((i % 2 == 0 && n == i / 2) || (i % 2 == 1 && n == (i + 1) / 2));
+05:00:59 26/03/2025 Executing predicate filtering
+05:00:59 26/03/2025 Filtering predicates for candidate assert(k >= 0);
+05:00:59 26/03/2025 Filtering predicates for candidate assert(k <= 20000001);
+05:00:59 26/03/2025 Filtering predicates for candidate assert(i >= 0 && i <= 2 * k);
+05:00:59 26/03/2025 Filtering predicates for candidate assert((i % 2 == 0 && n == i / 2) || (i % 2 == 1 && n == (i + 1) / 2));
+05:00:59 26/03/2025 Addind predicate ((i % 2 == 0 && n == i / 2)) || ((i % 2 == 1 && n == (i + 1) / 2)) to verify set
+05:00:59 26/03/2025 Predicate filtering verify set: ['k >= 0', 'k <= 20000001', 'i <= 2 * k', '(i % 2 == 0) || (i % 2 == 1)', 'n <= k', 'i >= 0', 'n >= 0', '(n == i / 2) || (i % 2 == 1)', 'i <= 2 * k + 1', 'n <= k + 1', 'n == i / 2 + (i % 2)', '((i % 2 == 0 && n == i / 2)) || ((i % 2 == 1 && n == (i + 1) / 2))']
+05:00:59 26/03/2025 Verifying formula: (and (and (and (and (and (and (and (and (and (and (and (>= k 0) (<= k 20000001)) (<= i (* 2 k))) (or (= (mod i 2) 0) (= (mod i 2) 1))) (<= n k)) (>= i 0)) (>= n 0)) (or (= n (/ i 2)) (= (mod i 2) 1))) (<= i (+ (* 2 k) 1))) (<= n (+ k 1))) (= n (+ (/ i 2) (mod i 2)))) (or (and (= (mod i 2) 0) (= n (/ i 2))) (and (= (mod i 2) 1) (= n (/ (+ i 1) 2)))))
+05:00:59 26/03/2025 For candidate: assert((k >= 0) && (k <= 20000001) && (i <= 2 * k) && ((i % 2 == 0) || (i % 2 == 1)) && (n <= k) && (i >= 0) && (n >= 0) && ((n == i / 2) || (i % 2 == 1)) && (i <= 2 * k + 1) && (n <= k + 1) && (n == i / 2 + (i % 2)) && (((i % 2 == 0 && n == i / 2)) || ((i % 2 == 1 && n == (i + 1) / 2))))
+05:00:59 26/03/2025 Generating loop invariants candidates with model o3-mini and presence penalty 0.0
+05:00:59 26/03/2025 Generated 4 candidates
+05:00:59 26/03/2025 Verifying generated candidates
+05:00:59 26/03/2025 Verifying candidate: assert(i >= 0);
+05:00:59 26/03/2025 Candidate failed verification
+05:00:59 26/03/2025 Adding candidate to fail history: assert(i >= 0);
+05:00:59 26/03/2025 Verifying candidate: assert(i <= 2 * k);
+05:00:59 26/03/2025 Candidate failed verification
+05:00:59 26/03/2025 Adding candidate to fail history: assert(i <= 2 * k);
+05:00:59 26/03/2025 Verifying candidate: assert(n == (i + (i % 2)) / 2);
+05:00:59 26/03/2025 Candidate failed verification
+05:00:59 26/03/2025 Adding candidate to fail history: assert(n == (i + (i % 2)) / 2);
+05:00:59 26/03/2025 Verifying candidate: assert(n <= k);
+05:00:59 26/03/2025 Candidate failed verification
+05:00:59 26/03/2025 Adding candidate to fail history: assert(n <= k);
+05:00:59 26/03/2025 Executing predicate filtering
+05:00:59 26/03/2025 Filtering predicates for candidate assert(i >= 0);
+05:00:59 26/03/2025 Filtering predicates for candidate assert(i <= 2 * k);
+05:00:59 26/03/2025 Filtering predicates for candidate assert(n == (i + (i % 2)) / 2);
+05:00:59 26/03/2025 Addind predicate n == (i + (i % 2)) / 2 to verify set
+05:00:59 26/03/2025 Filtering predicates for candidate assert(n <= k);
+05:00:59 26/03/2025 Predicate filtering verify set: ['k >= 0', 'k <= 20000001', 'i <= 2 * k', '(i % 2 == 0) || (i % 2 == 1)', 'n <= k', 'i >= 0', 'n >= 0', '(n == i / 2) || (i % 2 == 1)', 'i <= 2 * k + 1', 'n <= k + 1', 'n == i / 2 + (i % 2)', '((i % 2 == 0 && n == i / 2)) || ((i % 2 == 1 && n == (i + 1) / 2))', 'n == (i + (i % 2)) / 2']
+05:00:59 26/03/2025 Verifying formula: (and (and (and (and (and (and (and (and (and (and (and (and (>= k 0) (<= k 20000001)) (<= i (* 2 k))) (or (= (mod i 2) 0) (= (mod i 2) 1))) (<= n k)) (>= i 0)) (>= n 0)) (or (= n (/ i 2)) (= (mod i 2) 1))) (<= i (+ (* 2 k) 1))) (<= n (+ k 1))) (= n (+ (/ i 2) (mod i 2)))) (or (and (= (mod i 2) 0) (= n (/ i 2))) (and (= (mod i 2) 1) (= n (/ (+ i 1) 2))))) (= n (/ (+ i (mod i 2)) 2)))
+05:00:59 26/03/2025 For candidate: assert((k >= 0) && (k <= 20000001) && (i <= 2 * k) && ((i % 2 == 0) || (i % 2 == 1)) && (n <= k) && (i >= 0) && (n >= 0) && ((n == i / 2) || (i % 2 == 1)) && (i <= 2 * k + 1) && (n <= k + 1) && (n == i / 2 + (i % 2)) && (((i % 2 == 0 && n == i / 2)) || ((i % 2 == 1 && n == (i + 1) / 2))) && (n == (i + (i % 2)) / 2))
+05:00:59 26/03/2025 Generating loop invariants candidates with model o3-mini and presence penalty 0.0
+05:00:59 26/03/2025 Generated 3 candidates
+05:00:59 26/03/2025 Verifying generated candidates
+05:00:59 26/03/2025 Verifying candidate: assert(k >= 0 && k <= 20000001);
+05:00:59 26/03/2025 Candidate failed verification
+05:00:59 26/03/2025 Adding candidate to fail history: assert(k >= 0 && k <= 20000001);
+05:00:59 26/03/2025 Verifying candidate: assert(i <= 2 * k);
+05:00:59 26/03/2025 Candidate already in fail history: assert(i <= 2 * k);
+05:00:59 26/03/2025 Verifying candidate: assert(n == (i + 1) / 2);
+05:00:59 26/03/2025 Candidate failed verification
+05:00:59 26/03/2025 Adding candidate to fail history: assert(n == (i + 1) / 2);
+05:00:59 26/03/2025 Executing predicate filtering
+05:00:59 26/03/2025 Filtering predicates for candidate assert(k >= 0 && k <= 20000001);
+05:00:59 26/03/2025 Filtering predicates for candidate assert(i <= 2 * k);
+05:00:59 26/03/2025 Filtering predicates for candidate assert(n == (i + 1) / 2);
+05:00:59 26/03/2025 Addind predicate n == (i + 1) / 2 to verify set
+05:00:59 26/03/2025 Predicate filtering verify set: ['k >= 0', 'k <= 20000001', 'i <= 2 * k', '(i % 2 == 0) || (i % 2 == 1)', 'n <= k', 'i >= 0', 'n >= 0', '(n == i / 2) || (i % 2 == 1)', 'i <= 2 * k + 1', 'n <= k + 1', 'n == i / 2 + (i % 2)', '((i % 2 == 0 && n == i / 2)) || ((i % 2 == 1 && n == (i + 1) / 2))', 'n == (i + (i % 2)) / 2', 'n == (i + 1) / 2']
+05:00:59 26/03/2025 Verifying formula: (and (and (and (and (and (and (and (and (and (and (and (and (and (>= k 0) (<= k 20000001)) (<= i (* 2 k))) (or (= (mod i 2) 0) (= (mod i 2) 1))) (<= n k)) (>= i 0)) (>= n 0)) (or (= n (/ i 2)) (= (mod i 2) 1))) (<= i (+ (* 2 k) 1))) (<= n (+ k 1))) (= n (+ (/ i 2) (mod i 2)))) (or (and (= (mod i 2) 0) (= n (/ i 2))) (and (= (mod i 2) 1) (= n (/ (+ i 1) 2))))) (= n (/ (+ i (mod i 2)) 2))) (= n (/ (+ i 1) 2)))
+05:00:59 26/03/2025 For candidate: assert((k >= 0) && (k <= 20000001) && (i <= 2 * k) && ((i % 2 == 0) || (i % 2 == 1)) && (n <= k) && (i >= 0) && (n >= 0) && ((n == i / 2) || (i % 2 == 1)) && (i <= 2 * k + 1) && (n <= k + 1) && (n == i / 2 + (i % 2)) && (((i % 2 == 0 && n == i / 2)) || ((i % 2 == 1 && n == (i + 1) / 2))) && (n == (i + (i % 2)) / 2) && (n == (i + 1) / 2))
+05:00:59 26/03/2025 Generating loop invariants candidates with model o3-mini and presence penalty 0.197375320224904
+05:00:59 26/03/2025 Generated 0 candidates
+05:00:59 26/03/2025 Verifying generated candidates
+05:00:59 26/03/2025 Executing predicate filtering
+05:00:59 26/03/2025 Predicate filtering verify set: ['k >= 0', 'k <= 20000001', 'i <= 2 * k', '(i % 2 == 0) || (i % 2 == 1)', 'n <= k', 'i >= 0', 'n >= 0', '(n == i / 2) || (i % 2 == 1)', 'i <= 2 * k + 1', 'n <= k + 1', 'n == i / 2 + (i % 2)', '((i % 2 == 0 && n == i / 2)) || ((i % 2 == 1 && n == (i + 1) / 2))', 'n == (i + (i % 2)) / 2', 'n == (i + 1) / 2']
+05:00:59 26/03/2025 Resetting generator
+05:00:59 26/03/2025 Generating loop invariants candidates with model deepseek-reasoner and presence penalty 0.0
+05:00:59 26/03/2025 Generated 2 candidates
+05:00:59 26/03/2025 Verifying generated candidates
+05:00:59 26/03/2025 Verifying candidate: assert(n == (i + 1)/2);
+05:00:59 26/03/2025 Candidate failed verification
+05:00:59 26/03/2025 Adding candidate to fail history: assert(n == (i + 1)/2);
+05:00:59 26/03/2025 Verifying candidate: assert(i <= 2 * k);
+05:00:59 26/03/2025 Candidate failed verification
+05:00:59 26/03/2025 Adding candidate to fail history: assert(i <= 2 * k);
+05:00:59 26/03/2025 Executing predicate filtering
+05:00:59 26/03/2025 Filtering predicates for candidate assert(n == (i + 1)/2);
+05:00:59 26/03/2025 Addind predicate n == (i + 1)/2 to verify set
+05:00:59 26/03/2025 Filtering predicates for candidate assert(i <= 2 * k);
+05:00:59 26/03/2025 Predicate filtering verify set: ['k >= 0', 'k <= 20000001', 'i <= 2 * k', '(i % 2 == 0) || (i % 2 == 1)', 'n <= k', 'i >= 0', 'n >= 0', '(n == i / 2) || (i % 2 == 1)', 'i <= 2 * k + 1', 'n <= k + 1', 'n == i / 2 + (i % 2)', '((i % 2 == 0 && n == i / 2)) || ((i % 2 == 1 && n == (i + 1) / 2))', 'n == (i + (i % 2)) / 2', 'n == (i + 1) / 2', 'n == (i + 1)/2']
+05:00:59 26/03/2025 Verifying formula: (and (and (and (and (and (and (and (and (and (and (and (and (and (and (>= k 0) (<= k 20000001)) (<= i (* 2 k))) (or (= (mod i 2) 0) (= (mod i 2) 1))) (<= n k)) (>= i 0)) (>= n 0)) (or (= n (/ i 2)) (= (mod i 2) 1))) (<= i (+ (* 2 k) 1))) (<= n (+ k 1))) (= n (+ (/ i 2) (mod i 2)))) (or (and (= (mod i 2) 0) (= n (/ i 2))) (and (= (mod i 2) 1) (= n (/ (+ i 1) 2))))) (= n (/ (+ i (mod i 2)) 2))) (= n (/ (+ i 1) 2))) (= n (/ (+ i 1) 2)))
+05:00:59 26/03/2025 For candidate: assert((k >= 0) && (k <= 20000001) && (i <= 2 * k) && ((i % 2 == 0) || (i % 2 == 1)) && (n <= k) && (i >= 0) && (n >= 0) && ((n == i / 2) || (i % 2 == 1)) && (i <= 2 * k + 1) && (n <= k + 1) && (n == i / 2 + (i % 2)) && (((i % 2 == 0 && n == i / 2)) || ((i % 2 == 1 && n == (i + 1) / 2))) && (n == (i + (i % 2)) / 2) && (n == (i + 1) / 2) && (n == (i + 1)/2))
+05:00:59 26/03/2025 Generating loop invariants candidates with model deepseek-reasoner and presence penalty 0.0
+05:00:59 26/03/2025 Generated 2 candidates
+05:00:59 26/03/2025 Verifying generated candidates
+05:00:59 26/03/2025 Verifying candidate: assert(n == (i + (i % 2)) / 2);
+05:00:59 26/03/2025 Candidate failed verification
+05:00:59 26/03/2025 Adding candidate to fail history: assert(n == (i + (i % 2)) / 2);
+05:00:59 26/03/2025 Verifying candidate: assert(i <= 2 * k);
+05:00:59 26/03/2025 Candidate already in fail history: assert(i <= 2 * k);
+05:00:59 26/03/2025 Executing predicate filtering
+05:00:59 26/03/2025 Filtering predicates for candidate assert(n == (i + (i % 2)) / 2);
+05:00:59 26/03/2025 Filtering predicates for candidate assert(i <= 2 * k);
+05:00:59 26/03/2025 Predicate filtering verify set: ['k >= 0', 'k <= 20000001', 'i <= 2 * k', '(i % 2 == 0) || (i % 2 == 1)', 'n <= k', 'i >= 0', 'n >= 0', '(n == i / 2) || (i % 2 == 1)', 'i <= 2 * k + 1', 'n <= k + 1', 'n == i / 2 + (i % 2)', '((i % 2 == 0 && n == i / 2)) || ((i % 2 == 1 && n == (i + 1) / 2))', 'n == (i + (i % 2)) / 2', 'n == (i + 1) / 2', 'n == (i + 1)/2']
+05:00:59 26/03/2025 Generating loop invariants candidates with model deepseek-reasoner and presence penalty 0.197375320224904
+05:00:59 26/03/2025 Generated 2 candidates
+05:00:59 26/03/2025 Verifying generated candidates
+05:00:59 26/03/2025 Verifying candidate: assert(2 * n == i + (i % 2));
+05:00:59 26/03/2025 Candidate failed verification
+05:00:59 26/03/2025 Adding candidate to fail history: assert(2 * n == i + (i % 2));
+05:00:59 26/03/2025 Verifying candidate: assert(i <= 2 * k);
+05:00:59 26/03/2025 Candidate already in fail history: assert(i <= 2 * k);
+05:00:59 26/03/2025 Executing predicate filtering
+05:00:59 26/03/2025 Filtering predicates for candidate assert(2 * n == i + (i % 2));
+05:00:59 26/03/2025 Addind predicate 2 * n == i + (i % 2) to verify set
+05:00:59 26/03/2025 Filtering predicates for candidate assert(i <= 2 * k);
+05:00:59 26/03/2025 Predicate filtering verify set: ['k >= 0', 'k <= 20000001', 'i <= 2 * k', '(i % 2 == 0) || (i % 2 == 1)', 'n <= k', 'i >= 0', 'n >= 0', '(n == i / 2) || (i % 2 == 1)', 'i <= 2 * k + 1', 'n <= k + 1', 'n == i / 2 + (i % 2)', '((i % 2 == 0 && n == i / 2)) || ((i % 2 == 1 && n == (i + 1) / 2))', 'n == (i + (i % 2)) / 2', 'n == (i + 1) / 2', 'n == (i + 1)/2', '2 * n == i + (i % 2)']
+05:00:59 26/03/2025 Verifying formula: (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (>= k 0) (<= k 20000001)) (<= i (* 2 k))) (or (= (mod i 2) 0) (= (mod i 2) 1))) (<= n k)) (>= i 0)) (>= n 0)) (or (= n (/ i 2)) (= (mod i 2) 1))) (<= i (+ (* 2 k) 1))) (<= n (+ k 1))) (= n (+ (/ i 2) (mod i 2)))) (or (and (= (mod i 2) 0) (= n (/ i 2))) (and (= (mod i 2) 1) (= n (/ (+ i 1) 2))))) (= n (/ (+ i (mod i 2)) 2))) (= n (/ (+ i 1) 2))) (= n (/ (+ i 1) 2))) (= (* 2 n) (+ i (mod i 2))))
+05:00:59 26/03/2025 For candidate: assert((k >= 0) && (k <= 20000001) && (i <= 2 * k) && ((i % 2 == 0) || (i % 2 == 1)) && (n <= k) && (i >= 0) && (n >= 0) && ((n == i / 2) || (i % 2 == 1)) && (i <= 2 * k + 1) && (n <= k + 1) && (n == i / 2 + (i % 2)) && (((i % 2 == 0 && n == i / 2)) || ((i % 2 == 1 && n == (i + 1) / 2))) && (n == (i + (i % 2)) / 2) && (n == (i + 1) / 2) && (n == (i + 1)/2) && (2 * n == i + (i % 2)))
+05:00:59 26/03/2025 # Result
+05:00:59 26/03/2025 No solution found
+05:00:59 26/03/2025 4 counter examples were generated for the model proposals, with 2 repeated fails
+05:00:59 26/03/2025 The model runtime was 846.9933159351349 seconds
+05:00:59 26/03/2025 The total runtime was 1025.8252811431885 seconds

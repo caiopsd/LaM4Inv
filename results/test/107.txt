@@ -1,0 +1,21 @@
+02:02:30 26/03/2025 Resetting generator
+02:02:30 26/03/2025 # Run Benchmark 107
+02:02:30 26/03/2025 Executing predicate filtering for preconditions
+02:02:30 26/03/2025 Filtering predicates for candidate assert(j == 0)
+02:02:30 26/03/2025 Addind predicate j == 0 to verify set
+02:02:30 26/03/2025 Filtering predicates for candidate assert(k == 0)
+02:02:30 26/03/2025 Predicate filtering verify set: ['j == 0']
+02:02:30 26/03/2025 Verifying formula: (= j 0)
+02:02:30 26/03/2025 For candidate: assert((j == 0))
+02:02:30 26/03/2025 Generating loop invariants candidates with model gpt-4o and presence penalty 0.0
+02:02:30 26/03/2025 Generated 3 candidates
+02:02:30 26/03/2025 Verifying generated candidates
+02:02:30 26/03/2025 Verifying candidate: assert(k >= 0);
+02:02:30 26/03/2025 Candidate failed verification
+02:02:30 26/03/2025 Adding candidate to fail history: assert(k >= 0);
+02:02:30 26/03/2025 Verifying candidate: assert((k == 0) || (m >= a));
+02:02:30 26/03/2025 # Result
+02:02:30 26/03/2025 Solution found by the gpt-4o model: assert((k == 0) || (m >= a));
+02:02:30 26/03/2025 1 counter examples were generated for the model proposals, with 0 repeated fails
+02:02:30 26/03/2025 The model runtime was 1.0479819774627686 seconds
+02:02:30 26/03/2025 The total runtime was 1.3298132419586182 seconds
