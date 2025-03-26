@@ -26,7 +26,8 @@ class SMTTranslatorVisitor(c_ast.NodeVisitor):
         return node.name
 
     def visit_Constant(self, node):
-        return node.value
+        value = node.value
+        return re.sub(r'(?i)(u|l|f)+$', '', value)
 
     def visit_FuncCall(self, node):
         name = node.name.name if isinstance(node.name, c_ast.ID) else None
