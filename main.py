@@ -70,7 +70,7 @@ def write_result(result_path: str):
     fails = []
 
     solution_found_by_predicate_filtering_pattern = re.compile(r'Solution found by the predicate filtering mechanism using the (.+) model: (.+)')
-    solution_found_by_llm_pattern = re.compile(r'Solution found by the (.+) model: (.+)')
+    solution_found_by_llm_pattern = re.compile(r'Solution found by the ([\w-]+) model: (.+)')
     total_runtime_pattern = re.compile(r'The total runtime was ([\d.]+) seconds')
     
     for result_file in os.listdir(result_path):

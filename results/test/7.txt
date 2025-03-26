@@ -1,52 +1,209 @@
-23:18:31 24/03/2025 # Run Benchmark 7
-23:18:31 24/03/2025 Executing predicate filtering for preconditions
-23:18:31 24/03/2025 Filtering predicates for candidate assert((x >= 0))
-23:18:31 24/03/2025 Addind predicate (x >= 0) to verify set
-23:18:31 24/03/2025 Filtering predicates for candidate assert((x <= 10))
-23:18:31 24/03/2025 Filtering predicates for candidate assert((y <= 10))
-23:18:31 24/03/2025 Filtering predicates for candidate assert((y >= 0))
-23:18:31 24/03/2025 Addind predicate (y >= 0) to verify set
-23:18:31 24/03/2025 Verifying formula: (and (>= x 0) (>= y 0))
-23:18:31 24/03/2025 For candidate: assert(((x >= 0)) && ((y >= 0)))
-23:18:31 24/03/2025 Generating loop invariants candidates with model gpt-4o and presence penalty 0.0
-23:18:31 24/03/2025 Generated 5 candidates
-23:18:31 24/03/2025 Verifying generated candidates
-23:18:31 24/03/2025 Verifying candidate: assert(x >= 0);
-23:18:31 24/03/2025 Candidate failed verification
-23:18:31 24/03/2025 Adding candidate to fail history: assert(x >= 0);
-23:18:31 24/03/2025 Verifying candidate: assert(x <= 10 || ((x - 10) % 10 == 0));
-23:18:31 24/03/2025 Candidate failed verification
-23:18:31 24/03/2025 Adding candidate to fail history: assert(x <= 10 || ((x - 10) % 10 == 0));
-23:18:31 24/03/2025 Verifying candidate: assert(y <= 10 || ((y - 10) % 10 == 0));
-23:18:31 24/03/2025 Candidate failed verification
-23:18:31 24/03/2025 Adding candidate to fail history: assert(y <= 10 || ((y - 10) % 10 == 0));
-23:18:31 24/03/2025 Verifying candidate: assert(y >= 0);
-23:18:31 24/03/2025 Candidate failed verification
-23:18:31 24/03/2025 Adding candidate to fail history: assert(y >= 0);
-23:18:31 24/03/2025 Verifying candidate: assert(x - y == 0);
-23:18:31 24/03/2025 Candidate failed verification
-23:18:31 24/03/2025 Adding candidate to fail history: assert(x - y == 0);
-23:18:31 24/03/2025 Executing predicate filtering
-23:18:31 24/03/2025 Filtering predicates for candidate assert(x >= 0);
-23:18:31 24/03/2025 Addind predicate x >= 0 to verify set
-23:18:31 24/03/2025 Filtering predicates for candidate assert(x <= 10 || ((x - 10) % 10 == 0));
-23:18:31 24/03/2025 Filtering predicates for candidate assert(y <= 10 || ((y - 10) % 10 == 0));
-23:18:31 24/03/2025 Filtering predicates for candidate assert(y >= 0);
-23:18:31 24/03/2025 Addind predicate y >= 0 to verify set
-23:18:31 24/03/2025 Filtering predicates for candidate assert(x - y == 0);
-23:18:31 24/03/2025 Verifying formula: (and (and (and (>= x 0) (>= y 0)) (>= x 0)) (>= y 0))
-23:18:31 24/03/2025 For candidate: assert(((x >= 0)) && ((y >= 0)) && (x >= 0) && (y >= 0))
-23:18:31 24/03/2025 Generating loop invariants candidates with model gpt-4o and presence penalty 0.0
-23:18:31 24/03/2025 Generated 3 candidates
-23:18:31 24/03/2025 Verifying generated candidates
-23:18:31 24/03/2025 Verifying candidate: assert(x % 10 == y % 10);
-23:18:31 24/03/2025 Candidate failed verification
-23:18:31 24/03/2025 Adding candidate to fail history: assert(x % 10 == y % 10);
-23:18:31 24/03/2025 Verifying candidate: assert(x >= y);
-23:18:31 24/03/2025 Candidate failed verification
-23:18:31 24/03/2025 Adding candidate to fail history: assert(x >= y);
-23:18:31 24/03/2025 Verifying candidate: assert(x <= y + 10);
-23:18:31 24/03/2025 # Result
-23:18:31 24/03/2025 Solution: assert(x <= y + 10);
-23:18:31 24/03/2025 Generate 7 counter examples, with 0 repeated fails
-23:18:31 24/03/2025 Run time: 5.838047981262207
+23:44:01 25/03/2025 Resetting generator
+23:44:01 25/03/2025 # Run Benchmark 7
+23:44:01 25/03/2025 Executing predicate filtering for preconditions
+23:44:01 25/03/2025 Filtering predicates for candidate assert((x >= 0))
+23:44:01 25/03/2025 Addind predicate (x >= 0) to verify set
+23:44:01 25/03/2025 Filtering predicates for candidate assert((x <= 10))
+23:44:01 25/03/2025 Filtering predicates for candidate assert((y <= 10))
+23:44:01 25/03/2025 Filtering predicates for candidate assert((y >= 0))
+23:44:01 25/03/2025 Addind predicate (y >= 0) to verify set
+23:44:01 25/03/2025 Predicate filtering verify set: ['(x >= 0)', '(y >= 0)']
+23:44:01 25/03/2025 Verifying formula: (and (>= x 0) (>= y 0))
+23:44:01 25/03/2025 For candidate: assert(((x >= 0)) && ((y >= 0)))
+23:44:01 25/03/2025 Generating loop invariants candidates with model gpt-4o and presence penalty 0.0
+23:44:01 25/03/2025 Generated 5 candidates
+23:44:01 25/03/2025 Verifying generated candidates
+23:44:01 25/03/2025 Verifying candidate: assert(x >= 0);
+23:44:01 25/03/2025 Candidate failed verification
+23:44:01 25/03/2025 Adding candidate to fail history: assert(x >= 0);
+23:44:01 25/03/2025 Verifying candidate: assert(y >= 0);
+23:44:01 25/03/2025 Candidate failed verification
+23:44:01 25/03/2025 Adding candidate to fail history: assert(y >= 0);
+23:44:01 25/03/2025 Verifying candidate: assert(x <= 10 || (x - 10) % 10 == 0);
+23:44:01 25/03/2025 Candidate failed verification
+23:44:01 25/03/2025 Adding candidate to fail history: assert(x <= 10 || (x - 10) % 10 == 0);
+23:44:01 25/03/2025 Verifying candidate: assert(y <= 10 || (y - 10) % 10 == 0);
+23:44:01 25/03/2025 Candidate failed verification
+23:44:01 25/03/2025 Adding candidate to fail history: assert(y <= 10 || (y - 10) % 10 == 0);
+23:44:01 25/03/2025 Verifying candidate: assert(x - y == 0);
+23:44:01 25/03/2025 Candidate failed verification
+23:44:01 25/03/2025 Adding candidate to fail history: assert(x - y == 0);
+23:44:01 25/03/2025 Executing predicate filtering
+23:44:01 25/03/2025 Filtering predicates for candidate assert(x >= 0);
+23:44:01 25/03/2025 Addind predicate x >= 0 to verify set
+23:44:01 25/03/2025 Filtering predicates for candidate assert(y >= 0);
+23:44:01 25/03/2025 Addind predicate y >= 0 to verify set
+23:44:01 25/03/2025 Filtering predicates for candidate assert(x <= 10 || (x - 10) % 10 == 0);
+23:44:01 25/03/2025 Filtering predicates for candidate assert(y <= 10 || (y - 10) % 10 == 0);
+23:44:01 25/03/2025 Filtering predicates for candidate assert(x - y == 0);
+23:44:01 25/03/2025 Predicate filtering verify set: ['(x >= 0)', '(y >= 0)', 'x >= 0', 'y >= 0']
+23:44:01 25/03/2025 Verifying formula: (and (and (and (>= x 0) (>= y 0)) (>= x 0)) (>= y 0))
+23:44:01 25/03/2025 For candidate: assert(((x >= 0)) && ((y >= 0)) && (x >= 0) && (y >= 0))
+23:44:01 25/03/2025 Resetting generator
+23:44:01 25/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.0
+23:44:01 25/03/2025 Generated 3 candidates
+23:44:01 25/03/2025 Verifying generated candidates
+23:44:01 25/03/2025 Verifying candidate: assert((x >= 0) && (x <= 10));
+23:44:01 25/03/2025 Candidate failed verification
+23:44:01 25/03/2025 Adding candidate to fail history: assert((x >= 0) && (x <= 10));
+23:44:01 25/03/2025 Verifying candidate: assert((y >= 0) && (y <= 10));
+23:44:01 25/03/2025 Candidate failed verification
+23:44:01 25/03/2025 Adding candidate to fail history: assert((y >= 0) && (y <= 10));
+23:44:01 25/03/2025 Verifying candidate: assert((x == 10 * n) && (y == 10 * n) && (n >= 0));
+23:44:01 25/03/2025 Invalid SMT-LIB-2 formula syntax
+23:44:01 25/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.0
+23:44:01 25/03/2025 Generated 3 candidates
+23:44:01 25/03/2025 Verifying generated candidates
+23:44:01 25/03/2025 Verifying candidate: assert((x >= 0) && (x <= 20));
+23:44:01 25/03/2025 Candidate failed verification
+23:44:01 25/03/2025 Adding candidate to fail history: assert((x >= 0) && (x <= 20));
+23:44:01 25/03/2025 Verifying candidate: assert((y >= 0) && (y <= 20));
+23:44:01 25/03/2025 Candidate failed verification
+23:44:01 25/03/2025 Adding candidate to fail history: assert((y >= 0) && (y <= 20));
+23:44:01 25/03/2025 Verifying candidate: assert((x == 10 * n) && (y == 10 * n) && (n >= 0));
+23:44:01 25/03/2025 Invalid SMT-LIB-2 formula syntax
+23:44:01 25/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.0
+23:44:01 25/03/2025 Generated 3 candidates
+23:44:01 25/03/2025 Verifying generated candidates
+23:44:01 25/03/2025 Verifying candidate: assert((x >= 0) && (x <= 20));
+23:44:01 25/03/2025 Candidate already in fail history: assert((x >= 0) && (x <= 20));
+23:44:01 25/03/2025 Verifying candidate: assert((y >= 0) && (y <= 20));
+23:44:01 25/03/2025 Candidate already in fail history: assert((y >= 0) && (y <= 20));
+23:44:01 25/03/2025 Verifying candidate: assert((x == 10 * n) && (y == 10 * n) && (n >= 0));
+23:44:01 25/03/2025 Invalid SMT-LIB-2 formula syntax
+23:44:01 25/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.3799489622552249
+23:44:01 25/03/2025 Generated 4 candidates
+23:44:01 25/03/2025 Verifying generated candidates
+23:44:01 25/03/2025 Verifying candidate: assert((x >= 0) && (x <= 20));
+23:44:01 25/03/2025 Candidate already in fail history: assert((x >= 0) && (x <= 20));
+23:44:01 25/03/2025 Verifying candidate: assert((y >= 0) && (y <= 20));
+23:44:01 25/03/2025 Candidate already in fail history: assert((y >= 0) && (y <= 20));
+23:44:01 25/03/2025 Verifying candidate: assert((x % 10 == 0) && (y % 10 == 0));
+23:44:01 25/03/2025 Candidate failed verification
+23:44:01 25/03/2025 Adding candidate to fail history: assert((x % 10 == 0) && (y % 10 == 0));
+23:44:01 25/03/2025 Verifying candidate: assert((x == 10 * n) && (y == 10 * n) && (n >= 0));
+23:44:01 25/03/2025 Invalid SMT-LIB-2 formula syntax
+23:44:01 25/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.6640367702678491
+23:44:01 25/03/2025 Generated 4 candidates
+23:44:01 25/03/2025 Verifying generated candidates
+23:44:01 25/03/2025 Verifying candidate: assert((x >= 0) && (x <= 20));
+23:44:01 25/03/2025 Candidate already in fail history: assert((x >= 0) && (x <= 20));
+23:44:01 25/03/2025 Verifying candidate: assert((y >= 0) && (y <= 20));
+23:44:01 25/03/2025 Candidate already in fail history: assert((y >= 0) && (y <= 20));
+23:44:01 25/03/2025 Verifying candidate: assert((x == 10 * n) && (y == 10 * n) && (n >= 0) && (n <= 2);
+23:44:01 25/03/2025 Invalid candidate syntax
+23:44:01 25/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.8336546070121553
+23:44:01 25/03/2025 Generated 4 candidates
+23:44:01 25/03/2025 Verifying generated candidates
+23:44:01 25/03/2025 Verifying candidate: assert((x >= 0) && (x <= 20));
+23:44:01 25/03/2025 Candidate already in fail history: assert((x >= 0) && (x <= 20));
+23:44:01 25/03/2025 Verifying candidate: assert((y >= 0) && (y <= 20));
+23:44:01 25/03/2025 Candidate already in fail history: assert((y >= 0) && (y <= 20));
+23:44:01 25/03/2025 Verifying candidate: assert((x == 10 * n) && (y == 10 * n) && (n >= 0) && (n <= 2));
+23:44:01 25/03/2025 Invalid SMT-LIB-2 formula syntax
+23:44:01 25/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9216685544064713
+23:44:01 25/03/2025 Generated 5 candidates
+23:44:01 25/03/2025 Verifying generated candidates
+23:44:01 25/03/2025 Verifying candidate: assert((x >= 0) && (x <= 20));
+23:44:01 25/03/2025 Candidate already in fail history: assert((x >= 0) && (x <= 20));
+23:44:01 25/03/2025 Verifying candidate: assert((y >= 0) && (y <= 20));
+23:44:01 25/03/2025 Candidate already in fail history: assert((y >= 0) && (y <= 20));
+23:44:01 25/03/2025 Verifying candidate: assert((x == 10 * n) && (y == 10 * n) && (n >= 0) && (n <= 2));
+23:44:01 25/03/2025 Invalid SMT-LIB-2 formula syntax
+23:44:01 25/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9640275800758169
+23:44:01 25/03/2025 Generated 5 candidates
+23:44:01 25/03/2025 Verifying generated candidates
+23:44:01 25/03/2025 Verifying candidate: assert((x >= 0) && (x <= 20));
+23:44:01 25/03/2025 Candidate already in fail history: assert((x >= 0) && (x <= 20));
+23:44:01 25/03/2025 Verifying candidate: assert((y >= 0) && (y <= 20));
+23:44:01 25/03/2025 Candidate already in fail history: assert((y >= 0) && (y <= 20));
+23:44:01 25/03/2025 Verifying candidate: assert((x == 10 * n) && (y == 10 * n) && (n >= 0) && (n <= 2));
+23:44:01 25/03/2025 Invalid SMT-LIB-2 formula syntax
+23:44:01 25/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9836748576936802
+23:44:01 25/03/2025 Generated 5 candidates
+23:44:01 25/03/2025 Verifying generated candidates
+23:44:01 25/03/2025 Verifying candidate: assert((x >= 0) && (x <= 20));
+23:44:01 25/03/2025 Candidate already in fail history: assert((x >= 0) && (x <= 20));
+23:44:01 25/03/2025 Verifying candidate: assert((y >= 0) && (y <= 20));
+23:44:01 25/03/2025 Candidate already in fail history: assert((y >= 0) && (y <= 20));
+23:44:01 25/03/2025 Verifying candidate: assert((x == 10 * n) && (y == 10 * n) && (n >= 0) && (n <= 2));
+23:44:01 25/03/2025 Invalid SMT-LIB-2 formula syntax
+23:44:01 25/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.992631520201128
+23:44:01 25/03/2025 Generated 5 candidates
+23:44:01 25/03/2025 Verifying generated candidates
+23:44:01 25/03/2025 Verifying candidate: assert((x >= 0) && (x <= 20));
+23:44:01 25/03/2025 Candidate already in fail history: assert((x >= 0) && (x <= 20));
+23:44:01 25/03/2025 Verifying candidate: assert((y >= 0) && (y <= 20));
+23:44:01 25/03/2025 Candidate already in fail history: assert((y >= 0) && (y <= 20));
+23:44:01 25/03/2025 Verifying candidate: assert((x == 10 * n) && (y == 10 * n) && (n >= 0) && (n <= 2));
+23:44:01 25/03/2025 Invalid SMT-LIB-2 formula syntax
+23:44:01 25/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9966823978396512
+23:44:01 25/03/2025 Generated 5 candidates
+23:44:01 25/03/2025 Verifying generated candidates
+23:44:01 25/03/2025 Verifying candidate: assert((x >= 0) && (x <= 20));
+23:44:01 25/03/2025 Candidate already in fail history: assert((x >= 0) && (x <= 20));
+23:44:01 25/03/2025 Verifying candidate: assert((y >= 0) && (y <= 20));
+23:44:01 25/03/2025 Candidate already in fail history: assert((y >= 0) && (y <= 20));
+23:44:01 25/03/2025 Verifying candidate: assert((x == 10 * n) && (y == 10 * n) && (n >= 0) && (n <= 2));
+23:44:01 25/03/2025 Invalid SMT-LIB-2 formula syntax
+23:44:01 25/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9985079423323266
+23:44:01 25/03/2025 Generated 5 candidates
+23:44:01 25/03/2025 Verifying generated candidates
+23:44:01 25/03/2025 Verifying candidate: assert((x >= 0) && (x <= 20));
+23:44:01 25/03/2025 Candidate already in fail history: assert((x >= 0) && (x <= 20));
+23:44:01 25/03/2025 Verifying candidate: assert((y >= 0) && (y <= 20));
+23:44:01 25/03/2025 Candidate already in fail history: assert((y >= 0) && (y <= 20));
+23:44:01 25/03/2025 Verifying candidate: assert((x == 10 * n) && (y == 10 * n) && (n >= 0) && (n <= 2));
+23:44:01 25/03/2025 Invalid SMT-LIB-2 formula syntax
+23:44:01 25/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.999329299739067
+23:44:01 25/03/2025 Generated 5 candidates
+23:44:01 25/03/2025 Verifying generated candidates
+23:44:01 25/03/2025 Verifying candidate: assert((x >= 0) && (x <= 20));
+23:44:01 25/03/2025 Candidate already in fail history: assert((x >= 0) && (x <= 20));
+23:44:01 25/03/2025 Verifying candidate: assert((y >= 0) && (y <= 20));
+23:44:01 25/03/2025 Candidate already in fail history: assert((y >= 0) && (y <= 20));
+23:44:01 25/03/2025 Verifying candidate: assert((x == 10 * n) && (y == 10 * n) && (n >= 0) && (n <= 2));
+23:44:01 25/03/2025 Invalid SMT-LIB-2 formula syntax
+23:44:01 25/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9996985792838805
+23:44:01 25/03/2025 Generated 5 candidates
+23:44:01 25/03/2025 Verifying generated candidates
+23:44:01 25/03/2025 Verifying candidate: assert((x >= 0) && (x <= 20));
+23:44:01 25/03/2025 Candidate already in fail history: assert((x >= 0) && (x <= 20));
+23:44:01 25/03/2025 Verifying candidate: assert((y >= 0) && (y <= 20));
+23:44:01 25/03/2025 Candidate already in fail history: assert((y >= 0) && (y <= 20));
+23:44:01 25/03/2025 Verifying candidate: assert((x == 10 * n) && (y == 10 * n) && (n >= 0) && (n <= 2));
+23:44:01 25/03/2025 Invalid SMT-LIB-2 formula syntax
+23:44:01 25/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9998645517007605
+23:44:01 25/03/2025 Generated 5 candidates
+23:44:01 25/03/2025 Verifying generated candidates
+23:44:01 25/03/2025 Verifying candidate: assert((x >= 0) && (x <= 20));
+23:44:01 25/03/2025 Candidate already in fail history: assert((x >= 0) && (x <= 20));
+23:44:01 25/03/2025 Verifying candidate: assert((y >= 0) && (y <= 20));
+23:44:01 25/03/2025 Candidate already in fail history: assert((y >= 0) && (y <= 20));
+23:44:01 25/03/2025 Verifying candidate: assert((x == 10 * n) && (y == 10 * n) && (n >= 0) && (n <= 2));
+23:44:01 25/03/2025 Invalid SMT-LIB-2 formula syntax
+23:44:01 25/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9999391368861988
+23:44:01 25/03/2025 Generated 5 candidates
+23:44:01 25/03/2025 Verifying generated candidates
+23:44:01 25/03/2025 Verifying candidate: assert((x >= 0) && (x <= 20));
+23:44:01 25/03/2025 Candidate already in fail history: assert((x >= 0) && (x <= 20));
+23:44:01 25/03/2025 Verifying candidate: assert((y >= 0) && (y <= 20));
+23:44:01 25/03/2025 Candidate already in fail history: assert((y >= 0) && (y <= 20));
+23:44:01 25/03/2025 Verifying candidate: assert((x == 10 * n) && (y == 10 * n) && (n >= 0) && (n <= 2));
+23:44:01 25/03/2025 Invalid SMT-LIB-2 formula syntax
+23:44:01 25/03/2025 Resetting generator
+23:44:01 25/03/2025 Generating loop invariants candidates with model o3-mini and presence penalty 0.0
+23:44:01 25/03/2025 Generated 3 candidates
+23:44:01 25/03/2025 Verifying generated candidates
+23:44:01 25/03/2025 Verifying candidate: assert(x >= 0);
+23:44:01 25/03/2025 Candidate failed verification
+23:44:01 25/03/2025 Adding candidate to fail history: assert(x >= 0);
+23:44:01 25/03/2025 Verifying candidate: assert(y >= 0);
+23:44:01 25/03/2025 Candidate failed verification
+23:44:01 25/03/2025 Adding candidate to fail history: assert(y >= 0);
+23:44:01 25/03/2025 Verifying candidate: assert((x - y) <= 10 && (y - x) <= 10);
+23:44:01 25/03/2025 # Result
+23:44:01 25/03/2025 Solution found by the o3-mini model: assert((x - y) <= 10 && (y - x) <= 10);
+23:44:01 25/03/2025 2 counter examples were generated for the model proposals, with 0 repeated fails
+23:44:01 25/03/2025 The model runtime was 20.903480291366577 seconds
+23:44:01 25/03/2025 The total runtime was 75.26825761795044 seconds
