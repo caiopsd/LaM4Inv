@@ -1,9 +1,8 @@
 Total benchmarks: 316
-Solutions found: 315
-Solutions found by predicate filtering: 135
-Success rate: 99.68%
-Average runtime: 29.40 seconds
-Fails: 248
+Solutions found: 316
+Solutions found by predicate filtering: 136
+Success rate: 100.00%
+Average runtime: 28.85 seconds
 
 Model: gpt-4o-mini
 Solutions found: 69
@@ -20,11 +19,11 @@ Average counter examples: 1.71
 Average repeated fails: 0.29
 
 Model: o3-mini
-Solutions found: 56
+Solutions found: 57
 Solutions found by model: 39
-Average runtime: 44.53 seconds
-Average counter examples: 3.77
-Average repeated fails: 0.48
+Average runtime: 45.36 seconds
+Average counter examples: 3.84
+Average repeated fails: 0.47
 
 Model: None
 Solutions found: 58
