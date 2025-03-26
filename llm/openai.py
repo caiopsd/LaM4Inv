@@ -25,6 +25,7 @@ class OpenAI(LLM):
         self.client = OpenAIClient(api_key=api_key, base_url=base_url)
         self._unsupported_params = {
             ChatGPTModel.O1_MINI: ["presence_penalty"],
+            ChatGPTModel.O3_MINI: ["presence_penalty"],
         }
 
     def _get_messages(self, chat: Chat) -> list:
