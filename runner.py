@@ -158,7 +158,7 @@ class Runner:
         solution = self._predicate_filtering(preconditions)
         if solution is not None:
             self._log(f'Predicate filtering found solution: {solution}')
-            return self._handle_solution(solution, llm, start_time, predicate_filtering=True,)
+            return self._handle_solution(solution, None, start_time, predicate_filtering=True)
         
         chat_options = ChatOptions()
         while True:
@@ -186,7 +186,7 @@ class Runner:
                 solution = self._predicate_filtering(candidates)
                 if solution is not None:
                     self._log(f'Predicate filtering found solution: {solution}')
-                    return self._handle_solution(solution, llm, start_time)
+                    return self._handle_solution(solution, llm, start_time, predicate_filtering=True)
             except InvalidCodeFormulaError as e:
                 self._log(f'Invalid candidate syntax')
                 self._logger.error(e)
