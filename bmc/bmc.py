@@ -1,3 +1,5 @@
+import logging
+
 from abc import ABC, abstractmethod
 
 class InvalidCodeError(Exception):
@@ -5,5 +7,5 @@ class InvalidCodeError(Exception):
 
 class BMC(ABC):
     @abstractmethod
-    def verify(self, code: str) -> bool:
+    def verify(self, code: str, logger: logging.Logger) -> bool:
         pass

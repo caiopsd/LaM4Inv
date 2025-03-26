@@ -6,7 +6,8 @@ def timeout_handler(signum, frame):
 
 def run_with_timeout(func, args=(), kwargs={}, timeout=5):
     signal.signal(signal.SIGALRM, timeout_handler)
-    signal.alarm(timeout)
+    if timeout >= 0:
+        signal.alarm(timeout)
 
     result = func(*args, **kwargs)
     signal.alarm(0)
@@ -15,7 +16,7 @@ def run_with_timeout(func, args=(), kwargs={}, timeout=5):
 def run_command_with_timeout(command: str, timeout: float):
     process = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
     try:
-        stdout, stderr = process.communicate(timeout=timeout)
+        stdout, stderr = process.communicate(timeout=(timeout >= 0 or None))
         return stdout, stderr
     except subprocess.TimeoutExpired:
         process.kill()

@@ -1,6 +1,5 @@
 import argparse
 import os
-import logging
 import re
 from dotenv import load_dotenv
 from pydantic import BaseModel
@@ -143,7 +142,8 @@ def run_experiment(
         z3_solver: Z3Solver, 
         pipeline: list[tuple[LLM, float]],
         bmc: BMC,
-        max_chat_interactions: int
+        max_chat_interactions: int,
+        log_level: str
 ):
     for i in benchmarks:
         graph_file_path = os.path.join(config.benchmarks_graph_path, f'{i}.c.json')
@@ -165,7 +165,8 @@ def run_experiment(
             code_handler=code_handler, 
             result_file_path=sample_result_file_path, 
             presence_penalty_scale=0.2,
-            max_chat_interactions=max_chat_interactions
+            max_chat_interactions=max_chat_interactions,
+            log_level=log_level
         )
 
         try:
@@ -229,13 +230,11 @@ def main():
         write_result(args.results_path)
         return
 
-    logging.basicConfig(level=args.log_level)
-
     pipeline = [(get_llm(model), threshold) for model, threshold in args.pipeline]
     z3_solver = Z3Solver(args.smt_timeout)
     esbmc = ESBMC(config.esbmc_bin_path, args.bmc_timeout, args.bmc_max_steps)
 
-    run_experiment(args.benchmarks, args.results_path,  z3_solver, pipeline, esbmc, args.max_chat_interactions)
+    run_experiment(args.benchmarks, args.results_path,  z3_solver, pipeline, esbmc, args.max_chat_interactions, args.log_level)
 
 if __name__ == "__main__":
     main()

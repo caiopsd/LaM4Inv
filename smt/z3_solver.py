@@ -8,7 +8,8 @@ class Z3Solver(Solver):
         self.solver = z3.Solver()
         self.solver.set(auto_config=False)
         self.timeout = timeout
-        self.solver.set('timeout', self.timeout*1000)
+        if self.timeout >= 0:
+            self.solver.set('timeout', self.timeout*1000)
 
     def check(self, formula: str) -> SatStatus:
         self.solver.reset()

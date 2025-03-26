@@ -25,7 +25,8 @@ class Runner:
         code_handler: CodeHandler,
         result_file_path: str,
         presence_penalty_scale: float,
-        max_chat_interactions = 0
+        max_chat_interactions = 0,
+        log_level = logging.INFO
     ):
         self.inv_smt_solver = inv_smt_solver
         self.predicate_filtering = predicate_filtering
@@ -37,47 +38,45 @@ class Runner:
         self.presence_penalty_scale = presence_penalty_scale
         self.max_chat_interactions = max_chat_interactions
         
-        self._result_file = self._get_result_file(result_file_path)
         self._logger = logging.getLogger(__name__)
+        self._logger.setLevel(logging.DEBUG)
+
+        self._results_log_buffer = io.StringIO()
+        results_log_handler = logging.StreamHandler(self._results_log_buffer)
+        results_log_handler.setLevel(logging.INFO)
+        
+        console_log_handler = logging.StreamHandler()
+        console_log_handler.setLevel(log_level)
+
+        formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+        results_log_handler.setFormatter(formatter)
+        console_log_handler.setFormatter(formatter)
+        
+        self._logger.addHandler(results_log_handler)
+        self._logger.addHandler(console_log_handler)
+
+        self._result_file_path = result_file_path
 
         self.reset()
 
-    def _get_result_file(self, result_file_path: str) -> io.TextIOWrapper:
-        os.makedirs(os.path.dirname(result_file_path), exist_ok=True)
-        return open(result_file_path, "w")
-
-    def _write_log(self):
-        formmated_time = time.strftime("%H:%M:%S %d/%m/%Y", time.gmtime(time.time()))
-        for log in self._logs:
-            print(log)
-            self._result_file.write(f'{formmated_time} {log}\n')
-
     def _log_solution(self, solution: str, llm: LLM, start_time: float, predicate_filtering: bool):
-        self._log('# Result')
+        self._logger.info('# Result')
         if solution is None:
-            self._log(f'No solution found')
+            self._logger.info(f'No solution found')
         if solution is not None and predicate_filtering:
-            self._log(f'Solution found by the predicate filtering mechanism using the {llm} model: {solution}')
+            self._logger.info(f'Solution found by the predicate filtering mechanism using the {llm} model: {solution}')
         if solution is not None and not predicate_filtering:
-            self._log(f'Solution found by the {llm} model: {solution}')
+            self._logger.info(f'Solution found by the {llm} model: {solution}')
         
         end_time = time.time()
-        self._log(f'{len(self._fail_history)} counter examples were generated for the model proposals, with {self._fail_history_hit} repeated fails')
-        self._log(f'The model runtime was {end_time - (self._curr_pipeline_step_activation_time or end_time)} seconds')
-        self._log(f'The total runtime was {end_time - start_time} seconds')
-
-    def _log(self, message: str):
-        self._logger.info(message)
-        self._logs.append(message)
-
-    def _close(self):
-        self._result_file.close()
+        self._logger.info(f'{len(self._fail_history)} counter examples were generated for the model proposals, with {self._fail_history_hit} repeated fails')
+        self._logger.info(f'The model runtime was {end_time - (self._curr_pipeline_step_activation_time or end_time)} seconds')
+        self._logger.info(f'The total runtime was {end_time - start_time} seconds')
 
     def _handle_solution(self, solution: str, llm: LLM, start_time: float, predicate_filtering:bool = False) -> str:
         self._log_solution(solution, llm, start_time, predicate_filtering)
-        self._write_log()
+        self._flush_log_to_result_file()
         self.reset()
-        self._close()
         return solution
     
     def _next_pipeline_step(self) -> tuple[LLM, float]:
@@ -103,22 +102,22 @@ class Runner:
     def _predicate_filtering(self, candidates: list[str]) -> str:
         verify = False
         for candidate in candidates:
-            self._log(f'Filtering predicates for candidate {candidate}')
+            self._logger.info(f'Filtering predicates for candidate {candidate}')
             formula = self.formula_handler.extract_formula(candidate)
-            filtered_predicates = self.predicate_filtering.filter(formula)
+            filtered_predicates = self.predicate_filtering.filter(formula, self._logger)
             for predicate in filtered_predicates:
                 if predicate not in self._predicate_filtering_verify_set:
                     verify = True
-                    self._log(f'Addind predicate {predicate} to verify set')
+                    self._logger.info(f'Addind predicate {predicate} to verify set')
                 self._predicate_filtering_verify_set[predicate] = True
         
-        self._log(f'Predicate filtering verify set: {list(self._predicate_filtering_verify_set.keys())}')    
+        self._logger.info(f'Predicate filtering verify set: {list(self._predicate_filtering_verify_set.keys())}')    
         if verify:
             formula = ' && '.join([f'({predicate})' for predicate in self._predicate_filtering_verify_set.keys()])
             smt_lib2_formula = self.formula_handler.to_smt_lib2(formula)
 
-            self._log(f'Verifying formula: {smt_lib2_formula}')
-            self._log(f'For candidate: assert({formula})')
+            self._logger.info(f'Verifying formula: {smt_lib2_formula}')
+            self._logger.info(f'For candidate: assert({formula})')
             counter_example = self.inv_smt_solver.get_counter_example(smt_lib2_formula)
             if counter_example is None:
                 return f'assert({formula})'
@@ -126,12 +125,12 @@ class Runner:
     def _verify_candidates(self, candidates: list[str]) -> tuple[str, list[str]]:
         fails = []
         for candidate in candidates:
-            self._log(f'Verifying candidate: {candidate}')
+            self._logger.info(f'Verifying candidate: {candidate}')
 
             if candidate in self._fail_history:
                 self._fail_history_hit += 1
                 fails.append((candidate, (self._fail_history[candidate])))
-                self._log(f'Candidate already in fail history: {candidate}')
+                self._logger.info(f'Candidate already in fail history: {candidate}')
                 continue
 
             formula = self.formula_handler.extract_formula(candidate)
@@ -140,10 +139,10 @@ class Runner:
             if counter_example is None:
                 return candidate, fails
             
-            self._log(f'Candidate failed verification')
+            self._logger.info(f'Candidate failed verification')
             fails.append((candidate, counter_example))
             
-            self._log(f'Adding candidate to fail history: {candidate}')
+            self._logger.info(f'Adding candidate to fail history: {candidate}')
             self._fail_history[candidate] = counter_example
         
         return None, fails
@@ -151,13 +150,13 @@ class Runner:
     def run(self, benchmark_id: str) -> tuple[str, float, int]:
         start_time = time.time()
 
-        self._log(f'# Run Benchmark {benchmark_id}')
+        self._logger.info(f'# Run Benchmark {benchmark_id}')
 
-        self._log(f'Executing predicate filtering for preconditions')
+        self._logger.info(f'Executing predicate filtering for preconditions')
         preconditions = self.code_handler.get_preconditions()
         solution = self._predicate_filtering(preconditions)
         if solution is not None:
-            self._log(f'Predicate filtering found solution: {solution}')
+            self._logger.info(f'Predicate filtering found solution: {solution}')
             return self._handle_solution(solution, None, start_time, predicate_filtering=True)
         
         chat_options = ChatOptions()
@@ -169,12 +168,12 @@ class Runner:
 
             chat_options.presence_penalty = self._get_presence_penalty()
             
-            self._log(f'Generating loop invariants candidates with model {llm} and presence penalty {chat_options.presence_penalty}')
+            self._logger.info(f'Generating loop invariants candidates with model {llm} and presence penalty {chat_options.presence_penalty}')
             candidates = self.generator.generate(feedback=self._last_fails, llm=llm, chat_options=chat_options)
-            self._log(f'Generated {len(candidates)} candidates')
+            self._logger.info(f'Generated {len(candidates)} candidates')
             
             try:
-                self._log(f'Verifying generated candidates')
+                self._logger.info(f'Verifying generated candidates')
                 solution, self._last_fails = self._verify_candidates(candidates)
                 if solution is not None:
                     return self._handle_solution(solution, llm, start_time)
@@ -182,30 +181,33 @@ class Runner:
                 if self.max_chat_interactions > 0 and len(self.generator.get_messages()) >= self.max_chat_interactions:
                     self._reset_generator()
 
-                self._log(f'Executing predicate filtering')
+                self._logger.info(f'Executing predicate filtering')
                 solution = self._predicate_filtering(candidates)
                 if solution is not None:
-                    self._log(f'Predicate filtering found solution: {solution}')
+                    self._logger.info(f'Predicate filtering found solution: {solution}')
                     return self._handle_solution(solution, llm, start_time, predicate_filtering=True)
             except InvalidCodeFormulaError as e:
-                self._log(f'Invalid candidate syntax: {e}')
-                self._logger.error(e)
+                self._logger.error(f'Invalid candidate syntax', e)
                 continue
             except InvalidSMTLIB2FormulaError as e:
-                self._log(f'Invalid SMT-LIB-2 formula syntax')
-                self._logger.error(e)
+                self._logger.error(f'Invalid SMT-LIB-2 formula syntax', e)
                 continue
             except InvalidCodeError as e:
-                self._log(f'Invalid code while filtering predicates for candidate')
-                self._logger.error(e)
+                self._logger.error(f'Invalid code while filtering predicates for candidate', e)
                 continue
             except TimeoutError as e:
-                self._log(f'Timeout while verifying candidate')
-                self._logger.error(e)
+                self._logger.error(f'Timeout while verifying candidate', e)
                 continue
+    
+    def _flush_log_to_result_file(self):
+        os.makedirs(os.path.dirname(self._result_file_path), exist_ok=True)
+        with open(self._result_file_path, "w") as result_file:
+            result_file.write(self._results_log_buffer.getvalue())
+            self._results_log_buffer.seek(0)
+            self._results_log_buffer.truncate()
 
     def _reset_generator(self):
-        self._log(f'Resetting generator')
+        self._logger.info(f'Resetting generator')
         self._fail_history = {}
         self._fail_history_hit = 0
         self._last_fails = []
@@ -213,7 +215,8 @@ class Runner:
             
     def reset(self):
         self._predicate_filtering_verify_set = {}
-        self._logs = []
+        self._results_log_buffer.seek(0)
+        self._results_log_buffer.truncate()
         self._curr_pipeline_step_index = None
         self._curr_pipeline_step_activation_time = None
         self._reset_generator()

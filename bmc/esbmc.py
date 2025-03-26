@@ -10,10 +10,9 @@ class ESBMC(BMC):
         self.bin_path = bin_path
         self.timeout = timeout
         self.max_k_step = max_k_step
-        self.logger = logging.getLogger(__name__)
         pass
 
-    def verify(self, code: str) -> bool:
+    def verify(self, code: str, logger: logging.Logger) -> bool:
         tmp_dir = tempfile.mkdtemp()
         tmp_file = os.path.join(tmp_dir, "main.c")
         with open(tmp_file, "w") as f:
@@ -32,5 +31,5 @@ class ESBMC(BMC):
                 return True
             raise InvalidCodeError(stderr)
         except TimeoutError:
-            self.logger.error("ESBMC timed out")
+            logger.error("ESBMC timed out")
             return False
