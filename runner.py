@@ -63,7 +63,7 @@ class Runner:
         
         end_time = time.time()
         self._log(f'{len(self._fail_history)} counter examples were generated for the model proposals, with {self._fail_history_hit} repeated fails')
-        self._log(f'The model runtime was {end_time - self._curr_pipeline_step_activation_time} seconds')
+        self._log(f'The model runtime was {end_time - (self._curr_pipeline_step_activation_time or end_time)} seconds')
         self._log(f'The total runtime was {end_time - start_time} seconds')
 
     def _log(self, message: str):
