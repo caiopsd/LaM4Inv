@@ -188,7 +188,7 @@ class Runner:
                     self._log(f'Predicate filtering found solution: {solution}')
                     return self._handle_solution(solution, llm, start_time, predicate_filtering=True)
             except InvalidCodeFormulaError as e:
-                self._log(f'Invalid candidate syntax')
+                self._log(f'Invalid candidate syntax: {e}')
                 self._logger.error(e)
                 continue
             except InvalidSMTLIB2FormulaError as e:
