@@ -90,7 +90,7 @@ class Runner:
         if time_spent >= curr_step[1] and self._curr_pipeline_step_index == len(self.pipeline) - 1:
             return (None, None)
         if time_spent >= curr_step[1]:
-            self._reset_generator()
+            #self._reset_generator()
             self._curr_pipeline_step_index += 1
             self._curr_pipeline_step_activation_time = time.time()
         
