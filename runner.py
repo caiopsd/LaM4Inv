@@ -87,10 +87,17 @@ class Runner:
 
         time_spent = time.time() - self._curr_pipeline_step_activation_time
         curr_step = self.pipeline[self._curr_pipeline_step_index]
+        
+        if len(self._fail_history) > 10: 
+            self._reset_generator()
+            
         if time_spent >= curr_step[1] and self._curr_pipeline_step_index == len(self.pipeline) - 1:
             return (None, None)
         if time_spent >= curr_step[1]:
-            #self._reset_generator()
+            next_model = self.pipeline[self._curr_pipeline_step_index + 1][0]
+            next_model_str = str(next_model).lower()
+            if any(model in next_model_str for model in ["gpt-4o", "gpt-4o-mini"]):
+                self._reset_generator()
             self._curr_pipeline_step_index += 1
             self._curr_pipeline_step_activation_time = time.time()
         
