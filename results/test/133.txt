@@ -1,21 +1,21 @@
-02:05:34 26/03/2025 Resetting generator
-02:05:34 26/03/2025 # Run Benchmark 133
-02:05:34 26/03/2025 Executing predicate filtering for preconditions
-02:05:34 26/03/2025 Filtering predicates for candidate assert(x == 0)
-02:05:34 26/03/2025 Filtering predicates for candidate assert((n >= 0))
-02:05:34 26/03/2025 Addind predicate (n >= 0) to verify set
-02:05:34 26/03/2025 Predicate filtering verify set: ['(n >= 0)']
-02:05:34 26/03/2025 Verifying formula: (>= n 0)
-02:05:34 26/03/2025 For candidate: assert(((n >= 0)))
-02:05:34 26/03/2025 Generating loop invariants candidates with model gpt-4o and presence penalty 0.0
-02:05:34 26/03/2025 Generated 2 candidates
-02:05:34 26/03/2025 Verifying generated candidates
-02:05:34 26/03/2025 Verifying candidate: assert(x >= 0);
-02:05:34 26/03/2025 Candidate failed verification
-02:05:34 26/03/2025 Adding candidate to fail history: assert(x >= 0);
-02:05:34 26/03/2025 Verifying candidate: assert(x <= n);
-02:05:34 26/03/2025 # Result
-02:05:34 26/03/2025 Solution found by the gpt-4o model: assert(x <= n);
-02:05:34 26/03/2025 1 counter examples were generated for the model proposals, with 0 repeated fails
-02:05:34 26/03/2025 The model runtime was 1.5525991916656494 seconds
-02:05:34 26/03/2025 The total runtime was 1.8476355075836182 seconds
+2025-04-07 18:36:35,976 - runner - INFO - Resetting generator
+2025-04-07 18:36:35,982 - runner - INFO - # Run Benchmark 133
+2025-04-07 18:36:35,989 - runner - INFO - Executing predicate filtering for preconditions
+2025-04-07 18:36:35,997 - runner - INFO - Filtering predicates for candidate assert(x == 0)
+2025-04-07 18:36:36,244 - runner - INFO - Filtering predicates for candidate assert((n >= 0))
+2025-04-07 18:36:36,499 - runner - INFO - Addind predicate (n >= 0) to verify set
+2025-04-07 18:36:36,504 - runner - INFO - Predicate filtering verify set: ['(n >= 0)']
+2025-04-07 18:36:36,511 - runner - INFO - Verifying formula: (>= n 0)
+2025-04-07 18:36:36,519 - runner - INFO - For candidate: assert(((n >= 0)))
+2025-04-07 18:36:36,536 - runner - INFO - Generating loop invariants candidates with model gpt-4o and presence penalty 0.0
+2025-04-07 18:36:37,272 - runner - INFO - Generated 2 candidates
+2025-04-07 18:36:37,277 - runner - INFO - Verifying generated candidates
+2025-04-07 18:36:37,283 - runner - INFO - Verifying candidate: assert(x >= 0);
+2025-04-07 18:36:37,297 - runner - INFO - Candidate failed verification
+2025-04-07 18:36:37,304 - runner - INFO - Adding candidate to fail history: assert(x >= 0);
+2025-04-07 18:36:37,310 - runner - INFO - Verifying candidate: assert(x <= n);
+2025-04-07 18:36:37,324 - runner - INFO - # Result
+2025-04-07 18:36:37,330 - runner - INFO - Solution found by the gpt-4o model: assert(x <= n);
+2025-04-07 18:36:37,337 - runner - INFO - 1 counter examples were generated for the model proposals, with 0 repeated fails
+2025-04-07 18:36:37,344 - runner - INFO - The model runtime was 0.800649881362915 seconds
+2025-04-07 18:36:37,350 - runner - INFO - The total runtime was 1.354431390762329 seconds

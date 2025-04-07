@@ -1,16 +1,16 @@
-02:00:40 26/03/2025 Resetting generator
-02:00:40 26/03/2025 # Run Benchmark 89
-02:00:40 26/03/2025 Executing predicate filtering for preconditions
-02:00:40 26/03/2025 Filtering predicates for candidate assert(x == y)
-02:00:40 26/03/2025 Addind predicate x == y to verify set
-02:00:40 26/03/2025 Filtering predicates for candidate assert(lock == 1)
-02:00:40 26/03/2025 Addind predicate lock == 1 to verify set
-02:00:40 26/03/2025 Predicate filtering verify set: ['x == y', 'lock == 1']
-02:00:40 26/03/2025 Verifying formula: (and (= x y) (= lock 1))
-02:00:40 26/03/2025 For candidate: assert((x == y) && (lock == 1))
-02:00:40 26/03/2025 Predicate filtering found solution: assert((x == y) && (lock == 1))
-02:00:40 26/03/2025 # Result
-02:00:40 26/03/2025 Solution found by the predicate filtering mechanism using the None model: assert((x == y) && (lock == 1))
-02:00:40 26/03/2025 0 counter examples were generated for the model proposals, with 0 repeated fails
-02:00:40 26/03/2025 The model runtime was 0.0 seconds
-02:00:40 26/03/2025 The total runtime was 0.2505006790161133 seconds
+2025-04-07 17:38:07,059 - runner - INFO - Resetting generator
+2025-04-07 17:38:07,063 - runner - INFO - # Run Benchmark 89
+2025-04-07 17:38:07,067 - runner - INFO - Executing predicate filtering for preconditions
+2025-04-07 17:38:07,071 - runner - INFO - Filtering predicates for candidate assert(x == y)
+2025-04-07 17:38:07,468 - runner - INFO - Addind predicate x == y to verify set
+2025-04-07 17:38:07,472 - runner - INFO - Filtering predicates for candidate assert(lock == 1)
+2025-04-07 17:38:07,703 - runner - INFO - Addind predicate lock == 1 to verify set
+2025-04-07 17:38:07,707 - runner - INFO - Predicate filtering verify set: ['x == y', 'lock == 1']
+2025-04-07 17:38:07,712 - runner - INFO - Verifying formula: (and (= x y) (= lock 1))
+2025-04-07 17:38:07,715 - runner - INFO - For candidate: assert((x == y) && (lock == 1))
+2025-04-07 17:38:07,725 - runner - INFO - Predicate filtering found solution: assert((x == y) && (lock == 1))
+2025-04-07 17:38:07,729 - runner - INFO - # Result
+2025-04-07 17:38:07,733 - runner - INFO - Solution found by the predicate filtering mechanism using the None model: assert((x == y) && (lock == 1))
+2025-04-07 17:38:07,737 - runner - INFO - 0 counter examples were generated for the model proposals, with 0 repeated fails
+2025-04-07 17:38:07,741 - runner - INFO - The model runtime was 0.0 seconds
+2025-04-07 17:38:07,745 - runner - INFO - The total runtime was 0.6737031936645508 seconds

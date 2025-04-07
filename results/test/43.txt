@@ -1,16 +1,16 @@
-01:02:34 26/03/2025 Resetting generator
-01:02:34 26/03/2025 # Run Benchmark 43
-01:02:34 26/03/2025 Executing predicate filtering for preconditions
-01:02:34 26/03/2025 Filtering predicates for candidate assert(c == 0)
-01:02:34 26/03/2025 Addind predicate c == 0 to verify set
-01:02:34 26/03/2025 Filtering predicates for candidate assert((n > 0))
-01:02:34 26/03/2025 Addind predicate (n > 0) to verify set
-01:02:34 26/03/2025 Predicate filtering verify set: ['c == 0', '(n > 0)']
-01:02:34 26/03/2025 Verifying formula: (and (= c 0) (> n 0))
-01:02:34 26/03/2025 For candidate: assert((c == 0) && ((n > 0)))
-01:02:34 26/03/2025 Predicate filtering found solution: assert((c == 0) && ((n > 0)))
-01:02:34 26/03/2025 # Result
-01:02:34 26/03/2025 Solution found by the predicate filtering mechanism using the None model: assert((c == 0) && ((n > 0)))
-01:02:34 26/03/2025 0 counter examples were generated for the model proposals, with 0 repeated fails
-01:02:34 26/03/2025 The model runtime was 0.0 seconds
-01:02:34 26/03/2025 The total runtime was 0.9238786697387695 seconds
+2025-04-07 15:23:12,583 - runner - INFO - Resetting generator
+2025-04-07 15:23:12,585 - runner - INFO - # Run Benchmark 43
+2025-04-07 15:23:12,587 - runner - INFO - Executing predicate filtering for preconditions
+2025-04-07 15:23:12,589 - runner - INFO - Filtering predicates for candidate assert(c == 0)
+2025-04-07 15:23:13,597 - runner - ERROR - ESBMC timed out
+2025-04-07 15:23:13,599 - runner - INFO - Filtering predicates for candidate assert((n > 0))
+2025-04-07 15:23:13,827 - runner - INFO - Addind predicate (n > 0) to verify set
+2025-04-07 15:23:13,829 - runner - INFO - Predicate filtering verify set: ['(n > 0)']
+2025-04-07 15:23:13,831 - runner - INFO - Verifying formula: (> n 0)
+2025-04-07 15:23:13,832 - runner - INFO - For candidate: assert(((n > 0)))
+2025-04-07 15:23:13,841 - runner - INFO - Predicate filtering found solution: assert(((n > 0)))
+2025-04-07 15:23:13,843 - runner - INFO - # Result
+2025-04-07 15:23:13,845 - runner - INFO - Solution found by the predicate filtering mechanism using the None model: assert(((n > 0)))
+2025-04-07 15:23:13,847 - runner - INFO - 0 counter examples were generated for the model proposals, with 0 repeated fails
+2025-04-07 15:23:13,849 - runner - INFO - The model runtime was 0.0 seconds
+2025-04-07 15:23:13,851 - runner - INFO - The total runtime was 1.2615783214569092 seconds

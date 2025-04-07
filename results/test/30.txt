@@ -1,14 +1,14 @@
-00:00:59 26/03/2025 Resetting generator
-00:00:59 26/03/2025 # Run Benchmark 30
-00:00:59 26/03/2025 Executing predicate filtering for preconditions
-00:00:59 26/03/2025 Filtering predicates for candidate assert(x == 100)
-00:00:59 26/03/2025 Predicate filtering verify set: []
-00:00:59 26/03/2025 Generating loop invariants candidates with model gpt-4o and presence penalty 0.0
-00:00:59 26/03/2025 Generated 2 candidates
-00:00:59 26/03/2025 Verifying generated candidates
-00:00:59 26/03/2025 Verifying candidate: assert(x >= 0);
-00:00:59 26/03/2025 # Result
-00:00:59 26/03/2025 Solution found by the gpt-4o model: assert(x >= 0);
-00:00:59 26/03/2025 0 counter examples were generated for the model proposals, with 0 repeated fails
-00:00:59 26/03/2025 The model runtime was 0.6506612300872803 seconds
-00:00:59 26/03/2025 The total runtime was 0.8136730194091797 seconds
+2025-04-07 15:04:16,101 - runner - INFO - Resetting generator
+2025-04-07 15:04:16,102 - runner - INFO - # Run Benchmark 30
+2025-04-07 15:04:16,104 - runner - INFO - Executing predicate filtering for preconditions
+2025-04-07 15:04:16,106 - runner - INFO - Filtering predicates for candidate assert(x == 100)
+2025-04-07 15:04:16,328 - runner - INFO - Predicate filtering verify set: []
+2025-04-07 15:04:16,329 - runner - INFO - Generating loop invariants candidates with model gpt-4o and presence penalty 0.0
+2025-04-07 15:04:17,163 - runner - INFO - Generated 2 candidates
+2025-04-07 15:04:17,165 - runner - INFO - Verifying generated candidates
+2025-04-07 15:04:17,166 - runner - INFO - Verifying candidate: assert(x >= 0);
+2025-04-07 15:04:17,174 - runner - INFO - # Result
+2025-04-07 15:04:17,175 - runner - INFO - Solution found by the gpt-4o model: assert(x >= 0);
+2025-04-07 15:04:17,176 - runner - INFO - 0 counter examples were generated for the model proposals, with 0 repeated fails
+2025-04-07 15:04:17,177 - runner - INFO - The model runtime was 0.846461296081543 seconds
+2025-04-07 15:04:17,178 - runner - INFO - The total runtime was 1.0734333992004395 seconds

@@ -1,15 +1,15 @@
-01:03:46 26/03/2025 Resetting generator
-01:03:46 26/03/2025 # Run Benchmark 48
-01:03:46 26/03/2025 Executing predicate filtering for preconditions
-01:03:46 26/03/2025 Filtering predicates for candidate assert(c == 0)
-01:03:46 26/03/2025 Filtering predicates for candidate assert((n > 0))
-01:03:46 26/03/2025 Addind predicate (n > 0) to verify set
-01:03:46 26/03/2025 Predicate filtering verify set: ['(n > 0)']
-01:03:46 26/03/2025 Verifying formula: (> n 0)
-01:03:46 26/03/2025 For candidate: assert(((n > 0)))
-01:03:46 26/03/2025 Predicate filtering found solution: assert(((n > 0)))
-01:03:46 26/03/2025 # Result
-01:03:46 26/03/2025 Solution found by the predicate filtering mechanism using the None model: assert(((n > 0)))
-01:03:46 26/03/2025 0 counter examples were generated for the model proposals, with 0 repeated fails
-01:03:46 26/03/2025 The model runtime was 0.0 seconds
-01:03:46 26/03/2025 The total runtime was 0.3963489532470703 seconds
+2025-04-07 15:25:12,215 - runner - INFO - Resetting generator
+2025-04-07 15:25:12,217 - runner - INFO - # Run Benchmark 48
+2025-04-07 15:25:12,220 - runner - INFO - Executing predicate filtering for preconditions
+2025-04-07 15:25:12,221 - runner - INFO - Filtering predicates for candidate assert(c == 0)
+2025-04-07 15:25:12,448 - runner - INFO - Filtering predicates for candidate assert((n > 0))
+2025-04-07 15:25:12,679 - runner - INFO - Addind predicate (n > 0) to verify set
+2025-04-07 15:25:12,682 - runner - INFO - Predicate filtering verify set: ['(n > 0)']
+2025-04-07 15:25:12,684 - runner - INFO - Verifying formula: (> n 0)
+2025-04-07 15:25:12,687 - runner - INFO - For candidate: assert(((n > 0)))
+2025-04-07 15:25:12,695 - runner - INFO - Predicate filtering found solution: assert(((n > 0)))
+2025-04-07 15:25:12,697 - runner - INFO - # Result
+2025-04-07 15:25:12,700 - runner - INFO - Solution found by the predicate filtering mechanism using the None model: assert(((n > 0)))
+2025-04-07 15:25:12,702 - runner - INFO - 0 counter examples were generated for the model proposals, with 0 repeated fails
+2025-04-07 15:25:12,704 - runner - INFO - The model runtime was 0.0 seconds
+2025-04-07 15:25:12,706 - runner - INFO - The total runtime was 0.48476243019104004 seconds

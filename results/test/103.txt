@@ -1,17 +1,17 @@
-02:01:48 26/03/2025 Resetting generator
-02:01:48 26/03/2025 # Run Benchmark 103
-02:01:48 26/03/2025 Executing predicate filtering for preconditions
-02:01:48 26/03/2025 Filtering predicates for candidate assert(x == 0)
-02:01:48 26/03/2025 Predicate filtering verify set: []
-02:01:48 26/03/2025 Generating loop invariants candidates with model gpt-4o and presence penalty 0.0
-02:01:48 26/03/2025 Generated 2 candidates
-02:01:48 26/03/2025 Verifying generated candidates
-02:01:48 26/03/2025 Verifying candidate: assert(x >= 0);
-02:01:48 26/03/2025 Candidate failed verification
-02:01:48 26/03/2025 Adding candidate to fail history: assert(x >= 0);
-02:01:48 26/03/2025 Verifying candidate: assert(x <= 100);
-02:01:48 26/03/2025 # Result
-02:01:48 26/03/2025 Solution found by the gpt-4o model: assert(x <= 100);
-02:01:48 26/03/2025 1 counter examples were generated for the model proposals, with 0 repeated fails
-02:01:48 26/03/2025 The model runtime was 0.9992284774780273 seconds
-02:01:48 26/03/2025 The total runtime was 1.1247124671936035 seconds
+2025-04-07 17:47:36,546 - runner - INFO - Resetting generator
+2025-04-07 17:47:36,552 - runner - INFO - # Run Benchmark 103
+2025-04-07 17:47:36,557 - runner - INFO - Executing predicate filtering for preconditions
+2025-04-07 17:47:36,562 - runner - INFO - Filtering predicates for candidate assert(x == 0)
+2025-04-07 17:47:36,813 - runner - INFO - Predicate filtering verify set: []
+2025-04-07 17:47:36,818 - runner - INFO - Generating loop invariants candidates with model gpt-4o and presence penalty 0.0
+2025-04-07 17:47:37,965 - runner - INFO - Generated 2 candidates
+2025-04-07 17:47:37,970 - runner - INFO - Verifying generated candidates
+2025-04-07 17:47:37,976 - runner - INFO - Verifying candidate: assert(x >= 0);
+2025-04-07 17:47:37,987 - runner - INFO - Candidate failed verification
+2025-04-07 17:47:37,992 - runner - INFO - Adding candidate to fail history: assert(x >= 0);
+2025-04-07 17:47:37,997 - runner - INFO - Verifying candidate: assert(x <= 100);
+2025-04-07 17:47:38,007 - runner - INFO - # Result
+2025-04-07 17:47:38,012 - runner - INFO - Solution found by the gpt-4o model: assert(x <= 100);
+2025-04-07 17:47:38,017 - runner - INFO - 1 counter examples were generated for the model proposals, with 0 repeated fails
+2025-04-07 17:47:38,023 - runner - INFO - The model runtime was 1.1990258693695068 seconds
+2025-04-07 17:47:38,028 - runner - INFO - The total runtime was 1.4655780792236328 seconds

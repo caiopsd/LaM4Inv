@@ -1,37 +1,38 @@
-02:01:10 26/03/2025 Resetting generator
-02:01:10 26/03/2025 # Run Benchmark 100
-02:01:10 26/03/2025 Executing predicate filtering for preconditions
-02:01:10 26/03/2025 Filtering predicates for candidate assert(x == n)
-02:01:10 26/03/2025 Filtering predicates for candidate assert(y == 0)
-02:01:10 26/03/2025 Filtering predicates for candidate assert((n >= 0))
-02:01:10 26/03/2025 Addind predicate (n >= 0) to verify set
-02:01:10 26/03/2025 Predicate filtering verify set: ['(n >= 0)']
-02:01:10 26/03/2025 Verifying formula: (>= n 0)
-02:01:10 26/03/2025 For candidate: assert(((n >= 0)))
-02:01:10 26/03/2025 Generating loop invariants candidates with model gpt-4o and presence penalty 0.0
-02:01:10 26/03/2025 Generated 3 candidates
-02:01:10 26/03/2025 Verifying generated candidates
-02:01:10 26/03/2025 Verifying candidate: assert((n >= 0));
-02:01:10 26/03/2025 Candidate failed verification
-02:01:10 26/03/2025 Adding candidate to fail history: assert((n >= 0));
-02:01:10 26/03/2025 Verifying candidate: assert((x + y == n));
-02:01:10 26/03/2025 Candidate failed verification
-02:01:10 26/03/2025 Adding candidate to fail history: assert((x + y == n));
-02:01:10 26/03/2025 Verifying candidate: assert((x >= 0));
-02:01:10 26/03/2025 Candidate failed verification
-02:01:10 26/03/2025 Adding candidate to fail history: assert((x >= 0));
-02:01:10 26/03/2025 Executing predicate filtering
-02:01:10 26/03/2025 Filtering predicates for candidate assert((n >= 0));
-02:01:10 26/03/2025 Filtering predicates for candidate assert((x + y == n));
-02:01:10 26/03/2025 Addind predicate (x + y == n) to verify set
-02:01:10 26/03/2025 Filtering predicates for candidate assert((x >= 0));
-02:01:10 26/03/2025 Addind predicate (x >= 0) to verify set
-02:01:10 26/03/2025 Predicate filtering verify set: ['(n >= 0)', '(x + y == n)', '(x >= 0)']
-02:01:10 26/03/2025 Verifying formula: (and (and (>= n 0) (= (+ x y) n)) (>= x 0))
-02:01:10 26/03/2025 For candidate: assert(((n >= 0)) && ((x + y == n)) && ((x >= 0)))
-02:01:10 26/03/2025 Predicate filtering found solution: assert(((n >= 0)) && ((x + y == n)) && ((x >= 0)))
-02:01:10 26/03/2025 # Result
-02:01:10 26/03/2025 Solution found by the predicate filtering mechanism using the gpt-4o model: assert(((n >= 0)) && ((x + y == n)) && ((x >= 0)))
-02:01:10 26/03/2025 3 counter examples were generated for the model proposals, with 0 repeated fails
-02:01:10 26/03/2025 The model runtime was 1.5553574562072754 seconds
-02:01:10 26/03/2025 The total runtime was 1.999582290649414 seconds
+2025-04-07 17:47:13,194 - runner - INFO - Resetting generator
+2025-04-07 17:47:13,199 - runner - INFO - # Run Benchmark 100
+2025-04-07 17:47:13,205 - runner - INFO - Executing predicate filtering for preconditions
+2025-04-07 17:47:13,210 - runner - INFO - Filtering predicates for candidate assert(x == n)
+2025-04-07 17:47:13,452 - runner - INFO - Filtering predicates for candidate assert(y == 0)
+2025-04-07 17:47:13,688 - runner - INFO - Filtering predicates for candidate assert((n >= 0))
+2025-04-07 17:47:13,923 - runner - INFO - Addind predicate (n >= 0) to verify set
+2025-04-07 17:47:13,929 - runner - INFO - Predicate filtering verify set: ['(n >= 0)']
+2025-04-07 17:47:13,934 - runner - INFO - Verifying formula: (>= n 0)
+2025-04-07 17:47:13,939 - runner - INFO - For candidate: assert(((n >= 0)))
+2025-04-07 17:47:13,950 - runner - INFO - Generating loop invariants candidates with model gpt-4o and presence penalty 0.0
+2025-04-07 17:47:15,110 - runner - INFO - Generated 3 candidates
+2025-04-07 17:47:15,115 - runner - INFO - Verifying generated candidates
+2025-04-07 17:47:15,119 - runner - INFO - Verifying candidate: assert(y + x == n);
+2025-04-07 17:47:15,131 - runner - INFO - Candidate failed verification
+2025-04-07 17:47:15,136 - runner - INFO - Adding candidate to fail history: assert(y + x == n);
+2025-04-07 17:47:15,141 - runner - INFO - Verifying candidate: assert(x >= 0);
+2025-04-07 17:47:15,154 - runner - INFO - Candidate failed verification
+2025-04-07 17:47:15,160 - runner - INFO - Adding candidate to fail history: assert(x >= 0);
+2025-04-07 17:47:15,166 - runner - INFO - Verifying candidate: assert(n >= 0);
+2025-04-07 17:47:15,179 - runner - INFO - Candidate failed verification
+2025-04-07 17:47:15,184 - runner - INFO - Adding candidate to fail history: assert(n >= 0);
+2025-04-07 17:47:15,189 - runner - INFO - Executing predicate filtering
+2025-04-07 17:47:15,194 - runner - INFO - Filtering predicates for candidate assert(y + x == n);
+2025-04-07 17:47:15,803 - runner - INFO - Addind predicate y + x == n to verify set
+2025-04-07 17:47:15,808 - runner - INFO - Filtering predicates for candidate assert(x >= 0);
+2025-04-07 17:47:16,042 - runner - INFO - Addind predicate x >= 0 to verify set
+2025-04-07 17:47:16,047 - runner - INFO - Filtering predicates for candidate assert(n >= 0);
+2025-04-07 17:47:16,282 - runner - INFO - Addind predicate n >= 0 to verify set
+2025-04-07 17:47:16,286 - runner - INFO - Predicate filtering verify set: ['(n >= 0)', 'y + x == n', 'x >= 0', 'n >= 0']
+2025-04-07 17:47:16,291 - runner - INFO - Verifying formula: (and (and (and (>= n 0) (= (+ y x) n)) (>= x 0)) (>= n 0))
+2025-04-07 17:47:16,296 - runner - INFO - For candidate: assert(((n >= 0)) && (y + x == n) && (x >= 0) && (n >= 0))
+2025-04-07 17:47:16,306 - runner - INFO - Predicate filtering found solution: assert(((n >= 0)) && (y + x == n) && (x >= 0) && (n >= 0))
+2025-04-07 17:47:16,311 - runner - INFO - # Result
+2025-04-07 17:47:16,316 - runner - INFO - Solution found by the predicate filtering mechanism using the gpt-4o model: assert(((n >= 0)) && (y + x == n) && (x >= 0) && (n >= 0))
+2025-04-07 17:47:16,321 - runner - INFO - 3 counter examples were generated for the model proposals, with 0 repeated fails
+2025-04-07 17:47:16,326 - runner - INFO - The model runtime was 2.3715484142303467 seconds
+2025-04-07 17:47:16,331 - runner - INFO - The total runtime was 3.1222281455993652 seconds

@@ -1,22 +1,22 @@
-01:54:24 26/03/2025 Resetting generator
-01:54:24 26/03/2025 # Run Benchmark 81
-01:54:24 26/03/2025 Executing predicate filtering for preconditions
-01:54:24 26/03/2025 Filtering predicates for candidate assert(i == 0)
-01:54:24 26/03/2025 Filtering predicates for candidate assert((x >= 0))
-01:54:24 26/03/2025 Addind predicate (x >= 0) to verify set
-01:54:24 26/03/2025 Filtering predicates for candidate assert((y >= 0))
-01:54:24 26/03/2025 Addind predicate (y >= 0) to verify set
-01:54:24 26/03/2025 Filtering predicates for candidate assert((x >= y))
-01:54:24 26/03/2025 Addind predicate (x >= y) to verify set
-01:54:24 26/03/2025 Predicate filtering verify set: ['(x >= 0)', '(y >= 0)', '(x >= y)']
-01:54:24 26/03/2025 Verifying formula: (and (and (>= x 0) (>= y 0)) (>= x y))
-01:54:24 26/03/2025 For candidate: assert(((x >= 0)) && ((y >= 0)) && ((x >= y)))
-01:54:24 26/03/2025 Generating loop invariants candidates with model gpt-4o and presence penalty 0.0
-01:54:24 26/03/2025 Generated 5 candidates
-01:54:24 26/03/2025 Verifying generated candidates
-01:54:24 26/03/2025 Verifying candidate: assert(i >= 0);
-01:54:24 26/03/2025 # Result
-01:54:24 26/03/2025 Solution found by the gpt-4o model: assert(i >= 0);
-01:54:24 26/03/2025 0 counter examples were generated for the model proposals, with 0 repeated fails
-01:54:24 26/03/2025 The model runtime was 0.9532008171081543 seconds
-01:54:24 26/03/2025 The total runtime was 1.567828893661499 seconds
+2025-04-07 17:17:22,679 - runner - INFO - Resetting generator
+2025-04-07 17:17:22,684 - runner - INFO - # Run Benchmark 81
+2025-04-07 17:17:22,689 - runner - INFO - Executing predicate filtering for preconditions
+2025-04-07 17:17:22,694 - runner - INFO - Filtering predicates for candidate assert(i == 0)
+2025-04-07 17:17:22,944 - runner - INFO - Filtering predicates for candidate assert((x >= 0))
+2025-04-07 17:17:23,183 - runner - INFO - Addind predicate (x >= 0) to verify set
+2025-04-07 17:17:23,186 - runner - INFO - Filtering predicates for candidate assert((y >= 0))
+2025-04-07 17:17:23,439 - runner - INFO - Addind predicate (y >= 0) to verify set
+2025-04-07 17:17:23,443 - runner - INFO - Filtering predicates for candidate assert((x >= y))
+2025-04-07 17:17:23,690 - runner - INFO - Addind predicate (x >= y) to verify set
+2025-04-07 17:17:23,694 - runner - INFO - Predicate filtering verify set: ['(x >= 0)', '(y >= 0)', '(x >= y)']
+2025-04-07 17:17:23,700 - runner - INFO - Verifying formula: (and (and (>= x 0) (>= y 0)) (>= x y))
+2025-04-07 17:17:23,704 - runner - INFO - For candidate: assert(((x >= 0)) && ((y >= 0)) && ((x >= y)))
+2025-04-07 17:17:23,717 - runner - INFO - Generating loop invariants candidates with model gpt-4o and presence penalty 0.0
+2025-04-07 17:17:24,983 - runner - INFO - Generated 5 candidates
+2025-04-07 17:17:24,986 - runner - INFO - Verifying generated candidates
+2025-04-07 17:17:24,990 - runner - INFO - Verifying candidate: assert(i >= 0);
+2025-04-07 17:17:25,002 - runner - INFO - # Result
+2025-04-07 17:17:25,006 - runner - INFO - Solution found by the gpt-4o model: assert(i >= 0);
+2025-04-07 17:17:25,010 - runner - INFO - 0 counter examples were generated for the model proposals, with 0 repeated fails
+2025-04-07 17:17:25,014 - runner - INFO - The model runtime was 1.2933056354522705 seconds
+2025-04-07 17:17:25,018 - runner - INFO - The total runtime was 2.3260891437530518 seconds

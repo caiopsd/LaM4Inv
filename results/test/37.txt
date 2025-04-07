@@ -1,14 +1,14 @@
-00:01:31 26/03/2025 Resetting generator
-00:01:31 26/03/2025 # Run Benchmark 37
-00:01:31 26/03/2025 Executing predicate filtering for preconditions
-00:01:31 26/03/2025 Filtering predicates for candidate assert(c == 0)
-00:01:31 26/03/2025 Predicate filtering verify set: []
-00:01:31 26/03/2025 Generating loop invariants candidates with model gpt-4o and presence penalty 0.0
-00:01:31 26/03/2025 Generated 2 candidates
-00:01:31 26/03/2025 Verifying generated candidates
-00:01:31 26/03/2025 Verifying candidate: assert(c >= 0);
-00:01:31 26/03/2025 # Result
-00:01:31 26/03/2025 Solution found by the gpt-4o model: assert(c >= 0);
-00:01:31 26/03/2025 0 counter examples were generated for the model proposals, with 0 repeated fails
-00:01:31 26/03/2025 The model runtime was 0.5686149597167969 seconds
-00:01:31 26/03/2025 The total runtime was 0.7152061462402344 seconds
+2025-04-07 15:06:22,045 - runner - INFO - Resetting generator
+2025-04-07 15:06:22,047 - runner - INFO - # Run Benchmark 37
+2025-04-07 15:06:22,049 - runner - INFO - Executing predicate filtering for preconditions
+2025-04-07 15:06:22,050 - runner - INFO - Filtering predicates for candidate assert(c == 0)
+2025-04-07 15:06:22,263 - runner - INFO - Predicate filtering verify set: []
+2025-04-07 15:06:22,264 - runner - INFO - Generating loop invariants candidates with model gpt-4o and presence penalty 0.0
+2025-04-07 15:06:23,216 - runner - INFO - Generated 2 candidates
+2025-04-07 15:06:23,218 - runner - INFO - Verifying generated candidates
+2025-04-07 15:06:23,220 - runner - INFO - Verifying candidate: assert(c >= 0);
+2025-04-07 15:06:23,228 - runner - INFO - # Result
+2025-04-07 15:06:23,229 - runner - INFO - Solution found by the gpt-4o model: assert(c >= 0);
+2025-04-07 15:06:23,231 - runner - INFO - 0 counter examples were generated for the model proposals, with 0 repeated fails
+2025-04-07 15:06:23,232 - runner - INFO - The model runtime was 0.9664485454559326 seconds
+2025-04-07 15:06:23,234 - runner - INFO - The total runtime was 1.1839735507965088 seconds

@@ -1,264 +1,94 @@
-23:56:12 25/03/2025 Resetting generator
-23:56:12 25/03/2025 # Run Benchmark 19
-23:56:12 25/03/2025 Executing predicate filtering for preconditions
-23:56:12 25/03/2025 Filtering predicates for candidate assert(x == 0)
-23:56:12 25/03/2025 Filtering predicates for candidate assert(m == 0)
-23:56:12 25/03/2025 Predicate filtering verify set: []
-23:56:12 25/03/2025 Generating loop invariants candidates with model gpt-4o and presence penalty 0.0
-23:56:12 25/03/2025 Generated 3 candidates
-23:56:12 25/03/2025 Verifying generated candidates
-23:56:12 25/03/2025 Verifying candidate: assert(x >= 0);
-23:56:12 25/03/2025 Candidate failed verification
-23:56:12 25/03/2025 Adding candidate to fail history: assert(x >= 0);
-23:56:12 25/03/2025 Verifying candidate: assert(x <= n);
-23:56:12 25/03/2025 Candidate failed verification
-23:56:12 25/03/2025 Adding candidate to fail history: assert(x <= n);
-23:56:12 25/03/2025 Verifying candidate: assert(m >= 0);
-23:56:12 25/03/2025 Candidate failed verification
-23:56:12 25/03/2025 Adding candidate to fail history: assert(m >= 0);
-23:56:12 25/03/2025 Executing predicate filtering
-23:56:12 25/03/2025 Filtering predicates for candidate assert(x >= 0);
-23:56:12 25/03/2025 Addind predicate x >= 0 to verify set
-23:56:12 25/03/2025 Filtering predicates for candidate assert(x <= n);
-23:56:12 25/03/2025 Filtering predicates for candidate assert(m >= 0);
-23:56:12 25/03/2025 Addind predicate m >= 0 to verify set
-23:56:12 25/03/2025 Predicate filtering verify set: ['x >= 0', 'm >= 0']
-23:56:12 25/03/2025 Verifying formula: (and (>= x 0) (>= m 0))
-23:56:12 25/03/2025 For candidate: assert((x >= 0) && (m >= 0))
-23:56:12 25/03/2025 Resetting generator
-23:56:12 25/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.0
-23:56:12 25/03/2025 Generated 5 candidates
-23:56:12 25/03/2025 Verifying generated candidates
-23:56:12 25/03/2025 Verifying candidate: assert(n >= 0);
-23:56:12 25/03/2025 Candidate failed verification
-23:56:12 25/03/2025 Adding candidate to fail history: assert(n >= 0);
-23:56:12 25/03/2025 Verifying candidate: assert(x >= 0);
-23:56:12 25/03/2025 Candidate failed verification
-23:56:12 25/03/2025 Adding candidate to fail history: assert(x >= 0);
-23:56:12 25/03/2025 Verifying candidate: assert(x <= n);
-23:56:12 25/03/2025 Candidate failed verification
-23:56:12 25/03/2025 Adding candidate to fail history: assert(x <= n);
-23:56:12 25/03/2025 Verifying candidate: assert(m >= 0 || unknown() == false);
-23:56:12 25/03/2025 Invalid candidate syntax
-23:56:12 25/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.0
-23:56:12 25/03/2025 Generated 5 candidates
-23:56:12 25/03/2025 Verifying generated candidates
-23:56:12 25/03/2025 Verifying candidate: assert(n >= 0);
-23:56:12 25/03/2025 Candidate already in fail history: assert(n >= 0);
-23:56:12 25/03/2025 Verifying candidate: assert(x >= 0);
-23:56:12 25/03/2025 Candidate already in fail history: assert(x >= 0);
-23:56:12 25/03/2025 Verifying candidate: assert(x <= n);
-23:56:12 25/03/2025 Candidate already in fail history: assert(x <= n);
-23:56:12 25/03/2025 Verifying candidate: assert(m >= 0);
-23:56:12 25/03/2025 Candidate failed verification
-23:56:12 25/03/2025 Adding candidate to fail history: assert(m >= 0);
-23:56:12 25/03/2025 Verifying candidate: assert(m < n || x == n);
-23:56:12 25/03/2025 Candidate failed verification
-23:56:12 25/03/2025 Adding candidate to fail history: assert(m < n || x == n);
-23:56:12 25/03/2025 Executing predicate filtering
-23:56:12 25/03/2025 Filtering predicates for candidate assert(n >= 0);
-23:56:12 25/03/2025 Filtering predicates for candidate assert(x >= 0);
-23:56:12 25/03/2025 Filtering predicates for candidate assert(x <= n);
-23:56:12 25/03/2025 Filtering predicates for candidate assert(m >= 0);
-23:56:12 25/03/2025 Filtering predicates for candidate assert(m < n || x == n);
-23:56:12 25/03/2025 Predicate filtering verify set: ['x >= 0', 'm >= 0']
-23:56:12 25/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.5370495669980354
-23:56:12 25/03/2025 Generated 4 candidates
-23:56:12 25/03/2025 Verifying generated candidates
-23:56:12 25/03/2025 Verifying candidate: assert(x >= 0);
-23:56:12 25/03/2025 Candidate already in fail history: assert(x >= 0);
-23:56:12 25/03/2025 Verifying candidate: assert(m >= 0 || unknown() == false);
-23:56:12 25/03/2025 Invalid candidate syntax
-23:56:12 25/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.6640367702678491
-23:56:12 25/03/2025 Generated 4 candidates
-23:56:12 25/03/2025 Verifying generated candidates
-23:56:12 25/03/2025 Verifying candidate: assert(x >= 0);
-23:56:12 25/03/2025 Candidate already in fail history: assert(x >= 0);
-23:56:12 25/03/2025 Verifying candidate: assert(m == x || m < x);
-23:56:12 25/03/2025 Candidate failed verification
-23:56:12 25/03/2025 Adding candidate to fail history: assert(m == x || m < x);
-23:56:12 25/03/2025 Verifying candidate: assert(unknown() == false || m == x);
-23:56:12 25/03/2025 Invalid candidate syntax
-23:56:12 25/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.7615941559557649
-23:56:12 25/03/2025 Generated 3 candidates
-23:56:12 25/03/2025 Verifying generated candidates
-23:56:12 25/03/2025 Verifying candidate: assert(unknown() == false || m < x);
-23:56:12 25/03/2025 Invalid candidate syntax
-23:56:12 25/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.7615941559557649
-23:56:12 25/03/2025 Generated 4 candidates
-23:56:12 25/03/2025 Verifying generated candidates
-23:56:12 25/03/2025 Verifying candidate: assert(unknown() == false || m <= x);
-23:56:12 25/03/2025 Invalid candidate syntax
-23:56:12 25/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.7615941559557649
-23:56:12 25/03/2025 Generated 4 candidates
-23:56:12 25/03/2025 Verifying generated candidates
-23:56:12 25/03/2025 Verifying candidate: assert(m == 0 || unknown() == true);
-23:56:12 25/03/2025 Invalid candidate syntax
-23:56:12 25/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.7615941559557649
-23:56:12 25/03/2025 Generated 3 candidates
-23:56:12 25/03/2025 Verifying generated candidates
-23:56:12 25/03/2025 Verifying candidate: assert(m >= 0 || unknown() == false);
-23:56:12 25/03/2025 Invalid candidate syntax
-23:56:12 25/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.7615941559557649
-23:56:12 25/03/2025 Generated 3 candidates
-23:56:12 25/03/2025 Verifying generated candidates
-23:56:12 25/03/2025 Verifying candidate: assert(m <= x);
-23:56:12 25/03/2025 Candidate failed verification
-23:56:12 25/03/2025 Adding candidate to fail history: assert(m <= x);
-23:56:12 25/03/2025 Verifying candidate: assert(m < n + 1 || unknown() == true);
-23:56:12 25/03/2025 Invalid candidate syntax
-23:56:12 25/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.7615941559557649
-23:56:12 25/03/2025 Generated 3 candidates
-23:56:12 25/03/2025 Verifying generated candidates
-23:56:12 25/03/2025 Verifying candidate: assert(m <= x);
-23:56:12 25/03/2025 Candidate already in fail history: assert(m <= x);
-23:56:12 25/03/2025 Verifying candidate: assert(m < x + 1);
-23:56:12 25/03/2025 Candidate failed verification
-23:56:12 25/03/2025 Adding candidate to fail history: assert(m < x + 1);
-23:56:12 25/03/2025 Verifying candidate: assert(unknown() == false || m <= n);
-23:56:12 25/03/2025 Invalid candidate syntax
-23:56:12 25/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.8336546070121553
-23:56:12 25/03/2025 Generated 3 candidates
-23:56:12 25/03/2025 Verifying generated candidates
-23:56:12 25/03/2025 Verifying candidate: assert(m <= x || unknown() == false);
-23:56:12 25/03/2025 Invalid candidate syntax
-23:56:12 25/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.8336546070121553
-23:56:12 25/03/2025 Generated 3 candidates
-23:56:12 25/03/2025 Verifying generated candidates
-23:56:12 25/03/2025 Verifying candidate: assert(m <= x);
-23:56:12 25/03/2025 Candidate already in fail history: assert(m <= x);
-23:56:12 25/03/2025 Verifying candidate: assert(x <= n || unknown() == true);
-23:56:12 25/03/2025 Invalid candidate syntax
-23:56:12 25/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.8853516482022625
-23:56:12 25/03/2025 Generated 3 candidates
-23:56:12 25/03/2025 Verifying generated candidates
-23:56:12 25/03/2025 Verifying candidate: assert(m <= x + 1);
-23:56:12 25/03/2025 Candidate failed verification
-23:56:12 25/03/2025 Adding candidate to fail history: assert(m <= x + 1);
-23:56:12 25/03/2025 Verifying candidate: assert(m < n || unknown() == false);
-23:56:12 25/03/2025 Invalid candidate syntax
-23:56:12 25/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.8853516482022625
-23:56:12 25/03/2025 Generated 3 candidates
-23:56:12 25/03/2025 Verifying generated candidates
-23:56:12 25/03/2025 Verifying candidate: assert(m <= x + 1);
-23:56:12 25/03/2025 Candidate already in fail history: assert(m <= x + 1);
-23:56:12 25/03/2025 Verifying candidate: assert(m < n + 1 || unknown() == false);
-23:56:12 25/03/2025 Invalid candidate syntax
-23:56:12 25/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9216685544064713
-23:56:12 25/03/2025 Generated 3 candidates
-23:56:12 25/03/2025 Verifying generated candidates
-23:56:12 25/03/2025 Verifying candidate: assert(m < n + 1 || unknown() == true);
-23:56:12 25/03/2025 Invalid candidate syntax
-23:56:12 25/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9216685544064713
-23:56:12 25/03/2025 Generated 3 candidates
-23:56:12 25/03/2025 Verifying generated candidates
-23:56:12 25/03/2025 Verifying candidate: assert(m <= n);
-23:56:12 25/03/2025 Candidate failed verification
-23:56:12 25/03/2025 Adding candidate to fail history: assert(m <= n);
-23:56:12 25/03/2025 Verifying candidate: assert(unknown() == false || m < x + 1);
-23:56:12 25/03/2025 Invalid candidate syntax
-23:56:12 25/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9216685544064713
-23:56:12 25/03/2025 Generated 3 candidates
-23:56:12 25/03/2025 Verifying generated candidates
-23:56:12 25/03/2025 Verifying candidate: assert(m <= n + 1);
-23:56:12 25/03/2025 Candidate failed verification
-23:56:12 25/03/2025 Adding candidate to fail history: assert(m <= n + 1);
-23:56:12 25/03/2025 Verifying candidate: assert(m < x + 1 || unknown() == false);
-23:56:12 25/03/2025 Invalid candidate syntax
-23:56:12 25/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9216685544064713
-23:56:12 25/03/2025 Generated 3 candidates
-23:56:12 25/03/2025 Verifying generated candidates
-23:56:12 25/03/2025 Verifying candidate: assert(m < n + 1 || unknown() == false);
-23:56:12 25/03/2025 Invalid candidate syntax
-23:56:12 25/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9216685544064713
-23:56:12 25/03/2025 Generated 3 candidates
-23:56:12 25/03/2025 Verifying generated candidates
-23:56:12 25/03/2025 Verifying candidate: assert(m <= n);
-23:56:12 25/03/2025 Candidate already in fail history: assert(m <= n);
-23:56:12 25/03/2025 Verifying candidate: assert(x < n + 2 || unknown() == true);
-23:56:12 25/03/2025 Invalid candidate syntax
-23:56:12 25/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9468060128462683
-23:56:12 25/03/2025 Generated 3 candidates
-23:56:12 25/03/2025 Verifying generated candidates
-23:56:12 25/03/2025 Verifying candidate: assert(m <= n);
-23:56:12 25/03/2025 Candidate already in fail history: assert(m <= n);
-23:56:12 25/03/2025 Verifying candidate: assert(unknown() == false || m < x + 1);
-23:56:12 25/03/2025 Invalid candidate syntax
-23:56:12 25/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9640275800758169
-23:56:12 25/03/2025 Generated 3 candidates
-23:56:12 25/03/2025 Verifying generated candidates
-23:56:12 25/03/2025 Verifying candidate: assert(m == 0 || unknown() == true);
-23:56:12 25/03/2025 Invalid candidate syntax
-23:56:12 25/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9640275800758169
-23:56:12 25/03/2025 Generated 3 candidates
-23:56:12 25/03/2025 Verifying generated candidates
-23:56:12 25/03/2025 Verifying candidate: assert(m < n + 1 || unknown() == false);
-23:56:12 25/03/2025 Invalid candidate syntax
-23:56:12 25/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9640275800758169
-23:56:12 25/03/2025 Generated 3 candidates
-23:56:12 25/03/2025 Verifying generated candidates
-23:56:12 25/03/2025 Verifying candidate: assert(m <= n);
-23:56:12 25/03/2025 Candidate already in fail history: assert(m <= n);
-23:56:12 25/03/2025 Verifying candidate: assert(unknown() == false || m < x + 1);
-23:56:12 25/03/2025 Invalid candidate syntax
-23:56:12 25/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9757431300314515
-23:56:12 25/03/2025 Generated 3 candidates
-23:56:12 25/03/2025 Verifying generated candidates
-23:56:12 25/03/2025 Verifying candidate: assert(m <= x);
-23:56:12 25/03/2025 Candidate already in fail history: assert(m <= x);
-23:56:12 25/03/2025 Verifying candidate: assert(unknown() == false || m < n + 1);
-23:56:12 25/03/2025 Invalid candidate syntax
-23:56:12 25/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9836748576936802
-23:56:12 25/03/2025 Generated 3 candidates
-23:56:12 25/03/2025 Verifying generated candidates
-23:56:12 25/03/2025 Verifying candidate: assert(m < n + 1 || unknown() == false);
-23:56:12 25/03/2025 Invalid candidate syntax
-23:56:12 25/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9836748576936802
-23:56:12 25/03/2025 Generated 3 candidates
-23:56:12 25/03/2025 Verifying generated candidates
-23:56:12 25/03/2025 Verifying candidate: assert(m < n + 1 || unknown() == false);
-23:56:12 25/03/2025 Invalid candidate syntax
-23:56:12 25/03/2025 Resetting generator
-23:56:12 25/03/2025 Generating loop invariants candidates with model o3-mini and presence penalty 0.0
-23:56:12 25/03/2025 Generated 3 candidates
-23:56:12 25/03/2025 Verifying generated candidates
-23:56:12 25/03/2025 Verifying candidate: assert(n >= 0);
-23:56:12 25/03/2025 Candidate failed verification
-23:56:12 25/03/2025 Adding candidate to fail history: assert(n >= 0);
-23:56:12 25/03/2025 Verifying candidate: assert(x >= 0 && x <= n);
-23:56:12 25/03/2025 Candidate failed verification
-23:56:12 25/03/2025 Adding candidate to fail history: assert(x >= 0 && x <= n);
-23:56:12 25/03/2025 Verifying candidate: assert(m >= 0 && (x == 0 || m < x));
-23:56:12 25/03/2025 Candidate failed verification
-23:56:12 25/03/2025 Adding candidate to fail history: assert(m >= 0 && (x == 0 || m < x));
-23:56:12 25/03/2025 Executing predicate filtering
-23:56:12 25/03/2025 Filtering predicates for candidate assert(n >= 0);
-23:56:12 25/03/2025 Filtering predicates for candidate assert(x >= 0 && x <= n);
-23:56:12 25/03/2025 Filtering predicates for candidate assert(m >= 0 && (x == 0 || m < x));
-23:56:12 25/03/2025 Addind predicate (x == 0 || m < x) to verify set
-23:56:12 25/03/2025 Predicate filtering verify set: ['x >= 0', 'm >= 0', '(x == 0 || m < x)']
-23:56:12 25/03/2025 Verifying formula: (and (and (>= x 0) (>= m 0)) (or (= x 0) (< m x)))
-23:56:12 25/03/2025 For candidate: assert((x >= 0) && (m >= 0) && ((x == 0 || m < x)))
-23:56:12 25/03/2025 Generating loop invariants candidates with model o3-mini and presence penalty 0.0
-23:56:12 25/03/2025 Generated 2 candidates
-23:56:12 25/03/2025 Verifying generated candidates
-23:56:12 25/03/2025 Verifying candidate: assert(n <= 0 || (0 <= x && x <= n));
-23:56:12 25/03/2025 Candidate failed verification
-23:56:12 25/03/2025 Adding candidate to fail history: assert(n <= 0 || (0 <= x && x <= n));
-23:56:12 25/03/2025 Verifying candidate: assert(n <= 0 || ((x == 0 && m == 0) || (x > 0 && m < x)));
-23:56:12 25/03/2025 Candidate failed verification
-23:56:12 25/03/2025 Adding candidate to fail history: assert(n <= 0 || ((x == 0 && m == 0) || (x > 0 && m < x)));
-23:56:12 25/03/2025 Executing predicate filtering
-23:56:12 25/03/2025 Filtering predicates for candidate assert(n <= 0 || (0 <= x && x <= n));
-23:56:12 25/03/2025 Addind predicate (n <= 0) || ((0 <= x && x <= n)) to verify set
-23:56:12 25/03/2025 Filtering predicates for candidate assert(n <= 0 || ((x == 0 && m == 0) || (x > 0 && m < x)));
-23:56:12 25/03/2025 Addind predicate (n <= 0) || (((x == 0 && m == 0) || (x > 0 && m < x))) to verify set
-23:56:12 25/03/2025 Predicate filtering verify set: ['x >= 0', 'm >= 0', '(x == 0 || m < x)', '(n <= 0) || ((0 <= x && x <= n))', '(n <= 0) || (((x == 0 && m == 0) || (x > 0 && m < x)))']
-23:56:12 25/03/2025 Verifying formula: (and (and (and (and (>= x 0) (>= m 0)) (or (= x 0) (< m x))) (or (<= n 0) (and (<= 0 x) (<= x n)))) (or (<= n 0) (or (and (= x 0) (= m 0)) (and (> x 0) (< m x)))))
-23:56:12 25/03/2025 For candidate: assert((x >= 0) && (m >= 0) && ((x == 0 || m < x)) && ((n <= 0) || ((0 <= x && x <= n))) && ((n <= 0) || (((x == 0 && m == 0) || (x > 0 && m < x)))))
-23:56:12 25/03/2025 Predicate filtering found solution: assert((x >= 0) && (m >= 0) && ((x == 0 || m < x)) && ((n <= 0) || ((0 <= x && x <= n))) && ((n <= 0) || (((x == 0 && m == 0) || (x > 0 && m < x)))))
-23:56:12 25/03/2025 # Result
-23:56:12 25/03/2025 Solution found by the predicate filtering mechanism using the o3-mini model: assert((x >= 0) && (m >= 0) && ((x == 0 || m < x)) && ((n <= 0) || ((0 <= x && x <= n))) && ((n <= 0) || (((x == 0 && m == 0) || (x > 0 && m < x)))))
-23:56:12 25/03/2025 5 counter examples were generated for the model proposals, with 0 repeated fails
-23:56:12 25/03/2025 The model runtime was 25.980979919433594 seconds
-23:56:12 25/03/2025 The total runtime was 68.6526210308075 seconds
+2025-04-07 14:58:10,978 - runner - INFO - Resetting generator
+2025-04-07 14:58:10,979 - runner - INFO - # Run Benchmark 19
+2025-04-07 14:58:10,980 - runner - INFO - Executing predicate filtering for preconditions
+2025-04-07 14:58:10,981 - runner - INFO - Filtering predicates for candidate assert(x == 0)
+2025-04-07 14:58:11,232 - runner - INFO - Filtering predicates for candidate assert(m == 0)
+2025-04-07 14:58:11,465 - runner - INFO - Predicate filtering verify set: []
+2025-04-07 14:58:11,466 - runner - INFO - Generating loop invariants candidates with model gpt-4o and presence penalty 0.0
+2025-04-07 14:58:12,825 - runner - INFO - Generated 4 candidates
+2025-04-07 14:58:12,826 - runner - INFO - Verifying generated candidates
+2025-04-07 14:58:12,827 - runner - INFO - Verifying candidate: assert(x >= 0);
+2025-04-07 14:58:12,836 - runner - INFO - Candidate failed verification
+2025-04-07 14:58:12,837 - runner - INFO - Adding candidate to fail history: assert(x >= 0);
+2025-04-07 14:58:12,838 - runner - INFO - Verifying candidate: assert(x <= n);
+2025-04-07 14:58:12,841 - runner - INFO - Candidate failed verification
+2025-04-07 14:58:12,842 - runner - INFO - Adding candidate to fail history: assert(x <= n);
+2025-04-07 14:58:12,843 - runner - INFO - Verifying candidate: assert(m >= 0);
+2025-04-07 14:58:12,849 - runner - INFO - Candidate failed verification
+2025-04-07 14:58:12,849 - runner - INFO - Adding candidate to fail history: assert(m >= 0);
+2025-04-07 14:58:12,850 - runner - INFO - Verifying candidate: assert(m < n || x == 0);
+2025-04-07 14:58:12,856 - runner - INFO - Candidate failed verification
+2025-04-07 14:58:12,857 - runner - INFO - Adding candidate to fail history: assert(m < n || x == 0);
+2025-04-07 14:58:12,858 - runner - INFO - Executing predicate filtering
+2025-04-07 14:58:12,859 - runner - INFO - Filtering predicates for candidate assert(x >= 0);
+2025-04-07 14:58:13,078 - runner - INFO - Addind predicate x >= 0 to verify set
+2025-04-07 14:58:13,080 - runner - INFO - Filtering predicates for candidate assert(x <= n);
+2025-04-07 14:58:13,290 - runner - INFO - Filtering predicates for candidate assert(m >= 0);
+2025-04-07 14:58:14,000 - runner - INFO - Addind predicate m >= 0 to verify set
+2025-04-07 14:58:14,001 - runner - INFO - Filtering predicates for candidate assert(m < n || x == 0);
+2025-04-07 14:58:15,004 - runner - ERROR - ESBMC timed out
+2025-04-07 14:58:15,005 - runner - INFO - Predicate filtering verify set: ['x >= 0', 'm >= 0']
+2025-04-07 14:58:15,006 - runner - INFO - Verifying formula: (and (>= x 0) (>= m 0))
+2025-04-07 14:58:15,007 - runner - INFO - For candidate: assert((x >= 0) && (m >= 0))
+2025-04-07 14:58:15,015 - runner - INFO - Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.0
+2025-04-07 14:58:16,270 - runner - INFO - Generated 3 candidates
+2025-04-07 14:58:16,271 - runner - INFO - Verifying generated candidates
+2025-04-07 14:58:16,272 - runner - INFO - Verifying candidate: assert(n >= 0 || x == 0);
+2025-04-07 14:58:16,280 - runner - INFO - Candidate failed verification
+2025-04-07 14:58:16,281 - runner - INFO - Adding candidate to fail history: assert(n >= 0 || x == 0);
+2025-04-07 14:58:16,282 - runner - INFO - Verifying candidate: assert(m <= x);
+2025-04-07 14:58:16,289 - runner - INFO - Candidate failed verification
+2025-04-07 14:58:16,289 - runner - INFO - Adding candidate to fail history: assert(m <= x);
+2025-04-07 14:58:16,290 - runner - INFO - Verifying candidate: assert(m < n || x == 0);
+2025-04-07 14:58:16,291 - runner - INFO - Candidate already in fail history: assert(m < n || x == 0);
+2025-04-07 14:58:16,292 - runner - INFO - Executing predicate filtering
+2025-04-07 14:58:16,293 - runner - INFO - Filtering predicates for candidate assert(n >= 0 || x == 0);
+2025-04-07 14:58:16,926 - runner - INFO - Addind predicate (n >= 0) || (x == 0) to verify set
+2025-04-07 14:58:16,927 - runner - INFO - Filtering predicates for candidate assert(m <= x);
+2025-04-07 14:58:17,186 - runner - INFO - Addind predicate m <= x to verify set
+2025-04-07 14:58:17,187 - runner - INFO - Filtering predicates for candidate assert(m < n || x == 0);
+2025-04-07 14:58:18,190 - runner - ERROR - ESBMC timed out
+2025-04-07 14:58:18,191 - runner - INFO - Predicate filtering verify set: ['x >= 0', 'm >= 0', '(n >= 0) || (x == 0)', 'm <= x']
+2025-04-07 14:58:18,192 - runner - INFO - Verifying formula: (and (and (and (>= x 0) (>= m 0)) (or (>= n 0) (= x 0))) (<= m x))
+2025-04-07 14:58:18,193 - runner - INFO - For candidate: assert((x >= 0) && (m >= 0) && ((n >= 0) || (x == 0)) && (m <= x))
+2025-04-07 14:58:18,201 - runner - INFO - Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.197375320224904
+2025-04-07 14:58:19,061 - runner - INFO - Generated 2 candidates
+2025-04-07 14:58:19,063 - runner - INFO - Verifying generated candidates
+2025-04-07 14:58:19,064 - runner - INFO - Verifying candidate: assert(x >= 0);
+2025-04-07 14:58:19,065 - runner - INFO - Candidate already in fail history: assert(x >= 0);
+2025-04-07 14:58:19,066 - runner - INFO - Verifying candidate: assert(x <= n || n <= 0);
+2025-04-07 14:58:19,076 - runner - INFO - Candidate failed verification
+2025-04-07 14:58:19,077 - runner - INFO - Adding candidate to fail history: assert(x <= n || n <= 0);
+2025-04-07 14:58:19,078 - runner - INFO - Executing predicate filtering
+2025-04-07 14:58:19,078 - runner - INFO - Filtering predicates for candidate assert(x >= 0);
+2025-04-07 14:58:19,302 - runner - INFO - Filtering predicates for candidate assert(x <= n || n <= 0);
+2025-04-07 14:58:19,967 - runner - INFO - Addind predicate (x <= n) || (n <= 0) to verify set
+2025-04-07 14:58:19,968 - runner - INFO - Predicate filtering verify set: ['x >= 0', 'm >= 0', '(n >= 0) || (x == 0)', 'm <= x', '(x <= n) || (n <= 0)']
+2025-04-07 14:58:19,970 - runner - INFO - Verifying formula: (and (and (and (and (>= x 0) (>= m 0)) (or (>= n 0) (= x 0))) (<= m x)) (or (<= x n) (<= n 0)))
+2025-04-07 14:58:19,971 - runner - INFO - For candidate: assert((x >= 0) && (m >= 0) && ((n >= 0) || (x == 0)) && (m <= x) && ((x <= n) || (n <= 0)))
+2025-04-07 14:58:19,978 - runner - INFO - Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.3799489622552249
+2025-04-07 14:58:20,971 - runner - INFO - Generated 2 candidates
+2025-04-07 14:58:20,972 - runner - INFO - Verifying generated candidates
+2025-04-07 14:58:20,973 - runner - INFO - Verifying candidate: assert(n >= 0 || m == 0);
+2025-04-07 14:58:20,979 - runner - INFO - Candidate failed verification
+2025-04-07 14:58:20,980 - runner - INFO - Adding candidate to fail history: assert(n >= 0 || m == 0);
+2025-04-07 14:58:20,981 - runner - INFO - Verifying candidate: assert(m <= x);
+2025-04-07 14:58:20,982 - runner - INFO - Candidate already in fail history: assert(m <= x);
+2025-04-07 14:58:20,982 - runner - INFO - Executing predicate filtering
+2025-04-07 14:58:20,983 - runner - INFO - Filtering predicates for candidate assert(n >= 0 || m == 0);
+2025-04-07 14:58:22,170 - runner - INFO - Addind predicate (n >= 0) || (m == 0) to verify set
+2025-04-07 14:58:22,171 - runner - INFO - Filtering predicates for candidate assert(m <= x);
+2025-04-07 14:58:22,442 - runner - INFO - Predicate filtering verify set: ['x >= 0', 'm >= 0', '(n >= 0) || (x == 0)', 'm <= x', '(x <= n) || (n <= 0)', '(n >= 0) || (m == 0)']
+2025-04-07 14:58:22,444 - runner - INFO - Verifying formula: (and (and (and (and (and (>= x 0) (>= m 0)) (or (>= n 0) (= x 0))) (<= m x)) (or (<= x n) (<= n 0))) (or (>= n 0) (= m 0)))
+2025-04-07 14:58:22,445 - runner - INFO - For candidate: assert((x >= 0) && (m >= 0) && ((n >= 0) || (x == 0)) && (m <= x) && ((x <= n) || (n <= 0)) && ((n >= 0) || (m == 0)))
+2025-04-07 14:58:22,454 - runner - INFO - Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.5370495669980354
+2025-04-07 14:58:23,503 - runner - INFO - Generated 3 candidates
+2025-04-07 14:58:23,504 - runner - INFO - Verifying generated candidates
+2025-04-07 14:58:23,505 - runner - INFO - Verifying candidate: assert(x >= 0);
+2025-04-07 14:58:23,506 - runner - INFO - Candidate already in fail history: assert(x >= 0);
+2025-04-07 14:58:23,507 - runner - INFO - Verifying candidate: assert(m < n || n <= 0);
+2025-04-07 14:58:23,513 - runner - INFO - # Result
+2025-04-07 14:58:23,514 - runner - INFO - Solution found by the gpt-4o-mini model: assert(m < n || n <= 0);
+2025-04-07 14:58:23,515 - runner - INFO - 8 counter examples were generated for the model proposals, with 4 repeated fails
+2025-04-07 14:58:23,515 - runner - INFO - The model runtime was 8.50013518333435 seconds
+2025-04-07 14:58:23,516 - runner - INFO - The total runtime was 12.535137414932251 seconds

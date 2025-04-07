@@ -1,39 +1,262 @@
-02:05:59 26/03/2025 Resetting generator
-02:05:59 26/03/2025 # Run Benchmark 137
-02:05:59 26/03/2025 Executing predicate filtering for preconditions
-02:05:59 26/03/2025 Filtering predicates for candidate assert(x1 == 100)
-02:05:59 26/03/2025 Filtering predicates for candidate assert(x2 == 75)
-02:05:59 26/03/2025 Filtering predicates for candidate assert(t == 0)
-02:05:59 26/03/2025 Filtering predicates for candidate assert(v3 >= 0)
-02:05:59 26/03/2025 Addind predicate v3 >= 0 to verify set
-02:05:59 26/03/2025 Filtering predicates for candidate assert(v1 <= 5)
-02:05:59 26/03/2025 Addind predicate v1 <= 5 to verify set
-02:05:59 26/03/2025 Filtering predicates for candidate assert((v1 - v3) >= 0)
-02:05:59 26/03/2025 Addind predicate (v1 - v3) >= 0 to verify set
-02:05:59 26/03/2025 Filtering predicates for candidate assert(v2 * 2 - v1 - v3 == 0)
-02:05:59 26/03/2025 Filtering predicates for candidate assert(v2 + 5 >= 0)
-02:05:59 26/03/2025 Filtering predicates for candidate assert(v2 <= 5)
-02:05:59 26/03/2025 Predicate filtering verify set: ['v3 >= 0', 'v1 <= 5', '(v1 - v3) >= 0']
-02:05:59 26/03/2025 Verifying formula: (and (and (>= v3 0) (<= v1 5)) (>= (- v1 v3) 0))
-02:05:59 26/03/2025 For candidate: assert((v3 >= 0) && (v1 <= 5) && ((v1 - v3) >= 0))
-02:05:59 26/03/2025 Generating loop invariants candidates with model gpt-4o and presence penalty 0.0
-02:05:59 26/03/2025 Generated 5 candidates
-02:05:59 26/03/2025 Verifying generated candidates
-02:05:59 26/03/2025 Verifying candidate: assert(v1 <= 5);
-02:05:59 26/03/2025 Candidate failed verification
-02:05:59 26/03/2025 Adding candidate to fail history: assert(v1 <= 5);
-02:05:59 26/03/2025 Verifying candidate: assert(v2 * 2 - v1 - v3 == 0);
-02:05:59 26/03/2025 Candidate failed verification
-02:05:59 26/03/2025 Adding candidate to fail history: assert(v2 * 2 - v1 - v3 == 0);
-02:05:59 26/03/2025 Verifying candidate: assert(v2 + 5 >= 0);
-02:05:59 26/03/2025 Candidate failed verification
-02:05:59 26/03/2025 Adding candidate to fail history: assert(v2 + 5 >= 0);
-02:05:59 26/03/2025 Verifying candidate: assert(v2 <= 5);
-02:05:59 26/03/2025 Candidate failed verification
-02:05:59 26/03/2025 Adding candidate to fail history: assert(v2 <= 5);
-02:05:59 26/03/2025 Verifying candidate: assert(v2 * 2 + t * 2 >= v1 + v3);
-02:05:59 26/03/2025 # Result
-02:05:59 26/03/2025 Solution found by the gpt-4o model: assert(v2 * 2 + t * 2 >= v1 + v3);
-02:05:59 26/03/2025 4 counter examples were generated for the model proposals, with 0 repeated fails
-02:05:59 26/03/2025 The model runtime was 0.9075965881347656 seconds
-02:05:59 26/03/2025 The total runtime was 7.235803604125977 seconds
+2025-04-07 18:36:46,483 - runner - INFO - Resetting generator
+2025-04-07 18:36:46,489 - runner - INFO - # Run Benchmark 137
+2025-04-07 18:36:46,495 - runner - INFO - Executing predicate filtering for preconditions
+2025-04-07 18:36:46,502 - runner - INFO - Filtering predicates for candidate assert(x1 == 100)
+2025-04-07 18:36:46,787 - runner - INFO - Filtering predicates for candidate assert(x2 == 75)
+2025-04-07 18:36:47,070 - runner - INFO - Filtering predicates for candidate assert(t == 0)
+2025-04-07 18:36:47,361 - runner - INFO - Filtering predicates for candidate assert(v3 >= 0)
+2025-04-07 18:36:47,686 - runner - INFO - Addind predicate v3 >= 0 to verify set
+2025-04-07 18:36:47,692 - runner - INFO - Filtering predicates for candidate assert(v1 <= 5)
+2025-04-07 18:36:48,019 - runner - INFO - Addind predicate v1 <= 5 to verify set
+2025-04-07 18:36:48,026 - runner - INFO - Filtering predicates for candidate assert((v1 - v3) >= 0)
+2025-04-07 18:36:48,412 - runner - INFO - Addind predicate (v1 - v3) >= 0 to verify set
+2025-04-07 18:36:48,420 - runner - INFO - Filtering predicates for candidate assert(v2 * 2 - v1 - v3 == 0)
+2025-04-07 18:36:48,775 - runner - INFO - Filtering predicates for candidate assert(v2 + 5 >= 0)
+2025-04-07 18:36:49,232 - runner - INFO - Filtering predicates for candidate assert(v2 <= 5)
+2025-04-07 18:36:50,242 - runner - ERROR - ESBMC timed out
+2025-04-07 18:36:50,251 - runner - INFO - Predicate filtering verify set: ['v3 >= 0', 'v1 <= 5', '(v1 - v3) >= 0']
+2025-04-07 18:36:50,260 - runner - INFO - Verifying formula: (and (and (>= v3 0) (<= v1 5)) (>= (- v1 v3) 0))
+2025-04-07 18:36:50,269 - runner - INFO - For candidate: assert((v3 >= 0) && (v1 <= 5) && ((v1 - v3) >= 0))
+2025-04-07 18:36:50,292 - runner - INFO - Generating loop invariants candidates with model gpt-4o and presence penalty 0.0
+2025-04-07 18:36:51,492 - runner - INFO - Generated 6 candidates
+2025-04-07 18:36:51,498 - runner - INFO - Verifying generated candidates
+2025-04-07 18:36:51,504 - runner - INFO - Verifying candidate: assert(x1 == 100 + t * v1);
+2025-04-07 18:36:51,589 - runner - INFO - Candidate failed verification
+2025-04-07 18:36:51,595 - runner - INFO - Adding candidate to fail history: assert(x1 == 100 + t * v1);
+2025-04-07 18:36:51,602 - runner - INFO - Verifying candidate: assert(x2 == 75 + t * v2);
+2025-04-07 18:36:51,649 - runner - INFO - Candidate failed verification
+2025-04-07 18:36:51,655 - runner - INFO - Adding candidate to fail history: assert(x2 == 75 + t * v2);
+2025-04-07 18:36:51,662 - runner - INFO - Verifying candidate: assert(x3 == -50 + t * v3);
+2025-04-07 18:36:51,724 - runner - INFO - Candidate failed verification
+2025-04-07 18:36:51,731 - runner - INFO - Adding candidate to fail history: assert(x3 == -50 + t * v3);
+2025-04-07 18:36:51,737 - runner - INFO - Verifying candidate: assert(x2 * 2 - x1 - x3 == 0);
+2025-04-07 18:36:51,750 - runner - INFO - Candidate failed verification
+2025-04-07 18:36:51,757 - runner - INFO - Adding candidate to fail history: assert(x2 * 2 - x1 - x3 == 0);
+2025-04-07 18:36:51,765 - runner - INFO - Verifying candidate: assert(v2 + 5 >= 0);
+2025-04-07 18:36:51,784 - runner - INFO - Candidate failed verification
+2025-04-07 18:36:51,791 - runner - INFO - Adding candidate to fail history: assert(v2 + 5 >= 0);
+2025-04-07 18:36:51,798 - runner - INFO - Verifying candidate: assert(v2 <= 5);
+2025-04-07 18:36:51,816 - runner - INFO - Candidate failed verification
+2025-04-07 18:36:51,824 - runner - INFO - Adding candidate to fail history: assert(v2 <= 5);
+2025-04-07 18:36:51,831 - runner - INFO - Executing predicate filtering
+2025-04-07 18:36:51,839 - runner - INFO - Filtering predicates for candidate assert(x1 == 100 + t * v1);
+2025-04-07 18:36:52,850 - runner - ERROR - ESBMC timed out
+2025-04-07 18:36:52,857 - runner - INFO - Filtering predicates for candidate assert(x2 == 75 + t * v2);
+2025-04-07 18:36:53,146 - runner - INFO - Filtering predicates for candidate assert(x3 == -50 + t * v3);
+2025-04-07 18:36:54,156 - runner - ERROR - ESBMC timed out
+2025-04-07 18:36:54,162 - runner - INFO - Filtering predicates for candidate assert(x2 * 2 - x1 - x3 == 0);
+2025-04-07 18:36:54,422 - runner - INFO - Filtering predicates for candidate assert(v2 + 5 >= 0);
+2025-04-07 18:36:54,740 - runner - INFO - Filtering predicates for candidate assert(v2 <= 5);
+2025-04-07 18:36:55,752 - runner - ERROR - ESBMC timed out
+2025-04-07 18:36:55,758 - runner - INFO - Predicate filtering verify set: ['v3 >= 0', 'v1 <= 5', '(v1 - v3) >= 0']
+2025-04-07 18:36:55,765 - runner - INFO - Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.0
+2025-04-07 18:36:57,351 - runner - INFO - Generated 4 candidates
+2025-04-07 18:36:57,359 - runner - INFO - Verifying generated candidates
+2025-04-07 18:36:57,367 - runner - INFO - Verifying candidate: assert(v3 >= 0);
+2025-04-07 18:36:57,390 - runner - INFO - Candidate failed verification
+2025-04-07 18:36:57,398 - runner - INFO - Adding candidate to fail history: assert(v3 >= 0);
+2025-04-07 18:36:57,407 - runner - INFO - Verifying candidate: assert(v1 <= 5);
+2025-04-07 18:36:57,431 - runner - INFO - Candidate failed verification
+2025-04-07 18:36:57,439 - runner - INFO - Adding candidate to fail history: assert(v1 <= 5);
+2025-04-07 18:36:57,448 - runner - INFO - Verifying candidate: assert((v1 - v3) >= 0);
+2025-04-07 18:36:57,474 - runner - INFO - Candidate failed verification
+2025-04-07 18:36:57,481 - runner - INFO - Adding candidate to fail history: assert((v1 - v3) >= 0);
+2025-04-07 18:36:57,488 - runner - INFO - Verifying candidate: assert(v2 * 2 - v1 - v3 == 0);
+2025-04-07 18:36:57,508 - runner - INFO - Candidate failed verification
+2025-04-07 18:36:57,516 - runner - INFO - Adding candidate to fail history: assert(v2 * 2 - v1 - v3 == 0);
+2025-04-07 18:36:57,525 - runner - INFO - Executing predicate filtering
+2025-04-07 18:36:57,534 - runner - INFO - Filtering predicates for candidate assert(v3 >= 0);
+2025-04-07 18:36:57,954 - runner - INFO - Filtering predicates for candidate assert(v1 <= 5);
+2025-04-07 18:36:58,320 - runner - INFO - Filtering predicates for candidate assert((v1 - v3) >= 0);
+2025-04-07 18:36:58,696 - runner - INFO - Filtering predicates for candidate assert(v2 * 2 - v1 - v3 == 0);
+2025-04-07 18:36:59,007 - runner - INFO - Predicate filtering verify set: ['v3 >= 0', 'v1 <= 5', '(v1 - v3) >= 0']
+2025-04-07 18:36:59,013 - runner - INFO - Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.0
+2025-04-07 18:37:00,041 - runner - INFO - Generated 2 candidates
+2025-04-07 18:37:00,048 - runner - INFO - Verifying generated candidates
+2025-04-07 18:37:00,054 - runner - INFO - Verifying candidate: assert(v2 + 5 >= 0);
+2025-04-07 18:37:00,061 - runner - INFO - Candidate already in fail history: assert(v2 + 5 >= 0);
+2025-04-07 18:37:00,068 - runner - INFO - Verifying candidate: assert(v2 <= 5);
+2025-04-07 18:37:00,075 - runner - INFO - Candidate already in fail history: assert(v2 <= 5);
+2025-04-07 18:37:00,083 - runner - INFO - Executing predicate filtering
+2025-04-07 18:37:00,089 - runner - INFO - Filtering predicates for candidate assert(v2 + 5 >= 0);
+2025-04-07 18:37:00,415 - runner - INFO - Filtering predicates for candidate assert(v2 <= 5);
+2025-04-07 18:37:01,425 - runner - ERROR - ESBMC timed out
+2025-04-07 18:37:01,432 - runner - INFO - Predicate filtering verify set: ['v3 >= 0', 'v1 <= 5', '(v1 - v3) >= 0']
+2025-04-07 18:37:01,439 - runner - INFO - Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.3799489622552249
+2025-04-07 18:37:02,493 - runner - INFO - Generated 1 candidates
+2025-04-07 18:37:02,499 - runner - INFO - Verifying generated candidates
+2025-04-07 18:37:02,511 - runner - INFO - Verifying candidate: assert(v2 * 2 - v1 - v3 == 0);
+2025-04-07 18:37:02,516 - runner - INFO - Candidate already in fail history: assert(v2 * 2 - v1 - v3 == 0);
+2025-04-07 18:37:02,526 - runner - INFO - Executing predicate filtering
+2025-04-07 18:37:02,534 - runner - INFO - Filtering predicates for candidate assert(v2 * 2 - v1 - v3 == 0);
+2025-04-07 18:37:02,837 - runner - INFO - Predicate filtering verify set: ['v3 >= 0', 'v1 <= 5', '(v1 - v3) >= 0']
+2025-04-07 18:37:02,843 - runner - INFO - Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.5370495669980354
+2025-04-07 18:37:03,626 - runner - INFO - Generated 1 candidates
+2025-04-07 18:37:03,632 - runner - INFO - Verifying generated candidates
+2025-04-07 18:37:03,638 - runner - INFO - Verifying candidate: assert(1 <= t + 1);
+2025-04-07 18:37:03,656 - runner - INFO - Candidate failed verification
+2025-04-07 18:37:03,663 - runner - INFO - Adding candidate to fail history: assert(1 <= t + 1);
+2025-04-07 18:37:03,669 - runner - INFO - Executing predicate filtering
+2025-04-07 18:37:03,676 - runner - INFO - Filtering predicates for candidate assert(1 <= t + 1);
+2025-04-07 18:37:04,688 - runner - ERROR - ESBMC timed out
+2025-04-07 18:37:04,695 - runner - INFO - Predicate filtering verify set: ['v3 >= 0', 'v1 <= 5', '(v1 - v3) >= 0']
+2025-04-07 18:37:04,702 - runner - INFO - Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.5370495669980354
+2025-04-07 18:37:05,465 - runner - INFO - Generated 1 candidates
+2025-04-07 18:37:05,471 - runner - INFO - Verifying generated candidates
+2025-04-07 18:37:05,477 - runner - INFO - Verifying candidate: assert(t >= 0);
+2025-04-07 18:37:05,493 - runner - INFO - Candidate failed verification
+2025-04-07 18:37:05,500 - runner - INFO - Adding candidate to fail history: assert(t >= 0);
+2025-04-07 18:37:05,507 - runner - INFO - Executing predicate filtering
+2025-04-07 18:37:05,514 - runner - INFO - Filtering predicates for candidate assert(t >= 0);
+2025-04-07 18:37:06,524 - runner - ERROR - ESBMC timed out
+2025-04-07 18:37:06,531 - runner - INFO - Predicate filtering verify set: ['v3 >= 0', 'v1 <= 5', '(v1 - v3) >= 0']
+2025-04-07 18:37:06,538 - runner - INFO - Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.5370495669980354
+2025-04-07 18:37:07,847 - runner - INFO - Generated 1 candidates
+2025-04-07 18:37:07,854 - runner - INFO - Verifying generated candidates
+2025-04-07 18:37:07,860 - runner - INFO - Verifying candidate: assert(t >= 0 && t <= 100);
+2025-04-07 18:37:07,876 - runner - INFO - Candidate failed verification
+2025-04-07 18:37:07,882 - runner - INFO - Adding candidate to fail history: assert(t >= 0 && t <= 100);
+2025-04-07 18:37:07,888 - runner - INFO - Executing predicate filtering
+2025-04-07 18:37:07,895 - runner - INFO - Filtering predicates for candidate assert(t >= 0 && t <= 100);
+2025-04-07 18:37:08,905 - runner - ERROR - ESBMC timed out
+2025-04-07 18:37:09,916 - runner - ERROR - ESBMC timed out
+2025-04-07 18:37:09,923 - runner - INFO - Predicate filtering verify set: ['v3 >= 0', 'v1 <= 5', '(v1 - v3) >= 0']
+2025-04-07 18:37:09,929 - runner - INFO - Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.5370495669980354
+2025-04-07 18:37:11,059 - runner - INFO - Generated 1 candidates
+2025-04-07 18:37:11,065 - runner - INFO - Verifying generated candidates
+2025-04-07 18:37:11,071 - runner - INFO - Verifying candidate: assert(v2 * 2 - v1 - v3 == 0);
+2025-04-07 18:37:11,077 - runner - INFO - Candidate already in fail history: assert(v2 * 2 - v1 - v3 == 0);
+2025-04-07 18:37:11,082 - runner - INFO - Executing predicate filtering
+2025-04-07 18:37:11,089 - runner - INFO - Filtering predicates for candidate assert(v2 * 2 - v1 - v3 == 0);
+2025-04-07 18:37:11,396 - runner - INFO - Predicate filtering verify set: ['v3 >= 0', 'v1 <= 5', '(v1 - v3) >= 0']
+2025-04-07 18:37:11,402 - runner - INFO - Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.6640367702678491
+2025-04-07 18:37:13,104 - runner - INFO - Generated 2 candidates
+2025-04-07 18:37:13,111 - runner - INFO - Verifying generated candidates
+2025-04-07 18:37:13,117 - runner - INFO - Verifying candidate: assert(v2 >= -5);
+2025-04-07 18:37:13,134 - runner - INFO - Candidate failed verification
+2025-04-07 18:37:13,140 - runner - INFO - Adding candidate to fail history: assert(v2 >= -5);
+2025-04-07 18:37:13,147 - runner - INFO - Verifying candidate: assert(v2 <= 5);
+2025-04-07 18:37:13,154 - runner - INFO - Candidate already in fail history: assert(v2 <= 5);
+2025-04-07 18:37:13,160 - runner - INFO - Executing predicate filtering
+2025-04-07 18:37:13,167 - runner - INFO - Filtering predicates for candidate assert(v2 >= -5);
+2025-04-07 18:37:13,507 - runner - INFO - Filtering predicates for candidate assert(v2 <= 5);
+2025-04-07 18:37:14,520 - runner - ERROR - ESBMC timed out
+2025-04-07 18:37:14,527 - runner - INFO - Predicate filtering verify set: ['v3 >= 0', 'v1 <= 5', '(v1 - v3) >= 0']
+2025-04-07 18:37:14,533 - runner - INFO - Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.7615941559557649
+2025-04-07 18:37:15,804 - runner - INFO - Generated 2 candidates
+2025-04-07 18:37:15,812 - runner - INFO - Verifying generated candidates
+2025-04-07 18:37:15,839 - runner - INFO - Verifying candidate: assert(v1 <= 5);
+2025-04-07 18:37:15,845 - runner - INFO - Candidate already in fail history: assert(v1 <= 5);
+2025-04-07 18:37:15,851 - runner - INFO - Verifying candidate: assert((v1 - v3) >= 0);
+2025-04-07 18:37:15,858 - runner - INFO - Candidate already in fail history: assert((v1 - v3) >= 0);
+2025-04-07 18:37:15,864 - runner - INFO - Executing predicate filtering
+2025-04-07 18:37:15,871 - runner - INFO - Filtering predicates for candidate assert(v1 <= 5);
+2025-04-07 18:37:16,206 - runner - INFO - Filtering predicates for candidate assert((v1 - v3) >= 0);
+2025-04-07 18:37:16,542 - runner - INFO - Predicate filtering verify set: ['v3 >= 0', 'v1 <= 5', '(v1 - v3) >= 0']
+2025-04-07 18:37:16,548 - runner - INFO - Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.8853516482022625
+2025-04-07 18:37:17,377 - runner - INFO - Generated 1 candidates
+2025-04-07 18:37:17,383 - runner - INFO - Verifying generated candidates
+2025-04-07 18:37:17,389 - runner - INFO - Verifying candidate: assert(v3 >= 0);
+2025-04-07 18:37:17,395 - runner - INFO - Candidate already in fail history: assert(v3 >= 0);
+2025-04-07 18:37:17,402 - runner - INFO - Executing predicate filtering
+2025-04-07 18:37:17,409 - runner - INFO - Filtering predicates for candidate assert(v3 >= 0);
+2025-04-07 18:37:17,770 - runner - INFO - Predicate filtering verify set: ['v3 >= 0', 'v1 <= 5', '(v1 - v3) >= 0']
+2025-04-07 18:37:17,776 - runner - INFO - Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9216685544064713
+2025-04-07 18:37:19,136 - runner - INFO - Generated 2 candidates
+2025-04-07 18:37:19,143 - runner - INFO - Verifying generated candidates
+2025-04-07 18:37:19,150 - runner - INFO - Verifying candidate: assert(v2 * 2 - v1 - v3 == 0);
+2025-04-07 18:37:19,156 - runner - INFO - Candidate already in fail history: assert(v2 * 2 - v1 - v3 == 0);
+2025-04-07 18:37:19,163 - runner - INFO - Verifying candidate: assert(t >= 0);
+2025-04-07 18:37:19,169 - runner - INFO - Candidate already in fail history: assert(t >= 0);
+2025-04-07 18:37:19,176 - runner - INFO - Executing predicate filtering
+2025-04-07 18:37:19,183 - runner - INFO - Filtering predicates for candidate assert(v2 * 2 - v1 - v3 == 0);
+2025-04-07 18:37:19,491 - runner - INFO - Filtering predicates for candidate assert(t >= 0);
+2025-04-07 18:37:20,503 - runner - ERROR - ESBMC timed out
+2025-04-07 18:37:20,509 - runner - INFO - Predicate filtering verify set: ['v3 >= 0', 'v1 <= 5', '(v1 - v3) >= 0']
+2025-04-07 18:37:20,516 - runner - INFO - Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9640275800758169
+2025-04-07 18:37:20,914 - runner - INFO - Generated 2 candidates
+2025-04-07 18:37:20,921 - runner - INFO - Verifying generated candidates
+2025-04-07 18:37:20,928 - runner - INFO - Verifying candidate: assert(v2 >= -5);
+2025-04-07 18:37:20,935 - runner - INFO - Candidate already in fail history: assert(v2 >= -5);
+2025-04-07 18:37:20,941 - runner - INFO - Verifying candidate: assert(v2 <= 5);
+2025-04-07 18:37:20,948 - runner - INFO - Candidate already in fail history: assert(v2 <= 5);
+2025-04-07 18:37:20,955 - runner - INFO - Executing predicate filtering
+2025-04-07 18:37:20,962 - runner - INFO - Filtering predicates for candidate assert(v2 >= -5);
+2025-04-07 18:37:21,294 - runner - INFO - Filtering predicates for candidate assert(v2 <= 5);
+2025-04-07 18:37:22,303 - runner - ERROR - ESBMC timed out
+2025-04-07 18:37:22,310 - runner - INFO - Predicate filtering verify set: ['v3 >= 0', 'v1 <= 5', '(v1 - v3) >= 0']
+2025-04-07 18:37:22,316 - runner - INFO - Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9836748576936802
+2025-04-07 18:37:23,150 - runner - INFO - Generated 1 candidates
+2025-04-07 18:37:23,156 - runner - INFO - Verifying generated candidates
+2025-04-07 18:37:23,163 - runner - INFO - Verifying candidate: assert(v1 <= 5);
+2025-04-07 18:37:23,169 - runner - INFO - Candidate already in fail history: assert(v1 <= 5);
+2025-04-07 18:37:23,176 - runner - INFO - Executing predicate filtering
+2025-04-07 18:37:23,183 - runner - INFO - Filtering predicates for candidate assert(v1 <= 5);
+2025-04-07 18:37:23,531 - runner - INFO - Predicate filtering verify set: ['v3 >= 0', 'v1 <= 5', '(v1 - v3) >= 0']
+2025-04-07 18:37:23,537 - runner - INFO - Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9890274022010992
+2025-04-07 18:37:24,612 - runner - INFO - Generated 1 candidates
+2025-04-07 18:37:24,618 - runner - INFO - Verifying generated candidates
+2025-04-07 18:37:24,624 - runner - INFO - Verifying candidate: assert(v2 * 2 - v1 - v3 >= 0);
+2025-04-07 18:37:24,641 - runner - INFO - Candidate failed verification
+2025-04-07 18:37:24,647 - runner - INFO - Adding candidate to fail history: assert(v2 * 2 - v1 - v3 >= 0);
+2025-04-07 18:37:24,654 - runner - INFO - Executing predicate filtering
+2025-04-07 18:37:24,662 - runner - INFO - Filtering predicates for candidate assert(v2 * 2 - v1 - v3 >= 0);
+2025-04-07 18:37:25,081 - runner - INFO - Predicate filtering verify set: ['v3 >= 0', 'v1 <= 5', '(v1 - v3) >= 0']
+2025-04-07 18:37:25,087 - runner - INFO - Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9890274022010992
+2025-04-07 18:37:26,439 - runner - INFO - Generated 1 candidates
+2025-04-07 18:37:26,445 - runner - INFO - Verifying generated candidates
+2025-04-07 18:37:26,451 - runner - INFO - Verifying candidate: assert(v2 * 2 - v1 - v3 <= 0);
+2025-04-07 18:37:26,468 - runner - INFO - Candidate failed verification
+2025-04-07 18:37:26,475 - runner - INFO - Adding candidate to fail history: assert(v2 * 2 - v1 - v3 <= 0);
+2025-04-07 18:37:26,482 - runner - INFO - Executing predicate filtering
+2025-04-07 18:37:26,489 - runner - INFO - Filtering predicates for candidate assert(v2 * 2 - v1 - v3 <= 0);
+2025-04-07 18:37:27,501 - runner - ERROR - ESBMC timed out
+2025-04-07 18:37:27,507 - runner - INFO - Predicate filtering verify set: ['v3 >= 0', 'v1 <= 5', '(v1 - v3) >= 0']
+2025-04-07 18:37:27,514 - runner - INFO - Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9890274022010992
+2025-04-07 18:37:29,101 - runner - INFO - Generated 1 candidates
+2025-04-07 18:37:29,108 - runner - INFO - Verifying generated candidates
+2025-04-07 18:37:29,116 - runner - INFO - Verifying candidate: assert(v1 + v3 >= 0);
+2025-04-07 18:37:29,139 - runner - INFO - Candidate failed verification
+2025-04-07 18:37:29,146 - runner - INFO - Adding candidate to fail history: assert(v1 + v3 >= 0);
+2025-04-07 18:37:29,153 - runner - INFO - Executing predicate filtering
+2025-04-07 18:37:29,159 - runner - INFO - Filtering predicates for candidate assert(v1 + v3 >= 0);
+2025-04-07 18:37:29,451 - runner - INFO - Predicate filtering verify set: ['v3 >= 0', 'v1 <= 5', '(v1 - v3) >= 0']
+2025-04-07 18:37:29,458 - runner - INFO - Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9890274022010992
+2025-04-07 18:37:31,319 - runner - INFO - Generated 1 candidates
+2025-04-07 18:37:31,325 - runner - INFO - Verifying generated candidates
+2025-04-07 18:37:31,332 - runner - INFO - Verifying candidate: assert(v2 * 2 - v1 - v3 == 0 || v2 + 5 == 0);
+2025-04-07 18:37:31,357 - runner - INFO - Candidate failed verification
+2025-04-07 18:37:31,365 - runner - INFO - Adding candidate to fail history: assert(v2 * 2 - v1 - v3 == 0 || v2 + 5 == 0);
+2025-04-07 18:37:31,376 - runner - INFO - Executing predicate filtering
+2025-04-07 18:37:31,382 - runner - INFO - Filtering predicates for candidate assert(v2 * 2 - v1 - v3 == 0 || v2 + 5 == 0);
+2025-04-07 18:37:31,726 - runner - INFO - Predicate filtering verify set: ['v3 >= 0', 'v1 <= 5', '(v1 - v3) >= 0']
+2025-04-07 18:37:31,732 - runner - INFO - Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9890274022010992
+2025-04-07 18:37:32,940 - runner - INFO - Generated 1 candidates
+2025-04-07 18:37:32,946 - runner - INFO - Verifying generated candidates
+2025-04-07 18:37:32,953 - runner - INFO - Verifying candidate: assert(v2 <= 5 || v2 >= -5);
+2025-04-07 18:37:32,973 - runner - INFO - Candidate failed verification
+2025-04-07 18:37:32,980 - runner - INFO - Adding candidate to fail history: assert(v2 <= 5 || v2 >= -5);
+2025-04-07 18:37:32,987 - runner - INFO - Executing predicate filtering
+2025-04-07 18:37:32,994 - runner - INFO - Filtering predicates for candidate assert(v2 <= 5 || v2 >= -5);
+2025-04-07 18:37:33,822 - runner - INFO - Addind predicate (v2 <= 5) || (v2 >= -5) to verify set
+2025-04-07 18:37:33,829 - runner - INFO - Predicate filtering verify set: ['v3 >= 0', 'v1 <= 5', '(v1 - v3) >= 0', '(v2 <= 5) || (v2 >= -5)']
+2025-04-07 18:37:33,836 - runner - INFO - Verifying formula: (and (and (and (>= v3 0) (<= v1 5)) (>= (- v1 v3) 0)) (or (<= v2 5) (>= v2 (- 5))))
+2025-04-07 18:37:33,844 - runner - INFO - For candidate: assert((v3 >= 0) && (v1 <= 5) && ((v1 - v3) >= 0) && ((v2 <= 5) || (v2 >= -5)))
+2025-04-07 18:37:33,866 - runner - INFO - Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9890274022010992
+2025-04-07 18:37:35,183 - runner - INFO - Generated 1 candidates
+2025-04-07 18:37:35,190 - runner - INFO - Verifying generated candidates
+2025-04-07 18:37:35,196 - runner - INFO - Verifying candidate: assert(v2 * 2 - v1 - v3 <= 0);
+2025-04-07 18:37:35,203 - runner - INFO - Candidate already in fail history: assert(v2 * 2 - v1 - v3 <= 0);
+2025-04-07 18:37:35,209 - runner - INFO - Executing predicate filtering
+2025-04-07 18:37:35,215 - runner - INFO - Filtering predicates for candidate assert(v2 * 2 - v1 - v3 <= 0);
+2025-04-07 18:37:36,231 - runner - ERROR - ESBMC timed out
+2025-04-07 18:37:36,238 - runner - INFO - Predicate filtering verify set: ['v3 >= 0', 'v1 <= 5', '(v1 - v3) >= 0', '(v2 <= 5) || (v2 >= -5)']
+2025-04-07 18:37:36,244 - runner - INFO - Generating loop invariants candidates with model o1-mini and presence penalty 0.992631520201128
+2025-04-07 18:37:57,952 - runner - INFO - Generated 1 candidates
+2025-04-07 18:37:57,958 - runner - INFO - Verifying generated candidates
+2025-04-07 18:37:57,965 - runner - INFO - Verifying candidate: assert(v2 * 2 + t * 2 >= v1 + v3);
+2025-04-07 18:37:57,985 - runner - INFO - # Result
+2025-04-07 18:37:57,993 - runner - INFO - Solution found by the o1-mini model: assert(v2 * 2 + t * 2 >= v1 + v3);
+2025-04-07 18:37:58,001 - runner - INFO - 19 counter examples were generated for the model proposals, with 14 repeated fails
+2025-04-07 18:37:58,008 - runner - INFO - The model runtime was 21.75681710243225 seconds
+2025-04-07 18:37:58,017 - runner - INFO - The total runtime was 71.51185965538025 seconds

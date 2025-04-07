@@ -1,19 +1,19 @@
-02:01:06 26/03/2025 Resetting generator
-02:01:06 26/03/2025 # Run Benchmark 96
-02:01:06 26/03/2025 Executing predicate filtering for preconditions
-02:01:06 26/03/2025 Filtering predicates for candidate assert(j == 0)
-02:01:06 26/03/2025 Filtering predicates for candidate assert(i == 0)
-02:01:06 26/03/2025 Filtering predicates for candidate assert(y == 1)
-02:01:06 26/03/2025 Addind predicate y == 1 to verify set
-02:01:06 26/03/2025 Predicate filtering verify set: ['y == 1']
-02:01:06 26/03/2025 Verifying formula: (= y 1)
-02:01:06 26/03/2025 For candidate: assert((y == 1))
-02:01:06 26/03/2025 Generating loop invariants candidates with model gpt-4o and presence penalty 0.0
-02:01:06 26/03/2025 Generated 2 candidates
-02:01:06 26/03/2025 Verifying generated candidates
-02:01:06 26/03/2025 Verifying candidate: assert(j == i * y);
-02:01:06 26/03/2025 # Result
-02:01:06 26/03/2025 Solution found by the gpt-4o model: assert(j == i * y);
-02:01:06 26/03/2025 0 counter examples were generated for the model proposals, with 0 repeated fails
-02:01:06 26/03/2025 The model runtime was 1.1995010375976562 seconds
-02:01:06 26/03/2025 The total runtime was 1.6425590515136719 seconds
+2025-04-07 17:47:07,215 - runner - INFO - Resetting generator
+2025-04-07 17:47:07,220 - runner - INFO - # Run Benchmark 96
+2025-04-07 17:47:07,224 - runner - INFO - Executing predicate filtering for preconditions
+2025-04-07 17:47:07,229 - runner - INFO - Filtering predicates for candidate assert(j == 0)
+2025-04-07 17:47:07,464 - runner - INFO - Filtering predicates for candidate assert(i == 0)
+2025-04-07 17:47:07,694 - runner - INFO - Filtering predicates for candidate assert(y == 1)
+2025-04-07 17:47:07,935 - runner - INFO - Addind predicate y == 1 to verify set
+2025-04-07 17:47:07,940 - runner - INFO - Predicate filtering verify set: ['y == 1']
+2025-04-07 17:47:07,944 - runner - INFO - Verifying formula: (= y 1)
+2025-04-07 17:47:07,949 - runner - INFO - For candidate: assert((y == 1))
+2025-04-07 17:47:07,959 - runner - INFO - Generating loop invariants candidates with model gpt-4o and presence penalty 0.0
+2025-04-07 17:47:09,731 - runner - INFO - Generated 2 candidates
+2025-04-07 17:47:09,736 - runner - INFO - Verifying generated candidates
+2025-04-07 17:47:09,753 - runner - INFO - Verifying candidate: assert(i == j || y != 1);
+2025-04-07 17:47:09,763 - runner - INFO - # Result
+2025-04-07 17:47:09,768 - runner - INFO - Solution found by the gpt-4o model: assert(i == j || y != 1);
+2025-04-07 17:47:09,773 - runner - INFO - 0 counter examples were generated for the model proposals, with 0 repeated fails
+2025-04-07 17:47:09,778 - runner - INFO - The model runtime was 1.8136022090911865 seconds
+2025-04-07 17:47:09,783 - runner - INFO - The total runtime was 2.552976131439209 seconds

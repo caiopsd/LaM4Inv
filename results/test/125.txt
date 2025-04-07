@@ -1,15 +1,15 @@
-02:04:04 26/03/2025 Resetting generator
-02:04:04 26/03/2025 # Run Benchmark 125
-02:04:04 26/03/2025 Executing predicate filtering for preconditions
-02:04:04 26/03/2025 Filtering predicates for candidate assert(i == x)
-02:04:04 26/03/2025 Filtering predicates for candidate assert(j == y)
-02:04:04 26/03/2025 Predicate filtering verify set: []
-02:04:04 26/03/2025 Generating loop invariants candidates with model gpt-4o and presence penalty 0.0
-02:04:04 26/03/2025 Generated 3 candidates
-02:04:04 26/03/2025 Verifying generated candidates
-02:04:04 26/03/2025 Verifying candidate: assert(i - x == j - y);
-02:04:04 26/03/2025 # Result
-02:04:04 26/03/2025 Solution found by the gpt-4o model: assert(i - x == j - y);
-02:04:04 26/03/2025 0 counter examples were generated for the model proposals, with 0 repeated fails
-02:04:04 26/03/2025 The model runtime was 1.3235743045806885 seconds
-02:04:04 26/03/2025 The total runtime was 1.6039748191833496 seconds
+2025-04-07 18:35:12,424 - runner - INFO - Resetting generator
+2025-04-07 18:35:12,430 - runner - INFO - # Run Benchmark 125
+2025-04-07 18:35:12,436 - runner - INFO - Executing predicate filtering for preconditions
+2025-04-07 18:35:12,442 - runner - INFO - Filtering predicates for candidate assert(i == x)
+2025-04-07 18:35:12,672 - runner - INFO - Filtering predicates for candidate assert(j == y)
+2025-04-07 18:35:12,940 - runner - INFO - Predicate filtering verify set: []
+2025-04-07 18:35:12,946 - runner - INFO - Generating loop invariants candidates with model gpt-4o and presence penalty 0.0
+2025-04-07 18:35:13,904 - runner - INFO - Generated 2 candidates
+2025-04-07 18:35:13,909 - runner - INFO - Verifying generated candidates
+2025-04-07 18:35:13,915 - runner - INFO - Verifying candidate: assert(i == x + j - y);
+2025-04-07 18:35:13,927 - runner - INFO - # Result
+2025-04-07 18:35:13,933 - runner - INFO - Solution found by the gpt-4o model: assert(i == x + j - y);
+2025-04-07 18:35:13,939 - runner - INFO - 0 counter examples were generated for the model proposals, with 0 repeated fails
+2025-04-07 18:35:13,945 - runner - INFO - The model runtime was 0.9926700592041016 seconds
+2025-04-07 18:35:13,951 - runner - INFO - The total runtime was 1.5092036724090576 seconds

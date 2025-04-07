@@ -1,18 +1,240 @@
-23:41:38 25/03/2025 Resetting generator
-23:41:38 25/03/2025 # Run Benchmark 2
-23:41:38 25/03/2025 Executing predicate filtering for preconditions
-23:41:38 25/03/2025 Filtering predicates for candidate assert(x == 1)
-23:41:38 25/03/2025 Filtering predicates for candidate assert(y == 0)
-23:41:38 25/03/2025 Predicate filtering verify set: []
-23:41:38 25/03/2025 Generating loop invariants candidates with model gpt-4o and presence penalty 0.0
-23:41:38 25/03/2025 Generated 4 candidates
-23:41:38 25/03/2025 Verifying generated candidates
-23:41:38 25/03/2025 Verifying candidate: assert(y < 1000 || (x >= y));
-23:41:38 25/03/2025 Candidate failed verification
-23:41:38 25/03/2025 Adding candidate to fail history: assert(y < 1000 || (x >= y));
-23:41:38 25/03/2025 Verifying candidate: assert(x == y * (y - 1) / 2 + 1);
-23:41:38 25/03/2025 # Result
-23:41:38 25/03/2025 Solution found by the gpt-4o model: assert(x == y * (y - 1) / 2 + 1);
-23:41:38 25/03/2025 1 counter examples were generated for the model proposals, with 0 repeated fails
-23:41:38 25/03/2025 The model runtime was 1.3421664237976074 seconds
-23:41:38 25/03/2025 The total runtime was 1.6380915641784668 seconds
+2025-04-07 14:45:25,006 - runner - INFO - Resetting generator
+2025-04-07 14:45:25,006 - runner - INFO - # Run Benchmark 2
+2025-04-07 14:45:25,006 - runner - INFO - Executing predicate filtering for preconditions
+2025-04-07 14:45:25,006 - runner - INFO - Filtering predicates for candidate assert(x == 1)
+2025-04-07 14:45:25,219 - runner - INFO - Filtering predicates for candidate assert(y == 0)
+2025-04-07 14:45:25,411 - runner - INFO - Predicate filtering verify set: []
+2025-04-07 14:45:25,411 - runner - INFO - Generating loop invariants candidates with model gpt-4o and presence penalty 0.0
+2025-04-07 14:45:26,186 - runner - INFO - Generated 3 candidates
+2025-04-07 14:45:26,186 - runner - INFO - Verifying generated candidates
+2025-04-07 14:45:26,186 - runner - INFO - Verifying candidate: assert(x >= 1);
+2025-04-07 14:45:26,191 - runner - INFO - Candidate failed verification
+2025-04-07 14:45:26,192 - runner - INFO - Adding candidate to fail history: assert(x >= 1);
+2025-04-07 14:45:26,192 - runner - INFO - Verifying candidate: assert(y >= 0);
+2025-04-07 14:45:26,198 - runner - INFO - Candidate failed verification
+2025-04-07 14:45:26,198 - runner - INFO - Adding candidate to fail history: assert(y >= 0);
+2025-04-07 14:45:26,198 - runner - INFO - Verifying candidate: assert(x >= y);
+2025-04-07 14:45:26,202 - runner - INFO - Candidate failed verification
+2025-04-07 14:45:26,202 - runner - INFO - Adding candidate to fail history: assert(x >= y);
+2025-04-07 14:45:26,202 - runner - INFO - Executing predicate filtering
+2025-04-07 14:45:26,203 - runner - INFO - Filtering predicates for candidate assert(x >= 1);
+2025-04-07 14:45:27,206 - runner - ERROR - ESBMC timed out
+2025-04-07 14:45:27,206 - runner - INFO - Filtering predicates for candidate assert(y >= 0);
+2025-04-07 14:45:27,437 - runner - INFO - Addind predicate y >= 0 to verify set
+2025-04-07 14:45:27,437 - runner - INFO - Filtering predicates for candidate assert(x >= y);
+2025-04-07 14:45:28,441 - runner - ERROR - ESBMC timed out
+2025-04-07 14:45:28,441 - runner - INFO - Predicate filtering verify set: ['y >= 0']
+2025-04-07 14:45:28,442 - runner - INFO - Verifying formula: (>= y 0)
+2025-04-07 14:45:28,442 - runner - INFO - For candidate: assert((y >= 0))
+2025-04-07 14:45:28,450 - runner - INFO - Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.0
+2025-04-07 14:45:29,981 - runner - INFO - Generated 2 candidates
+2025-04-07 14:45:29,981 - runner - INFO - Verifying generated candidates
+2025-04-07 14:45:29,981 - runner - INFO - Verifying candidate: assert(y <= 1000);
+2025-04-07 14:45:29,987 - runner - INFO - Candidate failed verification
+2025-04-07 14:45:29,987 - runner - INFO - Adding candidate to fail history: assert(y <= 1000);
+2025-04-07 14:45:29,987 - runner - INFO - Verifying candidate: assert(x >= 1);
+2025-04-07 14:45:29,987 - runner - INFO - Candidate already in fail history: assert(x >= 1);
+2025-04-07 14:45:29,987 - runner - INFO - Executing predicate filtering
+2025-04-07 14:45:29,988 - runner - INFO - Filtering predicates for candidate assert(y <= 1000);
+2025-04-07 14:45:30,214 - runner - INFO - Addind predicate y <= 1000 to verify set
+2025-04-07 14:45:30,214 - runner - INFO - Filtering predicates for candidate assert(x >= 1);
+2025-04-07 14:45:31,218 - runner - ERROR - ESBMC timed out
+2025-04-07 14:45:31,218 - runner - INFO - Predicate filtering verify set: ['y >= 0', 'y <= 1000']
+2025-04-07 14:45:31,219 - runner - INFO - Verifying formula: (and (>= y 0) (<= y 1000))
+2025-04-07 14:45:31,219 - runner - INFO - For candidate: assert((y >= 0) && (y <= 1000))
+2025-04-07 14:45:31,224 - runner - INFO - Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.197375320224904
+2025-04-07 14:45:32,151 - runner - INFO - Generated 2 candidates
+2025-04-07 14:45:32,151 - runner - INFO - Verifying generated candidates
+2025-04-07 14:45:32,151 - runner - INFO - Verifying candidate: assert(x >= 1 + y);
+2025-04-07 14:45:32,156 - runner - INFO - Candidate failed verification
+2025-04-07 14:45:32,156 - runner - INFO - Adding candidate to fail history: assert(x >= 1 + y);
+2025-04-07 14:45:32,156 - runner - INFO - Verifying candidate: assert(y < 1000);
+2025-04-07 14:45:32,160 - runner - INFO - Candidate failed verification
+2025-04-07 14:45:32,161 - runner - INFO - Adding candidate to fail history: assert(y < 1000);
+2025-04-07 14:45:32,161 - runner - INFO - Executing predicate filtering
+2025-04-07 14:45:32,161 - runner - INFO - Filtering predicates for candidate assert(x >= 1 + y);
+2025-04-07 14:45:32,400 - runner - INFO - Filtering predicates for candidate assert(y < 1000);
+2025-04-07 14:45:32,787 - runner - INFO - Addind predicate y < 1000 to verify set
+2025-04-07 14:45:32,787 - runner - INFO - Predicate filtering verify set: ['y >= 0', 'y <= 1000', 'y < 1000']
+2025-04-07 14:45:32,788 - runner - INFO - Verifying formula: (and (and (>= y 0) (<= y 1000)) (< y 1000))
+2025-04-07 14:45:32,789 - runner - INFO - For candidate: assert((y >= 0) && (y <= 1000) && (y < 1000))
+2025-04-07 14:45:32,795 - runner - INFO - Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.197375320224904
+2025-04-07 14:45:38,476 - runner - INFO - Generated 3 candidates
+2025-04-07 14:45:38,476 - runner - INFO - Verifying generated candidates
+2025-04-07 14:45:38,477 - runner - INFO - Verifying candidate: assert(x >= 1);
+2025-04-07 14:45:38,477 - runner - INFO - Candidate already in fail history: assert(x >= 1);
+2025-04-07 14:45:38,477 - runner - INFO - Verifying candidate: assert(y >= 0);
+2025-04-07 14:45:38,477 - runner - INFO - Candidate already in fail history: assert(y >= 0);
+2025-04-07 14:45:38,477 - runner - INFO - Verifying candidate: assert(y <= 999);
+2025-04-07 14:45:38,482 - runner - INFO - Candidate failed verification
+2025-04-07 14:45:38,482 - runner - INFO - Adding candidate to fail history: assert(y <= 999);
+2025-04-07 14:45:38,483 - runner - INFO - Executing predicate filtering
+2025-04-07 14:45:38,483 - runner - INFO - Filtering predicates for candidate assert(x >= 1);
+2025-04-07 14:45:39,485 - runner - ERROR - ESBMC timed out
+2025-04-07 14:45:39,485 - runner - INFO - Filtering predicates for candidate assert(y >= 0);
+2025-04-07 14:45:39,712 - runner - INFO - Filtering predicates for candidate assert(y <= 999);
+2025-04-07 14:45:40,027 - runner - INFO - Addind predicate y <= 999 to verify set
+2025-04-07 14:45:40,028 - runner - INFO - Predicate filtering verify set: ['y >= 0', 'y <= 1000', 'y < 1000', 'y <= 999']
+2025-04-07 14:45:40,029 - runner - INFO - Verifying formula: (and (and (and (>= y 0) (<= y 1000)) (< y 1000)) (<= y 999))
+2025-04-07 14:45:40,029 - runner - INFO - For candidate: assert((y >= 0) && (y <= 1000) && (y < 1000) && (y <= 999))
+2025-04-07 14:45:40,035 - runner - INFO - Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.5370495669980354
+2025-04-07 14:45:41,556 - runner - INFO - Generated 2 candidates
+2025-04-07 14:45:41,556 - runner - INFO - Verifying generated candidates
+2025-04-07 14:45:41,556 - runner - INFO - Verifying candidate: assert(x >= 0);
+2025-04-07 14:45:41,561 - runner - INFO - Candidate failed verification
+2025-04-07 14:45:41,561 - runner - INFO - Adding candidate to fail history: assert(x >= 0);
+2025-04-07 14:45:41,562 - runner - INFO - Verifying candidate: assert(y < 1000);
+2025-04-07 14:45:41,562 - runner - INFO - Candidate already in fail history: assert(y < 1000);
+2025-04-07 14:45:41,562 - runner - INFO - Executing predicate filtering
+2025-04-07 14:45:41,562 - runner - INFO - Filtering predicates for candidate assert(x >= 0);
+2025-04-07 14:45:42,564 - runner - ERROR - ESBMC timed out
+2025-04-07 14:45:42,564 - runner - INFO - Filtering predicates for candidate assert(y < 1000);
+2025-04-07 14:45:42,867 - runner - INFO - Predicate filtering verify set: ['y >= 0', 'y <= 1000', 'y < 1000', 'y <= 999']
+2025-04-07 14:45:42,867 - runner - INFO - Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.6640367702678491
+2025-04-07 14:45:43,723 - runner - INFO - Generated 2 candidates
+2025-04-07 14:45:43,723 - runner - INFO - Verifying generated candidates
+2025-04-07 14:45:43,723 - runner - INFO - Verifying candidate: assert(x >= 1 - y);
+2025-04-07 14:45:43,728 - runner - INFO - Candidate failed verification
+2025-04-07 14:45:43,729 - runner - INFO - Adding candidate to fail history: assert(x >= 1 - y);
+2025-04-07 14:45:43,729 - runner - INFO - Verifying candidate: assert(y >= 0);
+2025-04-07 14:45:43,729 - runner - INFO - Candidate already in fail history: assert(y >= 0);
+2025-04-07 14:45:43,729 - runner - INFO - Executing predicate filtering
+2025-04-07 14:45:43,729 - runner - INFO - Filtering predicates for candidate assert(x >= 1 - y);
+2025-04-07 14:45:44,732 - runner - ERROR - ESBMC timed out
+2025-04-07 14:45:44,732 - runner - INFO - Filtering predicates for candidate assert(y >= 0);
+2025-04-07 14:45:44,947 - runner - INFO - Predicate filtering verify set: ['y >= 0', 'y <= 1000', 'y < 1000', 'y <= 999']
+2025-04-07 14:45:44,947 - runner - INFO - Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.7615941559557649
+2025-04-07 14:45:47,066 - runner - INFO - Generated 2 candidates
+2025-04-07 14:45:47,066 - runner - INFO - Verifying generated candidates
+2025-04-07 14:45:47,066 - runner - INFO - Verifying candidate: assert(y >= 1);
+2025-04-07 14:45:47,070 - runner - INFO - Candidate failed verification
+2025-04-07 14:45:47,070 - runner - INFO - Adding candidate to fail history: assert(y >= 1);
+2025-04-07 14:45:47,070 - runner - INFO - Verifying candidate: assert(x >= y);
+2025-04-07 14:45:47,071 - runner - INFO - Candidate already in fail history: assert(x >= y);
+2025-04-07 14:45:47,071 - runner - INFO - Executing predicate filtering
+2025-04-07 14:45:47,071 - runner - INFO - Filtering predicates for candidate assert(y >= 1);
+2025-04-07 14:45:47,285 - runner - INFO - Filtering predicates for candidate assert(x >= y);
+2025-04-07 14:45:48,287 - runner - ERROR - ESBMC timed out
+2025-04-07 14:45:48,288 - runner - INFO - Predicate filtering verify set: ['y >= 0', 'y <= 1000', 'y < 1000', 'y <= 999']
+2025-04-07 14:45:48,288 - runner - INFO - Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.8336546070121553
+2025-04-07 14:45:49,877 - runner - INFO - Generated 2 candidates
+2025-04-07 14:45:49,877 - runner - INFO - Verifying generated candidates
+2025-04-07 14:45:49,877 - runner - INFO - Verifying candidate: assert(x >= 1);
+2025-04-07 14:45:49,877 - runner - INFO - Candidate already in fail history: assert(x >= 1);
+2025-04-07 14:45:49,877 - runner - INFO - Verifying candidate: assert(y <= 999);
+2025-04-07 14:45:49,878 - runner - INFO - Candidate already in fail history: assert(y <= 999);
+2025-04-07 14:45:49,878 - runner - INFO - Executing predicate filtering
+2025-04-07 14:45:49,878 - runner - INFO - Filtering predicates for candidate assert(x >= 1);
+2025-04-07 14:45:50,880 - runner - ERROR - ESBMC timed out
+2025-04-07 14:45:50,880 - runner - INFO - Filtering predicates for candidate assert(y <= 999);
+2025-04-07 14:45:51,186 - runner - INFO - Predicate filtering verify set: ['y >= 0', 'y <= 1000', 'y < 1000', 'y <= 999']
+2025-04-07 14:45:51,186 - runner - INFO - Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9216685544064713
+2025-04-07 14:45:52,031 - runner - INFO - Generated 2 candidates
+2025-04-07 14:45:52,032 - runner - INFO - Verifying generated candidates
+2025-04-07 14:45:52,032 - runner - INFO - Verifying candidate: assert(x >= 0);
+2025-04-07 14:45:52,032 - runner - INFO - Candidate already in fail history: assert(x >= 0);
+2025-04-07 14:45:52,032 - runner - INFO - Verifying candidate: assert(y < 1000);
+2025-04-07 14:45:52,032 - runner - INFO - Candidate already in fail history: assert(y < 1000);
+2025-04-07 14:45:52,032 - runner - INFO - Executing predicate filtering
+2025-04-07 14:45:52,032 - runner - INFO - Filtering predicates for candidate assert(x >= 0);
+2025-04-07 14:45:53,036 - runner - ERROR - ESBMC timed out
+2025-04-07 14:45:53,036 - runner - INFO - Filtering predicates for candidate assert(y < 1000);
+2025-04-07 14:45:53,342 - runner - INFO - Predicate filtering verify set: ['y >= 0', 'y <= 1000', 'y < 1000', 'y <= 999']
+2025-04-07 14:45:53,342 - runner - INFO - Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9640275800758169
+2025-04-07 14:45:55,388 - runner - INFO - Generated 2 candidates
+2025-04-07 14:45:55,388 - runner - INFO - Verifying generated candidates
+2025-04-07 14:45:55,388 - runner - INFO - Verifying candidate: assert(y >= 0);
+2025-04-07 14:45:55,388 - runner - INFO - Candidate already in fail history: assert(y >= 0);
+2025-04-07 14:45:55,388 - runner - INFO - Verifying candidate: assert(x == 1 + (y * (y + 1)) / 2);
+2025-04-07 14:45:55,397 - runner - INFO - Candidate failed verification
+2025-04-07 14:45:55,397 - runner - INFO - Adding candidate to fail history: assert(x == 1 + (y * (y + 1)) / 2);
+2025-04-07 14:45:55,397 - runner - INFO - Executing predicate filtering
+2025-04-07 14:45:55,397 - runner - INFO - Filtering predicates for candidate assert(y >= 0);
+2025-04-07 14:45:55,632 - runner - INFO - Filtering predicates for candidate assert(x == 1 + (y * (y + 1)) / 2);
+2025-04-07 14:45:55,845 - runner - INFO - Predicate filtering verify set: ['y >= 0', 'y <= 1000', 'y < 1000', 'y <= 999']
+2025-04-07 14:45:55,845 - runner - INFO - Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9757431300314515
+2025-04-07 14:45:56,925 - runner - INFO - Generated 2 candidates
+2025-04-07 14:45:56,925 - runner - INFO - Verifying generated candidates
+2025-04-07 14:45:56,925 - runner - INFO - Verifying candidate: assert(x >= y);
+2025-04-07 14:45:56,925 - runner - INFO - Candidate already in fail history: assert(x >= y);
+2025-04-07 14:45:56,925 - runner - INFO - Verifying candidate: assert(y < 1000);
+2025-04-07 14:45:56,925 - runner - INFO - Candidate already in fail history: assert(y < 1000);
+2025-04-07 14:45:56,925 - runner - INFO - Executing predicate filtering
+2025-04-07 14:45:56,926 - runner - INFO - Filtering predicates for candidate assert(x >= y);
+2025-04-07 14:45:57,928 - runner - ERROR - ESBMC timed out
+2025-04-07 14:45:57,928 - runner - INFO - Filtering predicates for candidate assert(y < 1000);
+2025-04-07 14:45:58,223 - runner - INFO - Predicate filtering verify set: ['y >= 0', 'y <= 1000', 'y < 1000', 'y <= 999']
+2025-04-07 14:45:58,223 - runner - INFO - Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9890274022010992
+2025-04-07 14:45:59,359 - runner - INFO - Generated 2 candidates
+2025-04-07 14:45:59,360 - runner - INFO - Verifying generated candidates
+2025-04-07 14:45:59,360 - runner - INFO - Verifying candidate: assert(x + y >= 1);
+2025-04-07 14:45:59,365 - runner - INFO - Candidate failed verification
+2025-04-07 14:45:59,365 - runner - INFO - Adding candidate to fail history: assert(x + y >= 1);
+2025-04-07 14:45:59,365 - runner - INFO - Verifying candidate: assert(y >= 0);
+2025-04-07 14:45:59,365 - runner - INFO - Candidate already in fail history: assert(y >= 0);
+2025-04-07 14:45:59,366 - runner - INFO - Executing predicate filtering
+2025-04-07 14:45:59,366 - runner - INFO - Filtering predicates for candidate assert(x + y >= 1);
+2025-04-07 14:46:00,368 - runner - ERROR - ESBMC timed out
+2025-04-07 14:46:00,368 - runner - INFO - Filtering predicates for candidate assert(y >= 0);
+2025-04-07 14:46:00,596 - runner - INFO - Predicate filtering verify set: ['y >= 0', 'y <= 1000', 'y < 1000', 'y <= 999']
+2025-04-07 14:46:00,596 - runner - INFO - Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.992631520201128
+2025-04-07 14:46:01,800 - runner - INFO - Generated 2 candidates
+2025-04-07 14:46:01,800 - runner - INFO - Verifying generated candidates
+2025-04-07 14:46:01,800 - runner - INFO - Verifying candidate: assert(x >= 1);
+2025-04-07 14:46:01,801 - runner - INFO - Candidate already in fail history: assert(x >= 1);
+2025-04-07 14:46:01,801 - runner - INFO - Verifying candidate: assert(y <= 999);
+2025-04-07 14:46:01,801 - runner - INFO - Candidate already in fail history: assert(y <= 999);
+2025-04-07 14:46:01,801 - runner - INFO - Executing predicate filtering
+2025-04-07 14:46:01,801 - runner - INFO - Filtering predicates for candidate assert(x >= 1);
+2025-04-07 14:46:02,803 - runner - ERROR - ESBMC timed out
+2025-04-07 14:46:02,804 - runner - INFO - Filtering predicates for candidate assert(y <= 999);
+2025-04-07 14:46:03,116 - runner - INFO - Predicate filtering verify set: ['y >= 0', 'y <= 1000', 'y < 1000', 'y <= 999']
+2025-04-07 14:46:03,116 - runner - INFO - Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9966823978396512
+2025-04-07 14:46:04,321 - runner - INFO - Generated 2 candidates
+2025-04-07 14:46:04,321 - runner - INFO - Verifying generated candidates
+2025-04-07 14:46:04,321 - runner - INFO - Verifying candidate: assert(x >= 0);
+2025-04-07 14:46:04,321 - runner - INFO - Candidate already in fail history: assert(x >= 0);
+2025-04-07 14:46:04,321 - runner - INFO - Verifying candidate: assert(y < 1000);
+2025-04-07 14:46:04,321 - runner - INFO - Candidate already in fail history: assert(y < 1000);
+2025-04-07 14:46:04,321 - runner - INFO - Executing predicate filtering
+2025-04-07 14:46:04,321 - runner - INFO - Filtering predicates for candidate assert(x >= 0);
+2025-04-07 14:46:05,326 - runner - ERROR - ESBMC timed out
+2025-04-07 14:46:05,326 - runner - INFO - Filtering predicates for candidate assert(y < 1000);
+2025-04-07 14:46:05,634 - runner - INFO - Predicate filtering verify set: ['y >= 0', 'y <= 1000', 'y < 1000', 'y <= 999']
+2025-04-07 14:46:05,634 - runner - INFO - Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9985079423323266
+2025-04-07 14:46:06,651 - runner - INFO - Generated 2 candidates
+2025-04-07 14:46:06,651 - runner - INFO - Verifying generated candidates
+2025-04-07 14:46:06,651 - runner - INFO - Verifying candidate: assert(x + y >= 1);
+2025-04-07 14:46:06,651 - runner - INFO - Candidate already in fail history: assert(x + y >= 1);
+2025-04-07 14:46:06,651 - runner - INFO - Verifying candidate: assert(y >= -1);
+2025-04-07 14:46:06,659 - runner - INFO - Candidate failed verification
+2025-04-07 14:46:06,659 - runner - INFO - Adding candidate to fail history: assert(y >= -1);
+2025-04-07 14:46:06,659 - runner - INFO - Executing predicate filtering
+2025-04-07 14:46:06,660 - runner - INFO - Filtering predicates for candidate assert(x + y >= 1);
+2025-04-07 14:46:07,663 - runner - ERROR - ESBMC timed out
+2025-04-07 14:46:07,664 - runner - INFO - Filtering predicates for candidate assert(y >= -1);
+2025-04-07 14:46:07,894 - runner - INFO - Addind predicate y >= -1 to verify set
+2025-04-07 14:46:07,894 - runner - INFO - Predicate filtering verify set: ['y >= 0', 'y <= 1000', 'y < 1000', 'y <= 999', 'y >= -1']
+2025-04-07 14:46:07,895 - runner - INFO - Verifying formula: (and (and (and (and (>= y 0) (<= y 1000)) (< y 1000)) (<= y 999)) (>= y (- 1)))
+2025-04-07 14:46:07,895 - runner - INFO - For candidate: assert((y >= 0) && (y <= 1000) && (y < 1000) && (y <= 999) && (y >= -1))
+2025-04-07 14:46:07,900 - runner - INFO - Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9989995977858409
+2025-04-07 14:46:08,958 - runner - INFO - Generated 2 candidates
+2025-04-07 14:46:08,958 - runner - INFO - Verifying generated candidates
+2025-04-07 14:46:08,958 - runner - INFO - Verifying candidate: assert(x >= 0);
+2025-04-07 14:46:08,958 - runner - INFO - Candidate already in fail history: assert(x >= 0);
+2025-04-07 14:46:08,958 - runner - INFO - Verifying candidate: assert(y <= 1000);
+2025-04-07 14:46:08,959 - runner - INFO - Candidate already in fail history: assert(y <= 1000);
+2025-04-07 14:46:08,959 - runner - INFO - Executing predicate filtering
+2025-04-07 14:46:08,959 - runner - INFO - Filtering predicates for candidate assert(x >= 0);
+2025-04-07 14:46:09,961 - runner - ERROR - ESBMC timed out
+2025-04-07 14:46:09,961 - runner - INFO - Filtering predicates for candidate assert(y <= 1000);
+2025-04-07 14:46:10,178 - runner - INFO - Predicate filtering verify set: ['y >= 0', 'y <= 1000', 'y < 1000', 'y <= 999', 'y >= -1']
+2025-04-07 14:46:10,179 - runner - INFO - Generating loop invariants candidates with model o1-mini and presence penalty 0.9995503664595334
+2025-04-07 14:46:30,035 - runner - INFO - Generated 2 candidates
+2025-04-07 14:46:30,035 - runner - INFO - Verifying generated candidates
+2025-04-07 14:46:30,035 - runner - INFO - Verifying candidate: assert(x >= 1 + (y * (y - 1)) / 2);
+2025-04-07 14:46:30,042 - runner - INFO - # Result
+2025-04-07 14:46:30,042 - runner - INFO - Solution found by the o1-mini model: assert(x >= 1 + (y * (y - 1)) / 2);
+2025-04-07 14:46:30,043 - runner - INFO - 13 counter examples were generated for the model proposals, with 21 repeated fails
+2025-04-07 14:46:30,043 - runner - INFO - The model runtime was 19.863958597183228 seconds
+2025-04-07 14:46:30,043 - runner - INFO - The total runtime was 65.03673648834229 seconds

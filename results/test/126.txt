@@ -1,15 +1,309 @@
-02:04:06 26/03/2025 Resetting generator
-02:04:06 26/03/2025 # Run Benchmark 126
-02:04:06 26/03/2025 Executing predicate filtering for preconditions
-02:04:06 26/03/2025 Filtering predicates for candidate assert(i == x)
-02:04:06 26/03/2025 Filtering predicates for candidate assert(j == y)
-02:04:06 26/03/2025 Predicate filtering verify set: []
-02:04:06 26/03/2025 Generating loop invariants candidates with model gpt-4o and presence penalty 0.0
-02:04:06 26/03/2025 Generated 2 candidates
-02:04:06 26/03/2025 Verifying generated candidates
-02:04:06 26/03/2025 Verifying candidate: assert(i == x + j - y);
-02:04:06 26/03/2025 # Result
-02:04:06 26/03/2025 Solution found by the gpt-4o model: assert(i == x + j - y);
-02:04:06 26/03/2025 0 counter examples were generated for the model proposals, with 0 repeated fails
-02:04:06 26/03/2025 The model runtime was 0.9048128128051758 seconds
-02:04:06 26/03/2025 The total runtime was 1.18776535987854 seconds
+2025-04-07 18:35:13,968 - runner - INFO - Resetting generator
+2025-04-07 18:35:13,974 - runner - INFO - # Run Benchmark 126
+2025-04-07 18:35:13,980 - runner - INFO - Executing predicate filtering for preconditions
+2025-04-07 18:35:13,986 - runner - INFO - Filtering predicates for candidate assert(i == x)
+2025-04-07 18:35:14,229 - runner - INFO - Filtering predicates for candidate assert(j == y)
+2025-04-07 18:35:14,498 - runner - INFO - Predicate filtering verify set: []
+2025-04-07 18:35:14,504 - runner - INFO - Generating loop invariants candidates with model gpt-4o and presence penalty 0.0
+2025-04-07 18:35:15,224 - runner - INFO - Generated 2 candidates
+2025-04-07 18:35:15,230 - runner - INFO - Verifying generated candidates
+2025-04-07 18:35:15,235 - runner - INFO - Verifying candidate: assert(i == j);
+2025-04-07 18:35:15,245 - runner - INFO - Candidate failed verification
+2025-04-07 18:35:15,252 - runner - INFO - Adding candidate to fail history: assert(i == j);
+2025-04-07 18:35:15,259 - runner - INFO - Verifying candidate: assert(x + y == i + j);
+2025-04-07 18:35:15,274 - runner - INFO - Candidate failed verification
+2025-04-07 18:35:15,281 - runner - INFO - Adding candidate to fail history: assert(x + y == i + j);
+2025-04-07 18:35:15,289 - runner - INFO - Executing predicate filtering
+2025-04-07 18:35:15,297 - runner - INFO - Filtering predicates for candidate assert(i == j);
+2025-04-07 18:35:15,535 - runner - INFO - Filtering predicates for candidate assert(x + y == i + j);
+2025-04-07 18:35:15,861 - runner - INFO - Predicate filtering verify set: []
+2025-04-07 18:35:15,867 - runner - INFO - Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.0
+2025-04-07 18:35:16,981 - runner - INFO - Generated 3 candidates
+2025-04-07 18:35:16,988 - runner - INFO - Verifying generated candidates
+2025-04-07 18:35:16,994 - runner - INFO - Verifying candidate: assert(x >= 0);
+2025-04-07 18:35:17,002 - runner - INFO - Candidate failed verification
+2025-04-07 18:35:17,008 - runner - INFO - Adding candidate to fail history: assert(x >= 0);
+2025-04-07 18:35:17,014 - runner - INFO - Verifying candidate: assert(y <= j);
+2025-04-07 18:35:17,026 - runner - INFO - Candidate failed verification
+2025-04-07 18:35:17,033 - runner - INFO - Adding candidate to fail history: assert(y <= j);
+2025-04-07 18:35:17,038 - runner - INFO - Verifying candidate: assert(y + x == j);
+2025-04-07 18:35:17,048 - runner - INFO - Candidate failed verification
+2025-04-07 18:35:17,055 - runner - INFO - Adding candidate to fail history: assert(y + x == j);
+2025-04-07 18:35:17,061 - runner - INFO - Executing predicate filtering
+2025-04-07 18:35:17,068 - runner - INFO - Filtering predicates for candidate assert(x >= 0);
+2025-04-07 18:35:17,314 - runner - INFO - Filtering predicates for candidate assert(y <= j);
+2025-04-07 18:35:17,573 - runner - INFO - Filtering predicates for candidate assert(y + x == j);
+2025-04-07 18:35:17,795 - runner - INFO - Predicate filtering verify set: []
+2025-04-07 18:35:17,801 - runner - INFO - Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.0
+2025-04-07 18:35:18,838 - runner - INFO - Generated 2 candidates
+2025-04-07 18:35:18,844 - runner - INFO - Verifying generated candidates
+2025-04-07 18:35:18,850 - runner - INFO - Verifying candidate: assert(x >= 0 || y == 0);
+2025-04-07 18:35:18,860 - runner - INFO - Candidate failed verification
+2025-04-07 18:35:18,866 - runner - INFO - Adding candidate to fail history: assert(x >= 0 || y == 0);
+2025-04-07 18:35:18,873 - runner - INFO - Verifying candidate: assert(x + y <= i + j);
+2025-04-07 18:35:18,888 - runner - INFO - Candidate failed verification
+2025-04-07 18:35:18,894 - runner - INFO - Adding candidate to fail history: assert(x + y <= i + j);
+2025-04-07 18:35:18,900 - runner - INFO - Executing predicate filtering
+2025-04-07 18:35:18,907 - runner - INFO - Filtering predicates for candidate assert(x >= 0 || y == 0);
+2025-04-07 18:35:19,150 - runner - INFO - Filtering predicates for candidate assert(x + y <= i + j);
+2025-04-07 18:35:19,625 - runner - INFO - Predicate filtering verify set: []
+2025-04-07 18:35:19,631 - runner - INFO - Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.0
+2025-04-07 18:35:20,561 - runner - INFO - Generated 2 candidates
+2025-04-07 18:35:20,567 - runner - INFO - Verifying generated candidates
+2025-04-07 18:35:20,574 - runner - INFO - Verifying candidate: assert(i <= x + y);
+2025-04-07 18:35:20,584 - runner - INFO - Candidate failed verification
+2025-04-07 18:35:20,590 - runner - INFO - Adding candidate to fail history: assert(i <= x + y);
+2025-04-07 18:35:20,597 - runner - INFO - Verifying candidate: assert(x + y + (j - y) == i);
+2025-04-07 18:35:20,607 - runner - INFO - Candidate failed verification
+2025-04-07 18:35:20,613 - runner - INFO - Adding candidate to fail history: assert(x + y + (j - y) == i);
+2025-04-07 18:35:20,620 - runner - INFO - Executing predicate filtering
+2025-04-07 18:35:20,626 - runner - INFO - Filtering predicates for candidate assert(i <= x + y);
+2025-04-07 18:35:20,868 - runner - INFO - Filtering predicates for candidate assert(x + y + (j - y) == i);
+2025-04-07 18:35:21,117 - runner - INFO - Predicate filtering verify set: []
+2025-04-07 18:35:21,122 - runner - INFO - Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.0
+2025-04-07 18:35:22,551 - runner - INFO - Generated 2 candidates
+2025-04-07 18:35:22,557 - runner - INFO - Verifying generated candidates
+2025-04-07 18:35:22,563 - runner - INFO - Verifying candidate: assert(x + y + j >= 0);
+2025-04-07 18:35:22,572 - runner - INFO - Candidate failed verification
+2025-04-07 18:35:22,578 - runner - INFO - Adding candidate to fail history: assert(x + y + j >= 0);
+2025-04-07 18:35:22,585 - runner - INFO - Verifying candidate: assert(i == x + y + (j - (j - y)));
+2025-04-07 18:35:22,595 - runner - INFO - Candidate failed verification
+2025-04-07 18:35:22,602 - runner - INFO - Adding candidate to fail history: assert(i == x + y + (j - (j - y)));
+2025-04-07 18:35:22,609 - runner - INFO - Executing predicate filtering
+2025-04-07 18:35:22,617 - runner - INFO - Filtering predicates for candidate assert(x + y + j >= 0);
+2025-04-07 18:35:22,862 - runner - INFO - Filtering predicates for candidate assert(i == x + y + (j - (j - y)));
+2025-04-07 18:35:23,110 - runner - INFO - Predicate filtering verify set: []
+2025-04-07 18:35:23,116 - runner - INFO - Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.0
+2025-04-07 18:35:24,583 - runner - INFO - Generated 2 candidates
+2025-04-07 18:35:24,589 - runner - INFO - Verifying generated candidates
+2025-04-07 18:35:24,594 - runner - INFO - Verifying candidate: assert(i == x + y + j);
+2025-04-07 18:35:24,604 - runner - INFO - Candidate failed verification
+2025-04-07 18:35:24,611 - runner - INFO - Adding candidate to fail history: assert(i == x + y + j);
+2025-04-07 18:35:24,617 - runner - INFO - Verifying candidate: assert(j >= 0);
+2025-04-07 18:35:24,626 - runner - INFO - Candidate failed verification
+2025-04-07 18:35:24,633 - runner - INFO - Adding candidate to fail history: assert(j >= 0);
+2025-04-07 18:35:24,639 - runner - INFO - Executing predicate filtering
+2025-04-07 18:35:24,645 - runner - INFO - Filtering predicates for candidate assert(i == x + y + j);
+2025-04-07 18:35:24,899 - runner - INFO - Filtering predicates for candidate assert(j >= 0);
+2025-04-07 18:35:25,133 - runner - INFO - Predicate filtering verify set: []
+2025-04-07 18:35:25,139 - runner - INFO - Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.0
+2025-04-07 18:35:26,084 - runner - INFO - Generated 2 candidates
+2025-04-07 18:35:26,090 - runner - INFO - Verifying generated candidates
+2025-04-07 18:35:26,096 - runner - INFO - Verifying candidate: assert(x + y <= i + j);
+2025-04-07 18:35:26,103 - runner - INFO - Candidate already in fail history: assert(x + y <= i + j);
+2025-04-07 18:35:26,109 - runner - INFO - Verifying candidate: assert(i >= j);
+2025-04-07 18:35:26,119 - runner - INFO - Candidate failed verification
+2025-04-07 18:35:26,126 - runner - INFO - Adding candidate to fail history: assert(i >= j);
+2025-04-07 18:35:26,132 - runner - INFO - Executing predicate filtering
+2025-04-07 18:35:26,139 - runner - INFO - Filtering predicates for candidate assert(x + y <= i + j);
+2025-04-07 18:35:26,671 - runner - INFO - Filtering predicates for candidate assert(i >= j);
+2025-04-07 18:35:26,905 - runner - INFO - Predicate filtering verify set: []
+2025-04-07 18:35:26,911 - runner - INFO - Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.197375320224904
+2025-04-07 18:35:27,951 - runner - INFO - Generated 2 candidates
+2025-04-07 18:35:27,956 - runner - INFO - Verifying generated candidates
+2025-04-07 18:35:27,962 - runner - INFO - Verifying candidate: assert(x >= 0);
+2025-04-07 18:35:27,969 - runner - INFO - Candidate already in fail history: assert(x >= 0);
+2025-04-07 18:35:27,976 - runner - INFO - Verifying candidate: assert(y <= j);
+2025-04-07 18:35:27,983 - runner - INFO - Candidate already in fail history: assert(y <= j);
+2025-04-07 18:35:27,989 - runner - INFO - Executing predicate filtering
+2025-04-07 18:35:27,996 - runner - INFO - Filtering predicates for candidate assert(x >= 0);
+2025-04-07 18:35:28,242 - runner - INFO - Filtering predicates for candidate assert(y <= j);
+2025-04-07 18:35:28,505 - runner - INFO - Predicate filtering verify set: []
+2025-04-07 18:35:28,511 - runner - INFO - Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.5370495669980354
+2025-04-07 18:35:29,457 - runner - INFO - Generated 2 candidates
+2025-04-07 18:35:29,462 - runner - INFO - Verifying generated candidates
+2025-04-07 18:35:29,468 - runner - INFO - Verifying candidate: assert(x + y <= i + j);
+2025-04-07 18:35:29,474 - runner - INFO - Candidate already in fail history: assert(x + y <= i + j);
+2025-04-07 18:35:29,479 - runner - INFO - Verifying candidate: assert(x + y >= 0);
+2025-04-07 18:35:29,488 - runner - INFO - Candidate failed verification
+2025-04-07 18:35:29,494 - runner - INFO - Adding candidate to fail history: assert(x + y >= 0);
+2025-04-07 18:35:29,501 - runner - INFO - Executing predicate filtering
+2025-04-07 18:35:29,507 - runner - INFO - Filtering predicates for candidate assert(x + y <= i + j);
+2025-04-07 18:35:30,034 - runner - INFO - Filtering predicates for candidate assert(x + y >= 0);
+2025-04-07 18:35:30,263 - runner - INFO - Predicate filtering verify set: []
+2025-04-07 18:35:30,269 - runner - INFO - Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.6640367702678491
+2025-04-07 18:35:31,462 - runner - INFO - Generated 2 candidates
+2025-04-07 18:35:31,468 - runner - INFO - Verifying generated candidates
+2025-04-07 18:35:31,474 - runner - INFO - Verifying candidate: assert(i + j >= 0);
+2025-04-07 18:35:31,483 - runner - INFO - Candidate failed verification
+2025-04-07 18:35:31,488 - runner - INFO - Adding candidate to fail history: assert(i + j >= 0);
+2025-04-07 18:35:31,495 - runner - INFO - Verifying candidate: assert(y + (x + y) == j + i);
+2025-04-07 18:35:31,504 - runner - INFO - Candidate failed verification
+2025-04-07 18:35:31,510 - runner - INFO - Adding candidate to fail history: assert(y + (x + y) == j + i);
+2025-04-07 18:35:31,516 - runner - INFO - Executing predicate filtering
+2025-04-07 18:35:31,521 - runner - INFO - Filtering predicates for candidate assert(i + j >= 0);
+2025-04-07 18:35:31,747 - runner - INFO - Filtering predicates for candidate assert(y + (x + y) == j + i);
+2025-04-07 18:35:31,977 - runner - INFO - Predicate filtering verify set: []
+2025-04-07 18:35:31,983 - runner - INFO - Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.6640367702678491
+2025-04-07 18:35:33,254 - runner - INFO - Generated 2 candidates
+2025-04-07 18:35:33,265 - runner - INFO - Verifying generated candidates
+2025-04-07 18:35:33,271 - runner - INFO - Verifying candidate: assert(i + j == x + y + (i - i));
+2025-04-07 18:35:33,285 - runner - INFO - Candidate failed verification
+2025-04-07 18:35:33,292 - runner - INFO - Adding candidate to fail history: assert(i + j == x + y + (i - i));
+2025-04-07 18:35:33,300 - runner - INFO - Verifying candidate: assert(x + y >= 0 || (x + y == 0 && i == j));
+2025-04-07 18:35:33,313 - runner - INFO - Candidate failed verification
+2025-04-07 18:35:33,320 - runner - INFO - Adding candidate to fail history: assert(x + y >= 0 || (x + y == 0 && i == j));
+2025-04-07 18:35:33,330 - runner - INFO - Executing predicate filtering
+2025-04-07 18:35:33,342 - runner - INFO - Filtering predicates for candidate assert(i + j == x + y + (i - i));
+2025-04-07 18:35:33,623 - runner - INFO - Filtering predicates for candidate assert(x + y >= 0 || (x + y == 0 && i == j));
+2025-04-07 18:35:33,854 - runner - INFO - Predicate filtering verify set: []
+2025-04-07 18:35:33,860 - runner - INFO - Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.6640367702678491
+2025-04-07 18:35:36,071 - runner - INFO - Generated 2 candidates
+2025-04-07 18:35:36,078 - runner - INFO - Verifying generated candidates
+2025-04-07 18:35:36,084 - runner - INFO - Verifying candidate: assert(x + y + i == j + (i - i));
+2025-04-07 18:35:36,093 - runner - INFO - Candidate failed verification
+2025-04-07 18:35:36,098 - runner - INFO - Adding candidate to fail history: assert(x + y + i == j + (i - i));
+2025-04-07 18:35:36,104 - runner - INFO - Verifying candidate: assert(i == x + y + j);
+2025-04-07 18:35:36,110 - runner - INFO - Candidate already in fail history: assert(i == x + y + j);
+2025-04-07 18:35:36,116 - runner - INFO - Executing predicate filtering
+2025-04-07 18:35:36,121 - runner - INFO - Filtering predicates for candidate assert(x + y + i == j + (i - i));
+2025-04-07 18:35:36,366 - runner - INFO - Filtering predicates for candidate assert(i == x + y + j);
+2025-04-07 18:35:36,620 - runner - INFO - Predicate filtering verify set: []
+2025-04-07 18:35:36,625 - runner - INFO - Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.7615941559557649
+2025-04-07 18:35:37,939 - runner - INFO - Generated 2 candidates
+2025-04-07 18:35:37,944 - runner - INFO - Verifying generated candidates
+2025-04-07 18:35:37,950 - runner - INFO - Verifying candidate: assert(x + y <= i + j);
+2025-04-07 18:35:37,956 - runner - INFO - Candidate already in fail history: assert(x + y <= i + j);
+2025-04-07 18:35:37,962 - runner - INFO - Verifying candidate: assert(i >= 0 || (x + y == 0 && j == 0));
+2025-04-07 18:35:37,971 - runner - INFO - Candidate failed verification
+2025-04-07 18:35:37,977 - runner - INFO - Adding candidate to fail history: assert(i >= 0 || (x + y == 0 && j == 0));
+2025-04-07 18:35:37,984 - runner - INFO - Executing predicate filtering
+2025-04-07 18:35:37,991 - runner - INFO - Filtering predicates for candidate assert(x + y <= i + j);
+2025-04-07 18:35:38,485 - runner - INFO - Filtering predicates for candidate assert(i >= 0 || (x + y == 0 && j == 0));
+2025-04-07 18:35:38,720 - runner - INFO - Predicate filtering verify set: []
+2025-04-07 18:35:38,726 - runner - INFO - Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.8336546070121553
+2025-04-07 18:35:39,808 - runner - INFO - Generated 2 candidates
+2025-04-07 18:35:39,814 - runner - INFO - Verifying generated candidates
+2025-04-07 18:35:39,819 - runner - INFO - Verifying candidate: assert(x + y + j >= i);
+2025-04-07 18:35:39,828 - runner - INFO - Candidate failed verification
+2025-04-07 18:35:39,835 - runner - INFO - Adding candidate to fail history: assert(x + y + j >= i);
+2025-04-07 18:35:39,840 - runner - INFO - Verifying candidate: assert(j >= 0 || (y == 0 && x == 0));
+2025-04-07 18:35:39,850 - runner - INFO - Candidate failed verification
+2025-04-07 18:35:39,857 - runner - INFO - Adding candidate to fail history: assert(j >= 0 || (y == 0 && x == 0));
+2025-04-07 18:35:39,863 - runner - INFO - Executing predicate filtering
+2025-04-07 18:35:39,869 - runner - INFO - Filtering predicates for candidate assert(x + y + j >= i);
+2025-04-07 18:35:40,130 - runner - INFO - Filtering predicates for candidate assert(j >= 0 || (y == 0 && x == 0));
+2025-04-07 18:35:40,377 - runner - INFO - Predicate filtering verify set: []
+2025-04-07 18:35:40,383 - runner - INFO - Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.8336546070121553
+2025-04-07 18:35:41,772 - runner - INFO - Generated 2 candidates
+2025-04-07 18:35:41,778 - runner - INFO - Verifying generated candidates
+2025-04-07 18:35:41,783 - runner - INFO - Verifying candidate: assert(i + j >= 0);
+2025-04-07 18:35:41,789 - runner - INFO - Candidate already in fail history: assert(i + j >= 0);
+2025-04-07 18:35:41,795 - runner - INFO - Verifying candidate: assert(x + y <= i + j + (x - x) + (y - y));
+2025-04-07 18:35:41,810 - runner - INFO - Candidate failed verification
+2025-04-07 18:35:41,816 - runner - INFO - Adding candidate to fail history: assert(x + y <= i + j + (x - x) + (y - y));
+2025-04-07 18:35:41,823 - runner - INFO - Executing predicate filtering
+2025-04-07 18:35:41,830 - runner - INFO - Filtering predicates for candidate assert(i + j >= 0);
+2025-04-07 18:35:42,056 - runner - INFO - Filtering predicates for candidate assert(x + y <= i + j + (x - x) + (y - y));
+2025-04-07 18:35:42,532 - runner - INFO - Predicate filtering verify set: []
+2025-04-07 18:35:42,537 - runner - INFO - Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.8853516482022625
+2025-04-07 18:35:43,618 - runner - INFO - Generated 2 candidates
+2025-04-07 18:35:43,623 - runner - INFO - Verifying generated candidates
+2025-04-07 18:35:43,629 - runner - INFO - Verifying candidate: assert(x + y == i + j);
+2025-04-07 18:35:43,635 - runner - INFO - Candidate already in fail history: assert(x + y == i + j);
+2025-04-07 18:35:43,642 - runner - INFO - Verifying candidate: assert(x >= 0 || y >= 0);
+2025-04-07 18:35:43,652 - runner - INFO - Candidate failed verification
+2025-04-07 18:35:43,659 - runner - INFO - Adding candidate to fail history: assert(x >= 0 || y >= 0);
+2025-04-07 18:35:43,666 - runner - INFO - Executing predicate filtering
+2025-04-07 18:35:43,672 - runner - INFO - Filtering predicates for candidate assert(x + y == i + j);
+2025-04-07 18:35:43,948 - runner - INFO - Filtering predicates for candidate assert(x >= 0 || y >= 0);
+2025-04-07 18:35:44,213 - runner - INFO - Predicate filtering verify set: []
+2025-04-07 18:35:44,219 - runner - INFO - Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9216685544064713
+2025-04-07 18:35:45,420 - runner - INFO - Generated 2 candidates
+2025-04-07 18:35:45,426 - runner - INFO - Verifying generated candidates
+2025-04-07 18:35:45,432 - runner - INFO - Verifying candidate: assert(i <= x + y + j);
+2025-04-07 18:35:45,442 - runner - INFO - Candidate failed verification
+2025-04-07 18:35:45,449 - runner - INFO - Adding candidate to fail history: assert(i <= x + y + j);
+2025-04-07 18:35:45,454 - runner - INFO - Verifying candidate: assert(x + y >= 0 || (x + y == 0 && i == j));
+2025-04-07 18:35:45,460 - runner - INFO - Candidate already in fail history: assert(x + y >= 0 || (x + y == 0 && i == j));
+2025-04-07 18:35:45,466 - runner - INFO - Executing predicate filtering
+2025-04-07 18:35:45,472 - runner - INFO - Filtering predicates for candidate assert(i <= x + y + j);
+2025-04-07 18:35:45,723 - runner - INFO - Filtering predicates for candidate assert(x + y >= 0 || (x + y == 0 && i == j));
+2025-04-07 18:35:45,999 - runner - INFO - Predicate filtering verify set: []
+2025-04-07 18:35:46,005 - runner - INFO - Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9468060128462683
+2025-04-07 18:35:47,512 - runner - INFO - Generated 2 candidates
+2025-04-07 18:35:47,518 - runner - INFO - Verifying generated candidates
+2025-04-07 18:35:47,524 - runner - INFO - Verifying candidate: assert(i + j >= x + y);
+2025-04-07 18:35:47,541 - runner - INFO - Candidate failed verification
+2025-04-07 18:35:47,548 - runner - INFO - Adding candidate to fail history: assert(i + j >= x + y);
+2025-04-07 18:35:47,554 - runner - INFO - Verifying candidate: assert(x + y + i == j + (j - j));
+2025-04-07 18:35:47,564 - runner - INFO - Candidate failed verification
+2025-04-07 18:35:47,570 - runner - INFO - Adding candidate to fail history: assert(x + y + i == j + (j - j));
+2025-04-07 18:35:47,576 - runner - INFO - Executing predicate filtering
+2025-04-07 18:35:47,583 - runner - INFO - Filtering predicates for candidate assert(i + j >= x + y);
+2025-04-07 18:35:47,214 - runner - INFO - Filtering predicates for candidate assert(x + y + i == j + (j - j));
+2025-04-07 18:35:47,470 - runner - INFO - Predicate filtering verify set: []
+2025-04-07 18:35:47,475 - runner - INFO - Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9468060128462683
+2025-04-07 18:35:48,569 - runner - INFO - Generated 2 candidates
+2025-04-07 18:35:48,575 - runner - INFO - Verifying generated candidates
+2025-04-07 18:35:48,580 - runner - INFO - Verifying candidate: assert(i + y >= 0);
+2025-04-07 18:35:48,589 - runner - INFO - Candidate failed verification
+2025-04-07 18:35:48,596 - runner - INFO - Adding candidate to fail history: assert(i + y >= 0);
+2025-04-07 18:35:48,602 - runner - INFO - Verifying candidate: assert(x + j >= 0);
+2025-04-07 18:35:48,612 - runner - INFO - Candidate failed verification
+2025-04-07 18:35:48,619 - runner - INFO - Adding candidate to fail history: assert(x + j >= 0);
+2025-04-07 18:35:48,624 - runner - INFO - Executing predicate filtering
+2025-04-07 18:35:48,630 - runner - INFO - Filtering predicates for candidate assert(i + y >= 0);
+2025-04-07 18:35:48,869 - runner - INFO - Filtering predicates for candidate assert(x + j >= 0);
+2025-04-07 18:35:49,104 - runner - INFO - Predicate filtering verify set: []
+2025-04-07 18:35:49,110 - runner - INFO - Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9468060128462683
+2025-04-07 18:35:50,342 - runner - INFO - Generated 2 candidates
+2025-04-07 18:35:50,348 - runner - INFO - Verifying generated candidates
+2025-04-07 18:35:50,354 - runner - INFO - Verifying candidate: assert(i + y + j >= 0);
+2025-04-07 18:35:50,364 - runner - INFO - Candidate failed verification
+2025-04-07 18:35:50,371 - runner - INFO - Adding candidate to fail history: assert(i + y + j >= 0);
+2025-04-07 18:35:50,378 - runner - INFO - Verifying candidate: assert(j <= i + x);
+2025-04-07 18:35:50,388 - runner - INFO - Candidate failed verification
+2025-04-07 18:35:50,394 - runner - INFO - Adding candidate to fail history: assert(j <= i + x);
+2025-04-07 18:35:50,400 - runner - INFO - Executing predicate filtering
+2025-04-07 18:35:50,408 - runner - INFO - Filtering predicates for candidate assert(i + y + j >= 0);
+2025-04-07 18:35:50,715 - runner - INFO - Filtering predicates for candidate assert(j <= i + x);
+2025-04-07 18:35:50,998 - runner - INFO - Predicate filtering verify set: []
+2025-04-07 18:35:51,004 - runner - INFO - Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9468060128462683
+2025-04-07 18:35:52,098 - runner - INFO - Generated 2 candidates
+2025-04-07 18:35:52,104 - runner - INFO - Verifying generated candidates
+2025-04-07 18:35:52,111 - runner - INFO - Verifying candidate: assert(i + j <= x + y + (j - y));
+2025-04-07 18:35:52,124 - runner - INFO - Candidate failed verification
+2025-04-07 18:35:52,131 - runner - INFO - Adding candidate to fail history: assert(i + j <= x + y + (j - y));
+2025-04-07 18:35:52,137 - runner - INFO - Verifying candidate: assert(y + i >= 0);
+2025-04-07 18:35:52,148 - runner - INFO - Candidate failed verification
+2025-04-07 18:35:52,154 - runner - INFO - Adding candidate to fail history: assert(y + i >= 0);
+2025-04-07 18:35:52,160 - runner - INFO - Executing predicate filtering
+2025-04-07 18:35:52,167 - runner - INFO - Filtering predicates for candidate assert(i + j <= x + y + (j - y));
+2025-04-07 18:35:52,495 - runner - INFO - Filtering predicates for candidate assert(y + i >= 0);
+2025-04-07 18:35:52,759 - runner - INFO - Predicate filtering verify set: []
+2025-04-07 18:35:52,766 - runner - INFO - Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9468060128462683
+2025-04-07 18:35:54,266 - runner - INFO - Generated 2 candidates
+2025-04-07 18:35:54,272 - runner - INFO - Verifying generated candidates
+2025-04-07 18:35:54,278 - runner - INFO - Verifying candidate: assert(i + j <= x + y + (i - i));
+2025-04-07 18:35:54,291 - runner - INFO - Candidate failed verification
+2025-04-07 18:35:54,296 - runner - INFO - Adding candidate to fail history: assert(i + j <= x + y + (i - i));
+2025-04-07 18:35:54,302 - runner - INFO - Verifying candidate: assert(x + y - i >= j);
+2025-04-07 18:35:54,315 - runner - INFO - Candidate failed verification
+2025-04-07 18:35:54,320 - runner - INFO - Adding candidate to fail history: assert(x + y - i >= j);
+2025-04-07 18:35:54,326 - runner - INFO - Executing predicate filtering
+2025-04-07 18:35:54,332 - runner - INFO - Filtering predicates for candidate assert(i + j <= x + y + (i - i));
+2025-04-07 18:35:54,610 - runner - INFO - Filtering predicates for candidate assert(x + y - i >= j);
+2025-04-07 18:35:54,947 - runner - INFO - Predicate filtering verify set: []
+2025-04-07 18:35:54,952 - runner - INFO - Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9468060128462683
+2025-04-07 18:35:56,218 - runner - INFO - Generated 2 candidates
+2025-04-07 18:35:56,224 - runner - INFO - Verifying generated candidates
+2025-04-07 18:35:56,229 - runner - INFO - Verifying candidate: assert(i + j >= x);
+2025-04-07 18:35:56,238 - runner - INFO - Candidate failed verification
+2025-04-07 18:35:56,245 - runner - INFO - Adding candidate to fail history: assert(i + j >= x);
+2025-04-07 18:35:56,252 - runner - INFO - Verifying candidate: assert(x + y <= i + j + (x - x));
+2025-04-07 18:35:56,266 - runner - INFO - Candidate failed verification
+2025-04-07 18:35:56,271 - runner - INFO - Adding candidate to fail history: assert(x + y <= i + j + (x - x));
+2025-04-07 18:35:56,277 - runner - INFO - Executing predicate filtering
+2025-04-07 18:35:56,282 - runner - INFO - Filtering predicates for candidate assert(i + j >= x);
+2025-04-07 18:35:56,522 - runner - INFO - Filtering predicates for candidate assert(x + y <= i + j + (x - x));
+2025-04-07 18:35:57,009 - runner - INFO - Predicate filtering verify set: []
+2025-04-07 18:35:57,033 - runner - INFO - Generating loop invariants candidates with model o1-mini and presence penalty 0.9468060128462683
+2025-04-07 18:36:18,956 - runner - INFO - Generated 1 candidates
+2025-04-07 18:36:18,962 - runner - INFO - Verifying generated candidates
+2025-04-07 18:36:18,968 - runner - INFO - Verifying candidate: assert(i + y == j + x);
+2025-04-07 18:36:18,980 - runner - INFO - # Result
+2025-04-07 18:36:18,985 - runner - INFO - Solution found by the o1-mini model: assert(i + y == j + x);
+2025-04-07 18:36:18,990 - runner - INFO - 38 counter examples were generated for the model proposals, with 9 repeated fails
+2025-04-07 18:36:18,995 - runner - INFO - The model runtime was 21.957475423812866 seconds
+2025-04-07 18:36:19,001 - runner - INFO - The total runtime was 65.01652765274048 seconds

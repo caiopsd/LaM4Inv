@@ -1,14 +1,14 @@
-02:04:11 26/03/2025 Resetting generator
-02:04:11 26/03/2025 # Run Benchmark 128
-02:04:11 26/03/2025 Executing predicate filtering for preconditions
-02:04:11 26/03/2025 Filtering predicates for candidate assert(x == 1)
-02:04:11 26/03/2025 Predicate filtering verify set: []
-02:04:11 26/03/2025 Generating loop invariants candidates with model gpt-4o and presence penalty 0.0
-02:04:11 26/03/2025 Generated 2 candidates
-02:04:11 26/03/2025 Verifying generated candidates
-02:04:11 26/03/2025 Verifying candidate: assert(x >= 1);
-02:04:11 26/03/2025 # Result
-02:04:11 26/03/2025 Solution found by the gpt-4o model: assert(x >= 1);
-02:04:11 26/03/2025 0 counter examples were generated for the model proposals, with 0 repeated fails
-02:04:11 26/03/2025 The model runtime was 1.0487689971923828 seconds
-02:04:11 26/03/2025 The total runtime was 1.1984596252441406 seconds
+2025-04-07 18:36:20,789 - runner - INFO - Resetting generator
+2025-04-07 18:36:20,796 - runner - INFO - # Run Benchmark 128
+2025-04-07 18:36:20,802 - runner - INFO - Executing predicate filtering for preconditions
+2025-04-07 18:36:20,808 - runner - INFO - Filtering predicates for candidate assert(x == 1)
+2025-04-07 18:36:21,047 - runner - INFO - Predicate filtering verify set: []
+2025-04-07 18:36:21,053 - runner - INFO - Generating loop invariants candidates with model gpt-4o and presence penalty 0.0
+2025-04-07 18:36:21,884 - runner - INFO - Generated 2 candidates
+2025-04-07 18:36:21,890 - runner - INFO - Verifying generated candidates
+2025-04-07 18:36:21,897 - runner - INFO - Verifying candidate: assert(x >= 1);
+2025-04-07 18:36:21,909 - runner - INFO - # Result
+2025-04-07 18:36:21,916 - runner - INFO - Solution found by the gpt-4o model: assert(x >= 1);
+2025-04-07 18:36:21,922 - runner - INFO - 0 counter examples were generated for the model proposals, with 0 repeated fails
+2025-04-07 18:36:21,929 - runner - INFO - The model runtime was 0.8689079284667969 seconds
+2025-04-07 18:36:21,935 - runner - INFO - The total runtime was 1.1265933513641357 seconds

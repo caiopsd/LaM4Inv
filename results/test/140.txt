@@ -1,24 +1,25 @@
-02:07:44 26/03/2025 Resetting generator
-02:07:44 26/03/2025 # Run Benchmark 140
-02:07:44 26/03/2025 Executing predicate filtering for preconditions
-02:07:44 26/03/2025 Filtering predicates for candidate assert(x1 == 100)
-02:07:44 26/03/2025 Filtering predicates for candidate assert(x2 == 75)
-02:07:44 26/03/2025 Filtering predicates for candidate assert(t == 0)
-02:07:44 26/03/2025 Filtering predicates for candidate assert(v3 >= 0)
-02:07:44 26/03/2025 Addind predicate v3 >= 0 to verify set
-02:07:44 26/03/2025 Filtering predicates for candidate assert(v1 <= 5)
-02:07:44 26/03/2025 Addind predicate v1 <= 5 to verify set
-02:07:44 26/03/2025 Filtering predicates for candidate assert((v1 - v3) >= 0)
-02:07:44 26/03/2025 Addind predicate (v1 - v3) >= 0 to verify set
-02:07:44 26/03/2025 Filtering predicates for candidate assert(v2 * 2 - v1 - v3 == 0)
-02:07:44 26/03/2025 Filtering predicates for candidate assert(v2 + 5 >= 0)
-02:07:44 26/03/2025 Filtering predicates for candidate assert(v2 <= 5)
-02:07:44 26/03/2025 Predicate filtering verify set: ['v3 >= 0', 'v1 <= 5', '(v1 - v3) >= 0']
-02:07:44 26/03/2025 Verifying formula: (and (and (>= v3 0) (<= v1 5)) (>= (- v1 v3) 0))
-02:07:44 26/03/2025 For candidate: assert((v3 >= 0) && (v1 <= 5) && ((v1 - v3) >= 0))
-02:07:44 26/03/2025 Predicate filtering found solution: assert((v3 >= 0) && (v1 <= 5) && ((v1 - v3) >= 0))
-02:07:44 26/03/2025 # Result
-02:07:44 26/03/2025 Solution found by the predicate filtering mechanism using the None model: assert((v3 >= 0) && (v1 <= 5) && ((v1 - v3) >= 0))
-02:07:44 26/03/2025 0 counter examples were generated for the model proposals, with 0 repeated fails
-02:07:44 26/03/2025 The model runtime was 0.0 seconds
-02:07:44 26/03/2025 The total runtime was 6.3747899532318115 seconds
+2025-04-07 18:39:30,290 - runner - INFO - Resetting generator
+2025-04-07 18:39:30,298 - runner - INFO - # Run Benchmark 140
+2025-04-07 18:39:30,304 - runner - INFO - Executing predicate filtering for preconditions
+2025-04-07 18:39:30,311 - runner - INFO - Filtering predicates for candidate assert(x1 == 100)
+2025-04-07 18:39:30,609 - runner - INFO - Filtering predicates for candidate assert(x2 == 75)
+2025-04-07 18:39:30,901 - runner - INFO - Filtering predicates for candidate assert(t == 0)
+2025-04-07 18:39:31,192 - runner - INFO - Filtering predicates for candidate assert(v3 >= 0)
+2025-04-07 18:39:31,535 - runner - INFO - Addind predicate v3 >= 0 to verify set
+2025-04-07 18:39:31,542 - runner - INFO - Filtering predicates for candidate assert(v1 <= 5)
+2025-04-07 18:39:31,869 - runner - INFO - Addind predicate v1 <= 5 to verify set
+2025-04-07 18:39:31,876 - runner - INFO - Filtering predicates for candidate assert((v1 - v3) >= 0)
+2025-04-07 18:39:32,212 - runner - INFO - Addind predicate (v1 - v3) >= 0 to verify set
+2025-04-07 18:39:32,218 - runner - INFO - Filtering predicates for candidate assert(v2 * 2 - v1 - v3 == 0)
+2025-04-07 18:39:32,508 - runner - INFO - Filtering predicates for candidate assert(v2 + 5 >= 0)
+2025-04-07 18:39:32,823 - runner - INFO - Filtering predicates for candidate assert(v2 <= 5)
+2025-04-07 18:39:33,836 - runner - ERROR - ESBMC timed out
+2025-04-07 18:39:33,843 - runner - INFO - Predicate filtering verify set: ['v3 >= 0', 'v1 <= 5', '(v1 - v3) >= 0']
+2025-04-07 18:39:33,850 - runner - INFO - Verifying formula: (and (and (>= v3 0) (<= v1 5)) (>= (- v1 v3) 0))
+2025-04-07 18:39:33,857 - runner - INFO - For candidate: assert((v3 >= 0) && (v1 <= 5) && ((v1 - v3) >= 0))
+2025-04-07 18:39:33,874 - runner - INFO - Predicate filtering found solution: assert((v3 >= 0) && (v1 <= 5) && ((v1 - v3) >= 0))
+2025-04-07 18:39:33,881 - runner - INFO - # Result
+2025-04-07 18:39:33,888 - runner - INFO - Solution found by the predicate filtering mechanism using the None model: assert((v3 >= 0) && (v1 <= 5) && ((v1 - v3) >= 0))
+2025-04-07 18:39:33,896 - runner - INFO - 0 counter examples were generated for the model proposals, with 0 repeated fails
+2025-04-07 18:39:33,903 - runner - INFO - The model runtime was 0.0 seconds
+2025-04-07 18:39:33,911 - runner - INFO - The total runtime was 3.598188877105713 seconds

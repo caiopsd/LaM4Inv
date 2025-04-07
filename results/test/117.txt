@@ -1,15 +1,15 @@
-02:03:24 26/03/2025 Resetting generator
-02:03:24 26/03/2025 # Run Benchmark 117
-02:03:24 26/03/2025 Executing predicate filtering for preconditions
-02:03:24 26/03/2025 Filtering predicates for candidate assert(sn == 0)
-02:03:24 26/03/2025 Filtering predicates for candidate assert(x == 0)
-02:03:24 26/03/2025 Predicate filtering verify set: []
-02:03:24 26/03/2025 Generating loop invariants candidates with model gpt-4o and presence penalty 0.0
-02:03:24 26/03/2025 Generated 1 candidates
-02:03:24 26/03/2025 Verifying generated candidates
-02:03:24 26/03/2025 Verifying candidate: assert(sn == x);
-02:03:24 26/03/2025 # Result
-02:03:24 26/03/2025 Solution found by the gpt-4o model: assert(sn == x);
-02:03:24 26/03/2025 0 counter examples were generated for the model proposals, with 0 repeated fails
-02:03:24 26/03/2025 The model runtime was 0.6396510601043701 seconds
-02:03:24 26/03/2025 The total runtime was 0.919269323348999 seconds
+2025-04-07 18:20:18,383 - runner - INFO - Resetting generator
+2025-04-07 18:20:18,390 - runner - INFO - # Run Benchmark 117
+2025-04-07 18:20:18,396 - runner - INFO - Executing predicate filtering for preconditions
+2025-04-07 18:20:18,402 - runner - INFO - Filtering predicates for candidate assert(sn == 0)
+2025-04-07 18:20:18,661 - runner - INFO - Filtering predicates for candidate assert(x == 0)
+2025-04-07 18:20:18,900 - runner - INFO - Predicate filtering verify set: []
+2025-04-07 18:20:18,906 - runner - INFO - Generating loop invariants candidates with model gpt-4o and presence penalty 0.0
+2025-04-07 18:20:19,661 - runner - INFO - Generated 2 candidates
+2025-04-07 18:20:19,666 - runner - INFO - Verifying generated candidates
+2025-04-07 18:20:19,671 - runner - INFO - Verifying candidate: assert(sn == x);
+2025-04-07 18:20:19,683 - runner - INFO - # Result
+2025-04-07 18:20:19,692 - runner - INFO - Solution found by the gpt-4o model: assert(sn == x);
+2025-04-07 18:20:19,698 - runner - INFO - 0 counter examples were generated for the model proposals, with 0 repeated fails
+2025-04-07 18:20:19,704 - runner - INFO - The model runtime was 0.7920935153961182 seconds
+2025-04-07 18:20:19,711 - runner - INFO - The total runtime was 1.3085579872131348 seconds

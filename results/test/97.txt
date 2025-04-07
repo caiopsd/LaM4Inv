@@ -1,16 +1,16 @@
-02:01:06 26/03/2025 Resetting generator
-02:01:06 26/03/2025 # Run Benchmark 97
-02:01:06 26/03/2025 Executing predicate filtering for preconditions
-02:01:06 26/03/2025 Filtering predicates for candidate assert(j == 0)
-02:01:06 26/03/2025 Filtering predicates for candidate assert(i == 0)
-02:01:06 26/03/2025 Filtering predicates for candidate assert(y == 2)
-02:01:06 26/03/2025 Addind predicate y == 2 to verify set
-02:01:06 26/03/2025 Predicate filtering verify set: ['y == 2']
-02:01:06 26/03/2025 Verifying formula: (= y 2)
-02:01:06 26/03/2025 For candidate: assert((y == 2))
-02:01:06 26/03/2025 Predicate filtering found solution: assert((y == 2))
-02:01:06 26/03/2025 # Result
-02:01:06 26/03/2025 Solution found by the predicate filtering mechanism using the None model: assert((y == 2))
-02:01:06 26/03/2025 0 counter examples were generated for the model proposals, with 0 repeated fails
-02:01:06 26/03/2025 The model runtime was 0.0 seconds
-02:01:06 26/03/2025 The total runtime was 0.4099082946777344 seconds
+2025-04-07 17:47:09,797 - runner - INFO - Resetting generator
+2025-04-07 17:47:09,802 - runner - INFO - # Run Benchmark 97
+2025-04-07 17:47:09,809 - runner - INFO - Executing predicate filtering for preconditions
+2025-04-07 17:47:09,815 - runner - INFO - Filtering predicates for candidate assert(j == 0)
+2025-04-07 17:47:10,068 - runner - INFO - Filtering predicates for candidate assert(i == 0)
+2025-04-07 17:47:10,301 - runner - INFO - Filtering predicates for candidate assert(y == 2)
+2025-04-07 17:47:10,543 - runner - INFO - Addind predicate y == 2 to verify set
+2025-04-07 17:47:10,548 - runner - INFO - Predicate filtering verify set: ['y == 2']
+2025-04-07 17:47:10,554 - runner - INFO - Verifying formula: (= y 2)
+2025-04-07 17:47:10,559 - runner - INFO - For candidate: assert((y == 2))
+2025-04-07 17:47:10,569 - runner - INFO - Predicate filtering found solution: assert((y == 2))
+2025-04-07 17:47:10,574 - runner - INFO - # Result
+2025-04-07 17:47:10,579 - runner - INFO - Solution found by the predicate filtering mechanism using the None model: assert((y == 2))
+2025-04-07 17:47:10,584 - runner - INFO - 0 counter examples were generated for the model proposals, with 0 repeated fails
+2025-04-07 17:47:10,589 - runner - INFO - The model runtime was 0.0 seconds
+2025-04-07 17:47:10,594 - runner - INFO - The total runtime was 0.7813818454742432 seconds

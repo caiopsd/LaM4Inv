@@ -1,57 +1,24 @@
-02:02:36 26/03/2025 Resetting generator
-02:02:36 26/03/2025 # Run Benchmark 109
-02:02:36 26/03/2025 Executing predicate filtering for preconditions
-02:02:36 26/03/2025 Filtering predicates for candidate assert(j == 0)
-02:02:36 26/03/2025 Addind predicate j == 0 to verify set
-02:02:36 26/03/2025 Filtering predicates for candidate assert(k == 0)
-02:02:36 26/03/2025 Predicate filtering verify set: ['j == 0']
-02:02:36 26/03/2025 Verifying formula: (= j 0)
-02:02:36 26/03/2025 For candidate: assert((j == 0))
-02:02:36 26/03/2025 Generating loop invariants candidates with model gpt-4o and presence penalty 0.0
-02:02:36 26/03/2025 Generated 6 candidates
-02:02:36 26/03/2025 Verifying generated candidates
-02:02:36 26/03/2025 Verifying candidate: assert(c >= 0);
-02:02:36 26/03/2025 Candidate failed verification
-02:02:36 26/03/2025 Adding candidate to fail history: assert(c >= 0);
-02:02:36 26/03/2025 Verifying candidate: assert(k == 0);
-02:02:36 26/03/2025 Candidate failed verification
-02:02:36 26/03/2025 Adding candidate to fail history: assert(k == 0);
-02:02:36 26/03/2025 Verifying candidate: assert(m <= a || k == 0);
-02:02:36 26/03/2025 Candidate failed verification
-02:02:36 26/03/2025 Adding candidate to fail history: assert(m <= a || k == 0);
-02:02:36 26/03/2025 Verifying candidate: assert(k <= c);
-02:02:36 26/03/2025 Candidate failed verification
-02:02:36 26/03/2025 Adding candidate to fail history: assert(k <= c);
-02:02:36 26/03/2025 Verifying candidate: assert(m <= a || (m == a && k <= c));
-02:02:36 26/03/2025 Candidate failed verification
-02:02:36 26/03/2025 Adding candidate to fail history: assert(m <= a || (m == a && k <= c));
-02:02:36 26/03/2025 Verifying candidate: assert((c == 0) || (k == c && m >= a));
-02:02:36 26/03/2025 Candidate failed verification
-02:02:36 26/03/2025 Adding candidate to fail history: assert((c == 0) || (k == c && m >= a));
-02:02:36 26/03/2025 Executing predicate filtering
-02:02:36 26/03/2025 Filtering predicates for candidate assert(c >= 0);
-02:02:36 26/03/2025 Filtering predicates for candidate assert(k == 0);
-02:02:36 26/03/2025 Filtering predicates for candidate assert(m <= a || k == 0);
-02:02:36 26/03/2025 Filtering predicates for candidate assert(k <= c);
-02:02:36 26/03/2025 Filtering predicates for candidate assert(m <= a || (m == a && k <= c));
-02:02:36 26/03/2025 Filtering predicates for candidate assert((c == 0) || (k == c && m >= a));
-02:02:36 26/03/2025 Predicate filtering verify set: ['j == 0']
-02:02:36 26/03/2025 Resetting generator
-02:02:36 26/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.0
-02:02:36 26/03/2025 Generated 6 candidates
-02:02:36 26/03/2025 Verifying generated candidates
-02:02:36 26/03/2025 Verifying candidate: assert(c >= 0);
-02:02:36 26/03/2025 Candidate failed verification
-02:02:36 26/03/2025 Adding candidate to fail history: assert(c >= 0);
-02:02:36 26/03/2025 Verifying candidate: assert(k >= 0);
-02:02:36 26/03/2025 Candidate failed verification
-02:02:36 26/03/2025 Adding candidate to fail history: assert(k >= 0);
-02:02:36 26/03/2025 Verifying candidate: assert(k <= c);
-02:02:36 26/03/2025 Candidate failed verification
-02:02:36 26/03/2025 Adding candidate to fail history: assert(k <= c);
-02:02:36 26/03/2025 Verifying candidate: assert(m >= a || k == 0);
-02:02:36 26/03/2025 # Result
-02:02:36 26/03/2025 Solution found by the gpt-4o-mini model: assert(m >= a || k == 0);
-02:02:36 26/03/2025 3 counter examples were generated for the model proposals, with 0 repeated fails
-02:02:36 26/03/2025 The model runtime was 1.080030918121338 seconds
-02:02:36 26/03/2025 The total runtime was 4.682324647903442 seconds
+2025-04-07 17:48:02,973 - runner - INFO - Resetting generator
+2025-04-07 17:48:02,978 - runner - INFO - # Run Benchmark 109
+2025-04-07 17:48:02,983 - runner - INFO - Executing predicate filtering for preconditions
+2025-04-07 17:48:02,989 - runner - INFO - Filtering predicates for candidate assert(j == 0)
+2025-04-07 17:48:03,249 - runner - INFO - Addind predicate j == 0 to verify set
+2025-04-07 17:48:03,254 - runner - INFO - Filtering predicates for candidate assert(k == 0)
+2025-04-07 17:48:03,523 - runner - INFO - Predicate filtering verify set: ['j == 0']
+2025-04-07 17:48:03,528 - runner - INFO - Verifying formula: (= j 0)
+2025-04-07 17:48:03,534 - runner - INFO - For candidate: assert((j == 0))
+2025-04-07 17:48:03,550 - runner - INFO - Generating loop invariants candidates with model gpt-4o and presence penalty 0.0
+2025-04-07 17:48:04,602 - runner - INFO - Generated 3 candidates
+2025-04-07 17:48:04,608 - runner - INFO - Verifying generated candidates
+2025-04-07 17:48:04,615 - runner - INFO - Verifying candidate: assert(k <= c);
+2025-04-07 17:48:04,628 - runner - INFO - Candidate failed verification
+2025-04-07 17:48:04,634 - runner - INFO - Adding candidate to fail history: assert(k <= c);
+2025-04-07 17:48:04,641 - runner - INFO - Verifying candidate: assert(k >= 0);
+2025-04-07 17:48:04,658 - runner - INFO - Candidate failed verification
+2025-04-07 17:48:04,664 - runner - INFO - Adding candidate to fail history: assert(k >= 0);
+2025-04-07 17:48:04,670 - runner - INFO - Verifying candidate: assert(k == 0 || m >= a);
+2025-04-07 17:48:04,686 - runner - INFO - # Result
+2025-04-07 17:48:04,692 - runner - INFO - Solution found by the gpt-4o model: assert(k == 0 || m >= a);
+2025-04-07 17:48:04,698 - runner - INFO - 2 counter examples were generated for the model proposals, with 0 repeated fails
+2025-04-07 17:48:04,704 - runner - INFO - The model runtime was 1.148122787475586 seconds
+2025-04-07 17:48:04,709 - runner - INFO - The total runtime was 1.719536542892456 seconds

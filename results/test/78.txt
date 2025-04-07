@@ -1,22 +1,31 @@
-01:54:21 26/03/2025 Resetting generator
-01:54:21 26/03/2025 # Run Benchmark 78
-01:54:21 26/03/2025 Executing predicate filtering for preconditions
-01:54:21 26/03/2025 Filtering predicates for candidate assert(i == 0)
-01:54:21 26/03/2025 Filtering predicates for candidate assert((x >= 0))
-01:54:21 26/03/2025 Addind predicate (x >= 0) to verify set
-01:54:21 26/03/2025 Filtering predicates for candidate assert((y >= 0))
-01:54:21 26/03/2025 Addind predicate (y >= 0) to verify set
-01:54:21 26/03/2025 Filtering predicates for candidate assert((x >= y))
-01:54:21 26/03/2025 Addind predicate (x >= y) to verify set
-01:54:21 26/03/2025 Predicate filtering verify set: ['(x >= 0)', '(y >= 0)', '(x >= y)']
-01:54:21 26/03/2025 Verifying formula: (and (and (>= x 0) (>= y 0)) (>= x y))
-01:54:21 26/03/2025 For candidate: assert(((x >= 0)) && ((y >= 0)) && ((x >= y)))
-01:54:21 26/03/2025 Generating loop invariants candidates with model gpt-4o and presence penalty 0.0
-01:54:21 26/03/2025 Generated 3 candidates
-01:54:21 26/03/2025 Verifying generated candidates
-01:54:21 26/03/2025 Verifying candidate: assert(i >= 0);
-01:54:21 26/03/2025 # Result
-01:54:21 26/03/2025 Solution found by the gpt-4o model: assert(i >= 0);
-01:54:21 26/03/2025 0 counter examples were generated for the model proposals, with 0 repeated fails
-01:54:21 26/03/2025 The model runtime was 8.607981204986572 seconds
-01:54:21 26/03/2025 The total runtime was 9.215993642807007 seconds
+2025-04-07 17:17:12,906 - runner - INFO - Resetting generator
+2025-04-07 17:17:12,911 - runner - INFO - # Run Benchmark 78
+2025-04-07 17:17:12,914 - runner - INFO - Executing predicate filtering for preconditions
+2025-04-07 17:17:12,919 - runner - INFO - Filtering predicates for candidate assert(i == 0)
+2025-04-07 17:17:13,157 - runner - INFO - Filtering predicates for candidate assert((x >= 0))
+2025-04-07 17:17:13,405 - runner - INFO - Addind predicate (x >= 0) to verify set
+2025-04-07 17:17:13,408 - runner - INFO - Filtering predicates for candidate assert((y >= 0))
+2025-04-07 17:17:13,637 - runner - INFO - Addind predicate (y >= 0) to verify set
+2025-04-07 17:17:13,641 - runner - INFO - Filtering predicates for candidate assert((x >= y))
+2025-04-07 17:17:13,870 - runner - INFO - Addind predicate (x >= y) to verify set
+2025-04-07 17:17:13,874 - runner - INFO - Predicate filtering verify set: ['(x >= 0)', '(y >= 0)', '(x >= y)']
+2025-04-07 17:17:13,878 - runner - INFO - Verifying formula: (and (and (>= x 0) (>= y 0)) (>= x y))
+2025-04-07 17:17:13,881 - runner - INFO - For candidate: assert(((x >= 0)) && ((y >= 0)) && ((x >= y)))
+2025-04-07 17:17:13,894 - runner - INFO - Generating loop invariants candidates with model gpt-4o and presence penalty 0.0
+2025-04-07 17:17:20,543 - runner - INFO - Generated 5 candidates
+2025-04-07 17:17:20,546 - runner - INFO - Verifying generated candidates
+2025-04-07 17:17:20,550 - runner - INFO - Verifying candidate: assert(x >= 0);
+2025-04-07 17:17:20,560 - runner - INFO - Candidate failed verification
+2025-04-07 17:17:20,564 - runner - INFO - Adding candidate to fail history: assert(x >= 0);
+2025-04-07 17:17:20,568 - runner - INFO - Verifying candidate: assert(y >= 0);
+2025-04-07 17:17:20,579 - runner - INFO - Candidate failed verification
+2025-04-07 17:17:20,582 - runner - INFO - Adding candidate to fail history: assert(y >= 0);
+2025-04-07 17:17:20,586 - runner - INFO - Verifying candidate: assert(x >= y);
+2025-04-07 17:17:20,597 - runner - INFO - Candidate failed verification
+2025-04-07 17:17:20,600 - runner - INFO - Adding candidate to fail history: assert(x >= y);
+2025-04-07 17:17:20,604 - runner - INFO - Verifying candidate: assert(0 <= i);
+2025-04-07 17:17:20,615 - runner - INFO - # Result
+2025-04-07 17:17:20,619 - runner - INFO - Solution found by the gpt-4o model: assert(0 <= i);
+2025-04-07 17:17:20,624 - runner - INFO - 3 counter examples were generated for the model proposals, with 0 repeated fails
+2025-04-07 17:17:20,628 - runner - INFO - The model runtime was 6.729724168777466 seconds
+2025-04-07 17:17:20,633 - runner - INFO - The total runtime was 7.713088274002075 seconds

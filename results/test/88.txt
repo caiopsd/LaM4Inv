@@ -1,34 +1,265 @@
-02:00:40 26/03/2025 Resetting generator
-02:00:40 26/03/2025 # Run Benchmark 88
-02:00:40 26/03/2025 Executing predicate filtering for preconditions
-02:00:40 26/03/2025 Filtering predicates for candidate assert(lock == 0)
-02:00:40 26/03/2025 Predicate filtering verify set: []
-02:00:40 26/03/2025 Generating loop invariants candidates with model gpt-4o and presence penalty 0.0
-02:00:40 26/03/2025 Generated 2 candidates
-02:00:40 26/03/2025 Verifying generated candidates
-02:00:40 26/03/2025 Verifying candidate: assert(x <= y);
-02:00:40 26/03/2025 Candidate failed verification
-02:00:40 26/03/2025 Adding candidate to fail history: assert(x <= y);
-02:00:40 26/03/2025 Verifying candidate: assert(lock == 0 || lock == 1);
-02:00:40 26/03/2025 Candidate failed verification
-02:00:40 26/03/2025 Adding candidate to fail history: assert(lock == 0 || lock == 1);
-02:00:40 26/03/2025 Executing predicate filtering
-02:00:40 26/03/2025 Filtering predicates for candidate assert(x <= y);
-02:00:40 26/03/2025 Filtering predicates for candidate assert(lock == 0 || lock == 1);
-02:00:40 26/03/2025 Addind predicate (lock == 0) || (lock == 1) to verify set
-02:00:40 26/03/2025 Predicate filtering verify set: ['(lock == 0) || (lock == 1)']
-02:00:40 26/03/2025 Verifying formula: (or (= lock 0) (= lock 1))
-02:00:40 26/03/2025 For candidate: assert(((lock == 0) || (lock == 1)))
-02:00:40 26/03/2025 Resetting generator
-02:00:40 26/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.0
-02:00:40 26/03/2025 Generated 3 candidates
-02:00:40 26/03/2025 Verifying generated candidates
-02:00:40 26/03/2025 Verifying candidate: assert((x == y) || (lock == 0));
-02:00:40 26/03/2025 Candidate failed verification
-02:00:40 26/03/2025 Adding candidate to fail history: assert((x == y) || (lock == 0));
-02:00:40 26/03/2025 Verifying candidate: assert((lock == 1) || (x != y));
-02:00:40 26/03/2025 # Result
-02:00:40 26/03/2025 Solution found by the gpt-4o-mini model: assert((lock == 1) || (x != y));
-02:00:40 26/03/2025 1 counter examples were generated for the model proposals, with 0 repeated fails
-02:00:40 26/03/2025 The model runtime was 0.939002513885498 seconds
-02:00:40 26/03/2025 The total runtime was 3.131300687789917 seconds
+2025-04-07 17:36:18,301 - runner - INFO - Resetting generator
+2025-04-07 17:36:18,306 - runner - INFO - # Run Benchmark 88
+2025-04-07 17:36:18,311 - runner - INFO - Executing predicate filtering for preconditions
+2025-04-07 17:36:18,316 - runner - INFO - Filtering predicates for candidate assert(lock == 0)
+2025-04-07 17:36:18,555 - runner - INFO - Predicate filtering verify set: []
+2025-04-07 17:36:18,560 - runner - INFO - Generating loop invariants candidates with model gpt-4o and presence penalty 0.0
+2025-04-07 17:36:19,713 - runner - INFO - Generated 2 candidates
+2025-04-07 17:36:19,718 - runner - INFO - Verifying generated candidates
+2025-04-07 17:36:19,722 - runner - INFO - Verifying candidate: assert(x <= y);
+2025-04-07 17:36:19,734 - runner - INFO - Candidate failed verification
+2025-04-07 17:36:19,739 - runner - INFO - Adding candidate to fail history: assert(x <= y);
+2025-04-07 17:36:19,743 - runner - INFO - Verifying candidate: assert(lock == 0 || lock == 1);
+2025-04-07 17:36:19,756 - runner - INFO - Candidate failed verification
+2025-04-07 17:36:19,760 - runner - INFO - Adding candidate to fail history: assert(lock == 0 || lock == 1);
+2025-04-07 17:36:19,765 - runner - INFO - Executing predicate filtering
+2025-04-07 17:36:19,769 - runner - INFO - Filtering predicates for candidate assert(x <= y);
+2025-04-07 17:36:20,038 - runner - INFO - Filtering predicates for candidate assert(lock == 0 || lock == 1);
+2025-04-07 17:36:20,737 - runner - INFO - Addind predicate (lock == 0) || (lock == 1) to verify set
+2025-04-07 17:36:20,741 - runner - INFO - Predicate filtering verify set: ['(lock == 0) || (lock == 1)']
+2025-04-07 17:36:20,746 - runner - INFO - Verifying formula: (or (= lock 0) (= lock 1))
+2025-04-07 17:36:20,750 - runner - INFO - For candidate: assert(((lock == 0) || (lock == 1)))
+2025-04-07 17:36:20,761 - runner - INFO - Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.0
+2025-04-07 17:36:21,660 - runner - INFO - Generated 2 candidates
+2025-04-07 17:36:21,664 - runner - INFO - Verifying generated candidates
+2025-04-07 17:36:21,668 - runner - INFO - Verifying candidate: assert(lock == 0 || lock == 1);
+2025-04-07 17:36:21,673 - runner - INFO - Candidate already in fail history: assert(lock == 0 || lock == 1);
+2025-04-07 17:36:21,677 - runner - INFO - Verifying candidate: assert(y > x);
+2025-04-07 17:36:21,689 - runner - INFO - Candidate failed verification
+2025-04-07 17:36:21,694 - runner - INFO - Adding candidate to fail history: assert(y > x);
+2025-04-07 17:36:21,698 - runner - INFO - Executing predicate filtering
+2025-04-07 17:36:21,702 - runner - INFO - Filtering predicates for candidate assert(lock == 0 || lock == 1);
+2025-04-07 17:36:22,389 - runner - INFO - Filtering predicates for candidate assert(y > x);
+2025-04-07 17:36:22,622 - runner - INFO - Predicate filtering verify set: ['(lock == 0) || (lock == 1)']
+2025-04-07 17:36:22,626 - runner - INFO - Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.197375320224904
+2025-04-07 17:36:27,289 - runner - INFO - Generated 3 candidates
+2025-04-07 17:36:27,293 - runner - INFO - Verifying generated candidates
+2025-04-07 17:36:27,297 - runner - INFO - Verifying candidate: assert(y >= 0);
+2025-04-07 17:36:27,304 - runner - INFO - Candidate failed verification
+2025-04-07 17:36:27,308 - runner - INFO - Adding candidate to fail history: assert(y >= 0);
+2025-04-07 17:36:27,313 - runner - INFO - Verifying candidate: assert(lock == 0 || lock == 1);
+2025-04-07 17:36:27,316 - runner - INFO - Candidate already in fail history: assert(lock == 0 || lock == 1);
+2025-04-07 17:36:27,320 - runner - INFO - Verifying candidate: assert(x <= y + 1);
+2025-04-07 17:36:27,332 - runner - INFO - Candidate failed verification
+2025-04-07 17:36:27,336 - runner - INFO - Adding candidate to fail history: assert(x <= y + 1);
+2025-04-07 17:36:27,340 - runner - INFO - Executing predicate filtering
+2025-04-07 17:36:27,345 - runner - INFO - Filtering predicates for candidate assert(y >= 0);
+2025-04-07 17:36:26,783 - runner - INFO - Filtering predicates for candidate assert(lock == 0 || lock == 1);
+2025-04-07 17:36:27,488 - runner - INFO - Filtering predicates for candidate assert(x <= y + 1);
+2025-04-07 17:36:27,739 - runner - INFO - Predicate filtering verify set: ['(lock == 0) || (lock == 1)']
+2025-04-07 17:36:27,743 - runner - INFO - Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.3799489622552249
+2025-04-07 17:36:28,858 - runner - INFO - Generated 2 candidates
+2025-04-07 17:36:28,862 - runner - INFO - Verifying generated candidates
+2025-04-07 17:36:28,867 - runner - INFO - Verifying candidate: assert(x >= 0);
+2025-04-07 17:36:28,876 - runner - INFO - Candidate failed verification
+2025-04-07 17:36:28,881 - runner - INFO - Adding candidate to fail history: assert(x >= 0);
+2025-04-07 17:36:28,886 - runner - INFO - Verifying candidate: assert(x == y || (lock == 0));
+2025-04-07 17:36:28,900 - runner - INFO - Candidate failed verification
+2025-04-07 17:36:28,905 - runner - INFO - Adding candidate to fail history: assert(x == y || (lock == 0));
+2025-04-07 17:36:28,910 - runner - INFO - Executing predicate filtering
+2025-04-07 17:36:28,915 - runner - INFO - Filtering predicates for candidate assert(x >= 0);
+2025-04-07 17:36:29,175 - runner - INFO - Filtering predicates for candidate assert(x == y || (lock == 0));
+2025-04-07 17:36:29,885 - runner - INFO - Addind predicate (x == y) || ((lock == 0)) to verify set
+2025-04-07 17:36:29,901 - runner - INFO - Predicate filtering verify set: ['(lock == 0) || (lock == 1)', '(x == y) || ((lock == 0))']
+2025-04-07 17:36:29,907 - runner - INFO - Verifying formula: (and (or (= lock 0) (= lock 1)) (or (= x y) (= lock 0)))
+2025-04-07 17:36:29,911 - runner - INFO - For candidate: assert(((lock == 0) || (lock == 1)) && ((x == y) || ((lock == 0))))
+2025-04-07 17:36:29,923 - runner - INFO - Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.3799489622552249
+2025-04-07 17:36:31,009 - runner - INFO - Generated 2 candidates
+2025-04-07 17:36:31,013 - runner - INFO - Verifying generated candidates
+2025-04-07 17:36:31,017 - runner - INFO - Verifying candidate: assert(lock >= 0);
+2025-04-07 17:36:31,029 - runner - INFO - Candidate failed verification
+2025-04-07 17:36:31,034 - runner - INFO - Adding candidate to fail history: assert(lock >= 0);
+2025-04-07 17:36:31,038 - runner - INFO - Verifying candidate: assert(y > x - 1);
+2025-04-07 17:36:31,050 - runner - INFO - Candidate failed verification
+2025-04-07 17:36:31,054 - runner - INFO - Adding candidate to fail history: assert(y > x - 1);
+2025-04-07 17:36:31,058 - runner - INFO - Executing predicate filtering
+2025-04-07 17:36:31,062 - runner - INFO - Filtering predicates for candidate assert(lock >= 0);
+2025-04-07 17:36:31,298 - runner - INFO - Addind predicate lock >= 0 to verify set
+2025-04-07 17:36:31,302 - runner - INFO - Filtering predicates for candidate assert(y > x - 1);
+2025-04-07 17:36:31,542 - runner - INFO - Predicate filtering verify set: ['(lock == 0) || (lock == 1)', '(x == y) || ((lock == 0))', 'lock >= 0']
+2025-04-07 17:36:31,547 - runner - INFO - Verifying formula: (and (and (or (= lock 0) (= lock 1)) (or (= x y) (= lock 0))) (>= lock 0))
+2025-04-07 17:36:31,551 - runner - INFO - For candidate: assert(((lock == 0) || (lock == 1)) && ((x == y) || ((lock == 0))) && (lock >= 0))
+2025-04-07 17:36:31,563 - runner - INFO - Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.3799489622552249
+2025-04-07 17:36:32,655 - runner - INFO - Generated 2 candidates
+2025-04-07 17:36:32,660 - runner - INFO - Verifying generated candidates
+2025-04-07 17:36:32,664 - runner - INFO - Verifying candidate: assert(y >= x);
+2025-04-07 17:36:32,678 - runner - INFO - Candidate failed verification
+2025-04-07 17:36:32,680 - runner - INFO - Adding candidate to fail history: assert(y >= x);
+2025-04-07 17:36:32,684 - runner - INFO - Verifying candidate: assert(lock == 0 || lock == 1);
+2025-04-07 17:36:32,689 - runner - INFO - Candidate already in fail history: assert(lock == 0 || lock == 1);
+2025-04-07 17:36:32,694 - runner - INFO - Executing predicate filtering
+2025-04-07 17:36:32,698 - runner - INFO - Filtering predicates for candidate assert(y >= x);
+2025-04-07 17:36:32,941 - runner - INFO - Filtering predicates for candidate assert(lock == 0 || lock == 1);
+2025-04-07 17:36:33,639 - runner - INFO - Predicate filtering verify set: ['(lock == 0) || (lock == 1)', '(x == y) || ((lock == 0))', 'lock >= 0']
+2025-04-07 17:36:33,644 - runner - INFO - Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.5370495669980354
+2025-04-07 17:36:35,017 - runner - INFO - Generated 2 candidates
+2025-04-07 17:36:35,022 - runner - INFO - Verifying generated candidates
+2025-04-07 17:36:35,025 - runner - INFO - Verifying candidate: assert(y > x - 1);
+2025-04-07 17:36:35,029 - runner - INFO - Candidate already in fail history: assert(y > x - 1);
+2025-04-07 17:36:35,033 - runner - INFO - Verifying candidate: assert(lock == 0 || lock == 2);
+2025-04-07 17:36:35,044 - runner - INFO - Candidate failed verification
+2025-04-07 17:36:35,048 - runner - INFO - Adding candidate to fail history: assert(lock == 0 || lock == 2);
+2025-04-07 17:36:35,052 - runner - INFO - Executing predicate filtering
+2025-04-07 17:36:35,057 - runner - INFO - Filtering predicates for candidate assert(y > x - 1);
+2025-04-07 17:36:35,298 - runner - INFO - Filtering predicates for candidate assert(lock == 0 || lock == 2);
+2025-04-07 17:36:35,533 - runner - INFO - Predicate filtering verify set: ['(lock == 0) || (lock == 1)', '(x == y) || ((lock == 0))', 'lock >= 0']
+2025-04-07 17:36:35,538 - runner - INFO - Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.6640367702678491
+2025-04-07 17:36:36,698 - runner - INFO - Generated 2 candidates
+2025-04-07 17:36:36,704 - runner - INFO - Verifying generated candidates
+2025-04-07 17:36:36,708 - runner - INFO - Verifying candidate: assert(lock == 0 || lock == 1);
+2025-04-07 17:36:36,712 - runner - INFO - Candidate already in fail history: assert(lock == 0 || lock == 1);
+2025-04-07 17:36:36,716 - runner - INFO - Verifying candidate: assert(y >= (x + 1));
+2025-04-07 17:36:36,728 - runner - INFO - Candidate failed verification
+2025-04-07 17:36:36,733 - runner - INFO - Adding candidate to fail history: assert(y >= (x + 1));
+2025-04-07 17:36:36,737 - runner - INFO - Executing predicate filtering
+2025-04-07 17:36:36,741 - runner - INFO - Filtering predicates for candidate assert(lock == 0 || lock == 1);
+2025-04-07 17:36:37,423 - runner - INFO - Filtering predicates for candidate assert(y >= (x + 1));
+2025-04-07 17:36:37,665 - runner - INFO - Predicate filtering verify set: ['(lock == 0) || (lock == 1)', '(x == y) || ((lock == 0))', 'lock >= 0']
+2025-04-07 17:36:37,669 - runner - INFO - Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.7615941559557649
+2025-04-07 17:36:39,142 - runner - INFO - Generated 2 candidates
+2025-04-07 17:36:39,146 - runner - INFO - Verifying generated candidates
+2025-04-07 17:36:39,150 - runner - INFO - Verifying candidate: assert(x + 1 >= y);
+2025-04-07 17:36:39,162 - runner - INFO - Candidate failed verification
+2025-04-07 17:36:39,165 - runner - INFO - Adding candidate to fail history: assert(x + 1 >= y);
+2025-04-07 17:36:39,169 - runner - INFO - Verifying candidate: assert(lock == 0 || lock == 1);
+2025-04-07 17:36:39,174 - runner - INFO - Candidate already in fail history: assert(lock == 0 || lock == 1);
+2025-04-07 17:36:39,178 - runner - INFO - Executing predicate filtering
+2025-04-07 17:36:39,182 - runner - INFO - Filtering predicates for candidate assert(x + 1 >= y);
+2025-04-07 17:36:39,428 - runner - INFO - Filtering predicates for candidate assert(lock == 0 || lock == 1);
+2025-04-07 17:36:40,104 - runner - INFO - Predicate filtering verify set: ['(lock == 0) || (lock == 1)', '(x == y) || ((lock == 0))', 'lock >= 0']
+2025-04-07 17:36:40,108 - runner - INFO - Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.8336546070121553
+2025-04-07 17:36:41,394 - runner - INFO - Generated 2 candidates
+2025-04-07 17:36:41,398 - runner - INFO - Verifying generated candidates
+2025-04-07 17:36:41,403 - runner - INFO - Verifying candidate: assert(x == y || (lock == 0));
+2025-04-07 17:36:41,408 - runner - INFO - Candidate already in fail history: assert(x == y || (lock == 0));
+2025-04-07 17:36:41,413 - runner - INFO - Verifying candidate: assert(y > x - 1);
+2025-04-07 17:36:41,417 - runner - INFO - Candidate already in fail history: assert(y > x - 1);
+2025-04-07 17:36:41,421 - runner - INFO - Executing predicate filtering
+2025-04-07 17:36:41,426 - runner - INFO - Filtering predicates for candidate assert(x == y || (lock == 0));
+2025-04-07 17:36:42,117 - runner - INFO - Filtering predicates for candidate assert(y > x - 1);
+2025-04-07 17:36:42,358 - runner - INFO - Predicate filtering verify set: ['(lock == 0) || (lock == 1)', '(x == y) || ((lock == 0))', 'lock >= 0']
+2025-04-07 17:36:42,362 - runner - INFO - Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9216685544064713
+2025-04-07 17:36:43,931 - runner - INFO - Generated 2 candidates
+2025-04-07 17:36:43,935 - runner - INFO - Verifying generated candidates
+2025-04-07 17:36:43,938 - runner - INFO - Verifying candidate: assert(lock == 0 || lock == 1);
+2025-04-07 17:36:43,942 - runner - INFO - Candidate already in fail history: assert(lock == 0 || lock == 1);
+2025-04-07 17:36:43,947 - runner - INFO - Verifying candidate: assert(x <= y + 1);
+2025-04-07 17:36:43,951 - runner - INFO - Candidate already in fail history: assert(x <= y + 1);
+2025-04-07 17:36:43,956 - runner - INFO - Executing predicate filtering
+2025-04-07 17:36:43,960 - runner - INFO - Filtering predicates for candidate assert(lock == 0 || lock == 1);
+2025-04-07 17:36:44,712 - runner - INFO - Filtering predicates for candidate assert(x <= y + 1);
+2025-04-07 17:36:44,962 - runner - INFO - Predicate filtering verify set: ['(lock == 0) || (lock == 1)', '(x == y) || ((lock == 0))', 'lock >= 0']
+2025-04-07 17:36:44,967 - runner - INFO - Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9640275800758169
+2025-04-07 17:36:46,190 - runner - INFO - Generated 2 candidates
+2025-04-07 17:36:46,194 - runner - INFO - Verifying generated candidates
+2025-04-07 17:36:46,198 - runner - INFO - Verifying candidate: assert(y >= x);
+2025-04-07 17:36:46,202 - runner - INFO - Candidate already in fail history: assert(y >= x);
+2025-04-07 17:36:46,208 - runner - INFO - Verifying candidate: assert(lock == 0 || lock == 1);
+2025-04-07 17:36:46,213 - runner - INFO - Candidate already in fail history: assert(lock == 0 || lock == 1);
+2025-04-07 17:36:46,218 - runner - INFO - Executing predicate filtering
+2025-04-07 17:36:46,223 - runner - INFO - Filtering predicates for candidate assert(y >= x);
+2025-04-07 17:36:46,491 - runner - INFO - Filtering predicates for candidate assert(lock == 0 || lock == 1);
+2025-04-07 17:36:47,177 - runner - INFO - Predicate filtering verify set: ['(lock == 0) || (lock == 1)', '(x == y) || ((lock == 0))', 'lock >= 0']
+2025-04-07 17:36:47,181 - runner - INFO - Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9836748576936802
+2025-04-07 17:36:48,425 - runner - INFO - Generated 2 candidates
+2025-04-07 17:36:48,429 - runner - INFO - Verifying generated candidates
+2025-04-07 17:36:48,433 - runner - INFO - Verifying candidate: assert(x <= y + 1);
+2025-04-07 17:36:48,437 - runner - INFO - Candidate already in fail history: assert(x <= y + 1);
+2025-04-07 17:36:48,442 - runner - INFO - Verifying candidate: assert(lock == 0 || lock == 2);
+2025-04-07 17:36:48,446 - runner - INFO - Candidate already in fail history: assert(lock == 0 || lock == 2);
+2025-04-07 17:36:48,450 - runner - INFO - Executing predicate filtering
+2025-04-07 17:36:48,454 - runner - INFO - Filtering predicates for candidate assert(x <= y + 1);
+2025-04-07 17:36:48,694 - runner - INFO - Filtering predicates for candidate assert(lock == 0 || lock == 2);
+2025-04-07 17:36:48,921 - runner - INFO - Predicate filtering verify set: ['(lock == 0) || (lock == 1)', '(x == y) || ((lock == 0))', 'lock >= 0']
+2025-04-07 17:36:48,926 - runner - INFO - Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.992631520201128
+2025-04-07 17:36:50,146 - runner - INFO - Generated 2 candidates
+2025-04-07 17:36:50,150 - runner - INFO - Verifying generated candidates
+2025-04-07 17:36:50,155 - runner - INFO - Verifying candidate: assert(lock == 0 || lock == 1);
+2025-04-07 17:36:50,159 - runner - INFO - Candidate already in fail history: assert(lock == 0 || lock == 1);
+2025-04-07 17:36:50,164 - runner - INFO - Verifying candidate: assert(y >= x - 1);
+2025-04-07 17:36:50,174 - runner - INFO - Candidate failed verification
+2025-04-07 17:36:50,179 - runner - INFO - Adding candidate to fail history: assert(y >= x - 1);
+2025-04-07 17:36:50,183 - runner - INFO - Executing predicate filtering
+2025-04-07 17:36:50,187 - runner - INFO - Filtering predicates for candidate assert(lock == 0 || lock == 1);
+2025-04-07 17:36:50,863 - runner - INFO - Filtering predicates for candidate assert(y >= x - 1);
+2025-04-07 17:36:51,102 - runner - INFO - Predicate filtering verify set: ['(lock == 0) || (lock == 1)', '(x == y) || ((lock == 0))', 'lock >= 0']
+2025-04-07 17:36:51,106 - runner - INFO - Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9950547536867305
+2025-04-07 17:36:52,358 - runner - INFO - Generated 2 candidates
+2025-04-07 17:36:52,364 - runner - INFO - Verifying generated candidates
+2025-04-07 17:36:52,370 - runner - INFO - Verifying candidate: assert(lock == 0 || lock == 1);
+2025-04-07 17:36:52,376 - runner - INFO - Candidate already in fail history: assert(lock == 0 || lock == 1);
+2025-04-07 17:36:52,381 - runner - INFO - Verifying candidate: assert(y > x - 2);
+2025-04-07 17:36:52,404 - runner - INFO - Candidate failed verification
+2025-04-07 17:36:52,409 - runner - INFO - Adding candidate to fail history: assert(y > x - 2);
+2025-04-07 17:36:52,413 - runner - INFO - Executing predicate filtering
+2025-04-07 17:36:52,418 - runner - INFO - Filtering predicates for candidate assert(lock == 0 || lock == 1);
+2025-04-07 17:36:53,109 - runner - INFO - Filtering predicates for candidate assert(y > x - 2);
+2025-04-07 17:36:53,367 - runner - INFO - Predicate filtering verify set: ['(lock == 0) || (lock == 1)', '(x == y) || ((lock == 0))', 'lock >= 0']
+2025-04-07 17:36:53,371 - runner - INFO - Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9966823978396512
+2025-04-07 17:36:54,531 - runner - INFO - Generated 2 candidates
+2025-04-07 17:36:54,534 - runner - INFO - Verifying generated candidates
+2025-04-07 17:36:54,538 - runner - INFO - Verifying candidate: assert(lock >= 0);
+2025-04-07 17:36:54,542 - runner - INFO - Candidate already in fail history: assert(lock >= 0);
+2025-04-07 17:36:54,547 - runner - INFO - Verifying candidate: assert(y > x - 1);
+2025-04-07 17:36:54,551 - runner - INFO - Candidate already in fail history: assert(y > x - 1);
+2025-04-07 17:36:54,556 - runner - INFO - Executing predicate filtering
+2025-04-07 17:36:54,560 - runner - INFO - Filtering predicates for candidate assert(lock >= 0);
+2025-04-07 17:36:54,824 - runner - INFO - Filtering predicates for candidate assert(y > x - 1);
+2025-04-07 17:36:55,057 - runner - INFO - Predicate filtering verify set: ['(lock == 0) || (lock == 1)', '(x == y) || ((lock == 0))', 'lock >= 0']
+2025-04-07 17:36:55,062 - runner - INFO - Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9985079423323266
+2025-04-07 17:36:56,261 - runner - INFO - Generated 2 candidates
+2025-04-07 17:36:56,265 - runner - INFO - Verifying generated candidates
+2025-04-07 17:36:56,269 - runner - INFO - Verifying candidate: assert(lock == 0 || lock == 2);
+2025-04-07 17:36:56,273 - runner - INFO - Candidate already in fail history: assert(lock == 0 || lock == 2);
+2025-04-07 17:36:56,285 - runner - INFO - Verifying candidate: assert(y >= x);
+2025-04-07 17:36:56,289 - runner - INFO - Candidate already in fail history: assert(y >= x);
+2025-04-07 17:36:56,294 - runner - INFO - Executing predicate filtering
+2025-04-07 17:36:56,299 - runner - INFO - Filtering predicates for candidate assert(lock == 0 || lock == 2);
+2025-04-07 17:36:56,552 - runner - INFO - Filtering predicates for candidate assert(y >= x);
+2025-04-07 17:36:56,794 - runner - INFO - Predicate filtering verify set: ['(lock == 0) || (lock == 1)', '(x == y) || ((lock == 0))', 'lock >= 0']
+2025-04-07 17:36:56,799 - runner - INFO - Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.999329299739067
+2025-04-07 17:36:58,103 - runner - INFO - Generated 2 candidates
+2025-04-07 17:36:58,107 - runner - INFO - Verifying generated candidates
+2025-04-07 17:36:58,110 - runner - INFO - Verifying candidate: assert(lock == 0 || lock == 1);
+2025-04-07 17:36:58,114 - runner - INFO - Candidate already in fail history: assert(lock == 0 || lock == 1);
+2025-04-07 17:36:58,118 - runner - INFO - Verifying candidate: assert(x + 1 >= y);
+2025-04-07 17:36:58,122 - runner - INFO - Candidate already in fail history: assert(x + 1 >= y);
+2025-04-07 17:36:58,127 - runner - INFO - Executing predicate filtering
+2025-04-07 17:36:58,132 - runner - INFO - Filtering predicates for candidate assert(lock == 0 || lock == 1);
+2025-04-07 17:36:58,836 - runner - INFO - Filtering predicates for candidate assert(x + 1 >= y);
+2025-04-07 17:36:58,355 - runner - INFO - Predicate filtering verify set: ['(lock == 0) || (lock == 1)', '(x == y) || ((lock == 0))', 'lock >= 0']
+2025-04-07 17:36:58,359 - runner - INFO - Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9996985792838805
+2025-04-07 17:36:59,723 - runner - INFO - Generated 2 candidates
+2025-04-07 17:36:59,727 - runner - INFO - Verifying generated candidates
+2025-04-07 17:36:59,731 - runner - INFO - Verifying candidate: assert(lock == 0 || lock == 1);
+2025-04-07 17:36:59,735 - runner - INFO - Candidate already in fail history: assert(lock == 0 || lock == 1);
+2025-04-07 17:36:59,740 - runner - INFO - Verifying candidate: assert(x < y + 2);
+2025-04-07 17:36:59,753 - runner - INFO - Candidate failed verification
+2025-04-07 17:36:59,757 - runner - INFO - Adding candidate to fail history: assert(x < y + 2);
+2025-04-07 17:36:59,762 - runner - INFO - Executing predicate filtering
+2025-04-07 17:36:59,767 - runner - INFO - Filtering predicates for candidate assert(lock == 0 || lock == 1);
+2025-04-07 17:37:00,525 - runner - INFO - Filtering predicates for candidate assert(x < y + 2);
+2025-04-07 17:37:00,814 - runner - INFO - Predicate filtering verify set: ['(lock == 0) || (lock == 1)', '(x == y) || ((lock == 0))', 'lock >= 0']
+2025-04-07 17:37:00,818 - runner - INFO - Generating loop invariants candidates with model o1-mini and presence penalty 0.9997979416121845
+2025-04-07 17:37:43,243 - runner - INFO - Generated 2 candidates
+2025-04-07 17:37:43,247 - runner - INFO - Verifying generated candidates
+2025-04-07 17:37:43,251 - runner - INFO - Verifying candidate: assert(y >= x);
+2025-04-07 17:37:43,257 - runner - INFO - Candidate already in fail history: assert(y >= x);
+2025-04-07 17:37:43,261 - runner - INFO - Verifying candidate: assert(y <= x + 1);
+2025-04-07 17:37:43,274 - runner - INFO - Candidate failed verification
+2025-04-07 17:37:43,282 - runner - INFO - Adding candidate to fail history: assert(y <= x + 1);
+2025-04-07 17:37:43,288 - runner - INFO - Executing predicate filtering
+2025-04-07 17:37:43,294 - runner - INFO - Filtering predicates for candidate assert(y >= x);
+2025-04-07 17:37:43,559 - runner - INFO - Filtering predicates for candidate assert(y <= x + 1);
+2025-04-07 17:37:43,843 - runner - INFO - Predicate filtering verify set: ['(lock == 0) || (lock == 1)', '(x == y) || ((lock == 0))', 'lock >= 0']
+2025-04-07 17:37:43,848 - runner - INFO - Generating loop invariants candidates with model o1-mini and presence penalty 0.9998645517007605
+2025-04-07 17:38:06,990 - runner - INFO - Generated 2 candidates
+2025-04-07 17:38:06,994 - runner - INFO - Verifying generated candidates
+2025-04-07 17:38:06,998 - runner - INFO - Verifying candidate: assert(y >= x);
+2025-04-07 17:38:07,002 - runner - INFO - Candidate already in fail history: assert(y >= x);
+2025-04-07 17:38:07,007 - runner - INFO - Verifying candidate: assert(x != y || lock == 1);
+2025-04-07 17:38:07,021 - runner - INFO - # Result
+2025-04-07 17:38:07,026 - runner - INFO - Solution found by the o1-mini model: assert(x != y || lock == 1);
+2025-04-07 17:38:07,031 - runner - INFO - 17 counter examples were generated for the model proposals, with 25 repeated fails
+2025-04-07 17:38:07,036 - runner - INFO - The model runtime was 66.2128484249115 seconds
+2025-04-07 17:38:07,041 - runner - INFO - The total runtime was 108.72529435157776 seconds

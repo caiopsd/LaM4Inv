@@ -1,46 +1,15 @@
-02:04:09 26/03/2025 Resetting generator
-02:04:09 26/03/2025 # Run Benchmark 127
-02:04:09 26/03/2025 Executing predicate filtering for preconditions
-02:04:09 26/03/2025 Filtering predicates for candidate assert(i == x)
-02:04:09 26/03/2025 Filtering predicates for candidate assert(j == y)
-02:04:09 26/03/2025 Predicate filtering verify set: []
-02:04:09 26/03/2025 Generating loop invariants candidates with model gpt-4o and presence penalty 0.0
-02:04:09 26/03/2025 Generated 2 candidates
-02:04:09 26/03/2025 Verifying generated candidates
-02:04:09 26/03/2025 Verifying candidate: assert(x == i - j);
-02:04:09 26/03/2025 Candidate failed verification
-02:04:09 26/03/2025 Adding candidate to fail history: assert(x == i - j);
-02:04:09 26/03/2025 Verifying candidate: assert(y == j - i);
-02:04:09 26/03/2025 Candidate failed verification
-02:04:09 26/03/2025 Adding candidate to fail history: assert(y == j - i);
-02:04:09 26/03/2025 Executing predicate filtering
-02:04:09 26/03/2025 Filtering predicates for candidate assert(x == i - j);
-02:04:09 26/03/2025 Filtering predicates for candidate assert(y == j - i);
-02:04:09 26/03/2025 Predicate filtering verify set: []
-02:04:09 26/03/2025 Resetting generator
-02:04:09 26/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.0
-02:04:09 26/03/2025 Generated 3 candidates
-02:04:09 26/03/2025 Verifying generated candidates
-02:04:09 26/03/2025 Verifying candidate: assert(i == x + 1);
-02:04:09 26/03/2025 Candidate failed verification
-02:04:09 26/03/2025 Adding candidate to fail history: assert(i == x + 1);
-02:04:09 26/03/2025 Verifying candidate: assert(j == y + 1);
-02:04:09 26/03/2025 Candidate failed verification
-02:04:09 26/03/2025 Adding candidate to fail history: assert(j == y + 1);
-02:04:09 26/03/2025 Verifying candidate: assert((x >= 0) && (y == (j - (i - x))));
-02:04:09 26/03/2025 Candidate failed verification
-02:04:09 26/03/2025 Adding candidate to fail history: assert((x >= 0) && (y == (j - (i - x))));
-02:04:09 26/03/2025 Executing predicate filtering
-02:04:09 26/03/2025 Filtering predicates for candidate assert(i == x + 1);
-02:04:09 26/03/2025 Filtering predicates for candidate assert(j == y + 1);
-02:04:09 26/03/2025 Filtering predicates for candidate assert((x >= 0) && (y == (j - (i - x))));
-02:04:09 26/03/2025 Addind predicate (y == (j - (i - x))) to verify set
-02:04:09 26/03/2025 Predicate filtering verify set: ['(y == (j - (i - x)))']
-02:04:09 26/03/2025 Verifying formula: (= y (- j (- i x)))
-02:04:09 26/03/2025 For candidate: assert(((y == (j - (i - x)))))
-02:04:09 26/03/2025 Predicate filtering found solution: assert(((y == (j - (i - x)))))
-02:04:09 26/03/2025 # Result
-02:04:09 26/03/2025 Solution found by the predicate filtering mechanism using the gpt-4o-mini model: assert(((y == (j - (i - x)))))
-02:04:09 26/03/2025 3 counter examples were generated for the model proposals, with 0 repeated fails
-02:04:09 26/03/2025 The model runtime was 2.6521620750427246 seconds
-02:04:09 26/03/2025 The total runtime was 3.7833733558654785 seconds
+2025-04-07 18:36:19,019 - runner - INFO - Resetting generator
+2025-04-07 18:36:19,026 - runner - INFO - # Run Benchmark 127
+2025-04-07 18:36:19,033 - runner - INFO - Executing predicate filtering for preconditions
+2025-04-07 18:36:19,039 - runner - INFO - Filtering predicates for candidate assert(i == x)
+2025-04-07 18:36:19,285 - runner - INFO - Filtering predicates for candidate assert(j == y)
+2025-04-07 18:36:19,547 - runner - INFO - Predicate filtering verify set: []
+2025-04-07 18:36:19,554 - runner - INFO - Generating loop invariants candidates with model gpt-4o and presence penalty 0.0
+2025-04-07 18:36:20,723 - runner - INFO - Generated 2 candidates
+2025-04-07 18:36:20,729 - runner - INFO - Verifying generated candidates
+2025-04-07 18:36:20,735 - runner - INFO - Verifying candidate: assert(i == j + (x - y));
+2025-04-07 18:36:20,748 - runner - INFO - # Result
+2025-04-07 18:36:20,755 - runner - INFO - Solution found by the gpt-4o model: assert(i == j + (x - y));
+2025-04-07 18:36:20,761 - runner - INFO - 0 counter examples were generated for the model proposals, with 0 repeated fails
+2025-04-07 18:36:20,767 - runner - INFO - The model runtime was 1.2073471546173096 seconds
+2025-04-07 18:36:20,774 - runner - INFO - The total runtime was 1.7352848052978516 seconds

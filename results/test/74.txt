@@ -1,46 +1,65 @@
-01:41:59 26/03/2025 Resetting generator
-01:41:59 26/03/2025 # Run Benchmark 74
-01:41:59 26/03/2025 Executing predicate filtering for preconditions
-01:41:59 26/03/2025 Filtering predicates for candidate assert(c == 0)
-01:41:59 26/03/2025 Filtering predicates for candidate assert((y >= 0))
-01:41:59 26/03/2025 Addind predicate (y >= 0) to verify set
-01:41:59 26/03/2025 Filtering predicates for candidate assert((y >= 127))
-01:41:59 26/03/2025 Filtering predicates for candidate assert((y <= 127))
-01:41:59 26/03/2025 Addind predicate (y <= 127) to verify set
-01:41:59 26/03/2025 Predicate filtering verify set: ['(y >= 0)', '(y <= 127)']
-01:41:59 26/03/2025 Verifying formula: (and (>= y 0) (<= y 127))
-01:41:59 26/03/2025 For candidate: assert(((y >= 0)) && ((y <= 127)))
-01:41:59 26/03/2025 Generating loop invariants candidates with model gpt-4o and presence penalty 0.0
-01:41:59 26/03/2025 Generated 4 candidates
-01:41:59 26/03/2025 Verifying generated candidates
-01:41:59 26/03/2025 Verifying candidate: assert(y >= 0);
-01:41:59 26/03/2025 Candidate failed verification
-01:41:59 26/03/2025 Adding candidate to fail history: assert(y >= 0);
-01:41:59 26/03/2025 Verifying candidate: assert(y <= 127);
-01:41:59 26/03/2025 Candidate failed verification
-01:41:59 26/03/2025 Adding candidate to fail history: assert(y <= 127);
-01:41:59 26/03/2025 Verifying candidate: assert(z == (36 * y) + c);
-01:41:59 26/03/2025 Candidate failed verification
-01:41:59 26/03/2025 Adding candidate to fail history: assert(z == (36 * y) + c);
-01:41:59 26/03/2025 Verifying candidate: assert(c >= 0 && c <= 36);
-01:41:59 26/03/2025 Candidate failed verification
-01:41:59 26/03/2025 Adding candidate to fail history: assert(c >= 0 && c <= 36);
-01:41:59 26/03/2025 Executing predicate filtering
-01:41:59 26/03/2025 Filtering predicates for candidate assert(y >= 0);
-01:41:59 26/03/2025 Addind predicate y >= 0 to verify set
-01:41:59 26/03/2025 Filtering predicates for candidate assert(y <= 127);
-01:41:59 26/03/2025 Addind predicate y <= 127 to verify set
-01:41:59 26/03/2025 Filtering predicates for candidate assert(z == (36 * y) + c);
-01:41:59 26/03/2025 Addind predicate z == (36 * y) + c to verify set
-01:41:59 26/03/2025 Filtering predicates for candidate assert(c >= 0 && c <= 36);
-01:41:59 26/03/2025 Addind predicate c >= 0 to verify set
-01:41:59 26/03/2025 Addind predicate c <= 36 to verify set
-01:41:59 26/03/2025 Predicate filtering verify set: ['(y >= 0)', '(y <= 127)', 'y >= 0', 'y <= 127', 'z == (36 * y) + c', 'c >= 0', 'c <= 36']
-01:41:59 26/03/2025 Verifying formula: (and (and (and (and (and (and (>= y 0) (<= y 127)) (>= y 0)) (<= y 127)) (= z (+ (* 36 y) c))) (>= c 0)) (<= c 36))
-01:41:59 26/03/2025 For candidate: assert(((y >= 0)) && ((y <= 127)) && (y >= 0) && (y <= 127) && (z == (36 * y) + c) && (c >= 0) && (c <= 36))
-01:41:59 26/03/2025 Predicate filtering found solution: assert(((y >= 0)) && ((y <= 127)) && (y >= 0) && (y <= 127) && (z == (36 * y) + c) && (c >= 0) && (c <= 36))
-01:41:59 26/03/2025 # Result
-01:41:59 26/03/2025 Solution found by the predicate filtering mechanism using the gpt-4o model: assert(((y >= 0)) && ((y <= 127)) && (y >= 0) && (y <= 127) && (z == (36 * y) + c) && (c >= 0) && (c <= 36))
-01:41:59 26/03/2025 4 counter examples were generated for the model proposals, with 0 repeated fails
-01:41:59 26/03/2025 The model runtime was 3.695619583129883 seconds
-01:41:59 26/03/2025 The total runtime was 4.280597925186157 seconds
+2025-04-07 17:00:15,639 - runner - INFO - Resetting generator
+2025-04-07 17:00:15,643 - runner - INFO - # Run Benchmark 74
+2025-04-07 17:00:15,646 - runner - INFO - Executing predicate filtering for preconditions
+2025-04-07 17:00:15,650 - runner - INFO - Filtering predicates for candidate assert(c == 0)
+2025-04-07 17:00:15,877 - runner - INFO - Filtering predicates for candidate assert((y >= 0))
+2025-04-07 17:00:16,110 - runner - INFO - Addind predicate (y >= 0) to verify set
+2025-04-07 17:00:16,113 - runner - INFO - Filtering predicates for candidate assert((y >= 127))
+2025-04-07 17:00:16,331 - runner - INFO - Filtering predicates for candidate assert((y <= 127))
+2025-04-07 17:00:16,557 - runner - INFO - Addind predicate (y <= 127) to verify set
+2025-04-07 17:00:16,560 - runner - INFO - Predicate filtering verify set: ['(y >= 0)', '(y <= 127)']
+2025-04-07 17:00:16,564 - runner - INFO - Verifying formula: (and (>= y 0) (<= y 127))
+2025-04-07 17:00:16,567 - runner - INFO - For candidate: assert(((y >= 0)) && ((y <= 127)))
+2025-04-07 17:00:16,577 - runner - INFO - Generating loop invariants candidates with model gpt-4o and presence penalty 0.0
+2025-04-07 17:00:17,983 - runner - INFO - Generated 4 candidates
+2025-04-07 17:00:17,987 - runner - INFO - Verifying generated candidates
+2025-04-07 17:00:17,990 - runner - INFO - Verifying candidate: assert(y >= 0);
+2025-04-07 17:00:18,000 - runner - INFO - Candidate failed verification
+2025-04-07 17:00:18,004 - runner - INFO - Adding candidate to fail history: assert(y >= 0);
+2025-04-07 17:00:18,007 - runner - INFO - Verifying candidate: assert(y <= 127);
+2025-04-07 17:00:18,017 - runner - INFO - Candidate failed verification
+2025-04-07 17:00:18,020 - runner - INFO - Adding candidate to fail history: assert(y <= 127);
+2025-04-07 17:00:18,024 - runner - INFO - Verifying candidate: assert(z == 36 * y + c);
+2025-04-07 17:00:18,035 - runner - INFO - Candidate failed verification
+2025-04-07 17:00:18,039 - runner - INFO - Adding candidate to fail history: assert(z == 36 * y + c);
+2025-04-07 17:00:18,042 - runner - INFO - Verifying candidate: assert(c <= 36);
+2025-04-07 17:00:18,054 - runner - INFO - Candidate failed verification
+2025-04-07 17:00:18,057 - runner - INFO - Adding candidate to fail history: assert(c <= 36);
+2025-04-07 17:00:18,060 - runner - INFO - Executing predicate filtering
+2025-04-07 17:00:18,064 - runner - INFO - Filtering predicates for candidate assert(y >= 0);
+2025-04-07 17:00:18,309 - runner - INFO - Addind predicate y >= 0 to verify set
+2025-04-07 17:00:18,313 - runner - INFO - Filtering predicates for candidate assert(y <= 127);
+2025-04-07 17:00:18,549 - runner - INFO - Addind predicate y <= 127 to verify set
+2025-04-07 17:00:18,552 - runner - INFO - Filtering predicates for candidate assert(z == 36 * y + c);
+2025-04-07 17:00:19,558 - runner - ERROR - ESBMC timed out
+2025-04-07 17:00:19,561 - runner - INFO - Filtering predicates for candidate assert(c <= 36);
+2025-04-07 17:00:20,247 - runner - INFO - Addind predicate c <= 36 to verify set
+2025-04-07 17:00:20,252 - runner - INFO - Predicate filtering verify set: ['(y >= 0)', '(y <= 127)', 'y >= 0', 'y <= 127', 'c <= 36']
+2025-04-07 17:00:20,256 - runner - INFO - Verifying formula: (and (and (and (and (>= y 0) (<= y 127)) (>= y 0)) (<= y 127)) (<= c 36))
+2025-04-07 17:00:20,260 - runner - INFO - For candidate: assert(((y >= 0)) && ((y <= 127)) && (y >= 0) && (y <= 127) && (c <= 36))
+2025-04-07 17:00:20,271 - runner - INFO - Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.0
+2025-04-07 17:00:22,218 - runner - INFO - Generated 3 candidates
+2025-04-07 17:00:22,222 - runner - INFO - Verifying generated candidates
+2025-04-07 17:00:22,226 - runner - INFO - Verifying candidate: assert(c >= 0);
+2025-04-07 17:00:22,242 - runner - INFO - Candidate failed verification
+2025-04-07 17:00:22,245 - runner - INFO - Adding candidate to fail history: assert(c >= 0);
+2025-04-07 17:00:22,249 - runner - INFO - Verifying candidate: assert(c <= 36);
+2025-04-07 17:00:22,252 - runner - INFO - Candidate already in fail history: assert(c <= 36);
+2025-04-07 17:00:22,255 - runner - INFO - Verifying candidate: assert(z >= 36 * y);
+2025-04-07 17:00:22,266 - runner - INFO - Candidate failed verification
+2025-04-07 17:00:22,269 - runner - INFO - Adding candidate to fail history: assert(z >= 36 * y);
+2025-04-07 17:00:22,273 - runner - INFO - Executing predicate filtering
+2025-04-07 17:00:22,276 - runner - INFO - Filtering predicates for candidate assert(c >= 0);
+2025-04-07 17:00:22,853 - runner - INFO - Addind predicate c >= 0 to verify set
+2025-04-07 17:00:22,856 - runner - INFO - Filtering predicates for candidate assert(c <= 36);
+2025-04-07 17:00:23,530 - runner - INFO - Filtering predicates for candidate assert(z >= 36 * y);
+2025-04-07 17:00:24,528 - runner - INFO - Addind predicate z >= 36 * y to verify set
+2025-04-07 17:00:24,532 - runner - INFO - Predicate filtering verify set: ['(y >= 0)', '(y <= 127)', 'y >= 0', 'y <= 127', 'c <= 36', 'c >= 0', 'z >= 36 * y']
+2025-04-07 17:00:24,536 - runner - INFO - Verifying formula: (and (and (and (and (and (and (>= y 0) (<= y 127)) (>= y 0)) (<= y 127)) (<= c 36)) (>= c 0)) (>= z (* 36 y)))
+2025-04-07 17:00:24,539 - runner - INFO - For candidate: assert(((y >= 0)) && ((y <= 127)) && (y >= 0) && (y <= 127) && (c <= 36) && (c >= 0) && (z >= 36 * y))
+2025-04-07 17:00:24,550 - runner - INFO - Predicate filtering found solution: assert(((y >= 0)) && ((y <= 127)) && (y >= 0) && (y <= 127) && (c <= 36) && (c >= 0) && (z >= 36 * y))
+2025-04-07 17:00:24,554 - runner - INFO - # Result
+2025-04-07 17:00:24,557 - runner - INFO - Solution found by the predicate filtering mechanism using the gpt-4o-mini model: assert(((y >= 0)) && ((y <= 127)) && (y >= 0) && (y <= 127) && (c <= 36) && (c >= 0) && (z >= 36 * y))
+2025-04-07 17:00:24,560 - runner - INFO - 6 counter examples were generated for the model proposals, with 1 repeated fails
+2025-04-07 17:00:24,564 - runner - INFO - The model runtime was 4.288944721221924 seconds
+2025-04-07 17:00:24,567 - runner - INFO - The total runtime was 8.917221546173096 seconds

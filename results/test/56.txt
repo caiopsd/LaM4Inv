@@ -1,16 +1,288 @@
-01:04:20 26/03/2025 Resetting generator
-01:04:20 26/03/2025 # Run Benchmark 56
-01:04:20 26/03/2025 Executing predicate filtering for preconditions
-01:04:20 26/03/2025 Filtering predicates for candidate assert(c == 0)
-01:04:20 26/03/2025 Addind predicate c == 0 to verify set
-01:04:20 26/03/2025 Filtering predicates for candidate assert((n > 0))
-01:04:20 26/03/2025 Addind predicate (n > 0) to verify set
-01:04:20 26/03/2025 Predicate filtering verify set: ['c == 0', '(n > 0)']
-01:04:20 26/03/2025 Verifying formula: (and (= c 0) (> n 0))
-01:04:20 26/03/2025 For candidate: assert((c == 0) && ((n > 0)))
-01:04:20 26/03/2025 Predicate filtering found solution: assert((c == 0) && ((n > 0)))
-01:04:20 26/03/2025 # Result
-01:04:20 26/03/2025 Solution found by the predicate filtering mechanism using the None model: assert((c == 0) && ((n > 0)))
-01:04:20 26/03/2025 0 counter examples were generated for the model proposals, with 0 repeated fails
-01:04:20 26/03/2025 The model runtime was 0.0 seconds
-01:04:20 26/03/2025 The total runtime was 0.8794510364532471 seconds
+2025-04-07 15:33:22,142 - runner - INFO - Resetting generator
+2025-04-07 15:33:22,145 - runner - INFO - # Run Benchmark 56
+2025-04-07 15:33:22,147 - runner - INFO - Executing predicate filtering for preconditions
+2025-04-07 15:33:22,150 - runner - INFO - Filtering predicates for candidate assert(c == 0)
+2025-04-07 15:33:23,156 - runner - ERROR - ESBMC timed out
+2025-04-07 15:33:23,160 - runner - INFO - Filtering predicates for candidate assert((n > 0))
+2025-04-07 15:33:23,408 - runner - INFO - Addind predicate (n > 0) to verify set
+2025-04-07 15:33:23,411 - runner - INFO - Predicate filtering verify set: ['(n > 0)']
+2025-04-07 15:33:23,415 - runner - INFO - Verifying formula: (> n 0)
+2025-04-07 15:33:23,417 - runner - INFO - For candidate: assert(((n > 0)))
+2025-04-07 15:33:23,429 - runner - INFO - Generating loop invariants candidates with model gpt-4o and presence penalty 0.0
+2025-04-07 15:33:25,075 - runner - INFO - Generated 2 candidates
+2025-04-07 15:33:25,078 - runner - INFO - Verifying generated candidates
+2025-04-07 15:33:25,081 - runner - INFO - Verifying candidate: assert(c >= 0);
+2025-04-07 15:33:25,094 - runner - INFO - Candidate failed verification
+2025-04-07 15:33:25,097 - runner - INFO - Adding candidate to fail history: assert(c >= 0);
+2025-04-07 15:33:25,099 - runner - INFO - Verifying candidate: assert(n > 0);
+2025-04-07 15:33:25,111 - runner - INFO - Candidate failed verification
+2025-04-07 15:33:25,114 - runner - INFO - Adding candidate to fail history: assert(n > 0);
+2025-04-07 15:33:25,116 - runner - INFO - Executing predicate filtering
+2025-04-07 15:33:25,119 - runner - INFO - Filtering predicates for candidate assert(c >= 0);
+2025-04-07 15:33:26,030 - runner - INFO - Addind predicate c >= 0 to verify set
+2025-04-07 15:33:26,032 - runner - INFO - Filtering predicates for candidate assert(n > 0);
+2025-04-07 15:33:26,275 - runner - INFO - Addind predicate n > 0 to verify set
+2025-04-07 15:33:26,278 - runner - INFO - Predicate filtering verify set: ['(n > 0)', 'c >= 0', 'n > 0']
+2025-04-07 15:33:26,281 - runner - INFO - Verifying formula: (and (and (> n 0) (>= c 0)) (> n 0))
+2025-04-07 15:33:26,284 - runner - INFO - For candidate: assert(((n > 0)) && (c >= 0) && (n > 0))
+2025-04-07 15:33:26,294 - runner - INFO - Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.0
+2025-04-07 15:33:27,303 - runner - INFO - Generated 2 candidates
+2025-04-07 15:33:27,305 - runner - INFO - Verifying generated candidates
+2025-04-07 15:33:27,308 - runner - INFO - Verifying candidate: assert(c >= 0);
+2025-04-07 15:33:27,311 - runner - INFO - Candidate already in fail history: assert(c >= 0);
+2025-04-07 15:33:27,314 - runner - INFO - Verifying candidate: assert(c <= n);
+2025-04-07 15:33:27,323 - runner - INFO - Candidate failed verification
+2025-04-07 15:33:27,326 - runner - INFO - Adding candidate to fail history: assert(c <= n);
+2025-04-07 15:33:27,328 - runner - INFO - Executing predicate filtering
+2025-04-07 15:33:27,331 - runner - INFO - Filtering predicates for candidate assert(c >= 0);
+2025-04-07 15:33:28,244 - runner - INFO - Filtering predicates for candidate assert(c <= n);
+2025-04-07 15:33:28,725 - runner - ERROR - ESBMC timed out
+2025-04-07 15:33:28,727 - runner - INFO - Predicate filtering verify set: ['(n > 0)', 'c >= 0', 'n > 0']
+2025-04-07 15:33:28,730 - runner - INFO - Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.197375320224904
+2025-04-07 15:33:29,812 - runner - INFO - Generated 2 candidates
+2025-04-07 15:33:29,814 - runner - INFO - Verifying generated candidates
+2025-04-07 15:33:29,817 - runner - INFO - Verifying candidate: assert(c >= 1);
+2025-04-07 15:33:29,821 - runner - INFO - Candidate failed verification
+2025-04-07 15:33:29,823 - runner - INFO - Adding candidate to fail history: assert(c >= 1);
+2025-04-07 15:33:29,826 - runner - INFO - Verifying candidate: assert(c <= n + 1);
+2025-04-07 15:33:29,835 - runner - INFO - Candidate failed verification
+2025-04-07 15:33:29,838 - runner - INFO - Adding candidate to fail history: assert(c <= n + 1);
+2025-04-07 15:33:29,841 - runner - INFO - Executing predicate filtering
+2025-04-07 15:33:29,843 - runner - INFO - Filtering predicates for candidate assert(c >= 1);
+2025-04-07 15:33:30,075 - runner - INFO - Filtering predicates for candidate assert(c <= n + 1);
+2025-04-07 15:33:30,303 - runner - INFO - Predicate filtering verify set: ['(n > 0)', 'c >= 0', 'n > 0']
+2025-04-07 15:33:30,306 - runner - INFO - Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.197375320224904
+2025-04-07 15:33:31,203 - runner - INFO - Generated 2 candidates
+2025-04-07 15:33:31,206 - runner - INFO - Verifying generated candidates
+2025-04-07 15:33:31,208 - runner - INFO - Verifying candidate: assert(c >= 0);
+2025-04-07 15:33:31,210 - runner - INFO - Candidate already in fail history: assert(c >= 0);
+2025-04-07 15:33:31,213 - runner - INFO - Verifying candidate: assert(c < n + 2);
+2025-04-07 15:33:31,223 - runner - INFO - Candidate failed verification
+2025-04-07 15:33:31,226 - runner - INFO - Adding candidate to fail history: assert(c < n + 2);
+2025-04-07 15:33:31,229 - runner - INFO - Executing predicate filtering
+2025-04-07 15:33:31,232 - runner - INFO - Filtering predicates for candidate assert(c >= 0);
+2025-04-07 15:33:32,137 - runner - INFO - Filtering predicates for candidate assert(c < n + 2);
+2025-04-07 15:33:32,351 - runner - INFO - Predicate filtering verify set: ['(n > 0)', 'c >= 0', 'n > 0']
+2025-04-07 15:33:32,354 - runner - INFO - Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.3799489622552249
+2025-04-07 15:33:33,278 - runner - INFO - Generated 2 candidates
+2025-04-07 15:33:33,281 - runner - INFO - Verifying generated candidates
+2025-04-07 15:33:33,284 - runner - INFO - Verifying candidate: assert(c >= 0);
+2025-04-07 15:33:33,287 - runner - INFO - Candidate already in fail history: assert(c >= 0);
+2025-04-07 15:33:33,289 - runner - INFO - Verifying candidate: assert(c <= n + 1);
+2025-04-07 15:33:33,292 - runner - INFO - Candidate already in fail history: assert(c <= n + 1);
+2025-04-07 15:33:33,294 - runner - INFO - Executing predicate filtering
+2025-04-07 15:33:33,296 - runner - INFO - Filtering predicates for candidate assert(c >= 0);
+2025-04-07 15:33:34,170 - runner - INFO - Filtering predicates for candidate assert(c <= n + 1);
+2025-04-07 15:33:34,405 - runner - INFO - Predicate filtering verify set: ['(n > 0)', 'c >= 0', 'n > 0']
+2025-04-07 15:33:34,408 - runner - INFO - Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.6640367702678491
+2025-04-07 15:33:35,347 - runner - INFO - Generated 2 candidates
+2025-04-07 15:33:35,349 - runner - INFO - Verifying generated candidates
+2025-04-07 15:33:35,352 - runner - INFO - Verifying candidate: assert(c >= 1);
+2025-04-07 15:33:35,354 - runner - INFO - Candidate already in fail history: assert(c >= 1);
+2025-04-07 15:33:35,357 - runner - INFO - Verifying candidate: assert(c <= n);
+2025-04-07 15:33:35,358 - runner - INFO - Candidate already in fail history: assert(c <= n);
+2025-04-07 15:33:35,361 - runner - INFO - Executing predicate filtering
+2025-04-07 15:33:35,363 - runner - INFO - Filtering predicates for candidate assert(c >= 1);
+2025-04-07 15:33:35,581 - runner - INFO - Filtering predicates for candidate assert(c <= n);
+2025-04-07 15:33:36,585 - runner - ERROR - ESBMC timed out
+2025-04-07 15:33:36,587 - runner - INFO - Predicate filtering verify set: ['(n > 0)', 'c >= 0', 'n > 0']
+2025-04-07 15:33:36,590 - runner - INFO - Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.8336546070121553
+2025-04-07 15:33:37,643 - runner - INFO - Generated 2 candidates
+2025-04-07 15:33:37,646 - runner - INFO - Verifying generated candidates
+2025-04-07 15:33:37,648 - runner - INFO - Verifying candidate: assert(c >= 0);
+2025-04-07 15:33:37,651 - runner - INFO - Candidate already in fail history: assert(c >= 0);
+2025-04-07 15:33:37,653 - runner - INFO - Verifying candidate: assert(n > 0);
+2025-04-07 15:33:37,656 - runner - INFO - Candidate already in fail history: assert(n > 0);
+2025-04-07 15:33:37,659 - runner - INFO - Executing predicate filtering
+2025-04-07 15:33:37,661 - runner - INFO - Filtering predicates for candidate assert(c >= 0);
+2025-04-07 15:33:38,628 - runner - INFO - Filtering predicates for candidate assert(n > 0);
+2025-04-07 15:33:38,893 - runner - INFO - Predicate filtering verify set: ['(n > 0)', 'c >= 0', 'n > 0']
+2025-04-07 15:33:38,896 - runner - INFO - Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9216685544064713
+2025-04-07 15:33:39,782 - runner - INFO - Generated 2 candidates
+2025-04-07 15:33:39,785 - runner - INFO - Verifying generated candidates
+2025-04-07 15:33:39,788 - runner - INFO - Verifying candidate: assert(c >= 0);
+2025-04-07 15:33:39,791 - runner - INFO - Candidate already in fail history: assert(c >= 0);
+2025-04-07 15:33:39,794 - runner - INFO - Verifying candidate: assert(c <= n + 1);
+2025-04-07 15:33:39,797 - runner - INFO - Candidate already in fail history: assert(c <= n + 1);
+2025-04-07 15:33:39,801 - runner - INFO - Executing predicate filtering
+2025-04-07 15:33:39,804 - runner - INFO - Filtering predicates for candidate assert(c >= 0);
+2025-04-07 15:33:40,780 - runner - INFO - Filtering predicates for candidate assert(c <= n + 1);
+2025-04-07 15:33:41,042 - runner - INFO - Predicate filtering verify set: ['(n > 0)', 'c >= 0', 'n > 0']
+2025-04-07 15:33:41,044 - runner - INFO - Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9640275800758169
+2025-04-07 15:33:42,054 - runner - INFO - Generated 2 candidates
+2025-04-07 15:33:42,057 - runner - INFO - Verifying generated candidates
+2025-04-07 15:33:42,060 - runner - INFO - Verifying candidate: assert(c >= 1);
+2025-04-07 15:33:42,062 - runner - INFO - Candidate already in fail history: assert(c >= 1);
+2025-04-07 15:33:42,065 - runner - INFO - Verifying candidate: assert(c <= n + 2);
+2025-04-07 15:33:42,074 - runner - INFO - Candidate failed verification
+2025-04-07 15:33:42,077 - runner - INFO - Adding candidate to fail history: assert(c <= n + 2);
+2025-04-07 15:33:42,079 - runner - INFO - Executing predicate filtering
+2025-04-07 15:33:42,082 - runner - INFO - Filtering predicates for candidate assert(c >= 1);
+2025-04-07 15:33:42,305 - runner - INFO - Filtering predicates for candidate assert(c <= n + 2);
+2025-04-07 15:33:42,527 - runner - INFO - Predicate filtering verify set: ['(n > 0)', 'c >= 0', 'n > 0']
+2025-04-07 15:33:42,530 - runner - INFO - Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9757431300314515
+2025-04-07 15:33:43,706 - runner - INFO - Generated 2 candidates
+2025-04-07 15:33:43,709 - runner - INFO - Verifying generated candidates
+2025-04-07 15:33:43,711 - runner - INFO - Verifying candidate: assert(c >= 0);
+2025-04-07 15:33:43,713 - runner - INFO - Candidate already in fail history: assert(c >= 0);
+2025-04-07 15:33:43,715 - runner - INFO - Verifying candidate: assert(c <= n + 1);
+2025-04-07 15:33:43,718 - runner - INFO - Candidate already in fail history: assert(c <= n + 1);
+2025-04-07 15:33:43,720 - runner - INFO - Executing predicate filtering
+2025-04-07 15:33:43,722 - runner - INFO - Filtering predicates for candidate assert(c >= 0);
+2025-04-07 15:33:44,612 - runner - INFO - Filtering predicates for candidate assert(c <= n + 1);
+2025-04-07 15:33:44,829 - runner - INFO - Predicate filtering verify set: ['(n > 0)', 'c >= 0', 'n > 0']
+2025-04-07 15:33:44,831 - runner - INFO - Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9890274022010992
+2025-04-07 15:33:45,677 - runner - INFO - Generated 2 candidates
+2025-04-07 15:33:45,681 - runner - INFO - Verifying generated candidates
+2025-04-07 15:33:45,683 - runner - INFO - Verifying candidate: assert(c >= 0);
+2025-04-07 15:33:45,686 - runner - INFO - Candidate already in fail history: assert(c >= 0);
+2025-04-07 15:33:45,689 - runner - INFO - Verifying candidate: assert(c < n + 2);
+2025-04-07 15:33:45,691 - runner - INFO - Candidate already in fail history: assert(c < n + 2);
+2025-04-07 15:33:45,694 - runner - INFO - Executing predicate filtering
+2025-04-07 15:33:45,696 - runner - INFO - Filtering predicates for candidate assert(c >= 0);
+2025-04-07 15:33:46,588 - runner - INFO - Filtering predicates for candidate assert(c < n + 2);
+2025-04-07 15:33:46,796 - runner - INFO - Predicate filtering verify set: ['(n > 0)', 'c >= 0', 'n > 0']
+2025-04-07 15:33:46,799 - runner - INFO - Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9950547536867305
+2025-04-07 15:33:47,868 - runner - INFO - Generated 2 candidates
+2025-04-07 15:33:47,871 - runner - INFO - Verifying generated candidates
+2025-04-07 15:33:47,874 - runner - INFO - Verifying candidate: assert(c >= 1);
+2025-04-07 15:33:47,877 - runner - INFO - Candidate already in fail history: assert(c >= 1);
+2025-04-07 15:33:47,880 - runner - INFO - Verifying candidate: assert(c <= n + 1);
+2025-04-07 15:33:47,882 - runner - INFO - Candidate already in fail history: assert(c <= n + 1);
+2025-04-07 15:33:47,885 - runner - INFO - Executing predicate filtering
+2025-04-07 15:33:47,887 - runner - INFO - Filtering predicates for candidate assert(c >= 1);
+2025-04-07 15:33:48,104 - runner - INFO - Filtering predicates for candidate assert(c <= n + 1);
+2025-04-07 15:33:48,324 - runner - INFO - Predicate filtering verify set: ['(n > 0)', 'c >= 0', 'n > 0']
+2025-04-07 15:33:48,327 - runner - INFO - Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9977749279342794
+2025-04-07 15:33:49,280 - runner - INFO - Generated 2 candidates
+2025-04-07 15:33:49,283 - runner - INFO - Verifying generated candidates
+2025-04-07 15:33:49,286 - runner - INFO - Verifying candidate: assert(c >= 0);
+2025-04-07 15:33:49,289 - runner - INFO - Candidate already in fail history: assert(c >= 0);
+2025-04-07 15:33:49,292 - runner - INFO - Verifying candidate: assert(c < n + 1);
+2025-04-07 15:33:49,300 - runner - INFO - Candidate failed verification
+2025-04-07 15:33:49,303 - runner - INFO - Adding candidate to fail history: assert(c < n + 1);
+2025-04-07 15:33:49,305 - runner - INFO - Executing predicate filtering
+2025-04-07 15:33:49,307 - runner - INFO - Filtering predicates for candidate assert(c >= 0);
+2025-04-07 15:33:50,214 - runner - INFO - Filtering predicates for candidate assert(c < n + 1);
+2025-04-07 15:33:50,426 - runner - INFO - Predicate filtering verify set: ['(n > 0)', 'c >= 0', 'n > 0']
+2025-04-07 15:33:50,428 - runner - INFO - Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9985079423323266
+2025-04-07 15:33:51,979 - runner - INFO - Generated 2 candidates
+2025-04-07 15:33:51,982 - runner - INFO - Verifying generated candidates
+2025-04-07 15:33:51,984 - runner - INFO - Verifying candidate: assert(c >= 0);
+2025-04-07 15:33:51,986 - runner - INFO - Candidate already in fail history: assert(c >= 0);
+2025-04-07 15:33:51,989 - runner - INFO - Verifying candidate: assert(c <= n + 1);
+2025-04-07 15:33:51,991 - runner - INFO - Candidate already in fail history: assert(c <= n + 1);
+2025-04-07 15:33:51,994 - runner - INFO - Executing predicate filtering
+2025-04-07 15:33:51,997 - runner - INFO - Filtering predicates for candidate assert(c >= 0);
+2025-04-07 15:33:52,909 - runner - INFO - Filtering predicates for candidate assert(c <= n + 1);
+2025-04-07 15:33:53,122 - runner - INFO - Predicate filtering verify set: ['(n > 0)', 'c >= 0', 'n > 0']
+2025-04-07 15:33:53,125 - runner - INFO - Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.999329299739067
+2025-04-07 15:33:54,049 - runner - INFO - Generated 2 candidates
+2025-04-07 15:33:54,052 - runner - INFO - Verifying generated candidates
+2025-04-07 15:33:54,055 - runner - INFO - Verifying candidate: assert(c >= 0);
+2025-04-07 15:33:54,057 - runner - INFO - Candidate already in fail history: assert(c >= 0);
+2025-04-07 15:33:54,060 - runner - INFO - Verifying candidate: assert(c <= n + 2);
+2025-04-07 15:33:54,062 - runner - INFO - Candidate already in fail history: assert(c <= n + 2);
+2025-04-07 15:33:54,065 - runner - INFO - Executing predicate filtering
+2025-04-07 15:33:54,068 - runner - INFO - Filtering predicates for candidate assert(c >= 0);
+2025-04-07 15:33:54,972 - runner - INFO - Filtering predicates for candidate assert(c <= n + 2);
+2025-04-07 15:33:55,182 - runner - INFO - Predicate filtering verify set: ['(n > 0)', 'c >= 0', 'n > 0']
+2025-04-07 15:33:55,184 - runner - INFO - Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9996985792838805
+2025-04-07 15:33:56,229 - runner - INFO - Generated 2 candidates
+2025-04-07 15:33:56,232 - runner - INFO - Verifying generated candidates
+2025-04-07 15:33:56,235 - runner - INFO - Verifying candidate: assert(c >= 0);
+2025-04-07 15:33:56,237 - runner - INFO - Candidate already in fail history: assert(c >= 0);
+2025-04-07 15:33:56,240 - runner - INFO - Verifying candidate: assert(c <= n + 1);
+2025-04-07 15:33:56,243 - runner - INFO - Candidate already in fail history: assert(c <= n + 1);
+2025-04-07 15:33:56,245 - runner - INFO - Executing predicate filtering
+2025-04-07 15:33:56,248 - runner - INFO - Filtering predicates for candidate assert(c >= 0);
+2025-04-07 15:33:57,173 - runner - INFO - Filtering predicates for candidate assert(c <= n + 1);
+2025-04-07 15:33:57,406 - runner - INFO - Predicate filtering verify set: ['(n > 0)', 'c >= 0', 'n > 0']
+2025-04-07 15:33:57,409 - runner - INFO - Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9998645517007605
+2025-04-07 15:33:58,407 - runner - INFO - Generated 2 candidates
+2025-04-07 15:33:58,409 - runner - INFO - Verifying generated candidates
+2025-04-07 15:33:58,412 - runner - INFO - Verifying candidate: assert(c >= 1);
+2025-04-07 15:33:58,415 - runner - INFO - Candidate already in fail history: assert(c >= 1);
+2025-04-07 15:33:58,417 - runner - INFO - Verifying candidate: assert(c < n + 2);
+2025-04-07 15:33:58,420 - runner - INFO - Candidate already in fail history: assert(c < n + 2);
+2025-04-07 15:33:58,423 - runner - INFO - Executing predicate filtering
+2025-04-07 15:33:58,426 - runner - INFO - Filtering predicates for candidate assert(c >= 1);
+2025-04-07 15:33:58,651 - runner - INFO - Filtering predicates for candidate assert(c < n + 2);
+2025-04-07 15:33:58,908 - runner - INFO - Predicate filtering verify set: ['(n > 0)', 'c >= 0', 'n > 0']
+2025-04-07 15:33:58,911 - runner - INFO - Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9999391368861988
+2025-04-07 15:34:00,230 - runner - INFO - Generated 2 candidates
+2025-04-07 15:34:00,233 - runner - INFO - Verifying generated candidates
+2025-04-07 15:34:00,236 - runner - INFO - Verifying candidate: assert(c >= 0);
+2025-04-07 15:34:00,239 - runner - INFO - Candidate already in fail history: assert(c >= 0);
+2025-04-07 15:34:00,242 - runner - INFO - Verifying candidate: assert(c <= n);
+2025-04-07 15:34:00,244 - runner - INFO - Candidate already in fail history: assert(c <= n);
+2025-04-07 15:34:00,247 - runner - INFO - Executing predicate filtering
+2025-04-07 15:34:00,250 - runner - INFO - Filtering predicates for candidate assert(c >= 0);
+2025-04-07 15:34:00,631 - runner - INFO - Filtering predicates for candidate assert(c <= n);
+2025-04-07 15:34:01,637 - runner - ERROR - ESBMC timed out
+2025-04-07 15:34:01,640 - runner - INFO - Predicate filtering verify set: ['(n > 0)', 'c >= 0', 'n > 0']
+2025-04-07 15:34:01,642 - runner - INFO - Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9999726519818308
+2025-04-07 15:34:02,915 - runner - INFO - Generated 2 candidates
+2025-04-07 15:34:02,918 - runner - INFO - Verifying generated candidates
+2025-04-07 15:34:02,920 - runner - INFO - Verifying candidate: assert(c >= 1);
+2025-04-07 15:34:02,923 - runner - INFO - Candidate already in fail history: assert(c >= 1);
+2025-04-07 15:34:02,926 - runner - INFO - Verifying candidate: assert(c < n + 3);
+2025-04-07 15:34:02,935 - runner - INFO - Candidate failed verification
+2025-04-07 15:34:02,937 - runner - INFO - Adding candidate to fail history: assert(c < n + 3);
+2025-04-07 15:34:02,940 - runner - INFO - Executing predicate filtering
+2025-04-07 15:34:02,942 - runner - INFO - Filtering predicates for candidate assert(c >= 1);
+2025-04-07 15:34:03,172 - runner - INFO - Filtering predicates for candidate assert(c < n + 3);
+2025-04-07 15:34:03,388 - runner - INFO - Predicate filtering verify set: ['(n > 0)', 'c >= 0', 'n > 0']
+2025-04-07 15:34:03,391 - runner - INFO - Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9999816679925603
+2025-04-07 15:34:04,631 - runner - INFO - Generated 2 candidates
+2025-04-07 15:34:04,634 - runner - INFO - Verifying generated candidates
+2025-04-07 15:34:04,636 - runner - INFO - Verifying candidate: assert(c >= 0);
+2025-04-07 15:34:04,639 - runner - INFO - Candidate already in fail history: assert(c >= 0);
+2025-04-07 15:34:04,641 - runner - INFO - Verifying candidate: assert(c <= n + 1);
+2025-04-07 15:34:04,644 - runner - INFO - Candidate already in fail history: assert(c <= n + 1);
+2025-04-07 15:34:04,646 - runner - INFO - Executing predicate filtering
+2025-04-07 15:34:04,649 - runner - INFO - Filtering predicates for candidate assert(c >= 0);
+2025-04-07 15:34:05,531 - runner - INFO - Filtering predicates for candidate assert(c <= n + 1);
+2025-04-07 15:34:05,749 - runner - INFO - Predicate filtering verify set: ['(n > 0)', 'c >= 0', 'n > 0']
+2025-04-07 15:34:05,752 - runner - INFO - Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9999917628565104
+2025-04-07 15:34:06,816 - runner - INFO - Generated 2 candidates
+2025-04-07 15:34:06,819 - runner - INFO - Verifying generated candidates
+2025-04-07 15:34:06,821 - runner - INFO - Verifying candidate: assert(c >= 1);
+2025-04-07 15:34:06,824 - runner - INFO - Candidate already in fail history: assert(c >= 1);
+2025-04-07 15:34:06,827 - runner - INFO - Verifying candidate: assert(c < n + 2);
+2025-04-07 15:34:06,829 - runner - INFO - Candidate already in fail history: assert(c < n + 2);
+2025-04-07 15:34:06,832 - runner - INFO - Executing predicate filtering
+2025-04-07 15:34:06,834 - runner - INFO - Filtering predicates for candidate assert(c >= 1);
+2025-04-07 15:34:07,044 - runner - INFO - Filtering predicates for candidate assert(c < n + 2);
+2025-04-07 15:34:07,253 - runner - INFO - Predicate filtering verify set: ['(n > 0)', 'c >= 0', 'n > 0']
+2025-04-07 15:34:07,256 - runner - INFO - Generating loop invariants candidates with model o1-mini and presence penalty 0.9999962988044543
+2025-04-07 15:34:28,662 - runner - INFO - Generated 2 candidates
+2025-04-07 15:34:28,665 - runner - INFO - Verifying generated candidates
+2025-04-07 15:34:28,667 - runner - INFO - Verifying candidate: assert(n > 0);
+2025-04-07 15:34:28,670 - runner - INFO - Candidate already in fail history: assert(n > 0);
+2025-04-07 15:34:28,673 - runner - INFO - Verifying candidate: assert(c == 0 || c == 1 || c > n);
+2025-04-07 15:34:28,683 - runner - INFO - Candidate failed verification
+2025-04-07 15:34:28,686 - runner - INFO - Adding candidate to fail history: assert(c == 0 || c == 1 || c > n);
+2025-04-07 15:34:28,689 - runner - INFO - Executing predicate filtering
+2025-04-07 15:34:28,691 - runner - INFO - Filtering predicates for candidate assert(n > 0);
+2025-04-07 15:34:28,938 - runner - INFO - Filtering predicates for candidate assert(c == 0 || c == 1 || c > n);
+2025-04-07 15:34:29,945 - runner - ERROR - ESBMC timed out
+2025-04-07 15:34:29,948 - runner - INFO - Predicate filtering verify set: ['(n > 0)', 'c >= 0', 'n > 0']
+2025-04-07 15:34:29,950 - runner - INFO - Generating loop invariants candidates with model o1-mini and presence penalty 0.9999975190129178
+2025-04-07 15:34:52,463 - runner - INFO - Generated 1 candidates
+2025-04-07 15:34:52,466 - runner - INFO - Verifying generated candidates
+2025-04-07 15:34:52,469 - runner - INFO - Verifying candidate: assert(c == 0 || c == 1 || c > n);
+2025-04-07 15:34:52,471 - runner - INFO - Candidate already in fail history: assert(c == 0 || c == 1 || c > n);
+2025-04-07 15:34:52,473 - runner - INFO - Executing predicate filtering
+2025-04-07 15:34:52,476 - runner - INFO - Filtering predicates for candidate assert(c == 0 || c == 1 || c > n);
+2025-04-07 15:34:53,483 - runner - ERROR - ESBMC timed out
+2025-04-07 15:34:53,486 - runner - INFO - Predicate filtering verify set: ['(n > 0)', 'c >= 0', 'n > 0']
+2025-04-07 15:34:53,488 - runner - INFO - Generating loop invariants candidates with model o1-mini and presence penalty 0.9999983369439447
+2025-04-07 15:35:10,228 - runner - INFO - Generated 1 candidates
+2025-04-07 15:35:10,232 - runner - INFO - Verifying generated candidates
+2025-04-07 15:35:10,234 - runner - INFO - Verifying candidate: assert(c != n);
+2025-04-07 15:35:10,243 - runner - INFO - # Result
+2025-04-07 15:35:10,245 - runner - INFO - Solution found by the o1-mini model: assert(c != n);
+2025-04-07 15:35:10,248 - runner - INFO - 10 counter examples were generated for the model proposals, with 35 repeated fails
+2025-04-07 15:35:10,251 - runner - INFO - The model runtime was 62.992249965667725 seconds
+2025-04-07 15:35:10,253 - runner - INFO - The total runtime was 108.10313844680786 seconds

@@ -1,15 +1,18 @@
-23:41:36 25/03/2025 Resetting generator
-23:41:36 25/03/2025 # Run Benchmark 1
-23:41:36 25/03/2025 Executing predicate filtering for preconditions
-23:41:36 25/03/2025 Filtering predicates for candidate assert(x == 1)
-23:41:36 25/03/2025 Filtering predicates for candidate assert(y == 0)
-23:41:36 25/03/2025 Predicate filtering verify set: []
-23:41:36 25/03/2025 Generating loop invariants candidates with model gpt-4o and presence penalty 0.0
-23:41:36 25/03/2025 Generated 2 candidates
-23:41:36 25/03/2025 Verifying generated candidates
-23:41:36 25/03/2025 Verifying candidate: assert(x == y * (y - 1) / 2 + 1);
-23:41:36 25/03/2025 # Result
-23:41:36 25/03/2025 Solution found by the gpt-4o model: assert(x == y * (y - 1) / 2 + 1);
-23:41:36 25/03/2025 0 counter examples were generated for the model proposals, with 0 repeated fails
-23:41:36 25/03/2025 The model runtime was 0.9408998489379883 seconds
-23:41:36 25/03/2025 The total runtime was 1.2262189388275146 seconds
+2025-04-07 14:45:22,613 - runner - INFO - Resetting generator
+2025-04-07 14:45:22,614 - runner - INFO - # Run Benchmark 1
+2025-04-07 14:45:22,614 - runner - INFO - Executing predicate filtering for preconditions
+2025-04-07 14:45:22,614 - runner - INFO - Filtering predicates for candidate assert(x == 1)
+2025-04-07 14:45:23,015 - runner - INFO - Filtering predicates for candidate assert(y == 0)
+2025-04-07 14:45:23,208 - runner - INFO - Predicate filtering verify set: []
+2025-04-07 14:45:23,208 - runner - INFO - Generating loop invariants candidates with model gpt-4o and presence penalty 0.0
+2025-04-07 14:45:24,940 - runner - INFO - Generated 3 candidates
+2025-04-07 14:45:24,941 - runner - INFO - Verifying generated candidates
+2025-04-07 14:45:24,941 - runner - INFO - Verifying candidate: assert(y >= 0);
+2025-04-07 14:45:24,993 - runner - INFO - Candidate failed verification
+2025-04-07 14:45:24,993 - runner - INFO - Adding candidate to fail history: assert(y >= 0);
+2025-04-07 14:45:24,993 - runner - INFO - Verifying candidate: assert(x == y * (y - 1) / 2 + 1);
+2025-04-07 14:45:25,000 - runner - INFO - # Result
+2025-04-07 14:45:25,000 - runner - INFO - Solution found by the gpt-4o model: assert(x == y * (y - 1) / 2 + 1);
+2025-04-07 14:45:25,000 - runner - INFO - 1 counter examples were generated for the model proposals, with 0 repeated fails
+2025-04-07 14:45:25,000 - runner - INFO - The model runtime was 1.7925457954406738 seconds
+2025-04-07 14:45:25,000 - runner - INFO - The total runtime was 2.386570692062378 seconds

@@ -1,19 +1,19 @@
-01:54:23 26/03/2025 Resetting generator
-01:54:23 26/03/2025 # Run Benchmark 80
-01:54:23 26/03/2025 Executing predicate filtering for preconditions
-01:54:23 26/03/2025 Filtering predicates for candidate assert(i == 0)
-01:54:23 26/03/2025 Filtering predicates for candidate assert((x >= 0))
-01:54:23 26/03/2025 Addind predicate (x >= 0) to verify set
-01:54:23 26/03/2025 Filtering predicates for candidate assert((y >= 0))
-01:54:23 26/03/2025 Addind predicate (y >= 0) to verify set
-01:54:23 26/03/2025 Filtering predicates for candidate assert((x >= y))
-01:54:23 26/03/2025 Addind predicate (x >= y) to verify set
-01:54:23 26/03/2025 Predicate filtering verify set: ['(x >= 0)', '(y >= 0)', '(x >= y)']
-01:54:23 26/03/2025 Verifying formula: (and (and (>= x 0) (>= y 0)) (>= x y))
-01:54:23 26/03/2025 For candidate: assert(((x >= 0)) && ((y >= 0)) && ((x >= y)))
-01:54:23 26/03/2025 Predicate filtering found solution: assert(((x >= 0)) && ((y >= 0)) && ((x >= y)))
-01:54:23 26/03/2025 # Result
-01:54:23 26/03/2025 Solution found by the predicate filtering mechanism using the None model: assert(((x >= 0)) && ((y >= 0)) && ((x >= y)))
-01:54:23 26/03/2025 0 counter examples were generated for the model proposals, with 0 repeated fails
-01:54:23 26/03/2025 The model runtime was 0.0 seconds
-01:54:23 26/03/2025 The total runtime was 0.5993914604187012 seconds
+2025-04-07 17:17:21,670 - runner - INFO - Resetting generator
+2025-04-07 17:17:21,674 - runner - INFO - # Run Benchmark 80
+2025-04-07 17:17:21,678 - runner - INFO - Executing predicate filtering for preconditions
+2025-04-07 17:17:21,683 - runner - INFO - Filtering predicates for candidate assert(i == 0)
+2025-04-07 17:17:21,905 - runner - INFO - Filtering predicates for candidate assert((x >= 0))
+2025-04-07 17:17:22,133 - runner - INFO - Addind predicate (x >= 0) to verify set
+2025-04-07 17:17:22,137 - runner - INFO - Filtering predicates for candidate assert((y >= 0))
+2025-04-07 17:17:22,365 - runner - INFO - Addind predicate (y >= 0) to verify set
+2025-04-07 17:17:22,368 - runner - INFO - Filtering predicates for candidate assert((x >= y))
+2025-04-07 17:17:22,598 - runner - INFO - Addind predicate (x >= y) to verify set
+2025-04-07 17:17:22,601 - runner - INFO - Predicate filtering verify set: ['(x >= 0)', '(y >= 0)', '(x >= y)']
+2025-04-07 17:17:22,605 - runner - INFO - Verifying formula: (and (and (>= x 0) (>= y 0)) (>= x y))
+2025-04-07 17:17:22,608 - runner - INFO - For candidate: assert(((x >= 0)) && ((y >= 0)) && ((x >= y)))
+2025-04-07 17:17:22,618 - runner - INFO - Predicate filtering found solution: assert(((x >= 0)) && ((y >= 0)) && ((x >= y)))
+2025-04-07 17:17:22,639 - runner - INFO - # Result
+2025-04-07 17:17:22,642 - runner - INFO - Solution found by the predicate filtering mechanism using the None model: assert(((x >= 0)) && ((y >= 0)) && ((x >= y)))
+2025-04-07 17:17:22,657 - runner - INFO - 0 counter examples were generated for the model proposals, with 0 repeated fails
+2025-04-07 17:17:22,661 - runner - INFO - The model runtime was 0.0 seconds
+2025-04-07 17:17:22,665 - runner - INFO - The total runtime was 0.9828190803527832 seconds
