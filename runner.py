@@ -88,23 +88,54 @@ class Runner:
         time_spent = time.time() - self._curr_pipeline_step_activation_time
         curr_step = self.pipeline[self._curr_pipeline_step_index]
         
-        if len(self._fail_history) > 10: 
+        curr_model_str = str(curr_step[0]).lower()
+        
+        # Adjust fail history threshold based on current model
+        fail_threshold = 15 if "o1-mini" in curr_model_str else (
+            8 if "gpt-4o-mini" in curr_model_str else
+            5 if "gpt-4o" in curr_model_str else 20
+        )
+        
+        if len(self._fail_history) > fail_threshold:
             self._reset_generator()
             
         if time_spent >= curr_step[1] and self._curr_pipeline_step_index == len(self.pipeline) - 1:
             return (None, None)
+            
         if time_spent >= curr_step[1]:
             next_model = self.pipeline[self._curr_pipeline_step_index + 1][0]
             next_model_str = str(next_model).lower()
-            if any(model in next_model_str for model in ["gpt-4o", "gpt-4o-mini"]):
+            
+            # Reset strategy based on model transition
+            should_reset = (
+                # Reset when transitioning to high-performance models
+                any(model in next_model_str for model in ["gpt-4o", "gpt-4o-mini"]) or
+                # Reset if current model had too many repeated fails
+                self._fail_history_hit > fail_threshold * 0.7
+            )
+            
+            if should_reset:
                 self._reset_generator()
+                
             self._curr_pipeline_step_index += 1
             self._curr_pipeline_step_activation_time = time.time()
         
         return self.pipeline[self._curr_pipeline_step_index]
     
     def _get_presence_penalty(self) -> float:
-        return math.tanh(self._fail_history_hit * self.presence_penalty_scale)
+        curr_model = self.pipeline[self._curr_pipeline_step_index][0]
+        curr_model_str = str(curr_model).lower()
+        
+        # Adjust penalty scale based on model capability
+        scale = self.presence_penalty_scale
+        if "gpt-4o" in curr_model_str:
+            scale *= 0.3  # Reduce penalty for GPT-4
+        elif "gpt-4o-mini" in curr_model_str:
+            scale *= 0.5  # Moderate penalty for GPT-4-mini
+        elif "o1-mini" in curr_model_str:
+            scale *= 0.7  # Higher penalty for o1-mini
+        
+        return math.tanh(self._fail_history_hit * scale)
     
     def _predicate_filtering(self, candidates: list[str]) -> str:
         verify = False
