@@ -53,8 +53,9 @@ def update_model_statistics(content: str, results: ModelResults):
 
     model_runtime_match = model_run_time_pattern.search(content)
     if not model_runtime_match:
-        raise ValueError("Model runtime not found")
-    model_runtime = float(model_runtime_match.group(1))
+        pass
+    else:
+        model_runtime = float(model_runtime_match.group(1))
 
     results.average_runtime = (results.average_runtime * (results.solutions_found - 1) + model_runtime) / results.solutions_found
     results.average_counter_examples = (results.average_counter_examples * (results.solutions_found - 1) + mean_counter_examples_generated) / results.solutions_found
