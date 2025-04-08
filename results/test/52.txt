@@ -1,14 +1,14 @@
-00:58:10 26/03/2025 Resetting generator
-00:58:10 26/03/2025 # Run Benchmark 52
-00:58:10 26/03/2025 Executing predicate filtering for preconditions
-00:58:10 26/03/2025 Filtering predicates for candidate assert(c == 0)
-00:58:10 26/03/2025 Predicate filtering verify set: []
-00:58:10 26/03/2025 Generating loop invariants candidates with model gpt-4o and presence penalty 0.0
-00:58:10 26/03/2025 Generated 2 candidates
-00:58:10 26/03/2025 Verifying generated candidates
-00:58:10 26/03/2025 Verifying candidate: assert(c >= 0);
-00:58:10 26/03/2025 # Result
-00:58:10 26/03/2025 Solution found by the gpt-4o model: assert(c >= 0);
-00:58:10 26/03/2025 0 counter examples were generated for the model proposals, with 0 repeated fails
-00:58:10 26/03/2025 The model runtime was 0.781935453414917 seconds
-00:58:10 26/03/2025 The total runtime was 0.9192502498626709 seconds
+2025-04-07 23:41:14,369 - runner - INFO - Resetting generator
+2025-04-07 23:41:14,373 - runner - INFO - # Run Benchmark 52
+2025-04-07 23:41:14,375 - runner - INFO - Executing predicate filtering for preconditions
+2025-04-07 23:41:14,378 - runner - INFO - Filtering predicates for candidate assert(c == 0)
+2025-04-07 23:41:14,598 - runner - INFO - Predicate filtering verify set: []
+2025-04-07 23:41:14,600 - runner - INFO - Generating loop invariants candidates with model gpt-4o and presence penalty 0.0
+2025-04-07 23:41:15,511 - runner - INFO - Generated 2 candidates
+2025-04-07 23:41:15,514 - runner - INFO - Verifying generated candidates
+2025-04-07 23:41:15,516 - runner - INFO - Verifying candidate: assert(c >= 0);
+2025-04-07 23:41:15,523 - runner - INFO - # Result
+2025-04-07 23:41:15,526 - runner - INFO - Solution found by the gpt-4o model: assert(c >= 0);
+2025-04-07 23:41:15,528 - runner - INFO - 0 counter examples were generated for the model proposals, with 0 repeated fails
+2025-04-07 23:41:15,531 - runner - INFO - The model runtime was 0.9280655384063721 seconds
+2025-04-07 23:41:15,533 - runner - INFO - The total runtime was 1.1558985710144043 seconds

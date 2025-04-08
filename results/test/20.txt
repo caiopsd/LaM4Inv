@@ -1,58 +1,33 @@
-23:56:23 25/03/2025 Resetting generator
-23:56:23 25/03/2025 # Run Benchmark 20
-23:56:23 25/03/2025 Executing predicate filtering for preconditions
-23:56:23 25/03/2025 Filtering predicates for candidate assert(x == 0)
-23:56:23 25/03/2025 Filtering predicates for candidate assert(m == 0)
-23:56:23 25/03/2025 Predicate filtering verify set: []
-23:56:23 25/03/2025 Generating loop invariants candidates with model gpt-4o and presence penalty 0.0
-23:56:23 25/03/2025 Generated 3 candidates
-23:56:23 25/03/2025 Verifying generated candidates
-23:56:23 25/03/2025 Verifying candidate: assert(x >= 0);
-23:56:23 25/03/2025 Candidate failed verification
-23:56:23 25/03/2025 Adding candidate to fail history: assert(x >= 0);
-23:56:23 25/03/2025 Verifying candidate: assert(m <= x);
-23:56:23 25/03/2025 Candidate failed verification
-23:56:23 25/03/2025 Adding candidate to fail history: assert(m <= x);
-23:56:23 25/03/2025 Verifying candidate: assert(x <= n);
-23:56:23 25/03/2025 Candidate failed verification
-23:56:23 25/03/2025 Adding candidate to fail history: assert(x <= n);
-23:56:23 25/03/2025 Executing predicate filtering
-23:56:23 25/03/2025 Filtering predicates for candidate assert(x >= 0);
-23:56:23 25/03/2025 Addind predicate x >= 0 to verify set
-23:56:23 25/03/2025 Filtering predicates for candidate assert(m <= x);
-23:56:23 25/03/2025 Addind predicate m <= x to verify set
-23:56:23 25/03/2025 Filtering predicates for candidate assert(x <= n);
-23:56:23 25/03/2025 Predicate filtering verify set: ['x >= 0', 'm <= x']
-23:56:23 25/03/2025 Verifying formula: (and (>= x 0) (<= m x))
-23:56:23 25/03/2025 For candidate: assert((x >= 0) && (m <= x))
-23:56:23 25/03/2025 Resetting generator
-23:56:23 25/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.0
-23:56:23 25/03/2025 Generated 4 candidates
-23:56:23 25/03/2025 Verifying generated candidates
-23:56:23 25/03/2025 Verifying candidate: assert (n >= 0);
-23:56:23 25/03/2025 Candidate failed verification
-23:56:23 25/03/2025 Adding candidate to fail history: assert (n >= 0);
-23:56:23 25/03/2025 Verifying candidate: assert (x >= 0);
-23:56:23 25/03/2025 Candidate failed verification
-23:56:23 25/03/2025 Adding candidate to fail history: assert (x >= 0);
-23:56:23 25/03/2025 Verifying candidate: assert (x <= n);
-23:56:23 25/03/2025 Candidate failed verification
-23:56:23 25/03/2025 Adding candidate to fail history: assert (x <= n);
-23:56:23 25/03/2025 Verifying candidate: assert (m >= 0);
-23:56:23 25/03/2025 Candidate failed verification
-23:56:23 25/03/2025 Adding candidate to fail history: assert (m >= 0);
-23:56:23 25/03/2025 Executing predicate filtering
-23:56:23 25/03/2025 Filtering predicates for candidate assert (n >= 0);
-23:56:23 25/03/2025 Filtering predicates for candidate assert (x >= 0);
-23:56:23 25/03/2025 Filtering predicates for candidate assert (x <= n);
-23:56:23 25/03/2025 Filtering predicates for candidate assert (m >= 0);
-23:56:23 25/03/2025 Addind predicate m >= 0 to verify set
-23:56:23 25/03/2025 Predicate filtering verify set: ['x >= 0', 'm <= x', 'm >= 0']
-23:56:23 25/03/2025 Verifying formula: (and (and (>= x 0) (<= m x)) (>= m 0))
-23:56:23 25/03/2025 For candidate: assert((x >= 0) && (m <= x) && (m >= 0))
-23:56:23 25/03/2025 Predicate filtering found solution: assert((x >= 0) && (m <= x) && (m >= 0))
-23:56:23 25/03/2025 # Result
-23:56:23 25/03/2025 Solution found by the predicate filtering mechanism using the gpt-4o-mini model: assert((x >= 0) && (m <= x) && (m >= 0))
-23:56:23 25/03/2025 4 counter examples were generated for the model proposals, with 0 repeated fails
-23:56:23 25/03/2025 The model runtime was 8.156836032867432 seconds
-23:56:23 25/03/2025 The total runtime was 10.439958095550537 seconds
+2025-04-07 23:28:29,525 - runner - INFO - Resetting generator
+2025-04-07 23:28:29,526 - runner - INFO - # Run Benchmark 20
+2025-04-07 23:28:29,527 - runner - INFO - Executing predicate filtering for preconditions
+2025-04-07 23:28:29,528 - runner - INFO - Filtering predicates for candidate assert(x == 0)
+2025-04-07 23:28:29,772 - runner - INFO - Filtering predicates for candidate assert(m == 0)
+2025-04-07 23:28:30,028 - runner - INFO - Predicate filtering verify set: []
+2025-04-07 23:28:30,029 - runner - INFO - Generating loop invariants candidates with model gpt-4o and presence penalty 0.0
+2025-04-07 23:28:31,432 - runner - INFO - Generated 3 candidates
+2025-04-07 23:28:31,433 - runner - INFO - Verifying generated candidates
+2025-04-07 23:28:31,434 - runner - INFO - Verifying candidate: assert(x >= 0);
+2025-04-07 23:28:31,441 - runner - INFO - Candidate failed verification
+2025-04-07 23:28:31,442 - runner - INFO - Adding candidate to fail history: assert(x >= 0);
+2025-04-07 23:28:31,443 - runner - INFO - Verifying candidate: assert(x <= n);
+2025-04-07 23:28:31,446 - runner - INFO - Candidate failed verification
+2025-04-07 23:28:31,447 - runner - INFO - Adding candidate to fail history: assert(x <= n);
+2025-04-07 23:28:31,448 - runner - INFO - Verifying candidate: assert((m >= 0) && (m < n));
+2025-04-07 23:28:31,452 - runner - INFO - Candidate failed verification
+2025-04-07 23:28:31,454 - runner - INFO - Adding candidate to fail history: assert((m >= 0) && (m < n));
+2025-04-07 23:28:31,454 - runner - INFO - Executing predicate filtering
+2025-04-07 23:28:31,455 - runner - INFO - Filtering predicates for candidate assert(x >= 0);
+2025-04-07 23:28:31,724 - runner - INFO - Addind predicate x >= 0 to verify set
+2025-04-07 23:28:31,725 - runner - INFO - Filtering predicates for candidate assert(x <= n);
+2025-04-07 23:28:31,951 - runner - INFO - Filtering predicates for candidate assert((m >= 0) && (m < n));
+2025-04-07 23:28:33,017 - runner - INFO - Addind predicate (m >= 0) to verify set
+2025-04-07 23:28:33,018 - runner - INFO - Predicate filtering verify set: ['x >= 0', '(m >= 0)']
+2025-04-07 23:28:33,019 - runner - INFO - Verifying formula: (and (>= x 0) (>= m 0))
+2025-04-07 23:28:33,020 - runner - INFO - For candidate: assert((x >= 0) && ((m >= 0)))
+2025-04-07 23:28:33,026 - runner - INFO - Predicate filtering found solution: assert((x >= 0) && ((m >= 0)))
+2025-04-07 23:28:33,027 - runner - INFO - # Result
+2025-04-07 23:28:33,028 - runner - INFO - Solution found by the predicate filtering mechanism using the gpt-4o model: assert((x >= 0) && ((m >= 0)))
+2025-04-07 23:28:33,029 - runner - INFO - 3 counter examples were generated for the model proposals, with 0 repeated fails
+2025-04-07 23:28:33,030 - runner - INFO - The model runtime was 2.9998292922973633 seconds
+2025-04-07 23:28:33,031 - runner - INFO - The total runtime was 3.502903938293457 seconds

@@ -1,327 +1,48 @@
-23:50:49 25/03/2025 Resetting generator
-23:50:49 25/03/2025 # Run Benchmark 12
-23:50:49 25/03/2025 Executing predicate filtering for preconditions
-23:50:49 25/03/2025 Filtering predicates for candidate assert((x >= 0))
-23:50:49 25/03/2025 Addind predicate (x >= 0) to verify set
-23:50:49 25/03/2025 Filtering predicates for candidate assert((x <= 10))
-23:50:49 25/03/2025 Filtering predicates for candidate assert((y <= 10))
-23:50:49 25/03/2025 Filtering predicates for candidate assert((y >= 0))
-23:50:49 25/03/2025 Addind predicate (y >= 0) to verify set
-23:50:49 25/03/2025 Predicate filtering verify set: ['(x >= 0)', '(y >= 0)']
-23:50:49 25/03/2025 Verifying formula: (and (>= x 0) (>= y 0))
-23:50:49 25/03/2025 For candidate: assert(((x >= 0)) && ((y >= 0)))
-23:50:49 25/03/2025 Generating loop invariants candidates with model gpt-4o and presence penalty 0.0
-23:50:49 25/03/2025 Generated 5 candidates
-23:50:49 25/03/2025 Verifying generated candidates
-23:50:49 25/03/2025 Verifying candidate: assert(x >= 0);
-23:50:49 25/03/2025 Candidate failed verification
-23:50:49 25/03/2025 Adding candidate to fail history: assert(x >= 0);
-23:50:49 25/03/2025 Verifying candidate: assert(x <= 10 || x % 10 == 0);
-23:50:49 25/03/2025 Candidate failed verification
-23:50:49 25/03/2025 Adding candidate to fail history: assert(x <= 10 || x % 10 == 0);
-23:50:49 25/03/2025 Verifying candidate: assert(y >= 0);
-23:50:49 25/03/2025 Candidate failed verification
-23:50:49 25/03/2025 Adding candidate to fail history: assert(y >= 0);
-23:50:49 25/03/2025 Verifying candidate: assert(y <= 10 || y % 10 == 0);
-23:50:49 25/03/2025 Candidate failed verification
-23:50:49 25/03/2025 Adding candidate to fail history: assert(y <= 10 || y % 10 == 0);
-23:50:49 25/03/2025 Verifying candidate: assert((x - y) == 0);
-23:50:49 25/03/2025 Candidate failed verification
-23:50:49 25/03/2025 Adding candidate to fail history: assert((x - y) == 0);
-23:50:49 25/03/2025 Executing predicate filtering
-23:50:49 25/03/2025 Filtering predicates for candidate assert(x >= 0);
-23:50:49 25/03/2025 Addind predicate x >= 0 to verify set
-23:50:49 25/03/2025 Filtering predicates for candidate assert(x <= 10 || x % 10 == 0);
-23:50:49 25/03/2025 Filtering predicates for candidate assert(y >= 0);
-23:50:49 25/03/2025 Addind predicate y >= 0 to verify set
-23:50:49 25/03/2025 Filtering predicates for candidate assert(y <= 10 || y % 10 == 0);
-23:50:49 25/03/2025 Filtering predicates for candidate assert((x - y) == 0);
-23:50:49 25/03/2025 Predicate filtering verify set: ['(x >= 0)', '(y >= 0)', 'x >= 0', 'y >= 0']
-23:50:49 25/03/2025 Verifying formula: (and (and (and (>= x 0) (>= y 0)) (>= x 0)) (>= y 0))
-23:50:49 25/03/2025 For candidate: assert(((x >= 0)) && ((y >= 0)) && (x >= 0) && (y >= 0))
-23:50:49 25/03/2025 Resetting generator
-23:50:49 25/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.0
-23:50:49 25/03/2025 Generated 4 candidates
-23:50:49 25/03/2025 Verifying generated candidates
-23:50:49 25/03/2025 Verifying candidate: assert((x >= 0) && (x <= 10));
-23:50:49 25/03/2025 Candidate failed verification
-23:50:49 25/03/2025 Adding candidate to fail history: assert((x >= 0) && (x <= 10));
-23:50:49 25/03/2025 Verifying candidate: assert((y >= 0) && (y <= 10));
-23:50:49 25/03/2025 Candidate failed verification
-23:50:49 25/03/2025 Adding candidate to fail history: assert((y >= 0) && (y <= 10));
-23:50:49 25/03/2025 Verifying candidate: assert((x % 10 == 0));
-23:50:49 25/03/2025 Candidate failed verification
-23:50:49 25/03/2025 Adding candidate to fail history: assert((x % 10 == 0));
-23:50:49 25/03/2025 Verifying candidate: assert((y % 10 == 0));
-23:50:49 25/03/2025 Candidate failed verification
-23:50:49 25/03/2025 Adding candidate to fail history: assert((y % 10 == 0));
-23:50:49 25/03/2025 Executing predicate filtering
-23:50:49 25/03/2025 Filtering predicates for candidate assert((x >= 0) && (x <= 10));
-23:50:49 25/03/2025 Filtering predicates for candidate assert((y >= 0) && (y <= 10));
-23:50:49 25/03/2025 Filtering predicates for candidate assert((x % 10 == 0));
-23:50:49 25/03/2025 Filtering predicates for candidate assert((y % 10 == 0));
-23:50:49 25/03/2025 Predicate filtering verify set: ['(x >= 0)', '(y >= 0)', 'x >= 0', 'y >= 0']
-23:50:49 25/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.0
-23:50:49 25/03/2025 Generated 4 candidates
-23:50:49 25/03/2025 Verifying generated candidates
-23:50:49 25/03/2025 Verifying candidate: assert((x >= 0) && (x <= 10));
-23:50:49 25/03/2025 Candidate already in fail history: assert((x >= 0) && (x <= 10));
-23:50:49 25/03/2025 Verifying candidate: assert((y >= 0) && (y <= 10));
-23:50:49 25/03/2025 Candidate already in fail history: assert((y >= 0) && (y <= 10));
-23:50:49 25/03/2025 Verifying candidate: assert((y == 0) || (y % 10 == 0));
-23:50:49 25/03/2025 Candidate failed verification
-23:50:49 25/03/2025 Adding candidate to fail history: assert((y == 0) || (y % 10 == 0));
-23:50:49 25/03/2025 Verifying candidate: assert((x <= 10 - y));
-23:50:49 25/03/2025 Candidate failed verification
-23:50:49 25/03/2025 Adding candidate to fail history: assert((x <= 10 - y));
-23:50:49 25/03/2025 Executing predicate filtering
-23:50:49 25/03/2025 Filtering predicates for candidate assert((x >= 0) && (x <= 10));
-23:50:49 25/03/2025 Filtering predicates for candidate assert((y >= 0) && (y <= 10));
-23:50:49 25/03/2025 Filtering predicates for candidate assert((y == 0) || (y % 10 == 0));
-23:50:49 25/03/2025 Filtering predicates for candidate assert((x <= 10 - y));
-23:50:49 25/03/2025 Predicate filtering verify set: ['(x >= 0)', '(y >= 0)', 'x >= 0', 'y >= 0']
-23:50:49 25/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.3799489622552249
-23:50:49 25/03/2025 Generated 2 candidates
-23:50:49 25/03/2025 Verifying generated candidates
-23:50:49 25/03/2025 Verifying candidate: assert((x >= 0) && (y >= 0));
-23:50:49 25/03/2025 Candidate failed verification
-23:50:49 25/03/2025 Adding candidate to fail history: assert((x >= 0) && (y >= 0));
-23:50:49 25/03/2025 Verifying candidate: assert((x + y) <= 100);
-23:50:49 25/03/2025 Candidate failed verification
-23:50:49 25/03/2025 Adding candidate to fail history: assert((x + y) <= 100);
-23:50:49 25/03/2025 Executing predicate filtering
-23:50:49 25/03/2025 Filtering predicates for candidate assert((x >= 0) && (y >= 0));
-23:50:49 25/03/2025 Filtering predicates for candidate assert((x + y) <= 100);
-23:50:49 25/03/2025 Predicate filtering verify set: ['(x >= 0)', '(y >= 0)', 'x >= 0', 'y >= 0']
-23:50:49 25/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.3799489622552249
-23:50:49 25/03/2025 Generated 3 candidates
-23:50:49 25/03/2025 Verifying generated candidates
-23:50:49 25/03/2025 Verifying candidate: assert((x >= 0) && (x <= 10));
-23:50:49 25/03/2025 Candidate already in fail history: assert((x >= 0) && (x <= 10));
-23:50:49 25/03/2025 Verifying candidate: assert((y >= 0) && (y <= 10));
-23:50:49 25/03/2025 Candidate already in fail history: assert((y >= 0) && (y <= 10));
-23:50:49 25/03/2025 Verifying candidate: assert((y == 0) || (x < 20));
-23:50:49 25/03/2025 Candidate failed verification
-23:50:49 25/03/2025 Adding candidate to fail history: assert((y == 0) || (x < 20));
-23:50:49 25/03/2025 Executing predicate filtering
-23:50:49 25/03/2025 Filtering predicates for candidate assert((x >= 0) && (x <= 10));
-23:50:49 25/03/2025 Filtering predicates for candidate assert((y >= 0) && (y <= 10));
-23:50:49 25/03/2025 Filtering predicates for candidate assert((y == 0) || (x < 20));
-23:50:49 25/03/2025 Predicate filtering verify set: ['(x >= 0)', '(y >= 0)', 'x >= 0', 'y >= 0']
-23:50:49 25/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.6640367702678491
-23:50:49 25/03/2025 Generated 2 candidates
-23:50:49 25/03/2025 Verifying generated candidates
-23:50:49 25/03/2025 Verifying candidate: assert((x >= 0) && (y >= 0));
-23:50:49 25/03/2025 Candidate already in fail history: assert((x >= 0) && (y >= 0));
-23:50:49 25/03/2025 Verifying candidate: assert((x + y) <= 20);
-23:50:49 25/03/2025 Candidate failed verification
-23:50:49 25/03/2025 Adding candidate to fail history: assert((x + y) <= 20);
-23:50:49 25/03/2025 Executing predicate filtering
-23:50:49 25/03/2025 Filtering predicates for candidate assert((x >= 0) && (y >= 0));
-23:50:49 25/03/2025 Filtering predicates for candidate assert((x + y) <= 20);
-23:50:49 25/03/2025 Predicate filtering verify set: ['(x >= 0)', '(y >= 0)', 'x >= 0', 'y >= 0']
-23:50:49 25/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.7615941559557649
-23:50:49 25/03/2025 Generated 3 candidates
-23:50:49 25/03/2025 Verifying generated candidates
-23:50:49 25/03/2025 Verifying candidate: assert((x >= 0));
-23:50:49 25/03/2025 Candidate failed verification
-23:50:49 25/03/2025 Adding candidate to fail history: assert((x >= 0));
-23:50:49 25/03/2025 Verifying candidate: assert((y >= 0));
-23:50:49 25/03/2025 Candidate failed verification
-23:50:49 25/03/2025 Adding candidate to fail history: assert((y >= 0));
-23:50:49 25/03/2025 Verifying candidate: assert((x + y) <= 20);
-23:50:49 25/03/2025 Candidate already in fail history: assert((x + y) <= 20);
-23:50:49 25/03/2025 Executing predicate filtering
-23:50:49 25/03/2025 Filtering predicates for candidate assert((x >= 0));
-23:50:49 25/03/2025 Filtering predicates for candidate assert((y >= 0));
-23:50:49 25/03/2025 Filtering predicates for candidate assert((x + y) <= 20);
-23:50:49 25/03/2025 Predicate filtering verify set: ['(x >= 0)', '(y >= 0)', 'x >= 0', 'y >= 0']
-23:50:49 25/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.8336546070121553
-23:50:49 25/03/2025 Generated 2 candidates
-23:50:49 25/03/2025 Verifying generated candidates
-23:50:49 25/03/2025 Verifying candidate: assert((x >= 0) || (y == 0));
-23:50:49 25/03/2025 Candidate failed verification
-23:50:49 25/03/2025 Adding candidate to fail history: assert((x >= 0) || (y == 0));
-23:50:49 25/03/2025 Verifying candidate: assert((y <= 10) || (x == 0));
-23:50:49 25/03/2025 Candidate failed verification
-23:50:49 25/03/2025 Adding candidate to fail history: assert((y <= 10) || (x == 0));
-23:50:49 25/03/2025 Executing predicate filtering
-23:50:49 25/03/2025 Filtering predicates for candidate assert((x >= 0) || (y == 0));
-23:50:49 25/03/2025 Addind predicate ((x >= 0)) || ((y == 0)) to verify set
-23:50:49 25/03/2025 Filtering predicates for candidate assert((y <= 10) || (x == 0));
-23:50:49 25/03/2025 Predicate filtering verify set: ['(x >= 0)', '(y >= 0)', 'x >= 0', 'y >= 0', '((x >= 0)) || ((y == 0))']
-23:50:49 25/03/2025 Verifying formula: (and (and (and (and (>= x 0) (>= y 0)) (>= x 0)) (>= y 0)) (or (>= x 0) (= y 0)))
-23:50:49 25/03/2025 For candidate: assert(((x >= 0)) && ((y >= 0)) && (x >= 0) && (y >= 0) && (((x >= 0)) || ((y == 0))))
-23:50:49 25/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.8336546070121553
-23:50:49 25/03/2025 Generated 3 candidates
-23:50:49 25/03/2025 Verifying generated candidates
-23:50:49 25/03/2025 Verifying candidate: assert((x + y) <= 10);
-23:50:49 25/03/2025 Candidate failed verification
-23:50:49 25/03/2025 Adding candidate to fail history: assert((x + y) <= 10);
-23:50:49 25/03/2025 Verifying candidate: assert((x + y) >= 0);
-23:50:49 25/03/2025 Candidate failed verification
-23:50:49 25/03/2025 Adding candidate to fail history: assert((x + y) >= 0);
-23:50:49 25/03/2025 Verifying candidate: assert((x + y) % 10 == 0);
-23:50:49 25/03/2025 Candidate failed verification
-23:50:49 25/03/2025 Adding candidate to fail history: assert((x + y) % 10 == 0);
-23:50:49 25/03/2025 Executing predicate filtering
-23:50:49 25/03/2025 Filtering predicates for candidate assert((x + y) <= 10);
-23:50:49 25/03/2025 Filtering predicates for candidate assert((x + y) >= 0);
-23:50:49 25/03/2025 Addind predicate (x + y) >= 0 to verify set
-23:50:49 25/03/2025 Filtering predicates for candidate assert((x + y) % 10 == 0);
-23:50:49 25/03/2025 Predicate filtering verify set: ['(x >= 0)', '(y >= 0)', 'x >= 0', 'y >= 0', '((x >= 0)) || ((y == 0))', '(x + y) >= 0']
-23:50:49 25/03/2025 Verifying formula: (and (and (and (and (and (>= x 0) (>= y 0)) (>= x 0)) (>= y 0)) (or (>= x 0) (= y 0))) (>= (+ x y) 0))
-23:50:49 25/03/2025 For candidate: assert(((x >= 0)) && ((y >= 0)) && (x >= 0) && (y >= 0) && (((x >= 0)) || ((y == 0))) && ((x + y) >= 0))
-23:50:49 25/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.8336546070121553
-23:50:49 25/03/2025 Generated 3 candidates
-23:50:49 25/03/2025 Verifying generated candidates
-23:50:49 25/03/2025 Verifying candidate: assert((x <= 10));
-23:50:49 25/03/2025 Candidate failed verification
-23:50:49 25/03/2025 Adding candidate to fail history: assert((x <= 10));
-23:50:49 25/03/2025 Verifying candidate: assert((y <= 10));
-23:50:49 25/03/2025 Candidate failed verification
-23:50:49 25/03/2025 Adding candidate to fail history: assert((y <= 10));
-23:50:49 25/03/2025 Verifying candidate: assert((x + y) < 100);
-23:50:49 25/03/2025 Candidate failed verification
-23:50:49 25/03/2025 Adding candidate to fail history: assert((x + y) < 100);
-23:50:49 25/03/2025 Executing predicate filtering
-23:50:49 25/03/2025 Filtering predicates for candidate assert((x <= 10));
-23:50:49 25/03/2025 Filtering predicates for candidate assert((y <= 10));
-23:50:49 25/03/2025 Filtering predicates for candidate assert((x + y) < 100);
-23:50:49 25/03/2025 Predicate filtering verify set: ['(x >= 0)', '(y >= 0)', 'x >= 0', 'y >= 0', '((x >= 0)) || ((y == 0))', '(x + y) >= 0']
-23:50:49 25/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.8336546070121553
-23:50:49 25/03/2025 Generated 2 candidates
-23:50:49 25/03/2025 Verifying generated candidates
-23:50:49 25/03/2025 Verifying candidate: assert((x >= 0) && (y >= 0));
-23:50:49 25/03/2025 Candidate already in fail history: assert((x >= 0) && (y >= 0));
-23:50:49 25/03/2025 Verifying candidate: assert((x + y) <= 20);
-23:50:49 25/03/2025 Candidate already in fail history: assert((x + y) <= 20);
-23:50:49 25/03/2025 Executing predicate filtering
-23:50:49 25/03/2025 Filtering predicates for candidate assert((x >= 0) && (y >= 0));
-23:50:49 25/03/2025 Filtering predicates for candidate assert((x + y) <= 20);
-23:50:49 25/03/2025 Predicate filtering verify set: ['(x >= 0)', '(y >= 0)', 'x >= 0', 'y >= 0', '((x >= 0)) || ((y == 0))', '(x + y) >= 0']
-23:50:49 25/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9216685544064713
-23:50:49 25/03/2025 Generated 3 candidates
-23:50:49 25/03/2025 Verifying generated candidates
-23:50:49 25/03/2025 Verifying candidate: assert((x + y) >= 0);
-23:50:49 25/03/2025 Candidate already in fail history: assert((x + y) >= 0);
-23:50:49 25/03/2025 Verifying candidate: assert((y <= 10));
-23:50:49 25/03/2025 Candidate already in fail history: assert((y <= 10));
-23:50:49 25/03/2025 Verifying candidate: assert((x >= 0));
-23:50:49 25/03/2025 Candidate already in fail history: assert((x >= 0));
-23:50:49 25/03/2025 Executing predicate filtering
-23:50:49 25/03/2025 Filtering predicates for candidate assert((x + y) >= 0);
-23:50:49 25/03/2025 Filtering predicates for candidate assert((y <= 10));
-23:50:49 25/03/2025 Filtering predicates for candidate assert((x >= 0));
-23:50:49 25/03/2025 Predicate filtering verify set: ['(x >= 0)', '(y >= 0)', 'x >= 0', 'y >= 0', '((x >= 0)) || ((y == 0))', '(x + y) >= 0']
-23:50:49 25/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9757431300314515
-23:50:49 25/03/2025 Generated 2 candidates
-23:50:49 25/03/2025 Verifying generated candidates
-23:50:49 25/03/2025 Verifying candidate: assert((x + y) <= 10);
-23:50:49 25/03/2025 Candidate already in fail history: assert((x + y) <= 10);
-23:50:49 25/03/2025 Verifying candidate: assert((x == 0) || (y == 0));
-23:50:49 25/03/2025 Candidate failed verification
-23:50:49 25/03/2025 Adding candidate to fail history: assert((x == 0) || (y == 0));
-23:50:49 25/03/2025 Executing predicate filtering
-23:50:49 25/03/2025 Filtering predicates for candidate assert((x + y) <= 10);
-23:50:49 25/03/2025 Filtering predicates for candidate assert((x == 0) || (y == 0));
-23:50:49 25/03/2025 Predicate filtering verify set: ['(x >= 0)', '(y >= 0)', 'x >= 0', 'y >= 0', '((x >= 0)) || ((y == 0))', '(x + y) >= 0']
-23:50:49 25/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9836748576936802
-23:50:49 25/03/2025 Generated 3 candidates
-23:50:49 25/03/2025 Verifying generated candidates
-23:50:49 25/03/2025 Verifying candidate: assert((x >= 0) && (y >= 0));
-23:50:49 25/03/2025 Candidate already in fail history: assert((x >= 0) && (y >= 0));
-23:50:49 25/03/2025 Verifying candidate: assert((x + y) <= 10);
-23:50:49 25/03/2025 Candidate already in fail history: assert((x + y) <= 10);
-23:50:49 25/03/2025 Verifying candidate: assert(((x + y) % 10) <= 10);
-23:50:49 25/03/2025 Candidate failed verification
-23:50:49 25/03/2025 Adding candidate to fail history: assert(((x + y) % 10) <= 10);
-23:50:49 25/03/2025 Executing predicate filtering
-23:50:49 25/03/2025 Filtering predicates for candidate assert((x >= 0) && (y >= 0));
-23:50:49 25/03/2025 Filtering predicates for candidate assert((x + y) <= 10);
-23:50:49 25/03/2025 Filtering predicates for candidate assert(((x + y) % 10) <= 10);
-23:50:49 25/03/2025 Addind predicate ((x + y) % 10) <= 10 to verify set
-23:50:49 25/03/2025 Predicate filtering verify set: ['(x >= 0)', '(y >= 0)', 'x >= 0', 'y >= 0', '((x >= 0)) || ((y == 0))', '(x + y) >= 0', '((x + y) % 10) <= 10']
-23:50:49 25/03/2025 Verifying formula: (and (and (and (and (and (and (>= x 0) (>= y 0)) (>= x 0)) (>= y 0)) (or (>= x 0) (= y 0))) (>= (+ x y) 0)) (<= (mod (+ x y) 10) 10))
-23:50:49 25/03/2025 For candidate: assert(((x >= 0)) && ((y >= 0)) && (x >= 0) && (y >= 0) && (((x >= 0)) || ((y == 0))) && ((x + y) >= 0) && (((x + y) % 10) <= 10))
-23:50:49 25/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.992631520201128
-23:50:49 25/03/2025 Generated 3 candidates
-23:50:49 25/03/2025 Verifying generated candidates
-23:50:49 25/03/2025 Verifying candidate: assert((x >= 0) && (x <= 10));
-23:50:49 25/03/2025 Candidate already in fail history: assert((x >= 0) && (x <= 10));
-23:50:49 25/03/2025 Verifying candidate: assert((y >= 0) && (y <= 10));
-23:50:49 25/03/2025 Candidate already in fail history: assert((y >= 0) && (y <= 10));
-23:50:49 25/03/2025 Verifying candidate: assert(((x + y) >= 0));
-23:50:49 25/03/2025 Candidate failed verification
-23:50:49 25/03/2025 Adding candidate to fail history: assert(((x + y) >= 0));
-23:50:49 25/03/2025 Executing predicate filtering
-23:50:49 25/03/2025 Filtering predicates for candidate assert((x >= 0) && (x <= 10));
-23:50:49 25/03/2025 Filtering predicates for candidate assert((y >= 0) && (y <= 10));
-23:50:49 25/03/2025 Filtering predicates for candidate assert(((x + y) >= 0));
-23:50:49 25/03/2025 Addind predicate ((x + y) >= 0) to verify set
-23:50:49 25/03/2025 Predicate filtering verify set: ['(x >= 0)', '(y >= 0)', 'x >= 0', 'y >= 0', '((x >= 0)) || ((y == 0))', '(x + y) >= 0', '((x + y) % 10) <= 10', '((x + y) >= 0)']
-23:50:49 25/03/2025 Verifying formula: (and (and (and (and (and (and (and (>= x 0) (>= y 0)) (>= x 0)) (>= y 0)) (or (>= x 0) (= y 0))) (>= (+ x y) 0)) (<= (mod (+ x y) 10) 10)) (>= (+ x y) 0))
-23:50:49 25/03/2025 For candidate: assert(((x >= 0)) && ((y >= 0)) && (x >= 0) && (y >= 0) && (((x >= 0)) || ((y == 0))) && ((x + y) >= 0) && (((x + y) % 10) <= 10) && (((x + y) >= 0)))
-23:50:49 25/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9966823978396512
-23:50:49 25/03/2025 Generated 2 candidates
-23:50:49 25/03/2025 Verifying generated candidates
-23:50:49 25/03/2025 Verifying candidate: assert((x + y) <= 20);
-23:50:49 25/03/2025 Candidate already in fail history: assert((x + y) <= 20);
-23:50:49 25/03/2025 Verifying candidate: assert(((x + y) % 10) == 0 || (x + y) < 10);
-23:50:49 25/03/2025 Candidate failed verification
-23:50:49 25/03/2025 Adding candidate to fail history: assert(((x + y) % 10) == 0 || (x + y) < 10);
-23:50:49 25/03/2025 Executing predicate filtering
-23:50:49 25/03/2025 Filtering predicates for candidate assert((x + y) <= 20);
-23:50:49 25/03/2025 Filtering predicates for candidate assert(((x + y) % 10) == 0 || (x + y) < 10);
-23:50:49 25/03/2025 Predicate filtering verify set: ['(x >= 0)', '(y >= 0)', 'x >= 0', 'y >= 0', '((x >= 0)) || ((y == 0))', '(x + y) >= 0', '((x + y) % 10) <= 10', '((x + y) >= 0)']
-23:50:49 25/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9977749279342794
-23:50:49 25/03/2025 Generated 2 candidates
-23:50:49 25/03/2025 Verifying generated candidates
-23:50:49 25/03/2025 Verifying candidate: assert((x >= 0) && (y >= 0));
-23:50:49 25/03/2025 Candidate already in fail history: assert((x >= 0) && (y >= 0));
-23:50:49 25/03/2025 Verifying candidate: assert((x + y) <= 10 || (y == 0));
-23:50:49 25/03/2025 Candidate failed verification
-23:50:49 25/03/2025 Adding candidate to fail history: assert((x + y) <= 10 || (y == 0));
-23:50:49 25/03/2025 Executing predicate filtering
-23:50:49 25/03/2025 Filtering predicates for candidate assert((x >= 0) && (y >= 0));
-23:50:49 25/03/2025 Filtering predicates for candidate assert((x + y) <= 10 || (y == 0));
-23:50:49 25/03/2025 Predicate filtering verify set: ['(x >= 0)', '(y >= 0)', 'x >= 0', 'y >= 0', '((x >= 0)) || ((y == 0))', '(x + y) >= 0', '((x + y) % 10) <= 10', '((x + y) >= 0)']
-23:50:49 25/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.9985079423323266
-23:50:49 25/03/2025 Generated 2 candidates
-23:50:49 25/03/2025 Verifying generated candidates
-23:50:49 25/03/2025 Verifying candidate: assert((x + y) <= 20);
-23:50:49 25/03/2025 Candidate already in fail history: assert((x + y) <= 20);
-23:50:49 25/03/2025 Verifying candidate: assert((y == 0) || (x < 20));
-23:50:49 25/03/2025 Candidate already in fail history: assert((y == 0) || (x < 20));
-23:50:49 25/03/2025 Executing predicate filtering
-23:50:49 25/03/2025 Filtering predicates for candidate assert((x + y) <= 20);
-23:50:49 25/03/2025 Filtering predicates for candidate assert((y == 0) || (x < 20));
-23:50:49 25/03/2025 Predicate filtering verify set: ['(x >= 0)', '(y >= 0)', 'x >= 0', 'y >= 0', '((x >= 0)) || ((y == 0))', '(x + y) >= 0', '((x + y) % 10) <= 10', '((x + y) >= 0)']
-23:50:49 25/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.999329299739067
-23:50:49 25/03/2025 Generated 2 candidates
-23:50:49 25/03/2025 Verifying generated candidates
-23:50:49 25/03/2025 Verifying candidate: assert((y == 0) || (x <= 10));
-23:50:49 25/03/2025 Candidate failed verification
-23:50:49 25/03/2025 Adding candidate to fail history: assert((y == 0) || (x <= 10));
-23:50:49 25/03/2025 Verifying candidate: assert((x + y) >= 0);
-23:50:49 25/03/2025 Candidate already in fail history: assert((x + y) >= 0);
-23:50:49 25/03/2025 Executing predicate filtering
-23:50:49 25/03/2025 Filtering predicates for candidate assert((y == 0) || (x <= 10));
-23:50:49 25/03/2025 Filtering predicates for candidate assert((x + y) >= 0);
-23:50:49 25/03/2025 Predicate filtering verify set: ['(x >= 0)', '(y >= 0)', 'x >= 0', 'y >= 0', '((x >= 0)) || ((y == 0))', '(x + y) >= 0', '((x + y) % 10) <= 10', '((x + y) >= 0)']
-23:50:49 25/03/2025 Resetting generator
-23:50:49 25/03/2025 Generating loop invariants candidates with model o3-mini and presence penalty 0.0
-23:50:49 25/03/2025 Generated 5 candidates
-23:50:49 25/03/2025 Verifying generated candidates
-23:50:49 25/03/2025 Verifying candidate: assert(x >= 0);
-23:50:49 25/03/2025 Candidate failed verification
-23:50:49 25/03/2025 Adding candidate to fail history: assert(x >= 0);
-23:50:49 25/03/2025 Verifying candidate: assert(y >= 0);
-23:50:49 25/03/2025 Candidate failed verification
-23:50:49 25/03/2025 Adding candidate to fail history: assert(y >= 0);
-23:50:49 25/03/2025 Verifying candidate: assert(x - y <= 10);
-23:50:49 25/03/2025 # Result
-23:50:49 25/03/2025 Solution found by the o3-mini model: assert(x - y <= 10);
-23:50:49 25/03/2025 2 counter examples were generated for the model proposals, with 0 repeated fails
-23:50:49 25/03/2025 The model runtime was 25.80581045150757 seconds
-23:50:49 25/03/2025 The total runtime was 71.16414523124695 seconds
+2025-04-07 23:20:33,201 - runner - INFO - Resetting generator
+2025-04-07 23:20:33,202 - runner - INFO - # Run Benchmark 12
+2025-04-07 23:20:33,202 - runner - INFO - Executing predicate filtering for preconditions
+2025-04-07 23:20:33,203 - runner - INFO - Filtering predicates for candidate assert((x >= 0))
+2025-04-07 23:20:33,682 - runner - INFO - Addind predicate (x >= 0) to verify set
+2025-04-07 23:20:33,682 - runner - INFO - Filtering predicates for candidate assert((x <= 10))
+2025-04-07 23:20:33,910 - runner - INFO - Filtering predicates for candidate assert((y <= 10))
+2025-04-07 23:20:34,132 - runner - INFO - Filtering predicates for candidate assert((y >= 0))
+2025-04-07 23:20:34,619 - runner - INFO - Addind predicate (y >= 0) to verify set
+2025-04-07 23:20:34,620 - runner - INFO - Predicate filtering verify set: ['(x >= 0)', '(y >= 0)']
+2025-04-07 23:20:34,621 - runner - INFO - Verifying formula: (and (>= x 0) (>= y 0))
+2025-04-07 23:20:34,621 - runner - INFO - For candidate: assert(((x >= 0)) && ((y >= 0)))
+2025-04-07 23:20:34,627 - runner - INFO - Generating loop invariants candidates with model gpt-4o and presence penalty 0.0
+2025-04-07 23:20:37,820 - runner - INFO - Generated 5 candidates
+2025-04-07 23:20:37,820 - runner - INFO - Verifying generated candidates
+2025-04-07 23:20:37,821 - runner - INFO - Verifying candidate: assert(x >= 0);
+2025-04-07 23:20:37,828 - runner - INFO - Candidate failed verification
+2025-04-07 23:20:37,829 - runner - INFO - Adding candidate to fail history: assert(x >= 0);
+2025-04-07 23:20:37,830 - runner - INFO - Verifying candidate: assert(x <= 10 || (y != 0));
+2025-04-07 23:20:37,836 - runner - INFO - Candidate failed verification
+2025-04-07 23:20:37,836 - runner - INFO - Adding candidate to fail history: assert(x <= 10 || (y != 0));
+2025-04-07 23:20:37,837 - runner - INFO - Verifying candidate: assert(y <= 10 || x == 0);
+2025-04-07 23:20:37,842 - runner - INFO - Candidate failed verification
+2025-04-07 23:20:37,843 - runner - INFO - Adding candidate to fail history: assert(y <= 10 || x == 0);
+2025-04-07 23:20:37,843 - runner - INFO - Verifying candidate: assert(y >= 0);
+2025-04-07 23:20:37,849 - runner - INFO - Candidate failed verification
+2025-04-07 23:20:37,850 - runner - INFO - Adding candidate to fail history: assert(y >= 0);
+2025-04-07 23:20:37,850 - runner - INFO - Verifying candidate: assert(x == (y % 10) + 10 || y == 0);
+2025-04-07 23:20:37,854 - runner - INFO - Candidate failed verification
+2025-04-07 23:20:37,854 - runner - INFO - Adding candidate to fail history: assert(x == (y % 10) + 10 || y == 0);
+2025-04-07 23:20:37,855 - runner - INFO - Executing predicate filtering
+2025-04-07 23:20:37,855 - runner - INFO - Filtering predicates for candidate assert(x >= 0);
+2025-04-07 23:20:38,345 - runner - INFO - Addind predicate x >= 0 to verify set
+2025-04-07 23:20:38,346 - runner - INFO - Filtering predicates for candidate assert(x <= 10 || (y != 0));
+2025-04-07 23:20:39,488 - runner - INFO - Addind predicate (x <= 10) || ((y != 0)) to verify set
+2025-04-07 23:20:39,489 - runner - INFO - Filtering predicates for candidate assert(y <= 10 || x == 0);
+2025-04-07 23:20:39,721 - runner - INFO - Filtering predicates for candidate assert(y >= 0);
+2025-04-07 23:20:40,253 - runner - INFO - Addind predicate y >= 0 to verify set
+2025-04-07 23:20:40,254 - runner - INFO - Filtering predicates for candidate assert(x == (y % 10) + 10 || y == 0);
+2025-04-07 23:20:40,473 - runner - INFO - Predicate filtering verify set: ['(x >= 0)', '(y >= 0)', 'x >= 0', '(x <= 10) || ((y != 0))', 'y >= 0']
+2025-04-07 23:20:40,475 - runner - INFO - Verifying formula: (and (and (and (and (>= x 0) (>= y 0)) (>= x 0)) (or (<= x 10) (distinct y 0))) (>= y 0))
+2025-04-07 23:20:40,475 - runner - INFO - For candidate: assert(((x >= 0)) && ((y >= 0)) && (x >= 0) && ((x <= 10) || ((y != 0))) && (y >= 0))
+2025-04-07 23:20:40,482 - runner - INFO - Predicate filtering found solution: assert(((x >= 0)) && ((y >= 0)) && (x >= 0) && ((x <= 10) || ((y != 0))) && (y >= 0))
+2025-04-07 23:20:40,483 - runner - INFO - # Result
+2025-04-07 23:20:40,483 - runner - INFO - Solution found by the predicate filtering mechanism using the gpt-4o model: assert(((x >= 0)) && ((y >= 0)) && (x >= 0) && ((x <= 10) || ((y != 0))) && (y >= 0))
+2025-04-07 23:20:40,484 - runner - INFO - 5 counter examples were generated for the model proposals, with 0 repeated fails
+2025-04-07 23:20:40,484 - runner - INFO - The model runtime was 5.856767892837524 seconds
+2025-04-07 23:20:40,485 - runner - INFO - The total runtime was 7.282295227050781 seconds

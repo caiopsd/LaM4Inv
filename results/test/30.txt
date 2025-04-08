@@ -1,14 +1,14 @@
-00:00:59 26/03/2025 Resetting generator
-00:00:59 26/03/2025 # Run Benchmark 30
-00:00:59 26/03/2025 Executing predicate filtering for preconditions
-00:00:59 26/03/2025 Filtering predicates for candidate assert(x == 100)
-00:00:59 26/03/2025 Predicate filtering verify set: []
-00:00:59 26/03/2025 Generating loop invariants candidates with model gpt-4o and presence penalty 0.0
-00:00:59 26/03/2025 Generated 2 candidates
-00:00:59 26/03/2025 Verifying generated candidates
-00:00:59 26/03/2025 Verifying candidate: assert(x >= 0);
-00:00:59 26/03/2025 # Result
-00:00:59 26/03/2025 Solution found by the gpt-4o model: assert(x >= 0);
-00:00:59 26/03/2025 0 counter examples were generated for the model proposals, with 0 repeated fails
-00:00:59 26/03/2025 The model runtime was 0.6506612300872803 seconds
-00:00:59 26/03/2025 The total runtime was 0.8136730194091797 seconds
+2025-04-07 23:37:04,507 - runner - INFO - Resetting generator
+2025-04-07 23:37:04,509 - runner - INFO - # Run Benchmark 30
+2025-04-07 23:37:04,511 - runner - INFO - Executing predicate filtering for preconditions
+2025-04-07 23:37:04,512 - runner - INFO - Filtering predicates for candidate assert(x == 100)
+2025-04-07 23:37:04,757 - runner - INFO - Predicate filtering verify set: []
+2025-04-07 23:37:04,759 - runner - INFO - Generating loop invariants candidates with model gpt-4o and presence penalty 0.0
+2025-04-07 23:37:05,989 - runner - INFO - Generated 1 candidates
+2025-04-07 23:37:05,990 - runner - INFO - Verifying generated candidates
+2025-04-07 23:37:05,992 - runner - INFO - Verifying candidate: assert(x >= 0);
+2025-04-07 23:37:05,999 - runner - INFO - # Result
+2025-04-07 23:37:06,000 - runner - INFO - Solution found by the gpt-4o model: assert(x >= 0);
+2025-04-07 23:37:06,001 - runner - INFO - 0 counter examples were generated for the model proposals, with 0 repeated fails
+2025-04-07 23:37:06,003 - runner - INFO - The model runtime was 1.2426507472991943 seconds
+2025-04-07 23:37:06,004 - runner - INFO - The total runtime was 1.4924004077911377 seconds

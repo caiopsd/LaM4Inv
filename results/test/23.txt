@@ -1,59 +1,412 @@
-23:58:33 25/03/2025 Resetting generator
-23:58:33 25/03/2025 # Run Benchmark 23
-23:58:33 25/03/2025 Executing predicate filtering for preconditions
-23:58:33 25/03/2025 Filtering predicates for candidate assert(i == 1)
-23:58:33 25/03/2025 Filtering predicates for candidate assert(j == 20)
-23:58:33 25/03/2025 Predicate filtering verify set: []
-23:58:33 25/03/2025 Generating loop invariants candidates with model gpt-4o and presence penalty 0.0
-23:58:33 25/03/2025 Generated 3 candidates
-23:58:33 25/03/2025 Verifying generated candidates
-23:58:33 25/03/2025 Verifying candidate: assert(i == 1 || i % 2 == 1);
-23:58:33 25/03/2025 Candidate failed verification
-23:58:33 25/03/2025 Adding candidate to fail history: assert(i == 1 || i % 2 == 1);
-23:58:33 25/03/2025 Verifying candidate: assert(j == 20 || j == 19);
-23:58:33 25/03/2025 Candidate failed verification
-23:58:33 25/03/2025 Adding candidate to fail history: assert(j == 20 || j == 19);
-23:58:33 25/03/2025 Verifying candidate: assert(i + j == 21);
-23:58:33 25/03/2025 Candidate failed verification
-23:58:33 25/03/2025 Adding candidate to fail history: assert(i + j == 21);
-23:58:33 25/03/2025 Executing predicate filtering
-23:58:33 25/03/2025 Filtering predicates for candidate assert(i == 1 || i % 2 == 1);
-23:58:33 25/03/2025 Addind predicate (i == 1) || (i % 2 == 1) to verify set
-23:58:33 25/03/2025 Filtering predicates for candidate assert(j == 20 || j == 19);
-23:58:33 25/03/2025 Filtering predicates for candidate assert(i + j == 21);
-23:58:33 25/03/2025 Predicate filtering verify set: ['(i == 1) || (i % 2 == 1)']
-23:58:33 25/03/2025 Verifying formula: (or (= i 1) (= (mod i 2) 1))
-23:58:33 25/03/2025 For candidate: assert(((i == 1) || (i % 2 == 1)))
-23:58:33 25/03/2025 Resetting generator
-23:58:33 25/03/2025 Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.0
-23:58:33 25/03/2025 Generated 3 candidates
-23:58:33 25/03/2025 Verifying generated candidates
-23:58:33 25/03/2025 Verifying candidate: assert((i >= 1) && (i <= 21) && (i % 2 == 1) && (j <= 20) && (j >= 0));
-23:58:33 25/03/2025 Candidate failed verification
-23:58:33 25/03/2025 Adding candidate to fail history: assert((i >= 1) && (i <= 21) && (i % 2 == 1) && (j <= 20) && (j >= 0));
-23:58:33 25/03/2025 Verifying candidate: assert((j >= i) || (j == 13));
-23:58:33 25/03/2025 Candidate failed verification
-23:58:33 25/03/2025 Adding candidate to fail history: assert((j >= i) || (j == 13));
-23:58:33 25/03/2025 Verifying candidate: assert((j == 20 - (i - 1) / 2));
-23:58:33 25/03/2025 Candidate failed verification
-23:58:33 25/03/2025 Adding candidate to fail history: assert((j == 20 - (i - 1) / 2));
-23:58:33 25/03/2025 Executing predicate filtering
-23:58:33 25/03/2025 Filtering predicates for candidate assert((i >= 1) && (i <= 21) && (i % 2 == 1) && (j <= 20) && (j >= 0));
-23:58:33 25/03/2025 Addind predicate (i >= 1) to verify set
-23:58:33 25/03/2025 Addind predicate (i <= 21) to verify set
-23:58:33 25/03/2025 Addind predicate (i % 2 == 1) to verify set
-23:58:33 25/03/2025 Addind predicate (j <= 20) to verify set
-23:58:33 25/03/2025 Addind predicate (j >= 0) to verify set
-23:58:33 25/03/2025 Filtering predicates for candidate assert((j >= i) || (j == 13));
-23:58:33 25/03/2025 Addind predicate ((j >= i)) || ((j == 13)) to verify set
-23:58:33 25/03/2025 Filtering predicates for candidate assert((j == 20 - (i - 1) / 2));
-23:58:33 25/03/2025 Addind predicate (j == 20 - (i - 1) / 2) to verify set
-23:58:33 25/03/2025 Predicate filtering verify set: ['(i == 1) || (i % 2 == 1)', '(i >= 1)', '(i <= 21)', '(i % 2 == 1)', '(j <= 20)', '(j >= 0)', '((j >= i)) || ((j == 13))', '(j == 20 - (i - 1) / 2)']
-23:58:33 25/03/2025 Verifying formula: (and (and (and (and (and (and (and (or (= i 1) (= (mod i 2) 1)) (>= i 1)) (<= i 21)) (= (mod i 2) 1)) (<= j 20)) (>= j 0)) (or (>= j i) (= j 13))) (= j (- 20 (/ (- i 1) 2))))
-23:58:33 25/03/2025 For candidate: assert(((i == 1) || (i % 2 == 1)) && ((i >= 1)) && ((i <= 21)) && ((i % 2 == 1)) && ((j <= 20)) && ((j >= 0)) && (((j >= i)) || ((j == 13))) && ((j == 20 - (i - 1) / 2)))
-23:58:33 25/03/2025 Predicate filtering found solution: assert(((i == 1) || (i % 2 == 1)) && ((i >= 1)) && ((i <= 21)) && ((i % 2 == 1)) && ((j <= 20)) && ((j >= 0)) && (((j >= i)) || ((j == 13))) && ((j == 20 - (i - 1) / 2)))
-23:58:33 25/03/2025 # Result
-23:58:33 25/03/2025 Solution found by the predicate filtering mechanism using the gpt-4o-mini model: assert(((i == 1) || (i % 2 == 1)) && ((i >= 1)) && ((i <= 21)) && ((i % 2 == 1)) && ((j <= 20)) && ((j >= 0)) && (((j >= i)) || ((j == 13))) && ((j == 20 - (i - 1) / 2)))
-23:58:33 25/03/2025 3 counter examples were generated for the model proposals, with 0 repeated fails
-23:58:33 25/03/2025 The model runtime was 45.614853382110596 seconds
-23:58:33 25/03/2025 The total runtime was 47.59672784805298 seconds
+2025-04-07 23:30:09,885 - runner - INFO - Resetting generator
+2025-04-07 23:30:09,886 - runner - INFO - # Run Benchmark 23
+2025-04-07 23:30:09,887 - runner - INFO - Executing predicate filtering for preconditions
+2025-04-07 23:30:09,888 - runner - INFO - Filtering predicates for candidate assert(i == 1)
+2025-04-07 23:30:10,111 - runner - INFO - Filtering predicates for candidate assert(j == 20)
+2025-04-07 23:30:10,332 - runner - INFO - Predicate filtering verify set: []
+2025-04-07 23:30:10,333 - runner - INFO - Generating loop invariants candidates with model gpt-4o and presence penalty 0.0
+2025-04-07 23:30:12,125 - runner - INFO - Generated 4 candidates
+2025-04-07 23:30:12,127 - runner - INFO - Verifying generated candidates
+2025-04-07 23:30:12,128 - runner - INFO - Verifying candidate: assert(i == 1 && j == 20 || i > j);
+2025-04-07 23:30:12,134 - runner - INFO - Candidate failed verification
+2025-04-07 23:30:12,136 - runner - INFO - Adding candidate to fail history: assert(i == 1 && j == 20 || i > j);
+2025-04-07 23:30:12,137 - runner - INFO - Verifying candidate: assert((j + i) == 21);
+2025-04-07 23:30:12,143 - runner - INFO - Candidate failed verification
+2025-04-07 23:30:12,144 - runner - INFO - Adding candidate to fail history: assert((j + i) == 21);
+2025-04-07 23:30:12,145 - runner - INFO - Verifying candidate: assert((i % 2) == 1);
+2025-04-07 23:30:12,151 - runner - INFO - Candidate failed verification
+2025-04-07 23:30:12,153 - runner - INFO - Adding candidate to fail history: assert((i % 2) == 1);
+2025-04-07 23:30:12,154 - runner - INFO - Verifying candidate: assert((j <= 20) && (i >= 1));
+2025-04-07 23:30:12,162 - runner - INFO - Candidate failed verification
+2025-04-07 23:30:12,163 - runner - INFO - Adding candidate to fail history: assert((j <= 20) && (i >= 1));
+2025-04-07 23:30:12,164 - runner - INFO - Executing predicate filtering
+2025-04-07 23:30:12,165 - runner - INFO - Filtering predicates for candidate assert(i == 1 && j == 20 || i > j);
+2025-04-07 23:30:12,382 - runner - INFO - Filtering predicates for candidate assert((j + i) == 21);
+2025-04-07 23:30:12,617 - runner - INFO - Filtering predicates for candidate assert((i % 2) == 1);
+2025-04-07 23:30:12,858 - runner - INFO - Addind predicate (i % 2) == 1 to verify set
+2025-04-07 23:30:12,859 - runner - INFO - Filtering predicates for candidate assert((j <= 20) && (i >= 1));
+2025-04-07 23:30:13,450 - runner - INFO - Addind predicate (j <= 20) to verify set
+2025-04-07 23:30:13,451 - runner - INFO - Addind predicate (i >= 1) to verify set
+2025-04-07 23:30:13,452 - runner - INFO - Predicate filtering verify set: ['(i % 2) == 1', '(j <= 20)', '(i >= 1)']
+2025-04-07 23:30:13,454 - runner - INFO - Verifying formula: (and (and (= (mod i 2) 1) (<= j 20)) (>= i 1))
+2025-04-07 23:30:13,455 - runner - INFO - For candidate: assert(((i % 2) == 1) && ((j <= 20)) && ((i >= 1)))
+2025-04-07 23:30:13,462 - runner - INFO - Resetting generator
+2025-04-07 23:30:13,463 - runner - INFO - Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.0
+2025-04-07 23:30:17,104 - runner - INFO - Generated 4 candidates
+2025-04-07 23:30:17,104 - runner - INFO - Verifying generated candidates
+2025-04-07 23:30:17,106 - runner - INFO - Verifying candidate: assert((i >= 1) && (j >= 0) && (j <= 20));
+2025-04-07 23:30:17,114 - runner - INFO - Candidate failed verification
+2025-04-07 23:30:17,115 - runner - INFO - Adding candidate to fail history: assert((i >= 1) && (j >= 0) && (j <= 20));
+2025-04-07 23:30:17,116 - runner - INFO - Verifying candidate: assert((j >= i));
+2025-04-07 23:30:17,121 - runner - INFO - Candidate failed verification
+2025-04-07 23:30:17,123 - runner - INFO - Adding candidate to fail history: assert((j >= i));
+2025-04-07 23:30:17,124 - runner - INFO - Verifying candidate: assert((i % 2 == 1));
+2025-04-07 23:30:17,130 - runner - INFO - Candidate failed verification
+2025-04-07 23:30:17,133 - runner - INFO - Adding candidate to fail history: assert((i % 2 == 1));
+2025-04-07 23:30:17,134 - runner - INFO - Verifying candidate: assert((j + (20 - i) == 20));
+2025-04-07 23:30:17,137 - runner - INFO - Candidate failed verification
+2025-04-07 23:30:17,138 - runner - INFO - Adding candidate to fail history: assert((j + (20 - i) == 20));
+2025-04-07 23:30:17,139 - runner - INFO - Executing predicate filtering
+2025-04-07 23:30:17,141 - runner - INFO - Filtering predicates for candidate assert((i >= 1) && (j >= 0) && (j <= 20));
+2025-04-07 23:30:18,221 - runner - INFO - Addind predicate (j >= 0) to verify set
+2025-04-07 23:30:18,222 - runner - INFO - Filtering predicates for candidate assert((j >= i));
+2025-04-07 23:30:18,798 - runner - INFO - Filtering predicates for candidate assert((i % 2 == 1));
+2025-04-07 23:30:19,078 - runner - INFO - Addind predicate (i % 2 == 1) to verify set
+2025-04-07 23:30:19,079 - runner - INFO - Filtering predicates for candidate assert((j + (20 - i) == 20));
+2025-04-07 23:30:19,316 - runner - INFO - Predicate filtering verify set: ['(i % 2) == 1', '(j <= 20)', '(i >= 1)', '(j >= 0)', '(i % 2 == 1)']
+2025-04-07 23:30:19,318 - runner - INFO - Verifying formula: (and (and (and (and (= (mod i 2) 1) (<= j 20)) (>= i 1)) (>= j 0)) (= (mod i 2) 1))
+2025-04-07 23:30:19,320 - runner - INFO - For candidate: assert(((i % 2) == 1) && ((j <= 20)) && ((i >= 1)) && ((j >= 0)) && ((i % 2 == 1)))
+2025-04-07 23:30:19,326 - runner - INFO - Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.0
+2025-04-07 23:30:20,400 - runner - INFO - Generated 3 candidates
+2025-04-07 23:30:20,401 - runner - INFO - Verifying generated candidates
+2025-04-07 23:30:20,403 - runner - INFO - Verifying candidate: assert((i >= 1) && (i <= 21));
+2025-04-07 23:30:20,410 - runner - INFO - Candidate failed verification
+2025-04-07 23:30:20,411 - runner - INFO - Adding candidate to fail history: assert((i >= 1) && (i <= 21));
+2025-04-07 23:30:20,412 - runner - INFO - Verifying candidate: assert((j >= 0) && (j <= 20));
+2025-04-07 23:30:20,418 - runner - INFO - Candidate failed verification
+2025-04-07 23:30:20,420 - runner - INFO - Adding candidate to fail history: assert((j >= 0) && (j <= 20));
+2025-04-07 23:30:20,421 - runner - INFO - Verifying candidate: assert((j <= 20 - (i - 1) / 2));
+2025-04-07 23:30:20,427 - runner - INFO - Candidate failed verification
+2025-04-07 23:30:20,428 - runner - INFO - Adding candidate to fail history: assert((j <= 20 - (i - 1) / 2));
+2025-04-07 23:30:20,430 - runner - INFO - Executing predicate filtering
+2025-04-07 23:30:20,431 - runner - INFO - Filtering predicates for candidate assert((i >= 1) && (i <= 21));
+2025-04-07 23:30:21,232 - runner - INFO - Addind predicate (i <= 21) to verify set
+2025-04-07 23:30:21,234 - runner - INFO - Filtering predicates for candidate assert((j >= 0) && (j <= 20));
+2025-04-07 23:30:21,961 - runner - INFO - Filtering predicates for candidate assert((j <= 20 - (i - 1) / 2));
+2025-04-07 23:30:21,464 - runner - ERROR - ESBMC timed out
+2025-04-07 23:30:21,465 - runner - INFO - Predicate filtering verify set: ['(i % 2) == 1', '(j <= 20)', '(i >= 1)', '(j >= 0)', '(i % 2 == 1)', '(i <= 21)']
+2025-04-07 23:30:21,467 - runner - INFO - Verifying formula: (and (and (and (and (and (= (mod i 2) 1) (<= j 20)) (>= i 1)) (>= j 0)) (= (mod i 2) 1)) (<= i 21))
+2025-04-07 23:30:21,468 - runner - INFO - For candidate: assert(((i % 2) == 1) && ((j <= 20)) && ((i >= 1)) && ((j >= 0)) && ((i % 2 == 1)) && ((i <= 21)))
+2025-04-07 23:30:21,475 - runner - INFO - Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.0
+2025-04-07 23:30:22,752 - runner - INFO - Generated 4 candidates
+2025-04-07 23:30:22,753 - runner - INFO - Verifying generated candidates
+2025-04-07 23:30:22,754 - runner - INFO - Verifying candidate: assert((j - i <= 19));
+2025-04-07 23:30:22,761 - runner - INFO - Candidate failed verification
+2025-04-07 23:30:22,762 - runner - INFO - Adding candidate to fail history: assert((j - i <= 19));
+2025-04-07 23:30:22,763 - runner - INFO - Verifying candidate: assert((j >= 0));
+2025-04-07 23:30:22,770 - runner - INFO - Candidate failed verification
+2025-04-07 23:30:22,771 - runner - INFO - Adding candidate to fail history: assert((j >= 0));
+2025-04-07 23:30:22,772 - runner - INFO - Verifying candidate: assert((j <= 20));
+2025-04-07 23:30:22,780 - runner - INFO - Candidate failed verification
+2025-04-07 23:30:22,781 - runner - INFO - Adding candidate to fail history: assert((j <= 20));
+2025-04-07 23:30:22,782 - runner - INFO - Verifying candidate: assert((i % 2 == 1) || (i == 1));
+2025-04-07 23:30:22,789 - runner - INFO - Candidate failed verification
+2025-04-07 23:30:22,790 - runner - INFO - Adding candidate to fail history: assert((i % 2 == 1) || (i == 1));
+2025-04-07 23:30:22,791 - runner - INFO - Executing predicate filtering
+2025-04-07 23:30:22,792 - runner - INFO - Filtering predicates for candidate assert((j - i <= 19));
+2025-04-07 23:30:23,802 - runner - ERROR - ESBMC timed out
+2025-04-07 23:30:23,804 - runner - INFO - Filtering predicates for candidate assert((j >= 0));
+2025-04-07 23:30:24,264 - runner - INFO - Filtering predicates for candidate assert((j <= 20));
+2025-04-07 23:30:24,539 - runner - INFO - Filtering predicates for candidate assert((i % 2 == 1) || (i == 1));
+2025-04-07 23:30:25,232 - runner - INFO - Addind predicate ((i % 2 == 1)) || ((i == 1)) to verify set
+2025-04-07 23:30:25,233 - runner - INFO - Predicate filtering verify set: ['(i % 2) == 1', '(j <= 20)', '(i >= 1)', '(j >= 0)', '(i % 2 == 1)', '(i <= 21)', '((i % 2 == 1)) || ((i == 1))']
+2025-04-07 23:30:25,235 - runner - INFO - Verifying formula: (and (and (and (and (and (and (= (mod i 2) 1) (<= j 20)) (>= i 1)) (>= j 0)) (= (mod i 2) 1)) (<= i 21)) (or (= (mod i 2) 1) (= i 1)))
+2025-04-07 23:30:25,236 - runner - INFO - For candidate: assert(((i % 2) == 1) && ((j <= 20)) && ((i >= 1)) && ((j >= 0)) && ((i % 2 == 1)) && ((i <= 21)) && (((i % 2 == 1)) || ((i == 1))))
+2025-04-07 23:30:25,244 - runner - INFO - Resetting generator
+2025-04-07 23:30:25,245 - runner - INFO - Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.0
+2025-04-07 23:30:27,728 - runner - INFO - Generated 4 candidates
+2025-04-07 23:30:27,729 - runner - INFO - Verifying generated candidates
+2025-04-07 23:30:27,730 - runner - INFO - Verifying candidate: assert((i >= 1) && (i <= 21));
+2025-04-07 23:30:27,735 - runner - INFO - Candidate failed verification
+2025-04-07 23:30:27,736 - runner - INFO - Adding candidate to fail history: assert((i >= 1) && (i <= 21));
+2025-04-07 23:30:27,737 - runner - INFO - Verifying candidate: assert((j >= 0) && (j <= 20));
+2025-04-07 23:30:27,744 - runner - INFO - Candidate failed verification
+2025-04-07 23:30:27,745 - runner - INFO - Adding candidate to fail history: assert((j >= 0) && (j <= 20));
+2025-04-07 23:30:27,746 - runner - INFO - Verifying candidate: assert((j + i) == 21);
+2025-04-07 23:30:27,752 - runner - INFO - Candidate failed verification
+2025-04-07 23:30:27,753 - runner - INFO - Adding candidate to fail history: assert((j + i) == 21);
+2025-04-07 23:30:27,755 - runner - INFO - Verifying candidate: assert((i % 2) == 1);
+2025-04-07 23:30:27,761 - runner - INFO - Candidate failed verification
+2025-04-07 23:30:27,763 - runner - INFO - Adding candidate to fail history: assert((i % 2) == 1);
+2025-04-07 23:30:27,764 - runner - INFO - Executing predicate filtering
+2025-04-07 23:30:27,765 - runner - INFO - Filtering predicates for candidate assert((i >= 1) && (i <= 21));
+2025-04-07 23:30:28,577 - runner - INFO - Filtering predicates for candidate assert((j >= 0) && (j <= 20));
+2025-04-07 23:30:29,302 - runner - INFO - Filtering predicates for candidate assert((j + i) == 21);
+2025-04-07 23:30:29,521 - runner - INFO - Filtering predicates for candidate assert((i % 2) == 1);
+2025-04-07 23:30:29,756 - runner - INFO - Predicate filtering verify set: ['(i % 2) == 1', '(j <= 20)', '(i >= 1)', '(j >= 0)', '(i % 2 == 1)', '(i <= 21)', '((i % 2 == 1)) || ((i == 1))']
+2025-04-07 23:30:29,757 - runner - INFO - Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.0
+2025-04-07 23:30:32,275 - runner - INFO - Generated 4 candidates
+2025-04-07 23:30:32,276 - runner - INFO - Verifying generated candidates
+2025-04-07 23:30:32,277 - runner - INFO - Verifying candidate: assert((i >= 1) && (i <= 21));
+2025-04-07 23:30:32,279 - runner - INFO - Candidate already in fail history: assert((i >= 1) && (i <= 21));
+2025-04-07 23:30:32,280 - runner - INFO - Verifying candidate: assert((j >= 0) && (j <= 20));
+2025-04-07 23:30:32,281 - runner - INFO - Candidate already in fail history: assert((j >= 0) && (j <= 20));
+2025-04-07 23:30:32,282 - runner - INFO - Verifying candidate: assert((j - i) == 19);
+2025-04-07 23:30:32,287 - runner - INFO - Candidate failed verification
+2025-04-07 23:30:32,288 - runner - INFO - Adding candidate to fail history: assert((j - i) == 19);
+2025-04-07 23:30:32,289 - runner - INFO - Verifying candidate: assert((i % 2) == 1 || (j < i));
+2025-04-07 23:30:32,298 - runner - INFO - Candidate failed verification
+2025-04-07 23:30:32,299 - runner - INFO - Adding candidate to fail history: assert((i % 2) == 1 || (j < i));
+2025-04-07 23:30:32,300 - runner - INFO - Executing predicate filtering
+2025-04-07 23:30:32,301 - runner - INFO - Filtering predicates for candidate assert((i >= 1) && (i <= 21));
+2025-04-07 23:30:33,111 - runner - INFO - Filtering predicates for candidate assert((j >= 0) && (j <= 20));
+2025-04-07 23:30:33,862 - runner - INFO - Filtering predicates for candidate assert((j - i) == 19);
+2025-04-07 23:30:34,094 - runner - INFO - Filtering predicates for candidate assert((i % 2) == 1 || (j < i));
+2025-04-07 23:30:35,131 - runner - INFO - Addind predicate ((i % 2) == 1) || ((j < i)) to verify set
+2025-04-07 23:30:35,133 - runner - INFO - Predicate filtering verify set: ['(i % 2) == 1', '(j <= 20)', '(i >= 1)', '(j >= 0)', '(i % 2 == 1)', '(i <= 21)', '((i % 2 == 1)) || ((i == 1))', '((i % 2) == 1) || ((j < i))']
+2025-04-07 23:30:35,135 - runner - INFO - Verifying formula: (and (and (and (and (and (and (and (= (mod i 2) 1) (<= j 20)) (>= i 1)) (>= j 0)) (= (mod i 2) 1)) (<= i 21)) (or (= (mod i 2) 1) (= i 1))) (or (= (mod i 2) 1) (< j i)))
+2025-04-07 23:30:35,136 - runner - INFO - For candidate: assert(((i % 2) == 1) && ((j <= 20)) && ((i >= 1)) && ((j >= 0)) && ((i % 2 == 1)) && ((i <= 21)) && (((i % 2 == 1)) || ((i == 1))) && (((i % 2) == 1) || ((j < i))))
+2025-04-07 23:30:35,142 - runner - INFO - Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.11942729853438588
+2025-04-07 23:30:36,741 - runner - INFO - Generated 4 candidates
+2025-04-07 23:30:36,742 - runner - INFO - Verifying generated candidates
+2025-04-07 23:30:36,743 - runner - INFO - Verifying candidate: assert(i >= 1);
+2025-04-07 23:30:36,750 - runner - INFO - Candidate failed verification
+2025-04-07 23:30:36,751 - runner - INFO - Adding candidate to fail history: assert(i >= 1);
+2025-04-07 23:30:36,752 - runner - INFO - Verifying candidate: assert(j <= 20);
+2025-04-07 23:30:36,759 - runner - INFO - Candidate failed verification
+2025-04-07 23:30:36,761 - runner - INFO - Adding candidate to fail history: assert(j <= 20);
+2025-04-07 23:30:36,761 - runner - INFO - Verifying candidate: assert(j >= i);
+2025-04-07 23:30:36,767 - runner - INFO - Candidate failed verification
+2025-04-07 23:30:36,769 - runner - INFO - Adding candidate to fail history: assert(j >= i);
+2025-04-07 23:30:36,770 - runner - INFO - Verifying candidate: assert((j - 19) <= i);
+2025-04-07 23:30:36,778 - runner - INFO - Candidate failed verification
+2025-04-07 23:30:36,779 - runner - INFO - Adding candidate to fail history: assert((j - 19) <= i);
+2025-04-07 23:30:36,780 - runner - INFO - Executing predicate filtering
+2025-04-07 23:30:36,781 - runner - INFO - Filtering predicates for candidate assert(i >= 1);
+2025-04-07 23:30:37,102 - runner - INFO - Addind predicate i >= 1 to verify set
+2025-04-07 23:30:37,103 - runner - INFO - Filtering predicates for candidate assert(j <= 20);
+2025-04-07 23:30:37,386 - runner - INFO - Addind predicate j <= 20 to verify set
+2025-04-07 23:30:37,387 - runner - INFO - Filtering predicates for candidate assert(j >= i);
+2025-04-07 23:30:37,989 - runner - INFO - Filtering predicates for candidate assert((j - 19) <= i);
+2025-04-07 23:30:38,818 - runner - INFO - Addind predicate (j - 19) <= i to verify set
+2025-04-07 23:30:38,819 - runner - INFO - Predicate filtering verify set: ['(i % 2) == 1', '(j <= 20)', '(i >= 1)', '(j >= 0)', '(i % 2 == 1)', '(i <= 21)', '((i % 2 == 1)) || ((i == 1))', '((i % 2) == 1) || ((j < i))', 'i >= 1', 'j <= 20', '(j - 19) <= i']
+2025-04-07 23:30:38,822 - runner - INFO - Verifying formula: (and (and (and (and (and (and (and (and (and (and (= (mod i 2) 1) (<= j 20)) (>= i 1)) (>= j 0)) (= (mod i 2) 1)) (<= i 21)) (or (= (mod i 2) 1) (= i 1))) (or (= (mod i 2) 1) (< j i))) (>= i 1)) (<= j 20)) (<= (- j 19) i))
+2025-04-07 23:30:38,823 - runner - INFO - For candidate: assert(((i % 2) == 1) && ((j <= 20)) && ((i >= 1)) && ((j >= 0)) && ((i % 2 == 1)) && ((i <= 21)) && (((i % 2 == 1)) || ((i == 1))) && (((i % 2) == 1) || ((j < i))) && (i >= 1) && (j <= 20) && ((j - 19) <= i))
+2025-04-07 23:30:38,830 - runner - INFO - Resetting generator
+2025-04-07 23:30:38,831 - runner - INFO - Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.0
+2025-04-07 23:30:40,173 - runner - INFO - Generated 2 candidates
+2025-04-07 23:30:40,174 - runner - INFO - Verifying generated candidates
+2025-04-07 23:30:40,175 - runner - INFO - Verifying candidate: assert((j >= i) && (i % 2 == 1) && (j <= 20));
+2025-04-07 23:30:40,182 - runner - INFO - Candidate failed verification
+2025-04-07 23:30:40,182 - runner - INFO - Adding candidate to fail history: assert((j >= i) && (i % 2 == 1) && (j <= 20));
+2025-04-07 23:30:40,184 - runner - INFO - Verifying candidate: assert((j >= i) && (i % 2 == 1) && (j <= 20) && (j == 20 - (i - 1) / 2));
+2025-04-07 23:30:40,191 - runner - INFO - Candidate failed verification
+2025-04-07 23:30:40,192 - runner - INFO - Adding candidate to fail history: assert((j >= i) && (i % 2 == 1) && (j <= 20) && (j == 20 - (i - 1) / 2));
+2025-04-07 23:30:40,193 - runner - INFO - Executing predicate filtering
+2025-04-07 23:30:40,194 - runner - INFO - Filtering predicates for candidate assert((j >= i) && (i % 2 == 1) && (j <= 20));
+2025-04-07 23:30:41,371 - runner - INFO - Filtering predicates for candidate assert((j >= i) && (i % 2 == 1) && (j <= 20) && (j == 20 - (i - 1) / 2));
+2025-04-07 23:30:43,447 - runner - ERROR - ESBMC timed out
+2025-04-07 23:30:43,448 - runner - INFO - Predicate filtering verify set: ['(i % 2) == 1', '(j <= 20)', '(i >= 1)', '(j >= 0)', '(i % 2 == 1)', '(i <= 21)', '((i % 2 == 1)) || ((i == 1))', '((i % 2) == 1) || ((j < i))', 'i >= 1', 'j <= 20', '(j - 19) <= i']
+2025-04-07 23:30:43,449 - runner - INFO - Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.0
+2025-04-07 23:30:45,173 - runner - INFO - Generated 2 candidates
+2025-04-07 23:30:45,175 - runner - INFO - Verifying generated candidates
+2025-04-07 23:30:45,176 - runner - INFO - Verifying candidate: assert((j >= i) && (j <= 20));
+2025-04-07 23:30:45,182 - runner - INFO - Candidate failed verification
+2025-04-07 23:30:45,183 - runner - INFO - Adding candidate to fail history: assert((j >= i) && (j <= 20));
+2025-04-07 23:30:45,184 - runner - INFO - Verifying candidate: assert((j - 20) == -((i - 1) / 2));
+2025-04-07 23:30:45,190 - runner - INFO - Candidate failed verification
+2025-04-07 23:30:45,192 - runner - INFO - Adding candidate to fail history: assert((j - 20) == -((i - 1) / 2));
+2025-04-07 23:30:45,193 - runner - INFO - Executing predicate filtering
+2025-04-07 23:30:45,194 - runner - INFO - Filtering predicates for candidate assert((j >= i) && (j <= 20));
+2025-04-07 23:30:46,026 - runner - INFO - Filtering predicates for candidate assert((j - 20) == -((i - 1) / 2));
+2025-04-07 23:30:47,033 - runner - ERROR - ESBMC timed out
+2025-04-07 23:30:47,034 - runner - INFO - Predicate filtering verify set: ['(i % 2) == 1', '(j <= 20)', '(i >= 1)', '(j >= 0)', '(i % 2 == 1)', '(i <= 21)', '((i % 2 == 1)) || ((i == 1))', '((i % 2) == 1) || ((j < i))', 'i >= 1', 'j <= 20', '(j - 19) <= i']
+2025-04-07 23:30:47,036 - runner - INFO - Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.0
+2025-04-07 23:30:48,006 - runner - INFO - Generated 2 candidates
+2025-04-07 23:30:48,007 - runner - INFO - Verifying generated candidates
+2025-04-07 23:30:48,008 - runner - INFO - Verifying candidate: assert(j >= i && (j - 20) == -((i - 1) / 2) && i >= 1);
+2025-04-07 23:30:48,014 - runner - INFO - Candidate failed verification
+2025-04-07 23:30:48,015 - runner - INFO - Adding candidate to fail history: assert(j >= i && (j - 20) == -((i - 1) / 2) && i >= 1);
+2025-04-07 23:30:48,016 - runner - INFO - Verifying candidate: assert(i <= 21);
+2025-04-07 23:30:48,022 - runner - INFO - Candidate failed verification
+2025-04-07 23:30:48,023 - runner - INFO - Adding candidate to fail history: assert(i <= 21);
+2025-04-07 23:30:48,024 - runner - INFO - Executing predicate filtering
+2025-04-07 23:30:48,025 - runner - INFO - Filtering predicates for candidate assert(j >= i && (j - 20) == -((i - 1) / 2) && i >= 1);
+2025-04-07 23:30:49,625 - runner - ERROR - ESBMC timed out
+2025-04-07 23:30:49,958 - runner - INFO - Filtering predicates for candidate assert(i <= 21);
+2025-04-07 23:30:50,489 - runner - INFO - Addind predicate i <= 21 to verify set
+2025-04-07 23:30:50,491 - runner - INFO - Predicate filtering verify set: ['(i % 2) == 1', '(j <= 20)', '(i >= 1)', '(j >= 0)', '(i % 2 == 1)', '(i <= 21)', '((i % 2 == 1)) || ((i == 1))', '((i % 2) == 1) || ((j < i))', 'i >= 1', 'j <= 20', '(j - 19) <= i', 'i <= 21']
+2025-04-07 23:30:50,494 - runner - INFO - Verifying formula: (and (and (and (and (and (and (and (and (and (and (and (= (mod i 2) 1) (<= j 20)) (>= i 1)) (>= j 0)) (= (mod i 2) 1)) (<= i 21)) (or (= (mod i 2) 1) (= i 1))) (or (= (mod i 2) 1) (< j i))) (>= i 1)) (<= j 20)) (<= (- j 19) i)) (<= i 21))
+2025-04-07 23:30:50,494 - runner - INFO - For candidate: assert(((i % 2) == 1) && ((j <= 20)) && ((i >= 1)) && ((j >= 0)) && ((i % 2 == 1)) && ((i <= 21)) && (((i % 2 == 1)) || ((i == 1))) && (((i % 2) == 1) || ((j < i))) && (i >= 1) && (j <= 20) && ((j - 19) <= i) && (i <= 21))
+2025-04-07 23:30:50,501 - runner - INFO - Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.0
+2025-04-07 23:30:51,624 - runner - INFO - Generated 2 candidates
+2025-04-07 23:30:51,626 - runner - INFO - Verifying generated candidates
+2025-04-07 23:30:51,627 - runner - INFO - Verifying candidate: assert(j > 0 && i % 2 == 1 && j >= i);
+2025-04-07 23:30:51,632 - runner - INFO - Candidate failed verification
+2025-04-07 23:30:51,633 - runner - INFO - Adding candidate to fail history: assert(j > 0 && i % 2 == 1 && j >= i);
+2025-04-07 23:30:51,634 - runner - INFO - Verifying candidate: assert(j >= 20 - ((i - 1) / 2) && i <= 21);
+2025-04-07 23:30:51,640 - runner - INFO - Candidate failed verification
+2025-04-07 23:30:51,641 - runner - INFO - Adding candidate to fail history: assert(j >= 20 - ((i - 1) / 2) && i <= 21);
+2025-04-07 23:30:51,642 - runner - INFO - Executing predicate filtering
+2025-04-07 23:30:51,643 - runner - INFO - Filtering predicates for candidate assert(j > 0 && i % 2 == 1 && j >= i);
+2025-04-07 23:30:52,966 - runner - INFO - Addind predicate j > 0 to verify set
+2025-04-07 23:30:52,967 - runner - INFO - Addind predicate i % 2 == 1 to verify set
+2025-04-07 23:30:52,968 - runner - INFO - Filtering predicates for candidate assert(j >= 20 - ((i - 1) / 2) && i <= 21);
+2025-04-07 23:30:52,464 - runner - ERROR - ESBMC timed out
+2025-04-07 23:30:52,997 - runner - INFO - Predicate filtering verify set: ['(i % 2) == 1', '(j <= 20)', '(i >= 1)', '(j >= 0)', '(i % 2 == 1)', '(i <= 21)', '((i % 2 == 1)) || ((i == 1))', '((i % 2) == 1) || ((j < i))', 'i >= 1', 'j <= 20', '(j - 19) <= i', 'i <= 21', 'j > 0', 'i % 2 == 1']
+2025-04-07 23:30:53,001 - runner - INFO - Verifying formula: (and (and (and (and (and (and (and (and (and (and (and (and (and (= (mod i 2) 1) (<= j 20)) (>= i 1)) (>= j 0)) (= (mod i 2) 1)) (<= i 21)) (or (= (mod i 2) 1) (= i 1))) (or (= (mod i 2) 1) (< j i))) (>= i 1)) (<= j 20)) (<= (- j 19) i)) (<= i 21)) (> j 0)) (= (mod i 2) 1))
+2025-04-07 23:30:53,002 - runner - INFO - For candidate: assert(((i % 2) == 1) && ((j <= 20)) && ((i >= 1)) && ((j >= 0)) && ((i % 2 == 1)) && ((i <= 21)) && (((i % 2 == 1)) || ((i == 1))) && (((i % 2) == 1) || ((j < i))) && (i >= 1) && (j <= 20) && ((j - 19) <= i) && (i <= 21) && (j > 0) && (i % 2 == 1))
+2025-04-07 23:30:53,008 - runner - INFO - Generating loop invariants candidates with model gpt-4o-mini and presence penalty 0.0
+2025-04-07 23:30:54,100 - runner - INFO - Generated 2 candidates
+2025-04-07 23:30:54,101 - runner - INFO - Verifying generated candidates
+2025-04-07 23:30:54,102 - runner - INFO - Verifying candidate: assert(j >= i && j <= 20 && (j - i) % 2 == 0);
+2025-04-07 23:30:54,106 - runner - INFO - Candidate failed verification
+2025-04-07 23:30:54,107 - runner - INFO - Adding candidate to fail history: assert(j >= i && j <= 20 && (j - i) % 2 == 0);
+2025-04-07 23:30:54,109 - runner - INFO - Verifying candidate: assert(i >= 1 && i <= 21);
+2025-04-07 23:30:54,115 - runner - INFO - Candidate failed verification
+2025-04-07 23:30:54,116 - runner - INFO - Adding candidate to fail history: assert(i >= 1 && i <= 21);
+2025-04-07 23:30:54,118 - runner - INFO - Executing predicate filtering
+2025-04-07 23:30:54,119 - runner - INFO - Filtering predicates for candidate assert(j >= i && j <= 20 && (j - i) % 2 == 0);
+2025-04-07 23:30:55,230 - runner - INFO - Filtering predicates for candidate assert(i >= 1 && i <= 21);
+2025-04-07 23:30:56,045 - runner - INFO - Predicate filtering verify set: ['(i % 2) == 1', '(j <= 20)', '(i >= 1)', '(j >= 0)', '(i % 2 == 1)', '(i <= 21)', '((i % 2 == 1)) || ((i == 1))', '((i % 2) == 1) || ((j < i))', 'i >= 1', 'j <= 20', '(j - 19) <= i', 'i <= 21', 'j > 0', 'i % 2 == 1']
+2025-04-07 23:30:56,046 - runner - INFO - Resetting generator
+2025-04-07 23:30:56,047 - runner - INFO - Generating loop invariants candidates with model o1-mini and presence penalty 0.0
+2025-04-07 23:31:11,025 - runner - INFO - Generated 5 candidates
+2025-04-07 23:31:11,026 - runner - INFO - Verifying generated candidates
+2025-04-07 23:31:11,028 - runner - INFO - Verifying candidate: assert(i == 1);
+2025-04-07 23:31:11,033 - runner - INFO - Candidate failed verification
+2025-04-07 23:31:11,034 - runner - INFO - Adding candidate to fail history: assert(i == 1);
+2025-04-07 23:31:11,036 - runner - INFO - Verifying candidate: assert(j == 20);
+2025-04-07 23:31:11,041 - runner - INFO - Candidate failed verification
+2025-04-07 23:31:11,042 - runner - INFO - Adding candidate to fail history: assert(j == 20);
+2025-04-07 23:31:11,043 - runner - INFO - Verifying candidate: assert(2 * j + i == 41);
+2025-04-07 23:31:11,051 - runner - INFO - Candidate failed verification
+2025-04-07 23:31:11,052 - runner - INFO - Adding candidate to fail history: assert(2 * j + i == 41);
+2025-04-07 23:31:11,053 - runner - INFO - Verifying candidate: assert(i >= 1);
+2025-04-07 23:31:11,060 - runner - INFO - Candidate failed verification
+2025-04-07 23:31:11,061 - runner - INFO - Adding candidate to fail history: assert(i >= 1);
+2025-04-07 23:31:11,062 - runner - INFO - Verifying candidate: assert(j >= 1);
+2025-04-07 23:31:11,068 - runner - INFO - Candidate failed verification
+2025-04-07 23:31:11,069 - runner - INFO - Adding candidate to fail history: assert(j >= 1);
+2025-04-07 23:31:11,070 - runner - INFO - Executing predicate filtering
+2025-04-07 23:31:11,071 - runner - INFO - Filtering predicates for candidate assert(i == 1);
+2025-04-07 23:31:11,307 - runner - INFO - Filtering predicates for candidate assert(j == 20);
+2025-04-07 23:31:11,536 - runner - INFO - Filtering predicates for candidate assert(2 * j + i == 41);
+2025-04-07 23:31:11,897 - runner - INFO - Addind predicate 2 * j + i == 41 to verify set
+2025-04-07 23:31:11,898 - runner - INFO - Filtering predicates for candidate assert(i >= 1);
+2025-04-07 23:31:12,284 - runner - INFO - Filtering predicates for candidate assert(j >= 1);
+2025-04-07 23:31:12,854 - runner - INFO - Addind predicate j >= 1 to verify set
+2025-04-07 23:31:12,856 - runner - INFO - Predicate filtering verify set: ['(i % 2) == 1', '(j <= 20)', '(i >= 1)', '(j >= 0)', '(i % 2 == 1)', '(i <= 21)', '((i % 2 == 1)) || ((i == 1))', '((i % 2) == 1) || ((j < i))', 'i >= 1', 'j <= 20', '(j - 19) <= i', 'i <= 21', 'j > 0', 'i % 2 == 1', '2 * j + i == 41', 'j >= 1']
+2025-04-07 23:31:12,862 - runner - INFO - Verifying formula: (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (= (mod i 2) 1) (<= j 20)) (>= i 1)) (>= j 0)) (= (mod i 2) 1)) (<= i 21)) (or (= (mod i 2) 1) (= i 1))) (or (= (mod i 2) 1) (< j i))) (>= i 1)) (<= j 20)) (<= (- j 19) i)) (<= i 21)) (> j 0)) (= (mod i 2) 1)) (= (+ (* 2 j) i) 41)) (>= j 1))
+2025-04-07 23:31:12,863 - runner - INFO - For candidate: assert(((i % 2) == 1) && ((j <= 20)) && ((i >= 1)) && ((j >= 0)) && ((i % 2 == 1)) && ((i <= 21)) && (((i % 2 == 1)) || ((i == 1))) && (((i % 2) == 1) || ((j < i))) && (i >= 1) && (j <= 20) && ((j - 19) <= i) && (i <= 21) && (j > 0) && (i % 2 == 1) && (2 * j + i == 41) && (j >= 1))
+2025-04-07 23:31:12,878 - runner - INFO - Generating loop invariants candidates with model o1-mini and presence penalty 0.0
+2025-04-07 23:31:29,787 - runner - INFO - Generated 2 candidates
+2025-04-07 23:31:29,788 - runner - INFO - Verifying generated candidates
+2025-04-07 23:31:29,789 - runner - INFO - Verifying candidate: assert(2 * j + i == 41);
+2025-04-07 23:31:29,790 - runner - INFO - Candidate already in fail history: assert(2 * j + i == 41);
+2025-04-07 23:31:29,792 - runner - INFO - Verifying candidate: assert(j >= i);
+2025-04-07 23:31:29,799 - runner - INFO - Candidate failed verification
+2025-04-07 23:31:29,801 - runner - INFO - Adding candidate to fail history: assert(j >= i);
+2025-04-07 23:31:29,802 - runner - INFO - Executing predicate filtering
+2025-04-07 23:31:29,802 - runner - INFO - Filtering predicates for candidate assert(2 * j + i == 41);
+2025-04-07 23:31:30,145 - runner - INFO - Filtering predicates for candidate assert(j >= i);
+2025-04-07 23:31:30,716 - runner - INFO - Predicate filtering verify set: ['(i % 2) == 1', '(j <= 20)', '(i >= 1)', '(j >= 0)', '(i % 2 == 1)', '(i <= 21)', '((i % 2 == 1)) || ((i == 1))', '((i % 2) == 1) || ((j < i))', 'i >= 1', 'j <= 20', '(j - 19) <= i', 'i <= 21', 'j > 0', 'i % 2 == 1', '2 * j + i == 41', 'j >= 1']
+2025-04-07 23:31:30,717 - runner - INFO - Generating loop invariants candidates with model o1-mini and presence penalty 0.139092447878458
+2025-04-07 23:31:49,218 - runner - INFO - Generated 1 candidates
+2025-04-07 23:31:49,220 - runner - INFO - Verifying generated candidates
+2025-04-07 23:31:49,221 - runner - INFO - Verifying candidate: assert(i + 2 * j == 41);
+2025-04-07 23:31:49,229 - runner - INFO - Candidate failed verification
+2025-04-07 23:31:49,230 - runner - INFO - Adding candidate to fail history: assert(i + 2 * j == 41);
+2025-04-07 23:31:49,231 - runner - INFO - Executing predicate filtering
+2025-04-07 23:31:49,232 - runner - INFO - Filtering predicates for candidate assert(i + 2 * j == 41);
+2025-04-07 23:31:49,578 - runner - INFO - Addind predicate i + 2 * j == 41 to verify set
+2025-04-07 23:31:49,579 - runner - INFO - Predicate filtering verify set: ['(i % 2) == 1', '(j <= 20)', '(i >= 1)', '(j >= 0)', '(i % 2 == 1)', '(i <= 21)', '((i % 2 == 1)) || ((i == 1))', '((i % 2) == 1) || ((j < i))', 'i >= 1', 'j <= 20', '(j - 19) <= i', 'i <= 21', 'j > 0', 'i % 2 == 1', '2 * j + i == 41', 'j >= 1', 'i + 2 * j == 41']
+2025-04-07 23:31:49,583 - runner - INFO - Verifying formula: (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (= (mod i 2) 1) (<= j 20)) (>= i 1)) (>= j 0)) (= (mod i 2) 1)) (<= i 21)) (or (= (mod i 2) 1) (= i 1))) (or (= (mod i 2) 1) (< j i))) (>= i 1)) (<= j 20)) (<= (- j 19) i)) (<= i 21)) (> j 0)) (= (mod i 2) 1)) (= (+ (* 2 j) i) 41)) (>= j 1)) (= (+ i (* 2 j)) 41))
+2025-04-07 23:31:49,584 - runner - INFO - For candidate: assert(((i % 2) == 1) && ((j <= 20)) && ((i >= 1)) && ((j >= 0)) && ((i % 2 == 1)) && ((i <= 21)) && (((i % 2 == 1)) || ((i == 1))) && (((i % 2) == 1) || ((j < i))) && (i >= 1) && (j <= 20) && ((j - 19) <= i) && (i <= 21) && (j > 0) && (i % 2 == 1) && (2 * j + i == 41) && (j >= 1) && (i + 2 * j == 41))
+2025-04-07 23:31:49,591 - runner - INFO - Generating loop invariants candidates with model o1-mini and presence penalty 0.139092447878458
+2025-04-07 23:32:11,198 - runner - INFO - Generated 2 candidates
+2025-04-07 23:32:11,199 - runner - INFO - Verifying generated candidates
+2025-04-07 23:32:11,200 - runner - INFO - Verifying candidate: assert(i + 2 * j == 41);
+2025-04-07 23:32:11,201 - runner - INFO - Candidate already in fail history: assert(i + 2 * j == 41);
+2025-04-07 23:32:11,203 - runner - INFO - Verifying candidate: assert(j <= 20);
+2025-04-07 23:32:11,212 - runner - INFO - Candidate failed verification
+2025-04-07 23:32:11,213 - runner - INFO - Adding candidate to fail history: assert(j <= 20);
+2025-04-07 23:32:11,214 - runner - INFO - Executing predicate filtering
+2025-04-07 23:32:11,215 - runner - INFO - Filtering predicates for candidate assert(i + 2 * j == 41);
+2025-04-07 23:32:11,542 - runner - INFO - Filtering predicates for candidate assert(j <= 20);
+2025-04-07 23:32:11,829 - runner - INFO - Predicate filtering verify set: ['(i % 2) == 1', '(j <= 20)', '(i >= 1)', '(j >= 0)', '(i % 2 == 1)', '(i <= 21)', '((i % 2 == 1)) || ((i == 1))', '((i % 2) == 1) || ((j < i))', 'i >= 1', 'j <= 20', '(j - 19) <= i', 'i <= 21', 'j > 0', 'i % 2 == 1', '2 * j + i == 41', 'j >= 1', 'i + 2 * j == 41']
+2025-04-07 23:32:11,831 - runner - INFO - Generating loop invariants candidates with model o1-mini and presence penalty 0.2729050805631326
+2025-04-07 23:32:43,099 - runner - INFO - Generated 1 candidates
+2025-04-07 23:32:43,100 - runner - INFO - Verifying generated candidates
+2025-04-07 23:32:43,101 - runner - INFO - Verifying candidate: assert(i + 2 * j == 41);
+2025-04-07 23:32:43,102 - runner - INFO - Candidate already in fail history: assert(i + 2 * j == 41);
+2025-04-07 23:32:43,103 - runner - INFO - Executing predicate filtering
+2025-04-07 23:32:43,104 - runner - INFO - Filtering predicates for candidate assert(i + 2 * j == 41);
+2025-04-07 23:32:43,453 - runner - INFO - Predicate filtering verify set: ['(i % 2) == 1', '(j <= 20)', '(i >= 1)', '(j >= 0)', '(i % 2 == 1)', '(i <= 21)', '((i % 2 == 1)) || ((i == 1))', '((i % 2) == 1) || ((j < i))', 'i >= 1', 'j <= 20', '(j - 19) <= i', 'i <= 21', 'j > 0', 'i % 2 == 1', '2 * j + i == 41', 'j >= 1', 'i + 2 * j == 41']
+2025-04-07 23:32:43,455 - runner - INFO - Generating loop invariants candidates with model o1-mini and presence penalty 0.39693043200507744
+2025-04-07 23:33:15,578 - runner - INFO - Generated 1 candidates
+2025-04-07 23:33:15,579 - runner - INFO - Verifying generated candidates
+2025-04-07 23:33:15,580 - runner - INFO - Verifying candidate: assert(i + 2 * j == 41);
+2025-04-07 23:33:15,581 - runner - INFO - Candidate already in fail history: assert(i + 2 * j == 41);
+2025-04-07 23:33:15,582 - runner - INFO - Executing predicate filtering
+2025-04-07 23:33:15,583 - runner - INFO - Filtering predicates for candidate assert(i + 2 * j == 41);
+2025-04-07 23:33:15,936 - runner - INFO - Predicate filtering verify set: ['(i % 2) == 1', '(j <= 20)', '(i >= 1)', '(j >= 0)', '(i % 2 == 1)', '(i <= 21)', '((i % 2 == 1)) || ((i == 1))', '((i % 2) == 1) || ((j < i))', 'i >= 1', 'j <= 20', '(j - 19) <= i', 'i <= 21', 'j > 0', 'i % 2 == 1', '2 * j + i == 41', 'j >= 1', 'i + 2 * j == 41']
+2025-04-07 23:33:15,937 - runner - INFO - Generating loop invariants candidates with model o1-mini and presence penalty 0.507977432897896
+2025-04-07 23:33:42,787 - runner - INFO - Generated 3 candidates
+2025-04-07 23:33:42,788 - runner - INFO - Verifying generated candidates
+2025-04-07 23:33:42,789 - runner - INFO - Verifying candidate: assert(i + 2 * j == 41);
+2025-04-07 23:33:42,790 - runner - INFO - Candidate already in fail history: assert(i + 2 * j == 41);
+2025-04-07 23:33:42,791 - runner - INFO - Verifying candidate: assert(j <= 20);
+2025-04-07 23:33:42,792 - runner - INFO - Candidate already in fail history: assert(j <= 20);
+2025-04-07 23:33:42,793 - runner - INFO - Verifying candidate: assert(i >= 1);
+2025-04-07 23:33:42,794 - runner - INFO - Candidate already in fail history: assert(i >= 1);
+2025-04-07 23:33:42,795 - runner - INFO - Executing predicate filtering
+2025-04-07 23:33:42,796 - runner - INFO - Filtering predicates for candidate assert(i + 2 * j == 41);
+2025-04-07 23:33:43,140 - runner - INFO - Filtering predicates for candidate assert(j <= 20);
+2025-04-07 23:33:43,416 - runner - INFO - Filtering predicates for candidate assert(i >= 1);
+2025-04-07 23:33:43,730 - runner - INFO - Predicate filtering verify set: ['(i % 2) == 1', '(j <= 20)', '(i >= 1)', '(j >= 0)', '(i % 2 == 1)', '(i <= 21)', '((i % 2 == 1)) || ((i == 1))', '((i % 2) == 1) || ((j < i))', 'i >= 1', 'j <= 20', '(j - 19) <= i', 'i <= 21', 'j > 0', 'i % 2 == 1', '2 * j + i == 41', 'j >= 1', 'i + 2 * j == 41']
+2025-04-07 23:33:43,732 - runner - INFO - Generating loop invariants candidates with model o1-mini and presence penalty 0.7530659048695519
+2025-04-07 23:33:57,669 - runner - INFO - Generated 1 candidates
+2025-04-07 23:33:57,670 - runner - INFO - Verifying generated candidates
+2025-04-07 23:33:57,671 - runner - INFO - Verifying candidate: assert(i + 2 * j == 41);
+2025-04-07 23:33:57,672 - runner - INFO - Candidate already in fail history: assert(i + 2 * j == 41);
+2025-04-07 23:33:57,673 - runner - INFO - Executing predicate filtering
+2025-04-07 23:33:57,674 - runner - INFO - Filtering predicates for candidate assert(i + 2 * j == 41);
+2025-04-07 23:33:58,017 - runner - INFO - Predicate filtering verify set: ['(i % 2) == 1', '(j <= 20)', '(i >= 1)', '(j >= 0)', '(i % 2 == 1)', '(i <= 21)', '((i % 2 == 1)) || ((i == 1))', '((i % 2) == 1) || ((j < i))', 'i >= 1', 'j <= 20', '(j - 19) <= i', 'i <= 21', 'j > 0', 'i % 2 == 1', '2 * j + i == 41', 'j >= 1', 'i + 2 * j == 41']
+2025-04-07 23:33:58,019 - runner - INFO - Generating loop invariants candidates with model o1-mini and presence penalty 0.8075689165786143
+2025-04-07 23:34:22,827 - runner - INFO - Generated 2 candidates
+2025-04-07 23:34:22,828 - runner - INFO - Verifying generated candidates
+2025-04-07 23:34:22,829 - runner - INFO - Verifying candidate: assert(i + 2 * j == 41);
+2025-04-07 23:34:22,830 - runner - INFO - Candidate already in fail history: assert(i + 2 * j == 41);
+2025-04-07 23:34:22,832 - runner - INFO - Verifying candidate: assert(j >= 14);
+2025-04-07 23:34:22,839 - runner - INFO - Candidate failed verification
+2025-04-07 23:34:22,840 - runner - INFO - Adding candidate to fail history: assert(j >= 14);
+2025-04-07 23:34:22,841 - runner - INFO - Executing predicate filtering
+2025-04-07 23:34:22,842 - runner - INFO - Filtering predicates for candidate assert(i + 2 * j == 41);
+2025-04-07 23:34:23,205 - runner - INFO - Filtering predicates for candidate assert(j >= 14);
+2025-04-07 23:34:23,703 - runner - INFO - Predicate filtering verify set: ['(i % 2) == 1', '(j <= 20)', '(i >= 1)', '(j >= 0)', '(i % 2 == 1)', '(i <= 21)', '((i % 2 == 1)) || ((i == 1))', '((i % 2) == 1) || ((j < i))', 'i >= 1', 'j <= 20', '(j - 19) <= i', 'i <= 21', 'j > 0', 'i % 2 == 1', '2 * j + i == 41', 'j >= 1', 'i + 2 * j == 41']
+2025-04-07 23:34:23,704 - runner - INFO - Generating loop invariants candidates with model o1-mini and presence penalty 0.8510641096679438
+2025-04-07 23:34:45,803 - runner - INFO - Generated 1 candidates
+2025-04-07 23:34:45,804 - runner - INFO - Verifying generated candidates
+2025-04-07 23:34:45,804 - runner - INFO - Verifying candidate: assert(i + 2 * j == 41);
+2025-04-07 23:34:45,806 - runner - INFO - Candidate already in fail history: assert(i + 2 * j == 41);
+2025-04-07 23:34:45,807 - runner - INFO - Executing predicate filtering
+2025-04-07 23:34:45,808 - runner - INFO - Filtering predicates for candidate assert(i + 2 * j == 41);
+2025-04-07 23:34:46,148 - runner - INFO - Predicate filtering verify set: ['(i % 2) == 1', '(j <= 20)', '(i >= 1)', '(j >= 0)', '(i % 2 == 1)', '(i <= 21)', '((i % 2 == 1)) || ((i == 1))', '((i % 2) == 1) || ((j < i))', 'i >= 1', 'j <= 20', '(j - 19) <= i', 'i <= 21', 'j > 0', 'i % 2 == 1', '2 * j + i == 41', 'j >= 1', 'i + 2 * j == 41']
+2025-04-07 23:34:46,150 - runner - INFO - Generating loop invariants candidates with model o1-mini and presence penalty 0.8853516482022625
+2025-04-07 23:34:54,777 - runner - INFO - Generated 1 candidates
+2025-04-07 23:34:54,778 - runner - INFO - Verifying generated candidates
+2025-04-07 23:34:54,780 - runner - INFO - Verifying candidate: assert(2 * j + i == 41);
+2025-04-07 23:34:54,781 - runner - INFO - Candidate already in fail history: assert(2 * j + i == 41);
+2025-04-07 23:34:54,781 - runner - INFO - Executing predicate filtering
+2025-04-07 23:34:54,782 - runner - INFO - Filtering predicates for candidate assert(2 * j + i == 41);
+2025-04-07 23:34:55,149 - runner - INFO - Predicate filtering verify set: ['(i % 2) == 1', '(j <= 20)', '(i >= 1)', '(j >= 0)', '(i % 2 == 1)', '(i <= 21)', '((i % 2 == 1)) || ((i == 1))', '((i % 2) == 1) || ((j < i))', 'i >= 1', 'j <= 20', '(j - 19) <= i', 'i <= 21', 'j > 0', 'i % 2 == 1', '2 * j + i == 41', 'j >= 1', 'i + 2 * j == 41']
+2025-04-07 23:34:55,150 - runner - INFO - Generating loop invariants candidates with model o1-mini and presence penalty 0.9121203692077173
+2025-04-07 23:35:14,271 - runner - INFO - Generated 1 candidates
+2025-04-07 23:35:14,273 - runner - INFO - Verifying generated candidates
+2025-04-07 23:35:14,274 - runner - INFO - Verifying candidate: assert(i + 2 * j == 41);
+2025-04-07 23:35:14,275 - runner - INFO - Candidate already in fail history: assert(i + 2 * j == 41);
+2025-04-07 23:35:14,276 - runner - INFO - Executing predicate filtering
+2025-04-07 23:35:14,277 - runner - INFO - Filtering predicates for candidate assert(i + 2 * j == 41);
+2025-04-07 23:35:14,612 - runner - INFO - Predicate filtering verify set: ['(i % 2) == 1', '(j <= 20)', '(i >= 1)', '(j >= 0)', '(i % 2 == 1)', '(i <= 21)', '((i % 2 == 1)) || ((i == 1))', '((i % 2) == 1) || ((j < i))', 'i >= 1', 'j <= 20', '(j - 19) <= i', 'i <= 21', 'j > 0', 'i % 2 == 1', '2 * j + i == 41', 'j >= 1', 'i + 2 * j == 41']
+2025-04-07 23:35:14,613 - runner - INFO - Generating loop invariants candidates with model o1-mini and presence penalty 0.9328615534370349
+2025-04-07 23:35:34,108 - runner - INFO - Generated 2 candidates
+2025-04-07 23:35:34,109 - runner - INFO - Verifying generated candidates
+2025-04-07 23:35:34,110 - runner - INFO - Verifying candidate: assert(i + 2 * j == 41);
+2025-04-07 23:35:34,112 - runner - INFO - Candidate already in fail history: assert(i + 2 * j == 41);
+2025-04-07 23:35:34,113 - runner - INFO - Verifying candidate: assert(j >= 13);
+2025-04-07 23:35:34,119 - runner - INFO - Candidate failed verification
+2025-04-07 23:35:34,120 - runner - INFO - Adding candidate to fail history: assert(j >= 13);
+2025-04-07 23:35:34,121 - runner - INFO - Executing predicate filtering
+2025-04-07 23:35:34,122 - runner - INFO - Filtering predicates for candidate assert(i + 2 * j == 41);
+2025-04-07 23:35:34,479 - runner - INFO - Filtering predicates for candidate assert(j >= 13);
+2025-04-07 23:35:35,003 - runner - INFO - Addind predicate j >= 13 to verify set
+2025-04-07 23:35:35,004 - runner - INFO - Predicate filtering verify set: ['(i % 2) == 1', '(j <= 20)', '(i >= 1)', '(j >= 0)', '(i % 2 == 1)', '(i <= 21)', '((i % 2 == 1)) || ((i == 1))', '((i % 2) == 1) || ((j < i))', 'i >= 1', 'j <= 20', '(j - 19) <= i', 'i <= 21', 'j > 0', 'i % 2 == 1', '2 * j + i == 41', 'j >= 1', 'i + 2 * j == 41', 'j >= 13']
+2025-04-07 23:35:35,008 - runner - INFO - Verifying formula: (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (= (mod i 2) 1) (<= j 20)) (>= i 1)) (>= j 0)) (= (mod i 2) 1)) (<= i 21)) (or (= (mod i 2) 1) (= i 1))) (or (= (mod i 2) 1) (< j i))) (>= i 1)) (<= j 20)) (<= (- j 19) i)) (<= i 21)) (> j 0)) (= (mod i 2) 1)) (= (+ (* 2 j) i) 41)) (>= j 1)) (= (+ i (* 2 j)) 41)) (>= j 13))
+2025-04-07 23:35:35,009 - runner - INFO - For candidate: assert(((i % 2) == 1) && ((j <= 20)) && ((i >= 1)) && ((j >= 0)) && ((i % 2 == 1)) && ((i <= 21)) && (((i % 2 == 1)) || ((i == 1))) && (((i % 2) == 1) || ((j < i))) && (i >= 1) && (j <= 20) && ((j - 19) <= i) && (i <= 21) && (j > 0) && (i % 2 == 1) && (2 * j + i == 41) && (j >= 1) && (i + 2 * j == 41) && (j >= 13))
+2025-04-07 23:35:35,018 - runner - INFO - Predicate filtering found solution: assert(((i % 2) == 1) && ((j <= 20)) && ((i >= 1)) && ((j >= 0)) && ((i % 2 == 1)) && ((i <= 21)) && (((i % 2 == 1)) || ((i == 1))) && (((i % 2) == 1) || ((j < i))) && (i >= 1) && (j <= 20) && ((j - 19) <= i) && (i <= 21) && (j > 0) && (i % 2 == 1) && (2 * j + i == 41) && (j >= 1) && (i + 2 * j == 41) && (j >= 13))
+2025-04-07 23:35:35,019 - runner - INFO - # Result
+2025-04-07 23:35:35,021 - runner - INFO - Solution found by the predicate filtering mechanism using the o1-mini model: assert(((i % 2) == 1) && ((j <= 20)) && ((i >= 1)) && ((j >= 0)) && ((i % 2 == 1)) && ((i <= 21)) && (((i % 2 == 1)) || ((i == 1))) && (((i % 2) == 1) || ((j < i))) && (i >= 1) && (j <= 20) && ((j - 19) <= i) && (i <= 21) && (j > 0) && (i % 2 == 1) && (2 * j + i == 41) && (j >= 1) && (i + 2 * j == 41) && (j >= 13))
+2025-04-07 23:35:35,021 - runner - INFO - 10 counter examples were generated for the model proposals, with 13 repeated fails
+2025-04-07 23:35:35,022 - runner - INFO - The model runtime was 278.97444677352905 seconds
+2025-04-07 23:35:35,023 - runner - INFO - The total runtime was 325.13511395454407 seconds
